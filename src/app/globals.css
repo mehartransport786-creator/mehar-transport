@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-cairo: var(--font-cairo);
+  --font-inter: var(--font-inter);
+  --font-heading: var(--font-sans);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  /* Mehar Transport Luxury Light Theme */
+  --background: #FFFFFF;
+  --foreground: #1B1E4F;
+  
+  --card: #FFFFFF;
+  --card-foreground: #1B1E4F;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #1B1E4F;
+  
+  --primary: #1B1E4F;
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #D9A63A;
+  --secondary-foreground: #FFFFFF;
+  
+  --muted: #F8F9FC;
+  --muted-foreground: #64748B;
+  
+  --accent: #F5F4F1;
+  --accent-foreground: #1B1E4F;
+  
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+
+  --success: #16A34A;
+  --success-foreground: #FFFFFF;
+
+  --warning: #F59E0B;
+  --warning-foreground: #FFFFFF;
+  
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #D9A63A;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Mehar Transport Luxury Dark Theme */
+  --background: #111827;
+  --foreground: #F8F9FC;
+  
+  --card: #1B1E4F;
+  --card-foreground: #F8F9FC;
+  
+  --popover: #1B1E4F;
+  --popover-foreground: #F8F9FC;
+  
+  --primary: #D9A63A;
+  --primary-foreground: #111827;
+  
+  --secondary: #1B1E4F;
+  --secondary-foreground: #F8F9FC;
+  
+  --muted: #1B1E4F;
+  --muted-foreground: #94A3B8;
+  
+  --accent: #1B1E4F;
+  --accent-foreground: #F8F9FC;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --success: #22C55E;
+  --success-foreground: #FFFFFF;
+
+  --warning: #FBBF24;
+  --warning-foreground: #0F172A;
+  
+  --border: #1B1E4F;
+  --input: #1B1E4F;
+  --ring: #D9A63A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 
+  CRITICAL FIX: Framer Motion sets initial opacity: 0 via inline style.
+  If JavaScript is blocked (e.g. cross-origin dev restriction from network IP),
+  all animated elements remain invisible. This CSS override forces content visible
+  after a 600ms delay using a CSS animation fallback.
+  
+  When JS DOES load, framer-motion takes over with its own inline style,
+  so the animation still works properly — this is purely a no-JS safety net.
+*/
+@keyframes reveal-fallback {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Override framer-motion's inline opacity:0 after 600ms if JS hasn't run */
+[style*="opacity: 0"],
+[style*="opacity:0"] {
+  animation: reveal-fallback 0.3s ease 0.8s forwards;
+}

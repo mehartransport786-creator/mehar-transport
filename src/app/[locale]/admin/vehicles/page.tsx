@@ -1,0 +1,118 @@
+"use client";
+
+import { useLocale } from "next-intl";
+import { mockFleet } from "@/lib/data";
+import { Users, Briefcase, Star, BarChart3, DollarSign, TrendingUp, Edit3, Eye, MoreHorizontal } from "lucide-react";
+
+const vehicleStats: Record<string, { bookings: number; revenue: number; utilization: number; rating: number }> = {
+  "kia-k5":               { bookings: 410, revenue: 61500,   utilization: 78, rating: 4.7 },
+  "mitsubishi-xpander":   { bookings: 380, revenue: 95000,   utilization: 82, rating: 4.6 },
+  "hyundai-staria":       { bookings: 520, revenue: 208000,  utilization: 91, rating: 4.9 },
+  "toyota-hiace":         { bookings: 480, revenue: 216000,  utilization: 88, rating: 4.7 },
+  "toyota-coaster":       { bookings: 310, revenue: 217000,  utilization: 72, rating: 4.8 },
+  "luxury-bus":           { bookings: 250, revenue: 375000,  utilization: 65, rating: 4.6 },
+  "mercedes-s-class":     { bookings: 340, revenue: 408000,  utilization: 85, rating: 5.0 },
+  "rolls-royce":          { bookings: 157, revenue: 549500,  utilization: 60, rating: 5.0 },
+};
+
+export default function VehiclesPage() {
+  const locale = useLocale();
+  const isAr = locale === "ar";
+
+  return (
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: "#1B1E4F" }}>
+            {isAr ? "إدارة المركبات" : "Fleet Management"}
+          </h1>
+          <p className="text-gray-500 mt-1 text-sm font-medium">
+            {isAr ? `${mockFleet.length} مركبات في الأسطول` : `${mockFleet.length} vehicles in fleet`}
+          </p>
+        </div>
+        <button className="flex items-center gap-2 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#1B1E4F]/20">
+          + {isAr ? "إضافة مركبة" : "Add Vehicle"}
+        </button>
+      </div>
+
+      {/* Fleet Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+        {mockFleet.map((vehicle) => {
+          const stats = vehicleStats[vehicle.slug] || { bookings: 0, revenue: 0, utilization: 0, rating: 0 };
+          return (
+            <div
+              key={vehicle.id}
+              className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:border-[#D9A63A]/20 transition-all duration-300 group"
+            >
+              {/* Image */}
+              <div className="aspect-[16/10] relative overflow-hidden bg-gray-100">
+                <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                {vehicle.specialLabel && (
+                  <div className="absolute top-3 left-3 bg-[#1B1E4F]/90 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    {isAr ? vehicle.specialLabelAr : vehicle.specialLabel}
+                  </div>
+                )}
+                {/* Utilization badge */}
+                <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md rounded-full px-3 py-1 flex items-center gap-1.5 shadow-sm">
+                  <div className={`w-2 h-2 rounded-full ${stats.utilization >= 80 ? "bg-emerald-500" : stats.utilization >= 60 ? "bg-amber-500" : "bg-red-500"}`} />
+                  <span className="text-xs font-bold text-gray-700">{stats.utilization}%</span>
+                </div>
+              </div>
+
+              {/* Info */}
+              <div className="p-5">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="font-bold text-[#1B1E4F] text-lg">{isAr ? vehicle.nameAr : vehicle.name}</h3>
+                    <p className="text-xs text-[#D9A63A] font-semibold mt-0.5">{isAr ? vehicle.typeAr : vehicle.type}</p>
+                  </div>
+                  <button className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors">
+                    <MoreHorizontal className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Specs */}
+                <div className="flex items-center gap-4 text-xs text-gray-500 mb-4 pb-4 border-b border-gray-100">
+                  <div className="flex items-center gap-1">
+                    <Users className="w-3.5 h-3.5" /> {vehicle.passengers}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Briefcase className="w-3.5 h-3.5" /> {vehicle.luggage}
+                  </div>
+                  <div className="flex items-center gap-0.5">
+                    {[...Array(Math.min(vehicle.luxuryLevel, 5))].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-[#D9A63A] text-[#D9A63A]" />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{isAr ? "الحجوزات" : "Bookings"}</div>
+                    <div className="text-lg font-black text-[#1B1E4F]">{stats.bookings}</div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{isAr ? "الإيرادات" : "Revenue"}</div>
+                    <div className="text-lg font-black text-[#1B1E4F]">{(stats.revenue / 1000).toFixed(0)}K</div>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center gap-2">
+                  <button className="flex-1 flex items-center justify-center gap-1.5 bg-gray-50 text-gray-600 hover:bg-gray-100 py-2.5 rounded-xl text-xs font-semibold transition-colors">
+                    <Eye className="w-3.5 h-3.5" /> {isAr ? "عرض" : "View"}
+                  </button>
+                  <button className="flex-1 flex items-center justify-center gap-1.5 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] py-2.5 rounded-xl text-xs font-semibold transition-colors">
+                    <Edit3 className="w-3.5 h-3.5" /> {isAr ? "تعديل" : "Edit"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
