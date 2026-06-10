@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRealTime, LiveBooking } from './RealTimeProvider';
 import { X, Eye, UserPlus, MapPin, Car, Users, Clock } from 'lucide-react';
 import { Link } from '@/i18n/routing';
@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 function SingleToast({ booking, onDismiss }: { booking: LiveBooking; onDismiss: () => void }) {
   const locale = useLocale();
   const isAr = locale === 'ar';
+  const t = useTranslations('Admin');
   const [progress, setProgress] = useState(100);
 
   useEffect(() => {
@@ -54,7 +55,7 @@ function SingleToast({ booking, onDismiss }: { booking: LiveBooking; onDismiss: 
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: pc.accent }} />
           <span className="text-xs font-bold uppercase tracking-wider" style={{ color: pc.accent }}>
-            {isAr ? 'حجز جديد' : 'New Booking'}
+            {t("newBooking")}
           </span>
           {booking.priority !== 'standard' && (
             <span
@@ -92,7 +93,7 @@ function SingleToast({ booking, onDismiss }: { booking: LiveBooking; onDismiss: 
           </div>
           <div className="flex items-center gap-1.5">
             <Users className="w-3 h-3" />
-            <span>{booking.passengers} {isAr ? 'ركاب' : 'pax'}</span>
+            <span>{booking.passengers} {t("pax")}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <Clock className="w-3 h-3" />
@@ -110,14 +111,14 @@ function SingleToast({ booking, onDismiss }: { booking: LiveBooking; onDismiss: 
           onClick={onDismiss}
         >
           <Eye className="w-3.5 h-3.5" />
-          {isAr ? 'عرض' : 'View'}
+          {t("view")}
         </Link>
         <button
           className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-bold transition-all hover:opacity-90"
           style={{ background: pc.accent, color: '#fff' }}
         >
           <UserPlus className="w-3.5 h-3.5" />
-          {isAr ? 'تعيين سائق' : 'Assign Driver'}
+          {t("assignDriver")}
         </button>
       </div>
 
@@ -140,6 +141,7 @@ function SingleToast({ booking, onDismiss }: { booking: LiveBooking; onDismiss: 
 }
 
 export function BookingToast() {
+    const t = useTranslations('BookingToast');
   const { toasts, dismissToast } = useRealTime();
 
   if (toasts.length === 0) return null;

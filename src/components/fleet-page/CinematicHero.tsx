@@ -30,7 +30,7 @@ export function CinematicHero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-80" />
         <img 
-          src="https://images.unsplash.com/photo-1631835706240-a3da19f6a256?q=80&w=2070&auto=format&fit=crop" 
+          src="/fleet-hero.webp" 
           alt="Luxury Fleet Cinematic" 
           className="w-full h-full object-cover object-center scale-105"
         />

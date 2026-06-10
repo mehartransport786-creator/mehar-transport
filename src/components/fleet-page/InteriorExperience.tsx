@@ -1,33 +1,33 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Maximize2, Wind, Shield, Coffee } from "lucide-react";
+import Image from "next/image";
 
 export function InteriorExperience() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('InteriorExperience');
 
   const features = [
     {
       icon: Shield,
-      title: isAr ? "مقاعد جلدية فاخرة" : "Premium Leather Seating",
-      desc: isAr ? "مصممة خصيصاً لتوفير أقصى درجات الراحة والدعم خلال الرحلات الطويلة." : "Ergonomically designed to provide maximum comfort and support during long journeys."
+      title: t("premiumLeatherSeating"),
+      desc: t("ergonomicallyDesignedToProvideMaximumCom")
     },
     {
       icon: Wind,
-      title: isAr ? "تحكم متطور بالمناخ" : "Advanced Climate Control",
-      desc: isAr ? "تكييف هواء متعدد المناطق يضمن درجة حرارة مثالية لجميع الركاب." : "Multi-zone air conditioning ensuring the perfect temperature for all passengers."
+      title: t("advancedClimateControl"),
+      desc: t("multiZoneAirConditioningEnsuringThePerfe")
     },
     {
       icon: Maximize2,
-      title: isAr ? "مساحة واسعة للقدمين" : "Generous Legroom",
-      desc: isAr ? "مساحة استثنائية للاسترخاء، مثالية للمسافرين من رجال الأعمال وكبار الشخصيات." : "Exceptional space to stretch out and relax, ideal for business and VIP travelers."
+      title: t("generousLegroom"),
+      desc: t("exceptionalSpaceToStretchOutAndRelaxIdea")
     },
     {
       icon: Coffee,
-      title: isAr ? "وسائل راحة حصرية" : "Exclusive Amenities",
-      desc: isAr ? "مياه معبأة، خدمة إنترنت، وتجهيزات فاخرة لضمان تجربة سفر متكاملة." : "Complimentary water, Wi-Fi, and premium touches to ensure a complete travel experience."
+      title: t("exclusiveAmenities"),
+      desc: t("complimentaryWaterWiFiAndPremiumTouchesT")
     }
   ];
 
@@ -50,7 +50,7 @@ export function InteriorExperience() {
               >
                 <div className="w-12 h-0.5 bg-[#D9A63A]"></div>
                 <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm">
-                  {isAr ? "تجربة المقصورة" : "The Interior Experience"}
+                  {t("theInteriorExperience")}
                 </span>
               </motion.div>
               <motion.h2 
@@ -60,7 +60,7 @@ export function InteriorExperience() {
                 transition={{ delay: 0.1 }}
                 className="text-4xl md:text-5xl font-bold leading-tight mb-6"
               >
-                {isAr ? "الراحة لا تُساوم" : "Comfort Without Compromise"}
+                {t("comfortWithoutCompromise")}
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -69,9 +69,7 @@ export function InteriorExperience() {
                 transition={{ delay: 0.2 }}
                 className="text-lg text-gray-300 font-light leading-relaxed max-w-xl"
               >
-                {isAr 
-                  ? "ندرك أن الرحلة لا تقل أهمية عن الوجهة. لذلك، تم تجهيز كل مركبة في أسطولنا بأرقى وسائل الراحة لضمان وصولك براحة تامة."
-                  : "We understand that the journey is just as important as the destination. That's why every vehicle in our fleet is equipped with the finest amenities to ensure you arrive completely refreshed."}
+                {t("weUnderstandThatTheJourneyIsJustAsImport")}
               </motion.p>
             </div>
 
@@ -106,17 +104,19 @@ export function InteriorExperience() {
             className="w-full lg:w-1/2"
           >
             <div className="relative aspect-square md:aspect-[4/5] rounded-[2rem] overflow-hidden group">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" 
                 alt="Luxury Interior" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1B1E4F]/80 via-transparent to-transparent opacity-80" />
               
               {/* Floating Interaction Hint */}
               <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full text-sm font-medium">
                 <Maximize2 className="w-4 h-4 text-[#D9A63A]" />
-                <span>{isAr ? "انقر لتكبير المعرض" : "Click to view gallery"}</span>
+                <span>{t("clickToViewGallery")}</span>
               </div>
             </div>
           </motion.div>

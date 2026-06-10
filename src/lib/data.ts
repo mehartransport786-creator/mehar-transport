@@ -1,4 +1,6 @@
-export const mockFleet = [
+import { Vehicle, Route } from "@/types/vehicle";
+
+export const mockFleet: Vehicle[] = [
   {
     id: "kia-k5",
     slug: "kia-k5",
@@ -215,7 +217,7 @@ export const mockFleet = [
   }
 ];
 
-export const mockRoutes = [
+export const mockRoutes: Route[] = [
   {
     id: "jeddah-makkah",
     slug: "jeddah-makkah",

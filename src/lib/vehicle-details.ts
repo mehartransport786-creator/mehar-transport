@@ -1,4 +1,6 @@
-export const vehicleDetails: Record<string, any> = {
+import { VehicleDetails } from "@/types/vehicle";
+
+export const vehicleDetails: Record<string, VehicleDetails> = {
   "kia-k5": {
     theme: {
       primary: "#1B1E4F",

@@ -1,33 +1,32 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ShieldCheck, Clock, Navigation, Star } from "lucide-react";
 import { PremiumIcon } from "@/components/ui/PremiumIcon";
 
 export function TrustBar() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('TrustBar');
 
   const trustItems = [
     {
       icon: ShieldCheck,
-      title: isAr ? "نخبة السائقين" : "Elite Chauffeurs",
-      description: isAr ? "مدربون باحترافية عالية" : "Professionally trained",
+      title: t("eliteChauffeurs"),
+      description: t("professionallyTrained"),
     },
     {
       icon: Navigation,
-      title: isAr ? "رحلات موثوقة" : "Reliable Journeys",
-      description: isAr ? "تتبع دقيق وضمان الوصول" : "Precision tracking",
+      title: t("reliableJourneys"),
+      description: t("precisionTracking"),
     },
     {
       icon: Clock,
-      title: isAr ? "متاحون 24/7" : "24/7 Concierge",
-      description: isAr ? "خدمة عملاء على مدار الساعة" : "Round-the-clock support",
+      title: t("247Concierge"),
+      description: t("roundTheClockSupport"),
     },
     {
       icon: Star,
-      title: isAr ? "معايير عالمية" : "World-Class Standards",
-      description: isAr ? "مركبات فائقة الفخامة" : "Ultra-luxury fleet",
+      title: t("worldClassStandards"),
+      description: t("ultraLuxuryFleet"),
     }
   ];
 

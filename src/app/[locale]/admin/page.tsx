@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { useRealTime, LiveBooking, LiveActivity } from "@/components/admin/RealTimeProvider";
-import { kpiCards as staticKpis, revenueChartData, bookingsByRoute, bookingsByVehicle, statusConfig, BookingStatus } from "@/lib/admin-data";
+import { kpiCards as staticKpis, revenueChartData as staticRevenue, bookingsByRoute as staticRoute, bookingsByVehicle as staticVehicle, statusConfig, BookingStatus } from "@/lib/admin-data";
 import { Link } from "@/i18n/routing";
 import { TrendingUp, TrendingDown, ChevronRight, Wifi, WifiOff } from "lucide-react";
 import {
@@ -64,6 +64,27 @@ export default function AdminDashboard() {
   const isAr = locale === "ar";
   const [chartPeriod, setChartPeriod] = useState<"daily" | "weekly" | "monthly" | "yearly">("monthly");
   const { bookings, activities, metrics, isConnected } = useRealTime();
+
+  const [stats, setStats] = useState({
+    revenueChartData: staticRevenue,
+    bookingsByRoute: staticRoute,
+    bookingsByVehicle: staticVehicle
+  });
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch('/api/admin/stats');
+        const data = await res.json();
+        if (data.success) {
+          setStats(data.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch stats", error);
+      }
+    }
+    fetchStats();
+  }, []);
 
   // Build live KPI cards from real-time metrics
   const liveKpis = [
@@ -164,7 +185,7 @@ export default function AdminDashboard() {
           </div>
           <div className="h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={revenueChartData} margin={{ top: 5, right: 5, bottom: 5, left: 0 }}>
+              <AreaChart data={stats.revenueChartData} margin={{ top: 5, right: 5, bottom: 5, left: 0 }}>
                 <defs>
                   <linearGradient id="currentGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#1B1E4F" stopOpacity={0.15} />
@@ -207,8 +228,8 @@ export default function AdminDashboard() {
           <div className="h-[220px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={bookingsByRoute} innerRadius={60} outerRadius={95} paddingAngle={4} dataKey="value" cx="50%" cy="50%">
-                  {bookingsByRoute.map((entry, i) => (
+                <Pie data={stats.bookingsByRoute} innerRadius={60} outerRadius={95} paddingAngle={4} dataKey="value" cx="50%" cy="50%">
+                  {stats.bookingsByRoute.map((entry: any, i: number) => (
                     <Cell key={i} fill={entry.fill} stroke="none" />
                   ))}
                 </Pie>
@@ -217,7 +238,7 @@ export default function AdminDashboard() {
             </ResponsiveContainer>
           </div>
           <div className="space-y-3 mt-4">
-            {bookingsByRoute.map((route) => (
+            {stats.bookingsByRoute.map((route: any) => (
               <div key={route.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ background: route.fill }} />
@@ -241,13 +262,13 @@ export default function AdminDashboard() {
           </h2>
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={bookingsByVehicle} layout="vertical" margin={{ left: 10, right: 20 }}>
+              <BarChart data={stats.bookingsByVehicle} layout="vertical" margin={{ left: 10, right: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" horizontal={false} />
                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#9CA3AF", fontSize: 12 }} />
                 <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fill: "#6B7280", fontSize: 12, fontWeight: 500 }} width={110} />
                 <Tooltip contentStyle={{ borderRadius: 12, border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", fontSize: 13, fontWeight: 600 }} />
                 <Bar dataKey="bookings" fill="#1B1E4F" radius={[0, 8, 8, 0]} barSize={20}>
-                  {bookingsByVehicle.map((_, i) => (
+                  {stats.bookingsByVehicle.map((_: any, i: number) => (
                     <Cell key={i} fill={i === 0 ? "#D9A63A" : "#1B1E4F"} opacity={1 - i * 0.08} />
                   ))}
                 </Bar>

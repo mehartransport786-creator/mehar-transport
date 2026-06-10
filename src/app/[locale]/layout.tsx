@@ -66,6 +66,7 @@ export default async function RootLayout({
   params: Promise<{locale: string}>;
 }>) {
   const resolvedParams = await params;
+  const isAr = resolvedParams.locale === "ar";
   const {locale} = resolvedParams;
 
   // Ensure that the incoming `locale` is valid

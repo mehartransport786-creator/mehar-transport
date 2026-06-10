@@ -15,6 +15,8 @@ export interface IAdmin extends Document {
   twoFactorSecret?: string;
   recoveryCodes?: string[];
   passwordHistory?: string[]; // to prevent reuse
+  failedLoginAttempts: number;
+  lockedUntil?: Date;
   lastLogin?: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -41,6 +43,8 @@ const AdminSchema: Schema = new Schema(
     twoFactorSecret: { type: String },
     recoveryCodes: [{ type: String }],
     passwordHistory: [{ type: String }],
+    failedLoginAttempts: { type: Number, default: 0 },
+    lockedUntil: { type: Date },
     lastLogin: { type: Date }
   },
   { timestamps: true }

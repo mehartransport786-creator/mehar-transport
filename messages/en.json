@@ -76,7 +76,14 @@
     "reviews": {
       "title": "What Our Customers Say",
       "average": "4.9 out of 5",
-      "categories": ["Airport Transfers", "Umrah Transportation", "VIP Transportation", "Family Travel", "Corporate Travel", "Group Transportation"],
+      "categories": [
+        "Airport Transfers",
+        "Umrah Transportation",
+        "VIP Transportation",
+        "Family Travel",
+        "Corporate Travel",
+        "Group Transportation"
+      ],
       "filter": "Filter Reviews",
       "sort": "Sort Reviews"
     },
@@ -84,11 +91,22 @@
       "title": "Our Locations",
       "office": "Main Office",
       "directions": "Directions",
-      "landmarks": ["Jeddah Airport", "Makkah", "Madinah"]
+      "landmarks": [
+        "Jeddah Airport",
+        "Makkah",
+        "Madinah"
+      ]
     },
     "coverage": {
       "title": "Service Areas",
-      "cities": ["Makkah", "Madinah", "Jeddah", "Taif", "Riyadh", "Yanbu"],
+      "cities": [
+        "Makkah",
+        "Madinah",
+        "Jeddah",
+        "Taif",
+        "Riyadh",
+        "Yanbu"
+      ],
       "availability": "Vehicle Availability",
       "times": "Estimated Travel Times"
     },
@@ -112,15 +130,41 @@
       "title": "Instant WhatsApp Booking",
       "response": "Response Time: < 5 Minutes",
       "languages": "Languages: English, Arabic, Urdu",
-      "actions": ["Airport Transfer", "Umrah Booking", "VIP Service", "Family Transport", "Group Transport", "Request Quote"]
+      "actions": [
+        "Airport Transfer",
+        "Umrah Booking",
+        "VIP Service",
+        "Family Transport",
+        "Group Transport",
+        "Request Quote"
+      ]
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "categories": ["Bookings", "Pricing", "Vehicles", "Airport Transfers", "Umrah Transportation", "Payments", "Safety", "Corporate Services"]
+      "categories": [
+        "Bookings",
+        "Pricing",
+        "Vehicles",
+        "Airport Transfers",
+        "Umrah Transportation",
+        "Payments",
+        "Safety",
+        "Corporate Services"
+      ]
     },
     "trustCenter": {
       "title": "Your Safety is Our Priority",
-      "items": ["Licensed Drivers", "GPS Tracking", "Insurance Coverage", "Vehicle Inspections", "Professional Chauffeurs", "24/7 Operations", "Emergency Assistance", "Flight Monitoring", "Passenger Safety Standards"]
+      "items": [
+        "Licensed Drivers",
+        "GPS Tracking",
+        "Insurance Coverage",
+        "Vehicle Inspections",
+        "Professional Chauffeurs",
+        "24/7 Operations",
+        "Emergency Assistance",
+        "Flight Monitoring",
+        "Passenger Safety Standards"
+      ]
     },
     "social": {
       "title": "Join Our Community",
@@ -131,5 +175,622 @@
       "title": "Ready to Book Your Journey?",
       "subtitle": "Our transportation specialists are available 24/7 to help you arrange the perfect transfer anywhere in Saudi Arabia."
     }
+  },
+  "Navbar": {
+    "home": "Home",
+    "fleet": "Fleet",
+    "viewFullFleet": "View Full Fleet",
+    "packages": "Packages",
+    "toyotaCamryPackages": "Toyota Camry Packages",
+    "gmcYukonPackage": "GMC Yukon Umrah Package | Luxury 6-Seat SUV Transfer",
+    "hyundaiStariaPackages": "Hyundai Staria Packages",
+    "toyotaHiacePackages": "Toyota Hiace Packages",
+    "h1HyundaiPackages": "H1 Hyundai Packages",
+    "routes": "Routes",
+    "cities": "Cities",
+    "blog": "Blog",
+    "contact": "Contact",
+    "language": "العربية",
+    "whatsapp": "WhatsApp",
+    "dashboard": "Dashboard",
+    "myBookings": "My Bookings",
+    "signOut": "Sign Out",
+    "bookNow": "Book Now",
+    "viewDashboard": "View Dashboard"
+  },
+  "Hero": {
+    "subtitle": "Redefining Luxury Transport",
+    "title": "Elevate Your Journey",
+    "description": "Exclusive VIP transportation across Saudi Arabia. World-class fleet, professional chauffeurs, and impeccable service.",
+    "beginJourney": "Begin Your Journey",
+    "selectRoute": "Select your route",
+    "chooseDate": "Choose date & time",
+    "bookNow": "Book Now"
+  },
+  "BookingToast": {
+    "newBooking": "New Booking",
+    "pax": "pax",
+    "view": "View",
+    "assignDriver": "Assign Driver"
+  },
+  "NotificationCenter": {
+    "justNow": "Just now",
+    "right0": "right-0",
+    "notifications": "Notifications",
+    "noNotificationsYet": "No notifications yet"
+  },
+  "CinematicHero": {
+    "meharPremiumTransport": "Mehar Premium Transport",
+    "luxuryFleetForEveryJourney": "Luxury Fleet for Every Journey",
+    "fromExecutiveAirportTransfersToLuxuryUmr": "From executive airport transfers to luxury Umrah transportation and large group travel, our carefully selected fleet delivers exceptional comfort, safety, and reliability across Saudi Arabia.",
+    "exploreFleet": "Explore Fleet",
+    "bookVehicle": "Book Vehicle",
+    "discover": "Discover"
+  },
+  "CustomerStories": {
+    "theAhmedFamily": "The Ahmed Family",
+    "uae": "UAE",
+    "jeddahAirportToMakkah": "Jeddah Airport to Makkah",
+    "ourUmrahTripWithMeharWasExceptionalTheDr": "Our Umrah trip with Mehar was exceptional. The driver was waiting for us at the airport and the vehicle was incredibly spacious and comfortable for the kids. Top-notch service.",
+    "davidRichards": "David Richards",
+    "unitedKingdom": "United Kingdom",
+    "riyadhAirportToKafd": "Riyadh Airport to KAFD",
+    "iUseMeharForAllMyBusinessTripsToSaudiAra": "I use Mehar for all my business trips to Saudi Arabia. The professionalism of the drivers and the pristine condition of their S-Class fleet make them my only choice.",
+    "alImanGroup": "Al-Iman Group",
+    "malaysia": "Malaysia",
+    "makkahToMadinah": "Makkah to Madinah",
+    "organizingATripFor20PeopleIsNeverEasyBut": "Organizing a trip for 20 people is never easy, but Mehar made the transportation seamless. The Coaster was incredibly comfortable for the long journey.",
+    "customerStories": "Customer Stories",
+    "experiencesBeyondExpectations": "Experiences Beyond Expectations"
+  },
+  "FinalConversion": {
+    "chooseThePerfectVehicleForYourJourney": "Choose the Perfect Vehicle for Your Journey",
+    "whetherYouAreTravelingAloneWithFamilyOrM": "Whether you are traveling alone, with family, or managing a large group, Mehar Transport provides the ideal transportation solution ensuring comfort and absolute safety.",
+    "bookNow": "Book Now",
+    "requestQuote": "Request Quote",
+    "callUs": "Call Us"
+  },
+  "FleetFAQ": {
+    "vehiclesCapacity": "Vehicles & Capacity",
+    "whatTypesOfVehiclesAreAvailable": "What types of vehicles are available?",
+    "weOfferAWideRangeIncludingExecutiveSedan": "We offer a wide range including Executive Sedans (Kia K5), Family Vans (Hyundai Staria, Mitsubishi Xpander), Group Vans (Toyota Hiace, Coaster), and Elite vehicles (Mercedes S-Class, Rolls Royce).",
+    "howManyPassengersAreAllowedInAMercedesSC": "How many passengers are allowed in a Mercedes S-Class?",
+    "theMercedesSClassComfortablyAccommodates": "The Mercedes S-Class comfortably accommodates up to 4 passengers.",
+    "areChildSeatsAvailable": "Are child seats available?",
+    "yesChildSeatsAreAvailableUponRequestDuri": "Yes, child seats are available upon request during booking at no extra cost.",
+    "canIChooseTheColorOfTheVehicle": "Can I choose the color of the vehicle?",
+    "ourLuxuryFleetPrimarilyFeaturesBlackExte": "Our luxury fleet primarily features black exteriors to ensure prestige and privacy. Other colors are subject to availability.",
+    "luggageStorage": "Luggage & Storage",
+    "whatIsTheLuggageCapacityForSedans": "What is the luggage capacity for sedans?",
+    "sedansTypicallyAccommodate3LargeSuitcase": "Sedans typically accommodate 3 large suitcases in addition to hand luggage.",
+    "whatIfIHaveExtraLuggage": "What if I have extra luggage?",
+    "ifYouHaveOversizedOrExtraLuggageWeRecomm": "If you have oversized or extra luggage, we recommend booking a family van like the Hyundai Staria (fits 6-7 bags) or requesting a dedicated luggage vehicle.",
+    "canWheelchairsBeTransported": "Can wheelchairs be transported?",
+    "yesAllOurFamilyVansAndGroupVehiclesCanCo": "Yes, all our family vans and group vehicles can comfortably accommodate foldable wheelchairs.",
+    "umrahAirportTransfers": "Umrah & Airport Transfers",
+    "willTheDriverWaitForUsInTheArrivalsHall": "Will the driver wait for us in the arrivals hall?",
+    "yesWeProvideVipMeetGreetServicesTheChauf": "Yes, we provide VIP Meet & Greet services. The chauffeur will wait in the arrivals hall with a name board.",
+    "whatIfMyFlightIsDelayed": "What if my flight is delayed?",
+    "weMonitorAllFlightTimes247YourPickupTime": "We monitor all flight times 24/7. Your pickup time will be automatically adjusted without any additional charges.",
+    "doYouOfferTransfersBetweenMakkahAndMadin": "Do you offer transfers between Makkah and Madinah?",
+    "yesWeProvideHighlyComfortablePremiumTran": "Yes, we provide highly comfortable, premium transfers between the two Holy Cities to ensure a seamless Umrah experience.",
+    "areDriversFamiliarWithHaramHotelLocation": "Are drivers familiar with Haram hotel locations?",
+    "absolutelyOurChauffeursAreExpertsAndHave": "Absolutely. Our chauffeurs are experts and have authorized access to all central area hotels surrounding the Harams.",
+    "vipServices": "VIP Services",
+    "whatDoesVipTransportInclude": "What does VIP transport include?",
+    "itIncludesUltraLuxuryVehiclesAUniformedC": "It includes ultra-luxury vehicles, a uniformed chauffeur, complimentary water, Wi-Fi, VIP meet & greet, and complete itinerary flexibility.",
+    "canIBookARollsRoyceForAWedding": "Can I book a Rolls Royce for a wedding?",
+    "yesWeOfferSpecialPackagesForWeddingsAndS": "Yes, we offer special packages for weddings and special events, featuring white-glove service and optional decorations.",
+    "isPrivacyGuaranteed": "Is privacy guaranteed?",
+    "privacyIsTheCoreOfOurEliteServiceAllVipV": "Privacy is the core of our Elite service. All VIP vehicles feature tinted windows and chauffeurs trained in absolute discretion.",
+    "pricingBooking": "Pricing & Booking",
+    "arePricesFixedOrMetered": "Are prices fixed or metered?",
+    "allOurPricesAreFixedAllInclusiveWithAbso": "All our prices are fixed, all-inclusive, with absolutely no hidden fees or surge pricing.",
+    "whatPaymentMethodsAreAccepted": "What payment methods are accepted?",
+    "weAcceptCreditCardsVisaMastercardMadaApp": "We accept Credit Cards (Visa, Mastercard), Mada, Apple Pay, and Cash on Arrival.",
+    "howCanICancelABooking": "How can I cancel a booking?",
+    "youCanCancelFreeOfChargeUpTo24HoursBefor": "You can cancel free of charge up to 24 hours before your scheduled trip through your account or by contacting support.",
+    "areThereWaitingCharges": "Are there waiting charges?",
+    "weProvide60MinutesOfComplimentaryWaiting": "We provide 60 minutes of complimentary waiting time at airports, and 15 minutes for all other locations.",
+    "safetyQuality": "Safety & Quality",
+    "areAllDriversLicensed": "Are all drivers licensed?",
+    "yesAllChauffeursHoldProfessionalLicenses": "Yes, all chauffeurs hold professional licenses and have undergone comprehensive background and traffic record checks.",
+    "areTheVehiclesInsured": "Are the vehicles insured?",
+    "yesAllOurPassengersAndVehiclesAreFullyCo": "Yes, all our passengers and vehicles are fully covered by premium comprehensive insurance.",
+    "howOftenAreVehiclesMaintained": "How often are vehicles maintained?",
+    "allVehiclesUndergoADailyComprehensiveChe": "All vehicles undergo a daily comprehensive check and rigorous scheduled maintenance at authorized dealerships.",
+    "areVehiclesSanitized": "Are vehicles sanitized?",
+    "yesEveryVehicleIsThoroughlySanitizedAfte": "Yes, every vehicle is thoroughly sanitized after every single journey to ensure the highest health standards.",
+    "faq": "FAQ",
+    "everythingYouNeedToKnow": "Everything You Need to Know"
+  },
+  "FleetOverview": {
+    "vehicleCategories": "Vehicle Categories",
+    "availability": "Availability",
+    "professionalChauffeurs": "Professional Chauffeurs",
+    "insuranceCoverage": "Insurance Coverage",
+    "successfulJourneys": "Successful Journeys",
+    "satisfactionRate": "Satisfaction Rate"
+  },
+  "InteractiveComparison": {
+    "compare": "Compare",
+    "findYourPerfectMatch": "Find Your Perfect Match",
+    "vehicle": "Vehicle",
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "luxuryLevel": "Luxury Level",
+    "airport": "Airport",
+    "umrah": "Umrah",
+    "vip": "VIP",
+    "startingPrice": "Starting Price",
+    "book": "Book"
+  },
+  "InteriorExperience": {
+    "premiumLeatherSeating": "Premium Leather Seating",
+    "ergonomicallyDesignedToProvideMaximumCom": "Ergonomically designed to provide maximum comfort and support during long journeys.",
+    "advancedClimateControl": "Advanced Climate Control",
+    "multiZoneAirConditioningEnsuringThePerfe": "Multi-zone air conditioning ensuring the perfect temperature for all passengers.",
+    "generousLegroom": "Generous Legroom",
+    "exceptionalSpaceToStretchOutAndRelaxIdea": "Exceptional space to stretch out and relax, ideal for business and VIP travelers.",
+    "exclusiveAmenities": "Exclusive Amenities",
+    "complimentaryWaterWiFiAndPremiumTouchesT": "Complimentary water, Wi-Fi, and premium touches to ensure a complete travel experience.",
+    "theInteriorExperience": "The Interior Experience",
+    "comfortWithoutCompromise": "Comfort Without Compromise",
+    "weUnderstandThatTheJourneyIsJustAsImport": "We understand that the journey is just as important as the destination. That's why every vehicle in our fleet is equipped with the finest amenities to ensure you arrive completely refreshed.",
+    "clickToViewGallery": "Click to view gallery"
+  },
+  "PilgrimExperience": {
+    "vipAirportMeetGreet": "VIP Airport Meet & Greet",
+    "ourChauffeursWaitInTheArrivalsHallWithAN": "Our chauffeurs wait in the arrivals hall with a name board, ready to assist with your luggage.",
+    "seamlessHolyCityTransfers": "Seamless Holy City Transfers",
+    "sereneAndComfortableTransfersBetweenJedd": "Serene and comfortable transfers between Jeddah, Makkah, and Madinah in premium vehicles.",
+    "directHotelDropOffs": "Direct Hotel Drop-offs",
+    "expertKnowledgeOfHotelLocationsEnsuringY": "Expert knowledge of hotel locations ensuring you are dropped directly at your hotel entrance.",
+    "dedicatedPilgrimCare": "Dedicated Pilgrim Care",
+    "professionalChauffeursSpeciallyTrainedTo": "Professional chauffeurs specially trained to serve the needs of pilgrims with utmost respect.",
+    "theLuxuryUmrahExperience": "The Luxury Umrah Experience",
+    "itIsOurHonorToServeTheGuestsOfAllahOurUm": "It is our honor to serve the guests of Allah. Our Umrah transportation services are designed to provide maximum serenity and comfort, allowing you to focus entirely on your worship."
+  },
+  "PremiumVehicleCollection": {
+    "thePremiumCollection": "The Premium Collection",
+    "unforgettableJourneys": "Unforgettable Journeys",
+    "exploreOurExceptionalFleetWhereEachVehic": "Explore our exceptional fleet, where each vehicle represents the pinnacle of luxury, comfort, and performance.",
+    "viewGallery": "View Gallery",
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "luxury": "Luxury",
+    "bookNow": "Book Now",
+    "exploreDetails": "Explore Details"
+  },
+  "SafetyQuality": {
+    "professionalDrivers": "Professional Drivers",
+    "backgroundCheckedDrivers": "Background Checked Drivers",
+    "vehicleInspections": "Vehicle Inspections",
+    "gpsTracking": "GPS Tracking",
+    "insuranceCoverage": "Insurance Coverage",
+    "247Support": "24/7 Support",
+    "emergencyAssistance": "Emergency Assistance",
+    "flightMonitoring": "Flight Monitoring",
+    "sanitizedVehicles": "Sanitized Vehicles",
+    "regularMaintenance": "Regular Maintenance",
+    "theMeharGuarantee": "The Mehar Guarantee",
+    "yourSafetyIsOurAbsolutePriorityWeImpleme": "Your safety is our absolute priority. We implement the highest quality standards in the industry.",
+    "safetyQuality": "Safety & Quality",
+    "uncompromisingStandards": "Uncompromising Standards",
+    "weBelieveTrueLuxuryBeginsWithAbsolutePea": "We believe true luxury begins with absolute peace of mind. Every safety protocol we have in place is designed to ensure your journey is not just comfortable, but completely secure."
+  },
+  "VehicleCategoryExperience": {
+    "executive": "EXECUTIVE",
+    "businessAirportCouples": "Business, Airport, Couples",
+    "family": "FAMILY",
+    "familiesSmallGroupsUmrah": "Families, Small Groups, Umrah",
+    "premiumFamily": "PREMIUM FAMILY",
+    "premiumFamilyTravelVipUmrah": "Premium Family Travel, VIP Umrah",
+    "group": "GROUP",
+    "pilgrimGroupsTravelAgencies": "Pilgrim Groups, Travel Agencies",
+    "largeGroup": "LARGE GROUP",
+    "largeUmrahGroupsCorporate": "Large Umrah Groups, Corporate",
+    "tourismBus": "TOURISM BUS",
+    "largeDelegationsEvents": "Large Delegations, Events",
+    "elite": "ELITE",
+    "vipTravelersDiplomats": "VIP Travelers, Diplomats",
+    "royal": "ROYAL",
+    "royalGuestsWeddings": "Royal Guests, Weddings",
+    "discoverYourIdealClass": "Discover Your Ideal Class",
+    "aMeticulouslyCuratedSelectionOfVehiclesT": "A meticulously curated selection of vehicles to precisely meet your travel needs with unmatched luxury.",
+    "perfectFor": "Perfect for:",
+    "exploreClass": "Explore Class"
+  },
+  "Breadcrumbs": {
+    "home": "Home"
+  },
+  "Footer": {
+    "thePremierChoiceForLuxuryTransportation": "The premier choice for luxury transportation in Saudi Arabia. Providing a distinguished fleet for Umrah services and airport transfers with the highest quality standards.",
+    "quickLinks": "Quick Links",
+    "ourFleet": "Our Fleet",
+    "routes": "Routes",
+    "umrahPackages": "Umrah Packages",
+    "bookNow": "Book Now",
+    "contactUs": "Contact Us",
+    "jeddahSaudiArabia": "Jeddah, Saudi Arabia",
+    "customerService": "Customer Service",
+    "ourTeamIsAvailable247ToAssistYouWithYour": "Our team is available 24/7 to assist you with your booking inquiries.",
+    "chatOnWhatsapp": "Chat on WhatsApp",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions"
+  },
+  "AboutSection": {
+    "meharTransport": "Mehar Transport",
+    "aLegacyOfLuxuryAndReliability": "A Legacy of Luxury and Reliability",
+    "forYearsWeHaveSetTheStandardForPremiumTr": "For years, we have set the standard for premium transportation across Saudi Arabia. We do not just provide a ride; we craft an end-to-end experience from the moment of booking to your luxurious arrival.",
+    "discoverOurStory": "Discover Our Story",
+    "yearsOfExcellence": "Years of Excellence"
+  },
+  "ContentHubSection": {
+    "completeGuideToOrganizingUmrahTransporta": "Complete Guide to Organizing Umrah Transportation",
+    "umrahTips": "Umrah Tips",
+    "oct152026": "Oct 15, 2026",
+    "top5HistoricalRoutesToVisitInMadinah": "Top 5 Historical Routes to Visit in Madinah",
+    "travelGuide": "Travel Guide",
+    "oct022026": "Oct 02, 2026",
+    "whatToExpectWhenBookingAirportVipMeetGre": "What to Expect When Booking Airport VIP Meet & Greet?",
+    "ourServices": "Our Services",
+    "sep202026": "Sep 20, 2026",
+    "knowledgeHub": "Knowledge Hub",
+    "travelGuidesUmrahTips": "Travel Guides & Umrah Tips",
+    "browseAllArticles": "Browse All Articles"
+  },
+  "CTASection": {
+    "meharLuxuryTransport": "Mehar Luxury Transport",
+    "yourExceptionalJourneyBeginsHere": "Your Exceptional Journey Begins Here.",
+    "reserveYourPrivateChauffeurTodayAndExper": "Reserve your private chauffeur today and experience unprecedented standards of luxury, safety, and reliability.",
+    "bookYourJourney": "Book Your Journey",
+    "speakToAConcierge": "Speak to a Concierge"
+  },
+  "FAQSection": {
+    "canIBookATransferFromJeddahAirportDirect": "Can I book a transfer from Jeddah Airport directly to Makkah?",
+    "yesWeProvideDirectTransferServicesFromKi": "Yes, we provide direct transfer services from King Abdulaziz Airport (Jeddah) to your hotel in Makkah. The driver will be waiting at the arrivals gate with a name sign.",
+    "areTheDisplayedPricesFixedOrDoTheyChange": "Are the displayed prices fixed or do they change?",
+    "allOurPricesAreFixedAndInclusiveOfAllTax": "All our prices are fixed and inclusive of all taxes and toll fees. There are no hidden charges; the agreed amount is exactly what you pay.",
+    "doYouProvideChildSeats": "Do you provide child seats?",
+    "yesAbsolutelyWeProvideComplimentaryChild": "Yes, absolutely. We provide complimentary child seats to ensure your family's safety. Please inform us of the number of seats needed and the children's ages when booking.",
+    "whatHappensIfMyFlightIsDelayed": "What happens if my flight is delayed?",
+    "donTWorryOurTeamMonitorsFlightSchedulesI": "Don't worry, our team monitors flight schedules in real-time. The driver will wait for you based on your actual arrival time without any additional delay charges.",
+    "howCanIPayForTheTrip": "How can I pay for the trip?",
+    "weAcceptCashToTheDriverAdvanceBankTransf": "We accept cash to the driver, advance bank transfers, and credit cards via a secure payment link sent to you upon booking confirmation.",
+    "doTheDriversSpeakEnglish": "Do the drivers speak English?",
+    "yesWeProvideDriversWhoAreFluentInBothEng": "Yes, we provide drivers who are fluent in both English and Arabic to ensure smooth communication throughout your journey.",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "comprehensiveAnswersToTheMostCommonQuest": "Comprehensive answers to the most common questions about our booking and transport services."
+  },
+  "FeaturedRoutes": {
+    "jeddahAirport": "Jeddah Airport",
+    "makkah": "Makkah",
+    "madinah": "Madinah",
+    "popularRoutes": "Popular Routes",
+    "journeysDesignedForComfort": "Journeys Designed for Comfort",
+    "viewAllRoutes": "View All Routes",
+    "distance": "Distance",
+    "estTime": "Est. Time",
+    "availableVehicles": "Available Vehicles",
+    "startingFrom": "Starting from",
+    "bookRoute": "Book Route"
+  },
+  "FleetShowcase": {
+    "ourPremiumFleet": "Our Premium Fleet",
+    "vehiclesEngineeredForExcellence": "Vehicles Engineered for Excellence",
+    "exploreFullFleet": "Explore Full Fleet",
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "detailsGallery": "Details & Gallery",
+    "bookNow": "Book Now"
+  },
+  "GallerySection": {
+    "thePilgrimExperience": "The Pilgrim Experience",
+    "galleryOfExcellence": "Gallery of Excellence"
+  },
+  "ReviewsSection": {
+    "ahmedAlSalem": "Ahmed Al-Salem",
+    "ceo": "CEO",
+    "exceptionalServiceByEveryMeasureTheRolls": "Exceptional service by every measure. The Rolls-Royce was immaculate, and the chauffeur was highly professional. Mehar is always my first choice for business meetings.",
+    "sarahFahad": "Sarah Fahad",
+    "vipGuest": "VIP Guest",
+    "theAirportMeetAndGreetAtJeddahWasSeamles": "The airport meet-and-greet at Jeddah was seamless and luxurious. I felt completely relaxed and safe during the trip to Makkah. True luxury is in the details.",
+    "drMohammedAlOmar": "Dr. Mohammed Al-Omar",
+    "frequentTraveler": "Frequent Traveler",
+    "unmatchedProfessionalismFromTheEaseOfBoo": "Unmatched professionalism. From the ease of booking on the website to the chauffeur's punctuality. Thank you to the Mehar team for a refined experience.",
+    "voicesOfOurGuests": "Voices of Our Guests",
+    "trustBuiltOnAbsoluteExcellence": "Trust Built on Absolute Excellence"
+  },
+  "SafetySection": {
+    "licensedDrivers": "Licensed Drivers",
+    "allDriversUndergoStrictVettingAndTrainin": "All drivers undergo strict vetting and training",
+    "gpsTracking": "GPS Tracking",
+    "liveMonitoringOfAllVehiclesForSafeRoutin": "Live monitoring of all vehicles for safe routing",
+    "vehicleInspections": "Vehicle Inspections",
+    "dailyMaintenanceChecksBeforeEveryDispatc": "Daily maintenance checks before every dispatch",
+    "insuranceCoverage": "Insurance Coverage",
+    "comprehensivePassengerInsuranceDuringAll": "Comprehensive passenger insurance during all trips",
+    "emergencySupport": "Emergency Support",
+    "dedicatedEmergencyResponseTeamAvailable2": "Dedicated emergency response team available 24/7",
+    "sanitizedVehicles": "Sanitized Vehicles",
+    "thoroughSanitizationAfterEverySingleRide": "Thorough sanitization after every single ride",
+    "roadSafetyStandards": "Road Safety Standards",
+    "strictAdherenceToSaudiTrafficAndSafetyRe": "Strict adherence to Saudi traffic and safety regulations",
+    "flightMonitoring": "Flight Monitoring",
+    "proactiveFlightTrackingToAvoidAnyDelays": "Proactive flight tracking to avoid any delays",
+    "safetyCompliance": "Safety & Compliance",
+    "yourSafetyIsOurHighestPriority": "Your Safety is Our Highest Priority",
+    "atMeharTransportWeImplementStrictCorpora": "At Mehar Transport, we implement strict corporate safety standards to ensure your peace of mind. Your journey is protected and monitored."
+  },
+  "ServicesSection": {
+    "premiumAirportTransfers": "Premium Airport Transfers",
+    "impeccableMeetAndGreetAtMajorSaudiAirpor": "Impeccable meet-and-greet at major Saudi airports with real-time flight tracking.",
+    "executiveCorporateTravel": "Executive Corporate Travel",
+    "aLuxuryFleetTailoredForCorporateProfessi": "A luxury fleet tailored for corporate professionals demanding efficiency and privacy.",
+    "vipProtocolServices": "VIP & Protocol Services",
+    "theHighestLevelOfLuxuryAndSecurityForVip": "The highest level of luxury and security for VIPs and official delegations.",
+    "hourlyChauffeur": "Hourly Chauffeur",
+    "totalFlexibilityWithADedicatedDriverAtYo": "Total flexibility with a dedicated driver at your disposal by the hour.",
+    "bespokeServices": "Bespoke Services",
+    "designedToExceedExpectations": "Designed to Exceed Expectations",
+    "viewAllServices": "View All Services",
+    "bookService": "Book Service"
+  },
+  "TrustBar": {
+    "eliteChauffeurs": "Elite Chauffeurs",
+    "professionallyTrained": "Professionally trained",
+    "reliableJourneys": "Reliable Journeys",
+    "precisionTracking": "Precision tracking",
+    "247Concierge": "24/7 Concierge",
+    "roundTheClockSupport": "Round-the-clock support",
+    "worldClassStandards": "World-Class Standards",
+    "ultraLuxuryFleet": "Ultra-luxury fleet"
+  },
+  "ComfortExperience": {
+    "theComfortExperience": "The Comfort Experience",
+    "engineeredForAbsoluteComfort": "Engineered for Absolute Comfort",
+    "weBelieveTheJourneyIsJustAsImportantAsTh": "We believe the journey is just as important as the destination. Relax in an acoustically quiet cabin, enjoy expansive legroom, and perfect climate control ensuring you arrive completely refreshed."
+  },
+  "FinalCTA": {
+    "experiencePremiumTransportationWith": "Experience Premium Transportation with",
+    "professionalChauffeursLuxuryComfortAndRe": "Professional chauffeurs, luxury comfort, and reliable service across Saudi Arabia.",
+    "bookNow": "Book Now",
+    "whatsappUs": "WhatsApp Us",
+    "callNow": "Call Now"
+  },
+  "PerfectFor": {
+    "perfectFor": "Perfect For",
+    "isThisTheRightVehicleForYou": "Is this the right vehicle for you?"
+  },
+  "PopularRoutes": {
+    "popularRoutes": "Popular Routes",
+    "bookYourNextJourney": "Book Your Next Journey",
+    "text3": "",
+    "text4": ""
+  },
+  "PremiumGallery": {
+    "experienceTheVehicle": "Experience the Vehicle",
+    "photos": "Photos"
+  },
+  "RelatedVehicles": {
+    "youMayAlsoLike": "You May Also Like",
+    "viewFullFleet": "View Full Fleet",
+    "text3": ""
+  },
+  "StickyBookingWidget": {
+    "bookingRequestSubmittedSuccessfully": "Booking request submitted successfully!",
+    "startingFrom": "Starting from ",
+    "pickupLocation": "Pickup Location",
+    "airportOrHotel": "Airport or Hotel",
+    "destination": "Destination",
+    "whereTo": "Where to?",
+    "date": "Date",
+    "passengers": "Passengers",
+    "phoneNumber": "Phone Number",
+    "confirmInstantBooking": "Confirm Instant Booking",
+    "noHiddenFeesFreeCancellation": "No hidden fees. Free cancellation."
+  },
+  "VehicleComparison": {
+    "compareWithOtherVehicles": "Compare with Other Vehicles",
+    "currentVehicle": "Current Vehicle",
+    "capacity": "Capacity",
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "luxuryLevel": "Luxury Level",
+    "vipService": "VIP Service",
+    "viewDetails": "View Details",
+    "currentlyViewing": "Currently Viewing"
+  },
+  "VehicleFAQ": {
+    "frequentlyAskedQuestions": "Frequently Asked Questions"
+  },
+  "VehicleFeatures": {
+    "vehicleFeaturesAmenities": "Vehicle Features & Amenities",
+    "designedToEnsureMaximumComfortAndWellBei": "Designed to ensure maximum comfort and well-being."
+  },
+  "VehicleHero": {
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "bookNow": "Book Now"
+  },
+  "VehicleReviews": {
+    "customerStories": "Customer Stories"
+  },
+  "VehicleSafety": {
+    "certifiedChauffeurs": "Certified Chauffeurs",
+    "allDriversAreBackgroundCheckedAndTrained": "All drivers are background-checked and trained.",
+    "247GpsTracking": "24/7 GPS Tracking",
+    "activeFleetMonitoringForYourSecurity": "Active fleet monitoring for your security.",
+    "comprehensiveInsurance": "Comprehensive Insurance",
+    "fullCoverageInsuranceForAllPassengers": "Full coverage insurance for all passengers.",
+    "rigorousMaintenance": "Rigorous Maintenance",
+    "regularSafetyInspectionsAndServicing": "Regular safety inspections and servicing.",
+    "yourSafetyIsOurPriority": "Your Safety is Our Priority",
+    "weImplementTheHighestSafetyAndSecuritySt": "We implement the highest safety and security standards on every journey to ensure your peace of mind."
+  },
+  "VehicleStory": {
+    "theStory": "The Story"
+  },
+  "BookingFAQ": {
+    "frequentlyAskedQuestions": "Frequently Asked Questions"
+  },
+  "BookingHero": {
+    "bookYourJourney": "Book Your Journey",
+    "reliableTransportationAcrossSaudiArabiaW": "Reliable transportation across Saudi Arabia with professional drivers and premium vehicles.",
+    "10000Transfers": "10,000+ Transfers",
+    "licensedDrivers": "Licensed Drivers",
+    "instantConfirmation": "Instant Confirmation"
+  },
+  "OrderSummary": {
+    "bookingSummary": "Booking Summary",
+    "tripType": "Trip Type",
+    "baseFare": "Base Fare",
+    "vehicles": "Vehicles",
+    "extras": "Extras",
+    "vat15": "VAT (15%)",
+    "total": "Total",
+    "securePayment": "Secure Payment",
+    "instantConfirm": "Instant Confirm"
+  },
+  "SafetyCenter": {
+    "safetyTrustCenter": "Safety & Trust Center",
+    "yourSafetyAndComfortAreOurTopPrioritiesA": "Your safety and comfort are our top priorities at Mehar Transport."
+  },
+  "BookingConfirmation": {
+    "submittingYourBooking": "Submitting your booking...",
+    "pleaseWaitAMoment": "Please wait a moment",
+    "bookingConfirmedSuccessfully": "Booking Confirmed Successfully",
+    "thankYouForChoosingMeharTransportYourBoo": "Thank you for choosing Mehar Transport. Your booking details have been sent to your email.",
+    "bookingReference": "Booking Reference",
+    "status": "Status",
+    "pending": "Pending",
+    "dateTime": "Date & Time",
+    "at": "at",
+    "pickupPoint": "Pickup Point",
+    "dropOffPoint": "Drop-off Point",
+    "vehicles": "Vehicles",
+    "passenger": "Passenger",
+    "totalAmount": "Total Amount",
+    "downloadPdfTicket": "Download PDF Ticket",
+    "backToHome": "Back to Home",
+    "bookAnotherTrip": "Book Another Trip"
+  },
+  "ExtraServices": {
+    "airportMeetGreet": "Airport Meet & Greet",
+    "nameBoardGreetingAtArrivals": "Name-board greeting at arrivals",
+    "fastTrackService": "Fast Track Service",
+    "priorityAirportClearance": "Priority airport clearance",
+    "childSeat": "Child Seat",
+    "safeSeatingForChildren": "Safe seating for children",
+    "luxuryRefreshments": "Luxury Refreshments",
+    "waterJuicesAndCoffee": "Water, juices, and coffee",
+    "5gWiFi": "5G Wi-Fi",
+    "highSpeedInternetInVehicle": "High-speed internet in vehicle",
+    "securityEscort": "Security Escort",
+    "extraProtectionForVips": "Extra protection for VIPs",
+    "extraServices": "Extra Services",
+    "elevateYourTravelExperienceWithOurPremiu": "Elevate your travel experience with our premium add-on services.",
+    "back": "Back",
+    "reviewJourney": "Review Journey"
+  },
+  "FleetSelection": {
+    "selectYourVehicles": "Select Your Vehicles",
+    "selectOneOrMultipleVehiclesToAccommodate": "Select one or multiple vehicles to accommodate your group.",
+    "recommendedForYourTrip": "Recommended for your trip",
+    "passengers": "Passengers",
+    "add": "Add",
+    "select": "Select",
+    "back": "Back",
+    "passengerDetails": "Passenger Details"
+  },
+  "JourneyReview": {
+    "reviewJourneyDetails": "Review Journey Details",
+    "route": "Route",
+    "from": "From",
+    "to": "To",
+    "stop": "Stop",
+    "notSpecified": "Not specified",
+    "date": "Date",
+    "time": "Time",
+    "selectedVehicles": "Selected Vehicles",
+    "noVehiclesSelected": "No vehicles selected",
+    "passengerDetails": "Passenger Details",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "extras": "Extras",
+    "editDetails": "Edit Details",
+    "continueToPayment": "Continue to Payment"
+  },
+  "PassengerInfo": {
+    "leadPassengerDetails": "Lead Passenger Details",
+    "pleaseEnterYourContactDetailsSoWeCanConf": "Please enter your contact details so we can confirm your booking and coordinate your journey.",
+    "fullName": "Full Name",
+    "nameAsOnId": "Name as on ID",
+    "phoneNumber": "Phone Number",
+    "emailAddress": "Email Address",
+    "nationality": "Nationality",
+    "saudiArabia": "Saudi Arabia",
+    "specialRequests": "Special Requests",
+    "anySpecialRequirementsChildSeatsWheelcha": "Any special requirements (Child seats, wheelchair assistance, etc.)",
+    "back": "Back",
+    "extraServices": "Extra Services"
+  },
+  "PaymentCenter": {
+    "creditCardMada": "Credit Card / Mada",
+    "bankTransfer": "Bank Transfer",
+    "cashToDriver": "Cash to Driver",
+    "securePaymentCenter": "Secure Payment Center",
+    "allTransactionsAreEncryptedAndSecuredWit": "All transactions are encrypted and secured with industry-leading technology.",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "nameOnCard": "Name on Card",
+    "back": "Back",
+    "processing": "Processing..."
+  },
+  "RouteBuilder": {
+    "buildYourRoute": "Build Your Route",
+    "enterYourPickupDropOffAndAnyExtraStopsAl": "Enter your pickup, drop-off, and any extra stops along the way.",
+    "from": "From",
+    "to": "To",
+    "stop": "Stop",
+    "kingAbdulazizAirport": "King Abdulaziz Airport...",
+    "searchLocation": "Search location...",
+    "addStop": "Add Stop",
+    "pickupDate": "Pickup Date",
+    "pickupTime": "Pickup Time",
+    "back": "Back",
+    "selectVehicle": "Select Vehicle",
+    "liveNavigation": "Live Navigation",
+    "routeOverview": "Route Overview",
+    "estDistance": "Est. Distance",
+    "estTravelTime": "Est. Travel Time"
+  },
+  "TripTypeSelector": {
+    "oneWay": "One Way",
+    "pointAToPointBTransfer": "Point A to Point B transfer",
+    "roundTrip": "Round Trip",
+    "transferWithReturnJourney": "Transfer with return journey",
+    "hourlyChauffeur": "Hourly Chauffeur",
+    "driverAtYourDisposal": "Driver at your disposal",
+    "airportTransfer": "Airport Transfer",
+    "toAndFromTheAirport": "To and from the airport",
+    "umrahPackage": "Umrah Package",
+    "makkahMadinahTransfers": "Makkah & Madinah transfers",
+    "vipTransportation": "VIP Transportation",
+    "premiumLuxuryService": "Premium luxury service",
+    "corporate": "Corporate",
+    "forMeetingsAndBusiness": "For meetings and business",
+    "groupTransfer": "Group Transfer",
+    "forLargeFamiliesGroups": "For large families & groups",
+    "eventTransportation": "Event Transportation",
+    "forSpecialOccasions": "For special occasions",
+    "multiCity": "Multi-City",
+    "transferBetweenCities": "Transfer between cities",
+    "selectTripType": "Select Trip Type",
+    "chooseTheTypeOfServiceYouNeedSoWeCanTail": "Choose the type of service you need so we can tailor your experience.",
+    "continue": "Continue"
   }
 }

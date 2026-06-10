@@ -76,7 +76,14 @@
     "reviews": {
       "title": "ماذا يقول عملاؤنا",
       "average": "4.9 من 5",
-      "categories": ["نقل المطار", "نقل العمرة", "نقل كبار الشخصيات", "السفر العائلي", "سفر الشركات", "النقل الجماعي"],
+      "categories": [
+        "نقل المطار",
+        "نقل العمرة",
+        "نقل كبار الشخصيات",
+        "السفر العائلي",
+        "سفر الشركات",
+        "النقل الجماعي"
+      ],
       "filter": "تصفية التقييمات",
       "sort": "فرز التقييمات"
     },
@@ -84,11 +91,22 @@
       "title": "مواقعنا",
       "office": "المكتب الرئيسي",
       "directions": "الاتجاهات",
-      "landmarks": ["مطار جدة", "مكة المكرمة", "المدينة المنورة"]
+      "landmarks": [
+        "مطار جدة",
+        "مكة المكرمة",
+        "المدينة المنورة"
+      ]
     },
     "coverage": {
       "title": "مناطق التغطية",
-      "cities": ["مكة المكرمة", "المدينة المنورة", "جدة", "الطائف", "الرياض", "ينبع"],
+      "cities": [
+        "مكة المكرمة",
+        "المدينة المنورة",
+        "جدة",
+        "الطائف",
+        "الرياض",
+        "ينبع"
+      ],
       "availability": "توفر المركبات",
       "times": "أوقات السفر المقدرة"
     },
@@ -112,15 +130,41 @@
       "title": "حجز فوري عبر واتساب",
       "response": "وقت الرد: أقل من 5 دقائق",
       "languages": "اللغات المدعومة: الإنجليزية، العربية، الأردية",
-      "actions": ["نقل المطار", "حجز العمرة", "خدمة VIP", "النقل العائلي", "النقل الجماعي", "طلب عرض سعر"]
+      "actions": [
+        "نقل المطار",
+        "حجز العمرة",
+        "خدمة VIP",
+        "النقل العائلي",
+        "النقل الجماعي",
+        "طلب عرض سعر"
+      ]
     },
     "faq": {
       "title": "الأسئلة الشائعة",
-      "categories": ["الحجوزات", "الأسعار", "المركبات", "نقل المطار", "نقل العمرة", "المدفوعات", "السلامة", "خدمات الشركات"]
+      "categories": [
+        "الحجوزات",
+        "الأسعار",
+        "المركبات",
+        "نقل المطار",
+        "نقل العمرة",
+        "المدفوعات",
+        "السلامة",
+        "خدمات الشركات"
+      ]
     },
     "trustCenter": {
       "title": "سلامتك هي أولويتنا",
-      "items": ["سائقون مرخصون", "تتبع عبر GPS", "تغطية تأمينية", "فحص المركبات", "سائقون محترفون", "عمل على مدار الساعة", "مساعدة في حالات الطوارئ", "مراقبة الرحلات الجوية", "معايير سلامة الركاب"]
+      "items": [
+        "سائقون مرخصون",
+        "تتبع عبر GPS",
+        "تغطية تأمينية",
+        "فحص المركبات",
+        "سائقون محترفون",
+        "عمل على مدار الساعة",
+        "مساعدة في حالات الطوارئ",
+        "مراقبة الرحلات الجوية",
+        "معايير سلامة الركاب"
+      ]
     },
     "social": {
       "title": "انضم إلى مجتمعنا",
@@ -131,5 +175,622 @@
       "title": "هل أنت مستعد لحجز رحلتك؟",
       "subtitle": "متخصصو النقل لدينا متاحون على مدار الساعة طوال أيام الأسبوع لمساعدتك في ترتيب الرحلة المثالية في أي مكان في المملكة العربية السعودية."
     }
+  },
+  "Navbar": {
+    "home": "الرئيسية",
+    "fleet": "الأسطول",
+    "viewFullFleet": "عرض كل الأسطول",
+    "packages": "الباقات",
+    "toyotaCamryPackages": "باقات تويوتا كامري",
+    "gmcYukonPackage": "باقة جمس يوكن للعمرة | نقل فاخر",
+    "hyundaiStariaPackages": "باقات هيونداي ستاريا",
+    "toyotaHiacePackages": "باقات تويوتا هايس",
+    "h1HyundaiPackages": "باقات هيونداي H1",
+    "routes": "المسارات",
+    "cities": "المدن",
+    "blog": "المدونة",
+    "contact": "اتصل بنا",
+    "language": "English",
+    "whatsapp": "واتساب",
+    "dashboard": "لوحة التحكم",
+    "myBookings": "حجوزاتي",
+    "signOut": "تسجيل الخروج",
+    "bookNow": "احجز الآن",
+    "viewDashboard": "عرض لوحة التحكم"
+  },
+  "Hero": {
+    "subtitle": "نعرّف الفخامة من جديد",
+    "title": "ارتقِ بتجربة سفرك",
+    "description": "تنقل حصري لكبار الشخصيات عبر المملكة العربية السعودية. أسطول من الطراز العالمي، وسائقون محترفون، وخدمة لا تشوبها شائبة.",
+    "beginJourney": "ابدأ رحلتك",
+    "selectRoute": "اختر المسار",
+    "chooseDate": "حدد التاريخ والوقت",
+    "bookNow": "احجز الآن"
+  },
+  "BookingToast": {
+    "newBooking": "حجز جديد",
+    "pax": "ركاب",
+    "view": "عرض",
+    "assignDriver": "تعيين سائق"
+  },
+  "NotificationCenter": {
+    "justNow": "الآن",
+    "right0": "left-0",
+    "notifications": "الإشعارات",
+    "noNotificationsYet": "لا توجد إشعارات"
+  },
+  "CinematicHero": {
+    "meharPremiumTransport": "ميهار للنقل الفاخر",
+    "luxuryFleetForEveryJourney": "أسطول فاخر مصمم لكل رحلة ولكل ضيف",
+    "fromExecutiveAirportTransfersToLuxuryUmr": "من تنقلات المطار التنفيذية إلى وسائل النقل الفاخرة للعمرة وسفر المجموعات الكبيرة، يقدم أسطولنا المختار بعناية راحة وأمان وموثوقية استثنائية في جميع أنحاء المملكة العربية السعودية.",
+    "exploreFleet": "استكشف الأسطول",
+    "bookVehicle": "احجز مركبة",
+    "discover": "اكتشف المزيد"
+  },
+  "CustomerStories": {
+    "theAhmedFamily": "عائلة أحمد",
+    "uae": "الإمارات العربية المتحدة",
+    "jeddahAirportToMakkah": "مطار جدة إلى مكة",
+    "ourUmrahTripWithMeharWasExceptionalTheDr": "كانت رحلة العمرة مع ميهار استثنائية. السائق كان ينتظرنا في المطار والسيارة كانت واسعة ومريحة جداً للأطفال. خدمة لا يُعلى عليها.",
+    "davidRichards": "ديفيد ريتشاردز",
+    "unitedKingdom": "المملكة المتحدة",
+    "riyadhAirportToKafd": "مطار الرياض إلى المركز المالي",
+    "iUseMeharForAllMyBusinessTripsToSaudiAra": "أستخدم ميهار في جميع رحلات عملي إلى السعودية. احترافية السائقين ونظافة سيارات مرسيدس S-Class تجعلهم الخيار الأول دائماً.",
+    "alImanGroup": "مجموعة الإيمان",
+    "malaysia": "ماليزيا",
+    "makkahToMadinah": "مكة إلى المدينة",
+    "organizingATripFor20PeopleIsNeverEasyBut": "تنظيم رحلة لـ 20 شخصاً ليس أمراً سهلاً، لكن ميهار جعلت النقل سلساً للغاية. الحافلة كانت مريحة جداً للرحلة الطويلة.",
+    "customerStories": "قصص عملائنا",
+    "experiencesBeyondExpectations": "تجارب تفوق التوقعات"
+  },
+  "FinalConversion": {
+    "chooseThePerfectVehicleForYourJourney": "اختر المركبة المثالية لرحلتك",
+    "whetherYouAreTravelingAloneWithFamilyOrM": "سواء كنت تسافر بمفردك، مع عائلتك، أو تدير مجموعة كبيرة، توفر ميهار للنقل حلول النقل المثالية التي تضمن الراحة والأمان التام.",
+    "bookNow": "احجز الآن",
+    "requestQuote": "طلب عرض سعر",
+    "callUs": "اتصل بنا"
+  },
+  "FleetFAQ": {
+    "vehiclesCapacity": "المركبات والسعة",
+    "whatTypesOfVehiclesAreAvailable": "ما هي أنواع المركبات المتاحة؟",
+    "weOfferAWideRangeIncludingExecutiveSedan": "نقدم مجموعة متنوعة تشمل سيارات السيدان التنفيذية (كيا K5)، والسيارات العائلية (هيونداي ستاريا، ميتسوبيشي إكسباندر)، وحافلات المجموعات (تويوتا هايس، كوستر)، وسيارات النخبة (مرسيدس S-Class، رولز رويس).",
+    "howManyPassengersAreAllowedInAMercedesSC": "كم عدد الركاب المسموح بهم في سيارة مرسيدس S-Class؟",
+    "theMercedesSClassComfortablyAccommodates": "تتسع سيارة مرسيدس S-Class لـ 4 ركاب بشكل مريح جداً.",
+    "areChildSeatsAvailable": "هل السيارات مزودة بمقاعد للأطفال؟",
+    "yesChildSeatsAreAvailableUponRequestDuri": "نعم، نوفر مقاعد للأطفال عند الطلب المسبق أثناء الحجز مجاناً.",
+    "canIChooseTheColorOfTheVehicle": "هل يمكنني اختيار لون السيارة؟",
+    "ourLuxuryFleetPrimarilyFeaturesBlackExte": "اللون الأساسي لأسطولنا الفاخر هو الأسود لضمان الفخامة والخصوصية. بالنسبة للألوان الأخرى، تعتمد على التوافر.",
+    "luggageStorage": "الأمتعة والتخزين",
+    "whatIsTheLuggageCapacityForSedans": "ما هي سعة الأمتعة لسيارات السيدان؟",
+    "sedansTypicallyAccommodate3LargeSuitcase": "تتسع سيارات السيدان عادة لـ 3 حقائب كبيرة بالإضافة إلى حقائب اليد.",
+    "whatIfIHaveExtraLuggage": "ماذا لو كان لدي أمتعة إضافية؟",
+    "ifYouHaveOversizedOrExtraLuggageWeRecomm": "إذا كان لديك أمتعة زائدة، ننصح بحجز مركبة عائلية مثل هيونداي ستاريا التي تتسع لـ 6-7 حقائب، أو حافلة نقل مخصصة للأمتعة.",
+    "canWheelchairsBeTransported": "هل يمكن نقل الكراسي المتحركة؟",
+    "yesAllOurFamilyVansAndGroupVehiclesCanCo": "نعم، جميع مركباتنا العائلية وحافلات المجموعات تتسع للكراسي المتحركة القابلة للطي.",
+    "umrahAirportTransfers": "نقل العمرة والمطار",
+    "willTheDriverWaitForUsInTheArrivalsHall": "هل يمكن للسائق انتظارنا في صالة الوصول؟",
+    "yesWeProvideVipMeetGreetServicesTheChauf": "نعم، نقدم خدمة الاستقبال والترحيب حيث ينتظرك السائق بلوحة تحمل اسمك.",
+    "whatIfMyFlightIsDelayed": "ماذا لو تأخرت رحلتي؟",
+    "weMonitorAllFlightTimes247YourPickupTime": "نحن نراقب أوقات الرحلات الجوية على مدار الساعة، لذلك سنعدل وقت الاستقبال تلقائياً دون أي رسوم إضافية.",
+    "doYouOfferTransfersBetweenMakkahAndMadin": "هل تقدمون خدمات النقل بين مكة والمدينة؟",
+    "yesWeProvideHighlyComfortablePremiumTran": "نعم، نقدم رحلات فاخرة ومريحة بين المدينتين المقدستين لضمان تجربة عمرة سلسة.",
+    "areDriversFamiliarWithHaramHotelLocation": "هل السائقون على دراية بمواقع فنادق الحرم؟",
+    "absolutelyOurChauffeursAreExpertsAndHave": "بالتأكيد، سائقونا خبراء ومصرح لهم بالوصول إلى كافة فنادق المنطقة المركزية المحيطة بالحرمين.",
+    "vipServices": "الخدمات لكبار الشخصيات",
+    "whatDoesVipTransportInclude": "ما الذي يشمله نقل VIP؟",
+    "itIncludesUltraLuxuryVehiclesAUniformedC": "يشمل سيارات فائقة الفخامة، سائق خاص بزي رسمي، مياه معبأة، خدمة إنترنت، استقبال خاص، ومرونة تامة في مسار الرحلة.",
+    "canIBookARollsRoyceForAWedding": "هل يمكنني حجز رولز رويس لحفل زفاف؟",
+    "yesWeOfferSpecialPackagesForWeddingsAndS": "نعم، نقدم باقات خاصة لحفلات الزفاف والمناسبات الخاصة مع خدمة راقية جداً وتزيين عند الطلب.",
+    "isPrivacyGuaranteed": "هل الخصوصية مضمونة؟",
+    "privacyIsTheCoreOfOurEliteServiceAllVipV": "الخصوصية هي جوهر خدماتنا. جميع مركبات VIP مزودة بنوافذ مظللة وسائقين مدربين على السرية التامة.",
+    "pricingBooking": "الأسعار والحجز",
+    "arePricesFixedOrMetered": "هل الأسعار ثابتة أم تعتمد على العداد؟",
+    "allOurPricesAreFixedAllInclusiveWithAbso": "جميع أسعارنا ثابتة وشاملة ولا توجد أي رسوم خفية أو مفاجئة.",
+    "whatPaymentMethodsAreAccepted": "ما هي طرق الدفع المتاحة؟",
+    "weAcceptCreditCardsVisaMastercardMadaApp": "نقبل البطاقات الائتمانية (فيزا، ماستركارد)، مدى، أبل باي، والدفع نقداً عند الوصول.",
+    "howCanICancelABooking": "كيف يمكنني إلغاء الحجز؟",
+    "youCanCancelFreeOfChargeUpTo24HoursBefor": "يمكنك الإلغاء مجاناً حتى قبل 24 ساعة من موعد الرحلة من خلال حسابك أو بالتواصل مع الدعم.",
+    "areThereWaitingCharges": "هل هناك رسوم على الانتظار؟",
+    "weProvide60MinutesOfComplimentaryWaiting": "نوفر 60 دقيقة انتظار مجانية في المطارات، و15 دقيقة لباقي المواقع.",
+    "safetyQuality": "السلامة والجودة",
+    "areAllDriversLicensed": "هل جميع السائقين مرخصين؟",
+    "yesAllChauffeursHoldProfessionalLicenses": "نعم، جميع السائقين يحملون رخصاً مهنية وتم إجراء فحوصات شاملة لخلفياتهم الجنائية والمرورية.",
+    "areTheVehiclesInsured": "هل المركبات مؤمنة؟",
+    "yesAllOurPassengersAndVehiclesAreFullyCo": "نعم، جميع ركابنا ومركباتنا مغطاة بتأمين شامل من الفئة الممتازة.",
+    "howOftenAreVehiclesMaintained": "كم مرة يتم صيانة المركبات؟",
+    "allVehiclesUndergoADailyComprehensiveChe": "تخضع جميع مركباتنا لفحص يومي شامل وصيانة دورية صارمة في الوكالة المعتمدة.",
+    "areVehiclesSanitized": "هل يتم تعقيم المركبات؟",
+    "yesEveryVehicleIsThoroughlySanitizedAfte": "نعم، يتم تعقيم كل مركبة بالكامل بعد كل رحلة لضمان أعلى معايير النظافة والصحة.",
+    "faq": "الأسئلة الشائعة",
+    "everythingYouNeedToKnow": "كل ما تحتاج معرفته"
+  },
+  "FleetOverview": {
+    "vehicleCategories": "فئات المركبات",
+    "availability": "التوافر",
+    "professionalChauffeurs": "سائقون محترفون",
+    "insuranceCoverage": "تأمين شامل",
+    "successfulJourneys": "رحلة ناجحة",
+    "satisfactionRate": "نسبة الرضا"
+  },
+  "InteractiveComparison": {
+    "compare": "مقارنة",
+    "findYourPerfectMatch": "ابحث عن مركبتك المثالية",
+    "vehicle": "المركبة",
+    "passengers": "الركاب",
+    "luggage": "الحقائب",
+    "luxuryLevel": "الفخامة",
+    "airport": "مطار",
+    "umrah": "عمرة",
+    "vip": "VIP",
+    "startingPrice": "السعر المبدئي",
+    "book": "احجز"
+  },
+  "InteriorExperience": {
+    "premiumLeatherSeating": "مقاعد جلدية فاخرة",
+    "ergonomicallyDesignedToProvideMaximumCom": "مصممة خصيصاً لتوفير أقصى درجات الراحة والدعم خلال الرحلات الطويلة.",
+    "advancedClimateControl": "تحكم متطور بالمناخ",
+    "multiZoneAirConditioningEnsuringThePerfe": "تكييف هواء متعدد المناطق يضمن درجة حرارة مثالية لجميع الركاب.",
+    "generousLegroom": "مساحة واسعة للقدمين",
+    "exceptionalSpaceToStretchOutAndRelaxIdea": "مساحة استثنائية للاسترخاء، مثالية للمسافرين من رجال الأعمال وكبار الشخصيات.",
+    "exclusiveAmenities": "وسائل راحة حصرية",
+    "complimentaryWaterWiFiAndPremiumTouchesT": "مياه معبأة، خدمة إنترنت، وتجهيزات فاخرة لضمان تجربة سفر متكاملة.",
+    "theInteriorExperience": "تجربة المقصورة",
+    "comfortWithoutCompromise": "الراحة لا تُساوم",
+    "weUnderstandThatTheJourneyIsJustAsImport": "ندرك أن الرحلة لا تقل أهمية عن الوجهة. لذلك، تم تجهيز كل مركبة في أسطولنا بأرقى وسائل الراحة لضمان وصولك براحة تامة.",
+    "clickToViewGallery": "انقر لتكبير المعرض"
+  },
+  "PilgrimExperience": {
+    "vipAirportMeetGreet": "استقبال كبار الشخصيات بالمطار",
+    "ourChauffeursWaitInTheArrivalsHallWithAN": "سائقونا بانتظارك في صالة الوصول مع لوحة ترحيبية والمساعدة في حمل الأمتعة.",
+    "seamlessHolyCityTransfers": "نقل سلس إلى مكة والمدينة",
+    "sereneAndComfortableTransfersBetweenJedd": "تنقلات هادئة ومريحة بين جدة ومكة المكرمة والمدينة المنورة في مركبات فاخرة.",
+    "directHotelDropOffs": "توصيل مباشر للفنادق",
+    "expertKnowledgeOfHotelLocationsEnsuringY": "معرفة تامة بمواقع الفنادق لضمان وصولك مباشرة إلى باب فندقك دون عناء.",
+    "dedicatedPilgrimCare": "رعاية فائقة للحجاج والمعتمرين",
+    "professionalChauffeursSpeciallyTrainedTo": "سائقون محترفون ومدربون خصيصاً لتلبية احتياجات ضيوف الرحمن باحترام وتقدير.",
+    "theLuxuryUmrahExperience": "تجربة العمرة الفاخرة",
+    "itIsOurHonorToServeTheGuestsOfAllahOurUm": "نحن نتشرف بخدمة ضيوف الرحمن. تم تصميم خدمات نقل العمرة لدينا لتوفير أقصى درجات السكينة والراحة، لتتفرغ تماماً لعبادتك."
+  },
+  "PremiumVehicleCollection": {
+    "thePremiumCollection": "مجموعة النخبة",
+    "unforgettableJourneys": "تجربة سفر لا تُنسى",
+    "exploreOurExceptionalFleetWhereEachVehic": "استكشف أسطولنا الاستثنائي، حيث تمثل كل مركبة معياراً للفخامة والراحة والأداء.",
+    "viewGallery": "عرض المعرض",
+    "passengers": "الركاب",
+    "luggage": "الحقائب",
+    "luxury": "الفخامة",
+    "bookNow": "احجز الآن",
+    "exploreDetails": "التفاصيل"
+  },
+  "SafetyQuality": {
+    "professionalDrivers": "سائقون محترفون",
+    "backgroundCheckedDrivers": "فحص خلفية السائقين",
+    "vehicleInspections": "فحوصات دورية للمركبات",
+    "gpsTracking": "تتبع عبر نظام GPS",
+    "insuranceCoverage": "تغطية تأمينية شاملة",
+    "247Support": "دعم على مدار الساعة 24/7",
+    "emergencyAssistance": "مساعدة في حالات الطوارئ",
+    "flightMonitoring": "مراقبة الرحلات الجوية",
+    "sanitizedVehicles": "مركبات معقمة بالكامل",
+    "regularMaintenance": "صيانة دورية منتظمة",
+    "theMeharGuarantee": "ضمان ميهار",
+    "yourSafetyIsOurAbsolutePriorityWeImpleme": "سلامتك هي أولويتنا القصوى. نحن نطبق أعلى معايير الجودة في الصناعة.",
+    "safetyQuality": "السلامة والجودة",
+    "uncompromisingStandards": "معايير لا تقبل المساومة",
+    "weBelieveTrueLuxuryBeginsWithAbsolutePea": "نحن نؤمن بأن الفخامة الحقيقية تبدأ براحة البال المطلقة. تم وضع كل إجراء من إجراءات السلامة لدينا لضمان أن تكون رحلتك ليس فقط مريحة، بل آمنة تمامًا."
+  },
+  "VehicleCategoryExperience": {
+    "executive": "تنفيذي",
+    "businessAirportCouples": "رجال الأعمال، المطار، الأزواج",
+    "family": "عائلي",
+    "familiesSmallGroupsUmrah": "العائلات، المجموعات الصغيرة، العمرة",
+    "premiumFamily": "عائلي فاخر",
+    "premiumFamilyTravelVipUmrah": "السفر العائلي الفاخر، عمرة VIP",
+    "group": "مجموعات",
+    "pilgrimGroupsTravelAgencies": "مجموعات الحجاج، وكالات السفر",
+    "largeGroup": "مجموعات كبيرة",
+    "largeUmrahGroupsCorporate": "مجموعات العمرة الكبيرة، الشركات",
+    "tourismBus": "حافلة سياحية",
+    "largeDelegationsEvents": "الوفود الكبيرة، الفعاليات",
+    "elite": "النخبة",
+    "vipTravelersDiplomats": "كبار الشخصيات، الدبلوماسيين",
+    "royal": "ملكي",
+    "royalGuestsWeddings": "الضيوف الملكيين، حفلات الزفاف",
+    "discoverYourIdealClass": "اكتشف فئتك المثالية",
+    "aMeticulouslyCuratedSelectionOfVehiclesT": "مجموعة مختارة بعناية من المركبات لتلبية احتياجات سفرك بدقة متناهية وفخامة لا تضاهى.",
+    "perfectFor": "مثالية لـ:",
+    "exploreClass": "استكشف الفئة"
+  },
+  "Breadcrumbs": {
+    "home": "الرئيسية"
+  },
+  "Footer": {
+    "thePremierChoiceForLuxuryTransportation": "الخيار الأول للنقل الفاخر في المملكة العربية السعودية. نوفر أسطولاً متميزاً لخدمات العمرة وتوصيل المطارات بأعلى معايير الجودة.",
+    "quickLinks": "روابط سريعة",
+    "ourFleet": "أسطولنا",
+    "routes": "المسارات",
+    "umrahPackages": "باقات العمرة",
+    "bookNow": "احجز الآن",
+    "contactUs": "تواصل معنا",
+    "jeddahSaudiArabia": "جدة، المملكة العربية السعودية",
+    "customerService": "خدمة العملاء",
+    "ourTeamIsAvailable247ToAssistYouWithYour": "فريقنا متواجد على مدار الساعة لخدمتكم والرد على استفساراتكم.",
+    "chatOnWhatsapp": "تواصل عبر واتساب",
+    "allRightsReserved": "جميع الحقوق محفوظة.",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsConditions": "الشروط والأحكام"
+  },
+  "AboutSection": {
+    "meharTransport": "ميهار للنقل",
+    "aLegacyOfLuxuryAndReliability": "تراث من الفخامة والموثوقية",
+    "forYearsWeHaveSetTheStandardForPremiumTr": "على مدى سنوات، أرسينا معايير جديدة في خدمات النقل الراقي عبر المملكة العربية السعودية. نحن لا نقدم مجرد وسيلة نقل، بل نصنع تجربة متكاملة تبدأ من لحظة الحجز وحتى وصولك المريح.",
+    "discoverOurStory": "اكتشف قصتنا",
+    "yearsOfExcellence": "سنوات من التميز"
+  },
+  "ContentHubSection": {
+    "completeGuideToOrganizingUmrahTransporta": "دليلك الشامل لترتيب المواصلات خلال العمرة",
+    "umrahTips": "نصائح العمرة",
+    "oct152026": "١٥ أكتوبر ٢٠٢٦",
+    "top5HistoricalRoutesToVisitInMadinah": "أفضل ٥ مسارات سياحية للزيارة في المدينة المنورة",
+    "travelGuide": "دليل السفر",
+    "oct022026": "٠٢ أكتوبر ٢٠٢٦",
+    "whatToExpectWhenBookingAirportVipMeetGre": "ماذا تتوقع عند حجز خدمة الاستقبال من المطار؟",
+    "ourServices": "خدماتنا",
+    "sep202026": "٢٠ سبتمبر ٢٠٢٦",
+    "knowledgeHub": "مركز المعرفة",
+    "travelGuidesUmrahTips": "أدلة السفر ونصائح العمرة",
+    "browseAllArticles": "تصفح المدونة"
+  },
+  "CTASection": {
+    "meharLuxuryTransport": "ميهار للنقل الفاخر",
+    "yourExceptionalJourneyBeginsHere": "رحلتك الاستثنائية تبدأ هنا",
+    "reserveYourPrivateChauffeurTodayAndExper": "احجز سيارتك الخاصة الآن واستمتع بمعايير غير مسبوقة من الفخامة، الأمان، والموثوقية.",
+    "bookYourJourney": "احجز رحلتك الآن",
+    "speakToAConcierge": "تحدث مع مستشار الرحلات"
+  },
+  "FAQSection": {
+    "canIBookATransferFromJeddahAirportDirect": "هل يمكنني حجز سيارة من مطار جدة إلى مكة مباشرة؟",
+    "yesWeProvideDirectTransferServicesFromKi": "نعم، نقدم خدمة النقل المباشر من مطار الملك عبد العزيز بجدة إلى فندقك في مكة المكرمة. سيكون السائق في انتظارك عند بوابة الوصول مع لوحة تحمل اسمك.",
+    "areTheDisplayedPricesFixedOrDoTheyChange": "هل الأسعار المعروضة ثابتة أم تتغير؟",
+    "allOurPricesAreFixedAndInclusiveOfAllTax": "جميع أسعارنا ثابتة وتشمل كافة الضرائب ورسوم الطريق. لا توجد أي رسوم خفية، والمبلغ المتفق عليه هو ما ستدفعه فقط.",
+    "doYouProvideChildSeats": "هل توفرون مقاعد مخصصة للأطفال؟",
+    "yesAbsolutelyWeProvideComplimentaryChild": "نعم بالتأكيد. نوفر مقاعد أطفال مجانية لضمان سلامة عائلتك. يرجى إبلاغنا بعدد المقاعد المطلوبة وأعمار الأطفال عند الحجز.",
+    "whatHappensIfMyFlightIsDelayed": "ماذا يحدث إذا تأخرت رحلتي الجوية؟",
+    "donTWorryOurTeamMonitorsFlightSchedulesI": "لا تقلق، فريقنا يراقب مواعيد الرحلات الجوية باستمرار. سيقوم السائق بانتظارك في الوقت الفعلي لوصول طائرتك بدون أي رسوم تأخير إضافية.",
+    "howCanIPayForTheTrip": "كيف يمكنني الدفع مقابل الرحلة؟",
+    "weAcceptCashToTheDriverAdvanceBankTransf": "نقبل الدفع النقدي للسائق، والتحويل البنكي المسبق، والبطاقات الائتمانية عبر رابط دفع آمن نرسله لك عند تأكيد الحجز.",
+    "doTheDriversSpeakEnglish": "هل السائقون يتحدثون الإنجليزية؟",
+    "yesWeProvideDriversWhoAreFluentInBothEng": "نعم، نوفر سائقين يتحدثون الإنجليزية والعربية بطلاقة لتسهيل التواصل طوال رحلتك.",
+    "frequentlyAskedQuestions": "الأسئلة الشائعة",
+    "comprehensiveAnswersToTheMostCommonQuest": "إجابات وافية لأكثر الاستفسارات شيوعاً حول خدماتنا للحجز والنقل."
+  },
+  "FeaturedRoutes": {
+    "jeddahAirport": "مطار جدة",
+    "makkah": "مكة المكرمة",
+    "madinah": "المدينة المنورة",
+    "popularRoutes": "الوجهات الأكثر طلباً",
+    "journeysDesignedForComfort": "مسارات صُممت لراحتك",
+    "viewAllRoutes": "عرض كل المسارات",
+    "distance": "المسافة",
+    "estTime": "الزمن التقديري",
+    "availableVehicles": "السيارات المتاحة",
+    "startingFrom": "يبدأ من",
+    "bookRoute": "احجز المسار"
+  },
+  "FleetShowcase": {
+    "ourPremiumFleet": "أسطولنا الفاخر",
+    "vehiclesEngineeredForExcellence": "مركبات مصممة للتميز",
+    "exploreFullFleet": "اكتشف الأسطول كاملاً",
+    "passengers": "ركاب",
+    "luggage": "حقائب",
+    "detailsGallery": "التفاصيل والصور",
+    "bookNow": "احجز الآن"
+  },
+  "GallerySection": {
+    "thePilgrimExperience": "لحظات من رحلاتنا",
+    "galleryOfExcellence": "معرض الصور والفخامة"
+  },
+  "ReviewsSection": {
+    "ahmedAlSalem": "أحمد السالم",
+    "ceo": "رئيس تنفيذي",
+    "exceptionalServiceByEveryMeasureTheRolls": "خدمة استثنائية بكل المقاييس. سيارة رولز رويس كانت في قمة النظافة والفخامة، والسائق كان محترفاً جداً. ميهار هي خياري الأول دائماً لاجتماعات العمل.",
+    "sarahFahad": "سارة فهد",
+    "vipGuest": "ضيفة VIP",
+    "theAirportMeetAndGreetAtJeddahWasSeamles": "تجربة الاستقبال من مطار جدة كانت سلسة وفاخرة. شعرت بالراحة والأمان التام طوال الرحلة إلى مكة. تفاصيل الخدمة تعكس فخامة حقيقية.",
+    "drMohammedAlOmar": "د. محمد العمر",
+    "frequentTraveler": "مسافر منتظم",
+    "unmatchedProfessionalismFromTheEaseOfBoo": "احترافية لا تضاهى. من سهولة الحجز عبر الموقع إلى التزام السائق بالوقت المحدد. شكراً لفريق ميهار على هذه التجربة الراقية.",
+    "voicesOfOurGuests": "آراء عملائنا المميزين",
+    "trustBuiltOnAbsoluteExcellence": "ثقة تُبنى على التميز المطلق"
+  },
+  "SafetySection": {
+    "licensedDrivers": "سائقون مرخصون",
+    "allDriversUndergoStrictVettingAndTrainin": "نخضع جميع السائقين لفحوصات وتدريبات صارمة",
+    "gpsTracking": "تتبع المواقع",
+    "liveMonitoringOfAllVehiclesForSafeRoutin": "مراقبة حية لجميع المركبات لضمان مسار آمن",
+    "vehicleInspections": "فحص المركبات",
+    "dailyMaintenanceChecksBeforeEveryDispatc": "صيانة دورية يومية قبل كل انطلاق",
+    "insuranceCoverage": "تغطية تأمينية",
+    "comprehensivePassengerInsuranceDuringAll": "تأمين شامل للركاب خلال جميع الرحلات",
+    "emergencySupport": "دعم الطوارئ",
+    "dedicatedEmergencyResponseTeamAvailable2": "فريق طوارئ متخصص متاح على مدار الساعة",
+    "sanitizedVehicles": "مركبات معقمة",
+    "thoroughSanitizationAfterEverySingleRide": "تعقيم شامل للسيارة بعد كل رحلة",
+    "roadSafetyStandards": "معايير السلامة",
+    "strictAdherenceToSaudiTrafficAndSafetyRe": "تطبيق صارم لأنظمة المرور والسلامة السعودية",
+    "flightMonitoring": "مراقبة الرحلات",
+    "proactiveFlightTrackingToAvoidAnyDelays": "تتبع الرحلات الجوية لتجنب التأخيرات",
+    "safetyCompliance": "الامتثال والسلامة",
+    "yourSafetyIsOurHighestPriority": "سلامتك هي أولويتنا القصوى",
+    "atMeharTransportWeImplementStrictCorpora": "في مِهار للنقل، نطبق معايير سلامة مؤسسية صارمة لضمان راحة بالك. رحلتك معنا محمية ومراقبة بأحدث التقنيات."
+  },
+  "ServicesSection": {
+    "premiumAirportTransfers": "نقل المطار المتميز",
+    "impeccableMeetAndGreetAtMajorSaudiAirpor": "استقبال لا تشوبه شائبة في مطارات المملكة الرئيسية مع تتبع لحظي لرحلتك.",
+    "executiveCorporateTravel": "نقل الشركات التنفيذي",
+    "aLuxuryFleetTailoredForCorporateProfessi": "أسطول فاخر لتلبية احتياجات الشركات ورجال الأعمال بكفاءة وخصوصية.",
+    "vipProtocolServices": "خدمات كبار الشخصيات",
+    "theHighestLevelOfLuxuryAndSecurityForVip": "أقصى درجات الفخامة والأمان لرحلات الشخصيات الهامة والوفود.",
+    "hourlyChauffeur": "سائق تحت التصرف",
+    "totalFlexibilityWithADedicatedDriverAtYo": "مرونة تامة مع سائق مخصص لتنقلاتك المتعددة على مدار الساعة.",
+    "bespokeServices": "خدماتنا المخصصة",
+    "designedToExceedExpectations": "مصممة لتجاوز التوقعات",
+    "viewAllServices": "عرض كل الخدمات",
+    "bookService": "احجز الخدمة"
+  },
+  "TrustBar": {
+    "eliteChauffeurs": "نخبة السائقين",
+    "professionallyTrained": "مدربون باحترافية عالية",
+    "reliableJourneys": "رحلات موثوقة",
+    "precisionTracking": "تتبع دقيق وضمان الوصول",
+    "247Concierge": "متاحون 24/7",
+    "roundTheClockSupport": "خدمة عملاء على مدار الساعة",
+    "worldClassStandards": "معايير عالمية",
+    "ultraLuxuryFleet": "مركبات فائقة الفخامة"
+  },
+  "ComfortExperience": {
+    "theComfortExperience": "تجربة الراحة",
+    "engineeredForAbsoluteComfort": "مصممة لراحتك المطلقة",
+    "weBelieveTheJourneyIsJustAsImportantAsTh": "نحن نؤمن بأن الرحلة لا تقل أهمية عن الوجهة. استرخ في مقصورة هادئة، واستمتع بمساحة واسعة للأرجل، وتكييف هواء مثالي يضمن وصولك منتعشاً ومستعداً."
+  },
+  "FinalCTA": {
+    "experiencePremiumTransportationWith": "تجربة النقل الفاخر مع",
+    "professionalChauffeursLuxuryComfortAndRe": "سائقون محترفون، راحة فاخرة، وخدمة موثوقة في جميع أنحاء المملكة العربية السعودية.",
+    "bookNow": "احجز الآن",
+    "whatsappUs": "تواصل عبر الواتساب",
+    "callNow": "اتصل الآن"
+  },
+  "PerfectFor": {
+    "perfectFor": "مثالية لـ",
+    "isThisTheRightVehicleForYou": "هل هذه المركبة مناسبة لرحلتك؟"
+  },
+  "PopularRoutes": {
+    "popularRoutes": "مسارات شائعة",
+    "bookYourNextJourney": "احجز رحلتك القادمة",
+    "text3": "rotate-180",
+    "text4": "rotate-180"
+  },
+  "PremiumGallery": {
+    "experienceTheVehicle": "معرض الصور",
+    "photos": "صور"
+  },
+  "RelatedVehicles": {
+    "youMayAlsoLike": "قد يعجبك أيضاً",
+    "viewFullFleet": "عرض كل الأسطول",
+    "text3": "rotate-180"
+  },
+  "StickyBookingWidget": {
+    "bookingRequestSubmittedSuccessfully": "تم إرسال طلب الحجز بنجاح!",
+    "startingFrom": "تبدأ من ",
+    "pickupLocation": "موقع الاستلام",
+    "airportOrHotel": "المطار أو الفندق",
+    "destination": "الوجهة",
+    "whereTo": "أين تود الذهاب؟",
+    "date": "التاريخ",
+    "passengers": "الركاب",
+    "phoneNumber": "رقم الهاتف",
+    "confirmInstantBooking": "تأكيد الحجز الفوري",
+    "noHiddenFeesFreeCancellation": "لا توجد رسوم خفية. إلغاء مجاني."
+  },
+  "VehicleComparison": {
+    "compareWithOtherVehicles": "قارن مع مركبات أخرى",
+    "currentVehicle": "المركبة الحالية",
+    "capacity": "السعة",
+    "passengers": "ركاب",
+    "luggage": "حقائب",
+    "luxuryLevel": "مستوى الفخامة",
+    "vipService": "خدمة VIP",
+    "viewDetails": "عرض التفاصيل",
+    "currentlyViewing": "تتصفح حالياً"
+  },
+  "VehicleFAQ": {
+    "frequentlyAskedQuestions": "أسئلة شائعة"
+  },
+  "VehicleFeatures": {
+    "vehicleFeaturesAmenities": "ميزات ووسائل راحة المركبة",
+    "designedToEnsureMaximumComfortAndWellBei": "صُممت لضمان راحة ورفاهية قصوى."
+  },
+  "VehicleHero": {
+    "passengers": "ركاب",
+    "luggage": "حقائب",
+    "bookNow": "احجز الآن"
+  },
+  "VehicleReviews": {
+    "customerStories": "آراء العملاء"
+  },
+  "VehicleSafety": {
+    "certifiedChauffeurs": "سائقون معتمدون",
+    "allDriversAreBackgroundCheckedAndTrained": "تم فحص خلفيات جميع السائقين وتدريبهم.",
+    "247GpsTracking": "تتبع GPS 24/7",
+    "activeFleetMonitoringForYourSecurity": "مراقبة الرحلات لضمان أمانك.",
+    "comprehensiveInsurance": "تأمين شامل",
+    "fullCoverageInsuranceForAllPassengers": "تغطية تأمينية كاملة لجميع الركاب.",
+    "rigorousMaintenance": "صيانة دورية",
+    "regularSafetyInspectionsAndServicing": "فحوصات سلامة منتظمة لجميع المركبات.",
+    "yourSafetyIsOurPriority": "سلامتك أولويتنا",
+    "weImplementTheHighestSafetyAndSecuritySt": "نطبق أعلى معايير السلامة والأمان في كل رحلة لضمان راحة بالك."
+  },
+  "VehicleStory": {
+    "theStory": "القصة"
+  },
+  "BookingFAQ": {
+    "frequentlyAskedQuestions": "الأسئلة الشائعة"
+  },
+  "BookingHero": {
+    "bookYourJourney": "احجز رحلتك بكل سهولة واحترافية",
+    "reliableTransportationAcrossSaudiArabiaW": "نقل موثوق في جميع أنحاء المملكة العربية السعودية مع سائقين محترفين ومركبات فاخرة.",
+    "10000Transfers": "أكثر من 10,000 رحلة",
+    "licensedDrivers": "سائقون معتمدون",
+    "instantConfirmation": "تأكيد فوري"
+  },
+  "OrderSummary": {
+    "bookingSummary": "ملخص الحجز",
+    "tripType": "نوع الرحلة",
+    "baseFare": "السعر الأساسي",
+    "vehicles": "المركبات",
+    "extras": "الإضافات",
+    "vat15": "الضريبة (15%)",
+    "total": "الإجمالي",
+    "securePayment": "دفع آمن",
+    "instantConfirm": "تأكيد فوري"
+  },
+  "SafetyCenter": {
+    "safetyTrustCenter": "مركز الأمان والثقة",
+    "yourSafetyAndComfortAreOurTopPrioritiesA": "سلامتك وراحتك هما أولويتنا القصوى في ميهار للنقل."
+  },
+  "BookingConfirmation": {
+    "submittingYourBooking": "جاري إرسال الحجز...",
+    "pleaseWaitAMoment": "يرجى الانتظار لحظة",
+    "bookingConfirmedSuccessfully": "تم تأكيد الحجز بنجاح",
+    "thankYouForChoosingMeharTransportYourBoo": "شكراً لاختيارك ميهار للنقل. تم إرسال تفاصيل الحجز إلى بريدك الإلكتروني.",
+    "bookingReference": "رقم الحجز",
+    "status": "الحالة",
+    "pending": "معلّق",
+    "dateTime": "التاريخ والوقت",
+    "at": "في",
+    "pickupPoint": "نقطة الانطلاق",
+    "dropOffPoint": "نقطة الوصول",
+    "vehicles": "المركبات",
+    "passenger": "المسافر",
+    "totalAmount": "الإجمالي",
+    "downloadPdfTicket": "تحميل التذكرة PDF",
+    "backToHome": "العودة للرئيسية",
+    "bookAnotherTrip": "حجز آخر"
+  },
+  "ExtraServices": {
+    "airportMeetGreet": "استقبال وترحيب بالمطار",
+    "nameBoardGreetingAtArrivals": "استقبال بلوحة اسم عند البوابة",
+    "fastTrackService": "المسار السريع",
+    "priorityAirportClearance": "أولوية العبور في المطار",
+    "childSeat": "كرسي أطفال",
+    "safeSeatingForChildren": "مقعد آمن للأطفال",
+    "luxuryRefreshments": "ضيافة فاخرة",
+    "waterJuicesAndCoffee": "مياه، عصائر، وقهوة",
+    "5gWiFi": "إنترنت 5G",
+    "highSpeedInternetInVehicle": "إنترنت عالي السرعة في المركبة",
+    "securityEscort": "مرافقة أمنية",
+    "extraProtectionForVips": "حماية إضافية لكبار الشخصيات",
+    "extraServices": "الخدمات الإضافية",
+    "elevateYourTravelExperienceWithOurPremiu": "ارتقِ بتجربة سفرك مع خدماتنا الإضافية المصممة لراحتك.",
+    "back": "رجوع",
+    "reviewJourney": "مراجعة الرحلة"
+  },
+  "FleetSelection": {
+    "selectYourVehicles": "اختيار المركبات",
+    "selectOneOrMultipleVehiclesToAccommodate": "يمكنك اختيار مركبة واحدة أو عدة مركبات لتناسب مجموعتك.",
+    "recommendedForYourTrip": "موصى به لرحلتك",
+    "passengers": "ركاب",
+    "add": "إضافة",
+    "select": "اختيار",
+    "back": "رجوع",
+    "passengerDetails": "بيانات الركاب"
+  },
+  "JourneyReview": {
+    "reviewJourneyDetails": "مراجعة تفاصيل الرحلة",
+    "route": "مسار الرحلة",
+    "from": "من",
+    "to": "إلى",
+    "stop": "توقف",
+    "notSpecified": "لم يتم التحديد",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "selectedVehicles": "المركبات المختارة",
+    "noVehiclesSelected": "لم يتم اختيار مركبات",
+    "passengerDetails": "بيانات المسافر",
+    "name": "الاسم",
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "extras": "الخدمات الإضافية",
+    "editDetails": "تعديل الرحلة",
+    "continueToPayment": "الاستمرار للدفع"
+  },
+  "PassengerInfo": {
+    "leadPassengerDetails": "بيانات المسافر الرئيسي",
+    "pleaseEnterYourContactDetailsSoWeCanConf": "يرجى إدخال تفاصيل التواصل الخاصة بك لنتمكن من تأكيد حجزك ومتابعة رحلتك.",
+    "fullName": "الاسم الكامل",
+    "nameAsOnId": "الاسم كما في الهوية",
+    "phoneNumber": "رقم الهاتف",
+    "emailAddress": "البريد الإلكتروني",
+    "nationality": "الجنسية",
+    "saudiArabia": "السعودية",
+    "specialRequests": "طلبات خاصة",
+    "anySpecialRequirementsChildSeatsWheelcha": "أي متطلبات خاصة بالرحلة (كراسي أطفال، مساعدة كبار السن، إلخ)",
+    "back": "رجوع",
+    "extraServices": "الخدمات الإضافية"
+  },
+  "PaymentCenter": {
+    "creditCardMada": "بطاقة ائتمان / مدى",
+    "bankTransfer": "تحويل بنكي",
+    "cashToDriver": "نقداً للسائق",
+    "securePaymentCenter": "بوابة الدفع الآمن",
+    "allTransactionsAreEncryptedAndSecuredWit": "جميع المعاملات مشفرة ومؤمنة بأحدث تقنيات الحماية.",
+    "cardNumber": "رقم البطاقة",
+    "expiryDate": "تاريخ الانتهاء",
+    "nameOnCard": "الاسم على البطاقة",
+    "back": "رجوع",
+    "processing": "جاري المعالجة..."
+  },
+  "RouteBuilder": {
+    "buildYourRoute": "مسار الرحلة",
+    "enterYourPickupDropOffAndAnyExtraStopsAl": "حدد أماكن الانطلاق والوصول وأي توقفات إضافية في الطريق.",
+    "from": "من",
+    "to": "إلى",
+    "stop": "توقف",
+    "kingAbdulazizAirport": "مطار الملك عبدالعزيز...",
+    "searchLocation": "البحث عن موقع...",
+    "addStop": "إضافة توقف",
+    "pickupDate": "تاريخ الرحلة",
+    "pickupTime": "وقت الرحلة",
+    "back": "رجوع",
+    "selectVehicle": "اختيار المركبة",
+    "liveNavigation": "التنقل الحي",
+    "routeOverview": "ملخص المسار",
+    "estDistance": "المسافة المقدرة",
+    "estTravelTime": "وقت الرحلة المقدر"
+  },
+  "TripTypeSelector": {
+    "oneWay": "ذهاب فقط",
+    "pointAToPointBTransfer": "نقل من نقطة أ إلى ب",
+    "roundTrip": "ذهاب وعودة",
+    "transferWithReturnJourney": "نقل مع العودة",
+    "hourlyChauffeur": "تأجير بالساعات",
+    "driverAtYourDisposal": "سائق تحت تصرفك",
+    "airportTransfer": "نقل المطار",
+    "toAndFromTheAirport": "من وإلى المطار",
+    "umrahPackage": "باقات العمرة",
+    "makkahMadinahTransfers": "تنقلات مكة والمدينة",
+    "vipTransportation": "نقل كبار الشخصيات",
+    "premiumLuxuryService": "خدمة فاخرة مميزة",
+    "corporate": "نقل الشركات",
+    "forMeetingsAndBusiness": "للاجتماعات والأعمال",
+    "groupTransfer": "نقل المجموعات",
+    "forLargeFamiliesGroups": "للعائلات الكبيرة",
+    "eventTransportation": "نقل الفعاليات",
+    "forSpecialOccasions": "للمناسبات الخاصة",
+    "multiCity": "مدن متعددة",
+    "transferBetweenCities": "نقل بين مدن المملكة",
+    "selectTripType": "اختر نوع الرحلة",
+    "chooseTheTypeOfServiceYouNeedSoWeCanTail": "اختر نوع الخدمة التي تناسب احتياجاتك لنتمكن من تخصيص تجربتك.",
+    "continue": "الاستمرار"
   }
 }

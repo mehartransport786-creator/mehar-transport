@@ -1,12 +1,12 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Camera } from "lucide-react";
+import Image from "next/image";
 
 export function GallerySection() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('GallerySection');
 
   const images = [
     { src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[4/3]" },
@@ -26,11 +26,11 @@ export function GallerySection() {
               <div className="w-12 h-0.5 bg-secondary"></div>
               <span className="text-secondary font-bold uppercase tracking-widest text-sm flex items-center gap-2">
                 <Camera className="w-4 h-4" />
-                {isAr ? "لحظات من رحلاتنا" : "The Pilgrim Experience"}
+                {t("thePilgrimExperience")}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-primary">
-              {isAr ? "معرض الصور والفخامة" : "Gallery of Excellence"}
+              {t("galleryOfExcellence")}
             </h2>
           </div>
         </div>
@@ -45,11 +45,13 @@ export function GallerySection() {
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               className={`relative rounded-3xl overflow-hidden group cursor-pointer break-inside-avoid shadow-sm hover:shadow-xl transition-all duration-500`}
             >
-              <div className={img.aspect}>
-                <img 
+              <div className={`${img.aspect} relative w-full h-full`}>
+                <Image 
                   src={img.src} 
                   alt="Mehar Transport Experience" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
               <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

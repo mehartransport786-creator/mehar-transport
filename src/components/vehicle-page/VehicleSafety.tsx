@@ -1,33 +1,32 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ShieldCheck, MapPin, Wrench, ShieldAlert } from "lucide-react";
 
 export function VehicleSafety() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('VehicleSafety');
 
   const safetyFeatures = [
     {
       icon: ShieldCheck,
-      title: isAr ? "سائقون معتمدون" : "Certified Chauffeurs",
-      desc: isAr ? "تم فحص خلفيات جميع السائقين وتدريبهم." : "All drivers are background-checked and trained."
+      title: t("certifiedChauffeurs"),
+      desc: t("allDriversAreBackgroundCheckedAndTrained")
     },
     {
       icon: MapPin,
-      title: isAr ? "تتبع GPS 24/7" : "24/7 GPS Tracking",
-      desc: isAr ? "مراقبة الرحلات لضمان أمانك." : "Active fleet monitoring for your security."
+      title: t("247GpsTracking"),
+      desc: t("activeFleetMonitoringForYourSecurity")
     },
     {
       icon: ShieldAlert,
-      title: isAr ? "تأمين شامل" : "Comprehensive Insurance",
-      desc: isAr ? "تغطية تأمينية كاملة لجميع الركاب." : "Full coverage insurance for all passengers."
+      title: t("comprehensiveInsurance"),
+      desc: t("fullCoverageInsuranceForAllPassengers")
     },
     {
       icon: Wrench,
-      title: isAr ? "صيانة دورية" : "Rigorous Maintenance",
-      desc: isAr ? "فحوصات سلامة منتظمة لجميع المركبات." : "Regular safety inspections and servicing."
+      title: t("rigorousMaintenance"),
+      desc: t("regularSafetyInspectionsAndServicing")
     }
   ];
 
@@ -38,12 +37,10 @@ export function VehicleSafety() {
           <ShieldCheck className="w-8 h-8 text-[#1B1E4F]" />
         </div>
         <h3 className="text-3xl font-bold text-[#1B1E4F]">
-          {isAr ? "سلامتك أولويتنا" : "Your Safety is Our Priority"}
+          {t("yourSafetyIsOurPriority")}
         </h3>
         <p className="text-gray-500">
-          {isAr 
-            ? "نطبق أعلى معايير السلامة والأمان في كل رحلة لضمان راحة بالك."
-            : "We implement the highest safety and security standards on every journey to ensure your peace of mind."}
+          {t("weImplementTheHighestSafetyAndSecuritySt")}
         </p>
       </div>
 

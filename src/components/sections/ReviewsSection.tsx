@@ -1,39 +1,32 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 
 export function ReviewsSection() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('ReviewsSection');
 
   const reviews = [
     {
       id: 1,
-      name: isAr ? "أحمد السالم" : "Ahmed Al-Salem",
-      role: isAr ? "رئيس تنفيذي" : "CEO",
-      quote: isAr 
-        ? "خدمة استثنائية بكل المقاييس. سيارة رولز رويس كانت في قمة النظافة والفخامة، والسائق كان محترفاً جداً. ميهار هي خياري الأول دائماً لاجتماعات العمل."
-        : "Exceptional service by every measure. The Rolls-Royce was immaculate, and the chauffeur was highly professional. Mehar is always my first choice for business meetings.",
+      name: t("ahmedAlSalem"),
+      role: t("ceo"),
+      quote: t("exceptionalServiceByEveryMeasureTheRolls"),
       rating: 5,
     },
     {
       id: 2,
-      name: isAr ? "سارة فهد" : "Sarah Fahad",
-      role: isAr ? "ضيفة VIP" : "VIP Guest",
-      quote: isAr 
-        ? "تجربة الاستقبال من مطار جدة كانت سلسة وفاخرة. شعرت بالراحة والأمان التام طوال الرحلة إلى مكة. تفاصيل الخدمة تعكس فخامة حقيقية."
-        : "The airport meet-and-greet at Jeddah was seamless and luxurious. I felt completely relaxed and safe during the trip to Makkah. True luxury is in the details.",
+      name: t("sarahFahad"),
+      role: t("vipGuest"),
+      quote: t("theAirportMeetAndGreetAtJeddahWasSeamles"),
       rating: 5,
     },
     {
       id: 3,
-      name: isAr ? "د. محمد العمر" : "Dr. Mohammed Al-Omar",
-      role: isAr ? "مسافر منتظم" : "Frequent Traveler",
-      quote: isAr 
-        ? "احترافية لا تضاهى. من سهولة الحجز عبر الموقع إلى التزام السائق بالوقت المحدد. شكراً لفريق ميهار على هذه التجربة الراقية."
-        : "Unmatched professionalism. From the ease of booking on the website to the chauffeur's punctuality. Thank you to the Mehar team for a refined experience.",
+      name: t("drMohammedAlOmar"),
+      role: t("frequentTraveler"),
+      quote: t("unmatchedProfessionalismFromTheEaseOfBoo"),
       rating: 5,
     }
   ];
@@ -46,12 +39,12 @@ export function ReviewsSection() {
           <div className="flex items-center gap-4 justify-center">
             <div className="w-8 h-px bg-[#D9A63A]"></div>
             <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm">
-              {isAr ? "آراء عملائنا المميزين" : "Voices of Our Guests"}
+              {t("voicesOfOurGuests")}
             </span>
             <div className="w-8 h-px bg-[#D9A63A]"></div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1B1E4F] leading-tight max-w-2xl">
-            {isAr ? "ثقة تُبنى على التميز المطلق" : "Trust Built on Absolute Excellence"}
+            {t("trustBuiltOnAbsoluteExcellence")}
           </h2>
         </div>
 
@@ -76,7 +69,7 @@ export function ReviewsSection() {
               </div>
 
               <p className="text-gray-600 leading-loose text-lg italic mb-8 font-light grow flex items-center">
-                "{review.quote}"
+                &quot;{review.quote}&quot;
               </p>
 
               <div className="mt-auto border-t border-gray-100 w-full pt-6">

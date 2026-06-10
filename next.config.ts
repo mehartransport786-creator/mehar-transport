@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
     'localhost:3000',
     '0.0.0.0',
   ],
+  images: {
+    qualities: [100, 75],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);

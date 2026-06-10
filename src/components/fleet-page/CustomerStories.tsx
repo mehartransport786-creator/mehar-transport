@@ -1,48 +1,43 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import Image from "next/image";
 
 export function CustomerStories() {
+    const t = useTranslations('CustomerStories');
   const locale = useLocale();
-  const isAr = locale === "ar";
 
   const stories = [
     {
       id: 1,
-      name: isAr ? "عائلة أحمد" : "The Ahmed Family",
-      country: isAr ? "الإمارات العربية المتحدة" : "UAE",
-      route: isAr ? "مطار جدة إلى مكة" : "Jeddah Airport to Makkah",
+      name: t("theAhmedFamily"),
+      country: t("uae"),
+      route: t("jeddahAirportToMakkah"),
       vehicle: "Hyundai Staria",
       rating: 5,
-      review: isAr 
-        ? "كانت رحلة العمرة مع ميهار استثنائية. السائق كان ينتظرنا في المطار والسيارة كانت واسعة ومريحة جداً للأطفال. خدمة لا يُعلى عليها."
-        : "Our Umrah trip with Mehar was exceptional. The driver was waiting for us at the airport and the vehicle was incredibly spacious and comfortable for the kids. Top-notch service.",
+      review: t("ourUmrahTripWithMeharWasExceptionalTheDr"),
       image: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=2000&auto=format&fit=crop"
     },
     {
       id: 2,
-      name: isAr ? "ديفيد ريتشاردز" : "David Richards",
-      country: isAr ? "المملكة المتحدة" : "United Kingdom",
-      route: isAr ? "مطار الرياض إلى المركز المالي" : "Riyadh Airport to KAFD",
+      name: t("davidRichards"),
+      country: t("unitedKingdom"),
+      route: t("riyadhAirportToKafd"),
       vehicle: "Mercedes-Benz S-Class",
       rating: 5,
-      review: isAr 
-        ? "أستخدم ميهار في جميع رحلات عملي إلى السعودية. احترافية السائقين ونظافة سيارات مرسيدس S-Class تجعلهم الخيار الأول دائماً."
-        : "I use Mehar for all my business trips to Saudi Arabia. The professionalism of the drivers and the pristine condition of their S-Class fleet make them my only choice.",
+      review: t("iUseMeharForAllMyBusinessTripsToSaudiAra"),
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop"
     },
     {
       id: 3,
-      name: isAr ? "مجموعة الإيمان" : "Al-Iman Group",
-      country: isAr ? "ماليزيا" : "Malaysia",
-      route: isAr ? "مكة إلى المدينة" : "Makkah to Madinah",
+      name: t("alImanGroup"),
+      country: t("malaysia"),
+      route: t("makkahToMadinah"),
       vehicle: "Toyota Coaster",
       rating: 5,
-      review: isAr 
-        ? "تنظيم رحلة لـ 20 شخصاً ليس أمراً سهلاً، لكن ميهار جعلت النقل سلساً للغاية. الحافلة كانت مريحة جداً للرحلة الطويلة."
-        : "Organizing a trip for 20 people is never easy, but Mehar made the transportation seamless. The Coaster was incredibly comfortable for the long journey.",
+      review: t("organizingATripFor20PeopleIsNeverEasyBut"),
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop"
     }
   ];
@@ -53,10 +48,10 @@ export function CustomerStories() {
         
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm block">
-            {isAr ? "قصص عملائنا" : "Customer Stories"}
+            {t("customerStories")}
           </span>
           <h2 className="text-4xl font-bold text-[#1B1E4F]">
-            {isAr ? "تجارب تفوق التوقعات" : "Experiences Beyond Expectations"}
+            {t("experiencesBeyondExpectations")}
           </h2>
         </div>
 
@@ -79,14 +74,16 @@ export function CustomerStories() {
               </div>
               
               <p className="text-gray-600 leading-relaxed mb-8 relative z-10 font-medium">
-                "{story.review}"
+                &quot;{story.review}&quot;
               </p>
               
               <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                <img 
+                <Image 
                   src={story.image} 
                   alt={story.name} 
-                  className="w-12 h-12 rounded-full object-cover"
+                  width={48}
+                  height={48}
+                  className="rounded-full object-cover"
                 />
                 <div>
                   <h4 className="font-bold text-[#1B1E4F]">{story.name}</h4>

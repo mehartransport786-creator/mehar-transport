@@ -1,4 +1,5 @@
 import NextAuth from "next-auth";
+import { authConfig } from "./auth.config";
 import CredentialsProvider from "next-auth/providers/credentials";
 import connectToDatabase from "@/lib/db";
 import { Admin } from "@/lib/models/Admin";
@@ -9,6 +10,7 @@ import bcryptjs from "bcryptjs";
 import crypto from "crypto";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -34,14 +36,56 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           throw new Error("Account is inactive or locked");
         }
 
+        // Check if account is temporarily locked
+        if (admin.lockedUntil && admin.lockedUntil > new Date()) {
+          throw new Error("Account is temporarily locked due to multiple failed login attempts. Try again later.");
+        }
+
         const isPasswordValid = await bcryptjs.compare(credentials.password as string, admin.passwordHash);
+        const ip = req.headers?.get("x-forwarded-for") || "Unknown IP";
+        const userAgent = req.headers?.get("user-agent") || "Unknown Browser";
 
         if (!isPasswordValid) {
+          // Increment failed attempts atomically
+          const updatedAdmin = await Admin.findByIdAndUpdate(
+            admin._id,
+            { $inc: { failedLoginAttempts: 1 } },
+            { new: true }
+          );
+          
+          const currentAttempts = updatedAdmin?.failedLoginAttempts || 1;
+          
+          if (currentAttempts >= 5) {
+            // Lock for 15 minutes
+            await Admin.findByIdAndUpdate(admin._id, {
+              lockedUntil: new Date(Date.now() + 15 * 60 * 1000),
+              status: "locked"
+            });
+          }
+
+          // Log failed attempt
+          try {
+            await AuditLog.create({
+              adminId: admin._id,
+              adminEmail: admin.email,
+              ip: ip,
+              browser: userAgent,
+              action: "LOGIN_FAILED",
+              module: "auth",
+              details: { reason: "Invalid password", attempt: admin.failedLoginAttempts }
+            });
+          } catch (e) {
+            console.error(e);
+          }
+
           throw new Error("Invalid credentials");
         }
 
-        const ip = req.headers?.get("x-forwarded-for") || "Unknown IP";
-        const userAgent = req.headers?.get("user-agent") || "Unknown Browser";
+        // Reset failed attempts on success
+        admin.failedLoginAttempts = 0;
+        admin.lockedUntil = undefined;
+        if (admin.status === "locked") admin.status = "active";
+        
         const sessionToken = crypto.randomUUID();
 
         // Create AdminSession
@@ -79,10 +123,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
     })
   ],
-  session: {
-    strategy: "jwt",
-    maxAge: 24 * 60 * 60, // 24 hours
-  },
   callbacks: {
     async jwt({ token, user }) {
       // Initial sign in
@@ -92,21 +132,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.sessionId = (user as any).sessionId;
       }
       
-      // On every request, optionally verify the session is still active
-      // Doing this here adds a DB call to every protected route hit.
-      // For enterprise security, this is often required to support instant revocation.
       if (token.sessionId) {
         try {
           await connectToDatabase();
           const session = await AdminSession.findOne({ sessionToken: token.sessionId, status: "active" });
           if (!session) {
-            // Session revoked or not found
             return null; // Returning null invalidates the JWT
           }
-          
-          // Optionally update lastActivity (debounce this to avoid too many writes, or skip for now)
-          // session.lastActivity = new Date();
-          // await session.save();
         } catch (error) {
           console.error("Session verification failed", error);
         }
@@ -122,9 +154,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return session;
     }
-  },
-  pages: {
-    signIn: "/en/admin/login",
-  },
-  secret: process.env.AUTH_SECRET || "default_secret_for_development_only",
+  }
 });

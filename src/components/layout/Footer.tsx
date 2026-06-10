@@ -2,10 +2,10 @@ import { Link } from "@/i18n/routing";
 import { getTranslations, getLocale } from "next-intl/server";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 
+import Image from "next/image";
+
 export async function Footer() {
-  const t = await getTranslations("HomePage");
-  const locale = await getLocale();
-  const isAr = locale === "ar";
+  const t = await getTranslations("Footer");
 
   return (
     <footer className="bg-[#0b0c21] text-white pt-24 pb-12 border-t-[4px] border-secondary relative overflow-hidden">
@@ -18,12 +18,10 @@ export async function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <Link href="/" className="inline-block bg-white/5 p-4 rounded-xl backdrop-blur-sm border border-white/10">
-              <img src="/logo.png" alt="Mehar Transport" className="h-14 w-auto brightness-0 invert" />
+              <Image src="/logo.png" alt="Mehar Transport" width={120} height={56} className="h-14 w-auto brightness-0 invert" />
             </Link>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs font-light">
-              {isAr 
-                ? "الخيار الأول للنقل الفاخر في المملكة العربية السعودية. نوفر أسطولاً متميزاً لخدمات العمرة وتوصيل المطارات بأعلى معايير الجودة."
-                : "The premier choice for luxury transportation in Saudi Arabia. Providing a distinguished fleet for Umrah services and airport transfers with the highest quality standards."}
+              {t("thePremierChoiceForLuxuryTransportation")}
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all">
@@ -46,30 +44,30 @@ export async function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{isAr ? "روابط سريعة" : "Quick Links"}</h4>
+            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{t("quickLinks")}</h4>
             <ul className="space-y-3">
               <li>
                 <Link href="/fleet" className="text-white/70 hover:text-secondary transition-colors inline-flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-secondary/50"></span>
-                  {isAr ? "أسطولنا" : "Our Fleet"}
+                  {t("ourFleet")}
                 </Link>
               </li>
               <li>
                 <Link href="/routes" className="text-white/70 hover:text-secondary transition-colors inline-flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-secondary/50"></span>
-                  {isAr ? "المسارات" : "Routes"}
+                  {t("routes")}
                 </Link>
               </li>
               <li>
                 <Link href="/packages" className="text-white/70 hover:text-secondary transition-colors inline-flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-secondary/50"></span>
-                  {isAr ? "باقات العمرة" : "Umrah Packages"}
+                  {t("umrahPackages")}
                 </Link>
               </li>
               <li>
                 <Link href="/booking" className="text-white/70 hover:text-secondary transition-colors inline-flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-secondary/50"></span>
-                  {isAr ? "احجز الآن" : "Book Now"}
+                  {t("bookNow")}
                 </Link>
               </li>
             </ul>
@@ -77,14 +75,14 @@ export async function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-6">
-            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{isAr ? "تواصل معنا" : "Contact Us"}</h4>
+            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{t("contactUs")}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
                 <div className="w-10 h-10 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-secondary">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <span className="text-white/70 text-sm leading-relaxed pt-2">
-                  {isAr ? "جدة، المملكة العربية السعودية" : "Jeddah, Saudi Arabia"}
+                  {t("jeddahSaudiArabia")}
                 </span>
               </li>
               <li className="flex items-center gap-4">
@@ -104,12 +102,10 @@ export async function Footer() {
 
           {/* Map/Booking Widget */}
           <div className="space-y-6">
-            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{isAr ? "خدمة العملاء" : "Customer Service"}</h4>
+            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{t("customerService")}</h4>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
               <p className="text-white/70 text-sm mb-6 leading-relaxed">
-                {isAr 
-                  ? "فريقنا متواجد على مدار الساعة لخدمتكم والرد على استفساراتكم."
-                  : "Our team is available 24/7 to assist you with your booking inquiries."}
+                {t("ourTeamIsAvailable247ToAssistYouWithYour")}
               </p>
               <a 
                 href="https://wa.me/966565638120" 
@@ -118,7 +114,7 @@ export async function Footer() {
                 className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white hover:bg-[#20bd5a] px-4 py-3 rounded-xl text-sm font-bold transition-colors shadow-lg"
               >
                 <MessageCircle className="w-5 h-5" />
-                <span>{isAr ? "تواصل عبر واتساب" : "Chat on WhatsApp"}</span>
+                <span>{t("chatOnWhatsapp")}</span>
               </a>
             </div>
           </div>
@@ -127,11 +123,11 @@ export async function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/50 text-sm">
-            © {new Date().getFullYear()} Mehar Transport. {isAr ? "جميع الحقوق محفوظة." : "All rights reserved."}
+            © {new Date().getFullYear()} Mehar Transport. {t("allRightsReserved")}
           </p>
           <div className="flex gap-6 text-sm text-white/50">
-            <Link href="/privacy" className="hover:text-secondary transition-colors">{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</Link>
-            <Link href="/terms" className="hover:text-secondary transition-colors">{isAr ? "الشروط والأحكام" : "Terms & Conditions"}</Link>
+            <Link href="/privacy" className="hover:text-secondary transition-colors">{t("privacyPolicy")}</Link>
+            <Link href="/terms" className="hover:text-secondary transition-colors">{t("termsConditions")}</Link>
           </div>
         </div>
       </div>

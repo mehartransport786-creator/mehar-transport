@@ -7,8 +7,8 @@ export interface IPricingAuditLog extends Document {
   entityId: mongoose.Types.ObjectId;
   oldPrice?: number;
   newPrice?: number;
-  oldValue?: any;
-  newValue?: any;
+  oldValue?: Record<string, unknown>;
+  newValue?: Record<string, unknown>;
   reason: string;
   createdAt: Date;
 }

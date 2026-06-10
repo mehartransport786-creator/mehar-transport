@@ -1,39 +1,50 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+
+import NextAuth from 'next-auth';
+import { authConfig } from '@/auth.config';
+
+const { auth } = NextAuth(authConfig);
 import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
+import { routing } from '@/i18n/routing';
 
 const intlMiddleware = createMiddleware(routing);
 
-export default async function proxy(request: NextRequest) {
-  const isAuthPage = request.nextUrl.pathname.includes('/admin/login');
-  const isAdminRoute = request.nextUrl.pathname.includes('/admin');
-  
-  // Create response from next-intl first to handle localization and cookies
-  const response = intlMiddleware(request);
+const publicPages = ['/admin/login', '/'];
 
-  if (isAdminRoute) {
-    const sessionToken = request.cookies.get('authjs.session-token') || 
-                         request.cookies.get('__Secure-authjs.session-token');
-
-    if (!sessionToken && !isAuthPage) {
-      // Redirect to localized login page
-      const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
-      const loginUrl = new URL(`/${locale}/admin/login`, request.url);
-      return NextResponse.redirect(loginUrl);
+export default auth((req) => {
+  // Protect API Admin Routes
+  if (req.nextUrl.pathname.startsWith('/api')) {
+    if (req.nextUrl.pathname.startsWith('/api/admin') && !req.auth) {
+      return Response.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
-
-    if (sessionToken && isAuthPage) {
-      // If logged in and trying to access login, redirect to dashboard
-      const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
-      const adminUrl = new URL(`/${locale}/admin`, request.url);
-      return NextResponse.redirect(adminUrl);
-    }
+    return; // Pass through non-admin APIs
   }
 
-  return response;
-}
+  const publicPathnameRegex = RegExp(
+    `^(/(${routing.locales.join('|')}))?(${publicPages
+      .flatMap((p) => (p === '/' ? ['', '/'] : p))
+      .join('|')})/?$`,
+    'i'
+  );
+  
+  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+  const isAdminRoute = req.nextUrl.pathname.includes('/admin');
+
+  // If the user is trying to access a protected admin page without an active session
+  if (isAdminRoute && !isPublicPage && !req.auth) {
+    const localeMatch = req.nextUrl.pathname.match(new RegExp(`^/(${routing.locales.join('|')})`));
+    const locale = localeMatch ? localeMatch[1] : routing.defaultLocale;
+    
+    const loginUrl = new URL(`/${locale}/admin/login`, req.url);
+    loginUrl.searchParams.set('callbackUrl', req.nextUrl.pathname);
+    
+    return Response.redirect(loginUrl);
+  }
+
+  // Handle i18n routing
+  return intlMiddleware(req);
+});
 
 export const config = {
-  matcher: ['/', '/(ar|en)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)']
+  // Match everything except _next and static files
+  matcher: ['/((?!_next|.*\\..*).*)']
 };

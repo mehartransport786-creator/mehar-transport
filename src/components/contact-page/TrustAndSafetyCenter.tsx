@@ -48,6 +48,7 @@ export function TrustAndSafetyCenter() {
                 <Icon className="w-6 h-6 text-slate-700 dark:text-slate-300" />
               </div>
               <span className="font-semibold text-slate-900 dark:text-white">
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 {t(`items.${idx}` as any)} 
               </span>
             </motion.div>

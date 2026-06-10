@@ -176,13 +176,35 @@ export default function BookingsPage() {
                         <span className="font-bold text-[#1B1E4F]">{(booking.totalPrice || 0).toLocaleString()}</span>
                         <span className="text-xs text-gray-400 ml-1">SAR</span>
                       </td>
-                      <td className="px-6 py-4">
-                        <span
-                          className="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider"
-                          style={{ color: sc.color, background: sc.bg }}
+                      <td className="px-6 py-4 relative">
+                        <select
+                          value={booking.status}
+                          onChange={async (e) => {
+                            const newStatus = e.target.value;
+                            try {
+                              const res = await fetch(`/api/bookings/${booking.bookingId}`, {
+                                method: 'PATCH',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ status: newStatus })
+                              });
+                              if (!res.ok) throw new Error('Failed to update status');
+                            } catch (error) {
+                              console.error(error);
+                              alert('Failed to update booking status');
+                            }
+                          }}
+                          className="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider appearance-none cursor-pointer border-none outline-none focus:ring-2 pr-6 w-[120px]"
+                          style={{ color: sc.color, background: sc.bg, textShadow: "none" }}
                         >
-                          {isAr ? sc.labelAr : sc.label}
-                        </span>
+                          {(Object.keys(statusConfig) as BookingStatus[]).map(status => (
+                            <option key={status} value={status} style={{ color: '#000', background: '#fff' }}>
+                              {isAr ? statusConfig[status].labelAr : statusConfig[status].label}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="absolute right-8 top-1/2 -translate-y-1/2 pointer-events-none text-[8px]" style={{ color: sc.color }}>
+                          ▼
+                        </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">

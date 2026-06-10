@@ -22,6 +22,7 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 export default function AdminLogin() {
   const router = useRouter();
   const locale = useLocale();
+  const isAr = locale === "ar";
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

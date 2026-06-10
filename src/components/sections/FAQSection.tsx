@@ -1,52 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
 
 export function FAQSection() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('FAQSection');
   
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
-      q: isAr ? "هل يمكنني حجز سيارة من مطار جدة إلى مكة مباشرة؟" : "Can I book a transfer from Jeddah Airport directly to Makkah?",
-      a: isAr 
-        ? "نعم، نقدم خدمة النقل المباشر من مطار الملك عبد العزيز بجدة إلى فندقك في مكة المكرمة. سيكون السائق في انتظارك عند بوابة الوصول مع لوحة تحمل اسمك." 
-        : "Yes, we provide direct transfer services from King Abdulaziz Airport (Jeddah) to your hotel in Makkah. The driver will be waiting at the arrivals gate with a name sign."
+      q: t("canIBookATransferFromJeddahAirportDirect"),
+      a: t("yesWeProvideDirectTransferServicesFromKi")
     },
     {
-      q: isAr ? "هل الأسعار المعروضة ثابتة أم تتغير؟" : "Are the displayed prices fixed or do they change?",
-      a: isAr 
-        ? "جميع أسعارنا ثابتة وتشمل كافة الضرائب ورسوم الطريق. لا توجد أي رسوم خفية، والمبلغ المتفق عليه هو ما ستدفعه فقط." 
-        : "All our prices are fixed and inclusive of all taxes and toll fees. There are no hidden charges; the agreed amount is exactly what you pay."
+      q: t("areTheDisplayedPricesFixedOrDoTheyChange"),
+      a: t("allOurPricesAreFixedAndInclusiveOfAllTax")
     },
     {
-      q: isAr ? "هل توفرون مقاعد مخصصة للأطفال؟" : "Do you provide child seats?",
-      a: isAr 
-        ? "نعم بالتأكيد. نوفر مقاعد أطفال مجانية لضمان سلامة عائلتك. يرجى إبلاغنا بعدد المقاعد المطلوبة وأعمار الأطفال عند الحجز." 
-        : "Yes, absolutely. We provide complimentary child seats to ensure your family's safety. Please inform us of the number of seats needed and the children's ages when booking."
+      q: t("doYouProvideChildSeats"),
+      a: t("yesAbsolutelyWeProvideComplimentaryChild")
     },
     {
-      q: isAr ? "ماذا يحدث إذا تأخرت رحلتي الجوية؟" : "What happens if my flight is delayed?",
-      a: isAr 
-        ? "لا تقلق، فريقنا يراقب مواعيد الرحلات الجوية باستمرار. سيقوم السائق بانتظارك في الوقت الفعلي لوصول طائرتك بدون أي رسوم تأخير إضافية." 
-        : "Don't worry, our team monitors flight schedules in real-time. The driver will wait for you based on your actual arrival time without any additional delay charges."
+      q: t("whatHappensIfMyFlightIsDelayed"),
+      a: t("donTWorryOurTeamMonitorsFlightSchedulesI")
     },
     {
-      q: isAr ? "كيف يمكنني الدفع مقابل الرحلة؟" : "How can I pay for the trip?",
-      a: isAr 
-        ? "نقبل الدفع النقدي للسائق، والتحويل البنكي المسبق، والبطاقات الائتمانية عبر رابط دفع آمن نرسله لك عند تأكيد الحجز." 
-        : "We accept cash to the driver, advance bank transfers, and credit cards via a secure payment link sent to you upon booking confirmation."
+      q: t("howCanIPayForTheTrip"),
+      a: t("weAcceptCashToTheDriverAdvanceBankTransf")
     },
     {
-      q: isAr ? "هل السائقون يتحدثون الإنجليزية؟" : "Do the drivers speak English?",
-      a: isAr 
-        ? "نعم، نوفر سائقين يتحدثون الإنجليزية والعربية بطلاقة لتسهيل التواصل طوال رحلتك." 
-        : "Yes, we provide drivers who are fluent in both English and Arabic to ensure smooth communication throughout your journey."
+      q: t("doTheDriversSpeakEnglish"),
+      a: t("yesWeProvideDriversWhoAreFluentInBothEng")
     }
   ];
 
@@ -59,12 +46,10 @@ export function FAQSection() {
             <HelpCircle className="w-6 h-6 text-secondary" />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            {isAr ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
+            {t("frequentlyAskedQuestions")}
           </h2>
           <p className="text-muted-foreground">
-            {isAr 
-              ? "إجابات وافية لأكثر الاستفسارات شيوعاً حول خدماتنا للحجز والنقل."
-              : "Comprehensive answers to the most common questions about our booking and transport services."}
+            {t("comprehensiveAnswersToTheMostCommonQuest")}
           </p>
         </div>
 

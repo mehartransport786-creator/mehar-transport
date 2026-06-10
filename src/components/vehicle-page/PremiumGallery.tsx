@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import Image from "next/image";
 
 interface PremiumGalleryProps {
   gallery: string[];
 }
 
 export function PremiumGallery({ gallery }: PremiumGalleryProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('PremiumGallery');
   
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
@@ -39,10 +39,10 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
     <section>
       <div className="flex items-center justify-between mb-8">
         <h3 className="text-2xl font-bold text-[#1B1E4F]">
-          {isAr ? "معرض الصور" : "Experience the Vehicle"}
+          {t("experienceTheVehicle")}
         </h3>
         <span className="text-sm font-bold text-[#D9A63A] uppercase tracking-wider">
-          {displayGallery.length} {isAr ? "صور" : "Photos"}
+          {displayGallery.length} {t("photos")}
         </span>
       </div>
 
@@ -55,11 +55,12 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
           className="col-span-2 row-span-2 relative group cursor-pointer rounded-2xl overflow-hidden aspect-video md:aspect-auto h-[300px] md:h-full"
           onClick={() => openLightbox(0)}
         >
-          <img 
+          <Image 
             src={displayGallery[0]} 
             alt="Gallery Featured" 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            loading="lazy"
+            fill
+            sizes="(max-width: 768px) 100vw, 66vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <Maximize2 className="w-8 h-8 text-white" />
@@ -77,11 +78,12 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
             className="relative group cursor-pointer rounded-2xl overflow-hidden aspect-square md:aspect-[4/3]"
             onClick={() => openLightbox(idx + 1)}
           >
-            <img 
+            <Image 
               src={img} 
               alt={`Gallery ${idx + 1}`} 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              loading="lazy"
+              fill
+              sizes="(max-width: 768px) 50vw, 33vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Maximize2 className="w-6 h-6 text-white" />
@@ -128,17 +130,22 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
               <ChevronRight className="w-8 h-8" />
             </button>
 
-            <motion.img
+            <motion.div
               key={selectedImage}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.2 }}
-              src={displayGallery[selectedImage]}
-              alt={`Lightbox ${selectedImage}`}
-              className="max-w-[90vw] max-h-[85vh] object-contain"
+              className="relative w-full h-full max-w-[90vw] max-h-[85vh]"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <Image
+                src={displayGallery[selectedImage]}
+                alt={`Lightbox ${selectedImage}`}
+                fill
+                className="object-contain"
+              />
+            </motion.div>
             
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium tracking-widest bg-black/50 px-4 py-2 rounded-full">
               {selectedImage + 1} / {displayGallery.length}

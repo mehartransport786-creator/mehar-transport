@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link, useRouter } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import { MapPin, Calendar, ArrowRight, ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
 export function Hero() {
   const locale = useLocale();
@@ -15,21 +16,14 @@ export function Hero() {
     <section className="relative h-screen w-full flex items-center overflow-hidden">
       {/* Cinematic Video Background */}
       <div className="absolute inset-0 z-0">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="w-full h-full object-cover object-center"
-        >
-          {/* Using a placeholder luxury car night driving video */}
-          <source src="https://cdn.pixabay.com/video/2021/08/19/85590-589993318_large.mp4" type="video/mp4" />
-          <img 
-            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" 
-            alt="Luxury car driving" 
-            className="w-full h-full object-cover"
-          />
-        </video>
+        <Image
+          src="/hero-image.webp"
+          alt="Mehar Transport Luxury Chauffeur"
+          fill
+          priority
+          unoptimized
+          className="object-cover object-center"
+        />
         {/* Deep navy/black gradient overlay for readability and premium feel */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-transparent to-transparent"></div>

@@ -30,6 +30,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
   const [booking, setBooking] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
+  const [drivers, setDrivers] = useState<any[]>([]);
 
   // Fetch booking data
   useEffect(() => {
@@ -52,10 +53,26 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
   // Live update from SSE
   useEffect(() => {
     const liveBooking = bookings.find((b) => b.bookingId === id);
-    if (liveBooking && booking) {
-      setBooking((prev: any) => ({ ...prev, ...liveBooking }));
+    if (liveBooking) {
+      setBooking((prev: any) => prev ? { ...prev, ...liveBooking } : liveBooking);
     }
-  }, [bookings, id, booking]);
+  }, [bookings, id]);
+
+  // Fetch drivers
+  useEffect(() => {
+    async function fetchDrivers() {
+      try {
+        const res = await fetch('/api/drivers');
+        const data = await res.json();
+        if (data.success) {
+          setDrivers(data.data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch drivers:', error);
+      }
+    }
+    fetchDrivers();
+  }, []);
 
   const handleStatusChange = async (newStatus: string) => {
     setUpdating(true);
@@ -71,6 +88,25 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
       }
     } catch (error) {
       console.error('Failed to update status:', error);
+    } finally {
+      setUpdating(false);
+    }
+  };
+
+  const handleAssignDriver = async (driverId: string) => {
+    setUpdating(true);
+    try {
+      const res = await fetch(`/api/bookings/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ driverAssigned: driverId, status: 'assigned' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setBooking(data.data);
+      }
+    } catch (error) {
+      console.error('Failed to assign driver:', error);
     } finally {
       setUpdating(false);
     }
@@ -309,7 +345,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
           <h3 className="text-lg font-bold mb-4" style={{ color: '#1B1E4F' }}>
             {isAr ? 'سجل الحالات' : 'Status History'}
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-3 max-h-[250px] overflow-y-auto pr-2">
             {(booking.statusHistory || []).map((entry: any, i: number) => (
               <div key={i} className="flex items-start gap-3 text-sm">
                 <div className="mt-1 w-2 h-2 rounded-full bg-[#D9A63A] shrink-0" />
@@ -323,6 +359,55 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Driver Assignment */}
+        <div className="bg-white rounded-2xl border border-gray-100 p-6">
+          <h3 className="text-lg font-bold mb-4" style={{ color: '#1B1E4F' }}>
+            {isAr ? 'تعيين السائق' : 'Driver Assignment'}
+          </h3>
+          
+          {booking.driverAssigned ? (
+            <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-gray-50/50">
+              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+                <UserPlus className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-[#1B1E4F] text-lg">{booking.driverAssigned}</div>
+                <div className="text-xs font-semibold text-emerald-600 mt-0.5 flex items-center gap-1">
+                  <CheckCircle className="w-3 h-3" />
+                  {isAr ? 'تم التعيين بنجاح' : 'Assigned successfully'}
+                </div>
+              </div>
+              <button 
+                onClick={() => handleAssignDriver('')}
+                disabled={updating}
+                className="text-xs font-bold text-red-500 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors"
+              >
+                {isAr ? 'إزالة' : 'Remove'}
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <p className="text-sm text-gray-500">
+                {isAr ? 'الرجاء اختيار سائق لهذه الرحلة' : 'Please select a driver for this journey'}
+              </p>
+              <select
+                onChange={(e) => {
+                  if(e.target.value) handleAssignDriver(e.target.value);
+                }}
+                disabled={updating}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-700 outline-none focus:ring-2 focus:ring-[#1B1E4F]/20 focus:border-[#1B1E4F]"
+              >
+                <option value="">{isAr ? 'اختيار سائق...' : 'Select driver...'}</option>
+                {drivers.filter(d => d.availability === 'available').map(driver => (
+                  <option key={driver._id} value={driver.name}>
+                    {isAr ? driver.nameAr : driver.name} - Rating: {driver.rating}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
       </div>
 

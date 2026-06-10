@@ -1,15 +1,17 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+import { VehicleTheme } from "@/types/vehicle";
 
 interface ComfortExperienceProps {
-  theme: any;
+  theme: VehicleTheme;
 }
 
 export function ComfortExperience({ theme }: ComfortExperienceProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('ComfortExperience');
 
   return (
     <section className="relative rounded-3xl overflow-hidden text-white my-12" style={{ backgroundColor: theme.primary }}>
@@ -22,18 +24,16 @@ export function ComfortExperience({ theme }: ComfortExperienceProps) {
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-0.5" style={{ backgroundColor: theme.secondary }}></div>
             <span className="font-bold uppercase tracking-[0.2em] text-sm" style={{ color: theme.secondary }}>
-              {isAr ? "تجربة الراحة" : "The Comfort Experience"}
+              {t("theComfortExperience")}
             </span>
           </div>
 
           <h3 className="text-3xl md:text-4xl font-bold leading-tight">
-            {isAr ? "مصممة لراحتك المطلقة" : "Engineered for Absolute Comfort"}
+            {t("engineeredForAbsoluteComfort")}
           </h3>
 
           <p className="text-gray-300 font-light leading-relaxed text-lg">
-            {isAr 
-              ? "نحن نؤمن بأن الرحلة لا تقل أهمية عن الوجهة. استرخ في مقصورة هادئة، واستمتع بمساحة واسعة للأرجل، وتكييف هواء مثالي يضمن وصولك منتعشاً ومستعداً."
-              : "We believe the journey is just as important as the destination. Relax in an acoustically quiet cabin, enjoy expansive legroom, and perfect climate control ensuring you arrive completely refreshed."}
+            {t("weBelieveTheJourneyIsJustAsImportantAsTh")}
           </p>
         </div>
 
@@ -44,10 +44,12 @@ export function ComfortExperience({ theme }: ComfortExperienceProps) {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" 
             alt="Comfort Interior" 
-            className="w-full h-full object-cover rounded-2xl shadow-2xl"
+            width={800}
+            height={600}
+            className="w-full h-auto object-cover rounded-2xl shadow-2xl"
           />
         </motion.div>
       </div>

@@ -1,43 +1,42 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { CarFront, Clock, UserCheck, ShieldCheck, Route, Star } from "lucide-react";
 
 export function FleetOverview() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('FleetOverview');
 
   const stats = [
     {
       icon: CarFront,
       value: "8",
-      label: isAr ? "فئات المركبات" : "Vehicle Categories",
+      label: t("vehicleCategories"),
     },
     {
       icon: Clock,
       value: "24/7",
-      label: isAr ? "التوافر" : "Availability",
+      label: t("availability"),
     },
     {
       icon: UserCheck,
       value: "100%",
-      label: isAr ? "سائقون محترفون" : "Professional Chauffeurs",
+      label: t("professionalChauffeurs"),
     },
     {
       icon: ShieldCheck,
       value: "Premium",
-      label: isAr ? "تأمين شامل" : "Insurance Coverage",
+      label: t("insuranceCoverage"),
     },
     {
       icon: Route,
       value: "10k+",
-      label: isAr ? "رحلة ناجحة" : "Successful Journeys",
+      label: t("successfulJourneys"),
     },
     {
       icon: Star,
       value: "99%",
-      label: isAr ? "نسبة الرضا" : "Satisfaction Rate",
+      label: t("satisfactionRate"),
     }
   ];
 

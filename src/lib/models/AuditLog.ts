@@ -7,9 +7,9 @@ export interface IAuditLog extends Document {
   browser: string;
   action: string; // e.g. "UPDATE_USER", "LOGIN_SUCCESS", "DELETE_BOOKING"
   module: string; // e.g. "users", "bookings", "settings"
-  oldValue?: Record<string, any>;
-  newValue?: Record<string, any>;
-  details?: Record<string, any>; // legacy field, kept for backwards compatibility
+  oldValue?: Record<string, unknown>;
+  newValue?: Record<string, unknown>;
+  details?: Record<string, unknown>; // legacy field, kept for backwards compatibility
   createdAt: Date;
 }
 

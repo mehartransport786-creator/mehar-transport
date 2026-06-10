@@ -14,10 +14,13 @@ interface UseRealTimeEventsOptions {
 
 export function useRealTimeEvents(options: UseRealTimeEventsOptions = {}) {
   const [isConnected, setIsConnected] = useState(false);
-  const [lastEvent, setLastEvent] = useState<{ type: string; data: any } | null>(null);
+  const [lastEvent, setLastEvent] = useState<{ type: string; data: unknown } | null>(null);
   const eventSourceRef = useRef<EventSource | null>(null);
   const optionsRef = useRef(options);
-  optionsRef.current = options;
+  
+  useEffect(() => {
+    optionsRef.current = options;
+  }, [options]);
 
   const connect = useCallback(() => {
     if (typeof window === 'undefined') return;

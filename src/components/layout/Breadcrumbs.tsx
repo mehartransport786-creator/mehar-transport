@@ -1,7 +1,7 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ChevronRight, Home } from 'lucide-react';
 
 interface BreadcrumbItem {
@@ -17,6 +17,7 @@ interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ items, variant = 'dark' }: BreadcrumbsProps) {
+    const t = useTranslations('Breadcrumbs');
   const locale = useLocale();
   const isAr = locale === 'ar';
 
@@ -31,7 +32,7 @@ export function Breadcrumbs({ items, variant = 'dark' }: BreadcrumbsProps) {
         <li>
           <Link href="/" className={`flex items-center gap-1 ${hoverColor} transition-colors`}>
             <Home className="w-3.5 h-3.5" />
-            <span className="sr-only">{isAr ? 'الرئيسية' : 'Home'}</span>
+            <span className="sr-only">{t("home")}</span>
           </Link>
         </li>
         {items.map((item, index) => {

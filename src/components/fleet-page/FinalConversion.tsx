@@ -1,12 +1,12 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Calendar, MessageCircle, Phone, FileText } from "lucide-react";
 
 export function FinalConversion() {
+    const t = useTranslations('FinalConversion');
   const locale = useLocale();
-  const isAr = locale === "ar";
 
   return (
     <section className="py-32 bg-[#1B1E4F] relative overflow-hidden">
@@ -20,13 +20,11 @@ export function FinalConversion() {
         
         <div className="text-center space-y-8">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            {isAr ? "اختر المركبة المثالية لرحلتك" : "Choose the Perfect Vehicle for Your Journey"}
+            {t("chooseThePerfectVehicleForYourJourney")}
           </h2>
           
           <p className="text-xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto">
-            {isAr 
-              ? "سواء كنت تسافر بمفردك، مع عائلتك، أو تدير مجموعة كبيرة، توفر ميهار للنقل حلول النقل المثالية التي تضمن الراحة والأمان التام."
-              : "Whether you are traveling alone, with family, or managing a large group, Mehar Transport provides the ideal transportation solution ensuring comfort and absolute safety."}
+            {t("whetherYouAreTravelingAloneWithFamilyOrM")}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
@@ -35,7 +33,7 @@ export function FinalConversion() {
               className="w-full sm:w-auto bg-[#D9A63A] text-[#1B1E4F] hover:bg-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3 shadow-2xl group"
             >
               <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>{isAr ? "احجز الآن" : "Book Now"}</span>
+              <span>{t("bookNow")}</span>
             </Link>
             
             <a 
@@ -43,7 +41,7 @@ export function FinalConversion() {
               className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3"
             >
               <FileText className="w-5 h-5" />
-              <span>{isAr ? "طلب عرض سعر" : "Request Quote"}</span>
+              <span>{t("requestQuote")}</span>
             </a>
             
             <a 
@@ -59,7 +57,7 @@ export function FinalConversion() {
               className="w-full sm:w-auto hover:bg-white/5 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3"
             >
               <Phone className="w-5 h-5 text-[#D9A63A]" />
-              <span>{isAr ? "اتصل بنا" : "Call Us"}</span>
+              <span>{t("callUs")}</span>
             </a>
           </div>
         </div>

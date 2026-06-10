@@ -35,7 +35,6 @@ const stepComponents = [
 function BookingEngineContent() {
   const { state } = useBooking();
   const locale = useLocale();
-  const isAr = locale === "ar";
   
   const ActiveStepComponent = stepComponents[state.currentStep - 1];
 

@@ -19,7 +19,7 @@ export interface IActivityLog extends Document {
   message: string;
   messageAr: string;
   icon: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   createdAt: Date;
 }
 

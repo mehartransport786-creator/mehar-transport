@@ -4,7 +4,6 @@ import path from "path";
 // Load environment variables from .env.local FIRST
 dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
 
-import mongoose from "mongoose";
 import bcryptjs from "bcryptjs";
 import connectToDatabase from "./db";
 import { Admin } from "./models/Admin";

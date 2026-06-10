@@ -29,14 +29,14 @@ function getEventBus(): EventEmitter {
 export const eventBus = getEventBus();
 
 // Type-safe event helpers
-export function emitBookingCreated(booking: any) {
+export function emitBookingCreated(booking: unknown) {
   eventBus.emit('booking:created', booking);
 }
 
-export function emitBookingUpdated(booking: any, previousStatus?: string) {
+export function emitBookingUpdated(booking: unknown, previousStatus?: string) {
   eventBus.emit('booking:updated', { booking, previousStatus });
 }
 
-export function emitActivityCreated(activity: any) {
+export function emitActivityCreated(activity: unknown) {
   eventBus.emit('activity:new', activity);
 }

@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRealTime } from './RealTimeProvider';
 import { Bell, Check, CheckCheck, Eye, Trash2 } from 'lucide-react';
 import { toggleSound, isSoundEnabled } from '@/lib/notification-sound';
 
 export function NotificationCenter() {
+    const t = useTranslations('NotificationCenter');
   const locale = useLocale();
   const isAr = locale === 'ar';
   const { notifications, unreadCount, markNotificationRead, clearAllNotifications } = useRealTime();
@@ -36,7 +37,7 @@ export function NotificationCenter() {
 
   const timeAgo = (dateStr: string) => {
     const seconds = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
-    if (seconds < 60) return isAr ? 'الآن' : 'Just now';
+    if (seconds < 60) return t("justNow");
     const minutes = Math.floor(seconds / 60);
     if (minutes < 60) return isAr ? `منذ ${minutes} دقيقة` : `${minutes}m ago`;
     const hours = Math.floor(minutes / 60);
@@ -63,14 +64,14 @@ export function NotificationCenter() {
       {open && (
         <div
           className={`absolute top-full mt-2 w-[380px] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 ${
-            isAr ? 'left-0' : 'right-0'
+            t("right0")
           }`}
           style={{ animation: 'fadeInScale 0.2s ease-out' }}
         >
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
             <h3 className="text-base font-bold" style={{ color: '#1B1E4F' }}>
-              {isAr ? 'الإشعارات' : 'Notifications'}
+              {t("notifications")}
               {unreadCount > 0 && (
                 <span className="ml-2 px-2 py-0.5 text-xs font-bold bg-red-50 text-red-600 rounded-full">
                   {unreadCount}
@@ -104,7 +105,7 @@ export function NotificationCenter() {
               <div className="py-12 text-center">
                 <Bell className="w-10 h-10 text-gray-200 mx-auto mb-3" />
                 <p className="text-sm text-gray-400 font-medium">
-                  {isAr ? 'لا توجد إشعارات' : 'No notifications yet'}
+                  {t("noNotificationsYet")}
                 </p>
               </div>
             ) : (

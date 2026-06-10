@@ -87,7 +87,7 @@ export function GoogleReviewsShowcase() {
               </div>
             </div>
             <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-3">
-              "{review.text}"
+              &quot;{review.text}&quot;
             </p>
             <span className="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold rounded-full">
               {review.category}

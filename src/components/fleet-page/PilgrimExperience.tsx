@@ -1,41 +1,32 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { MapPin, PlaneTakeoff, Building2, Users2 } from "lucide-react";
 
 export function PilgrimExperience() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('PilgrimExperience');
 
   const steps = [
     {
       icon: PlaneTakeoff,
-      title: isAr ? "استقبال كبار الشخصيات بالمطار" : "VIP Airport Meet & Greet",
-      desc: isAr 
-        ? "سائقونا بانتظارك في صالة الوصول مع لوحة ترحيبية والمساعدة في حمل الأمتعة."
-        : "Our chauffeurs wait in the arrivals hall with a name board, ready to assist with your luggage."
+      title: t("vipAirportMeetGreet"),
+      desc: t("ourChauffeursWaitInTheArrivalsHallWithAN")
     },
     {
       icon: MapPin,
-      title: isAr ? "نقل سلس إلى مكة والمدينة" : "Seamless Holy City Transfers",
-      desc: isAr 
-        ? "تنقلات هادئة ومريحة بين جدة ومكة المكرمة والمدينة المنورة في مركبات فاخرة."
-        : "Serene and comfortable transfers between Jeddah, Makkah, and Madinah in premium vehicles."
+      title: t("seamlessHolyCityTransfers"),
+      desc: t("sereneAndComfortableTransfersBetweenJedd")
     },
     {
       icon: Building2,
-      title: isAr ? "توصيل مباشر للفنادق" : "Direct Hotel Drop-offs",
-      desc: isAr 
-        ? "معرفة تامة بمواقع الفنادق لضمان وصولك مباشرة إلى باب فندقك دون عناء."
-        : "Expert knowledge of hotel locations ensuring you are dropped directly at your hotel entrance."
+      title: t("directHotelDropOffs"),
+      desc: t("expertKnowledgeOfHotelLocationsEnsuringY")
     },
     {
       icon: Users2,
-      title: isAr ? "رعاية فائقة للحجاج والمعتمرين" : "Dedicated Pilgrim Care",
-      desc: isAr 
-        ? "سائقون محترفون ومدربون خصيصاً لتلبية احتياجات ضيوف الرحمن باحترام وتقدير."
-        : "Professional chauffeurs specially trained to serve the needs of pilgrims with utmost respect."
+      title: t("dedicatedPilgrimCare"),
+      desc: t("professionalChauffeursSpeciallyTrainedTo")
     }
   ];
 
@@ -57,7 +48,7 @@ export function PilgrimExperience() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold leading-tight"
           >
-            {isAr ? "تجربة العمرة الفاخرة" : "The Luxury Umrah Experience"}
+            {t("theLuxuryUmrahExperience")}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -66,9 +57,7 @@ export function PilgrimExperience() {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-400 font-light"
           >
-            {isAr 
-              ? "نحن نتشرف بخدمة ضيوف الرحمن. تم تصميم خدمات نقل العمرة لدينا لتوفير أقصى درجات السكينة والراحة، لتتفرغ تماماً لعبادتك."
-              : "It is our honor to serve the guests of Allah. Our Umrah transportation services are designed to provide maximum serenity and comfort, allowing you to focus entirely on your worship."}
+            {t("itIsOurHonorToServeTheGuestsOfAllahOurUm")}
           </motion.p>
         </div>
 

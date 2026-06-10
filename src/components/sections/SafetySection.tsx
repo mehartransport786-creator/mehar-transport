@@ -1,53 +1,52 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Shield, ShieldAlert, BadgeCheck, FileCheck, LifeBuoy, HeartHandshake, Eye, Navigation } from "lucide-react";
 
 export function SafetySection() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+    const t = useTranslations('SafetySection');
 
   const features = [
     {
       icon: BadgeCheck,
-      title: isAr ? "سائقون مرخصون" : "Licensed Drivers",
-      desc: isAr ? "نخضع جميع السائقين لفحوصات وتدريبات صارمة" : "All drivers undergo strict vetting and training"
+      title: t("licensedDrivers"),
+      desc: t("allDriversUndergoStrictVettingAndTrainin")
     },
     {
       icon: Navigation,
-      title: isAr ? "تتبع المواقع" : "GPS Tracking",
-      desc: isAr ? "مراقبة حية لجميع المركبات لضمان مسار آمن" : "Live monitoring of all vehicles for safe routing"
+      title: t("gpsTracking"),
+      desc: t("liveMonitoringOfAllVehiclesForSafeRoutin")
     },
     {
       icon: FileCheck,
-      title: isAr ? "فحص المركبات" : "Vehicle Inspections",
-      desc: isAr ? "صيانة دورية يومية قبل كل انطلاق" : "Daily maintenance checks before every dispatch"
+      title: t("vehicleInspections"),
+      desc: t("dailyMaintenanceChecksBeforeEveryDispatc")
     },
     {
       icon: Shield,
-      title: isAr ? "تغطية تأمينية" : "Insurance Coverage",
-      desc: isAr ? "تأمين شامل للركاب خلال جميع الرحلات" : "Comprehensive passenger insurance during all trips"
+      title: t("insuranceCoverage"),
+      desc: t("comprehensivePassengerInsuranceDuringAll")
     },
     {
       icon: LifeBuoy,
-      title: isAr ? "دعم الطوارئ" : "Emergency Support",
-      desc: isAr ? "فريق طوارئ متخصص متاح على مدار الساعة" : "Dedicated emergency response team available 24/7"
+      title: t("emergencySupport"),
+      desc: t("dedicatedEmergencyResponseTeamAvailable2")
     },
     {
       icon: HeartHandshake,
-      title: isAr ? "مركبات معقمة" : "Sanitized Vehicles",
-      desc: isAr ? "تعقيم شامل للسيارة بعد كل رحلة" : "Thorough sanitization after every single ride"
+      title: t("sanitizedVehicles"),
+      desc: t("thoroughSanitizationAfterEverySingleRide")
     },
     {
       icon: ShieldAlert,
-      title: isAr ? "معايير السلامة" : "Road Safety Standards",
-      desc: isAr ? "تطبيق صارم لأنظمة المرور والسلامة السعودية" : "Strict adherence to Saudi traffic and safety regulations"
+      title: t("roadSafetyStandards"),
+      desc: t("strictAdherenceToSaudiTrafficAndSafetyRe")
     },
     {
       icon: Eye,
-      title: isAr ? "مراقبة الرحلات" : "Flight Monitoring",
-      desc: isAr ? "تتبع الرحلات الجوية لتجنب التأخيرات" : "Proactive flight tracking to avoid any delays"
+      title: t("flightMonitoring"),
+      desc: t("proactiveFlightTrackingToAvoidAnyDelays")
     }
   ];
 
@@ -72,16 +71,14 @@ export function SafetySection() {
             <div className="flex items-center gap-4">
               <div className="w-12 h-0.5 bg-secondary"></div>
               <span className="text-secondary font-bold uppercase tracking-widest text-sm">
-                {isAr ? "الامتثال والسلامة" : "Safety & Compliance"}
+                {t("safetyCompliance")}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              {isAr ? "سلامتك هي أولويتنا القصوى" : "Your Safety is Our Highest Priority"}
+              {t("yourSafetyIsOurHighestPriority")}
             </h2>
             <p className="text-white/70 text-lg leading-relaxed font-light">
-              {isAr 
-                ? "في مِهار للنقل، نطبق معايير سلامة مؤسسية صارمة لضمان راحة بالك. رحلتك معنا محمية ومراقبة بأحدث التقنيات."
-                : "At Mehar Transport, we implement strict corporate safety standards to ensure your peace of mind. Your journey is protected and monitored."}
+              {t("atMeharTransportWeImplementStrictCorpora")}
             </p>
           </div>
 

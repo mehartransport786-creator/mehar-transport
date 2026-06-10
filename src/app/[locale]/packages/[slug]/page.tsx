@@ -59,8 +59,8 @@ const packageData: Record<string, any> = {
 
 export default async function PackagePage({ params }: { params: { slug: string; locale: string } }) {
   const resolvedParams = await params;
+  const isAr = resolvedParams.locale === "ar";
   const locale = await getLocale();
-  const isAr = locale === "ar";
   const ChevronIcon = isAr ? ChevronLeft : ChevronRight;
 
   const pkg = packageData[resolvedParams.slug];

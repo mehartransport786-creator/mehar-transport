@@ -16,6 +16,7 @@ export function InteractiveMap() {
   const [isDark, setIsDark] = useState(true); // default to dark for premium look
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     setIsDark(document.documentElement.classList.contains("dark"));
     

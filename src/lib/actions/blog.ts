@@ -15,7 +15,7 @@ async function checkAdmin() {
     throw new Error('Unauthorized');
   }
   // Role is stored as the role name from DB (e.g. "Super Admin", "Admin", "Editor")
-  const role = (session.user as any).role;
+  const role = (session.user as { role?: string }).role;
   if (!role) {
     throw new Error('Unauthorized: No role assigned');
   }
@@ -115,7 +115,7 @@ export async function deleteAuthor(id: string) {
 }
 
 // --- POSTS ---
-export async function getPosts(filters: any = {}) {
+export async function getPosts(filters: Record<string, any> = {}) {
   await dbConnect();
   const query = { ...filters };
   const posts = await BlogPost.find(query)
