@@ -73,20 +73,11 @@ export function BookingFAQ() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-[#D9A63A]' : 'text-gray-400'}`} />
               </button>
               
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="px-6 pb-4 pt-2 text-gray-500 text-sm leading-relaxed border-t border-gray-100">
-                      {faq.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {isOpen && (
+                <div className="px-6 pb-4 pt-2 text-gray-500 text-sm leading-relaxed border-t border-gray-100">
+                  {faq.a}
+                </div>
+              )}
             </div>
           );
         })}

@@ -71,20 +71,11 @@ export function FAQSection() {
                   <ChevronDown className={`w-5 h-5 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-secondary' : 'text-muted-foreground'}`} />
                 </button>
                 
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="px-6 pb-6 pt-0 text-muted-foreground leading-relaxed">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {isOpen && (
+                  <div className="px-6 pb-6 pt-0 text-muted-foreground leading-relaxed">
+                    {faq.a}
+                  </div>
+                )}
               </div>
             );
           })}

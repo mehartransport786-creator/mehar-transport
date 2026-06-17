@@ -51,18 +51,9 @@ function BookingEngineContent() {
         <div className="flex flex-col lg:flex-row gap-8 mt-8">
           {/* Main Content Area */}
           <div className={`flex-1 ${isConfirmationStep ? 'lg:w-full' : 'lg:w-2/3'}`}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={state.currentStep}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
-              >
-                {ActiveStepComponent && <ActiveStepComponent />}
-              </motion.div>
-            </AnimatePresence>
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+              {ActiveStepComponent && <ActiveStepComponent />}
+            </div>
           </div>
 
           {/* Sticky Sidebar - Order Summary */}
