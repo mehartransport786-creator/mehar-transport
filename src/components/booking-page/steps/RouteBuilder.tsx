@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function RouteBuilder() {
   const locale = useLocale();
   const isAr = locale === "ar";
-  const { state, updateState, nextStep, prevStep } = useBooking();
+  const { state, updateState, nextStep, prevStep, routes } = useBooking();
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
 
   const locations = state.locations;
@@ -55,64 +55,46 @@ export function RouteBuilder() {
         </p>
 
         <div className="space-y-6 flex-1">
-          {/* Timeline UI */}
-          <div className="relative pl-6 rtl:pr-6 rtl:pl-0 space-y-4">
-            <div className="absolute top-4 bottom-4 left-[11px] rtl:right-[11px] rtl:left-auto w-0.5 bg-gray-200"></div>
-            
-            <AnimatePresence initial={false}>
-              {locations.map((loc, index) => {
-                const isPickup = index === 0;
-                const isDropoff = index === locations.length - 1;
-                
-                return (
-                  <motion.div 
-                    key={loc.id}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="relative"
-                  >
-                    <div className={`absolute -left-[29px] rtl:-right-[29px] rtl:left-auto top-3 w-4 h-4 rounded-full border-4 border-white shadow-sm z-10
-                      ${isPickup ? 'bg-green-500' : isDropoff ? 'bg-red-500' : 'bg-[#D9A63A]'}`}
-                    ></div>
-                    
-                    <div className="bg-gray-50 rounded-xl p-3 flex gap-3 border border-gray-100 focus-within:border-[#D9A63A] focus-within:ring-1 focus-within:ring-[#D9A63A] transition-all">
-                      <div className="flex-1">
-                        <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1 block">
-                          {isPickup ? (isAr ? 'من' : 'From') : isDropoff ? (isAr ? 'إلى' : 'To') : (isAr ? 'توقف' : 'Stop')}
-                        </label>
-                        <input
-                          type="text"
-                          value={loc.address}
-                          onChange={(e) => updateLocation(loc.id, e.target.value)}
-                          placeholder={isPickup ? (isAr ? 'مطار الملك عبدالعزيز...' : 'King Abdulaziz Airport...') : (isAr ? 'البحث عن موقع...' : 'Search location...')}
-                          className="w-full bg-transparent border-none p-0 text-sm font-medium focus:ring-0 text-[#1B1E4F] placeholder-gray-400"
-                        />
-                      </div>
-                      
-                      {!isPickup && !isDropoff && (
-                        <button 
-                          onClick={() => removeStop(loc.id)}
-                          className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+          {/* Route Selection */}
+          <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 focus-within:border-[#D9A63A] focus-within:ring-1 focus-within:ring-[#D9A63A] transition-all">
+            <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-2 block">
+              {isAr ? "اختر المسار" : "Select Route"}
+            </label>
+            <div className="relative">
+              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 rtl:right-3 rtl:left-auto" />
+              <select
+                className="w-full bg-white border border-gray-200 rounded-lg pl-10 rtl:pr-10 rtl:pl-4 py-3 text-sm font-medium focus:ring-2 focus:ring-[#D9A63A] focus:border-transparent text-[#1B1E4F] appearance-none"
+                value={state.selectedRouteId || ""}
+                onChange={(e) => {
+                  const route = routes.find(r => r._id === e.target.value);
+                  updateState({ 
+                    selectedRouteId: e.target.value,
+                    selectedRoute: route
+                  });
+                }}
+              >
+                <option value="" disabled>{isAr ? "اختر المسار..." : "Select a route..."}</option>
+                {routes.map((route: any) => (
+                  <option key={route._id} value={route._id}>
+                    {isAr ? route.nameAr : route.name}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none rtl:left-3 rtl:right-auto">
+                <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </div>
+            {state.selectedRoute && (
+              <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                <div className="text-xs text-gray-500 font-medium">
+                  {state.selectedRoute.origin} <ArrowRight className="inline w-3 h-3 mx-1" /> {state.selectedRoute.destination}
+                </div>
+                <div className="text-xs font-bold text-[#D9A63A] bg-[#D9A63A]/10 px-2 py-1 rounded">
+                  {isAr ? "أسعار ثابتة" : "Fixed Pricing"}
+                </div>
+              </div>
+            )}
           </div>
-
-          {/* Add Stop Button */}
-          <button 
-            onClick={addStop}
-            className="flex items-center gap-2 text-[#D9A63A] font-bold text-sm hover:bg-[#D9A63A]/5 px-4 py-2 rounded-lg transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            <span>{isAr ? "إضافة توقف" : "Add Stop"}</span>
-          </button>
 
           {/* Date & Time */}
           <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
@@ -145,7 +127,11 @@ export function RouteBuilder() {
           <button onClick={prevStep} className="px-6 py-3 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition-colors">
             {isAr ? "رجوع" : "Back"}
           </button>
-          <button onClick={nextStep} className="bg-[#1B1E4F] text-white hover:bg-[#D9A63A] hover:text-[#1B1E4F] px-8 py-3 rounded-lg font-bold transition-all flex items-center gap-2 group shadow-lg">
+          <button 
+            onClick={nextStep} 
+            disabled={!state.selectedRouteId}
+            className="bg-[#1B1E4F] text-white hover:bg-[#D9A63A] hover:text-[#1B1E4F] px-8 py-3 rounded-lg font-bold transition-all flex items-center gap-2 group shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#1B1E4F] disabled:hover:text-white"
+          >
             <span>{isAr ? "اختيار المركبة" : "Select Vehicle"}</span>
             <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
           </button>

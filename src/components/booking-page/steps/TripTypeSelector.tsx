@@ -25,6 +25,10 @@ export function TripTypeSelector() {
 
   const handleSelect = (id: string) => {
     updateState({ tripType: id as TripType });
+    // Automatically advance to the next step after a brief delay for better UX
+    setTimeout(() => {
+      nextStep();
+    }, 300);
   };
 
   return (

@@ -7,8 +7,7 @@ import BlogAuthor from '@/lib/models/BlogAuthor';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mehartransport.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  await connectToDatabase();
-
+  // We will connect inside the try blocks below to avoid failing the whole build
   // Static pages
   const staticPages = [
     { url: `${BASE_URL}/en`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 1.0 },
@@ -56,6 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Blog posts (dynamic from DB)
   let blogPages: MetadataRoute.Sitemap = [];
   try {
+    await connectToDatabase();
     const posts = await BlogPost.find({ status: 'Published' }).select('slug updatedAt language').lean();
     blogPages = posts.map((post: any) => ({
       url: `${BASE_URL}/${post.language || 'en'}/blog/${post.slug}`,
@@ -70,6 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Blog categories
   let categoryPages: MetadataRoute.Sitemap = [];
   try {
+    await connectToDatabase();
     const categories = await BlogCategory.find().select('slug updatedAt').lean();
     categoryPages = categories.flatMap((cat: any) => [
       { url: `${BASE_URL}/en/blog/category/${cat.slug}`, lastModified: cat.updatedAt || new Date(), changeFrequency: 'weekly' as const, priority: 0.6 },

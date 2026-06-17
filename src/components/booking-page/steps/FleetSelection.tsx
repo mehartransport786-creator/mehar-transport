@@ -3,7 +3,6 @@
 import { useLocale } from "next-intl";
 import { useBooking } from "../context/BookingContext";
 import { ArrowRight, ArrowLeft, Users, Briefcase, Plus, Minus, Info } from "lucide-react";
-import { mockFleet } from "@/lib/data";
 
 export function FleetSelection() {
   const locale = useLocale();
@@ -43,11 +42,13 @@ export function FleetSelection() {
     return state.vehicles.find(v => v.vehicleId === vehicleId)?.quantity || 0;
   };
 
-  const recommendedVehicles = mockFleet.filter(v => {
+  const availableVehicles = state.selectedRoute?.pricings || [];
+
+  const recommendedVehicles = availableVehicles.filter((v: any) => {
     // Simple mock recommendation logic
-    if (state.passengerCount > 7 && v.id.includes('coaster')) return true;
-    if (state.passengerCount > 4 && state.passengerCount <= 7 && v.id.includes('staria')) return true;
-    if (state.tripType === 'vip' && (v.id.includes('rolls') || v.id.includes('mercedes'))) return true;
+    if (state.passengerCount > 7 && v.vehicleName.toLowerCase().includes('coaster')) return true;
+    if (state.passengerCount > 4 && state.passengerCount <= 7 && v.vehicleName.toLowerCase().includes('staria')) return true;
+    if (state.tripType === 'vip' && (v.vehicleType.toLowerCase().includes('luxury'))) return true;
     return false;
   });
 
@@ -107,15 +108,15 @@ export function FleetSelection() {
             <h3 className="font-bold text-[#1B1E4F]">{isAr ? "موصى به لرحلتك" : "Recommended for your trip"}</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {recommendedVehicles.slice(0, 2).map(vehicle => (
-              <div key={`rec-${vehicle.id}`} className="bg-white p-3 rounded-lg flex items-center gap-4 shadow-sm border border-gray-100">
-                <img src={vehicle.image} alt={vehicle.name} className="w-20 h-14 object-cover rounded-md" />
+            {recommendedVehicles.slice(0, 2).map((vehicle: any) => (
+              <div key={`rec-${vehicle.vehicleId}`} className="bg-white p-3 rounded-lg flex items-center gap-4 shadow-sm border border-gray-100">
+                <img src={vehicle.image} alt={vehicle.vehicleName} className="w-20 h-14 object-cover rounded-md" />
                 <div className="flex-1">
-                  <h4 className="font-bold text-sm text-[#1B1E4F]">{isAr ? vehicle.nameAr : vehicle.name}</h4>
+                  <h4 className="font-bold text-sm text-[#1B1E4F]">{isAr ? vehicle.vehicleNameAr : vehicle.vehicleName}</h4>
                   <p className="text-xs text-gray-500">{vehicle.passengers} {isAr ? "ركاب" : "Passengers"}</p>
                 </div>
                 <button 
-                  onClick={() => handleAddVehicle(vehicle.id)}
+                  onClick={() => handleAddVehicle(vehicle.vehicleId)}
                   className="bg-[#1B1E4F] text-white px-3 py-1.5 rounded-md text-xs font-bold hover:bg-[#D9A63A] hover:text-[#1B1E4F] transition-colors"
                 >
                   {isAr ? "إضافة" : "Add"}
@@ -128,44 +129,44 @@ export function FleetSelection() {
 
       {/* Vehicle Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-8 max-h-[500px] overflow-y-auto custom-scrollbar pr-2">
-        {mockFleet.map((vehicle) => {
-          const quantity = getVehicleQuantity(vehicle.id);
+        {availableVehicles.map((vehicle: any) => {
+          const quantity = getVehicleQuantity(vehicle.vehicleId);
           const isSelected = quantity > 0;
           
           return (
             <div 
-              key={vehicle.id} 
+              key={vehicle.vehicleId} 
               className={`flex flex-col border-2 rounded-2xl overflow-hidden transition-all duration-300
                 ${isSelected ? 'border-[#D9A63A] shadow-md bg-[#D9A63A]/5' : 'border-gray-100 hover:border-gray-300'}`}
             >
               <div className="relative h-40">
-                <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover" />
+                <img src={vehicle.image} alt={vehicle.vehicleName} className="w-full h-full object-cover" />
                 <div className="absolute top-2 right-2 left-auto rtl:left-2 rtl:right-auto">
                   <span className="bg-white/90 backdrop-blur-sm text-[#1B1E4F] px-2 py-1 rounded text-xs font-bold shadow-sm">
-                    {isAr ? vehicle.typeAr : vehicle.type}
+                    {isAr ? vehicle.vehicleTypeAr : vehicle.vehicleType}
                   </span>
                 </div>
               </div>
               
               <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-bold text-lg text-[#1B1E4F] mb-1">{isAr ? vehicle.nameAr : vehicle.name}</h3>
+                <h3 className="font-bold text-lg text-[#1B1E4F] mb-1">{isAr ? vehicle.vehicleNameAr : vehicle.vehicleName}</h3>
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                   <div className="flex items-center gap-1"><Users className="w-4 h-4" /> {vehicle.passengers}</div>
                   <div className="flex items-center gap-1"><Briefcase className="w-4 h-4" /> {vehicle.luggage}</div>
                 </div>
                 
                 <div className="mt-auto flex items-center justify-between">
-                  <span className="font-black text-[#D9A63A] text-xl">{vehicle.basePrice} SAR</span>
+                  <span className="font-black text-[#D9A63A] text-xl">{vehicle.currentPrice} SAR</span>
                   
                   {isSelected ? (
                     <div className="flex items-center gap-3 bg-[#1B1E4F] rounded-lg p-1 text-white shadow-md">
-                      <button onClick={() => handleRemoveVehicle(vehicle.id)} className="w-8 h-8 flex items-center justify-center hover:bg-white/20 rounded-md transition-colors"><Minus className="w-4 h-4" /></button>
+                      <button onClick={() => handleRemoveVehicle(vehicle.vehicleId)} className="w-8 h-8 flex items-center justify-center hover:bg-white/20 rounded-md transition-colors"><Minus className="w-4 h-4" /></button>
                       <span className="font-bold w-4 text-center">{quantity}</span>
-                      <button onClick={() => handleAddVehicle(vehicle.id)} className="w-8 h-8 flex items-center justify-center hover:bg-white/20 rounded-md transition-colors"><Plus className="w-4 h-4" /></button>
+                      <button onClick={() => handleAddVehicle(vehicle.vehicleId)} className="w-8 h-8 flex items-center justify-center hover:bg-white/20 rounded-md transition-colors"><Plus className="w-4 h-4" /></button>
                     </div>
                   ) : (
                     <button 
-                      onClick={() => handleAddVehicle(vehicle.id)}
+                      onClick={() => handleAddVehicle(vehicle.vehicleId)}
                       className="bg-gray-100 hover:bg-[#1B1E4F] text-[#1B1E4F] hover:text-white px-4 py-2 rounded-lg font-bold transition-colors text-sm shadow-sm"
                     >
                       {isAr ? "اختيار" : "Select"}

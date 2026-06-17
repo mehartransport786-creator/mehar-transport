@@ -16,17 +16,29 @@ export function Hero() {
     <section className="relative h-screen w-full flex items-center overflow-hidden">
       {/* Cinematic Video Background */}
       <div className="absolute inset-0 z-0">
+        {/* Desktop Image */}
         <Image
-          src="/hero-image.webp"
+          src="/hero-image-new.jpg"
           alt="Mehar Transport Luxury Chauffeur"
+          quality={100}
           fill
           priority
           unoptimized
-          className="object-cover object-center"
+          className="hidden md:block object-cover object-center"
+        />
+        {/* Mobile Cropped Image */}
+        <Image
+          src="/hero-image-mobile.jpg"
+          alt="Mehar Transport Luxury Chauffeur"
+          quality={100}
+          fill
+          priority
+          unoptimized
+          className="block md:hidden object-cover object-center"
         />
         {/* Deep navy/black gradient overlay for readability and premium feel */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/50 via-transparent to-transparent"></div>
       </div>
 
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto flex flex-col justify-end h-full pb-32 pt-32">

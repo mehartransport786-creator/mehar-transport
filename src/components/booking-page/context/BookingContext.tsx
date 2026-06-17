@@ -63,6 +63,8 @@ export interface BookingState {
     total: number;
   };
   paymentMethod: string;
+  selectedRouteId?: string;
+  selectedRoute?: any;
 }
 
 interface BookingContextType {
@@ -72,6 +74,7 @@ interface BookingContextType {
   prevStep: () => void;
   updateState: (updates: Partial<BookingState>) => void;
   calculatePricing: () => void;
+  routes: any[];
 }
 
 const initialState: BookingState = {
@@ -112,6 +115,16 @@ const BookingContext = createContext<BookingContextType | undefined>(undefined);
 
 export function BookingProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<BookingState>(initialState);
+  const [routes, setRoutes] = useState<any[]>([]);
+
+  React.useEffect(() => {
+    fetch('/api/pricing/routes')
+      .then(res => res.json())
+      .then(data => {
+        if (data.routes) setRoutes(data.routes);
+      })
+      .catch(err => console.error("Failed to load routes", err));
+  }, []);
 
   const updateState = (updates: Partial<BookingState>) => {
     setState((prev) => {
@@ -120,23 +133,24 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const setStep = (step: number) => updateState({ currentStep: step });
-  const nextStep = () => updateState({ currentStep: state.currentStep + 1 });
-  const prevStep = () => updateState({ currentStep: Math.max(1, state.currentStep - 1) });
+  const setStep = (step: number) => setState(prev => ({ ...prev, currentStep: step }));
+  const nextStep = () => setState(prev => ({ ...prev, currentStep: prev.currentStep + 1 }));
+  const prevStep = () => setState(prev => ({ ...prev, currentStep: Math.max(1, prev.currentStep - 1) }));
 
   const calculatePricing = () => {
-    // Mock pricing calculation based on current state
-    // In a real app, this would be an API call or complex logic
-    let vehiclesCost = state.vehicles.reduce((total, v) => {
-      // rough mock price: base price * quantity
-      const basePrice = v.vehicleId === 'rolls-royce' ? 3000 : 
-                        v.vehicleId === 'mercedes-s-class' ? 1500 : 
-                        v.vehicleId === 'hyundai-staria' ? 800 : 500;
-      return total + (basePrice * v.quantity);
-    }, 0);
+    // Pricing calculation based on current state and selected route
+    let vehiclesCost = 0;
+    
+    if (state.selectedRoute) {
+      vehiclesCost = state.vehicles.reduce((total, v) => {
+        const routeVehicle = state.selectedRoute.pricings?.find((p: any) => p.vehicleId === v.vehicleId);
+        const price = routeVehicle ? routeVehicle.currentPrice : 500;
+        return total + (price * v.quantity);
+      }, 0);
+    }
 
     const extrasCost = state.extras.length * 150; // Mock 150 SAR per extra
-    const base = 200; // Base platform fee
+    const base = 0; // Base platform fee removed since vehicle price includes it
     const distance = 0; // Mock distance fee
 
     const subtotal = base + distance + vehiclesCost + extrasCost;
@@ -162,7 +176,8 @@ export function BookingProvider({ children }: { children: ReactNode }) {
         nextStep,
         prevStep,
         updateState,
-        calculatePricing
+        calculatePricing,
+        routes
       }}
     >
       {children}
