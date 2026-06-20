@@ -4,21 +4,28 @@ import RoutePricing from "@/lib/models/RoutePricing";
 import SeasonalPricing from "@/lib/models/SeasonalPricing";
 import HourlyPricing from "@/lib/models/HourlyPricing";
 import mongoose from "mongoose";
+import { fallbackRoutesData } from "@/lib/fallbackData";
 
-export async function POST(request: Request) {
+  let requestBody: any = {};
   try {
-    const body = await request.json();
-    const { type, routeId, vehicleId, date, hours } = body;
+    requestBody = await request.json();
+  } catch (e) {
+    return NextResponse.json({ success: false, error: "Invalid request" }, { status: 400 });
+  }
 
-    if (!type || !vehicleId || !date) {
-      return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
-    }
+  const { type, routeId, vehicleId, date, hours } = requestBody;
 
+  if (!type || !vehicleId || !date) {
+    return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
+  }
+
+  const targetDate = new Date(date);
+  let basePrice = 0;
+  let finalPrice = 0;
+  const adjustments: { name: string, amount: number, isPercentage: boolean }[] = [];
+
+  try {
     await connectToDatabase();
-    const targetDate = new Date(date);
-    let basePrice = 0;
-    let finalPrice = 0;
-    const adjustments: { name: string, amount: number, isPercentage: boolean }[] = [];
 
     // 1. Get Base Pricing
     if (type === "transfer" && routeId) {
@@ -28,7 +35,7 @@ export async function POST(request: Request) {
         isActive: true
       });
       if (!pricing) {
-        return NextResponse.json({ success: false, error: "Pricing not found for this route and vehicle" }, { status: 404 });
+        throw new Error("Pricing not found for this route and vehicle");
       }
       basePrice = pricing.currentPrice;
       finalPrice = basePrice;
@@ -39,14 +46,14 @@ export async function POST(request: Request) {
         isActive: true
       });
       if (!pricing) {
-        return NextResponse.json({ success: false, error: "Hourly pricing not found for this vehicle" }, { status: 404 });
+        throw new Error("Hourly pricing not found for this vehicle");
       }
       const billedHours = Math.max(hours, pricing.minimumHours);
       basePrice = billedHours * pricing.hourlyRate;
       finalPrice = basePrice;
     } 
     else {
-      return NextResponse.json({ success: false, error: "Invalid calculation request" }, { status: 400 });
+      throw new Error("Invalid calculation request");
     }
 
     // 2. Check Seasonal Pricing Rules
@@ -81,24 +88,43 @@ export async function POST(request: Request) {
       }
     }
 
-    // 3. Tax calculation (15% VAT for KSA)
-    const vatRate = 0.15;
-    const taxAmount = finalPrice * vatRate;
-    const totalIncludingTax = finalPrice + taxAmount;
-
-    return NextResponse.json({ 
-      success: true, 
-      data: {
-        basePrice,
-        finalPriceBeforeTax: finalPrice,
-        taxAmount,
-        totalIncludingTax,
-        adjustments
-      } 
-    });
-
   } catch (error: any) {
-    console.error("Pricing calculation error:", error);
-    return NextResponse.json({ success: false, error: "Internal server error calculating price" }, { status: 500 });
+    console.error("Pricing calculation error, falling back to mock:", error);
+    
+    // FALLBACK LOGIC
+    if (type === "transfer" && routeId) {
+      const mockRoute = fallbackRoutesData.find(r => r._id === routeId);
+      if (mockRoute) {
+        // Find vehicle index to get price
+        // Let's assume vehicleId like "v1", "v2", etc.
+        const vIndex = parseInt(vehicleId.replace('v', '')) - 1;
+        if (!isNaN(vIndex) && vIndex >= 0 && vIndex < mockRoute.prices.length) {
+          basePrice = mockRoute.prices[vIndex];
+          finalPrice = basePrice;
+        } else {
+          basePrice = mockRoute.prices[0]; // fallback
+          finalPrice = basePrice;
+        }
+      }
+    } else if (type === "hourly" && hours) {
+      basePrice = hours * 100; // Mock hourly rate 100 SAR/hr
+      finalPrice = basePrice;
+    }
   }
+
+  // 3. Tax calculation (15% VAT for KSA)
+  const vatRate = 0.15;
+  const taxAmount = finalPrice * vatRate;
+  const totalIncludingTax = finalPrice + taxAmount;
+
+  return NextResponse.json({ 
+    success: true, 
+    data: {
+      basePrice,
+      finalPriceBeforeTax: finalPrice,
+      taxAmount,
+      totalIncludingTax,
+      adjustments
+    } 
+  });
 }

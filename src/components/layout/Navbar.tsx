@@ -114,14 +114,24 @@ export function Navbar() {
                 onMouseEnter={() => setIsPackagesOpen(true)}
                 onMouseLeave={() => setIsPackagesOpen(false)}
               >
-                <button className={`flex items-center gap-1 transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
+                <Link 
+                  href="/packages"
+                  className={`flex items-center gap-1 transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
                     isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
-                  }`}>
+                  }`}
+                >
                   {isAr ? "الباقات" : "Packages"}
                   <ChevronDown className="w-4 h-4" />
-                </button>
+                </Link>
                 {isPackagesOpen && (
                   <div className="absolute top-full rtl:right-0 ltr:left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
+                    <Link
+                      href="/packages"
+                      className="block px-4 py-2.5 text-sm font-bold text-[#D9A63A] hover:bg-secondary/10 transition-colors border-b border-gray-100 mb-1"
+                      onClick={() => setIsPackagesOpen(false)}
+                    >
+                      {isAr ? "عرض كل الباقات" : "View All Packages"}
+                    </Link>
                     {packagesLinks.map((pkg) => (
                       <Link
                         key={pkg.name}
@@ -315,9 +325,13 @@ export function Navbar() {
 
             {/* Mobile Packages Section */}
             <div className="pt-2 border-t border-border">
-              <span className="text-muted-foreground px-3 py-2 block text-sm font-bold uppercase tracking-wider">
+              <Link 
+                href="/packages"
+                className="text-muted-foreground px-3 py-2 block text-sm font-bold uppercase tracking-wider hover:text-secondary transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
                 {isAr ? "الباقات" : "Packages"}
-              </span>
+              </Link>
               <div className="pl-4 rtl:pr-4 rtl:pl-0 space-y-1">
                 {packagesLinks.map((pkg) => (
                   <Link

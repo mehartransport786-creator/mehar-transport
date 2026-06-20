@@ -22,19 +22,19 @@ const vehiclesData = [
 
 // Price mapping index: [Car, Hiace, GMC, Starex, Staria, Coaster]
 const routesData = [
-  { name: 'Jeddah Airport to Jeddah Hotel', origin: 'Jeddah Airport', destination: 'Jeddah Hotel', prices: [150, 250, 300, 200, 200, 400] },
-  { name: 'Jeddah Airport to Makkah Hotel', origin: 'Jeddah Airport', destination: 'Makkah Hotel', prices: [200, 350, 500, 300, 300, 550] },
-  { name: 'Jeddah Airport to Madinah Hotel', origin: 'Jeddah Airport', destination: 'Madinah Hotel', prices: [400, 550, 1000, 500, 500, 1100] },
-  { name: 'Madina Hotel to Jeddah Airport', origin: 'Madina Hotel', destination: 'Jeddah Airport', prices: [400, 550, 800, 450, 450, 900] },
-  { name: 'Makkah Ziyarat', origin: 'Makkah', destination: 'Ziyarat Tour', prices: [200, 300, 400, 250, 250, 500] },
-  { name: 'Madinah Ziyarat', origin: 'Madinah', destination: 'Ziyarat Tour', prices: [200, 250, 400, 200, 200, 500] },
+  { name: 'Jeddah Airport to Jeddah Hotel', origin: 'Jeddah Airport', destination: 'Jeddah Hotel', prices: [150, 220, 300, 150, 150, 350] },
+  { name: 'Jeddah Airport to Makkah Hotel', origin: 'Jeddah Airport', destination: 'Makkah Hotel', prices: [200, 320, 450, 270, 270, 550] },
+  { name: 'Jeddah Airport to Madinah Hotel', origin: 'Jeddah Airport', destination: 'Madinah Hotel', prices: [400, 525, 900, 450, 450, 900] },
+  { name: 'Madina Hotel to Jeddah Airport', origin: 'Madina Hotel', destination: 'Jeddah Airport', prices: [350, 500, 800, 425, 425, 850] },
+  { name: 'Makkah Ziyarat', origin: 'Makkah', destination: 'Ziyarat Tour', prices: [170, 250, 350, 200, 200, 450] },
+  { name: 'Madinah Ziyarat', origin: 'Madinah', destination: 'Ziyarat Tour', prices: [170, 250, 400, 200, 200, 400] },
   { name: 'Makkah to Taif and Return', origin: 'Makkah', destination: 'Taif', prices: [400, 550, 800, 450, 450, 900] },
   { name: 'Jeddah to Taif and Return', origin: 'Jeddah', destination: 'Taif', prices: [500, 700, 1000, 600, 600, 1000] },
-  { name: 'Makkah Hotel to Madinah Hotel', origin: 'Makkah Hotel', destination: 'Madinah Hotel', prices: [400, 550, 900, 450, 500, 900] },
-  { name: 'Madinah Hotel to Makkah Hotel', origin: 'Madinah Hotel', destination: 'Makkah Hotel', prices: [400, 550, 900, 450, 450, 900] },
-  { name: 'Madinah Hotel to Madinah Airport', origin: 'Madinah Hotel', destination: 'Madinah Airport', prices: [150, 250, 300, 200, 200, 400] },
-  { name: 'Madinah Airport to Madinah Hotel', origin: 'Madinah Airport', destination: 'Madinah Hotel', prices: [150, 250, 300, 200, 250, 400] },
-  { name: 'Makkah Hotel to Jeddah Airport', origin: 'Makkah Hotel', destination: 'Jeddah Airport', prices: [150, 300, 450, 250, 250, 600] },
+  { name: 'Makkah Hotel to Madinah Hotel', origin: 'Makkah Hotel', destination: 'Madinah Hotel', prices: [350, 550, 900, 450, 450, 900] },
+  { name: 'Madinah Hotel to Makkah Hotel', origin: 'Madinah Hotel', destination: 'Makkah Hotel', prices: [350, 550, 900, 450, 450, 900] },
+  { name: 'Madinah Hotel to Madinah Airport', origin: 'Madinah Hotel', destination: 'Madinah Airport', prices: [120, 200, 300, 150, 150, 400] },
+  { name: 'Madinah Airport to Madinah Hotel', origin: 'Madinah Airport', destination: 'Madinah Hotel', prices: [150, 250, 300, 200, 200, 450] },
+  { name: 'Makkah Hotel to Jeddah Airport', origin: 'Makkah Hotel', destination: 'Jeddah Airport', prices: [150, 250, 400, 220, 220, 450] },
   { name: 'Makkah Hotel to Train Station', origin: 'Makkah Hotel', destination: 'Train Station', prices: [100, 200, 250, 180, 180, 350] },
   { name: 'Madinah Hotel to Train Station', origin: 'Madinah Hotel', destination: 'Train Station', prices: [120, 200, 250, 180, 180, 350] }
 ];

@@ -49,30 +49,30 @@ export async function GET() {
       if (!pricingMap.has(routeId)) {
         pricingMap.set(routeId, []);
       }
-      pricingMap.get(routeId).push({
-        vehicleId: p.vehicleId._id.toString(),
-        vehicleName: (p.vehicleId as any).name,
-        vehicleNameAr: (p.vehicleId as any).nameAr,
-        vehicleType: (p.vehicleId as any).type,
-        vehicleTypeAr: (p.vehicleId as any).typeAr,
-        passengers: (p.vehicleId as any).passengers,
-        luggage: (p.vehicleId as any).luggage,
-        image: (p.vehicleId as any).image,
-        basePrice: p.basePrice,
-        currentPrice: p.currentPrice,
-      });
+      pricingMap.get(routeId).push(p);
     }
+    
+    // Format response
+    const formattedRoutes = routes.map((r: any) => {
+      const rId = r._id.toString();
+      const rPricings = pricingMap.get(rId) || [];
+      return {
+        _id: rId,
+        name: r.name,
+        nameAr: r.nameAr,
+        origin: r.origin,
+        destination: r.destination,
+        vehicles: rPricings.map((p: any) => ({
+          vehicleId: p.vehicleId._id,
+          name: p.vehicleId.name,
+          nameAr: p.vehicleId.nameAr,
+          basePrice: p.basePrice,
+          currentPrice: p.currentPrice
+        }))
+      };
+    });
 
-    // Attach pricings to routes
-    const routesWithPricing = routes.map((r: any) => ({
-      ...r,
-      _id: r._id.toString(),
-      pricings: pricingMap.get(r._id.toString()) || []
-    }));
-
-    if (routesWithPricing.length > 0) {
-      return NextResponse.json({ routes: routesWithPricing });
-    }
+    return NextResponse.json({ success: true, routes: formattedRoutes, rawRoutes: routes });
   } catch (error) {
     console.error('Error fetching routes API, falling back to mock:', error);
   }
