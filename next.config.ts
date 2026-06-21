@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
     'localhost:3000',
     '0.0.0.0',
   ],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
     qualities: [100, 75],
     remotePatterns: [

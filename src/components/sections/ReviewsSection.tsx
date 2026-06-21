@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, User } from "lucide-react";
 
 export function ReviewsSection() {
     const t = useTranslations('ReviewsSection');
@@ -72,9 +72,14 @@ export function ReviewsSection() {
                 &quot;{review.quote}&quot;
               </p>
 
-              <div className="mt-auto border-t border-gray-100 w-full pt-6">
-                <h4 className="font-bold text-[#1B1E4F] text-lg">{review.name}</h4>
-                <p className="text-sm text-[#D9A63A] font-bold uppercase tracking-wider mt-1">{review.role}</p>
+              <div className="mt-auto border-t border-gray-100 w-full pt-6 flex items-center justify-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center flex-shrink-0">
+                  <User className="w-6 h-6 text-gray-400" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#1B1E4F] text-lg">{review.name}</h4>
+                  <p className="text-sm text-[#D9A63A] font-bold uppercase tracking-wider mt-1">{review.role}</p>
+                </div>
               </div>
             </motion.div>
           ))}

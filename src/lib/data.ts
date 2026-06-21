@@ -2,11 +2,11 @@ import { Vehicle, Route } from "@/types/vehicle";
 
 export const mockFleet: Vehicle[] = [
   {
-    id: "kia-k5",
-    slug: "kia-k5",
-    name: "Kia K5",
+    id: "toyota-camry",
+    slug: "toyota-camry",
+    name: "Toyota Camry",
     type: "Executive Sedan",
-    nameAr: "كيا K5",
+    nameAr: "تويوتا كامري",
     typeAr: "سيدان تنفيذية",
     passengers: 4,
     luggage: 3,
@@ -16,12 +16,9 @@ export const mockFleet: Vehicle[] = [
     intercityTravel: true,
     vipService: false,
     basePrice: 150,
-    image: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop",
+    image: "/fleet/camry.png",
     gallery: [
-      "https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503376712351-561666b6c039?q=80&w=2070&auto=format&fit=crop",
+      "/fleet/camry.png"
     ],
     features: ["Executive Comfort", "Air Conditioning", "Professional Driver", "Airport Pickup", "Fixed Pricing"],
     featuresAr: ["راحة تنفيذية", "تكييف هواء", "سائق محترف", "استقبال من المطار", "أسعار ثابتة"],
@@ -30,24 +27,23 @@ export const mockFleet: Vehicle[] = [
     targetAudience: ["Airport Transfers", "Couples", "Solo Travelers", "Business Travelers"],
   },
   {
-    id: "mitsubishi-xpander",
-    slug: "mitsubishi-xpander",
-    name: "Mitsubishi Xpander",
-    type: "Family MPV",
-    nameAr: "ميتسوبيشي إكسباندر",
-    typeAr: "سيارة عائلية MPV",
+    id: "gmc-yukon",
+    slug: "gmc-yukon",
+    name: "GMC Yukon",
+    type: "Luxury SUV",
+    nameAr: "جمس يوكن",
+    typeAr: "سيارة دفع رباعي فاخرة",
     passengers: 7,
-    luggage: 5,
-    luxuryLevel: 2,
+    luggage: 6,
+    luxuryLevel: 4,
     airportTransfer: true,
     umrahTransfer: true,
     intercityTravel: true,
     vipService: false,
-    basePrice: 250,
-    image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fd?q=80&w=2070&auto=format&fit=crop",
+    basePrice: 500,
+    image: "/fleet/gmc.png",
     gallery: [
-      "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fd?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop",
+      "/fleet/gmc.png"
     ],
     features: ["Spacious Cabin", "Comfortable Seating", "Family-Friendly"],
     featuresAr: ["مقصورة واسعة", "مقاعد مريحة", "صديقة للعائلة"],
@@ -70,10 +66,9 @@ export const mockFleet: Vehicle[] = [
     intercityTravel: true,
     vipService: true,
     basePrice: 400,
-    image: "https://images.unsplash.com/photo-1678125585040-410a56b669fa?q=80&w=2070&auto=format&fit=crop",
+    image: "/fleet/staria.png",
     gallery: [
-      "https://images.unsplash.com/photo-1678125585040-410a56b669fa?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop",
+      "/fleet/staria.png"
     ],
     features: ["VIP Interior", "Premium Seating", "Large Cargo Space"],
     featuresAr: ["تصميم داخلي VIP", "مقاعد فاخرة", "مساحة تخزين كبيرة"],
@@ -82,24 +77,23 @@ export const mockFleet: Vehicle[] = [
     targetAudience: ["Families", "Premium Umrah Clients"],
   },
   {
-    id: "toyota-hiace",
-    slug: "toyota-hiace",
-    name: "Toyota Hiace",
-    type: "Group Transport Van",
-    nameAr: "تويوتا هايس",
-    typeAr: "حافلة نقل جماعي",
-    passengers: 13,
-    luggage: 10,
-    luxuryLevel: 2,
+    id: "ford-taurus",
+    slug: "ford-taurus",
+    name: "Ford Taurus",
+    type: "Premium Sedan",
+    nameAr: "فورد تورس",
+    typeAr: "سيدان فاخرة",
+    passengers: 4,
+    luggage: 3,
+    luxuryLevel: 4,
     airportTransfer: true,
     umrahTransfer: true,
     intercityTravel: true,
     vipService: false,
-    basePrice: 450,
-    image: "https://images.unsplash.com/photo-1626263503525-28b9cb0f19c4?q=80&w=2070&auto=format&fit=crop",
+    basePrice: 350,
+    image: "/fleet/taurus.png",
     gallery: [
-      "https://images.unsplash.com/photo-1626263503525-28b9cb0f19c4?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop",
+      "/fleet/taurus.png"
     ],
     features: ["Group Travel", "Comfortable Seats", "Long-Distance Travel"],
     featuresAr: ["سفر جماعي", "مقاعد مريحة", "سفر لمسافات طويلة"],
@@ -122,9 +116,9 @@ export const mockFleet: Vehicle[] = [
     intercityTravel: true,
     vipService: false,
     basePrice: 700,
-    image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2070&auto=format&fit=crop",
+    image: "/fleet/coaster.png",
     gallery: [
-      "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2070&auto=format&fit=crop",
+      "/fleet/coaster.png"
     ],
     features: ["Group Comfort", "Professional Tour Transportation", "Long Distance Travel"],
     featuresAr: ["راحة جماعية", "نقل سياحي محترف", "سفر لمسافات طويلة"],
@@ -147,9 +141,9 @@ export const mockFleet: Vehicle[] = [
     intercityTravel: true,
     vipService: false,
     basePrice: 1500,
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop",
+    image: "/fleet/coaster.png",
     gallery: [
-      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop",
+      "/fleet/coaster.png"
     ],
     features: ["Reclining Seats", "Air Conditioning", "Entertainment System", "Large Storage"],
     featuresAr: ["مقاعد قابلة للإمالة", "تكييف هواء", "نظام ترفيه", "مساحة تخزين كبيرة"],
@@ -172,10 +166,9 @@ export const mockFleet: Vehicle[] = [
     intercityTravel: true,
     vipService: true,
     basePrice: 1200,
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop",
+    image: "/fleet/taurus.png",
     gallery: [
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop",
+      "/fleet/taurus.png"
     ],
     features: ["Chauffeur Service", "Leather Interior", "Executive Comfort", "Airport Meet & Greet"],
     featuresAr: ["خدمة سائق خاص", "تصميم داخلي من الجلد", "راحة تنفيذية", "استقبال وترحيب في المطار"],
@@ -200,10 +193,9 @@ export const mockFleet: Vehicle[] = [
     intercityTravel: true,
     vipService: true,
     basePrice: 3500,
-    image: "https://images.unsplash.com/photo-1631835706240-a3da19f6a256?q=80&w=2070&auto=format&fit=crop",
+    image: "/fleet/gmc.png",
     gallery: [
-      "https://images.unsplash.com/photo-1631835706240-a3da19f6a256?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop",
+      "/fleet/gmc.png"
     ],
     features: ["White Glove Service", "Chauffeur Experience", "Luxury Amenities", "Concierge Support"],
     featuresAr: ["خدمة راقية جداً", "تجربة سائق خاص", "وسائل راحة فاخرة", "دعم كونسيرج"],
@@ -228,7 +220,7 @@ export const mockRoutes: Route[] = [
     distance: "100 km",
     duration: "1h 15m",
     startingPrice: 200,
-    image: "https://images.unsplash.com/photo-1591806336026-f825d72071a2?q=80&w=2070&auto=format&fit=crop"
+    image: "/hero-luxury.webp"
   },
   {
     id: "makkah-madinah",
@@ -240,7 +232,7 @@ export const mockRoutes: Route[] = [
     distance: "450 km",
     duration: "4h 30m",
     startingPrice: 700,
-    image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=2071&auto=format&fit=crop"
+    image: "/routes/makkah-premium.webp"
   },
   {
     id: "madinah-jeddah",
@@ -252,6 +244,6 @@ export const mockRoutes: Route[] = [
     distance: "420 km",
     duration: "4h 10m",
     startingPrice: 650,
-    image: "https://images.unsplash.com/photo-1542618844-338b7e28b1fc?q=80&w=2070&auto=format&fit=crop"
+    image: "/hero-luxury.webp"
   }
 ];

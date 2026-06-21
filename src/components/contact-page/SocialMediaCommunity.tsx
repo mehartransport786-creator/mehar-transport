@@ -9,7 +9,7 @@ export function SocialMediaCommunity() {
   const t = useTranslations("ContactPage.social");
 
   const images = [
-    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80",
+    "/cities/jeddah.webp",
     "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=600&q=80",
     "https://images.unsplash.com/photo-1580674684081-77673f40f090?auto=format&fit=crop&w=600&q=80",
     "https://images.unsplash.com/photo-1621876938914-7227d8db191e?auto=format&fit=crop&w=600&q=80"

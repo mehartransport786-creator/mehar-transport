@@ -9,12 +9,12 @@ export function GallerySection() {
     const t = useTranslations('GallerySection');
 
   const images = [
-    { src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[4/3]" },
-    { src: "https://images.unsplash.com/photo-1558234857-e6f79029dbbc?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[3/4]" },
-    { src: "https://images.unsplash.com/photo-1591557304245-c45330364e8f?q=80&w=800&auto=format&fit=crop", aspect: "aspect-square" },
-    { src: "https://images.unsplash.com/photo-1518081461904-9d8f1363524a?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[3/4]" },
-    { src: "https://images.unsplash.com/photo-1506501139174-099022df5260?q=80&w=800&auto=format&fit=crop", aspect: "aspect-square" },
-    { src: "https://images.unsplash.com/photo-1591557304192-3d9646b5a3eb?q=80&w=800&auto=format&fit=crop", aspect: "aspect-[4/3]" },
+    { src: "/routes/jeddah-makkah.webp", aspect: "aspect-[4/3]" },
+    { src: "/gallery/chauffeur.webp", aspect: "aspect-[3/4]" },
+    { src: "/services/vip.webp", aspect: "aspect-square" },
+    { src: "/gallery/haram.webp", aspect: "aspect-[3/4]" },
+    { src: "/about/interior.webp", aspect: "aspect-square" },
+    { src: "/routes/makkah-madinah.webp", aspect: "aspect-[4/3]" },
   ];
 
   return (

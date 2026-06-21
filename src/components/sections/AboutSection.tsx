@@ -68,7 +68,7 @@ export function AboutSection() {
               <div className="space-y-4 md:space-y-6 pt-12">
                 <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl relative group">
                   <img 
-                    src="https://images.unsplash.com/photo-1541443131876-44b03de101c5?q=80&w=2070&auto=format&fit=crop" 
+                    src="/about/interior.webp" 
                     alt="Luxury Interior" 
                     className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
                   />
@@ -79,7 +79,7 @@ export function AboutSection() {
               <div className="space-y-4 md:space-y-6">
                 <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl relative group">
                   <img 
-                    src="https://images.unsplash.com/photo-1621285499292-965ceb6f25cd?q=80&w=2070&auto=format&fit=crop" 
+                    src="/about/chauffeur.webp" 
                     alt="Chauffeur Service" 
                     className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
                   />

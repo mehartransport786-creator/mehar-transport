@@ -39,7 +39,7 @@ const seedPackages = async () => {
         idealFor: ["Individuals", "Couples", "Small Families"],
         features: ["Airport Pickup", "Hotel Transfers", "24/7 Support", "Professional Drivers"],
         featuresAr: ["استقبال من المطار", "انتقالات الفنادق", "دعم على مدار الساعة", "سائقون محترفون"],
-        images: ["/fleet/staria.webp"],
+        images: ["/fleet/staria.png"],
         includedRoutes: [
           findRoute("Jeddah", "Makkah"),
           findRoute("Makkah", "Madinah"),
@@ -60,7 +60,7 @@ const seedPackages = async () => {
         idealFor: ["Families", "Groups", "First-time Pilgrims"],
         features: ["Airport Pickup", "Hotel Transfers", "Makkah Ziyarat", "Madinah Ziyarat", "24/7 Support", "Flight Monitoring"],
         featuresAr: ["استقبال من المطار", "انتقالات الفنادق", "زيارات مكة", "زيارات المدينة", "دعم على مدار الساعة", "مراقبة الرحلات"],
-        images: ["/fleet/hiace.webp"],
+        images: ["/fleet/hiace.png"],
         includedRoutes: [
           findRoute("Jeddah", "Makkah"),
           findRoute("Makkah", "Ziyarat"),
@@ -83,7 +83,7 @@ const seedPackages = async () => {
         idealFor: ["VIPs", "Business Travelers", "Luxury Seekers"],
         features: ["Meet & Greet", "VIP Chauffeur", "Luxury Vehicle", "Premium Water", "Priority Service", "Dedicated Support"],
         featuresAr: ["استقبال وترحيب", "سائق خاص", "مركبة فاخرة", "مياه فاخرة", "خدمة ذات أولوية", "دعم مخصص"],
-        images: ["/fleet/yukon.webp"],
+        images: ["/fleet/gmc.png"],
         includedRoutes: [
           findRoute("Jeddah", "Makkah"),
           findRoute("Makkah", "Madinah"),

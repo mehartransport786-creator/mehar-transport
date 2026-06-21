@@ -6,6 +6,7 @@ import HourlyPricing from "@/lib/models/HourlyPricing";
 import mongoose from "mongoose";
 import { fallbackRoutesData } from "@/lib/fallbackData";
 
+export async function POST(request: Request) {
   let requestBody: any = {};
   try {
     requestBody = await request.json();

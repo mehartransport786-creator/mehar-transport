@@ -15,19 +15,19 @@ export function ContentHubSection() {
       title: isAr ? "دليلك الشامل لترتيب المواصلات خلال العمرة" : "Complete Guide to Organizing Umrah Transportation",
       category: isAr ? "نصائح العمرة" : "Umrah Tips",
       date: isAr ? "١٥ أكتوبر ٢٠٢٦" : "Oct 15, 2026",
-      image: "https://images.unsplash.com/photo-1591557304192-3d9646b5a3eb?q=80&w=800&auto=format&fit=crop"
+      image: "/gallery/haram.webp"
     },
     {
       title: isAr ? "أفضل ٥ مسارات سياحية للزيارة في المدينة المنورة" : "Top 5 Historical Routes to Visit in Madinah",
       category: isAr ? "دليل السفر" : "Travel Guide",
       date: isAr ? "٠٢ أكتوبر ٢٠٢٦" : "Oct 02, 2026",
-      image: "https://images.unsplash.com/photo-1591557304245-c45330364e8f?q=80&w=800&auto=format&fit=crop"
+      image: "/cities/madinah.webp"
     },
     {
       title: isAr ? "ماذا تتوقع عند حجز خدمة الاستقبال من المطار؟" : "What to Expect When Booking Airport VIP Meet & Greet?",
       category: isAr ? "خدماتنا" : "Our Services",
       date: isAr ? "٢٠ سبتمبر ٢٠٢٦" : "Sep 20, 2026",
-      image: "https://images.unsplash.com/photo-1558234857-e6f79029dbbc?q=80&w=800&auto=format&fit=crop"
+      image: "/services/airport.webp"
     }
   ];
 

@@ -1,5 +1,6 @@
 import { getPosts, getCategories } from '@/lib/actions/blog';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
 
@@ -27,9 +28,9 @@ export default async function BlogHomepage() {
     <div className="min-h-screen bg-gray-50 dark:bg-[#0F172A] pb-24">
       {/* Editorial Hero */}
       <div className="relative bg-[#1B1E4F] py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <img src="/images/hero/vip-fleet.jpg" alt="Background" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#1B1E4F]/80 mix-blend-multiply"></div>
+        <div className="absolute inset-0">
+          <Image src="/hero-luxury.webp" alt="Background" fill priority className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1B1E4F] via-[#1B1E4F]/80 to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -138,7 +139,7 @@ export default async function BlogHomepage() {
             <Link key={post._id} href={`/blog/${post.slug}`} className="group flex flex-col bg-white dark:bg-[#1B1E4F] rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
               <div className="relative h-56 w-full overflow-hidden">
                 <img 
-                  src={post.featuredImage || '/images/hero/economy-fleet.jpg'} 
+                  src={post.featuredImage || '/hero-luxury.webp'} 
                   alt={post.title}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -165,6 +166,19 @@ export default async function BlogHomepage() {
             </Link>
           ))}
         </div>
+        {/* Empty State */}
+        {!featuredPost && recentPosts.length === 0 && (
+          <div className="bg-white dark:bg-[#1B1E4F] rounded-[2rem] p-12 text-center shadow-sm border border-gray-100 dark:border-white/10 mt-16 mb-24 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold text-[#1B1E4F] dark:text-white mb-4">
+              {isAr ? 'قريباً' : 'Coming Soon'}
+            </h3>
+            <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
+              {isAr 
+                ? 'نحن نقوم حالياً بإعداد محتوى رائع لمدونتنا. يرجى التحقق مرة أخرى قريباً للحصول على أحدث النصائح والرؤى حول السفر والعمرة.' 
+                : 'We are currently preparing amazing content for our blog. Check back soon for the latest travel and Umrah insights.'}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ export function ServicesSection() {
       description: isAr 
         ? "استقبال لا تشوبه شائبة في مطارات المملكة الرئيسية مع تتبع لحظي لرحلتك." 
         : "Impeccable meet-and-greet at major Saudi airports with real-time flight tracking.",
-      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop"
+      image: "/services/airport.webp"
     },
     {
       id: "corporate",
@@ -27,7 +27,7 @@ export function ServicesSection() {
       description: isAr 
         ? "أسطول فاخر لتلبية احتياجات الشركات ورجال الأعمال بكفاءة وخصوصية." 
         : "A luxury fleet tailored for corporate professionals demanding efficiency and privacy.",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+      image: "/services/corporate.webp"
     },
     {
       id: "vip",
@@ -36,7 +36,7 @@ export function ServicesSection() {
       description: isAr 
         ? "أقصى درجات الفخامة والأمان لرحلات الشخصيات الهامة والوفود." 
         : "The highest level of luxury and security for VIPs and official delegations.",
-      image: "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=2070&auto=format&fit=crop"
+      image: "/services/vip.webp"
     },
     {
       id: "hourly",
@@ -45,7 +45,7 @@ export function ServicesSection() {
       description: isAr 
         ? "مرونة تامة مع سائق مخصص لتنقلاتك المتعددة على مدار الساعة." 
         : "Total flexibility with a dedicated driver at your disposal by the hour.",
-      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop"
+      image: "/services/hourly.webp"
     }
   ];
 

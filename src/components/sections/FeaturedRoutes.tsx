@@ -20,7 +20,7 @@ export function FeaturedRoutes() {
       time: "1h 15m",
       vehicles: "Camry, Staria, GMC",
       price: "250",
-      image: "https://images.unsplash.com/photo-1591557304192-3d9646b5a3eb?q=80&w=800&auto=format&fit=crop"
+      image: "/routes/jeddah-makkah.webp"
     },
     {
       id: "mak-mad",
@@ -30,7 +30,7 @@ export function FeaturedRoutes() {
       time: "4h 30m",
       vehicles: "S-Class, Hiace, H1",
       price: "1200",
-      image: "https://images.unsplash.com/photo-1591557304245-c45330364e8f?q=80&w=800&auto=format&fit=crop"
+      image: "/routes/makkah-madinah.webp"
     },
     {
       id: "mad-jed",
@@ -40,7 +40,7 @@ export function FeaturedRoutes() {
       time: "4h 00m",
       vehicles: "Camry, Staria, Coaster",
       price: "1100",
-      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop"
+      image: "/routes/madinah-jeddah.webp"
     }
   ];
 

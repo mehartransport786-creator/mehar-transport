@@ -15,7 +15,7 @@ export default function DashboardOverviewPage() {
       
       {/* Welcome Banner */}
       <div className="bg-[#1B1E4F] rounded-2xl p-8 md:p-10 text-white relative overflow-hidden shadow-xl">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-[url('/routes/jeddah-makkah.webp')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold mb-2">

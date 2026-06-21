@@ -14,27 +14,27 @@ export function VehicleCategoryExperience() {
   const categories = [
     {
       title: isAr ? "تنفيذي" : "EXECUTIVE",
-      vehicle: "Kia K5",
+      vehicle: "Toyota Camry",
       perfectFor: isAr ? "رجال الأعمال، المطار، الأزواج" : "Business, Airport, Couples",
-      image: mockFleet.find(v => v.id === "kia-k5")?.image || "",
+      image: mockFleet.find(v => v.id === "toyota-camry")?.image || "",
     },
     {
-      title: isAr ? "عائلي" : "FAMILY",
-      vehicle: "Mitsubishi Xpander",
+      title: isAr ? "دفع رباعي فاخر" : "LUXURY SUV",
+      vehicle: "GMC Yukon",
       perfectFor: isAr ? "العائلات، المجموعات الصغيرة، العمرة" : "Families, Small Groups, Umrah",
-      image: mockFleet.find(v => v.id === "mitsubishi-xpander")?.image || "",
+      image: mockFleet.find(v => v.id === "gmc-yukon")?.image || "",
     },
     {
-      title: isAr ? "عائلي فاخر" : "PREMIUM FAMILY",
+      title: isAr ? "عائلي فاخر" : "PREMIUM VAN",
       vehicle: "Hyundai Staria",
       perfectFor: isAr ? "السفر العائلي الفاخر، عمرة VIP" : "Premium Family Travel, VIP Umrah",
       image: mockFleet.find(v => v.id === "hyundai-staria")?.image || "",
     },
     {
-      title: isAr ? "مجموعات" : "GROUP",
-      vehicle: "Toyota Hiace",
-      perfectFor: isAr ? "مجموعات الحجاج، وكالات السفر" : "Pilgrim Groups, Travel Agencies",
-      image: mockFleet.find(v => v.id === "toyota-hiace")?.image || "",
+      title: isAr ? "سيدان فاخرة" : "PREMIUM SEDAN",
+      vehicle: "Ford Taurus",
+      perfectFor: isAr ? "السفر المريح، المسافات الطويلة" : "Comfortable Travel, Long Distance",
+      image: mockFleet.find(v => v.id === "ford-taurus")?.image || "",
     },
     {
       title: isAr ? "مجموعات كبيرة" : "LARGE GROUP",
@@ -104,12 +104,15 @@ export function VehicleCategoryExperience() {
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               className="group cursor-pointer relative h-[400px] rounded-2xl overflow-hidden flex flex-col justify-end"
             >
+              <div className="absolute inset-0 bg-gradient-to-b from-[#1B1E4F] to-[#0d0f28] border border-white/10 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent rounded-2xl"></div>
+              
               <img 
                 src={cat.image} 
                 alt={cat.vehicle} 
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                className="absolute inset-0 w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-1000 drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1B1E4F]/90 via-[#1B1E4F]/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f28]/90 via-[#0d0f28]/40 to-transparent opacity-90 transition-opacity duration-500 rounded-2xl" />
               
               <div className="relative z-10 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="text-[#D9A63A] text-xs font-bold uppercase tracking-[0.2em] mb-2">{cat.title}</div>

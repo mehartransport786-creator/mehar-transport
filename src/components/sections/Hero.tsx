@@ -15,26 +15,26 @@ export function Hero() {
   return (
     <section className="relative h-screen w-full flex items-center overflow-hidden">
       {/* Cinematic Video Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
         {/* Desktop Image */}
         <Image
-          src="/hero-image-new.jpg"
-          alt="Mehar Transport Luxury Chauffeur"
+          src="/hero-luxury.webp"
+          alt="Mehar Transport Luxury Chauffeur at Airport"
           quality={100}
           fill
           priority
-          unoptimized
+          sizes="100vw"
           className="hidden md:block object-cover object-center"
         />
         {/* Mobile Cropped Image */}
         <Image
-          src="/hero-image-mobile.jpg"
+          src="/hero-luxury.webp"
           alt="Mehar Transport Luxury Chauffeur"
-          quality={100}
+          quality={90}
           fill
           priority
-          unoptimized
-          className="block md:hidden object-cover object-center"
+          sizes="100vw"
+          className="block md:hidden object-cover object-[70%_center]"
         />
         {/* Deep navy/black gradient overlay for readability and premium feel */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent"></div>

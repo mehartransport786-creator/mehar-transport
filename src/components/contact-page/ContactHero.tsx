@@ -20,7 +20,7 @@ export function ContactHero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 to-slate-950/50 z-10" />
         {/* We would use a real image here, but a placeholder works for the layout */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80')] bg-cover bg-center bg-no-repeat opacity-40" />
+        <div className="absolute inset-0 bg-[url('/services/airport.webp')] bg-cover bg-center bg-no-repeat opacity-40" />
       </div>
 
       <div className="container mx-auto px-4 relative z-20 pt-24 pb-16">

@@ -35,7 +35,7 @@ export function SafetyQuality() {
           >
             <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" 
+                src="/gallery/chauffeur.webp" 
                 alt="Mehar Transport Safety" 
                 className="w-full h-full object-cover"
               />

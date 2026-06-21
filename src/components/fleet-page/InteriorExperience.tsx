@@ -105,7 +105,7 @@ export function InteriorExperience() {
           >
             <div className="relative aspect-square md:aspect-[4/5] rounded-[2rem] overflow-hidden group">
               <Image 
-                src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" 
+                src="/about/interior.webp" 
                 alt="Luxury Interior" 
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

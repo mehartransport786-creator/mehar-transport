@@ -18,7 +18,7 @@ export function CustomerStories() {
       vehicle: "Hyundai Staria",
       rating: 5,
       review: t("ourUmrahTripWithMeharWasExceptionalTheDr"),
-      image: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=2000&auto=format&fit=crop"
+      initials: "AF"
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ export function CustomerStories() {
       vehicle: "Mercedes-Benz S-Class",
       rating: 5,
       review: t("iUseMeharForAllMyBusinessTripsToSaudiAra"),
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop"
+      initials: "DR"
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ export function CustomerStories() {
       vehicle: "Toyota Coaster",
       rating: 5,
       review: t("organizingATripFor20PeopleIsNeverEasyBut"),
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop"
+      initials: "IG"
     }
   ];
 
@@ -78,13 +78,9 @@ export function CustomerStories() {
               </p>
               
               <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                <Image 
-                  src={story.image} 
-                  alt={story.name} 
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover"
-                />
+                <div className="w-12 h-12 rounded-full bg-[#1B1E4F] flex items-center justify-center text-white font-bold shrink-0">
+                  {story.initials}
+                </div>
                 <div>
                   <h4 className="font-bold text-[#1B1E4F]">{story.name}</h4>
                   <div className="text-xs text-gray-500 mt-1">

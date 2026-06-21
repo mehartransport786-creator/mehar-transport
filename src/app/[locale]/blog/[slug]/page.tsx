@@ -241,7 +241,7 @@ export default async function BlogPostPage({ params }: { params: { locale: strin
                     {relatedPosts.map((rp: any) => (
                       <Link key={rp._id} href={`/blog/${rp.slug}`} className="group flex gap-4">
                         <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0">
-                          <img src={rp.featuredImage || '/images/hero/economy-fleet.jpg'} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                          <img src={rp.featuredImage || '/hero-luxury.webp'} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                         </div>
                         <div>
                           <h4 className="font-bold text-gray-900 dark:text-white text-sm line-clamp-2 group-hover:text-[#D9A63A] transition-colors mb-2">

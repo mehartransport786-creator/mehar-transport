@@ -61,11 +61,14 @@ export function PremiumVehicleCollection() {
                     transition={{ duration: 1 }}
                     className="w-full lg:w-[55%] xl:w-[60%]"
                   >
-                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden group shadow-2xl">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden group shadow-2xl bg-gradient-to-b from-[#1B1E4F] to-[#0d0f28] border border-white/10">
+                      {/* Studio Lighting Effect */}
+                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"></div>
+                      
                       <img 
                         src={vehicle.image} 
                         alt={vehicle.name} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                        className="absolute inset-0 w-full h-full object-contain p-8 md:p-12 group-hover:scale-105 transition-transform duration-[1.5s] ease-out drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)]"
                       />
                       {/* Interactive Gallery Hint */}
                       <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
