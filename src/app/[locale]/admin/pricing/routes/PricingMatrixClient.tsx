@@ -200,7 +200,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
               <tr>
                 <th className="sticky left-0 z-30 bg-gray-50 p-4 border-b border-r border-gray-200 text-left rtl:text-right min-w-[280px]">
                   <div className="font-bold text-gray-700">{isAr ? 'المسار' : 'Route'}</div>
-                  <div className="text-xs text-gray-400 font-normal">{filtered.length} {isAr ? 'مسارات' : 'Routes'}</div>
+                  <div className="text-xs text-gray-400 font-normal">{filteredRoutes.length} {isAr ? 'مسارات' : 'Routes'}</div>
                 </th>
                 {vehicles.map(v => (
                   <th key={v._id} className="p-3 border-b border-r border-gray-200 text-center min-w-[120px]">
@@ -214,7 +214,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
               </tr>
             </thead>
             <tbody>
-              {filtered.map(route => (
+              {filteredRoutes.map(route => (
                 <tr key={route._id} className="hover:bg-gray-50/50 group">
                   <td className="sticky left-0 z-10 bg-white group-hover:bg-gray-50/50 p-4 border-b border-r border-gray-200 transition-colors">
                     <div className="font-bold text-gray-800">{isAr ? route.nameAr : route.name}</div>
@@ -266,7 +266,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
                   })}
                 </tr>
               ))}
-              {filtered.length === 0 && (
+              {filteredRoutes.length === 0 && (
                 <tr>
                   <td colSpan={vehicles.length + 1} className="p-12 text-center text-gray-400">
                     <Route className="w-8 h-8 mx-auto mb-2 opacity-20" />
@@ -292,7 +292,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
               {filterType && (
                 <div className="bg-indigo-50 text-indigo-700 text-xs px-3 py-2 rounded-lg font-bold flex items-center gap-2">
                   <AlertCircle className="w-4 h-4" />
-                  {isAr ? `سيطابق هذا التعديل على ${filtered.length} مسار من نوع ${filterType} فقط` : `This will apply to ${filtered.length} filtered ${filterType} routes only.`}
+                  {isAr ? `سيطابق هذا التعديل على ${filteredRoutes.length} مسار من نوع ${filterType} فقط` : `This will apply to ${filteredRoutes.length} filtered ${filterType} routes only.`}
                 </div>
               )}
 

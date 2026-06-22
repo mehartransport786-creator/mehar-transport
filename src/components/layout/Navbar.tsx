@@ -16,7 +16,7 @@ export function Navbar() {
   const pathname = usePathname();
   const isAr = locale === "ar";
   const isHome = pathname === "/";
-  const isTransparent = isHome && !isScrolled;
+  const isTransparent = !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
