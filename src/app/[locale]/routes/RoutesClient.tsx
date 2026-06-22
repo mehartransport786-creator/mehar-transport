@@ -81,7 +81,7 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredRoutes.map((route) => {
-            const minPrice = route.prices ? Math.min(...route.prices) : 0; // Using fallback pricing or real prices if populated
+            const minPrice = route.prices && route.prices.length > 0 ? Math.min(...route.prices) : 0; // Using fallback pricing or real prices if populated
 
             return (
               <div 
@@ -98,7 +98,7 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
                   
                   <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
                     <span className="bg-white/90 backdrop-blur-md text-[#1B1E4F] text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
-                      {isAr ? (route.routeType === 'airport_transfer' ? 'مطار' : route.routeType === 'ziyarat' ? 'مزارات' : 'بين المدن') : route.routeType.replace('_', ' ')}
+                      {isAr ? (route.routeType === 'airport_transfer' ? 'مطار' : route.routeType === 'ziyarat' ? 'مزارات' : 'بين المدن') : (route.routeType || 'intercity').replace('_', ' ')}
                     </span>
                   </div>
 
