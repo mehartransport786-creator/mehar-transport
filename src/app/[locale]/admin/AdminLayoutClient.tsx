@@ -30,6 +30,7 @@ export function AdminLayoutClient({ children, session }: { children: React.React
   const isAr = locale === "ar";
   const isActive = (href: string) => {
     if (href === "/admin") return pathname === "/admin";
+    if (href === "/admin/pricing" && pathname.startsWith("/admin/pricing/routes")) return false;
     return pathname.startsWith(href);
   };
 

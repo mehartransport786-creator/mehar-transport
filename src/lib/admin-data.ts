@@ -121,7 +121,7 @@ export const sidebarMenuItems = [
     { id: "drivers",    label: "Drivers",           labelAr: "السائقون",          icon: "UserCog",         href: "/admin/drivers" },
   ]},
   { section: "Operations", sectionAr: "العمليات", items: [
-    { id: "routes",     label: "Routes",            labelAr: "المسارات",          icon: "Route",           href: "/admin/routes" },
+    { id: "routes",     label: "Routes",            labelAr: "المسارات",          icon: "Route",           href: "/admin/pricing/routes" },
     { id: "packages",   label: "Packages",          labelAr: "الباقات",           icon: "Package",         href: "/admin/packages" },
     { id: "pricing",    label: "Pricing Engine",    labelAr: "نظام التسعير",      icon: "Calculator",      href: "/admin/pricing" },
     { id: "customers",  label: "Customers",         labelAr: "العملاء",           icon: "Users",           href: "/admin/customers" },
