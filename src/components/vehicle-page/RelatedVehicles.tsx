@@ -45,7 +45,7 @@ export function RelatedVehicles({ currentSlug }: RelatedVehiclesProps) {
                 <img 
                   src={vehicle.image} 
                   alt={vehicle.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700" 
                 />
               </div>
               <div className="p-6">

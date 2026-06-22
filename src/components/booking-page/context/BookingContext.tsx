@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 
 export type TripType = "one-way" | "round-trip" | "hourly" | "multi-city" | "airport" | "umrah" | "ziyarat";
 
@@ -132,6 +133,10 @@ export function BookingProvider({ children }: { children: ReactNode }) {
   const [routesLoading, setRoutesLoading] = useState(true);
   const pricingAbortRef = useRef<AbortController | null>(null);
 
+  const searchParams = useSearchParams();
+  const pkgSlug = searchParams.get('package');
+  const vehicleId = searchParams.get('vehicle');
+
   // Load routes on mount
   useEffect(() => {
     let isMounted = true;
@@ -152,6 +157,57 @@ export function BookingProvider({ children }: { children: ReactNode }) {
         const data = await res.json();
         if (isMounted && data.routes && Array.isArray(data.routes)) {
           setRoutes(data.routes);
+
+          // If there's a package slug in the URL, fetch the package and prefill
+          if (pkgSlug) {
+            try {
+              const pkgRes = await fetch(`/api/packages/${pkgSlug}`);
+              if (pkgRes.ok) {
+                const pkgData = await pkgRes.json();
+                if (pkgData.package) {
+                  const pkg = pkgData.package;
+                  
+                  // Map includedRoutes to selectedRoutes by matching with fetched routes
+                  const prefilledRoutes = pkg.includedRoutes.map((includedRoute: any) => {
+                    const matchedRoute = data.routes.find((r: any) => r._id === includedRoute._id);
+                    return matchedRoute || null;
+                  }).filter(Boolean);
+
+                  let selectedVehicles: SelectedVehicle[] = [];
+                  
+                  if (vehicleId) {
+                    const matchedVehicle = pkg.availableVehicles.find((v: any) => v._id === vehicleId);
+                    if (matchedVehicle) {
+                      selectedVehicles = [{
+                        vehicleId: matchedVehicle._id,
+                        vehicleName: matchedVehicle.name,
+                        vehicleNameAr: matchedVehicle.nameAr || matchedVehicle.name,
+                        vehicleType: matchedVehicle.type,
+                        passengers: matchedVehicle.passengers,
+                        luggage: matchedVehicle.luggage,
+                        image: matchedVehicle.image || '/camry.png',
+                        quantity: 1,
+                        unitPrice: matchedVehicle.totalPrice || pkg.startingPrice // Not perfectly accurate without backend pricing engine call, but calculatePricing will override it
+                      }];
+                    }
+                  }
+
+                  if (prefilledRoutes.length > 0) {
+                    setState(prev => ({
+                      ...prev,
+                      tripType: pkg.category === 'VIP' ? 'ziyarat' : 'umrah',
+                      selectedRoutes: prefilledRoutes,
+                      vehicles: selectedVehicles,
+                      currentStep: 3,
+                      completedSteps: [1, 2]
+                    }));
+                  }
+                }
+              }
+            } catch (err) {
+              console.error("Failed to load package data for booking", err);
+            }
+          }
         }
       } catch (err) {
         console.error("Failed to load routes", err);
@@ -167,7 +223,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [pkgSlug, vehicleId]);
 
   const updateState = useCallback((updates: Partial<BookingState>) => {
     setState((prev) => ({ ...prev, ...updates }));
@@ -262,7 +318,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
 
       for (const route of validRoutes) {
         for (const vehicle of state.vehicles) {
-          const res = await fetch('/api/pricing/calculate/route', {
+          const res = await fetch('/api/pricing/calculate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

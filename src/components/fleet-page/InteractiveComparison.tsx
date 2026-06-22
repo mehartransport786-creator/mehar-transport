@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Star, X } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
-export function InteractiveComparison() {
+export function InteractiveComparison({ vehicles }: { vehicles: any[] }) {
   const locale = useLocale();
   const isAr = locale === "ar";
 
@@ -42,13 +42,13 @@ export function InteractiveComparison() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {mockFleet.map((vehicle, i) => (
+                {vehicles.map((vehicle, i) => (
                   <motion.tr 
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    key={vehicle.id} 
+                    key={vehicle._id || vehicle.slug} 
                     className="hover:bg-slate-50 transition-colors group"
                   >
                     <td className="px-6 py-5 sticky left-0 bg-white group-hover:bg-slate-50 transition-colors z-10 shadow-[4px_0_10px_rgba(0,0,0,0.02)] border-r border-gray-50">
@@ -88,7 +88,7 @@ export function InteractiveComparison() {
                     <td className="px-6 py-5 text-center font-bold text-[#1B1E4F]">{vehicle.basePrice} SAR</td>
                     <td className="px-6 py-5 text-center">
                       <Link 
-                        href={`/booking?vehicle=${vehicle.id}`}
+                        href={`/booking?vehicle=${vehicle._id || vehicle.slug}`}
                         className="opacity-0 group-hover:opacity-100 bg-[#D9A63A] text-[#1B1E4F] hover:bg-[#1B1E4F] hover:text-white px-4 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-wider"
                       >
                         {isAr ? "احجز" : "Book"}

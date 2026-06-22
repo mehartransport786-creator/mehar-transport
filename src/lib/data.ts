@@ -18,7 +18,9 @@ export const mockFleet: Vehicle[] = [
     basePrice: 150,
     image: "/fleet/camry.png",
     gallery: [
-      "/fleet/camry.png"
+      "/fleet/camry.png",
+      "/fleet/camry-interior.png",
+      "/fleet/camry-trunk.png"
     ],
     features: ["Executive Comfort", "Air Conditioning", "Professional Driver", "Airport Pickup", "Fixed Pricing"],
     featuresAr: ["راحة تنفيذية", "تكييف هواء", "سائق محترف", "استقبال من المطار", "أسعار ثابتة"],
@@ -43,7 +45,9 @@ export const mockFleet: Vehicle[] = [
     basePrice: 500,
     image: "/fleet/gmc.png",
     gallery: [
-      "/fleet/gmc.png"
+      "/fleet/gmc.png",
+      "/fleet/yukon-interior.png",
+      "/fleet/yukon-trunk.png"
     ],
     features: ["Spacious Cabin", "Comfortable Seating", "Family-Friendly"],
     featuresAr: ["مقصورة واسعة", "مقاعد مريحة", "صديقة للعائلة"],
@@ -93,13 +97,15 @@ export const mockFleet: Vehicle[] = [
     basePrice: 350,
     image: "/fleet/taurus.png",
     gallery: [
-      "/fleet/taurus.png"
+      "/fleet/taurus.png",
+      "/fleet/taurus-interior.png",
+      "/fleet/taurus-trunk.png"
     ],
-    features: ["Group Travel", "Comfortable Seats", "Long-Distance Travel"],
-    featuresAr: ["سفر جماعي", "مقاعد مريحة", "سفر لمسافات طويلة"],
-    description: "Group Transport Van accommodating up to 13 passengers, perfect for travel agencies and large Umrah groups.",
-    descriptionAr: "حافلة نقل جماعي تتسع لما يصل إلى 13 راكبًا، مثالية لوكالات السفر ومجموعات العمرة الكبيرة.",
-    targetAudience: ["Umrah Groups", "Travel Agencies", "Hotel Transfers"],
+    features: ["Comfortable Ride", "Quiet Cabin", "Premium Experience"],
+    featuresAr: ["رحلة مريحة", "مقصورة هادئة", "تجربة فاخرة"],
+    description: "Premium Sedan accommodating up to 4 passengers, perfect for business travelers, couples, and small families.",
+    descriptionAr: "سيارة سيدان فاخرة تتسع لما يصل إلى 4 ركاب، مثالية لرجال الأعمال، والأزواج، والعائلات الصغيرة.",
+    targetAudience: ["Business Travelers", "Couples", "Small Families"],
   },
   {
     id: "toyota-coaster",

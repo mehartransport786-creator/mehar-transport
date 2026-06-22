@@ -45,7 +45,7 @@ export function Step2VehicleSelection() {
 
         for (const route of validRoutes) {
           try {
-            const res = await fetch('/api/pricing/calculate/route', {
+            const res = await fetch('/api/pricing/calculate', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({

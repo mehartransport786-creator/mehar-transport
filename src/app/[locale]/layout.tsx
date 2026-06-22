@@ -22,6 +22,7 @@ import {LayoutShell} from '@/components/layout/LayoutShell';
 import {Navbar} from '@/components/layout/Navbar';
 import {Footer} from '@/components/layout/Footer';
 import Analytics from '@/components/layout/Analytics';
+import {FloatingWhatsApp} from '@/components/layout/FloatingWhatsApp';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mehartransport.com';
 
@@ -85,6 +86,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutShell navbar={<Navbar />} footer={<Footer />}>
             {children}
+            <FloatingWhatsApp />
           </LayoutShell>
         </NextIntlClientProvider>
         <Analytics />

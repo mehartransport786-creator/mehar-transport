@@ -8,12 +8,12 @@ export function ServiceAreaCoverage() {
   const t = useTranslations("ContactPage.coverage");
 
   const cities = [
-    { name: "Makkah", time: "1h 15m from Jeddah", availability: "High", image: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=600&q=80" },
-    { name: "Madinah", time: "4h 30m from Jeddah", availability: "High", image: "https://images.unsplash.com/photo-1591604466107-fe97ca96420f?auto=format&fit=crop&w=600&q=80" },
-    { name: "Jeddah", time: "Local", availability: "Very High", image: "https://images.unsplash.com/photo-1550993049-74d6dd264871?auto=format&fit=crop&w=600&q=80" },
-    { name: "Taif", time: "2h from Jeddah", availability: "Medium", image: "https://images.unsplash.com/photo-1621876938914-7227d8db191e?auto=format&fit=crop&w=600&q=80" },
-    { name: "Riyadh", time: "10h from Jeddah", availability: "Medium", image: "https://images.unsplash.com/photo-1588610190533-311ab8103d8b?auto=format&fit=crop&w=600&q=80" },
-    { name: "Yanbu", time: "3h 30m from Jeddah", availability: "Low", image: "https://images.unsplash.com/photo-1635338166542-6e27bd5ee3c0?auto=format&fit=crop&w=600&q=80" }
+    { name: "Makkah", time: "1h 15m from Jeddah", availability: "High", image: "/cities/makkah.png" },
+    { name: "Madinah", time: "4h 30m from Jeddah", availability: "High", image: "/cities/madinah.png" },
+    { name: "Jeddah", time: "Local", availability: "Very High", image: "/cities/jeddah.png" },
+    { name: "Taif", time: "2h from Jeddah", availability: "Medium", image: "/cities/taif.png" },
+    { name: "Riyadh", time: "10h from Jeddah", availability: "Medium", image: "/cities/riyadh.png" },
+    { name: "Yanbu", time: "3h 30m from Jeddah", availability: "Low", image: "/cities/yanbu.png" }
   ];
 
   return (

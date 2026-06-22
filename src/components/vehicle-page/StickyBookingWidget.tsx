@@ -4,14 +4,16 @@ import { useState } from "react";
 import { useLocale } from "next-intl";
 import { Calendar, MapPin, Users, Phone, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface StickyBookingWidgetProps {
   vehicleName: string;
   vehicleNameAr: string;
   basePrice: number;
+  vehicleId?: string;
 }
 
-export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice }: StickyBookingWidgetProps) {
+export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, vehicleId }: StickyBookingWidgetProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
   
@@ -23,10 +25,22 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice }: S
     phone: ""
   });
 
+  const router = useRouter();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would submit to an API or redirect to checkout
-    alert(isAr ? "تم إرسال طلب الحجز بنجاح!" : "Booking request submitted successfully!");
+    if (!vehicleId) return;
+    
+    // Redirect to the booking engine with prefilled parameters
+    const searchParams = new URLSearchParams({
+      vehicle: vehicleId,
+      pickup: formData.pickup,
+      destination: formData.destination,
+      date: formData.date,
+      passengers: formData.passengers
+    });
+    
+    router.push(`/${locale}/booking?${searchParams.toString()}`);
   };
 
   return (
@@ -122,7 +136,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice }: S
               <input 
                 type="tel" 
                 required
-                placeholder="+966 50 000 0000"
+                placeholder="+966 56 563 8120"
                 className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-[#D9A63A] transition-colors text-left"
                 dir="ltr"
                 value={formData.phone}

@@ -29,18 +29,27 @@ export function Navbar() {
     router.replace(pathname, { locale: nextLocale });
   };
 
-  const packagesLinks = [
-    { name: isAr ? "باقات تويوتا كامري" : "Toyota Camry Packages", href: "/packages/toyota-camry" },
-    { name: isAr ? "باقة جمس يوكن للعمرة | نقل فاخر" : "GMC Yukon Umrah Package | Luxury 6-Seat SUV Transfer", href: "/packages/gmc-yukon" },
-    { name: isAr ? "باقات هيونداي ستاريا" : "Hyundai Staria Packages", href: "/packages/hyundai-staria" },
-    { name: isAr ? "باقات تويوتا هايس" : "Toyota Hiace Packages", href: "/packages/toyota-hiace" },
-    { name: isAr ? "باقات هيونداي H1" : "H1 Hyundai Packages", href: "/packages/hyundai-h1" },
-  ];
+  const [dynamicPackages, setDynamicPackages] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchPackages = async () => {
+      try {
+        const res = await fetch('/api/packages');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.packages) {
+            setDynamicPackages(data.packages);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch packages for navbar", error);
+      }
+    };
+    fetchPackages();
+  }, []);
 
   const [isPackagesOpen, setIsPackagesOpen] = useState(false);
   const [isFleetOpen, setIsFleetOpen] = useState(false);
-  const [isUserOpen, setIsUserOpen] = useState(false);
-
   return (
     <nav 
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
@@ -132,20 +141,29 @@ export function Navbar() {
                     >
                       {isAr ? "عرض كل الباقات" : "View All Packages"}
                     </Link>
-                    {packagesLinks.map((pkg) => (
+                    {dynamicPackages.map((pkg) => (
                       <Link
-                        key={pkg.name}
-                        href={pkg.href}
+                        key={pkg.slug}
+                        href={`/packages/${pkg.slug}`}
                         className="block px-4 py-2.5 text-sm text-gray-800 hover:bg-secondary/10 hover:text-secondary transition-colors"
                         onClick={() => setIsPackagesOpen(false)}
                       >
-                        {pkg.name}
+                        {isAr ? pkg.nameAr : pkg.name}
                       </Link>
                     ))}
                   </div>
                 )}
               </div>
 
+              <Link
+                href="/about"
+                className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
+                  isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                }`}
+              >
+                {isAr ? "من نحن" : "About Us"}
+              </Link>
+              
               <Link
                 href="/routes"
                 className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
@@ -194,55 +212,7 @@ export function Navbar() {
               <Globe className="w-4 h-4" />
               <span>{locale === 'en' ? 'العربية' : 'English'}</span>
             </button>
-            <a 
-              href="https://wa.me/966565638120" 
-              target="_blank" 
-              rel="noreferrer"
-              className="flex items-center gap-2 bg-[#25D366] text-white hover:bg-[#20bd5a] px-4 py-2.5 rounded-md text-sm font-semibold transition-all shadow-lg"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span className="hidden lg:inline">{isAr ? "واتساب" : "WhatsApp"}</span>
-            </a>
             
-            {/* User Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => setIsUserOpen(true)}
-              onMouseLeave={() => setIsUserOpen(false)}
-            >
-              <button className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
-                isScrolled ? 'bg-gray-100 text-[#1B1E4F] hover:bg-gray-200' : 'bg-white/10 text-white hover:bg-white/20'
-              }`}>
-                <User className="w-5 h-5" />
-              </button>
-              {isUserOpen && (
-                <div className="absolute top-full rtl:left-0 ltr:right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
-                  <div className="px-4 py-2 border-b border-gray-100 mb-2">
-                    <p className="text-sm font-bold text-[#1B1E4F]">Ahmed Al-Salem</p>
-                    <p className="text-xs text-gray-500">Premium Member</p>
-                  </div>
-                  <Link
-                    href="/dashboard"
-                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-secondary/10 hover:text-secondary transition-colors"
-                    onClick={() => setIsUserOpen(false)}
-                  >
-                    {isAr ? "لوحة التحكم" : "Dashboard"}
-                  </Link>
-                  <Link
-                    href="/dashboard/bookings"
-                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-secondary/10 hover:text-secondary transition-colors"
-                    onClick={() => setIsUserOpen(false)}
-                  >
-                    {isAr ? "حجوزاتي" : "My Bookings"}
-                  </Link>
-                  <button
-                    className="block w-full text-start px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors mt-2 border-t border-gray-100 pt-2"
-                  >
-                    {isAr ? "تسجيل الخروج" : "Sign Out"}
-                  </button>
-                </div>
-              )}
-            </div>
 
             <Link 
               href="/booking" 
@@ -253,12 +223,6 @@ export function Navbar() {
           </div>
 
           <div className="-mr-2 flex md:hidden gap-4 items-center">
-            <a 
-              href="https://wa.me/966565638120" 
-              className="flex items-center justify-center p-2 rounded-full bg-[#25D366] text-white shadow-lg"
-            >
-              <MessageCircle className="w-5 h-5" />
-            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary ${
@@ -276,21 +240,6 @@ export function Navbar() {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-2xl h-screen overflow-y-auto pb-32">
           <div className="px-4 pt-4 pb-6 space-y-4">
-            
-            {/* Mobile User Profile Quick Link */}
-            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl mb-4 border border-gray-100">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#1B1E4F] text-[#D9A63A] rounded-full flex items-center justify-center font-bold">
-                  AS
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-[#1B1E4F]">Ahmed Al-Salem</p>
-                  <Link href="/dashboard" onClick={() => setIsOpen(false)} className="text-xs text-[#D9A63A] font-bold">
-                    {isAr ? "عرض لوحة التحكم" : "View Dashboard"}
-                  </Link>
-                </div>
-              </div>
-            </div>
 
             <Link
               href="/"
@@ -333,20 +282,27 @@ export function Navbar() {
                 {isAr ? "الباقات" : "Packages"}
               </Link>
               <div className="pl-4 rtl:pr-4 rtl:pl-0 space-y-1">
-                {packagesLinks.map((pkg) => (
+                {dynamicPackages.map((pkg) => (
                   <Link
-                    key={pkg.name}
-                    href={pkg.href}
+                    key={pkg.slug}
+                    href={`/packages/${pkg.slug}`}
                     className="text-foreground hover:text-secondary block px-3 py-2 rounded-md text-sm transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    {pkg.name}
+                    {isAr ? pkg.nameAr : pkg.name}
                   </Link>
                 ))}
               </div>
             </div>
 
             <div className="pt-2 border-t border-border">
+              <Link
+                href="/about"
+                className="text-foreground hover:text-secondary hover:bg-accent block px-3 py-3 rounded-md text-base font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {isAr ? "من نحن" : "About Us"}
+              </Link>
               <Link
                 href="/routes"
                 className="text-foreground hover:text-secondary hover:bg-accent block px-3 py-3 rounded-md text-base font-medium transition-colors"

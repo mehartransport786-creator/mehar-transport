@@ -12,29 +12,29 @@ import RoutePricing from './models/RoutePricing';
 import HourlyPricing from './models/HourlyPricing';
 
 const vehiclesData = [
-  { name: 'Car (4 Seater)', nameAr: 'سيارة (4 مقاعد)', type: 'Sedan', typeAr: 'سيدان', passengers: 4, luggage: 2, image: '/fleet/kia-k5.webp', isActive: true },
-  { name: 'Hiace (11 Seater)', nameAr: 'هايس (11 مقعد)', type: 'Van', typeAr: 'فان', passengers: 11, luggage: 10, image: '/fleet/hiace.webp', isActive: true },
-  { name: 'GMC (7 Seater)', nameAr: 'جمس (7 مقاعد)', type: 'SUV', typeAr: 'سيارة دفع رباعي', passengers: 7, luggage: 7, image: '/fleet/yukon.webp', isActive: true },
-  { name: 'Starex (7 Seater)', nameAr: 'ستاريكس (7 مقاعد)', type: 'Van', typeAr: 'فان', passengers: 7, luggage: 6, image: '/fleet/starex.webp', isActive: true },
-  { name: 'Staria (7 Seater)', nameAr: 'ستاريا (7 مقاعد)', type: 'Luxury Van', typeAr: 'فان فاخر', passengers: 7, luggage: 6, image: '/fleet/staria.webp', isActive: true },
-  { name: 'Coaster (17 Seater)', nameAr: 'كوستر (17 مقعد)', type: 'Bus', typeAr: 'حافلة', passengers: 17, luggage: 15, image: '/fleet/coaster.webp', isActive: true }
+  { name: 'Car (4 Seater)', nameAr: 'سيارة (4 مقاعد)', type: 'Sedan', typeAr: 'سيدان', passengers: 4, luggage: 2, image: '/fleet/camry.png', isActive: true, slug: 'car-4-seater' },
+  { name: 'Hiace (11 Seater)', nameAr: 'هايس (11 مقعد)', type: 'Van', typeAr: 'فان', passengers: 11, luggage: 10, image: '/fleet/hiace.png', isActive: true, slug: 'hiace-11-seater' },
+  { name: 'GMC (7 Seater)', nameAr: 'جمس (7 مقاعد)', type: 'SUV', typeAr: 'سيارة دفع رباعي', passengers: 7, luggage: 7, image: '/fleet/gmc.png', isActive: true, slug: 'gmc-7-seater' },
+  { name: 'Starex (7 Seater)', nameAr: 'ستاريكس (7 مقاعد)', type: 'Van', typeAr: 'فان', passengers: 7, luggage: 6, image: '/fleet/starex.png', isActive: true, slug: 'starex-7-seater' },
+  { name: 'Staria (7 Seater)', nameAr: 'ستاريا (7 مقاعد)', type: 'Luxury Van', typeAr: 'فان فاخر', passengers: 7, luggage: 6, image: '/fleet/staria.png', isActive: true, slug: 'staria-7-seater' },
+  { name: 'Coaster (17 Seater)', nameAr: 'كوستر (17 مقعد)', type: 'Bus', typeAr: 'حافلة', passengers: 17, luggage: 15, image: '/fleet/coaster.png', isActive: true, slug: 'coaster-17-seater' }
 ];
 
 // Price mapping index: [Car, Hiace, GMC, Starex, Staria, Coaster]
 const routesData = [
-  { name: 'Jeddah Airport to Jeddah Hotel', origin: 'Jeddah Airport', destination: 'Jeddah Hotel', prices: [150, 220, 300, 150, 150, 350] },
-  { name: 'Jeddah Airport to Makkah Hotel', origin: 'Jeddah Airport', destination: 'Makkah Hotel', prices: [200, 320, 450, 270, 270, 550] },
-  { name: 'Jeddah Airport to Madinah Hotel', origin: 'Jeddah Airport', destination: 'Madinah Hotel', prices: [400, 525, 900, 450, 450, 900] },
-  { name: 'Madina Hotel to Jeddah Airport', origin: 'Madina Hotel', destination: 'Jeddah Airport', prices: [350, 500, 800, 425, 425, 850] },
-  { name: 'Makkah Ziyarat', origin: 'Makkah', destination: 'Ziyarat Tour', prices: [170, 250, 350, 200, 200, 450] },
-  { name: 'Madinah Ziyarat', origin: 'Madinah', destination: 'Ziyarat Tour', prices: [170, 250, 400, 200, 200, 400] },
+  { name: 'Jeddah Airport to Jeddah Hotel', origin: 'Jeddah Airport', destination: 'Jeddah Hotel', prices: [150, 250, 300, 200, 200, 400] },
+  { name: 'Jeddah Airport to Makkah Hotel', origin: 'Jeddah Airport', destination: 'Makkah Hotel', prices: [200, 350, 500, 300, 300, 550] },
+  { name: 'Jeddah Airport to Madinah Hotel', origin: 'Jeddah Airport', destination: 'Madinah Hotel', prices: [400, 550, 1000, 500, 500, 1100] },
+  { name: 'Madina Hotel to Jeddah Airport', origin: 'Madina Hotel', destination: 'Jeddah Airport', prices: [400, 550, 800, 450, 450, 900] },
+  { name: 'Makkah Ziyarat', origin: 'Makkah', destination: 'Ziyarat Tour', prices: [200, 300, 400, 250, 250, 500] },
+  { name: 'Madinah Ziyarat', origin: 'Madinah', destination: 'Ziyarat Tour', prices: [200, 250, 400, 200, 200, 500] },
   { name: 'Makkah to Taif and Return', origin: 'Makkah', destination: 'Taif', prices: [400, 550, 800, 450, 450, 900] },
   { name: 'Jeddah to Taif and Return', origin: 'Jeddah', destination: 'Taif', prices: [500, 700, 1000, 600, 600, 1000] },
-  { name: 'Makkah Hotel to Madinah Hotel', origin: 'Makkah Hotel', destination: 'Madinah Hotel', prices: [350, 550, 900, 450, 450, 900] },
-  { name: 'Madinah Hotel to Makkah Hotel', origin: 'Madinah Hotel', destination: 'Makkah Hotel', prices: [350, 550, 900, 450, 450, 900] },
-  { name: 'Madinah Hotel to Madinah Airport', origin: 'Madinah Hotel', destination: 'Madinah Airport', prices: [120, 200, 300, 150, 150, 400] },
-  { name: 'Madinah Airport to Madinah Hotel', origin: 'Madinah Airport', destination: 'Madinah Hotel', prices: [150, 250, 300, 200, 200, 450] },
-  { name: 'Makkah Hotel to Jeddah Airport', origin: 'Makkah Hotel', destination: 'Jeddah Airport', prices: [150, 250, 400, 220, 220, 450] },
+  { name: 'Makkah Hotel to Madinah Hotel', origin: 'Makkah Hotel', destination: 'Madinah Hotel', prices: [400, 550, 900, 450, 500, 900] },
+  { name: 'Madinah Hotel to Makkah Hotel', origin: 'Madinah Hotel', destination: 'Makkah Hotel', prices: [400, 550, 900, 450, 450, 900] },
+  { name: 'Madinah Hotel to Madinah Airport', origin: 'Madinah Hotel', destination: 'Madinah Airport', prices: [150, 250, 300, 200, 200, 400] },
+  { name: 'Madinah Airport to Madinah Hotel', origin: 'Madinah Airport', destination: 'Madinah Hotel', prices: [150, 250, 300, 200, 250, 400] },
+  { name: 'Makkah Hotel to Jeddah Airport', origin: 'Makkah Hotel', destination: 'Jeddah Airport', prices: [150, 300, 450, 250, 250, 600] },
   { name: 'Makkah Hotel to Train Station', origin: 'Makkah Hotel', destination: 'Train Station', prices: [100, 200, 250, 180, 180, 350] },
   { name: 'Madinah Hotel to Train Station', origin: 'Madinah Hotel', destination: 'Train Station', prices: [120, 200, 250, 180, 180, 350] }
 ];

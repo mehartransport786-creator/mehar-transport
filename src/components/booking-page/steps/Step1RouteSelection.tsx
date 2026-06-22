@@ -248,7 +248,7 @@ export function Step1RouteSelection() {
                 }`}
               >
                 {/* Route Header — Click to select */}
-                <button
+                <div
                   onClick={() => {
                     if (!isSelected) {
                       handleRouteSelect(route, currentSlot >= 0 ? currentSlot : 0);
@@ -262,7 +262,7 @@ export function Step1RouteSelection() {
                       }
                     }
                   }}
-                  className="w-full px-5 py-4 flex items-center gap-4 text-left group"
+                  className="w-full px-5 py-4 flex items-center gap-4 text-left group cursor-pointer"
                 >
                   {/* Selection indicator */}
                   <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
@@ -286,7 +286,7 @@ export function Step1RouteSelection() {
 
                   {/* Starting Price */}
                   <div className="text-right shrink-0">
-                    <div className="text-xs text-gray-400">From</div>
+                    <div className="text-[10px] text-gray-400 font-medium uppercase tracking-wider">Base fare from</div>
                     <div className="font-black text-[#1B1E4F] text-lg tabular-nums">{lowestPrice} <span className="text-xs font-semibold text-gray-400">SAR</span></div>
                   </div>
 
@@ -300,10 +300,11 @@ export function Step1RouteSelection() {
                   >
                     <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                   </button>
-                </button>
+                </div>
 
                 {/* Vehicle Prices — Compact row (always visible) */}
-                <div className="px-5 pb-3 flex flex-wrap gap-2">
+                <div className="px-5 pb-3 flex flex-wrap items-center gap-2">
+                  <span className="text-[10px] text-gray-400 uppercase tracking-wider mr-1">Base Fares:</span>
                   {pricings.map((p: any) => (
                     <div
                       key={p.vehicleId}

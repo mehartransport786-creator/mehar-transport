@@ -58,36 +58,48 @@ export function ContentHubSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {posts.map((post, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="group cursor-pointer"
-            >
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl mb-6 relative shadow-sm group-hover:shadow-xl transition-all duration-300">
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-4 left-4 rtl:right-4 rtl:left-auto bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
-                  {post.category}
-                </div>
-              </div>
-              <div className="space-y-3 px-2">
-                <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                  <Clock className="w-4 h-4" />
-                  <span>{post.date}</span>
-                </div>
-                <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors line-clamp-2 leading-tight">
-                  {post.title}
-                </h3>
-              </div>
-            </motion.div>
-          ))}
+          {posts.map((post, idx) => {
+            // Assigning slugs to match the ones we will seed
+            const slugs = [
+              "ultimate-guide-vip-umrah-transport",
+              "top-5-business-destinations-riyadh",
+              "ultimate-guide-vip-umrah-transport" // fallback
+            ];
+            const slug = isAr ? slugs[idx] + "-ar" : slugs[idx];
+            
+            return (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="group"
+              >
+                <Link href={`/blog/${slug}`} className="block cursor-pointer">
+                  <div className="aspect-[4/3] overflow-hidden rounded-2xl mb-6 relative shadow-sm group-hover:shadow-xl transition-all duration-300">
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute top-4 left-4 rtl:right-4 rtl:left-auto bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
+                      {post.category}
+                    </div>
+                  </div>
+                  <div className="space-y-3 px-2">
+                    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                      <Clock className="w-4 h-4" />
+                      <span>{post.date}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors line-clamp-2 leading-tight">
+                      {post.title}
+                    </h3>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>

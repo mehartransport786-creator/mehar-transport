@@ -1,7 +1,8 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { mockFleet } from "@/lib/data";
 import { vehicleDetails } from "@/lib/vehicle-details";
+import connectToDatabase from "@/lib/db";
+import Vehicle from "@/lib/models/Vehicle";
 
 import { VehicleHero } from "@/components/vehicle-page/VehicleHero";
 import { VehicleStory } from "@/components/vehicle-page/VehicleStory";
@@ -23,7 +24,8 @@ import { FinalCTA } from "@/components/vehicle-page/FinalCTA";
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
   const resolvedParams = await params;
   const isAr = resolvedParams.locale === "ar";
-  const vehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
+  await connectToDatabase();
+  const vehicle = await Vehicle.findOne({ slug: resolvedParams.slug }).lean();
   const details = vehicleDetails[resolvedParams.slug];
 
   if (!vehicle || !details) {
@@ -40,7 +42,9 @@ export default async function VehicleDetailPage({ params }: { params: { locale: 
   const resolvedParams = await params;
   const isAr = resolvedParams.locale === "ar";
   
-  const vehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
+  await connectToDatabase();
+  const rawVehicle = await Vehicle.findOne({ slug: resolvedParams.slug }).lean();
+  const vehicle = rawVehicle ? JSON.parse(JSON.stringify(rawVehicle)) : null;
   const details = vehicleDetails[resolvedParams.slug];
 
   if (!vehicle || !details) {
@@ -104,6 +108,7 @@ export default async function VehicleDetailPage({ params }: { params: { locale: 
                 vehicleName={vehicle.name}
                 vehicleNameAr={vehicle.nameAr}
                 basePrice={vehicle.basePrice}
+                vehicleId={vehicle.id || vehicle.slug}
               />
             </div>
           </div>

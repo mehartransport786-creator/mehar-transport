@@ -81,15 +81,15 @@ export async function Footer() {
                 <div className="w-10 h-10 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-secondary">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span className="text-white/70 text-sm leading-relaxed pt-2">
+                <a href="https://maps.app.goo.gl/Qrz4rQjfFJt89i45A" target="_blank" rel="noreferrer" className="text-white/70 text-sm leading-relaxed pt-2 hover:text-secondary transition-colors">
                   {t("jeddahSaudiArabia")}
-                </span>
+                </a>
               </li>
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-secondary">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span className="text-white/70 text-sm" dir="ltr">+966 50 000 0000</span>
+                <span className="text-white/70 text-sm" dir="ltr">+966 56 563 8120</span>
               </li>
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-secondary">
@@ -102,21 +102,30 @@ export async function Footer() {
 
           {/* Map/Booking Widget */}
           <div className="space-y-6">
-            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{t("customerService")}</h4>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-              <p className="text-white/70 text-sm mb-6 leading-relaxed">
-                {t("ourTeamIsAvailable247ToAssistYouWithYour")}
-              </p>
-              <a 
-                href="https://wa.me/966565638120" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white hover:bg-[#20bd5a] px-4 py-3 rounded-xl text-sm font-bold transition-colors shadow-lg"
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span>{t("chatOnWhatsapp")}</span>
+            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{t("location")}</h4>
+            <div className="w-full h-48 rounded-2xl overflow-hidden border border-white/10 shadow-lg relative group">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                loading="lazy" 
+                allowFullScreen 
+                referrerPolicy="no-referrer-when-downgrade" 
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Mehar%20Umrah%20Transport,%20Jeddah,%20Saudi%20Arabia&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+              </iframe>
+              <a href="https://maps.app.goo.gl/Qrz4rQjfFJt89i45A" target="_blank" rel="noreferrer" className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="bg-secondary text-[#1B1E4F] font-bold px-4 py-2 rounded-xl text-sm">Open in Google Maps</span>
               </a>
             </div>
+            <a 
+              href="https://wa.me/966565638120" 
+              target="_blank" 
+              rel="noreferrer"
+              className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white hover:bg-[#20bd5a] px-4 py-3 rounded-xl text-sm font-bold transition-colors shadow-lg"
+            >
+              <MessageCircle className="w-5 h-5" />
+              <span>{t("chatOnWhatsapp")}</span>
+            </a>
           </div>
 
         </div>

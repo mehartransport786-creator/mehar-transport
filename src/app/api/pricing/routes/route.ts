@@ -4,12 +4,12 @@ import RoutePricing from '@/lib/models/RoutePricing';
 import Route from '@/lib/models/Route';
 
 const mockVehicles = [
-  { _id: 'v1', name: 'Car (4 Seater)', nameAr: 'سيارة (4 مقاعد)', type: 'Sedan', typeAr: 'سيدان', passengers: 4, luggage: 2, image: '/fleet/kia-k5.webp' },
-  { _id: 'v2', name: 'Hiace (11 Seater)', nameAr: 'هايس (11 مقعد)', type: 'Van', typeAr: 'فان', passengers: 11, luggage: 10, image: '/fleet/hiace.webp' },
-  { _id: 'v3', name: 'GMC (7 Seater)', nameAr: 'جمس (7 مقاعد)', type: 'SUV', typeAr: 'سيارة دفع رباعي', passengers: 7, luggage: 7, image: '/fleet/yukon.webp' },
-  { _id: 'v4', name: 'Starex (7 Seater)', nameAr: 'ستاريكس (7 مقاعد)', type: 'Van', typeAr: 'فان', passengers: 7, luggage: 6, image: '/fleet/starex.webp' },
-  { _id: 'v5', name: 'Staria (7 Seater)', nameAr: 'ستاريا (7 مقاعد)', type: 'Luxury Van', typeAr: 'فان فاخر', passengers: 7, luggage: 6, image: '/fleet/staria.webp' },
-  { _id: 'v6', name: 'Coaster (17 Seater)', nameAr: 'كوستر (17 مقعد)', type: 'Bus', typeAr: 'حافلة', passengers: 17, luggage: 15, image: '/fleet/coaster.webp' }
+  { _id: 'v1', name: 'Car (4 Seater)', nameAr: 'سيارة (4 مقاعد)', type: 'Sedan', typeAr: 'سيدان', passengers: 4, luggage: 2, image: '/fleet/camry.png' },
+  { _id: 'v2', name: 'Hiace (11 Seater)', nameAr: 'هايس (11 مقعد)', type: 'Van', typeAr: 'فان', passengers: 11, luggage: 10, image: '/fleet/hiace.png' },
+  { _id: 'v3', name: 'GMC (7 Seater)', nameAr: 'جمس (7 مقاعد)', type: 'SUV', typeAr: 'سيارة دفع رباعي', passengers: 7, luggage: 7, image: '/fleet/gmc.png' },
+  { _id: 'v4', name: 'Starex (7 Seater)', nameAr: 'ستاريكس (7 مقاعد)', type: 'Van', typeAr: 'فان', passengers: 7, luggage: 6, image: '/fleet/starex.png' },
+  { _id: 'v5', name: 'Staria (7 Seater)', nameAr: 'ستاريا (7 مقاعد)', type: 'Luxury Van', typeAr: 'فان فاخر', passengers: 7, luggage: 6, image: '/fleet/staria.png' },
+  { _id: 'v6', name: 'Coaster (17 Seater)', nameAr: 'كوستر (17 مقعد)', type: 'Bus', typeAr: 'حافلة', passengers: 17, luggage: 15, image: '/fleet/coaster.png' }
 ];
 
 const mockRoutesData = [
@@ -37,6 +37,10 @@ export async function GET() {
     // We fetch all active routes
     const routes = await Route.find({ isActive: true }).lean();
     
+    if (!routes || routes.length === 0) {
+      throw new Error('No active routes found in database');
+    }
+    
     // Fetch all active route pricings, populate vehicle
     const pricings = await RoutePricing.find({ isActive: true })
       .populate('vehicleId')
@@ -62,10 +66,15 @@ export async function GET() {
         nameAr: r.nameAr,
         origin: r.origin,
         destination: r.destination,
-        vehicles: rPricings.map((p: any) => ({
+        pricings: rPricings.map((p: any) => ({
           vehicleId: p.vehicleId._id,
-          name: p.vehicleId.name,
-          nameAr: p.vehicleId.nameAr,
+          vehicleName: p.vehicleId.name,
+          vehicleNameAr: p.vehicleId.nameAr,
+          vehicleType: p.vehicleId.type,
+          vehicleTypeAr: p.vehicleId.typeAr,
+          passengers: p.vehicleId.passengers,
+          luggage: p.vehicleId.luggage,
+          image: p.vehicleId.image,
           basePrice: p.basePrice,
           currentPrice: p.currentPrice
         }))

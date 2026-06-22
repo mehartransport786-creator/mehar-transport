@@ -33,24 +33,30 @@ export function Step4ReviewAndConfirm() {
         customerPhone: state.passengerInfo.phone,
         pickupLocation: state.passengerInfo.pickupLocation,
         dropoffLocation: state.passengerInfo.dropoffLocation,
-        pickupDate: state.dates.pickupDate,
-        pickupTime: state.dates.pickupTime,
+        travelDate: state.dates.pickupDate,
+        travelTime: state.dates.pickupTime,
+        returnDate: state.dates.returnDate,
+        returnTime: state.dates.returnTime,
         routeId: state.selectedRoutes[0]?._id || null,
+        route: state.selectedRoutes[0] ? `${state.selectedRoutes[0].origin} → ${state.selectedRoutes[0].destination}` : undefined,
+        vehicleType: state.vehicles[0]?.vehicleName || 'Standard',
         vehicleId: state.vehicles[0]?.vehicleId || null,
+        passengers: state.passengerCount,
+        luggage: state.vehicles[0]?.luggage || 0,
         paymentMethod: state.paymentMethod,
-        totalAmount: state.pricing.totalIncludingTax,
+        totalPrice: state.pricing.totalIncludingTax,
         status: "pending",
-        notes: state.passengerInfo.specialRequests,
+        specialRequests: state.passengerInfo.specialRequests,
+        nationality: state.passengerInfo.nationality,
+        language: state.passengerInfo.country,
+        extras: [],
         metadata: {
           routes: state.selectedRoutes.filter(Boolean),
           vehicles: state.vehicles,
           pricing: state.pricing,
           flightNumber: state.passengerInfo.flightNumber,
           whatsapp: state.passengerInfo.whatsapp,
-          nationality: state.passengerInfo.nationality,
-          country: state.passengerInfo.country,
-          hotelName: state.passengerInfo.hotelName,
-          passengerCount: state.passengerCount
+          hotelName: state.passengerInfo.hotelName
         }
       };
 
@@ -61,7 +67,8 @@ export function Step4ReviewAndConfirm() {
       });
       const data = await res.json();
       if (res.ok && data.success !== false) {
-        router.push(`/en/book/success?id=${data._id || data.id || 'success'}`);
+        const id = data.data?.bookingId || data.data?._id || data.bookingId || data._id || 'success';
+        router.push(`/en/book/success?id=${id}`);
       } else {
         setError(data.error || "Failed to submit booking. Please try again.");
       }

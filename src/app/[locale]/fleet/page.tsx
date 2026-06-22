@@ -11,6 +11,8 @@ import { CustomerStories } from "@/components/fleet-page/CustomerStories";
 import { FleetFAQ } from "@/components/fleet-page/FleetFAQ";
 import { FleetSEOContent } from "@/components/fleet-page/FleetSEOContent";
 import { FinalConversion } from "@/components/fleet-page/FinalConversion";
+import connectToDatabase from "@/lib/db";
+import Vehicle from "@/lib/models/Vehicle";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const resolvedParams = await params;
@@ -24,6 +26,10 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 export default async function FleetPage() {
+  await connectToDatabase();
+  const rawVehicles = await Vehicle.find({ active: true }).sort({ basePrice: 1 }).lean();
+  const vehicles = JSON.parse(JSON.stringify(rawVehicles));
+
   return (
     <main className="min-h-screen bg-white">
       {/* SECTION 1 — CINEMATIC HERO */}
@@ -36,10 +42,10 @@ export default async function FleetPage() {
       <VehicleCategoryExperience />
 
       {/* SECTION 4 — PREMIUM VEHICLE COLLECTION */}
-      <PremiumVehicleCollection />
+      <PremiumVehicleCollection vehicles={vehicles} />
       
       {/* SECTION 5 — INTERACTIVE VEHICLE COMPARISON */}
-      <InteractiveComparison />
+      <InteractiveComparison vehicles={vehicles} />
 
       {/* SECTION 6 — INTERIOR EXPERIENCE */}
       <InteriorExperience />

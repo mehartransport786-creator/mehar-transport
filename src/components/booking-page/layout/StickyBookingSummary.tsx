@@ -148,14 +148,14 @@ export function StickyBookingSummary() {
         <div className="text-sm font-bold text-[#1B1E4F] mb-3">Need help booking?</div>
         <div className="space-y-2">
           <a
-            href="tel:+966500000000"
+            href="tel:+966565638120"
             className="flex items-center gap-3 p-3 rounded-xl bg-[#F8F9FC] hover:bg-[#D9A63A]/10 transition-colors group"
           >
             <Phone className="w-4 h-4 text-[#D9A63A]" />
             <span className="text-sm font-medium text-[#1B1E4F] group-hover:text-[#D9A63A]">Call Us</span>
           </a>
           <a
-            href="https://wa.me/966500000000"
+            href="https://wa.me/966565638120"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-3 rounded-xl bg-[#F8F9FC] hover:bg-green-50 transition-colors group"

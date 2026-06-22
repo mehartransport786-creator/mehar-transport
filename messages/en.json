@@ -27,8 +27,8 @@
     "methods": {
       "phone": {
         "title": "Phone Support",
-        "primary": "+966 50 000 0000",
-        "secondary": "+966 50 000 0001",
+        "primary": "+966 56 563 8120",
+        "secondary": "",
         "callButton": "Call Us",
         "availability": "Available 24/7"
       },
@@ -413,6 +413,7 @@
     "bookNow": "Book Now",
     "contactUs": "Contact Us",
     "jeddahSaudiArabia": "Jeddah, Saudi Arabia",
+    "location": "Location",
     "customerService": "Customer Service",
     "ourTeamIsAvailable247ToAssistYouWithYour": "Our team is available 24/7 to assist you with your booking inquiries.",
     "chatOnWhatsapp": "Chat on WhatsApp",

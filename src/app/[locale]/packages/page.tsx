@@ -109,7 +109,8 @@ async function getPackages() {
   }
 }
 
-export default async function PackagesPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function PackagesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const isAr = locale === "ar";
   const packages = await getPackages();
 

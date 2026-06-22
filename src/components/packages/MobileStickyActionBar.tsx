@@ -27,7 +27,7 @@ export default function MobileStickyActionBar({ pkg, locale, selectedVehicleId }
   };
 
   const handleWhatsApp = () => {
-    window.open(`https://wa.me/966500000000?text=${encodeURIComponent(`Hello, I am interested in the ${pkg.name} package.`)}`, "_blank");
+    window.open(`https://wa.me/966565638120?text=${encodeURIComponent(`Hello, I am interested in the ${pkg.name} package.`)}`, "_blank");
   };
 
   return (

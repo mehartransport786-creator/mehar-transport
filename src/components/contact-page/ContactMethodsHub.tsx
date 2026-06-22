@@ -50,7 +50,7 @@ export function ContactMethodsHub() {
       status: "Immediate",
       color: "bg-red-500",
       hover: "hover:border-red-500/50",
-      link: "tel:+966567809832"
+      link: "tel:+966565638120"
     }
   ];
 
@@ -77,7 +77,7 @@ export function ContactMethodsHub() {
               </h3>
               
               <div className="space-y-2 mb-8">
-                {method.details.map((detail, idx) => (
+                {method.details.filter(Boolean).map((detail, idx) => (
                   <p key={idx} className="text-slate-600 dark:text-slate-400 font-medium">
                     {detail}
                   </p>

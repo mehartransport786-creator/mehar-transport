@@ -1,6 +1,6 @@
-import { mockRoutes } from "@/lib/data";
+import { seoRoutesList } from "@/lib/seo-routes";
 import { Link } from "@/i18n/routing";
-import { Clock, MapPin, ArrowRight, ArrowLeft } from "lucide-react";
+import { Clock, MapPin, ArrowRight, ArrowLeft, ChevronRight } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -33,54 +33,69 @@ export default async function RoutesPage({ params }: { params: Promise<{ locale:
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {mockRoutes.map((route) => (
+          {seoRoutesList.map((route) => (
             <div 
-              key={route.id}
-              className="bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-border flex flex-col"
+              key={route.slug}
+              className="bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-border flex flex-col group"
             >
               <div className="relative h-56 overflow-hidden">
                 <img 
                   src={route.image} 
-                  alt={`${route.origin} to ${route.destination}`} 
-                  className="w-full h-full object-cover"
+                  alt={isAr ? route.nameAr : route.name} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
+                  <span className="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                    {isAr ? 'المسارات المميزة' : 'Popular'}
+                  </span>
+                </div>
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <span className="text-sm font-medium text-white/80">{isAr ? "السعر يبدأ من" : "Starting from"}</span>
-                  <div className="text-3xl font-bold">{route.startingPrice} <span className="text-sm font-normal">SAR</span></div>
+                  <div className="text-3xl font-bold text-[#D9A63A]">{route.startingPrice} <span className="text-sm font-normal text-white">SAR</span></div>
                 </div>
               </div>
               
               <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-center justify-between text-xl font-bold text-foreground mb-6">
-                  <span>{route.origin}</span>
+                <div className="flex items-center justify-between text-xl font-bold text-foreground mb-4">
+                  <span>{isAr ? route.originAr : route.origin}</span>
                   <ArrowIcon className="text-secondary w-6 h-6 mx-2 flex-shrink-0" />
-                  <span className="text-right">{route.destination}</span>
+                  <span className="text-right">{isAr ? route.destinationAr : route.destination}</span>
                 </div>
                 
-                <div className="flex flex-col gap-3 text-muted-foreground bg-muted/50 p-4 rounded-xl mb-6">
+                <p className="text-sm text-muted-foreground mb-6 line-clamp-2">
+                  {isAr ? route.descriptionAr : route.description}
+                </p>
+
+                <div className="flex flex-col gap-3 text-muted-foreground bg-muted/30 border border-border/50 p-4 rounded-xl mb-6">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-secondary" />
                     <div>
-                      <div className="text-sm font-medium text-foreground">{isAr ? "المسافة التقريبية" : "Approximate Distance"}</div>
-                      <div className="text-sm">{route.distance}</div>
+                      <div className="text-xs font-medium text-foreground uppercase">{isAr ? "المسافة" : "Distance"}</div>
+                      <div className="text-sm font-bold text-foreground">{isAr ? route.distanceAr : route.distance}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="w-5 h-5 text-secondary" />
                     <div>
-                      <div className="text-sm font-medium text-foreground">{isAr ? "وقت الرحلة المتوقع" : "Estimated Travel Time"}</div>
-                      <div className="text-sm">{route.duration}</div>
+                      <div className="text-xs font-medium text-foreground uppercase">{isAr ? "وقت الرحلة" : "Duration"}</div>
+                      <div className="text-sm font-bold text-foreground">{isAr ? route.durationAr : route.duration}</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-auto">
+                <div className="mt-auto flex flex-col sm:flex-row gap-3">
                   <Link 
-                    href={`/booking?route=${route.id}`} 
-                    className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-bold transition-colors shadow-md"
+                    href={`/routes/${route.slug}`} 
+                    className="flex-1 inline-flex items-center justify-center gap-2 border-2 border-primary hover:bg-primary/5 text-primary px-4 py-2.5 rounded-lg font-bold transition-colors"
                   >
-                    {isAr ? "احجز هذه الرحلة" : "Book This Route"}
+                    {isAr ? "تفاصيل المسار" : "Route Details"}
+                  </Link>
+                  <Link 
+                    href={`/booking`} 
+                    className="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2.5 rounded-lg font-bold transition-colors shadow-md"
+                  >
+                    {isAr ? "احجز الآن" : "Book Now"} <ChevronRight className="w-4 h-4 rtl:rotate-180" />
                   </Link>
                 </div>
               </div>

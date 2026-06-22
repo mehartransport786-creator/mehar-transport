@@ -30,7 +30,7 @@ export function BookingFAQ() {
   ] : [
     {
       q: "How can I modify or cancel my booking?",
-      a: "You can modify or cancel your booking for free up to 24 hours before the pickup time through your account dashboard or by contacting customer service."
+      a: "You can modify or cancel your booking for free up to 24 hours before the pickup time by contacting customer service."
     },
     {
       q: "Does the price include all taxes and fees?",

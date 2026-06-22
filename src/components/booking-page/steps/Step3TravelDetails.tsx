@@ -3,9 +3,57 @@
 import { useBooking } from "../context/BookingContext";
 import { Calendar, Clock, MapPin, Plane, Users, Globe, FileText, Phone, ArrowRight, ArrowLeft, MessageCircle, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+
+const InputField = ({ icon: Icon, label, required, ...props }: any) => (
+  <div>
+    <label className="flex items-center gap-1 text-sm font-semibold text-[#1B1E4F] mb-2">
+      {label}
+      {required && <span className="text-red-400 text-xs">*</span>}
+    </label>
+    <div className="relative">
+      <Icon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-300 w-4.5 h-4.5" />
+      <input
+        {...props}
+        className="w-full bg-[#F8F9FC] border-2 border-transparent rounded-xl py-3 pl-11 pr-4 text-sm text-[#1B1E4F] placeholder:text-gray-400 focus:ring-0 focus:border-[#D9A63A] focus:bg-white transition-all"
+      />
+    </div>
+  </div>
+);
 
 export function Step3TravelDetails() {
   const { state, updateState, prevStep, nextStep } = useBooking();
+
+  // Auto-fill pickup/drop-off locations based on selected route
+  useEffect(() => {
+    if (state.selectedRoutes && state.selectedRoutes.length > 0 && state.selectedRoutes[0]) {
+      const route = state.selectedRoutes[0];
+      const updates: any = {};
+      let hasUpdates = false;
+
+      if (!state.passengerInfo.pickupLocation && route.origin) {
+        updates.pickupLocation = route.origin;
+        hasUpdates = true;
+      }
+      
+      if (!state.passengerInfo.dropoffLocation && route.destination) {
+        updates.dropoffLocation = route.destination;
+        hasUpdates = true;
+      }
+
+      if (hasUpdates) {
+        // Use a slight timeout to prevent state update collisions during render
+        setTimeout(() => {
+          updateState({ 
+            passengerInfo: { 
+              ...state.passengerInfo, 
+              ...updates 
+            } 
+          });
+        }, 0);
+      }
+    }
+  }, []); // Only run once on mount
 
   const handleDateChange = (value: string) => {
     updateState({ dates: { ...state.dates, pickupDate: value } });
@@ -30,22 +78,6 @@ export function Step3TravelDetails() {
     state.passengerInfo.phone.trim() &&
     state.passengerInfo.pickupLocation.trim() &&
     state.passengerInfo.dropoffLocation.trim()
-  );
-
-  const InputField = ({ icon: Icon, label, required, ...props }: any) => (
-    <div>
-      <label className="flex items-center gap-1 text-sm font-semibold text-[#1B1E4F] mb-2">
-        {label}
-        {required && <span className="text-red-400 text-xs">*</span>}
-      </label>
-      <div className="relative">
-        <Icon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-300 w-4.5 h-4.5" />
-        <input
-          {...props}
-          className="w-full bg-[#F8F9FC] border-2 border-transparent rounded-xl py-3 pl-11 pr-4 text-sm text-[#1B1E4F] placeholder:text-gray-400 focus:ring-0 focus:border-[#D9A63A] focus:bg-white transition-all"
-        />
-      </div>
-    </div>
   );
 
   return (
@@ -119,7 +151,7 @@ export function Step3TravelDetails() {
           </div>
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
             <InputField icon={Users} label="Full Name" required type="text" placeholder="John Doe" value={state.passengerInfo.name} onChange={(e: any) => update('name', e.target.value)} />
-            <InputField icon={Phone} label="Phone Number" required type="tel" placeholder="+966 5X XXX XXXX" value={state.passengerInfo.phone} onChange={(e: any) => update('phone', e.target.value)} />
+            <InputField icon={Phone} label="Phone Number" required type="tel" placeholder="+966 56 563 8120" value={state.passengerInfo.phone} onChange={(e: any) => update('phone', e.target.value)} />
             <InputField icon={MessageCircle} label="WhatsApp (Optional)" type="tel" placeholder="For easier communication" value={state.passengerInfo.whatsapp} onChange={(e: any) => update('whatsapp', e.target.value)} />
             <InputField icon={FileText} label="Email Address" type="email" placeholder="john@example.com" value={state.passengerInfo.email} onChange={(e: any) => update('email', e.target.value)} />
             <InputField icon={Globe} label="Nationality" type="text" placeholder="e.g. Saudi, British" value={state.passengerInfo.nationality} onChange={(e: any) => update('nationality', e.target.value)} />

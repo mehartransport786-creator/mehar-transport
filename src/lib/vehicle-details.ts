@@ -1,7 +1,7 @@
 import { VehicleDetails } from "@/types/vehicle";
 
 export const vehicleDetails: Record<string, VehicleDetails> = {
-  "kia-k5": {
+  "toyota-camry": {
     theme: {
       primary: "#1B1E4F",
       secondary: "#D9A63A",
@@ -11,8 +11,8 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
     story: {
       title: "Executive Elegance for the Modern Traveler",
       titleAr: "أناقة تنفيذية للمسافر العصري",
-      content: "The Kia K5 redefines executive transport with its sleek design and sophisticated interior. Engineered for business travelers and couples, it offers a seamless blend of performance, comfort, and advanced technology. Whether you're navigating the bustling streets of Riyadh or enjoying a quiet transfer from Jeddah Airport, the K5 ensures you arrive relaxed and ready.",
-      contentAr: "تعيد كيا K5 تعريف النقل التنفيذي بتصميمها الأنيق ومقصورتها المتطورة. صُممت لرجال الأعمال والأزواج، وتقدم مزيجاً سلساً من الأداء والراحة والتكنولوجيا المتقدمة. سواء كنت تتنقل في شوارع الرياض المزدحمة أو تستمتع بنقل هادئ من مطار جدة، تضمن لك K5 الوصول وأنت في قمة الاسترخاء والجاهزية."
+      content: "The Toyota Camry redefines executive transport with its sleek design and sophisticated interior. Engineered for business travelers and couples, it offers a seamless blend of performance, comfort, and advanced technology. Whether you're navigating the bustling streets of Riyadh or enjoying a quiet transfer from Jeddah Airport, the Camry ensures you arrive relaxed and ready.",
+      contentAr: "تعيد تويوتا كامري تعريف النقل التنفيذي بتصميمها الأنيق ومقصورتها المتطورة. صُممت لرجال الأعمال والأزواج، وتقدم مزيجاً سلساً من الأداء والراحة والتكنولوجيا المتقدمة. سواء كنت تتنقل في شوارع الرياض المزدحمة أو تستمتع بنقل هادئ من مطار جدة، تضمن لك كامري الوصول وأنت في قمة الاسترخاء والجاهزية."
     },
     perfectFor: [
       { id: "business", label: "Business Travelers", labelAr: "رجال الأعمال" },
@@ -27,8 +27,8 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
       { id: "seats", label: "Premium Leather Seating", labelAr: "مقاعد جلدية فاخرة" }
     ],
     faqs: [
-      { q: "How many passengers can fit in the Kia K5?", a: "The Kia K5 comfortably seats up to 4 passengers.", qAr: "كم عدد الركاب في كيا K5؟", aAr: "تتسع كيا K5 لـ 4 ركاب بشكل مريح." },
-      { q: "Is the Kia K5 available for airport transfers?", a: "Yes, it is perfectly suited for executive airport transfers.", qAr: "هل تتوفر كيا K5 لتنقلات المطار؟", aAr: "نعم، إنها مناسبة تماماً لتنقلات المطار التنفيذية." },
+      { q: "How many passengers can fit in the Toyota Camry?", a: "The Toyota Camry comfortably seats up to 4 passengers.", qAr: "كم عدد الركاب في تويوتا كامري؟", aAr: "تتسع تويوتا كامري لـ 4 ركاب بشكل مريح." },
+      { q: "Is the Toyota Camry available for airport transfers?", a: "Yes, it is perfectly suited for executive airport transfers.", qAr: "هل تتوفر تويوتا كامري لتنقلات المطار؟", aAr: "نعم، إنها مناسبة تماماً لتنقلات المطار التنفيذية." },
       { q: "Can I book it for intercity travel?", a: "Absolutely. It offers a very comfortable ride for trips between Jeddah, Makkah, and Madinah.", qAr: "هل يمكنني حجزها للسفر بين المدن؟", aAr: "بالتأكيد. توفر رحلة مريحة جداً للتنقل بين جدة، مكة، والمدينة." },
       { q: "How much luggage can it hold?", a: "The trunk accommodates up to 3 large suitcases.", qAr: "كم عدد الحقائب التي يمكن استيعابها؟", aAr: "يتسع الصندوق لما يصل إلى 3 حقائب كبيرة." },
       { q: "Does the car have Wi-Fi?", a: "Complimentary Wi-Fi is available upon request.", qAr: "هل تتوفر شبكة Wi-Fi؟", aAr: "شبكة Wi-Fi مجانية متاحة عند الطلب." }
@@ -38,13 +38,13 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
       { name: "Ahmed Ali", country: "UAE", route: "Makkah to Jeddah", rating: 5, review: "Smooth ride, perfect for a couple.", reviewAr: "رحلة سلسة، مثالية لشخصين.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2000&auto=format&fit=crop" }
     ],
     seoContent: {
-      title: "Luxury Kia K5 Chauffeur Service in Saudi Arabia",
-      titleAr: "خدمة سيارة كيا K5 مع سائق خاص في السعودية",
-      content: "Experience the ultimate in executive travel with our premium Kia K5 chauffeur service. Perfect for navigating the business districts of Riyadh or ensuring a smooth transfer from Jeddah's King Abdulaziz International Airport. The Kia K5 combines dynamic performance with a refined interior, making it the top choice for solo travelers and couples who demand reliability without compromising on elegance.",
-      contentAr: "استمتع بأرقى مستويات السفر التنفيذي مع خدمة سيارة كيا K5 مع سائق خاص. مثالية للتنقل في الأحياء التجارية بالرياض أو ضمان انتقال سلس من مطار الملك عبد العزيز الدولي بجدة. تجمع كيا K5 بين الأداء الديناميكي والمقصورة الراقية، مما يجعلها الخيار الأول للمسافرين الأفراد والأزواج الذين يتطلعون إلى الموثوقية دون المساومة على الأناقة."
+      title: "Luxury Toyota Camry Chauffeur Service in Saudi Arabia",
+      titleAr: "خدمة سيارة تويوتا كامري مع سائق خاص في السعودية",
+      content: "Experience the ultimate in executive travel with our premium Toyota Camry chauffeur service. Perfect for navigating the business districts of Riyadh or ensuring a smooth transfer from Jeddah's King Abdulaziz International Airport. The Toyota Camry combines dynamic performance with a refined interior, making it the top choice for solo travelers and couples who demand reliability without compromising on elegance.",
+      contentAr: "استمتع بأرقى مستويات السفر التنفيذي مع خدمة سيارة تويوتا كامري مع سائق خاص. مثالية للتنقل في الأحياء التجارية بالرياض أو ضمان انتقال سلس من مطار الملك عبد العزيز الدولي بجدة. تجمع تويوتا كامري بين الأداء الديناميكي والمقصورة الراقية، مما يجعلها الخيار الأول للمسافرين الأفراد والأزواج الذين يتطلعون إلى الموثوقية دون المساومة على الأناقة."
     }
   },
-  "mitsubishi-xpander": {
+  "gmc-yukon": {
     theme: {
       primary: "#1B1E4F",
       secondary: "#D9A63A",
@@ -54,8 +54,8 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
     story: {
       title: "Designed for Family Comfort",
       titleAr: "صُممت لراحة العائلة",
-      content: "The Mitsubishi Xpander is the ideal crossover MPV for families and small Umrah groups. Offering exceptional space and versatility, it ensures that every passenger, from the front seat to the third row, enjoys a comfortable journey. With ample headroom, excellent suspension, and superior air conditioning, the Xpander handles long journeys across Saudi Arabia with effortless ease.",
-      contentAr: "تعتبر ميتسوبيشي إكسباندر السيارة العائلية (MPV) المثالية للعائلات ومجموعات العمرة الصغيرة. توفر مساحة استثنائية ومرونة عالية، مما يضمن لكل راكب، من المقعد الأمامي حتى الصف الثالث، رحلة مريحة. بفضل المساحة الواسعة للرأس، ونظام التعليق الممتاز، وتكييف الهواء الفائق، تتعامل إكسباندر مع الرحلات الطويلة عبر المملكة بكل سهولة."
+      content: "The GMC Yukon is the ideal luxury SUV for families and Umrah groups. Offering exceptional space and versatility, it ensures that every passenger, from the front seat to the third row, enjoys a comfortable journey. With ample headroom, excellent suspension, and superior air conditioning, the Yukon handles long journeys across Saudi Arabia with effortless ease.",
+      contentAr: "تعتبر جمس يوكن السيارة الرياضية متعددة الاستخدامات المثالية للعائلات ومجموعات العمرة. توفر مساحة استثنائية ومرونة عالية، مما يضمن لكل راكب، من المقعد الأمامي حتى الصف الثالث، رحلة مريحة. بفضل المساحة الواسعة للرأس، ونظام التعليق الممتاز، وتكييف الهواء الفائق، تتعامل يوكن مع الرحلات الطويلة عبر المملكة بكل سهولة."
     },
     perfectFor: [
       { id: "families", label: "Families", labelAr: "العائلات" },
@@ -78,10 +78,10 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
       { name: "Fatima Abdullah", country: "Malaysia", route: "Jeddah to Makkah", rating: 5, review: "Perfect for our family of 6. Driver was very helpful with our bags.", reviewAr: "مثالية لعائلتنا المكونة من 6 أشخاص. السائق كان متعاوناً جداً مع حقائبنا.", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2000&auto=format&fit=crop" }
     ],
     seoContent: {
-      title: "Mitsubishi Xpander Family Transport in Saudi Arabia",
-      titleAr: "نقل عائلي ميتسوبيشي إكسباندر في السعودية",
-      content: "Ensure your family travels in absolute comfort with our Mitsubishi Xpander chauffeur service. Ideal for Umrah pilgrims and family vacations in Saudi Arabia, this spacious 7-seater provides the perfect balance of comfort, safety, and luggage capacity. Skip the hassle of multiple taxis and keep your family together for airport transfers, Makkah to Madinah trips, and city tours.",
-      contentAr: "اضمن سفر عائلتك براحة تامة مع خدمة سيارة ميتسوبيشي إكسباندر بسائق خاص. مثالية لمعتمري بيت الله الحرام والعطلات العائلية في السعودية، حيث توفر هذه السيارة العائلية ذات الـ 7 مقاعد التوازن المثالي بين الراحة والأمان وسعة الأمتعة. تجنب عناء البحث عن سيارات أجرة متعددة واحتفظ بعائلتك معاً أثناء تنقلات المطار، أو رحلات مكة إلى المدينة، أو الجولات السياحية."
+      title: "GMC Yukon Family Transport in Saudi Arabia",
+      titleAr: "نقل عائلي جمس يوكن في السعودية",
+      content: "Ensure your family travels in absolute comfort with our GMC Yukon chauffeur service. Ideal for Umrah pilgrims and family vacations in Saudi Arabia, this spacious 7-seater provides the perfect balance of comfort, safety, and luggage capacity. Skip the hassle of multiple taxis and keep your family together for airport transfers, Makkah to Madinah trips, and city tours.",
+      contentAr: "اضمن سفر عائلتك براحة تامة مع خدمة سيارة جمس يوكن بسائق خاص. مثالية لمعتمري بيت الله الحرام والعطلات العائلية في السعودية، حيث توفر هذه السيارة العائلية ذات الـ 7 مقاعد التوازن المثالي بين الراحة والأمان وسعة الأمتعة. تجنب عناء البحث عن سيارات أجرة متعددة واحتفظ بعائلتك معاً أثناء تنقلات المطار، أو رحلات مكة إلى المدينة، أو الجولات السياحية."
     }
   },
   "hyundai-staria": {
@@ -124,42 +124,42 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
       contentAr: "ارتقِ بتجربة السفر الجماعي مع خدمة السائق الخاص لسيارة هيونداي ستاريا VIP. تعد ستاريا الخيار الأمثل للعائلات الراقية وعملاء باقات العمرة المميزة، حيث تقدم تجربة فان فاخرة لا مثيل لها. استمتع بمقاعد الكابتن، والتحكم المناخي المتقدم، والمساحة الرحبة للأرجل، بينما يقود سائقونا المحترفون عبر المسارات بين جدة ومكة والمدينة. احجز هيونداي ستاريا لتجربة سفر حقيقية من الدرجة الأولى على الأرض."
     }
   },
-  "toyota-hiace": {
+  "ford-taurus": {
     theme: {
       primary: "#1B1E4F",
       secondary: "#D9A63A",
-      personality: "Group Convenience",
-      personalityAr: "راحة جماعية",
+      personality: "Premium Sedan Comfort",
+      personalityAr: "راحة سيدان فاخرة",
     },
     story: {
-      title: "Professional Group Transportation",
-      titleAr: "نقل جماعي احترافي",
-      content: "When logistics matter, the Toyota Hiace delivers. It is the gold standard for reliable, comfortable group transportation in Saudi Arabia. Whether coordinating a large family's Umrah journey or managing logistics for a corporate retreat, the Hiace provides ample space for up to 13 passengers and their luggage. With powerful air conditioning designed for the Saudi climate and a robust safety profile, it guarantees a smooth group experience.",
-      contentAr: "عندما تكون اللوجستيات مهمة، فإن تويوتا هايس تلبي النداء. إنها المعيار الذهبي للنقل الجماعي الموثوق والمريح في المملكة العربية السعودية. سواء كنت تنسق لرحلة عمرة لعائلة كبيرة أو تدير اللوجستيات لفعالية للشركات، توفر هايس مساحة واسعة تستوعب حتى 13 راكباً مع أمتعتهم. بفضل تكييف الهواء القوي المصمم للمناخ السعودي ومعايير السلامة العالية، تضمن هايس تجربة جماعية سلسة."
+      title: "Premium Sedan for Elegant Journeys",
+      titleAr: "سيدان فاخرة لرحلات أنيقة",
+      content: "The Ford Taurus provides a premium and comfortable experience for passengers. Ideal for business professionals, small families, or couples, it ensures a smooth and elegant journey across Saudi Arabia. With a spacious interior, powerful air conditioning, and top-tier safety features, the Taurus guarantees peace of mind and comfort.",
+      contentAr: "توفر فورد تورس تجربة فاخرة ومريحة للركاب. مثالية لرجال الأعمال، العائلات الصغيرة، أو الأزواج، تضمن رحلة سلسة وأنيقة عبر المملكة العربية السعودية. بفضل المقصورة الواسعة، وتكييف الهواء القوي، وميزات الأمان الفائقة، تضمن تورس راحة البال والراحة التامة."
     },
     perfectFor: [
-      { id: "large_families", label: "Large Families", labelAr: "العائلات الكبيرة" },
-      { id: "tour_groups", label: "Tour Groups", labelAr: "المجموعات السياحية" },
-      { id: "corporate", label: "Corporate Shuttles", labelAr: "نقل الشركات" }
+      { id: "business", label: "Business Professionals", labelAr: "رجال الأعمال" },
+      { id: "couples", label: "Couples", labelAr: "الأزواج" },
+      { id: "small_families", label: "Small Families", labelAr: "العائلات الصغيرة" }
     ],
     comfortFeatures: [
-      { id: "high_roof", label: "High Roof Design", labelAr: "تصميم بسقف مرتفع" },
+      { id: "legroom", label: "Spacious Legroom", labelAr: "مساحة أرجل واسعة" },
       { id: "cooling", label: "Powerful Cabin Cooling", labelAr: "تبريد قوي للمقصورة" },
-      { id: "storage", label: "Dedicated Luggage Space", labelAr: "مساحة مخصصة للأمتعة" }
+      { id: "smooth_ride", label: "Smooth & Quiet Ride", labelAr: "رحلة سلسة وهادئة" }
     ],
     faqs: [
-      { q: "How many people can travel in the Toyota Hiace?", a: "It accommodates up to 13 passengers comfortably.", qAr: "كم عدد الركاب؟", aAr: "تتسع لما يصل إلى 13 راكباً بشكل مريح." },
-      { q: "Is there a lot of space for luggage?", a: "Yes, it is designed to handle up to 10 large suitcases easily.", qAr: "هل توجد مساحة كبيرة للأمتعة؟", aAr: "نعم، إنها مصممة لاستيعاب ما يصل إلى 10 حقائب كبيرة بسهولة." },
-      { q: "Is the Hiace comfortable for long trips?", a: "Yes, our fleet consists of high-roof commuter models with comfortable seating and excellent AC, perfect for intercity travel.", qAr: "هل هايس مريحة للرحلات الطويلة؟", aAr: "نعم، يتكون أسطولنا من طرازات بسقف مرتفع تتميز بمقاعد مريحة وتكييف ممتاز، وهي مثالية للسفر بين المدن." }
+      { q: "How many people can travel in the Ford Taurus?", a: "It accommodates up to 4 passengers comfortably.", qAr: "كم عدد الركاب؟", aAr: "تتسع لما يصل إلى 4 ركاب بشكل مريح." },
+      { q: "Is there enough space for luggage?", a: "Yes, the trunk is designed to handle up to 3 large suitcases easily.", qAr: "هل توجد مساحة كافية للأمتعة؟", aAr: "نعم، تم تصميم الصندوق لاستيعاب ما يصل إلى 3 حقائب كبيرة بسهولة." },
+      { q: "Is the Taurus comfortable for intercity trips?", a: "Yes, it features comfortable seating and excellent AC, perfect for intercity travel.", qAr: "هل تورس مريحة للرحلات بين المدن؟", aAr: "نعم، تتميز بمقاعد مريحة وتكييف ممتاز، وهي مثالية للسفر بين المدن." }
     ],
     reviews: [
-      { name: "Siti Nurhaliza", country: "Indonesia", route: "Jeddah to Makkah", rating: 5, review: "Very spacious for our group of 12. The AC was very cold and the driver was punctual.", reviewAr: "واسعة جداً لمجموعتنا المكونة من 12 شخصاً. التكييف كان بارداً جداً والسائق كان دقيقاً في مواعيده.", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2000&auto=format&fit=crop" }
+      { name: "Abdullah Ali", country: "KSA", route: "Jeddah Airport to Makkah", rating: 5, review: "Very comfortable sedan, quiet ride and the driver was punctual.", reviewAr: "سيدان مريحة جداً، رحلة هادئة والسائق كان دقيقاً في مواعيده.", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2000&auto=format&fit=crop" }
     ],
     seoContent: {
-      title: "Toyota Hiace Group Transport Service in Saudi Arabia",
-      titleAr: "خدمة النقل الجماعي بتويوتا هايس في السعودية",
-      content: "Simplify your group logistics with Mehar Transport's Toyota Hiace chauffeur service. Trusted by travel agencies, large families, and corporate clients, the Hiace is the ultimate solution for transporting up to 13 passengers comfortably across Saudi Arabia. Enjoy fixed pricing, professional drivers, and pristine vehicles for your Makkah and Madinah transfers.",
-      contentAr: "بسط لوجستيات مجموعتك مع خدمة النقل بتويوتا هايس من ميهار للنقل. تعتبر تويوتا هايس، الموثوقة من قبل وكالات السفر والعائلات الكبيرة وعملاء الشركات، الحل الأمثل لنقل ما يصل إلى 13 راكباً براحة عبر أنحاء المملكة. استمتع بأسعار ثابتة، وسائقين محترفين، ومركبات نظيفة وجاهزة دائماً لتنقلاتك في مكة والمدينة."
+      title: "Ford Taurus Premium Transport Service in Saudi Arabia",
+      titleAr: "خدمة النقل الفاخر فورد تورس في السعودية",
+      content: "Enjoy your journey with Mehar Transport's Ford Taurus chauffeur service. Trusted by business travelers and couples, the Taurus is an excellent solution for transporting up to 4 passengers comfortably across Saudi Arabia. Enjoy fixed pricing, professional drivers, and pristine vehicles for your Makkah and Madinah transfers.",
+      contentAr: "استمتع برحلتك مع خدمة النقل فورد تورس من ميهار للنقل. تعتبر فورد تورس، الموثوقة من قبل رجال الأعمال والأزواج، حلاً ممتازاً لنقل ما يصل إلى 4 ركاب براحة عبر أنحاء المملكة. استمتع بأسعار ثابتة، وسائقين محترفين، ومركبات نظيفة وجاهزة دائماً لتنقلاتك في مكة والمدينة."
     }
   },
   "toyota-coaster": {

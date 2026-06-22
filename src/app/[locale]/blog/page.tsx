@@ -4,17 +4,18 @@ import Image from 'next/image';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'metadata' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
+  const t = await getTranslations({ locale: resolvedParams.locale, namespace: 'metadata' });
   return {
-    title: params.locale === 'ar' ? 'المدونة | نقل ميهار' : 'Blog | Mehar Transport',
-    description: params.locale === 'ar' 
+    title: resolvedParams.locale === 'ar' ? 'المدونة | نقل ميهار' : 'Blog | Mehar Transport',
+    description: resolvedParams.locale === 'ar' 
       ? 'نصائح السفر والنقل وخدمات العمرة في المملكة العربية السعودية' 
       : 'Expert transportation insights, Umrah travel guides, and airport transfer tips across Saudi Arabia.',
   };
 }
 
-export default async function BlogHomepage() {
+export default async function BlogHomepage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = await getLocale();
   const isAr = locale === 'ar';
   

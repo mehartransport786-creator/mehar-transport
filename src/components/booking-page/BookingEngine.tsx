@@ -253,10 +253,14 @@ function BookingEngineContent() {
   );
 }
 
+import { Suspense } from "react";
+
 export function BookingEngine() {
   return (
-    <BookingProvider>
-      <BookingEngineContent />
-    </BookingProvider>
+    <Suspense fallback={<div className="min-h-screen bg-[#F5F4F1] flex items-center justify-center">Loading booking engine...</div>}>
+      <BookingProvider>
+        <BookingEngineContent />
+      </BookingProvider>
+    </Suspense>
   );
 }

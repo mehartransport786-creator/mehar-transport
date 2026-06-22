@@ -27,8 +27,8 @@
     "methods": {
       "phone": {
         "title": "الدعم الهاتفي",
-        "primary": "+966 50 000 0000",
-        "secondary": "+966 50 000 0001",
+        "primary": "+966 56 563 8120",
+        "secondary": "",
         "callButton": "اتصل بنا",
         "availability": "متاح على مدار الساعة"
       },
@@ -413,6 +413,7 @@
     "bookNow": "احجز الآن",
     "contactUs": "تواصل معنا",
     "jeddahSaudiArabia": "جدة، المملكة العربية السعودية",
+    "location": "الموقع",
     "customerService": "خدمة العملاء",
     "ourTeamIsAvailable247ToAssistYouWithYour": "فريقنا متواجد على مدار الساعة لخدمتكم والرد على استفساراتكم.",
     "chatOnWhatsapp": "تواصل عبر واتساب",

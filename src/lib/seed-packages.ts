@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import path from "path";
 import connectToDatabase from "./db";
 import Package from "./models/Package";
 import Route from "./models/Route";
 import Vehicle from "./models/Vehicle";
 
-dotenv.config({ path: ".env.local" });
+dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
 
 const seedPackages = async () => {
   try {

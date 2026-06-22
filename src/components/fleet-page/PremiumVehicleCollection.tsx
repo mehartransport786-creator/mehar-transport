@@ -6,7 +6,7 @@ import { mockFleet } from "@/lib/data";
 import { Link } from "@/i18n/routing";
 import { Users, Briefcase, Star, ArrowRight, ArrowLeft } from "lucide-react";
 
-export function PremiumVehicleCollection() {
+export function PremiumVehicleCollection({ vehicles }: { vehicles: any[] }) {
   const locale = useLocale();
   const isAr = locale === "ar";
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
@@ -37,7 +37,7 @@ export function PremiumVehicleCollection() {
 
       {/* Editorial Layouts */}
       <div className="flex flex-col">
-        {mockFleet.map((vehicle, index) => {
+        {vehicles.map((vehicle, index) => {
           const isEven = index % 2 === 0;
           const isRoyal = vehicle.id === "rolls-royce";
           const isElite = vehicle.id === "mercedes-s-class";
@@ -49,7 +49,7 @@ export function PremiumVehicleCollection() {
           const subTextColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
           
           return (
-            <div key={vehicle.id} className={`${bgColor} relative overflow-hidden`}>
+            <div key={vehicle._id || vehicle.slug} className={`${bgColor} relative overflow-hidden`}>
               <div className={`container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px] py-24 lg:py-32`}>
                 <div className={`flex flex-col gap-12 lg:gap-24 items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                   
@@ -136,7 +136,7 @@ export function PremiumVehicleCollection() {
 
                       <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
                         <Link 
-                          href={`/booking?vehicle=${vehicle.id}`}
+                          href={`/booking?vehicle=${vehicle._id || vehicle.slug}`}
                           className={`w-full sm:w-auto text-center px-8 py-4 rounded-xl font-bold transition-all ${
                             theme === 'dark' 
                               ? 'bg-[#D9A63A] text-[#1B1E4F] hover:bg-white' 

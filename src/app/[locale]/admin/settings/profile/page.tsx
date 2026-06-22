@@ -78,7 +78,7 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
             <input 
               type="tel" 
               defaultValue={admin?.phone}
-              placeholder="+966 50 000 0000"
+              placeholder="+966 56 563 8120"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] outline-none transition-all"
             />
           </div>

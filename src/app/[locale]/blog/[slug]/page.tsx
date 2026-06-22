@@ -4,8 +4,9 @@ import { Link } from '@/i18n/routing';
 import { getLocale } from 'next-intl/server';
 import { Calendar, Clock, ChevronRight, Share2, ExternalLink, MessageCircle } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: { locale: string, slug: string } }) {
-  const posts = await getPosts({ slug: params.slug, language: params.locale });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const resolvedParams = await params;
+  const posts = await getPosts({ slug: resolvedParams.slug, language: resolvedParams.locale });
   if (!posts || posts.length === 0) return { title: 'Not Found' };
   
   const post = posts[0];
@@ -26,17 +27,18 @@ export async function generateMetadata({ params }: { params: { locale: string, s
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { locale: string, slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const resolvedParams = await params;
   const locale = await getLocale();
   const isAr = locale === 'ar';
   
-  const posts = await getPosts({ slug: params.slug, language: params.locale });
+  const posts = await getPosts({ slug: resolvedParams.slug, language: resolvedParams.locale });
   if (!posts || posts.length === 0) notFound();
   
   const post = posts[0];
   
   // Fetch related posts (same category, excluding current)
-  const allRelated = await getPosts({ categoryId: post.categoryId?._id, status: 'Published', language: params.locale });
+  const allRelated = await getPosts({ categoryId: post.categoryId?._id, status: 'Published', language: resolvedParams.locale });
   const relatedPosts = allRelated.filter((p: any) => p._id !== post._id).slice(0, 3);
 
   // Generate Schema.org JSON-LD
