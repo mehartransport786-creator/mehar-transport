@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft, Clock, Map, Car, CreditCard } from "lucide-react";
 import { PremiumIcon } from "@/components/ui/PremiumIcon";
+import Image from "next/image";
 
 export function FeaturedRoutes() {
   const locale = useLocale();
@@ -80,10 +81,12 @@ export function FeaturedRoutes() {
               className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300"
             >
               <div className="aspect-[16/10] overflow-hidden relative">
-                <img 
+                <Image 
                   src={route.image} 
                   alt={`${route.from} to ${route.to}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 text-white">

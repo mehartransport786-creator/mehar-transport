@@ -18,7 +18,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
         {/* Desktop Image */}
         <Image
-          src="/hero-luxury.webp"
+          src="/hero-luxury.avif"
           alt="Mehar Transport Luxury Chauffeur at Airport"
           quality={100}
           fill
@@ -28,7 +28,7 @@ export function Hero() {
         />
         {/* Mobile Cropped Image */}
         <Image
-          src="/hero-luxury.webp"
+          src="/hero-luxury.avif"
           alt="Mehar Transport Luxury Chauffeur"
           quality={90}
           fill

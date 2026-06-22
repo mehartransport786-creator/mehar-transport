@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { mockFleet } from "@/lib/data";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, ArrowLeft, Users, Briefcase } from "lucide-react";
+import Image from "next/image";
 
 export function FleetShowcase() {
   const locale = useLocale();
@@ -51,16 +52,22 @@ export function FleetShowcase() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"></div>
             
             <AnimatePresence mode="wait">
-              <motion.img
+              <motion.div
                 key={activeIndex}
                 initial={{ opacity: 0, scale: 1.05, x: 50 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                src={showcaseVehicles[activeIndex].image}
-                alt={showcaseVehicles[activeIndex].name}
-                className="absolute inset-0 w-full h-full object-contain p-8 md:p-16 drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)]"
-              />
+                className="absolute inset-0 p-8 md:p-16"
+              >
+                <Image
+                  src={showcaseVehicles[activeIndex].image}
+                  alt={showcaseVehicles[activeIndex].name}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)]"
+                />
+              </motion.div>
             </AnimatePresence>
             
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f28]/90 via-[#0d0f28]/40 to-transparent pointer-events-none"></div>
@@ -125,10 +132,12 @@ export function FleetShowcase() {
                       : 'bg-transparent border-white/5 hover:border-white/20 hover:bg-white/5'}`}
                 >
                   <div className="w-24 h-16 rounded-lg overflow-hidden shrink-0 relative">
-                    <img 
+                    <Image 
                       src={vehicle.image} 
                       alt={vehicle.name} 
-                      className={`w-full h-full object-contain p-2 transition-transform duration-500 drop-shadow-md ${isActive ? 'scale-110' : 'group-hover:scale-105'}`}
+                      fill
+                      sizes="96px"
+                      className={`object-contain p-2 transition-transform duration-500 drop-shadow-md ${isActive ? 'scale-110' : 'group-hover:scale-105'}`}
                     />
                     <div className={`absolute inset-0 transition-colors duration-300 ${isActive ? 'bg-gradient-to-r from-white/10 to-transparent' : 'bg-black/60 group-hover:bg-black/40'}`}></div>
                   </div>

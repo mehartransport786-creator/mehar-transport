@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
 export function AboutSection() {
   const locale = useLocale();
@@ -67,10 +68,12 @@ export function AboutSection() {
               
               <div className="space-y-4 md:space-y-6 pt-12">
                 <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl relative group">
-                  <img 
+                  <Image 
                     src="/about/interior.webp" 
                     alt="Luxury Interior" 
-                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-[2s] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                 </div>
@@ -78,10 +81,12 @@ export function AboutSection() {
               
               <div className="space-y-4 md:space-y-6">
                 <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl relative group">
-                  <img 
+                  <Image 
                     src="/about/chauffeur.webp" 
                     alt="Chauffeur Service" 
-                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-[2s] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                 </div>
