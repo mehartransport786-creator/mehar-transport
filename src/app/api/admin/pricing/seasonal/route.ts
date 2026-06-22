@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     if (permissionError) return permissionError;
 
     const body = await request.json();
-    const { seasonName, seasonNameAr, startDate, endDate, adjustmentType, adjustmentValue, description, descriptionAr } = body;
+    const { seasonName, seasonNameAr, startDate, endDate, adjustmentType, adjustmentValue, description, descriptionAr, priority, appliesTo } = body;
 
     if (!seasonName || !startDate || !endDate || !adjustmentType || adjustmentValue === undefined) {
       return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
@@ -43,6 +43,8 @@ export async function POST(request: Request) {
       adjustmentValue,
       description,
       descriptionAr,
+      priority: priority || 0,
+      appliesTo: appliesTo || { routeIds: [], vehicleIds: [] },
       isActive: true
     });
 

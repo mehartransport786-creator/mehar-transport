@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { vehicleDetails } from "@/lib/vehicle-details";
 import connectToDatabase from "@/lib/db";
 import Vehicle from "@/lib/models/Vehicle";
+import { mockFleet } from "@/lib/data";
 
 import { VehicleHero } from "@/components/vehicle-page/VehicleHero";
 import { VehicleStory } from "@/components/vehicle-page/VehicleStory";
@@ -24,8 +25,19 @@ import { FinalCTA } from "@/components/vehicle-page/FinalCTA";
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
   const resolvedParams = await params;
   const isAr = resolvedParams.locale === "ar";
-  await connectToDatabase();
-  const vehicle = await Vehicle.findOne({ slug: resolvedParams.slug }).lean();
+  
+  let vehicle = null;
+  try {
+    await connectToDatabase();
+    vehicle = await Vehicle.findOne({ slug: resolvedParams.slug }).lean();
+  } catch (error) {
+    console.warn("MongoDB unreachable for metadata, falling back to local memory data.");
+  }
+
+  if (!vehicle) {
+    vehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
+  }
+
   const details = vehicleDetails[resolvedParams.slug];
 
   if (!vehicle || !details) {
@@ -42,9 +54,21 @@ export default async function VehicleDetailPage({ params }: { params: { locale: 
   const resolvedParams = await params;
   const isAr = resolvedParams.locale === "ar";
   
-  await connectToDatabase();
-  const rawVehicle = await Vehicle.findOne({ slug: resolvedParams.slug }).lean();
-  const vehicle = rawVehicle ? JSON.parse(JSON.stringify(rawVehicle)) : null;
+  let vehicle = null;
+  try {
+    await connectToDatabase();
+    const rawVehicle = await Vehicle.findOne({ slug: resolvedParams.slug }).lean();
+    if (rawVehicle) {
+      vehicle = JSON.parse(JSON.stringify(rawVehicle));
+    }
+  } catch (error) {
+    console.warn("MongoDB unreachable, falling back to local memory data.");
+  }
+
+  if (!vehicle) {
+    vehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
+  }
+
   const details = vehicleDetails[resolvedParams.slug];
 
   if (!vehicle || !details) {

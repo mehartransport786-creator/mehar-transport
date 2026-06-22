@@ -15,6 +15,8 @@ export function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const isAr = locale === "ar";
+  const isHome = pathname === "/";
+  const isTransparent = isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,8 +64,8 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <div className={`transition-all duration-300 rounded-md p-1.5 ${isScrolled ? 'bg-transparent' : 'bg-white/90 backdrop-blur-sm shadow-xl'}`}>
-                <img src="/logo.png" alt="Mehar Transport" className={`${isScrolled ? 'h-10' : 'h-12'} w-auto transition-all duration-300`} />
+              <div className={`transition-all duration-300 rounded-md p-1.5 ${!isTransparent ? 'bg-transparent' : 'bg-white/90 backdrop-blur-sm shadow-xl'}`}>
+                <img src="/logo.png" alt="Mehar Transport" className={`${!isTransparent ? 'h-10' : 'h-12'} w-auto transition-all duration-300`} />
               </div>
             </Link>
           </div>
@@ -73,7 +75,7 @@ export function Navbar() {
               <Link
                 href="/"
                 className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                 }`}
               >
                 {isAr ? "الرئيسية" : "Home"}
@@ -88,7 +90,7 @@ export function Navbar() {
                 <Link 
                   href="/fleet"
                   className={`flex items-center gap-1 transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                    isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                    !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                   }`}
                 >
                   {isAr ? "الأسطول" : "Fleet"}
@@ -126,7 +128,7 @@ export function Navbar() {
                 <Link 
                   href="/packages"
                   className={`flex items-center gap-1 transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                    isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                    !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                   }`}
                 >
                   {isAr ? "الباقات" : "Packages"}
@@ -158,7 +160,7 @@ export function Navbar() {
               <Link
                 href="/about"
                 className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                 }`}
               >
                 {isAr ? "من نحن" : "About Us"}
@@ -167,7 +169,7 @@ export function Navbar() {
               <Link
                 href="/routes"
                 className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                 }`}
               >
                 {isAr ? "المسارات" : "Routes"}
@@ -176,7 +178,7 @@ export function Navbar() {
               <Link
                 href="/cities"
                 className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                 }`}
               >
                 {isAr ? "المدن" : "Cities"}
@@ -185,7 +187,7 @@ export function Navbar() {
               <Link
                 href="/blog"
                 className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                 }`}
               >
                 {isAr ? "المدونة" : "Blog"}
@@ -194,7 +196,7 @@ export function Navbar() {
               <Link
                 href="/contact"
                 className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
                 }`}
               >
                 {isAr ? "اتصل بنا" : "Contact"}
@@ -206,7 +208,7 @@ export function Navbar() {
             <button 
               onClick={toggleLang}
               className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-secondary ${
-                isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'
+                !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
               }`}
             >
               <Globe className="w-4 h-4" />
@@ -226,7 +228,7 @@ export function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary ${
-                isScrolled ? 'text-foreground hover:bg-accent' : 'text-white hover:bg-white/20'
+                !isTransparent ? 'text-foreground hover:bg-accent' : 'text-white hover:bg-white/20'
               }`}
             >
               <span className="sr-only">Open main menu</span>

@@ -8,8 +8,9 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { Lock, Mail, Eye, EyeOff, Loader2, ArrowRight } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, Loader2, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { Link } from "@/i18n/routing";
 
 const loginSchema = z.object({
   email: z.string().min(1, "Email is required").email("Invalid email address"),
@@ -109,7 +110,13 @@ export default function AdminLogin() {
 
       {/* Right Side - Authentication */}
       <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 lg:px-24 relative">
-        <div className="w-full max-w-md mx-auto">
+        <div className="absolute top-8 right-8 z-50">
+          <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#1B1E4F] dark:text-slate-400 dark:hover:text-white transition-colors bg-white/50 dark:bg-black/20 px-4 py-2 rounded-full border border-slate-200 dark:border-slate-800 hover:shadow-sm">
+            <ArrowLeft className="w-4 h-4" /> Back to Homepage
+          </Link>
+        </div>
+        
+        <div className="w-full max-w-md mx-auto relative z-10">
           {/* Mobile Logo */}
           <div className="lg:hidden flex items-center justify-center mb-12">
              <div className="bg-[#1B1E4F] rounded-xl p-2 shadow-xl">

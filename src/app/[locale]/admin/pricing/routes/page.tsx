@@ -2,12 +2,13 @@ import connectToDatabase from "@/lib/db";
 import RoutePricing from "@/lib/models/RoutePricing";
 import Route from "@/lib/models/Route";
 import Vehicle from "@/lib/models/Vehicle";
-import RoutePricingClient from "./RoutePricingClient";
+import PricingMatrixClient from "./PricingMatrixClient";
 
-export default async function RoutePricingPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function RoutePricingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const isAr = locale === "ar";
   
-  let pricingRules: any[] = [];
+  let pricings: any[] = [];
   let routes: any[] = [];
   let vehicles: any[] = [];
   
@@ -16,35 +17,28 @@ export default async function RoutePricingPage({ params: { locale } }: { params:
     
     // Fetch all needed data
     const [fetchedRules, fetchedRoutes, fetchedVehicles] = await Promise.all([
-      RoutePricing.find()
-        .populate("routeId", "name nameAr origin originAr destination destinationAr")
-        .populate("vehicleId", "name nameAr type typeAr image")
-        .sort({ createdAt: -1 })
-        .lean(),
-      Route.find().sort({ name: 1 }).lean(),
-      Vehicle.find({ isActive: true }).sort({ name: 1 }).lean()
+      RoutePricing.find().lean(),
+      Route.find({ status: { $ne: 'archived' } }).sort({ name: 1 }).lean(),
+      Vehicle.find({ active: { $ne: false } }).sort({ name: 1 }).lean()
     ]);
     
     // Serialize for client components
-    pricingRules = JSON.parse(JSON.stringify(fetchedRules));
+    pricings = JSON.parse(JSON.stringify(fetchedRules));
     routes = JSON.parse(JSON.stringify(fetchedRoutes));
     vehicles = JSON.parse(JSON.stringify(fetchedVehicles));
     
   } catch (error) {
-    console.error("Database connection failed, using mock data for admin view");
-    // Fallback data if DB fails
-    // ... we can just return empty arrays or minimal mock data since this is a real feature now
-    pricingRules = [];
-    routes = [];
-    vehicles = [];
+    console.error("Database connection failed for pricing matrix");
   }
 
   return (
-    <RoutePricingClient 
-      pricingRules={pricingRules} 
-      routes={routes} 
-      vehicles={vehicles} 
-      isAr={isAr} 
-    />
+    <div className="p-8">
+      <PricingMatrixClient 
+        pricings={pricings} 
+        routes={routes} 
+        vehicles={vehicles} 
+        isAr={isAr} 
+      />
+    </div>
   );
 }

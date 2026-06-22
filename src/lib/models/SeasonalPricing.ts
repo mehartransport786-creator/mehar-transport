@@ -7,6 +7,11 @@ export interface ISeasonalPricing extends Document {
   endDate: Date;
   adjustmentType: 'percentage_increase' | 'percentage_decrease' | 'fixed_increase' | 'fixed_decrease';
   adjustmentValue: number;
+  priority: number;
+  appliesTo: {
+    routeIds: mongoose.Types.ObjectId[];
+    vehicleIds: mongoose.Types.ObjectId[];
+  };
   description?: string;
   descriptionAr?: string;
   isActive: boolean;
@@ -25,12 +30,20 @@ const SeasonalPricingSchema = new Schema<ISeasonalPricing>({
     required: true 
   },
   adjustmentValue: { type: Number, required: true },
+  priority: { type: Number, default: 0 },
+  appliesTo: {
+    routeIds: [{ type: Schema.Types.ObjectId, ref: 'Route' }],
+    vehicleIds: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }]
+  },
   description: { type: String },
   descriptionAr: { type: String },
   isActive: { type: Boolean, default: true }
 }, {
   timestamps: true
 });
+
+SeasonalPricingSchema.index({ startDate: 1, endDate: 1, isActive: 1 });
+SeasonalPricingSchema.index({ priority: -1 });
 
 const SeasonalPricing = models.SeasonalPricing || mongoose.model<ISeasonalPricing>('SeasonalPricing', SeasonalPricingSchema);
 

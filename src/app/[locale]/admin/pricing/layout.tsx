@@ -21,11 +21,9 @@ export default function PricingLayout({ children }: { children: React.ReactNode 
 
   const navItems = [
     { title: isAr ? "نظرة عامة" : "Dashboard", href: "/admin/pricing", icon: BarChart3, exact: true },
-    { title: isAr ? "تسعير المسارات" : "Route Pricing", href: "/admin/pricing/routes", icon: Map },
+    { title: isAr ? "مصفوفة التسعير" : "Pricing Matrix", href: "/admin/pricing/routes", icon: Map },
     { title: isAr ? "التسعير بالساعة" : "Hourly Rates", href: "/admin/pricing/hourly", icon: Clock },
-    { title: isAr ? "التسعير الموسمي" : "Seasonal Engine", href: "/admin/pricing/seasonal", icon: CalendarDays },
-    { title: isAr ? "تسعير المركبات الأساسي" : "Vehicle Base Rates", href: "/admin/pricing/vehicles", icon: Car },
-    { title: isAr ? "محاكي التسعير" : "Pricing Simulator", href: "/admin/pricing/simulator", icon: Calculator },
+    { title: isAr ? "محرك المواسم" : "Seasonal Engine", href: "/admin/pricing/seasonal", icon: CalendarDays },
     { title: isAr ? "سجل التدقيق المالي" : "Audit Logs", href: "/admin/pricing/audit-logs", icon: FileText },
   ];
 
