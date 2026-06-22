@@ -17,9 +17,9 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
   });
 
   const getRouteImage = (route: any) => {
-    if (route.routeType === 'airport_transfer') return '/routes/jeddah-airport.webp';
-    if (route.routeType === 'ziyarat') return '/routes/makkah-premium.webp';
-    return '/routes/madinah-ziyarat.webp'; // fallback intercity
+    if (route.routeType === 'airport_transfer') return '/routes/jeddah-airport.png';
+    if (route.routeType === 'ziyarat') return '/routes/makkah-premium.png';
+    return '/routes/madinah-ziyarat.png'; // fallback intercity
   };
 
   return (
