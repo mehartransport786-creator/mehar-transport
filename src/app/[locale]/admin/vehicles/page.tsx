@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useState, useEffect } from "react";
-import { Users, Briefcase, Star, BarChart3, DollarSign, TrendingUp, Edit3, Eye, MoreHorizontal, Loader2 } from "lucide-react";
+import { Users, Briefcase, Star, BarChart3, DollarSign, TrendingUp, Edit3, Eye, MoreHorizontal, Loader2, Trash2 } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
 const vehicleStats: Record<string, { bookings: number; revenue: number; utilization: number; rating: number }> = {
@@ -22,6 +22,29 @@ export default function VehiclesPage() {
   
   const [vehicles, setVehicles] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDeleting, setIsDeleting] = useState<string | null>(null);
+
+  const handleDeleteVehicle = async (id: string) => {
+    if (!window.confirm(isAr ? "هل أنت متأكد من حذف هذه المركبة؟" : "Are you sure you want to delete this vehicle?")) return;
+    
+    setIsDeleting(id);
+    try {
+      const res = await fetch(`/api/vehicles/${id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success) {
+        setVehicles(prev => prev.filter(v => (v._id || v.id) !== id));
+      } else {
+        alert(data.error || "Failed to delete vehicle");
+      }
+    } catch (error) {
+      console.error("Error deleting vehicle:", error);
+      alert("An error occurred while deleting the vehicle");
+    } finally {
+      setIsDeleting(null);
+    }
+  };
 
   useEffect(() => {
     async function fetchVehicles() {
@@ -133,6 +156,18 @@ export default function VehiclesPage() {
                     </button>
                     <button className="flex-1 flex items-center justify-center gap-1.5 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] py-2.5 rounded-xl text-xs font-semibold transition-colors">
                       <Edit3 className="w-3.5 h-3.5" /> {isAr ? "تعديل" : "Edit"}
+                    </button>
+                    <button 
+                      onClick={() => handleDeleteVehicle(vehicle._id || vehicle.id)}
+                      disabled={isDeleting === (vehicle._id || vehicle.id)}
+                      className="flex-1 flex items-center justify-center gap-1.5 bg-red-50 text-red-600 hover:bg-red-100 py-2.5 rounded-xl text-xs font-semibold transition-colors disabled:opacity-50"
+                    >
+                      {isDeleting === (vehicle._id || vehicle.id) ? (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      ) : (
+                        <Trash2 className="w-3.5 h-3.5" />
+                      )}
+                      {isAr ? "حذف" : "Delete"}
                     </button>
                   </div>
                 </div>
