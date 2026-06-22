@@ -89,7 +89,10 @@ export async function Footer() {
                 <div className="w-10 h-10 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-secondary">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span className="text-white/70 text-sm" dir="ltr">+966 56 563 8120</span>
+                <div className="flex flex-col">
+                  <a href="tel:+966565638120" className="text-white/70 text-sm hover:text-secondary transition-colors" dir="ltr">+966 56 563 8120</a>
+                  <a href="tel:+966548707332" className="text-white/70 text-sm hover:text-secondary transition-colors" dir="ltr">+966 54 870 7332</a>
+                </div>
               </li>
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-secondary">

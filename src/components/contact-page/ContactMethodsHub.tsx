@@ -59,8 +59,7 @@ export function ContactMethodsHub() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {methods.map((method, index) => (
-            <motion.a
-              href={method.link}
+            <motion.div
               key={method.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -84,15 +83,27 @@ export function ContactMethodsHub() {
                 ))}
               </div>
               
-              <div className="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
-                <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors">
-                  {method.action}
-                </span>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
-                  {method.status}
-                </span>
+              <div className="flex flex-col gap-2 mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
+                <a href={method.link} className="flex items-center justify-between group/link">
+                  <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover/link:text-amber-500 transition-colors">
+                    {method.action}
+                  </span>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                    {method.status}
+                  </span>
+                </a>
+                {(method.id === "phone" || method.id === "whatsapp") && (
+                  <a href={method.id === "phone" ? "tel:+966548707332" : "https://wa.me/966548707332"} className="flex items-center justify-between group/link mt-2">
+                    <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover/link:text-amber-500 transition-colors">
+                      {method.action} (Secondary)
+                    </span>
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                      Alternative
+                    </span>
+                  </a>
+                )}
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -147,22 +147,42 @@ export function StickyBookingSummary() {
       <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
         <div className="text-sm font-bold text-[#1B1E4F] mb-3">Need help booking?</div>
         <div className="space-y-2">
-          <a
-            href="tel:+966565638120"
-            className="flex items-center gap-3 p-3 rounded-xl bg-[#F8F9FC] hover:bg-[#D9A63A]/10 transition-colors group"
-          >
-            <Phone className="w-4 h-4 text-[#D9A63A]" />
-            <span className="text-sm font-medium text-[#1B1E4F] group-hover:text-[#D9A63A]">Call Us</span>
-          </a>
-          <a
-            href="https://wa.me/966565638120"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 p-3 rounded-xl bg-[#F8F9FC] hover:bg-green-50 transition-colors group"
-          >
-            <MessageCircle className="w-4 h-4 text-green-600" />
-            <span className="text-sm font-medium text-[#1B1E4F] group-hover:text-green-600">WhatsApp</span>
-          </a>
+          <div className="flex gap-2">
+            <a
+              href="tel:+966565638120"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-[#D9A63A]/10 transition-colors group"
+            >
+              <Phone className="w-4 h-4 text-[#D9A63A]" />
+              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-[#D9A63A]">Call 1</span>
+            </a>
+            <a
+              href="tel:+966548707332"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-[#D9A63A]/10 transition-colors group"
+            >
+              <Phone className="w-4 h-4 text-[#D9A63A]" />
+              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-[#D9A63A]">Call 2</span>
+            </a>
+          </div>
+          <div className="flex gap-2">
+            <a
+              href="https://wa.me/966565638120"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-green-50 transition-colors group"
+            >
+              <MessageCircle className="w-4 h-4 text-green-600" />
+              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-green-600">WhatsApp 1</span>
+            </a>
+            <a
+              href="https://wa.me/966548707332"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-green-50 transition-colors group"
+            >
+              <MessageCircle className="w-4 h-4 text-green-600" />
+              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-green-600">WhatsApp 2</span>
+            </a>
+          </div>
         </div>
       </div>
 
