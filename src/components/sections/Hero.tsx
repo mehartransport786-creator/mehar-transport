@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-const PremiumBookingWizard = dynamic(() => import('../booking/PremiumBookingWizard'), { ssr: false });
+const InlineBookingWizard = dynamic(() => import('../booking/InlineBookingWizard'), { ssr: false });
 
 export function Hero() {
   const locale = useLocale();
@@ -18,7 +18,8 @@ export function Hero() {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
 
   return (
-    <section className="relative h-screen w-full flex items-center overflow-hidden">
+    <>
+      <section className="relative h-screen w-full flex items-center overflow-hidden">
       {/* Cinematic Video Background */}
       <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
         {/* Desktop Image */}
@@ -116,10 +117,12 @@ export function Hero() {
         
       </div>
 
-      <PremiumBookingWizard 
+      </section>
+
+      <InlineBookingWizard 
         isOpen={isWizardOpen} 
         onClose={() => setIsWizardOpen(false)} 
       />
-    </section>
+    </>
   );
 }

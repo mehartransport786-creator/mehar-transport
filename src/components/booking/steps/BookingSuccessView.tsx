@@ -76,7 +76,7 @@ export default function BookingSuccessView({ bookingRef, onClose }: Props) {
           onClick={onClose}
           className="flex-1 bg-white/10 text-white px-6 py-4 rounded-xl font-bold hover:bg-white/20 transition-colors"
         >
-          {isAr ? "إغلاق النافذة" : "Close Window"}
+          {isAr ? "العودة للرئيسية" : "Book Another Trip"}
         </button>
         <a
           href="https://wa.me/966500000000" // Replace with actual WhatsApp
