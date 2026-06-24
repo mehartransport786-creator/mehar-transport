@@ -8,66 +8,67 @@ interface Props {
   updateData: (data: Partial<BookingState>) => void;
 }
 
+const InputField = ({ 
+  icon: Icon, 
+  label, 
+  value, 
+  onChange, 
+  type = 'text',
+  placeholder = '',
+  isAr
+}: any) => (
+  <div className="space-y-3">
+    <label className="text-sm font-medium text-gray-300">{label}</label>
+    <div className="relative">
+      <div className={`absolute ${isAr ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 text-[#D9A63A]`}>
+        <Icon className="w-5 h-5" />
+      </div>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className={`w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-[#D9A63A]/50 transition-all ${isAr ? 'pr-12' : 'pl-12'}`}
+      />
+    </div>
+  </div>
+);
+
+const ToggleService = ({ 
+  icon: Icon, 
+  title, 
+  description, 
+  price, 
+  checked, 
+  onChange 
+}: any) => (
+  <label className={`flex items-start gap-4 p-4 rounded-xl border cursor-pointer transition-all ${
+    checked ? 'bg-[#D9A63A]/10 border-[#D9A63A]' : 'bg-[#1a1a1a] border-white/10 hover:bg-white/5'
+  }`}>
+    <div className="pt-1">
+      <input 
+        type="checkbox" 
+        checked={checked} 
+        onChange={(e) => onChange(e.target.checked)}
+        className="w-5 h-5 accent-[#D9A63A] bg-transparent border-white/20 rounded cursor-pointer" 
+      />
+    </div>
+    <div className="flex-1">
+      <div className="flex justify-between items-center mb-1">
+        <div className="flex items-center gap-2 text-white font-bold">
+          <Icon className="w-4 h-4 text-[#D9A63A]" />
+          {title}
+        </div>
+        <div className="text-[#D9A63A] text-sm font-bold">+{price} SAR</div>
+      </div>
+      <p className="text-xs text-gray-400 leading-relaxed">{description}</p>
+    </div>
+  </label>
+);
+
 export default function PassengerInfoStep({ data, updateData }: Props) {
   const locale = useLocale();
   const isAr = locale === 'ar';
-
-  const InputField = ({ 
-    icon: Icon, 
-    label, 
-    value, 
-    onChange, 
-    type = 'text',
-    placeholder = ''
-  }: any) => (
-    <div className="space-y-3">
-      <label className="text-sm font-medium text-gray-300">{label}</label>
-      <div className="relative">
-        <div className={`absolute ${isAr ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 text-[#D9A63A]`}>
-          <Icon className="w-5 h-5" />
-        </div>
-        <input
-          type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          className={`w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-[#D9A63A]/50 transition-all ${isAr ? 'pr-12' : 'pl-12'}`}
-        />
-      </div>
-    </div>
-  );
-
-  const ToggleService = ({ 
-    icon: Icon, 
-    title, 
-    description, 
-    price, 
-    checked, 
-    onChange 
-  }: any) => (
-    <label className={`flex items-start gap-4 p-4 rounded-xl border cursor-pointer transition-all ${
-      checked ? 'bg-[#D9A63A]/10 border-[#D9A63A]' : 'bg-[#1a1a1a] border-white/10 hover:bg-white/5'
-    }`}>
-      <div className="pt-1">
-        <input 
-          type="checkbox" 
-          checked={checked} 
-          onChange={(e) => onChange(e.target.checked)}
-          className="w-5 h-5 accent-[#D9A63A] bg-transparent border-white/20 rounded cursor-pointer" 
-        />
-      </div>
-      <div className="flex-1">
-        <div className="flex justify-between items-center mb-1">
-          <div className="flex items-center gap-2 text-white font-bold">
-            <Icon className="w-4 h-4 text-[#D9A63A]" />
-            {title}
-          </div>
-          <div className="text-[#D9A63A] text-sm font-bold">+{price} SAR</div>
-        </div>
-        <p className="text-xs text-gray-400 leading-relaxed">{description}</p>
-      </div>
-    </label>
-  );
 
   return (
     <div className="space-y-10 animate-in fade-in slide-in-from-right-4 duration-500">
@@ -90,6 +91,7 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
             value={data.customerName}
             onChange={(val: string) => updateData({ customerName: val })}
             placeholder={isAr ? "محمد عبدالله" : "John Doe"}
+            isAr={isAr}
           />
           <InputField 
             icon={Phone} 
@@ -98,6 +100,7 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
             value={data.customerPhone}
             onChange={(val: string) => updateData({ customerPhone: val })}
             placeholder="+966 5X XXX XXXX"
+            isAr={isAr}
           />
           <InputField 
             icon={Mail} 
@@ -106,6 +109,7 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
             value={data.customerEmail}
             onChange={(val: string) => updateData({ customerEmail: val })}
             placeholder="john@example.com"
+            isAr={isAr}
           />
           <InputField 
             icon={Plane} 
@@ -113,6 +117,7 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
             value={data.flightNumber}
             onChange={(val: string) => updateData({ flightNumber: val })}
             placeholder="SV 123"
+            isAr={isAr}
           />
         </div>
 
@@ -123,6 +128,7 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
             type="number"
             value={data.passengers}
             onChange={(val: string) => updateData({ passengers: parseInt(val) || 1 })}
+            isAr={isAr}
           />
         </div>
       </section>
