@@ -42,24 +42,7 @@ export function VehicleCategoryExperience() {
       perfectFor: isAr ? "مجموعات العمرة الكبيرة، الشركات" : "Large Umrah Groups, Corporate",
       image: mockFleet.find(v => v.id === "toyota-coaster")?.image || "",
     },
-    {
-      title: isAr ? "حافلة سياحية" : "TOURISM BUS",
-      vehicle: "Luxury Bus",
-      perfectFor: isAr ? "الوفود الكبيرة، الفعاليات" : "Large Delegations, Events",
-      image: mockFleet.find(v => v.id === "luxury-bus")?.image || "",
-    },
-    {
-      title: isAr ? "النخبة" : "ELITE",
-      vehicle: "Mercedes-Benz S-Class",
-      perfectFor: isAr ? "كبار الشخصيات، الدبلوماسيين" : "VIP Travelers, Diplomats",
-      image: mockFleet.find(v => v.id === "mercedes-s-class")?.image || "",
-    },
-    {
-      title: isAr ? "ملكي" : "ROYAL",
-      vehicle: "Rolls-Royce",
-      perfectFor: isAr ? "الضيوف الملكيين، حفلات الزفاف" : "Royal Guests, Weddings",
-      image: mockFleet.find(v => v.id === "rolls-royce")?.image || "",
-    }
+
   ];
 
   return (

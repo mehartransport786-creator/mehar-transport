@@ -25,7 +25,7 @@ export function CustomerStories() {
       name: t("davidRichards"),
       country: t("unitedKingdom"),
       route: t("riyadhAirportToKafd"),
-      vehicle: "Mercedes-Benz S-Class",
+      vehicle: "Toyota Camry",
       rating: 5,
       review: t("iUseMeharForAllMyBusinessTripsToSaudiAra"),
       initials: "DR"

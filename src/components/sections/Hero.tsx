@@ -5,12 +5,17 @@ import { Link, useRouter } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import { MapPin, Calendar, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+
+const PremiumBookingWizard = dynamic(() => import('../booking/PremiumBookingWizard'), { ssr: false });
 
 export function Hero() {
   const locale = useLocale();
   const router = useRouter();
   const isAr = locale === "ar";
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
+  const [isWizardOpen, setIsWizardOpen] = useState(false);
 
   return (
     <section className="relative h-screen w-full flex items-center overflow-hidden">
@@ -78,7 +83,10 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="w-full lg:w-1/3"
           >
-            <div className="bg-white/10 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-colors">
+            <div 
+              onClick={() => setIsWizardOpen(true)}
+              className="bg-white/10 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-colors cursor-pointer"
+            >
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D9A63A]/50 to-transparent"></div>
               
               <h3 className="text-white font-bold text-xl mb-4 flex items-center justify-between">
@@ -96,18 +104,22 @@ export function Hero() {
                 </div>
               </div>
 
-              <Link 
-                href="/booking"
+              <div 
                 className="w-full bg-[#D9A63A] text-[#0a0a0a] hover:bg-white px-6 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group/btn"
               >
                 <span>{isAr ? "احجز الآن" : "Book Now"}</span>
                 <ArrowIcon className="w-5 h-5 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
-              </Link>
+              </div>
             </div>
           </motion.div>
         </div>
         
       </div>
+
+      <PremiumBookingWizard 
+        isOpen={isWizardOpen} 
+        onClose={() => setIsWizardOpen(false)} 
+      />
     </section>
   );
 }

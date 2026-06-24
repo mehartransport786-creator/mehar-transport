@@ -24,7 +24,7 @@ export default function PackageFAQ({ locale }: { locale: string }) {
       q: isAr ? "هل يمكنني ترقية نوع المركبة لاحقاً؟" : "Can I upgrade my vehicle later?",
       a: isAr
         ? "نعم، نقدم مجموعة واسعة من المركبات الفاخرة (من السيدان وحتى سيارات كبار الشخصيات مثل رولز رويس). يمكنك الترقية في أي وقت من خلال التواصل مع خدمة العملاء."
-        : "Yes, we offer a wide range of luxury vehicles (from Sedans to VIP cars like Rolls-Royce). You can upgrade anytime by contacting our support team."
+        : "Yes, we offer a wide range of luxury vehicles (from Sedans to VIP cars like Hyundai Staria VIP). You can upgrade anytime by contacting our support team."
     },
     {
       q: isAr ? "هل يمكنني إضافة جولات زيارات؟" : "Can I add Ziyarat tours?",

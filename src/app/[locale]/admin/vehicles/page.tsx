@@ -11,9 +11,7 @@ const vehicleStats: Record<string, { bookings: number; revenue: number; utilizat
   "hyundai-staria":       { bookings: 520, revenue: 208000,  utilization: 91, rating: 4.9 },
   "toyota-hiace":         { bookings: 480, revenue: 216000,  utilization: 88, rating: 4.7 },
   "toyota-coaster":       { bookings: 310, revenue: 217000,  utilization: 72, rating: 4.8 },
-  "luxury-bus":           { bookings: 250, revenue: 375000,  utilization: 65, rating: 4.6 },
-  "mercedes-s-class":     { bookings: 340, revenue: 408000,  utilization: 85, rating: 5.0 },
-  "rolls-royce":          { bookings: 157, revenue: 549500,  utilization: 60, rating: 5.0 },
+
 };
 
 export default function VehiclesPage() {

@@ -41,10 +41,7 @@ export const bookingsByVehicle = [
   { name: "Toyota Hiace",   bookings: 480 },
   { name: "Kia K5",         bookings: 410 },
   { name: "Xpander",        bookings: 380 },
-  { name: "Mercedes S",     bookings: 340 },
   { name: "Toyota Coaster", bookings: 310 },
-  { name: "Luxury Bus",     bookings: 250 },
-  { name: "Rolls-Royce",    bookings: 157 },
 ];
 
 export type BookingStatus = "pending" | "confirmed" | "assigned" | "in_progress" | "completed" | "cancelled" | "refunded";
@@ -73,27 +70,20 @@ export const statusConfig: Record<BookingStatus, { label: string; labelAr: strin
 };
 
 export const mockBookings: Booking[] = [
-  { id: "MHR-2847", customer: "Ahmed Al-Rashid",    phone: "+966 55 123 4567", route: "Jeddah Airport → Makkah", vehicle: "Mercedes S-Class", driver: "Khalid Omar",     date: "2025-06-01", passengers: 3, amount: 1200, status: "pending" },
   { id: "MHR-2846", customer: "Fatima Hassan",      phone: "+966 50 987 6543", route: "Makkah → Madinah",       vehicle: "Hyundai Staria",   driver: "Saeed Ahmed",     date: "2025-06-01", passengers: 6, amount: 850,  status: "confirmed" },
-  { id: "MHR-2845", customer: "Omar Enterprises",   phone: "+966 54 111 2233", route: "Jeddah Airport → Makkah", vehicle: "Rolls-Royce",      driver: "Faisal Mansour",  date: "2025-06-01", passengers: 2, amount: 3500, status: "assigned" },
   { id: "MHR-2844", customer: "Aisha Mohammed",     phone: "+966 56 444 5566", route: "Makkah → Madinah",       vehicle: "Toyota Hiace",     driver: "Youssef Ali",     date: "2025-05-31", passengers: 11, amount: 1800, status: "in_progress" },
   { id: "MHR-2843", customer: "Ali Bakr Group",     phone: "+966 59 777 8899", route: "Madinah → Jeddah",       vehicle: "Toyota Coaster",   driver: "Hassan Ibrahim",  date: "2025-05-31", passengers: 20, amount: 2200, status: "completed" },
   { id: "MHR-2842", customer: "Sarah Al-Qahtani",   phone: "+966 53 222 3344", route: "Jeddah Airport → Makkah", vehicle: "Kia K5",           driver: "Tariq Nasser",    date: "2025-05-31", passengers: 2, amount: 350,  status: "completed" },
-  { id: "MHR-2841", customer: "Noor Travel Agency", phone: "+966 51 666 7788", route: "Makkah → Madinah",       vehicle: "Luxury Bus",       driver: "Waleed Saleh",    date: "2025-05-30", passengers: 45, amount: 4500, status: "completed" },
   { id: "MHR-2840", customer: "Mohammed Khalil",    phone: "+966 58 333 4455", route: "Jeddah Airport → Makkah", vehicle: "Xpander",          driver: "Abdulrahman",     date: "2025-05-30", passengers: 5, amount: 480,  status: "cancelled" },
   { id: "MHR-2839", customer: "Layla Ahmad",        phone: "+966 52 555 6677", route: "Madinah → Jeddah",       vehicle: "Hyundai Staria",   driver: "Karim Yusuf",     date: "2025-05-30", passengers: 4, amount: 900,  status: "refunded" },
   { id: "MHR-2838", customer: "Huda Pilgrim Group", phone: "+966 57 888 9900", route: "Makkah → Madinah",       vehicle: "Toyota Hiace",     driver: "Bilal Othman",    date: "2025-05-29", passengers: 12, amount: 1600, status: "completed" },
 ];
 
 export const liveActivities = [
-  { id: 1, type: "booking",    icon: "📋", message: "New booking MHR-2847 from Ahmed Al-Rashid",            messageAr: "حجز جديد MHR-2847 من أحمد الراشد",                   time: "2 min ago",  timeAr: "منذ دقيقتين" },
-  { id: 2, type: "payment",    icon: "💳", message: "Payment of 3,500 SAR received for MHR-2845",           messageAr: "تم استلام دفعة 3,500 ريال لحجز MHR-2845",             time: "5 min ago",  timeAr: "منذ 5 دقائق" },
-  { id: 3, type: "driver",     icon: "🚗", message: "Driver Faisal Mansour assigned to MHR-2845",           messageAr: "تم تعيين السائق فيصل منصور للحجز MHR-2845",           time: "8 min ago",  timeAr: "منذ 8 دقائق" },
   { id: 4, type: "message",    icon: "💬", message: "New WhatsApp inquiry from +966 50 111 2233",            messageAr: "استفسار واتساب جديد من +966 50 111 2233",             time: "12 min ago", timeAr: "منذ 12 دقيقة" },
   { id: 5, type: "completed",  icon: "✅", message: "Booking MHR-2843 completed successfully",               messageAr: "اكتمل الحجز MHR-2843 بنجاح",                         time: "18 min ago", timeAr: "منذ 18 دقيقة" },
   { id: 6, type: "cancelled",  icon: "❌", message: "Booking MHR-2840 cancelled by customer",                messageAr: "تم إلغاء الحجز MHR-2840 من قبل العميل",              time: "25 min ago", timeAr: "منذ 25 دقيقة" },
   { id: 7, type: "review",     icon: "⭐", message: "New 5-star review from Ali Bakr Group",                  messageAr: "تقييم جديد 5 نجوم من مجموعة علي بكر",                time: "30 min ago", timeAr: "منذ 30 دقيقة" },
-  { id: 8, type: "alert",      icon: "🔔", message: "Mercedes S-Class maintenance due in 3 days",            messageAr: "صيانة مرسيدس الفئة-S مستحقة خلال 3 أيام",             time: "45 min ago", timeAr: "منذ 45 دقيقة" },
 ];
 
 export const mockDrivers = [
@@ -106,10 +96,7 @@ export const mockDrivers = [
 ];
 
 export const mockCustomers = [
-  { id: "C001", name: "Ahmed Al-Rashid",    phone: "+966 55 123 4567", email: "ahmed@email.com",    totalBookings: 12, lifetimeValue: 14200, favoriteRoute: "Jeddah → Makkah",  preferredVehicle: "Mercedes S-Class", tags: ["VIP", "Frequent"],   lastBooking: "2025-06-01" },
   { id: "C002", name: "Fatima Hassan",      phone: "+966 50 987 6543", email: "fatima@email.com",   totalBookings: 8,  lifetimeValue: 6800,  favoriteRoute: "Makkah → Madinah", preferredVehicle: "Hyundai Staria",   tags: ["Family"],            lastBooking: "2025-06-01" },
-  { id: "C003", name: "Omar Enterprises",   phone: "+966 54 111 2233", email: "omar@corp.com",      totalBookings: 24, lifetimeValue: 84000, favoriteRoute: "Jeddah Airport",   preferredVehicle: "Rolls-Royce",      tags: ["Corporate", "VIP"],  lastBooking: "2025-06-01" },
-  { id: "C004", name: "Noor Travel Agency", phone: "+966 51 666 7788", email: "noor@travel.com",    totalBookings: 36, lifetimeValue: 162000,favoriteRoute: "Makkah → Madinah", preferredVehicle: "Luxury Bus",       tags: ["Agency", "Bulk"],    lastBooking: "2025-05-30" },
   { id: "C005", name: "Sarah Al-Qahtani",   phone: "+966 53 222 3344", email: "sarah@email.com",    totalBookings: 3,  lifetimeValue: 1050,  favoriteRoute: "Jeddah → Makkah",  preferredVehicle: "Kia K5",           tags: ["New"],               lastBooking: "2025-05-31" },
 ];
 

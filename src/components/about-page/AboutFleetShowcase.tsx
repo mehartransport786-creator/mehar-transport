@@ -9,29 +9,29 @@ export function AboutFleetShowcase({ locale }: { locale: string }) {
   
   const fleet = [
     {
-      name: "Mercedes-Benz S-Class",
-      image: "/media/sclass.png",
-      pax: 3,
-      bags: 3,
-      category: "VIP",
+      name: "Toyota Camry",
+      image: "/fleet/camry.png",
+      pax: 4,
+      bags: 2,
+      category: "Executive Sedan",
     },
     {
       name: "GMC Yukon",
-      image: "/media/yukon_exterior.png",
+      image: "/fleet/gmc.png",
       pax: 7,
       bags: 7,
       category: "Luxury SUV",
     },
     {
       name: "Hyundai Staria",
-      image: "/media/staria_exterior.png",
+      image: "/fleet/staria.png",
       pax: 7,
       bags: 7,
       category: "Premium Van",
     },
     {
       name: "Toyota Hiace",
-      image: "/media/hiace_exterior.png",
+      image: "/fleet/hiace.png",
       pax: 12,
       bags: 12,
       category: "Group Van",

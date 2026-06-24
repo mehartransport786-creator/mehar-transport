@@ -29,8 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Vehicle/Fleet pages
   const vehicleSlugs = [
     'hyundai-staria', 'toyota-hiace', 'toyota-camry', 'toyota-coaster',
-    'kia-k5', 'hyundai-h1', 'gmc-yukon', 'mitsubishi-xpander',
-    'mercedes-s-class', 'rolls-royce-ghost'
+    'kia-k5', 'hyundai-h1', 'gmc-yukon', 'mitsubishi-xpander'
   ];
 
   const vehiclePages = vehicleSlugs.flatMap(slug => [

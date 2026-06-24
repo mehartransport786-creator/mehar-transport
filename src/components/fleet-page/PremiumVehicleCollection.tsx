@@ -39,11 +39,8 @@ export function PremiumVehicleCollection({ vehicles }: { vehicles: any[] }) {
       <div className="flex flex-col">
         {vehicles.map((vehicle, index) => {
           const isEven = index % 2 === 0;
-          const isRoyal = vehicle.id === "rolls-royce";
-          const isElite = vehicle.id === "mercedes-s-class";
-          
           // Determine theme based on vehicle
-          const theme = isRoyal || isElite ? "dark" : "light";
+          const theme = "light";
           const bgColor = theme === "dark" ? "bg-[#0a0a0a]" : "bg-white";
           const textColor = theme === "dark" ? "text-white" : "text-[#1B1E4F]";
           const subTextColor = theme === "dark" ? "text-gray-400" : "text-gray-500";

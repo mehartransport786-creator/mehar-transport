@@ -79,7 +79,7 @@ export async function POST(request: Request) {
     const vehicleLower = (body.vehicleType || '').toLowerCase();
     const routeLower = (body.route || body.pickupLocation || '').toLowerCase();
 
-    if (vehicleLower.includes('rolls') || vehicleLower.includes('mercedes s') || vehicleLower.includes('bentley')) {
+    if (vehicleLower.includes('vip')) {
       priority = 'vip';
     } else if (routeLower.includes('airport')) {
       priority = 'airport';

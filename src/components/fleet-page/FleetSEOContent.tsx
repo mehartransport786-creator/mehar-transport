@@ -30,7 +30,7 @@ export function FleetSEOContent() {
               <h3>خدمات السائق الخاص لكبار الشخصيات (VIP)</h3>
               <p>
                 للشخصيات البارزة، والدبلوماسيين، وكبار المسؤولين التنفيذيين، تقدم ميهار خدمة النقل من الدرجة الأولى باستخدام سيارات 
-                رولز رويس وغيرها من سيارات النخبة. نضمن لك الخصوصية المطلقة، مع نوافذ مظللة بالكامل، ووسائل راحة داخلية حصرية تشمل 
+                السيارات الفاخرة المخصصة للنخبة. نضمن لك الخصوصية المطلقة، مع نوافذ مظللة بالكامل، ووسائل راحة داخلية حصرية تشمل 
                 شبكة إنترنت لاسلكية، وتكييف هواء بتحكم مستقل لكل راكب.
               </p>
 
@@ -58,15 +58,14 @@ export function FleetSEOContent() {
               <h3>Premium Umrah Transportation Services</h3>
               <p>
                 The Umrah journey is a profound spiritual undertaking. Recognizing this, Mehar offers a specialized fleet including 
-                the Mercedes S-Class, Hyundai Staria, and luxury group coaches to provide seamless transfers between King Abdulaziz 
+                the Hyundai Staria and other vehicles to provide seamless transfers between King Abdulaziz 
                 International Airport (Jeddah), Makkah, and Madinah. Our chauffeurs are rigorously trained to serve the guests of 
                 Allah with the utmost professionalism and respect, perfectly matching the sanctity of this journey.
               </p>
 
               <h3>VIP Chauffeur Services for Executives</h3>
               <p>
-                For dignitaries, diplomats, and senior executives, Mehar delivers first-class transportation using Rolls-Royce and 
-                other Elite category vehicles. We guarantee absolute privacy with fully tinted windows and exclusive interior amenities, 
+                For dignitaries, diplomats, and senior executives, Mehar delivers first-class transportation using our Elite category vehicles. We guarantee absolute privacy with fully tinted windows and exclusive interior amenities, 
                 including high-speed Wi-Fi, premium bottled water, and independent climate control for every passenger.
               </p>
 

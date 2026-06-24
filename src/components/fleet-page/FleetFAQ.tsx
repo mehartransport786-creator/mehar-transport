@@ -15,7 +15,7 @@ export function FleetFAQ() {
       category: t("vehiclesCapacity"),
       questions: [
         { q: t("whatTypesOfVehiclesAreAvailable"), a: t("weOfferAWideRangeIncludingExecutiveSedan") },
-        { q: t("howManyPassengersAreAllowedInAMercedesSC"), a: t("theMercedesSClassComfortablyAccommodates") },
+
         { q: t("areChildSeatsAvailable"), a: t("yesChildSeatsAreAvailableUponRequestDuri") },
         { q: t("canIChooseTheColorOfTheVehicle"), a: t("ourLuxuryFleetPrimarilyFeaturesBlackExte") },
       ]
@@ -41,7 +41,7 @@ export function FleetFAQ() {
       category: t("vipServices"),
       questions: [
         { q: t("whatDoesVipTransportInclude"), a: t("itIncludesUltraLuxuryVehiclesAUniformedC") },
-        { q: t("canIBookARollsRoyceForAWedding"), a: t("yesWeOfferSpecialPackagesForWeddingsAndS") },
+
         { q: t("isPrivacyGuaranteed"), a: t("privacyIsTheCoreOfOurEliteServiceAllVipV") }
       ]
     },
