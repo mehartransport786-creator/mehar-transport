@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocale } from 'next-intl';
 import { User, Phone, Mail, Plane, Users, Star, Baby } from 'lucide-react';
-import { BookingState } from '../PremiumBookingWizard';
+import { BookingState } from '../BookingWorkspace';
 
 interface Props {
   data: BookingState;

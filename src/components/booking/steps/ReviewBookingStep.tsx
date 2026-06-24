@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocale } from 'next-intl';
 import { MapPin, Calendar, Clock, Car, User, Phone, CheckCircle2 } from 'lucide-react';
-import { BookingState } from '../PremiumBookingWizard';
+import { BookingState } from '../BookingWorkspace';
 
 interface Props {
   data: BookingState;

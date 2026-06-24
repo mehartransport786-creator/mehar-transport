@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Users, Briefcase, Check } from 'lucide-react';
-import { BookingState } from '../PremiumBookingWizard';
+import { BookingState } from '../BookingWorkspace';
 
 interface Props {
   data: BookingState;
