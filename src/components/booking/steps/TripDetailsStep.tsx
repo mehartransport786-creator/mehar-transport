@@ -2,9 +2,9 @@ import React from 'react';
 import { useLocale } from 'next-intl';
 import { MapPin, Calendar, Clock, Loader2 } from 'lucide-react';
 import type { BookingState } from '../BookingWorkspace';
-import { CustomSelect } from '../ui/CustomSelect';
-import { CustomDatePicker } from '../ui/CustomDatePicker';
-import { CustomTimePicker } from '../ui/CustomTimePicker';
+import { CustomSelect } from '@/components/ui/CustomSelect';
+import { CustomDatePicker } from '@/components/ui/CustomDatePicker';
+import { CustomTimePicker } from '@/components/ui/CustomTimePicker';
 
 interface Props {
   data: BookingState;
