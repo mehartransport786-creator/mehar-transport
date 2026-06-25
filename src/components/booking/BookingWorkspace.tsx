@@ -154,20 +154,20 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full max-w-7xl mx-auto h-[85vh] lg:h-[80vh] min-h-[600px] flex flex-col lg:flex-row bg-[#050505]/80 backdrop-blur-3xl border border-white/10 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative"
+      className="w-full max-w-7xl mx-auto h-[85vh] lg:h-[80vh] min-h-[600px] flex flex-col lg:flex-row bg-black/30 backdrop-blur-3xl border border-white/20 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative"
     >
       {/* Top Gold Edge */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D9A63A]/50 to-transparent z-20" />
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent z-20" />
       
       {/* Subtle background glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#D9A63A]/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       {/* LEFT SIDE: Booking Journey Workspace (65%) */}
-      <div className="w-full lg:w-[65%] flex flex-col h-full relative z-10 border-b lg:border-b-0 lg:border-r border-white/5">
+      <div className="w-full lg:w-[65%] flex flex-col h-full relative z-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-black/10">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-8 py-6 border-b border-white/5 bg-white/[0.02]">
+        <div className="flex items-center justify-between px-8 py-6 border-b border-white/10 bg-white/[0.05]">
           <button
             onClick={onCancel}
             className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 hover:text-white transition-colors"
@@ -216,7 +216,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
 
         {/* Footer Actions */}
         {step < 5 && (
-          <div className="px-8 py-6 border-t border-white/5 bg-white/[0.02] flex items-center justify-between">
+          <div className="px-8 py-6 border-t border-white/10 bg-white/[0.05] flex items-center justify-between backdrop-blur-lg">
             <div>
               {step > 1 && (
                 <button
@@ -250,9 +250,9 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
       </div>
 
       {/* RIGHT SIDE: Persistent Booking Summary (35%) */}
-      <div className="hidden lg:flex flex-col w-[35%] bg-black/20 p-10 relative z-10">
+      <div className="hidden lg:flex flex-col w-[35%] bg-black/30 p-10 relative z-10">
         
-        <h3 className="text-xs tracking-[0.2em] font-bold text-gray-400 uppercase mb-8 border-b border-white/5 pb-4">
+        <h3 className="text-xs tracking-[0.2em] font-bold text-gray-300 uppercase mb-8 border-b border-white/10 pb-4">
           {isAr ? "ملخص الرحلة" : "Trip Summary"}
         </h3>
         

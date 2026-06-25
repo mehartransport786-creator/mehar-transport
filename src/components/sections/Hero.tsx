@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useRouter } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { MapPin, Calendar, ArrowRight, ArrowLeft } from "lucide-react";
+import { MapPin, Calendar, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -80,33 +80,71 @@ export function Hero() {
                 </p>
               </div>
 
-              {/* Minimalist Quick-Book */}
-              <div className="w-full lg:w-1/3">
+              {/* Professional Quick-Book Form (Click to open workspace) */}
+              <div className="w-full lg:w-[400px]">
                 <div 
+                  className="bg-black/30 backdrop-blur-3xl border border-white/20 p-8 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group hover:border-white/30 transition-all cursor-pointer"
                   onClick={() => setIsBookingMode(true)}
-                  className="bg-white/10 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-colors cursor-pointer"
                 >
-                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D9A63A]/50 to-transparent"></div>
-                  
-                  <h3 className="text-white font-bold text-xl mb-4 flex items-center justify-between">
-                    <span>{isAr ? "ابدأ رحلتك" : "Begin Your Journey"}</span>
+                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#D9A63A]/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+
+                  <h3 className="text-white font-bold text-2xl mb-2 relative z-10">
+                    {isAr ? "ابدأ رحلتك" : "Book Your Ride"}
                   </h3>
+                  <p className="text-gray-400 text-sm mb-6 relative z-10">
+                    {isAr ? "احجز سيارتك الفاخرة الآن" : "Reserve your luxury vehicle now"}
+                  </p>
                   
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-3 text-white/60">
-                      <MapPin className="w-5 h-5 text-[#D9A63A]" />
-                      <span className="text-sm">{isAr ? "اختر المسار" : "Select your route"}</span>
+                  <div className="space-y-4 mb-8 relative z-10">
+                    {/* Route Input */}
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase ml-1">
+                        {isAr ? "المسار" : "Route"}
+                      </label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#D9A63A]">
+                          <MapPin className="w-4 h-4" />
+                        </div>
+                        <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-sm group-hover:bg-white/10 transition-colors">
+                          {isAr ? "اختر نقطة الانطلاق والوصول..." : "Select your route..."}
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-3 text-white/60">
-                      <Calendar className="w-5 h-5 text-[#D9A63A]" />
-                      <span className="text-sm">{isAr ? "حدد التاريخ والوقت" : "Choose date & time"}</span>
+
+                    {/* Date & Time Inputs */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase ml-1">
+                          {isAr ? "التاريخ" : "Date"}
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-[#D9A63A]">
+                            <Calendar className="w-4 h-4" />
+                          </div>
+                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-10 text-white/50 text-sm group-hover:bg-white/10 transition-colors">
+                            {isAr ? "التاريخ" : "Date"}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase ml-1">
+                          {isAr ? "الوقت" : "Time"}
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-[#D9A63A]">
+                            <Clock className="w-4 h-4" />
+                          </div>
+                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-10 text-white/50 text-sm group-hover:bg-white/10 transition-colors">
+                            {isAr ? "الوقت" : "Time"}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div 
-                    className="w-full bg-[#D9A63A] text-[#0a0a0a] hover:bg-white px-6 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group/btn"
-                  >
-                    <span>{isAr ? "احجز الآن" : "Book Now"}</span>
+                  <div className="w-full bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black px-6 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn relative z-10 shadow-[0_0_20px_rgba(217,166,58,0.2)]">
+                    <span>{isAr ? "المتابعة" : "Continue"}</span>
                     <ArrowIcon className="w-5 h-5 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
                   </div>
                 </div>
