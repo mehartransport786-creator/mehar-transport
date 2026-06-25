@@ -150,6 +150,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
 
   return (
     <motion.div 
+      layoutId="booking-widget"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

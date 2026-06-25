@@ -6,9 +6,7 @@ import { useLocale } from "next-intl";
 import { MapPin, Calendar, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import dynamic from "next/dynamic";
-
-const BookingWorkspace = dynamic(() => import('../booking/BookingWorkspace'), { ssr: false });
+import BookingWorkspace from '../booking/BookingWorkspace';
 
 export function Hero() {
   const locale = useLocale();
@@ -48,7 +46,7 @@ export function Hero() {
 
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto flex flex-col justify-center lg:justify-end h-full pb-8 lg:pb-32 pt-24 lg:pt-32">
         
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout">
           {!isBookingMode ? (
             <motion.div 
               key="default-hero"
@@ -81,11 +79,11 @@ export function Hero() {
               </div>
 
               {/* Professional Quick-Book Form (Click to open workspace) */}
-              <div className="w-full lg:w-[400px]">
-                <div 
-                  className="bg-black/30 backdrop-blur-3xl border border-white/20 p-8 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group hover:border-white/30 transition-all cursor-pointer"
-                  onClick={() => setIsBookingMode(true)}
-                >
+              <motion.div 
+                layoutId="booking-widget"
+                className="w-full lg:w-[400px] bg-black/30 backdrop-blur-3xl border border-white/20 p-8 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group hover:border-white/30 transition-all cursor-pointer"
+                onClick={() => setIsBookingMode(true)}
+              >
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
                   <div className="absolute top-0 right-0 w-64 h-64 bg-[#D9A63A]/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
@@ -147,8 +145,7 @@ export function Hero() {
                     <span>{isAr ? "المتابعة" : "Continue"}</span>
                     <ArrowIcon className="w-5 h-5 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
                   </div>
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
           ) : (
             <motion.div
