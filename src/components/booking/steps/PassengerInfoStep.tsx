@@ -18,7 +18,7 @@ const InputField = ({
   isAr
 }: any) => (
   <div className="space-y-3">
-    <label className="text-sm font-medium text-gray-300">{label}</label>
+    <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase">{label}</label>
     <div className="relative">
       <div className={`absolute ${isAr ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 text-[#D9A63A]`}>
         <Icon className="w-5 h-5" />
@@ -28,7 +28,7 @@ const InputField = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-[#D9A63A]/50 transition-all ${isAr ? 'pr-12' : 'pl-12'}`}
+        className={`w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white appearance-none focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10 ${isAr ? 'pr-12' : 'pl-12'}`}
       />
     </div>
   </div>
@@ -42,8 +42,8 @@ const ToggleService = ({
   checked, 
   onChange 
 }: any) => (
-  <label className={`flex items-start gap-4 p-4 rounded-xl border cursor-pointer transition-all ${
-    checked ? 'bg-[#D9A63A]/10 border-[#D9A63A]' : 'bg-[#1a1a1a] border-white/10 hover:bg-white/5'
+  <label className={`flex items-start gap-4 p-5 rounded-2xl border cursor-pointer transition-all duration-300 ${
+    checked ? 'bg-gradient-to-br from-[#D9A63A]/10 to-[#D9A63A]/5 border-[#D9A63A]/50 shadow-[0_0_20px_rgba(217,166,58,0.15)]' : 'bg-white/5 backdrop-blur-sm border-white/5 hover:border-white/10 hover:bg-white/10'
   }`}>
     <div className="pt-1">
       <input 

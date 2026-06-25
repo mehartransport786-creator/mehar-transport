@@ -59,8 +59,8 @@ export default function VehicleSelectionStep({ data, updateData, routes }: Props
               })}
               className={`relative cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 border ${
                 isSelected 
-                  ? 'border-[#D9A63A] bg-[#D9A63A]/10 shadow-[0_0_20px_rgba(217,166,58,0.15)] scale-[1.02]' 
-                  : 'border-white/10 bg-[#1a1a1a] hover:bg-white/5 hover:border-white/20'
+                  ? 'border-[#D9A63A]/50 bg-gradient-to-br from-[#D9A63A]/10 to-transparent shadow-[0_0_30px_rgba(217,166,58,0.2)] scale-[1.02]' 
+                  : 'border-white/5 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20'
               }`}
             >
               {isSelected && (
@@ -75,7 +75,7 @@ export default function VehicleSelectionStep({ data, updateData, routes }: Props
                   alt={p.vehicleName}
                   width={250}
                   height={150}
-                  className="object-contain drop-shadow-2xl"
+                  className={`object-contain transition-transform duration-500 ${isSelected ? 'scale-110 drop-shadow-2xl' : 'drop-shadow-xl group-hover:scale-105'}`}
                 />
               </div>
 

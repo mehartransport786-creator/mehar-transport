@@ -154,40 +154,48 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full h-full flex flex-col lg:flex-row gap-6"
+      className="w-full max-w-7xl mx-auto h-[85vh] lg:h-[80vh] min-h-[600px] flex flex-col lg:flex-row bg-[#050505]/80 backdrop-blur-3xl border border-white/10 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative"
     >
+      {/* Top Gold Edge */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D9A63A]/50 to-transparent z-20" />
+      
+      {/* Subtle background glows */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#D9A63A]/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
       {/* LEFT SIDE: Booking Journey Workspace (65%) */}
-      <div className="w-full lg:w-[65%] flex flex-col bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl h-[85vh] lg:h-full relative">
+      <div className="w-full lg:w-[65%] flex flex-col h-full relative z-10 border-b lg:border-b-0 lg:border-r border-white/5">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/5 bg-black/20">
+        <div className="flex items-center justify-between px-8 py-6 border-b border-white/5 bg-white/[0.02]">
           <button
             onClick={onCancel}
-            className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 hover:text-white transition-colors"
           >
-            <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
+            <ChevronLeft className="w-4 h-4 rtl:rotate-180" />
             <span>{isAr ? "العودة" : "Back"}</span>
           </button>
           
-          <div className="flex items-center space-x-2 rtl:space-x-reverse">
-            {stepLabels.map((label, index) => {
-              const stepNumber = index + 1;
-              const isActive = step === stepNumber;
-              const isPast = step > stepNumber;
-              return (
-                <div key={label} className="flex items-center">
-                  <div className={`w-2.5 h-2.5 rounded-full transition-colors ${isActive ? 'bg-[#D9A63A] shadow-[0_0_8px_rgba(217,166,58,0.6)]' : isPast ? 'bg-white/40' : 'bg-white/10'}`} />
-                  {index < stepLabels.length - 1 && (
-                    <div className={`w-4 h-px mx-1 transition-colors ${isPast ? 'bg-white/40' : 'bg-white/10'}`} />
-                  )}
-                </div>
-              );
-            })}
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] uppercase tracking-widest text-[#D9A63A] font-bold">
+              {isAr ? `الخطوة ${step} من ${totalSteps}: ${stepLabels[step - 1]}` : `Step ${step} of ${totalSteps}: ${stepLabels[step - 1]}`}
+            </span>
+            <div className="flex gap-1.5">
+              {[1, 2, 3, 4].map((i) => (
+                <div 
+                  key={i} 
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    i === step ? 'w-6 bg-[#D9A63A] shadow-[0_0_8px_rgba(217,166,58,0.5)]' : 
+                    i < step ? 'w-2 bg-white/40' : 'w-2 bg-white/10'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Scrollable Content Area */}
-        <div className="flex-1 overflow-y-auto hide-scrollbar p-6 md:p-8 relative">
+        <div className="flex-1 overflow-y-auto hide-scrollbar px-6 md:px-12 py-8 relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -208,15 +216,15 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
 
         {/* Footer Actions */}
         {step < 5 && (
-          <div className="p-6 border-t border-white/5 bg-black/40 flex items-center justify-between">
+          <div className="px-8 py-6 border-t border-white/5 bg-white/[0.02] flex items-center justify-between">
             <div>
               {step > 1 && (
                 <button
                   onClick={handleBack}
-                  className="px-6 py-3 rounded-xl border border-white/10 text-white hover:bg-white/5 transition-colors font-medium flex items-center gap-2"
+                  className="px-6 py-3 rounded-xl border border-white/10 text-white hover:bg-white/5 transition-colors font-medium flex items-center gap-2 group"
                 >
-                  <ArrowPrev className="w-4 h-4" />
-                  <span>{isAr ? "السابق" : "Previous"}</span>
+                  <ArrowPrev className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                  <span className="text-sm tracking-wide">{isAr ? "السابق" : "Previous"}</span>
                 </button>
               )}
             </div>
@@ -224,16 +232,16 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
             <button
               disabled={!isStepValid() || isSubmitting}
               onClick={step === 4 ? handleSubmit : handleNext}
-              className="flex items-center gap-2 bg-[#D9A63A] text-black px-8 py-3 rounded-xl font-bold hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(217,166,58,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none group"
             >
               {isSubmitting ? (
-                isAr ? "جاري التأكيد..." : "Confirming..."
+                <span className="text-sm tracking-wide">{isAr ? "جاري التأكيد..." : "Confirming..."}</span>
               ) : step === 4 ? (
-                isAr ? "تأكيد الحجز" : "Confirm Booking"
+                <span className="text-sm tracking-wide">{isAr ? "تأكيد الحجز" : "Confirm Booking"}</span>
               ) : (
                 <>
-                  <span>{isAr ? "التالي" : "Continue"}</span>
-                  <ArrowNext className="w-4 h-4" />
+                  <span className="text-sm tracking-wide">{isAr ? "التالي" : "Continue"}</span>
+                  <ArrowNext className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </>
               )}
             </button>
@@ -241,78 +249,76 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
         )}
       </div>
 
-      {/* RIGHT SIDE: Persistent Booking Summary (35%) - Hidden on mobile, sticky on desktop */}
-      <div className="hidden lg:flex flex-col w-[35%] bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-        {/* Subtle decorative glow */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#D9A63A]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      {/* RIGHT SIDE: Persistent Booking Summary (35%) */}
+      <div className="hidden lg:flex flex-col w-[35%] bg-black/20 p-10 relative z-10">
         
-        <h3 className="text-xl font-bold text-white mb-8 border-b border-white/10 pb-4">
+        <h3 className="text-xs tracking-[0.2em] font-bold text-gray-400 uppercase mb-8 border-b border-white/5 pb-4">
           {isAr ? "ملخص الرحلة" : "Trip Summary"}
         </h3>
         
-        <div className="space-y-6 flex-1">
+        <div className="space-y-8 flex-1">
           {/* Route Info */}
-          <div className="space-y-2">
-            <p className="text-xs text-gray-500 uppercase tracking-widest">{isAr ? "المسار" : "Route"}</p>
-            <p className="text-white font-medium flex items-center gap-2">
+          <div className="space-y-3">
+            <p className="text-[10px] text-gray-500 uppercase tracking-widest">{isAr ? "المسار" : "Route"}</p>
+            <p className="text-white text-sm font-medium flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
               <MapPin className="w-4 h-4 text-[#D9A63A]" />
-              {bookingData.routeName || (isAr ? "لم يتم التحديد" : "Not selected")}
+              {bookingData.routeName || <span className="text-gray-500">{isAr ? "لم يتم التحديد" : "Not selected"}</span>}
             </p>
           </div>
 
           {/* Date & Time */}
-          <div className="space-y-2">
-            <p className="text-xs text-gray-500 uppercase tracking-widest">{isAr ? "الموعد" : "Schedule"}</p>
-            <p className="text-white font-medium flex items-center gap-2">
+          <div className="space-y-3">
+            <p className="text-[10px] text-gray-500 uppercase tracking-widest">{isAr ? "الموعد" : "Schedule"}</p>
+            <p className="text-white text-sm font-medium flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
               <Clock className="w-4 h-4 text-[#D9A63A]" />
-              {bookingData.travelDate ? `${bookingData.travelDate} ${bookingData.travelTime}` : (isAr ? "لم يتم التحديد" : "Not selected")}
+              {bookingData.travelDate ? `${bookingData.travelDate} ${bookingData.travelTime}` : <span className="text-gray-500">{isAr ? "لم يتم التحديد" : "Not selected"}</span>}
             </p>
           </div>
 
           {/* Vehicle */}
           {bookingData.vehicleName && (
-            <div className="space-y-2 pt-4 border-t border-white/10">
-              <p className="text-xs text-gray-500 uppercase tracking-widest">{isAr ? "المركبة" : "Vehicle"}</p>
-              <p className="text-white font-medium">{bookingData.vehicleName}</p>
+            <div className="space-y-3 pt-4 border-t border-white/5">
+              <p className="text-[10px] text-gray-500 uppercase tracking-widest">{isAr ? "المركبة" : "Vehicle"}</p>
+              <p className="text-white text-sm font-medium bg-white/5 p-4 rounded-xl border border-white/5">{bookingData.vehicleName}</p>
             </div>
           )}
 
           {/* Passengers & Extras */}
           {(bookingData.passengers > 1 || bookingData.meetAndGreet || bookingData.vipService || bookingData.childSeat) && (
-            <div className="space-y-2 pt-4 border-t border-white/10">
-              <p className="text-xs text-gray-500 uppercase tracking-widest">{isAr ? "إضافات" : "Extras"}</p>
-              <ul className="text-gray-300 text-sm space-y-1">
-                {bookingData.passengers > 1 && <li>{bookingData.passengers} {isAr ? "ركاب" : "Passengers"}</li>}
-                {bookingData.meetAndGreet && <li>{isAr ? "استقبال وتوديع" : "Meet & Greet"}</li>}
-                {bookingData.vipService && <li>{isAr ? "خدمة كبار الشخصيات" : "VIP Service"}</li>}
-                {bookingData.childSeat && <li>{isAr ? "مقعد طفل" : "Child Seat"}</li>}
+            <div className="space-y-3 pt-4 border-t border-white/5">
+              <p className="text-[10px] text-gray-500 uppercase tracking-widest">{isAr ? "إضافات" : "Extras"}</p>
+              <ul className="text-gray-300 text-sm space-y-2 bg-white/5 p-4 rounded-xl border border-white/5">
+                {bookingData.passengers > 1 && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{bookingData.passengers} {isAr ? "ركاب" : "Passengers"}</li>}
+                {bookingData.meetAndGreet && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{isAr ? "استقبال وتوديع" : "Meet & Greet"}</li>}
+                {bookingData.vipService && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{isAr ? "خدمة كبار الشخصيات" : "VIP Service"}</li>}
+                {bookingData.childSeat && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{isAr ? "مقعد طفل" : "Child Seat"}</li>}
               </ul>
             </div>
           )}
         </div>
 
         {/* Total & Trust Indicators */}
-        <div className="mt-8 pt-6 border-t border-white/10">
-          <div className="flex items-center justify-between mb-8">
-            <span className="text-gray-400">{isAr ? "الإجمالي التقديري" : "Estimated Fare"}</span>
-            <span className="text-3xl font-bold text-[#D9A63A]">{bookingData.totalPrice} SAR</span>
+        <div className="mt-8 pt-8 border-t border-white/5">
+          <div className="flex items-center justify-between mb-8 bg-gradient-to-r from-white/5 to-transparent p-4 rounded-xl border-l-2 border-[#D9A63A]">
+            <span className="text-xs uppercase tracking-widest text-gray-400">{isAr ? "الإجمالي التقديري" : "Estimated Fare"}</span>
+            <span className="text-3xl font-light tracking-tight text-white">{bookingData.totalPrice} <span className="text-sm text-[#D9A63A] font-bold">SAR</span></span>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex items-center gap-2 text-xs text-gray-400">
-              <CheckCircle2 className="w-4 h-4 text-[#D9A63A]" />
+          <div className="grid grid-cols-2 gap-y-4 gap-x-2">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#D9A63A]/70" />
               <span>{isAr ? "أسعار ثابتة" : "Fixed Pricing"}</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-gray-400">
-              <ShieldCheck className="w-4 h-4 text-[#D9A63A]" />
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#D9A63A]/70" />
               <span>{isAr ? "حجز آمن" : "Secure Booking"}</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-gray-400">
-              <Clock className="w-4 h-4 text-[#D9A63A]" />
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
+              <Clock className="w-3.5 h-3.5 text-[#D9A63A]/70" />
               <span>{isAr ? "خدمة 24/7" : "24/7 Service"}</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-gray-400">
-              <CheckCircle2 className="w-4 h-4 text-[#D9A63A]" />
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#D9A63A]/70" />
               <span>{isAr ? "سائقون محترفون" : "Pro Chauffeurs"}</span>
             </div>
           </div>

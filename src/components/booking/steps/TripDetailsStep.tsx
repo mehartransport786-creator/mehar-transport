@@ -43,8 +43,8 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
       <div className="grid gap-6">
         {/* Route Selection */}
         <div className="space-y-3">
-          <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-[#D9A63A]" />
+          <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase flex items-center gap-2">
+            <MapPin className="w-3.5 h-3.5 text-[#D9A63A]" />
             {isAr ? "اختر المسار" : "Select Route"}
           </label>
           <div className="relative">
@@ -57,7 +57,7 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
               <select
                 value={data.routeId}
                 onChange={handleRouteSelect}
-                className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-4 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-[#D9A63A]/50 transition-all"
+                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white appearance-none focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10"
               >
                 <option value="" disabled>
                   {isAr ? "اختر مساراً..." : "Select a route..."}
@@ -80,8 +80,8 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Date Selection */}
           <div className="space-y-3">
-            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-[#D9A63A]" />
+            <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase flex items-center gap-2">
+              <Calendar className="w-3.5 h-3.5 text-[#D9A63A]" />
               {isAr ? "تاريخ الرحلة" : "Travel Date"}
             </label>
             <input
@@ -89,47 +89,47 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
               value={data.travelDate}
               min={new Date().toISOString().split('T')[0]}
               onChange={(e) => updateData({ travelDate: e.target.value })}
-              className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-[#D9A63A]/50 transition-all [color-scheme:dark]"
+              className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10 [color-scheme:dark]"
             />
           </div>
 
           {/* Time Selection */}
           <div className="space-y-3">
-            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#D9A63A]" />
+            <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase flex items-center gap-2">
+              <Clock className="w-3.5 h-3.5 text-[#D9A63A]" />
               {isAr ? "وقت الرحلة" : "Travel Time"}
             </label>
             <input
               type="time"
               value={data.travelTime}
               onChange={(e) => updateData({ travelTime: e.target.value })}
-              className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-[#D9A63A]/50 transition-all [color-scheme:dark]"
+              className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10 [color-scheme:dark]"
             />
           </div>
         </div>
 
         {/* Trip Type */}
         <div className="space-y-3">
-          <label className="text-sm font-medium text-gray-300">
+          <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase">
             {isAr ? "نوع الرحلة" : "Trip Type"}
           </label>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex bg-black/40 p-1.5 rounded-2xl border border-white/5 relative">
             <button
               onClick={() => updateData({ tripType: 'one-way' })}
-              className={`p-4 rounded-xl border transition-all font-medium ${
+              className={`flex-1 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 relative z-10 ${
                 data.tripType === 'one-way'
-                  ? 'bg-[#D9A63A]/10 border-[#D9A63A] text-[#D9A63A]'
-                  : 'bg-[#1a1a1a] border-white/10 text-gray-400 hover:bg-white/5'
+                  ? 'bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black shadow-[0_4px_15px_rgba(217,166,58,0.3)]'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
               {isAr ? "اتجاه واحد" : "One Way"}
             </button>
             <button
               onClick={() => updateData({ tripType: 'round-trip' })}
-              className={`p-4 rounded-xl border transition-all font-medium ${
+              className={`flex-1 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 relative z-10 ${
                 data.tripType === 'round-trip'
-                  ? 'bg-[#D9A63A]/10 border-[#D9A63A] text-[#D9A63A]'
-                  : 'bg-[#1a1a1a] border-white/10 text-gray-400 hover:bg-white/5'
+                  ? 'bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black shadow-[0_4px_15px_rgba(217,166,58,0.3)]'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
               {isAr ? "ذهاب وعودة" : "Round Trip"}
