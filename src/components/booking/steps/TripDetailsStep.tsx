@@ -2,6 +2,9 @@ import React from 'react';
 import { useLocale } from 'next-intl';
 import { MapPin, Calendar, Clock, Loader2 } from 'lucide-react';
 import type { BookingState } from '../BookingWorkspace';
+import { CustomSelect } from '../ui/CustomSelect';
+import { CustomDatePicker } from '../ui/CustomDatePicker';
+import { CustomTimePicker } from '../ui/CustomTimePicker';
 
 interface Props {
   data: BookingState;
@@ -54,25 +57,27 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
                 {isAr ? "جاري تحميل المسارات..." : "Loading routes..."}
               </div>
             ) : (
-              <select
+              <CustomSelect
                 value={data.routeId}
-                onChange={handleRouteSelect}
-                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white appearance-none focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10"
-              >
-                <option value="" disabled>
-                  {isAr ? "اختر مساراً..." : "Select a route..."}
-                </option>
-                {routes.map(route => (
-                  <option key={route._id} value={route._id}>
-                    {isAr ? route.nameAr || route.name : route.name}
-                  </option>
-                ))}
-              </select>
-            )}
-            {!isLoading && (
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
-                ▼
-              </div>
+                onChange={(val) => {
+                  const selectedRoute = routes.find(r => r._id === val);
+                  if (selectedRoute) {
+                    updateData({ 
+                      routeId: val, 
+                      routeName: isAr ? selectedRoute.nameAr : selectedRoute.name,
+                      vehicleId: '',
+                      vehicleName: '',
+                      basePrice: 0
+                    });
+                  }
+                }}
+                options={routes.map(route => ({
+                  value: route._id,
+                  label: isAr ? route.nameAr || route.name : route.name
+                }))}
+                placeholder={isAr ? "اختر مساراً..." : "Select a route..."}
+                icon={<MapPin className="w-5 h-5" />}
+              />
             )}
           </div>
         </div>
@@ -84,12 +89,10 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
               <Calendar className="w-3.5 h-3.5 text-[#D9A63A]" />
               {isAr ? "تاريخ الرحلة" : "Travel Date"}
             </label>
-            <input
-              type="date"
+            <CustomDatePicker
               value={data.travelDate}
-              min={new Date().toISOString().split('T')[0]}
-              onChange={(e) => updateData({ travelDate: e.target.value })}
-              className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10 [color-scheme:dark]"
+              onChange={(val) => updateData({ travelDate: val })}
+              minDate={new Date().toISOString().split('T')[0]}
             />
           </div>
 
@@ -99,11 +102,10 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
               <Clock className="w-3.5 h-3.5 text-[#D9A63A]" />
               {isAr ? "وقت الرحلة" : "Travel Time"}
             </label>
-            <input
-              type="time"
+            <CustomTimePicker
               value={data.travelTime}
-              onChange={(e) => updateData({ travelTime: e.target.value })}
-              className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10 [color-scheme:dark]"
+              onChange={(val) => updateData({ travelTime: val })}
+              placeholder={isAr ? "اختر الوقت" : "Select Time"}
             />
           </div>
         </div>
