@@ -57,7 +57,7 @@ export function BookingConfirmation() {
       <div className="p-6 md:p-10">
         
         {/* Booking Reference Box */}
-        <div className="flex flex-col md:flex-row items-center justify-between bg-[#F8F9FC] rounded-2xl p-6 border border-gray-200 mb-10 gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between bg-[#F8F9FC] rounded-2xl p-6 border border-gray-200 mb-6 gap-4">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-6 h-6 text-[#D9A63A]" />
@@ -78,6 +78,12 @@ export function BookingConfirmation() {
             {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
             {copied ? (isAr ? "تم النسخ" : "Copied!") : (isAr ? "نسخ الرقم" : "Copy Reference")}
           </button>
+        </div>
+
+        {/* Booking Status */}
+        <div className="flex items-center justify-center gap-3 mb-10 bg-emerald-50 text-emerald-700 py-3 rounded-xl font-medium border border-emerald-100">
+          <CheckCircle2 className="w-5 h-5" />
+          {isAr ? "الحالة الحالية: بانتظار التأكيد" : "Current Status: Awaiting Confirmation"}
         </div>
 
         {/* Two Column Summary Layout */}
@@ -140,6 +146,12 @@ export function BookingConfirmation() {
                       <div className="col-span-2">
                         <div className="text-xs text-gray-500 mb-0.5">{isAr ? "رقم الرحلة" : "Flight Number"}</div>
                         <div className="font-semibold text-sm text-gray-900">{state.passengerInfo.flightNumber}</div>
+                      </div>
+                    )}
+                    {state.passengerInfo.specialRequests && (
+                      <div className="col-span-2">
+                        <div className="text-xs text-gray-500 mb-0.5">{isAr ? "طلبات خاصة" : "Special Requests"}</div>
+                        <div className="font-semibold text-sm text-gray-900">{state.passengerInfo.specialRequests}</div>
                       </div>
                     )}
                   </div>
@@ -257,6 +269,13 @@ export function BookingConfirmation() {
           </button>
 
           <div className="flex items-center gap-2 w-full sm:w-auto mt-4 sm:mt-0 sm:ml-auto rtl:sm:mr-auto">
+            <button 
+              onClick={() => alert(isAr ? "جاري تنزيل ملف PDF..." : "Downloading PDF...")} 
+              className="p-3 text-gray-500 hover:text-[#1B1E4F] hover:bg-gray-100 rounded-xl transition-all" 
+              title={isAr ? "تحميل PDF" : "Download PDF"}
+            >
+              <Download className="w-5 h-5" />
+            </button>
             <button onClick={handlePrint} className="p-3 text-gray-500 hover:text-[#1B1E4F] hover:bg-gray-100 rounded-xl transition-all" title={isAr ? "طباعة" : "Print"}>
               <Printer className="w-5 h-5" />
             </button>

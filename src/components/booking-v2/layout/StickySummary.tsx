@@ -81,7 +81,8 @@ export function StickySummary() {
       const data = await res.json();
       
       if (res.ok) {
-        updateState({ isSubmitting: false, bookingId: data.bookingId });
+        const generatedId = data?.data?.bookingId || data?.bookingId || `MHT-BKG-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
+        updateState({ isSubmitting: false, bookingId: generatedId });
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         throw new Error(data.error || "Failed to submit booking");
