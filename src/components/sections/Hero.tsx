@@ -57,21 +57,21 @@ export function Hero() {
               className="flex flex-col lg:flex-row justify-between items-end gap-12 w-full"
             >
               {/* Main Headline */}
-              <div className="w-full lg:w-2/3 space-y-6">
+              <div className="w-full lg:w-3/5 space-y-8">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-px bg-[#D9A63A]"></div>
-                  <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm">
+                  <div className="w-12 h-px bg-[#C99632]"></div>
+                  <span className="caption-text text-[#C99632]">
                     {isAr ? "نعرّف الفخامة من جديد" : "Redefining Luxury Transport"}
                   </span>
                 </div>
                 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] tracking-tight">
+                <h1 className="h1 text-white">
                   {isAr 
                     ? "ارتقِ بتجربة سفرك" 
                     : "Elevate Your Journey"}
                 </h1>
                 
-                <p className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed font-light">
+                <p className="body-large text-gray-300 max-w-xl font-light">
                   {isAr 
                     ? "تنقل حصري لكبار الشخصيات عبر المملكة العربية السعودية. أسطول من الطراز العالمي، وسائقون محترفون، وخدمة لا تشوبها شائبة." 
                     : "Exclusive VIP transportation across Saudi Arabia. World-class fleet, professional chauffeurs, and impeccable service."}
@@ -81,30 +81,30 @@ export function Hero() {
               {/* Professional Quick-Book Form (Click to open workspace) */}
               <motion.div 
                 layoutId="booking-widget"
-                className="w-full lg:w-[400px] bg-black/30 backdrop-blur-3xl border border-white/20 p-8 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group hover:border-white/30 transition-all cursor-pointer"
+                className="w-full lg:w-[420px] bg-black/40 backdrop-blur-3xl border border-white/10 p-10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.4)] relative overflow-hidden group hover:border-white/20 hover:bg-black/50 transition-all duration-500 cursor-pointer"
                 onClick={() => setIsBookingMode(true)}
               >
-                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#D9A63A]/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99632]/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-                  <h3 className="text-white font-bold text-2xl mb-2 relative z-10">
+                  <h3 className="text-white font-bold text-3xl mb-2 relative z-10 tracking-tight">
                     {isAr ? "ابدأ رحلتك" : "Book Your Ride"}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-6 relative z-10">
+                  <p className="text-gray-400 text-sm mb-8 relative z-10 font-medium">
                     {isAr ? "احجز سيارتك الفاخرة الآن" : "Reserve your luxury vehicle now"}
                   </p>
                   
-                  <div className="space-y-4 mb-8 relative z-10">
+                  <div className="space-y-5 mb-10 relative z-10">
                     {/* Route Input */}
                     <div className="space-y-2">
-                      <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase ml-1">
-                        {isAr ? "المسار" : "Route"}
+                      <label className="caption-text text-[10px] text-gray-400 ml-1">
+                        {isAr ? "المسار" : "Pickup & Destination"}
                       </label>
                       <div className="relative">
-                        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#D9A63A]">
-                          <MapPin className="w-4 h-4" />
+                        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#C99632]">
+                          <MapPin className="w-5 h-5" />
                         </div>
-                        <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-sm group-hover:bg-white/10 transition-colors">
+                        <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-base font-medium group-hover:bg-white/10 transition-colors">
                           {isAr ? "اختر نقطة الانطلاق والوصول..." : "Select your route..."}
                         </div>
                       </div>
@@ -113,37 +113,37 @@ export function Hero() {
                     {/* Date & Time Inputs */}
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase ml-1">
+                        <label className="caption-text text-[10px] text-gray-400 ml-1">
                           {isAr ? "التاريخ" : "Date"}
                         </label>
                         <div className="relative">
-                          <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-[#D9A63A]">
-                            <Calendar className="w-4 h-4" />
+                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#C99632]">
+                            <Calendar className="w-5 h-5" />
                           </div>
-                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-10 text-white/50 text-sm group-hover:bg-white/10 transition-colors">
-                            {isAr ? "التاريخ" : "Date"}
+                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-base font-medium group-hover:bg-white/10 transition-colors">
+                            {isAr ? "التاريخ" : "Select Date"}
                           </div>
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase ml-1">
+                        <label className="caption-text text-[10px] text-gray-400 ml-1">
                           {isAr ? "الوقت" : "Time"}
                         </label>
                         <div className="relative">
-                          <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-[#D9A63A]">
-                            <Clock className="w-4 h-4" />
+                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#C99632]">
+                            <Clock className="w-5 h-5" />
                           </div>
-                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-10 text-white/50 text-sm group-hover:bg-white/10 transition-colors">
-                            {isAr ? "الوقت" : "Time"}
+                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-base font-medium group-hover:bg-white/10 transition-colors">
+                            {isAr ? "الوقت" : "Select Time"}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="w-full bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black px-6 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn relative z-10 shadow-[0_0_20px_rgba(217,166,58,0.2)]">
+                  <div className="w-full bg-[#C99632] hover:bg-[#B58529] text-black px-6 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 relative z-10 shadow-[0_0_20px_rgba(201,150,50,0.3)] hover:shadow-[0_0_30px_rgba(201,150,50,0.5)]">
                     <span>{isAr ? "المتابعة" : "Continue"}</span>
-                    <ArrowIcon className="w-5 h-5 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
+                    <ArrowIcon className="w-5 h-5" />
                   </div>
               </motion.div>
             </motion.div>

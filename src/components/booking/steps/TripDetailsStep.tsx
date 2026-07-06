@@ -33,94 +33,100 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
-      <div className="space-y-2">
-        <h3 className="text-2xl font-bold text-white">
+    <div className="space-y-10 animate-in fade-in slide-in-from-right-4 duration-500">
+      <div className="space-y-3">
+        <h3 className="h3 text-white">
           {isAr ? "تفاصيل الرحلة" : "Trip Details"}
         </h3>
-        <p className="text-gray-400">
+        <p className="text-gray-400 text-lg font-light">
           {isAr ? "أين تريد الذهاب؟" : "Where would you like to go?"}
         </p>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid gap-8">
         {/* Route Selection */}
-        <div className="space-y-3">
-          <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase flex items-center gap-2">
-            <MapPin className="w-3.5 h-3.5 text-[#D9A63A]" />
+        <div className="space-y-4">
+          <label className="caption-text text-[11px] text-gray-400 flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-secondary" />
             {isAr ? "اختر المسار" : "Select Route"}
           </label>
           <div className="relative">
             {isLoading ? (
-              <div className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-4 text-white/50 flex items-center justify-center gap-3">
-                <Loader2 className="w-5 h-5 animate-spin" />
-                {isAr ? "جاري تحميل المسارات..." : "Loading routes..."}
+              <div className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 text-white/50 flex items-center justify-center gap-3">
+                <Loader2 className="w-6 h-6 animate-spin text-secondary" />
+                <span className="font-medium text-base">{isAr ? "جاري تحميل المسارات..." : "Loading routes..."}</span>
               </div>
             ) : (
-              <CustomSelect
-                value={data.routeId}
-                onChange={(val) => {
-                  const selectedRoute = routes.find(r => r._id === val);
-                  if (selectedRoute) {
-                    updateData({ 
-                      routeId: val, 
-                      routeName: isAr ? selectedRoute.nameAr : selectedRoute.name,
-                      vehicleId: '',
-                      vehicleName: '',
-                      basePrice: 0
-                    });
-                  }
-                }}
-                options={routes.map(route => ({
-                  value: route._id,
-                  label: isAr ? route.nameAr || route.name : route.name
-                }))}
-                placeholder={isAr ? "اختر مساراً..." : "Select a route..."}
-                icon={<MapPin className="w-5 h-5" />}
-              />
+              <div className="text-lg">
+                <CustomSelect
+                  value={data.routeId}
+                  onChange={(val) => {
+                    const selectedRoute = routes.find(r => r._id === val);
+                    if (selectedRoute) {
+                      updateData({ 
+                        routeId: val, 
+                        routeName: isAr ? selectedRoute.nameAr : selectedRoute.name,
+                        vehicleId: '',
+                        vehicleName: '',
+                        basePrice: 0
+                      });
+                    }
+                  }}
+                  options={routes.map(route => ({
+                    value: route._id,
+                    label: isAr ? route.nameAr || route.name : route.name
+                  }))}
+                  placeholder={isAr ? "اختر مساراً..." : "Select a route..."}
+                  icon={<MapPin className="w-5 h-5" />}
+                />
+              </div>
             )}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Date Selection */}
-          <div className="space-y-3">
-            <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase flex items-center gap-2">
-              <Calendar className="w-3.5 h-3.5 text-[#D9A63A]" />
+          <div className="space-y-4">
+            <label className="caption-text text-[11px] text-gray-400 flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-secondary" />
               {isAr ? "تاريخ الرحلة" : "Travel Date"}
             </label>
-            <CustomDatePicker
-              value={data.travelDate}
-              onChange={(val) => updateData({ travelDate: val })}
-              minDate={new Date().toISOString().split('T')[0]}
-            />
+            <div className="text-lg">
+              <CustomDatePicker
+                value={data.travelDate}
+                onChange={(val) => updateData({ travelDate: val })}
+                minDate={new Date().toISOString().split('T')[0]}
+              />
+            </div>
           </div>
 
           {/* Time Selection */}
-          <div className="space-y-3">
-            <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase flex items-center gap-2">
-              <Clock className="w-3.5 h-3.5 text-[#D9A63A]" />
+          <div className="space-y-4">
+            <label className="caption-text text-[11px] text-gray-400 flex items-center gap-2">
+              <Clock className="w-4 h-4 text-secondary" />
               {isAr ? "وقت الرحلة" : "Travel Time"}
             </label>
-            <CustomTimePicker
-              value={data.travelTime}
-              onChange={(val) => updateData({ travelTime: val })}
-              placeholder={isAr ? "اختر الوقت" : "Select Time"}
-            />
+            <div className="text-lg">
+              <CustomTimePicker
+                value={data.travelTime}
+                onChange={(val) => updateData({ travelTime: val })}
+                placeholder={isAr ? "اختر الوقت" : "Select Time"}
+              />
+            </div>
           </div>
         </div>
 
         {/* Trip Type */}
-        <div className="space-y-3">
-          <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase">
+        <div className="space-y-4">
+          <label className="caption-text text-[11px] text-gray-400 flex items-center gap-2">
             {isAr ? "نوع الرحلة" : "Trip Type"}
           </label>
-          <div className="flex bg-black/40 p-1.5 rounded-2xl border border-white/5 relative">
+          <div className="flex bg-black/40 p-2 rounded-2xl border border-white/10 relative">
             <button
               onClick={() => updateData({ tripType: 'one-way' })}
-              className={`flex-1 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 relative z-10 ${
+              className={`flex-1 py-4 rounded-xl font-bold text-base transition-all duration-300 relative z-10 ${
                 data.tripType === 'one-way'
-                  ? 'bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black shadow-[0_4px_15px_rgba(217,166,58,0.3)]'
+                  ? 'bg-secondary text-secondary-foreground shadow-luxury'
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
@@ -128,9 +134,9 @@ export default function TripDetailsStep({ data, updateData, routes, isLoading }:
             </button>
             <button
               onClick={() => updateData({ tripType: 'round-trip' })}
-              className={`flex-1 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 relative z-10 ${
+              className={`flex-1 py-4 rounded-xl font-bold text-base transition-all duration-300 relative z-10 ${
                 data.tripType === 'round-trip'
-                  ? 'bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black shadow-[0_4px_15px_rgba(217,166,58,0.3)]'
+                  ? 'bg-secondary text-secondary-foreground shadow-luxury'
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >

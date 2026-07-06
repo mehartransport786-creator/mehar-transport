@@ -31,19 +31,19 @@ export function TrustBar() {
   ];
 
   return (
-    <div className="bg-white border-b border-gray-100 py-12 relative z-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 divide-x divide-gray-100 rtl:divide-x-reverse">
+    <div className="relative z-20 -mt-16 lg:-mt-24 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto">
+      <div className="bg-card shadow-luxury rounded-3xl py-8 lg:py-10 px-6 border border-border/50 backdrop-blur-xl">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 divide-x divide-border rtl:divide-x-reverse">
           {trustItems.map((item, index) => (
             <div key={index} className="flex flex-col items-center justify-center text-center space-y-4 px-4 group">
               <PremiumIcon 
                 icon={item.icon} 
                 size="md" 
-                className="transition-transform duration-500 group-hover:scale-110" 
+                className="transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(201,150,50,0.4)]" 
               />
               <div>
-                <h3 className="font-bold text-lg text-[#1B1E4F] mb-1">{item.title}</h3>
-                <p className="text-sm text-gray-500 font-light">{item.description}</p>
+                <h3 className="font-bold text-lg text-foreground mb-2 tracking-tight group-hover:text-secondary transition-colors">{item.title}</h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">{item.description}</p>
               </div>
             </div>
           ))}

@@ -10,7 +10,6 @@ const faqs = [
   { question: "Are your drivers licensed and insured?", answer: "Yes, all our drivers are professionally licensed, and our vehicles are fully comprehensively insured for your peace of mind." },
   { question: "Can I request a child seat?", answer: "Absolutely. We provide child and infant seats free of charge. Please mention this requirement in the special requests section when booking." },
   { question: "What if my flight is delayed?", answer: "We actively monitor flight statuses. If your flight is delayed, our driver will automatically adjust the pickup time without any extra charges." },
-  { question: "Do you offer Umrah transportation packages?", answer: "Yes, we specialize in Umrah transportation between Jeddah, Makkah, and Madinah with our luxury fleet." },
   { question: "What payment methods do you accept?", answer: "We accept all major credit cards, Apple Pay, Mada, and bank transfers for corporate clients." },
   { question: "Is there a cancellation fee?", answer: "Cancellations made 24 hours prior to the scheduled pickup time are fully refunded. Late cancellations may incur a fee." },
   { question: "Can I hire a chauffeur for the whole day?", answer: "Yes, we offer hourly and daily VIP chauffeur services. You can select this option in our booking form." },

@@ -1,5 +1,5 @@
 import { getTranslations, getLocale } from "next-intl/server";
-import { BookingEngine } from "@/components/booking-page/BookingEngine";
+import { BookingApp } from "@/components/booking-v2/BookingApp";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const resolvedParams = await params;
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 export default async function BookingPage() {
   return (
     <main className="min-h-screen bg-[#F5F4F1]">
-      <BookingEngine />
+      <BookingApp />
     </main>
   );
 }

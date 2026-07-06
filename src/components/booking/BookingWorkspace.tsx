@@ -87,12 +87,46 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
+      // Parse pickup/dropoff from routeName (e.g., "Makkah to Jeddah" or "Makkah - Jeddah")
+      let pickupLocation = bookingData.routeName;
+      let dropoffLocation = '';
+      if (bookingData.routeName.includes(' to ')) {
+        const parts = bookingData.routeName.split(' to ');
+        pickupLocation = parts[0];
+        dropoffLocation = parts[1];
+      } else if (bookingData.routeName.includes(' - ')) {
+        const parts = bookingData.routeName.split(' - ');
+        pickupLocation = parts[0];
+        dropoffLocation = parts[1];
+      }
+
+      // Format extras into an array of strings as expected by the Admin panel
+      const extras = [];
+      if (bookingData.meetAndGreet) extras.push('Meet & Greet');
+      if (bookingData.vipService) extras.push('VIP Service');
+      if (bookingData.childSeat) extras.push('Child Seat');
+
       const payload = {
-        ...bookingData,
+        tripType: bookingData.tripType,
+        customerName: bookingData.customerName,
+        customerEmail: bookingData.customerEmail,
+        customerPhone: bookingData.customerPhone,
+        pickupLocation: pickupLocation,
+        dropoffLocation: dropoffLocation,
+        travelDate: bookingData.travelDate,
+        travelTime: bookingData.travelTime,
         route: bookingData.routeName,
         vehicleType: bookingData.vehicleName,
+        passengers: bookingData.passengers,
+        totalPrice: bookingData.totalPrice,
         status: 'pending',
-        priority: 'standard'
+        priority: 'standard',
+        specialRequests: (bookingData as any).specialRequests || '',
+        extras: extras,
+        paymentMethod: 'cash', // Quick booking defaults to cash/pay-later
+        metadata: {
+          flightNumber: bookingData.flightNumber
+        }
       };
 
       const res = await fetch('/api/bookings', {

@@ -28,8 +28,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Vehicle/Fleet pages
   const vehicleSlugs = [
-    'hyundai-staria', 'toyota-hiace', 'toyota-camry', 'toyota-coaster',
-    'kia-k5', 'hyundai-h1', 'gmc-yukon', 'mitsubishi-xpander'
+    'toyota-camry', 'kia-k5', 'mitsubishi-xpander',
+    'hyundai-staria', 'hyundai-starex', 'toyota-hiace', 'gmc-yukon'
   ];
 
   const vehiclePages = vehicleSlugs.flatMap(slug => [
@@ -37,12 +37,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/ar/fleet/${slug}`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
   ]);
 
-  // Package pages
-  const packageSlugs = ['toyota-camry', 'gmc-yukon', 'hyundai-staria', 'toyota-hiace', 'hyundai-h1'];
-  const packagePages = packageSlugs.flatMap(slug => [
-    { url: `${BASE_URL}/en/packages/${slug}`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${BASE_URL}/ar/packages/${slug}`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
-  ]);
 
   // City pages
   const citySlugs = ['jeddah', 'makkah', 'madinah', 'riyadh', 'taif'];
@@ -82,7 +76,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages,
     ...vehiclePages,
-    ...packagePages,
     ...cityPages,
     ...blogPages,
     ...categoryPages,

@@ -33,21 +33,21 @@ export function RegisteredCompany({ locale }: { locale: string }) {
                 <div className="space-y-4 pt-12">
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] relative">
                     <div className="absolute inset-0 bg-[#1B1E4F]/20 z-10" />
-                    <img src="/media/yukon_exterior.png" alt="Operations" className="w-full h-full object-cover" />
+                    <img src="/fleet/yukon.webp" alt="Operations" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-square relative">
                     <div className="absolute inset-0 bg-[#D9A63A]/20 z-10" />
-                    <img src="/media/staria_exterior.png" alt="Fleet" className="w-full h-full object-cover" />
+                    <img src="/fleet/staria.webp" alt="Fleet" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-square relative">
                     <div className="absolute inset-0 bg-[#1B1E4F]/20 z-10" />
-                    <img src="/media/hiace_exterior.png" alt="Team" className="w-full h-full object-cover" />
+                    <img src="/fleet/hiace.webp" alt="Team" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] relative">
                     <div className="absolute inset-0 bg-[#D9A63A]/20 z-10" />
-                    <img src="/media/taurus_exterior.png" alt="Office" className="w-full h-full object-cover" />
+                    <img src="/fleet/camry.webp" alt="Office" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>

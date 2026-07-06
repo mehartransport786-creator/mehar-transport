@@ -52,34 +52,34 @@ export function OurValues({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-24 bg-[#1B1E4F] relative overflow-hidden">
+    <section className="py-32 bg-[#050505] relative overflow-hidden">
       <div className="container px-4 md:px-6 mx-auto relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="caption-text text-[#C99632] mb-4">
             {isAr ? 'قيمنا' : 'Our Values'}
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <h3 className="h2 text-white leading-tight">
             {isAr ? 'المبادئ التي تقود تميزنا' : 'The Principles That Drive Our Excellence'}
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((value, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="p-10 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-luxury group"
             >
-              <div className="w-14 h-14 rounded-xl bg-[#D9A63A]/20 flex items-center justify-center text-[#D9A63A] mb-6 group-hover:scale-110 transition-transform">
-                <value.icon className="w-7 h-7" />
+              <div className="w-16 h-16 rounded-2xl bg-[#C99632]/20 flex items-center justify-center text-[#C99632] mb-8 group-hover:scale-110 group-hover:bg-[#C99632]/30 transition-all duration-300">
+                <value.icon className="w-8 h-8" />
               </div>
-              <h4 className={`text-xl font-bold text-white mb-3 ${isAr ? 'font-arabic' : ''}`}>
+              <h4 className={`text-2xl font-bold text-white mb-4 tracking-tight ${isAr ? 'font-arabic' : ''}`}>
                 {isAr ? value.titleAr : value.title}
               </h4>
-              <p className={`text-gray-300 leading-relaxed ${isAr ? 'font-arabic' : ''}`}>
+              <p className={`text-lg text-gray-400 leading-relaxed font-light ${isAr ? 'font-arabic' : ''}`}>
                 {isAr ? value.descAr : value.desc}
               </p>
             </motion.div>

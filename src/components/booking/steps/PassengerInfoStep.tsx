@@ -17,10 +17,10 @@ const InputField = ({
   placeholder = '',
   isAr
 }: any) => (
-  <div className="space-y-3">
-    <label className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase">{label}</label>
+  <div className="space-y-4">
+    <label className="caption-text text-[11px] text-gray-400">{label}</label>
     <div className="relative">
-      <div className={`absolute ${isAr ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 text-[#D9A63A]`}>
+      <div className={`absolute ${isAr ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 text-secondary`}>
         <Icon className="w-5 h-5" />
       </div>
       <input
@@ -28,9 +28,28 @@ const InputField = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-white appearance-none focus:outline-none focus:ring-1 focus:ring-[#D9A63A]/50 focus:border-[#D9A63A]/50 transition-all hover:bg-white/10 ${isAr ? 'pr-12' : 'pl-12'}`}
+        className={`w-full bg-black/40 border border-white/10 rounded-2xl p-5 text-white text-lg appearance-none focus:outline-none focus:ring-1 focus:ring-secondary/50 focus:border-secondary/50 transition-all hover:bg-white/5 ${isAr ? 'pr-12' : 'pl-12'}`}
       />
     </div>
+  </div>
+);
+
+const TextAreaField = ({ 
+  label, 
+  value, 
+  onChange, 
+  placeholder = '',
+  isAr
+}: any) => (
+  <div className="space-y-4">
+    <label className="caption-text text-[11px] text-gray-400">{label}</label>
+    <textarea
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
+      rows={4}
+      className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 text-white text-lg focus:outline-none focus:ring-1 focus:ring-secondary/50 focus:border-secondary/50 transition-all hover:bg-white/5 resize-none"
+    />
   </div>
 );
 
@@ -42,26 +61,26 @@ const ToggleService = ({
   checked, 
   onChange 
 }: any) => (
-  <label className={`flex items-start gap-4 p-5 rounded-2xl border cursor-pointer transition-all duration-300 ${
-    checked ? 'bg-gradient-to-br from-[#D9A63A]/10 to-[#D9A63A]/5 border-[#D9A63A]/50 shadow-[0_0_20px_rgba(217,166,58,0.15)]' : 'bg-white/5 backdrop-blur-sm border-white/5 hover:border-white/10 hover:bg-white/10'
+  <label className={`flex items-start gap-4 p-6 rounded-[1.5rem] border cursor-pointer transition-all duration-300 ${
+    checked ? 'bg-gradient-to-br from-secondary/10 to-secondary/5 border-secondary/50 shadow-luxury' : 'bg-black/20 border-white/5 hover:border-white/10 hover:bg-white/5'
   }`}>
     <div className="pt-1">
       <input 
         type="checkbox" 
         checked={checked} 
         onChange={(e) => onChange(e.target.checked)}
-        className="w-5 h-5 accent-[#D9A63A] bg-transparent border-white/20 rounded cursor-pointer" 
+        className="w-5 h-5 accent-secondary bg-transparent border-white/20 rounded cursor-pointer" 
       />
     </div>
     <div className="flex-1">
-      <div className="flex justify-between items-center mb-1">
-        <div className="flex items-center gap-2 text-white font-bold">
-          <Icon className="w-4 h-4 text-[#D9A63A]" />
+      <div className="flex justify-between items-center mb-2">
+        <div className="flex items-center gap-3 text-white font-bold text-lg">
+          <Icon className="w-5 h-5 text-secondary" />
           {title}
         </div>
-        <div className="text-[#D9A63A] text-sm font-bold">+{price} SAR</div>
+        <div className="text-secondary text-base font-bold">+{price} SAR</div>
       </div>
-      <p className="text-xs text-gray-400 leading-relaxed">{description}</p>
+      <p className="text-sm text-gray-400 leading-relaxed font-light">{description}</p>
     </div>
   </label>
 );
@@ -71,20 +90,20 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
   const isAr = locale === 'ar';
 
   return (
-    <div className="space-y-10 animate-in fade-in slide-in-from-right-4 duration-500">
+    <div className="space-y-12 animate-in fade-in slide-in-from-right-4 duration-500">
       
       {/* Passenger Details */}
-      <section className="space-y-6">
-        <div className="space-y-2">
-          <h3 className="text-2xl font-bold text-white">
+      <section className="space-y-8">
+        <div className="space-y-3">
+          <h3 className="h3 text-white">
             {isAr ? "معلومات الراكب" : "Passenger Information"}
           </h3>
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-lg font-light">
             {isAr ? "يرجى إدخال تفاصيل التواصل الخاصة بك" : "Please enter your contact details"}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <InputField 
             icon={User} 
             label={isAr ? "الاسم الكامل" : "Full Name"} 
@@ -121,7 +140,7 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
           />
         </div>
 
-        <div className="max-w-md">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <InputField 
             icon={Users} 
             label={isAr ? "عدد الركاب الفعلي" : "Number of Passengers"} 
@@ -131,17 +150,28 @@ export default function PassengerInfoStep({ data, updateData }: Props) {
             isAr={isAr}
           />
         </div>
+
+        {/* Special Requests */}
+        <div className="w-full">
+          <TextAreaField 
+            label={isAr ? "طلبات خاصة (اختياري)" : "Special Requests (Optional)"} 
+            value={(data as any).specialRequests || ''}
+            onChange={(val: string) => updateData({ ...data, specialRequests: val } as any)}
+            placeholder={isAr ? "أي طلبات إضافية؟" : "Any special requirements for your trip?"}
+            isAr={isAr}
+          />
+        </div>
       </section>
 
       {/* Premium Extras */}
-      <section className="space-y-6 pt-6 border-t border-white/10">
-        <div className="space-y-2">
-          <h3 className="text-xl font-bold text-white">
+      <section className="space-y-8 pt-8 border-t border-white/10">
+        <div className="space-y-3">
+          <h3 className="h3 text-white">
             {isAr ? "خدمات إضافية (اختياري)" : "Premium Extras (Optional)"}
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <ToggleService 
             icon={User}
             title={isAr ? "خدمة الاستقبال والترحيب" : "Meet & Greet"}

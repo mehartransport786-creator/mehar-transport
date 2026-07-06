@@ -22,7 +22,7 @@ export function FleetSEOContent() {
               
               <h3>خدمات نقل العمرة الفاخرة</h3>
               <p>
-                تمثل رحلة العمرة لحظة روحانية عظيمة، ولهذا حرصنا في ميهار على توفير أسطول متخصص من سيارات مرسيدس S-Class، 
+                تمثل رحلة العمرة لحظة روحانية عظيمة، ولهذا حرصنا في ميهار على توفير أسطول متخصص من سيارات جي إم سي يوكن، 
                 وهيونداي ستاريا، وحافلات النقل الجماعي الفاخرة لتأمين تنقلات سلسة بين مطار الملك عبد العزيز بجدة، ومكة المكرمة، 
                 والمدينة المنورة. سائقونا مدربون تدريباً عالياً للتعامل مع ضيوف الرحمن بمهنية واحترام يتماشى مع جلال هذه الرحلة.
               </p>
@@ -38,7 +38,7 @@ export function FleetSEOContent() {
               <p>
                 يعتمد اختيار المركبة المثالية على حجم مجموعتك وطبيعة رحلتك. للعائلات المكونة من 5 إلى 7 أشخاص، نوصي بسيارات ميتسوبيشي 
                 إكسباندر أو هيونداي ستاريا التي توفر مساحة رحبة للأمتعة وعربات الأطفال. أما المجموعات التي تتجاوز 10 أشخاص، فإن حافلات 
-                تويوتا هايس وتويوتا كوستر تعتبر الخيار الاقتصادي الفاخر لضمان بقاء المجموعة معاً طوال الرحلة.
+                تويوتا هايس وهيونداي ستاريكس تعتبر الخيار الاقتصادي الفاخر لضمان بقاء المجموعة معاً طوال الرحلة.
               </p>
               
               <p className="text-sm text-gray-400 mt-8">
@@ -58,7 +58,7 @@ export function FleetSEOContent() {
               <h3>Premium Umrah Transportation Services</h3>
               <p>
                 The Umrah journey is a profound spiritual undertaking. Recognizing this, Mehar offers a specialized fleet including 
-                the Hyundai Staria and other vehicles to provide seamless transfers between King Abdulaziz 
+                the GMC Yukon, Hyundai Staria and other vehicles to provide seamless transfers between King Abdulaziz 
                 International Airport (Jeddah), Makkah, and Madinah. Our chauffeurs are rigorously trained to serve the guests of 
                 Allah with the utmost professionalism and respect, perfectly matching the sanctity of this journey.
               </p>
@@ -73,7 +73,7 @@ export function FleetSEOContent() {
               <p>
                 Selecting the ideal vehicle depends entirely on your group size and the nature of your trip. For families of 5 to 7 
                 individuals, we highly recommend the Mitsubishi Xpander or Hyundai Staria, which offer generous space for luggage and 
-                strollers. For larger groups exceeding 10 passengers, the Toyota Hiace and Toyota Coaster represent the perfect blend 
+                strollers. For larger groups exceeding 10 passengers, the Toyota Hiace and Hyundai Starex represent the perfect blend 
                 of luxury and practicality, ensuring your entire party travels together comfortably.
               </p>
 

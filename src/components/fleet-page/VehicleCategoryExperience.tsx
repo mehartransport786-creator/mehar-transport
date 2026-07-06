@@ -32,15 +32,15 @@ export function VehicleCategoryExperience() {
     },
     {
       title: isAr ? "سيدان فاخرة" : "PREMIUM SEDAN",
-      vehicle: "Ford Taurus",
+      vehicle: "Kia K5",
       perfectFor: isAr ? "السفر المريح، المسافات الطويلة" : "Comfortable Travel, Long Distance",
-      image: mockFleet.find(v => v.id === "ford-taurus")?.image || "",
+      image: mockFleet.find(v => v.id === "kia-k5")?.image || "",
     },
     {
-      title: isAr ? "مجموعات كبيرة" : "LARGE GROUP",
-      vehicle: "Toyota Coaster",
-      perfectFor: isAr ? "مجموعات العمرة الكبيرة، الشركات" : "Large Umrah Groups, Corporate",
-      image: mockFleet.find(v => v.id === "toyota-coaster")?.image || "",
+      title: isAr ? "فان تنفيذي" : "EXECUTIVE VAN",
+      vehicle: "Hyundai Starex",
+      perfectFor: isAr ? "المجموعات، العائلات، الشركات" : "Groups, Families, Corporate",
+      image: mockFleet.find(v => v.id === "hyundai-starex")?.image || "",
     },
 
   ];

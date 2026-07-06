@@ -70,7 +70,6 @@ export const sidebarMenuItems = [
     { id: "routes",     label: "Routes",            labelAr: "المسارات",          icon: "Route",           href: "/admin/routes" },
     { id: "fleet",      label: "Fleet",             labelAr: "الأسطول",           icon: "Car",             href: "/admin/fleet" },
     { id: "pricing",    label: "Pricing Engine",    labelAr: "نظام التسعير",      icon: "Calculator",      href: "/admin/pricing" },
-    { id: "packages",   label: "Packages",          labelAr: "الباقات",           icon: "Package",         href: "/admin/packages" },
     { id: "drivers",    label: "Drivers",           labelAr: "السائقون",          icon: "UserCog",         href: "/admin/drivers" },
     { id: "customers",  label: "Customers",         labelAr: "العملاء",           icon: "Users",           href: "/admin/customers" },
   ]},

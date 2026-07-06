@@ -26,38 +26,16 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleLang = () => {
-    const nextLocale = locale === "en" ? "ar" : "en";
-    router.replace(pathname, { locale: nextLocale });
-  };
 
-  const [dynamicPackages, setDynamicPackages] = useState<any[]>([]);
 
-  useEffect(() => {
-    const fetchPackages = async () => {
-      try {
-        const res = await fetch('/api/packages');
-        if (res.ok) {
-          const data = await res.json();
-          if (data.packages) {
-            setDynamicPackages(data.packages);
-          }
-        }
-      } catch (error) {
-        console.error("Failed to fetch packages for navbar", error);
-      }
-    };
-    fetchPackages();
-  }, []);
 
-  const [isPackagesOpen, setIsPackagesOpen] = useState(false);
   const [isFleetOpen, setIsFleetOpen] = useState(false);
   return (
     <nav 
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
         isScrolled 
-          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border py-2" 
-          : "bg-transparent py-4"
+          ? "bg-background/80 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] border-b border-white/10 py-3" 
+          : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,36 +49,38 @@ export function Navbar() {
           </div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8 rtl:space-x-reverse">
+            <div className="ml-10 flex items-center space-x-1 lg:space-x-4 rtl:space-x-reverse">
               <Link
                 href="/"
-                className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
+                className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-colors group ${
+                  !isTransparent ? 'text-foreground hover:text-secondary' : 'text-white drop-shadow-lg hover:text-white/80'
                 }`}
               >
                 {isAr ? "الرئيسية" : "Home"}
+                <span className={`absolute inset-x-4 bottom-0 h-0.5 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${!isTransparent ? 'bg-secondary' : 'bg-white'}`}></span>
               </Link>
 
               {/* Fleet Dropdown */}
               <div 
-                className="relative group"
+                className="relative group h-full flex items-center"
                 onMouseEnter={() => setIsFleetOpen(true)}
                 onMouseLeave={() => setIsFleetOpen(false)}
               >
                 <Link 
                   href="/fleet"
-                  className={`flex items-center gap-1 transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                    !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
+                  className={`relative flex items-center gap-1 px-4 py-2 text-sm font-semibold tracking-wide transition-colors group/link ${
+                    !isTransparent ? 'text-foreground hover:text-secondary' : 'text-white drop-shadow-lg hover:text-white/80'
                   }`}
                 >
                   {isAr ? "الأسطول" : "Fleet"}
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isFleetOpen ? 'rotate-180' : ''}`} />
+                  <span className={`absolute inset-x-4 bottom-0 h-0.5 transform origin-left scale-x-0 transition-transform duration-300 group-hover/link:scale-x-100 ${!isTransparent ? 'bg-secondary' : 'bg-white'}`}></span>
                 </Link>
                 {isFleetOpen && (
-                  <div className="absolute top-full rtl:right-0 ltr:left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
+                  <div className="absolute top-full rtl:right-0 ltr:left-0 mt-2 w-64 bg-card rounded-2xl shadow-luxury border border-border/50 py-3 z-50 overflow-hidden transform opacity-100 scale-100 transition-all duration-300 origin-top-left">
                     <Link
                       href="/fleet"
-                      className="block px-4 py-2.5 text-sm font-bold text-[#D9A63A] hover:bg-secondary/10 transition-colors border-b border-gray-100 mb-1"
+                      className="block px-5 py-3 text-sm font-bold text-secondary hover:bg-muted transition-colors border-b border-border/50 mb-1"
                       onClick={() => setIsFleetOpen(false)}
                     >
                       {isAr ? "عرض كل الأسطول" : "View Full Fleet"}
@@ -109,7 +89,7 @@ export function Navbar() {
                       <Link
                         key={vehicle.id}
                         href={`/fleet/${vehicle.slug}`}
-                        className="block px-4 py-2.5 text-sm text-gray-800 hover:bg-secondary/10 hover:text-secondary transition-colors"
+                        className="block px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted hover:text-secondary transition-colors"
                         onClick={() => setIsFleetOpen(false)}
                       >
                         {isAr ? vehicle.nameAr : vehicle.name}
@@ -119,106 +99,66 @@ export function Navbar() {
                 )}
               </div>
 
-              {/* Packages Dropdown */}
-              <div 
-                className="relative group"
-                onMouseEnter={() => setIsPackagesOpen(true)}
-                onMouseLeave={() => setIsPackagesOpen(false)}
-              >
-                <Link 
-                  href="/packages"
-                  className={`flex items-center gap-1 transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                    !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
-                  }`}
-                >
-                  {isAr ? "الباقات" : "Packages"}
-                  <ChevronDown className="w-4 h-4" />
-                </Link>
-                {isPackagesOpen && (
-                  <div className="absolute top-full rtl:right-0 ltr:left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
-                    <Link
-                      href="/packages"
-                      className="block px-4 py-2.5 text-sm font-bold text-[#D9A63A] hover:bg-secondary/10 transition-colors border-b border-gray-100 mb-1"
-                      onClick={() => setIsPackagesOpen(false)}
-                    >
-                      {isAr ? "عرض كل الباقات" : "View All Packages"}
-                    </Link>
-                    {dynamicPackages.map((pkg) => (
-                      <Link
-                        key={pkg.slug}
-                        href={`/packages/${pkg.slug}`}
-                        className="block px-4 py-2.5 text-sm text-gray-800 hover:bg-secondary/10 hover:text-secondary transition-colors"
-                        onClick={() => setIsPackagesOpen(false)}
-                      >
-                        {isAr ? pkg.nameAr : pkg.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
 
               <Link
                 href="/about"
-                className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
+                className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-colors group ${
+                  !isTransparent ? 'text-foreground hover:text-secondary' : 'text-white drop-shadow-lg hover:text-white/80'
                 }`}
               >
                 {isAr ? "من نحن" : "About Us"}
+                <span className={`absolute inset-x-4 bottom-0 h-0.5 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${!isTransparent ? 'bg-secondary' : 'bg-white'}`}></span>
               </Link>
               
               <Link
                 href="/routes"
-                className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
+                className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-colors group ${
+                  !isTransparent ? 'text-foreground hover:text-secondary' : 'text-white drop-shadow-lg hover:text-white/80'
                 }`}
               >
                 {isAr ? "المسارات" : "Routes"}
+                <span className={`absolute inset-x-4 bottom-0 h-0.5 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${!isTransparent ? 'bg-secondary' : 'bg-white'}`}></span>
               </Link>
               
               <Link
                 href="/cities"
-                className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
+                className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-colors group ${
+                  !isTransparent ? 'text-foreground hover:text-secondary' : 'text-white drop-shadow-lg hover:text-white/80'
                 }`}
               >
                 {isAr ? "المدن" : "Cities"}
+                <span className={`absolute inset-x-4 bottom-0 h-0.5 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${!isTransparent ? 'bg-secondary' : 'bg-white'}`}></span>
               </Link>
               
               <Link
                 href="/blog"
-                className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
+                className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-colors group ${
+                  !isTransparent ? 'text-foreground hover:text-secondary' : 'text-white drop-shadow-lg hover:text-white/80'
                 }`}
               >
                 {isAr ? "المدونة" : "Blog"}
+                <span className={`absolute inset-x-4 bottom-0 h-0.5 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${!isTransparent ? 'bg-secondary' : 'bg-white'}`}></span>
               </Link>
               
               <Link
                 href="/contact"
-                className={`transition-colors px-3 py-2 text-sm font-medium hover:text-secondary ${
-                  !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
+                className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-colors group ${
+                  !isTransparent ? 'text-foreground hover:text-secondary' : 'text-white drop-shadow-lg hover:text-white/80'
                 }`}
               >
                 {isAr ? "اتصل بنا" : "Contact"}
+                <span className={`absolute inset-x-4 bottom-0 h-0.5 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${!isTransparent ? 'bg-secondary' : 'bg-white'}`}></span>
               </Link>
             </div>
           </div>
           
           <div className="hidden md:flex items-center gap-4">
-            <button 
-              onClick={toggleLang}
-              className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-secondary ${
-                !isTransparent ? 'text-foreground' : 'text-white drop-shadow-md'
-              }`}
-            >
-              <Globe className="w-4 h-4" />
-              <span>{locale === 'en' ? 'العربية' : 'English'}</span>
-            </button>
+
             
 
             <Link 
               href="/booking" 
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2.5 rounded-md text-sm font-bold transition-all shadow-lg"
+              className="btn-luxury bg-secondary text-secondary-foreground hover:bg-[#B58529] px-6 py-2.5 shadow-luxury hover:shadow-luxury-hover"
             >
               {isAr ? 'احجز الآن' : 'Book Now'}
             </Link>
@@ -274,28 +214,6 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Packages Section */}
-            <div className="pt-2 border-t border-border">
-              <Link 
-                href="/packages"
-                className="text-muted-foreground px-3 py-2 block text-sm font-bold uppercase tracking-wider hover:text-secondary transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {isAr ? "الباقات" : "Packages"}
-              </Link>
-              <div className="pl-4 rtl:pr-4 rtl:pl-0 space-y-1">
-                {dynamicPackages.map((pkg) => (
-                  <Link
-                    key={pkg.slug}
-                    href={`/packages/${pkg.slug}`}
-                    className="text-foreground hover:text-secondary block px-3 py-2 rounded-md text-sm transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {isAr ? pkg.nameAr : pkg.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
 
             <div className="pt-2 border-t border-border">
               <Link
@@ -335,13 +253,7 @@ export function Navbar() {
               </Link>
             </div>
 
-            <button 
-              onClick={toggleLang}
-              className="flex w-full items-center gap-3 text-foreground hover:text-secondary hover:bg-accent px-3 py-3 rounded-md text-base font-medium transition-colors mt-4 border-t border-border pt-4"
-            >
-              <Globe className="w-5 h-5" />
-              <span>{locale === 'en' ? 'العربية' : 'English'}</span>
-            </button>
+
             <Link 
               href="/booking" 
               className="w-full flex items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-4 rounded-md text-base font-bold transition-all shadow-md mt-4"

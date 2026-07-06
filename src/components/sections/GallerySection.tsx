@@ -9,16 +9,16 @@ export function GallerySection() {
     const t = useTranslations('GallerySection');
 
   const images = [
-    { src: "/routes/jeddah-makkah.webp", aspect: "aspect-[4/3]" },
-    { src: "/gallery/chauffeur.webp", aspect: "aspect-[3/4]" },
-    { src: "/services/vip.webp", aspect: "aspect-square" },
-    { src: "/gallery/haram.webp", aspect: "aspect-[3/4]" },
-    { src: "/about/interior.webp", aspect: "aspect-square" },
-    { src: "/routes/makkah-madinah.webp", aspect: "aspect-[4/3]" },
+    { src: "/gallery/umrah_gallery_makkah_arrival_1783359784329.png", aspect: "aspect-[4/3]" },
+    { src: "/gallery/umrah_gallery_family_1783360095288.png", aspect: "aspect-[3/4]" },
+    { src: "/gallery/umrah_gallery_madinah_1783360058836.png", aspect: "aspect-square" },
+    { src: "/gallery/umrah_gallery_chauffeur_1783359821415.png", aspect: "aspect-[3/4]" },
+    { src: "/gallery/umrah_gallery_interior_1783359977680.png", aspect: "aspect-square" },
+    { src: "/gallery/umrah_gallery_hotel_1783360022399.png", aspect: "aspect-[4/3]" },
   ];
 
   return (
-    <section className="py-24 bg-slate-50 border-t border-slate-200">
+    <section className="py-24 bg-black border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl space-y-4">
@@ -29,7 +29,7 @@ export function GallerySection() {
                 {t("thePilgrimExperience")}
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary">
+            <h2 className="h2 text-white">
               {t("galleryOfExcellence")}
             </h2>
           </div>
@@ -43,20 +43,20 @@ export function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className={`relative rounded-3xl overflow-hidden group cursor-pointer break-inside-avoid shadow-sm hover:shadow-xl transition-all duration-500`}
+              className={`relative rounded-[2rem] overflow-hidden group cursor-pointer break-inside-avoid shadow-luxury hover:shadow-[0_0_40px_rgba(217,166,58,0.2)] transition-all duration-500`}
             >
               <div className={`${img.aspect} relative w-full h-full`}>
                 <Image 
                   src={img.src} 
-                  alt="Mehar Transport Experience" 
+                  alt="Premium Umrah Transport Experience" 
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
-              <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30">
-                  <Camera className="w-5 h-5" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
+                  <Camera className="w-5 h-5 text-secondary" />
                 </div>
               </div>
             </motion.div>

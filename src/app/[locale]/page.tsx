@@ -17,14 +17,14 @@ export default function HomePage() {
       <Hero />
       <TrustBar />
       <AboutSection />
-      <ServicesSection />
       <FleetShowcase />
       <FeaturedRoutes />
+      <ServicesSection />
       <SafetySection />
       <GallerySection />
       <ReviewsSection />
-      <FAQSection />
       <ContentHubSection />
+      <FAQSection />
       <CTASection />
     </main>
   );

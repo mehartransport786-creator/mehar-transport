@@ -19,7 +19,7 @@ export function FeaturedRoutes() {
       to: isAr ? "مكة المكرمة" : "Makkah",
       distance: "100 km",
       time: "1h 15m",
-      vehicles: "Camry, Staria, GMC",
+      vehicles: "Camry, Staria, Yukon",
       price: "250",
       image: "/routes/jeddah-makkah.webp"
     },
@@ -29,7 +29,7 @@ export function FeaturedRoutes() {
       to: isAr ? "المدينة المنورة" : "Madinah",
       distance: "450 km",
       time: "4h 30m",
-      vehicles: "S-Class, Hiace, H1",
+      vehicles: "Starex, Hiace, Yukon",
       price: "1200",
       image: "/routes/makkah-madinah.webp"
     },
@@ -39,7 +39,7 @@ export function FeaturedRoutes() {
       to: isAr ? "مطار جدة" : "Jeddah Airport",
       distance: "420 km",
       time: "4h 00m",
-      vehicles: "Camry, Staria, Coaster",
+      vehicles: "K5, Xpander, Staria",
       price: "1100",
       image: "/routes/madinah-jeddah.webp"
     }

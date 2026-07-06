@@ -26,15 +26,15 @@ export function AboutTimeline({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-24 bg-[#1B1E4F] relative overflow-hidden" ref={containerRef}>
+    <section className="py-32 bg-[#050505] relative overflow-hidden" ref={containerRef}>
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
       
       <div className="container px-4 md:px-6 mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm">
+        <div className="text-center mb-20">
+          <h2 className="caption-text text-[#C99632] mb-4">
             {isAr ? 'تاريخ الشركة' : 'Company Timeline'}
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white">
+          <h3 className="h2 text-white">
             {isAr ? 'رحلة النمو' : 'Our Journey of Growth'}
           </h3>
         </div>
@@ -44,34 +44,34 @@ export function AboutTimeline({ locale }: { locale: string }) {
           <div className="absolute left-12 md:left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
           
           <motion.div 
-            className="absolute left-12 md:left-1/2 top-0 bottom-0 w-px bg-[#D9A63A] -translate-x-1/2 origin-top"
+            className="absolute left-12 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#C99632] -translate-x-1/2 origin-top shadow-[0_0_15px_rgba(201,150,50,0.5)]"
             style={{ scaleY: scrollYProgress }}
           />
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {timelineEvents.map((event, index) => {
               const isEven = index % 2 === 0;
               return (
                 <motion.div 
                   key={event.year}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   className={`flex flex-col md:flex-row items-start md:items-center relative gap-8 md:gap-0 ${
                     isEven ? "md:flex-row-reverse" : ""
                   }`}
                 >
                   {/* Timeline Node */}
-                  <div className="absolute left-12 md:left-1/2 w-4 h-4 rounded-full bg-[#D9A63A] shadow-[0_0_15px_rgba(217,166,58,0.5)] -translate-x-1/2 mt-1 md:mt-0 z-10 border-2 border-[#1B1E4F]" />
+                  <div className="absolute left-12 md:left-1/2 w-5 h-5 rounded-full bg-[#C99632] shadow-[0_0_20px_rgba(201,150,50,0.8)] -translate-x-1/2 mt-1 md:mt-0 z-10 border-4 border-[#050505]" />
                   
                   {/* Content Box */}
-                  <div className={`ml-24 md:ml-0 w-full md:w-1/2 ${isEven ? 'md:pl-16' : 'md:pr-16 text-left md:text-right'}`}>
-                    <div className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-colors">
-                      <span className="text-[#D9A63A] text-2xl font-black mb-2 block font-mono">
+                  <div className={`ml-24 md:ml-0 w-full md:w-1/2 ${isEven ? 'md:pl-20' : 'md:pr-20 text-left md:text-right'}`}>
+                    <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-luxury group">
+                      <span className="text-[#C99632] text-3xl font-black mb-3 block font-mono group-hover:drop-shadow-[0_0_10px_rgba(201,150,50,0.5)] transition-all">
                         {event.year}
                       </span>
-                      <h4 className={`text-white text-lg font-medium ${isAr ? 'font-arabic' : ''}`}>
+                      <h4 className={`text-white text-xl font-medium tracking-wide ${isAr ? 'font-arabic' : ''}`}>
                         {isAr ? event.titleAr : event.title}
                       </h4>
                     </div>

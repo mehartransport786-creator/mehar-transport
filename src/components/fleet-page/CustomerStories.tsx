@@ -35,7 +35,7 @@ export function CustomerStories() {
       name: t("alImanGroup"),
       country: t("malaysia"),
       route: t("makkahToMadinah"),
-      vehicle: "Toyota Coaster",
+      vehicle: "Toyota Hiace",
       rating: 5,
       review: t("organizingATripFor20PeopleIsNeverEasyBut"),
       initials: "IG"

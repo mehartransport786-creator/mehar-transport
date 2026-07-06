@@ -38,30 +38,34 @@
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
+  
+  /* Luxury Shadows */
+  --shadow-luxury: 0 20px 40px -15px rgba(0,0,0,0.05);
+  --shadow-luxury-hover: 0 30px 60px -15px rgba(0,0,0,0.12);
 }
 
 :root {
-  /* Mehar Transport Luxury Light Theme */
+  /* Mehar Transport Luxury Light Theme - Refined */
   --background: #FFFFFF;
-  --foreground: #1B1E4F;
+  --foreground: #0A0A0A; /* Premium rich black */
   
   --card: #FFFFFF;
-  --card-foreground: #1B1E4F;
+  --card-foreground: #0A0A0A;
   
   --popover: #FFFFFF;
-  --popover-foreground: #1B1E4F;
+  --popover-foreground: #0A0A0A;
   
-  --primary: #1B1E4F;
+  --primary: #0F122B; /* Rich, dark navy */
   --primary-foreground: #FFFFFF;
   
-  --secondary: #D9A63A;
+  --secondary: #C99632; /* Elegant darker gold */
   --secondary-foreground: #FFFFFF;
   
   --muted: #F8F9FC;
-  --muted-foreground: #64748B;
+  --muted-foreground: #475569; /* Slate 600 for better contrast */
   
   --accent: #F5F4F1;
-  --accent-foreground: #1B1E4F;
+  --accent-foreground: #0F122B;
   
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
@@ -74,31 +78,31 @@
   
   --border: #E2E8F0;
   --input: #E2E8F0;
-  --ring: #D9A63A;
+  --ring: #C99632;
   --radius: 0.5rem;
 }
 
 .dark {
   /* Mehar Transport Luxury Dark Theme */
-  --background: #111827;
+  --background: #0A0A0A;
   --foreground: #F8F9FC;
   
-  --card: #1B1E4F;
+  --card: #111111;
   --card-foreground: #F8F9FC;
   
-  --popover: #1B1E4F;
+  --popover: #111111;
   --popover-foreground: #F8F9FC;
   
-  --primary: #D9A63A;
-  --primary-foreground: #111827;
+  --primary: #C99632;
+  --primary-foreground: #0A0A0A;
   
-  --secondary: #1B1E4F;
+  --secondary: #0F122B;
   --secondary-foreground: #F8F9FC;
   
-  --muted: #1B1E4F;
+  --muted: #111111;
   --muted-foreground: #94A3B8;
   
-  --accent: #1B1E4F;
+  --accent: #111111;
   --accent-foreground: #F8F9FC;
   
   --destructive: #EF4444;
@@ -108,11 +112,11 @@
   --success-foreground: #FFFFFF;
 
   --warning: #FBBF24;
-  --warning-foreground: #0F172A;
+  --warning-foreground: #0A0A0A;
   
-  --border: #1B1E4F;
-  --input: #1B1E4F;
-  --ring: #D9A63A;
+  --border: #222222;
+  --input: #222222;
+  --ring: #C99632;
 }
 
 @layer base {
@@ -124,6 +128,32 @@
   }
 }
 
+/* Luxury Utility Classes */
+@utility h1 {
+  @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1];
+}
+@utility h2 {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.15];
+}
+@utility h3 {
+  @apply text-3xl md:text-4xl font-semibold tracking-tight text-foreground leading-snug;
+}
+@utility body-large {
+  @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+}
+@utility body-base {
+  @apply text-base text-muted-foreground leading-relaxed;
+}
+@utility caption-text {
+  @apply text-sm text-muted-foreground font-semibold uppercase tracking-[0.2em];
+}
+@utility card-luxury {
+  @apply bg-card text-card-foreground rounded-2xl border border-border/50 shadow-luxury transition-all duration-500 hover:shadow-luxury-hover hover:-translate-y-1;
+}
+@utility btn-luxury {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98];
+}
+
 /* 
   CRITICAL FIX: Framer Motion sets initial opacity: 0 via inline style.
   If JavaScript is blocked (e.g. cross-origin dev restriction from network IP),
@@ -131,7 +161,7 @@
   after a 600ms delay using a CSS animation fallback.
   
   When JS DOES load, framer-motion takes over with its own inline style,
-  so the animation still works properly — this is purely a no-JS safety net.
+  so the animation still works properly - this is purely a no-JS safety net.
 */
 @keyframes reveal-fallback {
   0% { opacity: 0; }

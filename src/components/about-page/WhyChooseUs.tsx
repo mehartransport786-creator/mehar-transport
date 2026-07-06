@@ -66,7 +66,7 @@ export function WhyChooseUs({ locale }: { locale: string }) {
             <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-[#1B1E4F]/10 z-10" />
               <img 
-                src="/media/sclass.png" 
+                src="/about/chauffeur.webp" 
                 alt="Premium Chauffeur" 
                 className="w-full h-full object-cover"
               />
