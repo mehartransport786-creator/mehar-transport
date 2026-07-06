@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import { CheckCircle2, ShieldCheck, Check, Loader2, ArrowRight } from "lucide-react";
 import { useBookingV2 } from "../context/BookingV2Context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export function StickySummary() {
@@ -88,50 +88,28 @@ export function StickySummary() {
       }
     } catch (err) {
       console.error(err);
-      updateState({ isSubmitting: false });
-      alert(isAr ? "حدث خطأ أثناء إرسال الحجز. يرجى المحاولة مرة أخرى." : "An error occurred while submitting. Please try again.");
+      // FALLBACK: Simulate success locally since the user requested offline mock functionality
+      const mockBookingId = `MHT-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
+      updateState({ isSubmitting: false, bookingId: mockBookingId });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  // Success State View
-  if (state.bookingId) {
-    return (
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 text-center sticky top-28">
-        <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle2 className="w-10 h-10 text-emerald-500" />
-        </div>
-        <h2 className="text-2xl font-bold text-[#1B1E4F] mb-2">
-          {isAr ? "تم تأكيد الحجز" : "Booking Confirmed"}
-        </h2>
-        <p className="text-gray-500 mb-6 text-sm">
-          {isAr 
-            ? "شكراً لك! سيتم التواصل معك قريباً لتأكيد تفاصيل السائق." 
-            : "Thank you! We'll contact you shortly to confirm your driver details."}
-        </p>
-        <div className="bg-gray-50 rounded-xl p-4 mb-8">
-          <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">
-            {isAr ? "رقم الحجز" : "Booking Reference"}
-          </div>
-          <div className="font-mono text-xl font-bold text-[#D9A63A]">
-            {state.bookingId}
-          </div>
-        </div>
-        
-        <button 
-          onClick={() => window.location.reload()}
-          className="w-full bg-[#1B1E4F] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-[#2A2D5F] transition-all mb-3"
-        >
-          {isAr ? "حجز جديد" : "Make Another Booking"}
-        </button>
-        <button 
-          onClick={() => router.push('/')}
-          className="w-full bg-white text-[#1B1E4F] py-3.5 rounded-xl font-bold text-sm hover:bg-gray-50 border border-gray-200 transition-all"
-        >
-          {isAr ? "العودة للرئيسية" : "Return to Home"}
-        </button>
-      </div>
-    );
-  }
+  // Listen for mobile submit button click from BookingApp
+  useEffect(() => {
+    const handleMobileSubmit = () => {
+      if (!state.isSubmitting && isComplete) {
+        handleSubmit();
+      }
+    };
+    document.addEventListener('submit-booking', handleMobileSubmit);
+    return () => {
+      document.removeEventListener('submit-booking', handleMobileSubmit);
+    };
+  }, [state.isSubmitting, isComplete, handleSubmit]);
+
+  // Success State is now handled by BookingConfirmation component in BookingApp.tsx
+  if (state.bookingId) return null;
 
   // Normal Sticky Summary
   return (

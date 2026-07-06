@@ -10,6 +10,8 @@ import { ExtrasSection } from "./sections/ExtrasSection";
 import { PaymentSection } from "./sections/PaymentSection";
 import { StickySummary } from "./layout/StickySummary";
 import { MobileActionBar } from "./layout/MobileActionBar";
+import { BookingConfirmation } from "./BookingConfirmation";
+import { Loader2, Check } from "lucide-react";
 
 function BookingAppContent() {
   const { state } = useBookingV2();
@@ -39,35 +41,84 @@ function BookingAppContent() {
 
       {/* Main Layout */}
       <div className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
-        <div className="flex flex-col lg:flex-row gap-8">
-          
-          {/* Left Column (Forms) */}
-          <div className="flex-1 lg:w-[65%] space-y-6">
-            <JourneySection />
-            
-            <div className={`transition-all duration-700 ${state.routeId || state.serviceType === 'hourly' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
-              <VehicleSection />
+        {state.bookingId ? (
+          <BookingConfirmation />
+        ) : (
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Left Column (Forms) */}
+            <div className="flex-1 lg:w-[65%] space-y-6">
+              <JourneySection />
+              
+              <div className={`transition-all duration-700 ${state.routeId || state.serviceType === 'hourly' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+                <VehicleSection />
+              </div>
+
+              <div className={`transition-all duration-700 ${state.selectedVehicle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none hidden'}`}>
+                <ExtrasSection />
+                <PassengerSection />
+                <PaymentSection />
+                
+                {/* Mobile-only Submit Button (since StickySummary is hidden on mobile) */}
+                <div className="lg:hidden mt-8 mb-4">
+                  <button
+                    disabled={
+                      !((state.serviceType === "transfer" ? state.routeId : state.pickupLocation) &&
+                      state.selectedVehicle &&
+                      state.passengerInfo.name &&
+                      state.passengerInfo.phone &&
+                      state.passengerInfo.email) || state.isSubmitting
+                    }
+                    onClick={async () => {
+                      // Trigger submit logic (this will be refactored into context or a hook if needed, but for now we can just dispatch an event or handle it here)
+                      // Actually, it's better to just trigger a custom event that StickySummary listens to, or we can move submit logic to Context.
+                      document.dispatchEvent(new CustomEvent('submit-booking'));
+                    }}
+                    className={`w-full py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 ${
+                      ((state.serviceType === "transfer" ? state.routeId : state.pickupLocation) &&
+                      state.selectedVehicle &&
+                      state.passengerInfo.name &&
+                      state.passengerInfo.phone &&
+                      state.passengerInfo.email)
+                        ? 'bg-[#1B1E4F] text-white hover:bg-[#2A2D5F] shadow-lg hover:shadow-xl'
+                        : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                    }`}
+                  >
+                    {state.isSubmitting ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      isAr ? "تأكيد الحجز" : "Confirm Booking"
+                    )}
+                  </button>
+                  {!(
+                    (state.serviceType === "transfer" ? state.routeId : state.pickupLocation) &&
+                    state.selectedVehicle &&
+                    state.passengerInfo.name &&
+                    state.passengerInfo.phone &&
+                    state.passengerInfo.email
+                  ) && (
+                    <p className="text-xs text-center text-amber-600 mt-3 font-medium flex items-center justify-center gap-1">
+                      <Check className="w-3.5 h-3.5" />
+                      {isAr ? "أكمل جميع التفاصيل للتأكيد" : "Complete all details to book"}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
 
-            <div className={`transition-all duration-700 ${state.selectedVehicle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none hidden'}`}>
-              <ExtrasSection />
-              <PassengerSection />
-              <PaymentSection />
+            {/* Right Column (Sticky Summary) */}
+            <div className="hidden lg:block lg:w-[35%] xl:w-[380px] shrink-0">
+              <StickySummary />
             </div>
           </div>
-
-          {/* Right Column (Sticky Summary) */}
-          <div className="hidden lg:block lg:w-[35%] xl:w-[380px] shrink-0">
-            <StickySummary />
-          </div>
-
-        </div>
+        )}
       </div>
 
       {/* Mobile Sticky Bottom Bar */}
-      <div className="lg:hidden">
-        <MobileActionBar />
-      </div>
+      {!state.bookingId && (
+        <div className="lg:hidden">
+          <MobileActionBar />
+        </div>
+      )}
     </div>
   );
 }

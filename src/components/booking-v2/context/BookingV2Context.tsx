@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { SelectedVehicle, PricingState, PricingAdjustment } from "@/components/booking-page/context/BookingContext";
+import { fallbackVehicles, fallbackRoutesData } from "@/lib/fallbackData";
 
 export type ServiceType = "transfer" | "hourly";
 
@@ -205,7 +206,7 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
 
       // Local mock calculation to prevent API hang
       if (state.serviceType === "hourly") {
-        const vehicleIdx = mockFleet.findIndex(v => v.id === state.selectedVehicle?.vehicleId);
+        const vehicleIdx = fallbackVehicles.findIndex(v => v._id === state.selectedVehicle?.vehicleId || v.slug === state.selectedVehicle?.vehicleId);
         const rate = 100 + (Math.max(0, vehicleIdx) * 25);
         totalBasePrice = (state.durationHours || 4) * rate;
 
@@ -227,9 +228,8 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
         taxAmount = subtotalBeforeTax * 0.15;
         totalIncludingTax = subtotalBeforeTax + taxAmount;
       } else {
-        const fallbackRoutesData = require("@/lib/fallbackData").fallbackRoutesData;
         const mockRoute = fallbackRoutesData.find((r: any) => r._id === state.routeId || r.slug === state.routeId);
-        const vehicleIdx = mockFleet.findIndex(v => v.id === state.selectedVehicle?.vehicleId);
+        const vehicleIdx = fallbackVehicles.findIndex(v => v._id === state.selectedVehicle?.vehicleId || v.slug === state.selectedVehicle?.vehicleId);
         
         let basePrice = 200 + (Math.max(0, vehicleIdx) * 50); // fallback
         if (mockRoute && mockRoute.prices && vehicleIdx >= 0 && vehicleIdx < mockRoute.prices.length) {
