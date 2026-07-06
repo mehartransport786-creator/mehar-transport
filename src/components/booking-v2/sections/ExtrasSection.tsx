@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { Sparkles, Crown, Baby, PersonStanding, Check } from "lucide-react";
+import { Sparkles, Baby, Check } from "lucide-react";
 import { useBookingV2 } from "../context/BookingV2Context";
 
 export function ExtrasSection() {
@@ -9,22 +9,6 @@ export function ExtrasSection() {
   const isAr = useLocale() === "ar";
 
   const extrasConfig = [
-    {
-      id: "meetAndGreet",
-      icon: PersonStanding,
-      title: isAr ? "استقبال وترحيب" : "Meet & Greet",
-      desc: isAr ? "استقبال في صالة الوصول مع لوحة اسم" : "Personalized greeting at arrivals with name board",
-      price: 100,
-      active: state.extras.meetAndGreet
-    },
-    {
-      id: "vipService",
-      icon: Crown,
-      title: isAr ? "خدمة كبار الشخصيات" : "VIP Service",
-      desc: isAr ? "ضيافة فاخرة، واي فاي، وخدمة سريعة" : "Premium refreshments, WiFi, and priority handling",
-      price: 250,
-      active: state.extras.vipService
-    },
     {
       id: "childSeat",
       icon: Baby,
