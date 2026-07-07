@@ -19,30 +19,35 @@ export function VehicleCategoryExperience() {
       image: mockFleet.find(v => v.id === "toyota-camry")?.image || "",
     },
     {
-      title: isAr ? "دفع رباعي فاخر" : "LUXURY SUV",
-      vehicle: "GMC Yukon",
-      perfectFor: isAr ? "العائلات، المجموعات الصغيرة، العمرة" : "Families, Small Groups, Umrah",
-      image: mockFleet.find(v => v.id === "gmc-yukon")?.image || "",
-    },
-    {
       title: isAr ? "عائلي فاخر" : "PREMIUM VAN",
       vehicle: "Hyundai Staria",
       perfectFor: isAr ? "السفر العائلي الفاخر، عمرة VIP" : "Premium Family Travel, VIP Umrah",
       image: mockFleet.find(v => v.id === "hyundai-staria")?.image || "",
     },
     {
-      title: isAr ? "سيدان فاخرة" : "PREMIUM SEDAN",
-      vehicle: "Kia K5",
-      perfectFor: isAr ? "السفر المريح، المسافات الطويلة" : "Comfortable Travel, Long Distance",
-      image: mockFleet.find(v => v.id === "kia-k5")?.image || "",
+      title: isAr ? "دفع رباعي فاخر" : "LUXURY SUV",
+      vehicle: "GMC Denali",
+      perfectFor: isAr ? "العائلات، المجموعات الصغيرة، العمرة" : "Families, Small Groups, Umrah",
+      image: mockFleet.find(v => v.id === "gmc-denali")?.image || "",
     },
     {
       title: isAr ? "فان تنفيذي" : "EXECUTIVE VAN",
-      vehicle: "Hyundai Starex",
+      vehicle: "Hyundai H1",
       perfectFor: isAr ? "المجموعات، العائلات، الشركات" : "Groups, Families, Corporate",
-      image: mockFleet.find(v => v.id === "hyundai-starex")?.image || "",
+      image: mockFleet.find(v => v.id === "hyundai-h1")?.image || "",
     },
-
+    {
+      title: isAr ? "فان كبير" : "LARGE VAN",
+      vehicle: "Toyota Hiace",
+      perfectFor: isAr ? "المجموعات الكبيرة، العائلات الممتدة" : "Large Groups, Extended Families",
+      image: mockFleet.find(v => v.id === "toyota-hiace")?.image || "",
+    },
+    {
+      title: isAr ? "حافلة صغيرة" : "MINIBUS",
+      vehicle: "Coaster Bus",
+      perfectFor: isAr ? "السياحة، الحملات الكبيرة، الفعاليات" : "Tourism, Large Pilgrimage Groups, Events",
+      image: mockFleet.find(v => v.id === "coaster-bus")?.image || "",
+    },
   ];
 
   return (

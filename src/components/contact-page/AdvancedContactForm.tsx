@@ -159,10 +159,11 @@ export function AdvancedContactForm() {
             <div className="relative">
               <select {...register("vehicle")} className={`${inputClass} appearance-none`}>
                 <option value="">Select a vehicle...</option>
-                <option value="sedan">Executive Sedan (Toyota Camry, Kia K5)</option>
-                <option value="suv">Premium SUV (GMC Yukon)</option>
-                <option value="van">Executive Van (Hyundai Staria, Hyundai Starex, Toyota Hiace)</option>
-                <option value="mpv">Family MPV (Mitsubishi Xpander)</option>
+                <option value="sedan">Executive Sedan (Toyota Camry)</option>
+                <option value="suv">Premium SUV (GMC Denali)</option>
+                <option value="van">Executive Van (Hyundai Staria, Hyundai H1)</option>
+                <option value="large-van">Large Van (Toyota Hiace)</option>
+                <option value="minibus">Minibus (Coaster Bus)</option>
               </select>
               <Car className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
             </div>

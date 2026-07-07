@@ -72,8 +72,8 @@ export function FleetSEOContent() {
               <h3>Choosing the Perfect Vehicle for Your Journey</h3>
               <p>
                 Selecting the ideal vehicle depends entirely on your group size and the nature of your trip. For families of 5 to 7 
-                individuals, we highly recommend the Mitsubishi Xpander or Hyundai Staria, which offer generous space for luggage and 
-                strollers. For larger groups exceeding 10 passengers, the Toyota Hiace and Hyundai Starex represent the perfect blend 
+                individuals, we highly recommend the Hyundai Staria or Hyundai H1, which offer generous space for luggage and 
+                strollers. For larger groups exceeding 10 passengers, the Toyota Hiace and Coaster Bus represent the perfect blend 
                 of luxury and practicality, ensuring your entire party travels together comfortably.
               </p>
 
