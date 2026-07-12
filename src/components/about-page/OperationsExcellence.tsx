@@ -46,13 +46,13 @@ export function OperationsExcellence({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-24 bg-[#F5F4F1]">
+    <section className="py-24 bg-muted/50">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm">
+          <h2 className="text-secondary font-bold tracking-widest uppercase mb-3 text-sm">
             {isAr ? 'العمليات والتكنولوجيا' : 'Operations Excellence'}
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-[#1B1E4F] leading-tight">
+          <h3 className="text-3xl md:text-5xl font-bold text-primary leading-tight">
             {isAr ? 'الدقة خلف الكواليس' : 'Precision Behind The Scenes'}
           </h3>
         </div>
@@ -65,15 +65,15 @@ export function OperationsExcellence({ locale }: { locale: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100"
+              className="bg-background p-8 rounded-[var(--radius-card)] shadow-sm hover:shadow-[var(--shadow-luxury)] transition-shadow border border-border"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#F5F4F1] flex items-center justify-center text-[#1B1E4F] mb-6">
+              <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-primary mb-6">
                 <op.icon className="w-6 h-6" />
               </div>
-              <h4 className={`text-xl font-bold text-[#1B1E4F] mb-3 ${isAr ? 'font-arabic' : ''}`}>
+              <h4 className={`text-xl font-bold text-primary mb-3 ${isAr ? 'font-arabic' : ''}`}>
                 {isAr ? op.titleAr : op.title}
               </h4>
-              <p className="text-gray-500 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 {op.desc}
               </p>
             </motion.div>

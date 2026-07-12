@@ -22,10 +22,10 @@ export function RelatedVehicles({ currentSlug }: RelatedVehiclesProps) {
   return (
     <section className="mt-16 pt-16 border-t border-gray-100">
       <div className="flex items-center justify-between mb-8">
-        <h3 className="text-3xl font-bold text-[#1B1E4F]">
+        <h3 className="text-3xl font-bold text-primary">
           {isAr ? "قد يعجبك أيضاً" : "You May Also Like"}
         </h3>
-        <Link href="/fleet" className="text-[#D9A63A] font-bold text-sm uppercase tracking-widest hover:text-[#1B1E4F] transition-colors flex items-center gap-2">
+        <Link href="/fleet" className="text-secondary font-bold text-sm uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-2">
           {isAr ? "عرض كل الأسطول" : "View Full Fleet"}
           <ArrowRight className={`w-4 h-4 ${isAr ? 'rotate-180' : ''}`} />
         </Link>
@@ -49,10 +49,10 @@ export function RelatedVehicles({ currentSlug }: RelatedVehiclesProps) {
                 />
               </div>
               <div className="p-6">
-                <div className="text-xs font-bold text-[#D9A63A] uppercase tracking-wider mb-2">
+                <div className="text-xs font-bold text-secondary uppercase tracking-wider mb-2">
                   {isAr ? vehicle.typeAr : vehicle.type}
                 </div>
-                <h4 className="font-bold text-xl text-[#1B1E4F] mb-4 group-hover:text-[#D9A63A] transition-colors">
+                <h4 className="font-bold text-xl text-primary mb-4 group-hover:text-secondary transition-colors">
                   {isAr ? vehicle.nameAr : vehicle.name}
                 </h4>
                 <div className="flex items-center gap-4 text-sm text-gray-500">

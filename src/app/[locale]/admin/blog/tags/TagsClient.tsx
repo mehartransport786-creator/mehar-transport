@@ -72,7 +72,7 @@ export default function TagsClient({ initialTags }: { initialTags: any[] }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Form */}
-      <div className="bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-xl p-6 shadow-sm h-fit">
+      <div className="bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-xl p-6 shadow-sm h-fit">
         <h2 className="text-lg font-semibold mb-4">{formData._id ? 'Edit Tag' : 'Add New Tag'}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -86,7 +86,7 @@ export default function TagsClient({ initialTags }: { initialTags: any[] }) {
                 if (!formData.slug && !formData._id) generateSlug();
               }}
               onBlur={!formData._id ? generateSlug : undefined}
-              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
           <div>
@@ -97,7 +97,7 @@ export default function TagsClient({ initialTags }: { initialTags: any[] }) {
               dir="rtl"
               value={formData.nameAr}
               onChange={(e) => handleChange('nameAr', e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none text-right font-cairo"
+              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none text-right font-cairo"
             />
           </div>
           <div>
@@ -107,7 +107,7 @@ export default function TagsClient({ initialTags }: { initialTags: any[] }) {
               required
               value={formData.slug}
               onChange={(e) => handleChange('slug', e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
           
@@ -115,7 +115,7 @@ export default function TagsClient({ initialTags }: { initialTags: any[] }) {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-[#D9A63A] text-white py-2 rounded-lg hover:bg-[#b88c32] transition-colors font-medium"
+              className="flex-1 bg-secondary text-white py-2 rounded-lg hover:bg-secondary/80 transition-colors font-medium"
             >
               {loading ? 'Saving...' : formData._id ? 'Update Tag' : 'Create Tag'}
             </button>
@@ -133,7 +133,7 @@ export default function TagsClient({ initialTags }: { initialTags: any[] }) {
       </div>
 
       {/* List */}
-      <div className="lg:col-span-2 bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
+      <div className="lg:col-span-2 bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
           <thead className="text-xs text-gray-500 uppercase bg-gray-50 dark:bg-white/5 border-b border-gray-200 dark:border-white/10">
             <tr>

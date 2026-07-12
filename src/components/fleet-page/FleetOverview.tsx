@@ -56,7 +56,7 @@ export function FleetOverview() {
   };
 
   return (
-    <section className="py-24 bg-white border-b border-gray-100">
+    <section className="py-24 bg-background border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
         <motion.div 
           variants={containerVariants}
@@ -73,12 +73,12 @@ export function FleetOverview() {
                 variants={itemVariants}
                 className="flex flex-col items-center text-center space-y-4 group"
               >
-                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#1B1E4F] group-hover:bg-[#1B1E4F] group-hover:text-[#D9A63A] transition-all duration-500 shadow-sm border border-slate-100">
+                <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-secondary transition-all duration-500 shadow-sm border border-border/50">
                   <Icon className="w-7 h-7 stroke-[1.5]" />
                 </div>
                 <div>
-                  <div className="text-3xl font-black text-[#1B1E4F] mb-1">{stat.value}</div>
-                  <div className="text-sm font-medium text-gray-500 uppercase tracking-wider">{stat.label}</div>
+                  <div className="text-3xl font-black text-primary mb-1">{stat.value}</div>
+                  <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</div>
                 </div>
               </motion.div>
             );

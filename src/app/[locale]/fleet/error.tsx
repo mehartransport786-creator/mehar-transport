@@ -32,7 +32,7 @@ export default function FleetError({
       </p>
       <Button 
         onClick={() => reset()}
-        className="mt-6 bg-[#D9A63A] hover:bg-[#c49533] text-white font-bold px-8 py-2 rounded-lg"
+        className="mt-6 bg-secondary hover:bg-secondary/80 text-white font-bold px-8 py-2 rounded-lg"
       >
         {t("tryAgain") || "Try again"}
       </Button>

@@ -14,37 +14,37 @@ export function ServicesSection() {
     {
       id: "airport",
       icon: Plane,
-      title: isAr ? "نقل المطار المتميز" : "Premium Airport Transfers",
+      title: isAr ? "توصيل المطار" : "Airport Transfers",
       description: isAr 
-        ? "استقبال لا تشوبه شائبة في مطارات المملكة الرئيسية مع تتبع لحظي لرحلتك." 
-        : "Impeccable meet-and-greet at major Saudi airports with real-time flight tracking.",
+        ? "نستقبلك بجلسة استقبال رسمية في مطارات جدة ومكة والمدينة المنورة، مع متابعة لحظية لرحلتك لضمان توقيت الاستقبال بدقة." 
+        : "Professional meet-and-greet at Jeddah, Makkah, and Madinah airports. We monitor your flight in real time to ensure your driver is always ready on arrival.",
       image: "/services/airport.png"
-    },
-    {
-      id: "corporate",
-      icon: Building,
-      title: isAr ? "نقل الشركات التنفيذي" : "Executive Corporate Travel",
-      description: isAr 
-        ? "أسطول فاخر لتلبية احتياجات الشركات ورجال الأعمال بكفاءة وخصوصية." 
-        : "A luxury fleet tailored for corporate professionals demanding efficiency and privacy.",
-      image: "/services/corporate.png"
     },
     {
       id: "umrah",
       icon: Crown,
-      title: isAr ? "نقل العمرة المتميز" : "Premium Umrah Transportation",
+      title: isAr ? "نقل العمرة الخاص" : "Private Umrah Transportation",
       description: isAr 
-        ? "تنقلات مريحة وسلسة بين جدة ومكة والمدينة المنورة." 
-        : "Seamless and comfortable transfers between Jeddah, Makkah, and Madinah.",
+        ? "تنقلات خاصة ومحجوزة مسبقاً بين مطار جدة، مكة المكرمة، والمدينة المنورة — التسعيرة ثابتة ولا مفاجآت." 
+        : "Pre-booked private transfers between Jeddah Airport, Makkah, and Madinah. Fixed pricing, no shared rides, and professional drivers experienced on all Umrah routes.",
       image: "/services/umrah.png"
     },
     {
-      id: "hourly",
-      icon: Clock,
-      title: isAr ? "سائق تحت التصرف" : "Hourly Chauffeur",
+      id: "intercity",
+      icon: Building,
+      title: isAr ? "السفر بين المدن" : "Intercity Travel",
       description: isAr 
-        ? "مرونة تامة مع سائق مخصص لتنقلاتك المتعددة على مدار الساعة." 
-        : "Total flexibility with a dedicated driver at your disposal by the hour.",
+        ? "تنقلات مريحة بين مكة والمدينة وجدة والرياض والطائف وينبع — بسيارات مريحة وسائقين محترفين." 
+        : "Comfortable private travel between Makkah, Madinah, Jeddah, Riyadh, Taif, and Yanbu. Ideal for families, pilgrims, and corporate travelers covering longer distances.",
+      image: "/services/corporate.png"
+    },
+    {
+      id: "ziyarah",
+      icon: Clock,
+      title: isAr ? "جولات الزيارة" : "Ziyarah Tours",
+      description: isAr 
+        ? "نرتب رحلات زيارة خاصة إلى المواقع الإسلامية في مكة والمدينة ومحيطهما — سائق مخصص لك مدة الجولة كاملة." 
+        : "Arranged visits to Islamic historical sites in and around Makkah and Madinah. A dedicated driver accompanies your group throughout the full tour.",
       image: "/services/hourly.png"
     }
   ];
@@ -69,23 +69,23 @@ export function ServicesSection() {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div className="space-y-6 max-w-2xl">
+    <section className="section-padding bg-background">
+      <div className="container-fluid">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 mb-12 lg:mb-16">
+          <div className="space-y-4 lg:space-y-6 max-w-2xl">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-px bg-[#C99632]"></div>
-              <span className="caption-text text-[#C99632]">
-                {isAr ? "خدماتنا المخصصة" : "Bespoke Services"}
+              <div className="w-12 h-px bg-secondary"></div>
+              <span className="caption-text text-secondary tracking-[0.2em]">
+                {isAr ? "خدمات النقل" : "Our Transportation Services"}
               </span>
             </div>
-            <h2 className="h2 text-foreground">
-              {isAr ? "مصممة لتجاوز التوقعات" : "Designed to Exceed Expectations"}
+            <h2 className="h2 text-primary leading-tight">
+              {isAr ? "نقل خاص لكل رحلة" : "Private Transportation for Every Journey"}
             </h2>
           </div>
           <Link 
             href="/services" 
-            className="hidden md:inline-flex items-center gap-2 text-foreground font-bold hover:text-secondary transition-colors group"
+            className="hidden md:inline-flex items-center justify-center gap-2 text-primary font-bold hover:text-secondary transition-colors group min-h-[48px] px-6 py-2 border border-border hover:border-secondary/50 rounded-[var(--radius-btn)]"
           >
             <span>{isAr ? "عرض كل الخدمات" : "View All Services"}</span>
             <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -103,7 +103,7 @@ export function ServicesSection() {
             <motion.div 
               key={service.id} 
               variants={itemVariants}
-              className="group relative h-[400px] lg:h-[450px] rounded-[2rem] overflow-hidden cursor-pointer shadow-luxury border border-border/50"
+              className="group relative h-[400px] lg:h-[450px] rounded-[var(--radius-card)] overflow-hidden cursor-pointer shadow-[var(--shadow-luxury)] border border-border"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
@@ -118,8 +118,8 @@ export function ServicesSection() {
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-500 group-hover:from-black"></div>
 
               {/* Content */}
-              <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 text-white">
-                <div className="bg-white/10 backdrop-blur-md w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-white/20 transform transition-transform duration-500 group-hover:-translate-y-2 shadow-luxury">
+              <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 lg:p-8 text-primary-foreground">
+                <div className="bg-white/10 backdrop-blur-md w-14 h-14 rounded-[var(--radius-sm)] flex items-center justify-center mb-6 border border-white/20 transform transition-transform duration-500 group-hover:-translate-y-2 shadow-[var(--shadow-luxury)]">
                   <service.icon className="w-7 h-7 text-secondary" />
                 </div>
                 
@@ -127,13 +127,14 @@ export function ServicesSection() {
                   {service.title}
                 </h3>
                 
-                <div className="overflow-hidden h-0 group-hover:h-auto transition-all duration-500 opacity-0 group-hover:opacity-100">
-                  <p className="text-gray-300 text-sm leading-relaxed mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 font-light">
+                {/* Always show description on mobile since hover doesn't exist, use group-hover on desktop */}
+                <div className="overflow-hidden h-auto md:h-0 group-hover:h-auto transition-all duration-500 opacity-100 md:opacity-0 group-hover:opacity-100">
+                  <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 font-light">
                     {service.description}
                   </p>
                   <Link 
                     href="/booking"
-                    className="inline-flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-wider hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 text-secondary font-bold text-[15px] uppercase tracking-wider hover:text-white transition-colors py-2"
                   >
                     <span>{isAr ? "احجز الخدمة" : "Book Service"}</span>
                     <ArrowIcon className="w-4 h-4" />
@@ -147,7 +148,7 @@ export function ServicesSection() {
         <div className="mt-8 md:hidden flex justify-center">
           <Link 
             href="/services" 
-            className="inline-flex items-center gap-2 text-foreground font-bold hover:text-secondary transition-colors group"
+            className="w-full inline-flex items-center justify-center gap-2 text-primary font-bold hover:text-secondary transition-colors group min-h-[56px] px-6 py-3 border border-border rounded-[var(--radius-btn)]"
           >
             <span>{isAr ? "عرض كل الخدمات" : "View All Services"}</span>
             <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />

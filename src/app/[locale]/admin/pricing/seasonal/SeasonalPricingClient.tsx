@@ -46,14 +46,14 @@ export default function SeasonalPricingClient({ initialSeasons, isAr }: { initia
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-100 pb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {isAr ? "التسعير الموسمي والمناسبات" : "Seasonal & Peak Pricing"}
           </h2>
           <p className="text-gray-500 mt-1">
             {isAr ? "برمجة القواعد الديناميكية لمواسم الحج، العمرة، والأعياد." : "Configure automated price surges or discounts for Hajj, Ramadan, and holidays."}
           </p>
         </div>
-        <button onClick={openCreate} className="flex items-center gap-2 px-5 py-2.5 bg-[#D9A63A] text-white font-bold rounded-xl text-sm hover:bg-[#c29333] transition-all shadow-lg shadow-[#D9A63A]/20">
+        <button onClick={openCreate} className="flex items-center gap-2 px-5 py-2.5 bg-secondary text-white font-bold rounded-xl text-sm hover:bg-secondary/80 transition-all shadow-lg shadow-secondary/20">
           <Plus className="w-4 h-4" />
           {isAr ? "إضافة موسم جديد" : "Add Seasonal Rule"}
         </button>
@@ -61,7 +61,7 @@ export default function SeasonalPricingClient({ initialSeasons, isAr }: { initia
 
       {activeSeasons.length > 0 && (
         <div className="mb-10">
-          <h3 className="text-lg font-bold text-[#1B1E4F] mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
@@ -136,7 +136,7 @@ export default function SeasonalPricingClient({ initialSeasons, isAr }: { initia
             </span>
           </div>
           <div className="flex gap-2">
-            <button onClick={() => openEdit(season)} className="p-2 text-gray-400 hover:text-[#1B1E4F] hover:bg-gray-50 rounded-lg transition-colors">
+            <button onClick={() => openEdit(season)} className="p-2 text-gray-400 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors">
               <Edit3 className="w-4 h-4" />
             </button>
             <button onClick={() => handleDelete(season._id)} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">

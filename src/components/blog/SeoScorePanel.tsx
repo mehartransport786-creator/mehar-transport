@@ -216,7 +216,7 @@ export default function SeoScorePanel({
   }
 
   return (
-    <div className="bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
+    <div className="bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
       <div className="p-4 border-b border-gray-200 dark:border-white/10 flex justify-between items-center">
         <h3 className="font-semibold flex items-center gap-2">
           <TrendingUp className="w-5 h-5 text-blue-500" />

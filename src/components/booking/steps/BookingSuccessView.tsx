@@ -59,7 +59,7 @@ export default function BookingSuccessView({ bookingRef, onClose }: Props) {
           {isAr ? "رقم الحجز المرجعي" : "Booking Reference"}
         </p>
         <div className="flex items-center justify-center gap-3">
-          <span className="text-3xl font-bold text-[#D9A63A] tracking-widest">{bookingRef || 'MHT-XXXX'}</span>
+          <span className="text-3xl font-bold text-secondary tracking-widest">{bookingRef || 'MHT-XXXX'}</span>
           <button 
             onClick={copyToClipboard}
             className="p-2 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white transition-colors"

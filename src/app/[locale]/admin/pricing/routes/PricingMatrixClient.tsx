@@ -159,7 +159,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
       {/* Header & Tools */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 shrink-0">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">{isAr ? 'مصفوفة التسعير' : 'Pricing Matrix'}</h2>
+          <h2 className="text-2xl font-bold text-primary">{isAr ? 'مصفوفة التسعير' : 'Pricing Matrix'}</h2>
           <p className="text-sm text-gray-500 mt-1">
             {isAr ? 'تعديل أسعار المسارات لكل مركبة بنظام الشبكة (اضغط للتعديل المباشر)' : 'Inline-edit matrix for routes and vehicles.'}
           </p>
@@ -234,11 +234,11 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
                     return (
                       <td key={v._id} className="border-b border-r border-gray-200 relative bg-white">
                         {isEditing ? (
-                          <div className="absolute inset-0 border-2 border-[#D9A63A] bg-white z-20 flex items-center px-2">
+                          <div className="absolute inset-0 border-2 border-secondary bg-white z-20 flex items-center px-2">
                             <input
                               ref={inputRef}
                               type="number"
-                              className="w-full text-center outline-none font-bold text-[#1B1E4F]"
+                              className="w-full text-center outline-none font-bold text-primary"
                               value={editValue}
                               onChange={e => setEditValue(e.target.value)}
                               onKeyDown={e => handleKeyDown(e, route._id, v._id)}
@@ -250,7 +250,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
                             className={`p-4 text-center cursor-cell hover:bg-amber-50/50 transition-colors h-full flex flex-col items-center justify-center ${isSaving ? 'opacity-50' : ''}`}
                             onClick={() => handleCellClick(route._id, v._id, val)}
                           >
-                            <span className={`font-bold text-lg ${val === '—' ? 'text-gray-300' : 'text-[#1B1E4F]'}`}>
+                            <span className={`font-bold text-lg ${val === '—' ? 'text-gray-300' : 'text-primary'}`}>
                               {val}
                             </span>
                             {delta !== 0 && (
@@ -284,7 +284,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-lg font-bold text-[#1B1E4F]">{isAr ? 'تعديل أسعار جماعي' : 'Bulk Price Adjustment'}</h3>
+              <h3 className="text-lg font-bold text-primary">{isAr ? 'تعديل أسعار جماعي' : 'Bulk Price Adjustment'}</h3>
               <button onClick={() => setIsBulkModalOpen(false)}><X className="w-5 h-5 text-gray-400 hover:text-gray-600" /></button>
             </div>
 
@@ -314,13 +314,13 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
               <div className="grid grid-cols-2 gap-3">
                 <button 
                   onClick={() => setBulkType('percentage')}
-                  className={`py-2 rounded-xl text-sm font-bold border-2 ${bulkType === 'percentage' ? 'border-[#1B1E4F] bg-[#1B1E4F]/5 text-[#1B1E4F]' : 'border-gray-100 text-gray-500'}`}
+                  className={`py-2 rounded-xl text-sm font-bold border-2 ${bulkType === 'percentage' ? 'border-primary bg-primary/5 text-primary' : 'border-gray-100 text-gray-500'}`}
                 >
                   {isAr ? 'نسبة مئوية (%)' : 'Percentage (%)'}
                 </button>
                 <button 
                   onClick={() => setBulkType('fixed')}
-                  className={`py-2 rounded-xl text-sm font-bold border-2 ${bulkType === 'fixed' ? 'border-[#1B1E4F] bg-[#1B1E4F]/5 text-[#1B1E4F]' : 'border-gray-100 text-gray-500'}`}
+                  className={`py-2 rounded-xl text-sm font-bold border-2 ${bulkType === 'fixed' ? 'border-primary bg-primary/5 text-primary' : 'border-gray-100 text-gray-500'}`}
                 >
                   {isAr ? 'مبلغ ثابت (SAR)' : 'Fixed Amount (SAR)'}
                 </button>
@@ -332,7 +332,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
                   <input 
                     type="number" min="1" 
                     value={bulkValue} onChange={e => setBulkValue(Number(e.target.value))}
-                    className="w-full pl-4 pr-10 py-3 border border-gray-200 rounded-xl outline-none focus:border-[#D9A63A]"
+                    className="w-full pl-4 pr-10 py-3 border border-gray-200 rounded-xl outline-none focus:border-secondary"
                   />
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">
                     {bulkType === 'percentage' ? '%' : 'SAR'}
@@ -343,7 +343,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
               <button 
                 onClick={handleBulkSubmit}
                 disabled={bulkSaving}
-                className="w-full py-3 mt-4 bg-[#D9A63A] text-white rounded-xl font-bold hover:bg-[#c29333] shadow-lg disabled:opacity-50"
+                className="w-full py-3 mt-4 bg-secondary text-white rounded-xl font-bold hover:bg-secondary/80 shadow-lg disabled:opacity-50"
               >
                 {bulkSaving ? (isAr ? 'جاري التطبيق...' : 'Applying...') : (isAr ? 'تطبيق التعديلات' : 'Apply Bulk Update')}
               </button>

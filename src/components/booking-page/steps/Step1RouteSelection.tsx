@@ -90,14 +90,14 @@ export function Step1RouteSelection() {
     <div className="p-6 sm:p-8 md:p-10 lg:p-12">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 bg-[#D9A63A]/10 text-[#D9A63A] px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
           <MapPin className="w-4 h-4" />
           Step 1 of 4
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1B1E4F] mb-2 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-2 tracking-tight">
           Select Your Route
         </h2>
-        <p className="text-lg text-[#1B1E4F]/40 font-medium" dir="rtl">اختر مسارك</p>
+        <p className="text-lg text-primary/40 font-medium" dir="rtl">اختر مسارك</p>
         <p className="text-sm text-gray-500 mt-2 max-w-xl mx-auto">
           Choose from our fixed-price routes. All prices shown are per vehicle, per trip.
         </p>
@@ -110,21 +110,21 @@ export function Step1RouteSelection() {
             key={`slot-${index}`}
             className={`flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
               route
-                ? 'border-[#D9A63A]/40 bg-[#D9A63A]/5'
+                ? 'border-secondary/40 bg-secondary/5'
                 : index === currentSlot
-                  ? 'border-[#1B1E4F]/30 bg-[#1B1E4F]/5 border-dashed'
+                  ? 'border-primary/30 bg-primary/5 border-dashed'
                   : 'border-gray-100 bg-gray-50 border-dashed'
             }`}
           >
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
-              route ? 'bg-[#D9A63A] text-white' : 'bg-gray-200 text-gray-500'
+              route ? 'bg-secondary text-white' : 'bg-gray-200 text-gray-500'
             }`}>
               {route ? <Check className="w-4 h-4" /> : index + 1}
             </div>
             <div className="flex-1 min-w-0">
               {route ? (
                 <div>
-                  <div className="font-semibold text-sm text-[#1B1E4F]">{route.name}</div>
+                  <div className="font-semibold text-sm text-primary">{route.name}</div>
                   <div className="text-xs text-gray-400">{route.origin} → {route.destination}</div>
                 </div>
               ) : (
@@ -135,7 +135,7 @@ export function Step1RouteSelection() {
             </div>
             {route && (
               <div className="flex items-center gap-2 shrink-0">
-                <span className="text-sm font-bold text-[#D9A63A]">From {getLowestPrice(route)} SAR</span>
+                <span className="text-sm font-bold text-secondary">From {getLowestPrice(route)} SAR</span>
                 <button
                   onClick={() => {
                     const newRoutes = [...selectedRoutes];
@@ -163,7 +163,7 @@ export function Step1RouteSelection() {
         {isComplete && (
           <button
             onClick={addStop}
-            className="w-full py-3 border-2 border-dashed border-gray-200 rounded-xl text-gray-400 hover:text-[#D9A63A] hover:border-[#D9A63A] hover:bg-[#D9A63A]/5 transition-all flex items-center justify-center gap-2 font-semibold text-sm"
+            className="w-full py-3 border-2 border-dashed border-gray-200 rounded-xl text-gray-400 hover:text-secondary hover:border-secondary hover:bg-secondary/5 transition-all flex items-center justify-center gap-2 font-semibold text-sm"
           >
             <Plus className="w-4 h-4" />
             Add Another Stop
@@ -182,8 +182,8 @@ export function Step1RouteSelection() {
               onClick={() => setSelectedCategory(cat.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
                 isActive
-                  ? 'bg-[#1B1E4F] text-white shadow-md'
-                  : 'bg-white text-gray-500 border border-gray-200 hover:border-[#D9A63A]/50 hover:text-[#D9A63A]'
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-white text-gray-500 border border-gray-200 hover:border-secondary/50 hover:text-secondary'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -201,7 +201,7 @@ export function Step1RouteSelection() {
           placeholder="Search routes... (e.g. Jeddah Airport, Makkah)"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full bg-[#F8F9FC] border-2 border-transparent rounded-xl py-3 pl-12 pr-4 text-sm text-[#1B1E4F] placeholder:text-gray-400 focus:ring-0 focus:border-[#D9A63A] transition-colors"
+          className="w-full bg-muted border-2 border-transparent rounded-xl py-3 pl-12 pr-4 text-sm text-primary placeholder:text-gray-400 focus:ring-0 focus:border-secondary transition-colors"
         />
       </div>
 
@@ -243,7 +243,7 @@ export function Step1RouteSelection() {
                 transition={{ delay: idx * 0.03, duration: 0.3 }}
                 className={`bg-white rounded-2xl border-2 overflow-hidden transition-all duration-300 ${
                   isSelected
-                    ? 'border-[#D9A63A] shadow-lg shadow-[#D9A63A]/10 ring-1 ring-[#D9A63A]/20'
+                    ? 'border-secondary shadow-lg shadow-secondary/10 ring-1 ring-secondary/20'
                     : 'border-gray-100 hover:border-gray-200 hover:shadow-md'
                 }`}
               >
@@ -266,28 +266,28 @@ export function Step1RouteSelection() {
                 >
                   {/* Selection indicator */}
                   <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
-                    isSelected ? 'bg-[#D9A63A] border-[#D9A63A]' : 'border-gray-300 group-hover:border-[#D9A63A]'
+                    isSelected ? 'bg-secondary border-secondary' : 'border-gray-300 group-hover:border-secondary'
                   }`}>
                     {isSelected && <Check className="w-3.5 h-3.5 text-white" />}
                   </div>
 
                   {/* Route dots */}
                   <div className="flex flex-col items-center gap-0.5 shrink-0">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#D9A63A]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-secondary" />
                     <div className="w-px h-4 bg-gray-300" />
-                    <div className="w-2.5 h-2.5 rounded-full border-2 border-[#1B1E4F]" />
+                    <div className="w-2.5 h-2.5 rounded-full border-2 border-primary" />
                   </div>
 
                   {/* Route Info */}
                   <div className="flex-1 min-w-0">
-                    <div className="font-bold text-[#1B1E4F] text-sm sm:text-base truncate">{route.name}</div>
+                    <div className="font-bold text-primary text-sm sm:text-base truncate">{route.name}</div>
                     <div className="text-xs text-gray-400 mt-0.5">{route.origin} → {route.destination}</div>
                   </div>
 
                   {/* Starting Price */}
                   <div className="text-right shrink-0">
                     <div className="text-[10px] text-gray-400 font-medium uppercase tracking-wider">Base fare from</div>
-                    <div className="font-black text-[#1B1E4F] text-lg tabular-nums">{lowestPrice} <span className="text-xs font-semibold text-gray-400">SAR</span></div>
+                    <div className="font-black text-primary text-lg tabular-nums">{lowestPrice} <span className="text-xs font-semibold text-gray-400">SAR</span></div>
                   </div>
 
                   {/* Expand toggle */}
@@ -308,10 +308,10 @@ export function Step1RouteSelection() {
                   {pricings.map((p: any) => (
                     <div
                       key={p.vehicleId}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F8F9FC] rounded-lg text-xs"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-muted rounded-lg text-xs"
                     >
                       <span className="text-gray-500 font-medium">{p.vehicleName}</span>
-                      <span className="font-bold text-[#1B1E4F] tabular-nums">{p.currentPrice || p.basePrice}</span>
+                      <span className="font-bold text-primary tabular-nums">{p.currentPrice || p.basePrice}</span>
                     </div>
                   ))}
                 </div>
@@ -331,10 +331,10 @@ export function Step1RouteSelection() {
                           {pricings.map((p: any) => (
                             <div
                               key={p.vehicleId}
-                              className="bg-[#F8F9FC] rounded-xl p-3.5 border border-gray-100 hover:border-[#D9A63A]/30 transition-colors"
+                              className="bg-muted rounded-xl p-3.5 border border-gray-100 hover:border-secondary/30 transition-colors"
                             >
                               <div className="flex items-center justify-between mb-2">
-                                <span className="font-bold text-sm text-[#1B1E4F]">{p.vehicleName}</span>
+                                <span className="font-bold text-sm text-primary">{p.vehicleName}</span>
                               </div>
                               <div className="flex items-center gap-3 text-xs text-gray-400 mb-2">
                                 <span className="flex items-center gap-1">
@@ -346,7 +346,7 @@ export function Step1RouteSelection() {
                                   {p.luggage}
                                 </span>
                               </div>
-                              <div className="font-black text-xl text-[#D9A63A] tabular-nums">
+                              <div className="font-black text-xl text-secondary tabular-nums">
                                 {p.currentPrice || p.basePrice}
                                 <span className="text-xs font-semibold text-gray-400 ml-1">SAR</span>
                               </div>
@@ -367,7 +367,7 @@ export function Step1RouteSelection() {
       {!routesLoading && filteredRoutes.length === 0 && (
         <div className="text-center py-12 text-gray-400">
           <MapPin className="w-8 h-8 mx-auto mb-3 text-gray-300" />
-          <p className="font-semibold text-[#1B1E4F]">No routes found</p>
+          <p className="font-semibold text-primary">No routes found</p>
           <p className="text-sm mt-1">Try adjusting your search or category filter.</p>
         </div>
       )}
@@ -377,14 +377,14 @@ export function Step1RouteSelection() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-6 bg-[#1B1E4F] rounded-2xl p-5 text-white"
+          className="mt-6 bg-primary rounded-2xl p-5 text-white"
         >
-          <div className="text-xs font-bold uppercase tracking-wider text-[#D9A63A] mb-3">Your Multi-Stop Journey</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-secondary mb-3">Your Multi-Stop Journey</div>
           <div className="flex items-center flex-wrap gap-2">
             {selectedRoutes.filter(Boolean).map((r: any, i: number) => (
               <div key={i} className="flex items-center gap-2">
                 {i === 0 && <span className="text-sm font-medium">{r?.origin}</span>}
-                <ArrowRight className="w-4 h-4 text-[#D9A63A]" />
+                <ArrowRight className="w-4 h-4 text-secondary" />
                 <span className="text-sm font-medium">{r?.destination}</span>
               </div>
             ))}
@@ -399,7 +399,7 @@ export function Step1RouteSelection() {
           disabled={!isComplete}
           whileHover={isComplete ? { scale: 1.02 } : {}}
           whileTap={isComplete ? { scale: 0.98 } : {}}
-          className="bg-[#1B1E4F] text-white px-8 sm:px-12 py-4 rounded-xl text-base font-bold hover:bg-[#2A2D5F] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-3 shadow-lg shadow-[#1B1E4F]/20"
+          className="bg-primary text-white px-8 sm:px-12 py-4 rounded-xl text-base font-bold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-3 shadow-lg shadow-primary/20"
         >
           Choose Your Vehicle
           <ArrowRight className="w-5 h-5" />

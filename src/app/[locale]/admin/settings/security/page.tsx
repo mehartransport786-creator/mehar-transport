@@ -19,7 +19,7 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
   return (
     <div className="p-8 space-y-10">
       <div className="border-b border-gray-100 pb-6">
-        <h2 className="text-2xl font-bold text-[#1B1E4F]">
+        <h2 className="text-2xl font-bold text-primary">
           {isAr ? "الأمان وتسجيل الدخول" : "Security & Login"}
         </h2>
         <p className="text-gray-500 mt-1">
@@ -34,7 +34,7 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
             <KeyRound className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-[#1B1E4F]">{isAr ? "تغيير كلمة المرور" : "Change Password"}</h3>
+            <h3 className="text-lg font-bold text-primary">{isAr ? "تغيير كلمة المرور" : "Change Password"}</h3>
             <p className="text-sm text-gray-500">{isAr ? "يجب أن تحتوي كلمة المرور على 12 حرفاً على الأقل." : "Password must be at least 12 characters."}</p>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
             <label className="text-sm font-bold text-gray-700">{isAr ? "كلمة المرور الحالية" : "Current Password"}</label>
             <input 
               type="password" 
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] outline-none"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none"
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -52,14 +52,14 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
               <label className="text-sm font-bold text-gray-700">{isAr ? "كلمة المرور الجديدة" : "New Password"}</label>
               <input 
                 type="password" 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none"
               />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700">{isAr ? "تأكيد كلمة المرور" : "Confirm Password"}</label>
               <input 
                 type="password" 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none"
               />
             </div>
           </div>
@@ -76,7 +76,7 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
           </div>
 
           <div className="pt-4 flex justify-end">
-            <button type="button" className="px-6 py-2.5 bg-[#1B1E4F] text-white font-bold rounded-xl text-sm hover:bg-[#2a2f6b] transition-colors">
+            <button type="button" className="px-6 py-2.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/80 transition-colors">
               {isAr ? "تحديث كلمة المرور" : "Update Password"}
             </button>
           </div>
@@ -93,7 +93,7 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
               <ShieldAlert className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-[#1B1E4F]">{isAr ? "المصادقة الثنائية (2FA)" : "Two-Factor Authentication"}</h3>
+              <h3 className="text-lg font-bold text-primary">{isAr ? "المصادقة الثنائية (2FA)" : "Two-Factor Authentication"}</h3>
               <p className="text-sm text-gray-500">{isAr ? "أضف طبقة أمان إضافية لحسابك." : "Add an extra layer of security to your account."}</p>
             </div>
           </div>
@@ -116,7 +116,7 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
               ? "استخدم تطبيق مصادقة (مثل Google Authenticator أو Authy) لإنشاء رموز أمان عند تسجيل الدخول." 
               : "Use an authenticator app (like Google Authenticator or Authy) to generate security codes when you log in."}
           </p>
-          <button className="px-6 py-3 bg-white border border-gray-200 text-[#1B1E4F] font-bold rounded-xl hover:bg-gray-50 transition-colors whitespace-nowrap">
+          <button className="px-6 py-3 bg-white border border-gray-200 text-primary font-bold rounded-xl hover:bg-gray-50 transition-colors whitespace-nowrap">
             {admin?.twoFactorEnabled ? (isAr ? "إدارة إعدادات 2FA" : "Manage 2FA Settings") : (isAr ? "إعداد 2FA الآن" : "Set up 2FA Now")}
           </button>
         </div>
@@ -132,7 +132,7 @@ export default async function SecuritySettingsPage({ params: { locale } }: { par
               <MonitorSmartphone className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-[#1B1E4F]">{isAr ? "الجلسات النشطة" : "Active Sessions"}</h3>
+              <h3 className="text-lg font-bold text-primary">{isAr ? "الجلسات النشطة" : "Active Sessions"}</h3>
               <p className="text-sm text-gray-500">{isAr ? "الأجهزة التي سجلت دخولاً إلى حسابك حالياً." : "Devices currently logged into your account."}</p>
             </div>
           </div>

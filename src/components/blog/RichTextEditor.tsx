@@ -68,14 +68,14 @@ export default function RichTextEditor({ content, onChange }: RichTextEditorProp
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('bold') ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('bold') ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <Bold className="w-4 h-4" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('italic') ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('italic') ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <Italic className="w-4 h-4" />
         </button>
@@ -85,14 +85,14 @@ export default function RichTextEditor({ content, onChange }: RichTextEditorProp
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('heading', { level: 1 }) ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('heading', { level: 1 }) ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <Heading1 className="w-4 h-4" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('heading', { level: 2 }) ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('heading', { level: 2 }) ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <Heading2 className="w-4 h-4" />
         </button>
@@ -102,21 +102,21 @@ export default function RichTextEditor({ content, onChange }: RichTextEditorProp
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('bulletList') ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('bulletList') ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <List className="w-4 h-4" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('orderedList') ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('orderedList') ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <ListOrdered className="w-4 h-4" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('blockquote') ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('blockquote') ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <Quote className="w-4 h-4" />
         </button>
@@ -126,21 +126,21 @@ export default function RichTextEditor({ content, onChange }: RichTextEditorProp
         <button
           type="button"
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive({ textAlign: 'left' }) ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive({ textAlign: 'left' }) ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <AlignLeft className="w-4 h-4" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().setTextAlign('center').run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive({ textAlign: 'center' }) ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive({ textAlign: 'center' }) ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <AlignCenter className="w-4 h-4" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().setTextAlign('right').run()}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive({ textAlign: 'right' }) ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive({ textAlign: 'right' }) ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <AlignRight className="w-4 h-4" />
         </button>
@@ -150,7 +150,7 @@ export default function RichTextEditor({ content, onChange }: RichTextEditorProp
         <button
           type="button"
           onClick={setLink}
-          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('link') ? 'bg-gray-200 dark:bg-white/10 text-[#D9A63A]' : 'text-gray-600 dark:text-gray-300'}`}
+          className={`p-2 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${editor.isActive('link') ? 'bg-gray-200 dark:bg-white/10 text-secondary' : 'text-gray-600 dark:text-gray-300'}`}
         >
           <LinkIcon className="w-4 h-4" />
         </button>

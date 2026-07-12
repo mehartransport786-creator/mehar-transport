@@ -14,7 +14,7 @@ export default async function AuditLogsPage({ params: { locale } }: { params: { 
     <div className="p-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {isAr ? "سجل التدقيق" : "Audit Logs"}
           </h2>
           <p className="text-gray-500 mt-1">
@@ -28,7 +28,7 @@ export default async function AuditLogsPage({ params: { locale } }: { params: { 
       </div>
 
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 mb-6">
-        <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-200 focus-within:border-[#D9A63A] focus-within:bg-white transition-all">
+        <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-200 focus-within:border-secondary focus-within:bg-white transition-all">
           <Search className="w-4 h-4 text-gray-400" />
           <input
             type="text"

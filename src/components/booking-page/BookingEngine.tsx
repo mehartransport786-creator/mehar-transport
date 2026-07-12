@@ -29,7 +29,7 @@ function ProgressBar() {
         {/* Connection Line */}
         <div className="absolute top-5 left-0 right-0 h-0.5 bg-gray-100 z-0 mx-12 sm:mx-16" />
         <div
-          className="absolute top-5 left-0 h-0.5 bg-[#D9A63A] z-0 transition-all duration-700 ease-out mx-12 sm:mx-16"
+          className="absolute top-5 left-0 h-0.5 bg-secondary z-0 transition-all duration-700 ease-out mx-12 sm:mx-16"
           style={{ width: `${((state.currentStep - 1) / (STEPS.length - 1)) * 100}%`, maxWidth: 'calc(100% - 6rem)' }}
         />
 
@@ -48,15 +48,15 @@ function ProgressBar() {
             >
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${
                 isActive
-                  ? 'bg-[#1B1E4F] text-white shadow-lg shadow-[#1B1E4F]/20 scale-110'
+                  ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-110'
                   : isCompleted
-                    ? 'bg-[#D9A63A] text-white shadow-md shadow-[#D9A63A]/20'
+                    ? 'bg-secondary text-white shadow-md shadow-secondary/20'
                     : 'bg-gray-100 text-gray-400'
               }`}>
                 {isCompleted && !isActive ? <Check className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
               </div>
               <span className={`text-xs font-semibold transition-colors ${
-                isActive ? 'text-[#1B1E4F]' : isCompleted ? 'text-[#D9A63A]' : 'text-gray-400'
+                isActive ? 'text-primary' : isCompleted ? 'text-secondary' : 'text-gray-400'
               }`}>
                 {step.label}
               </span>
@@ -76,19 +76,19 @@ function CollapsedStep({ stepNum, title, subtitle, onEdit }: {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="p-5 sm:p-6 flex items-center justify-between cursor-pointer hover:bg-[#F8F9FC] transition-colors"
+      className="p-5 sm:p-6 flex items-center justify-between cursor-pointer hover:bg-muted transition-colors"
       onClick={onEdit}
     >
       <div className="flex items-center gap-4">
-        <div className="w-8 h-8 rounded-xl bg-[#D9A63A] text-white flex items-center justify-center shadow-sm">
+        <div className="w-8 h-8 rounded-xl bg-secondary text-white flex items-center justify-center shadow-sm">
           <Check className="w-4 h-4" />
         </div>
         <div>
-          <h3 className="text-base font-bold text-[#1B1E4F]">{title}</h3>
+          <h3 className="text-base font-bold text-primary">{title}</h3>
           {subtitle && <p className="text-xs text-gray-400 mt-0.5">{subtitle}</p>}
         </div>
       </div>
-      <button className="text-[#D9A63A] text-sm font-semibold hover:underline shrink-0">Edit</button>
+      <button className="text-secondary text-sm font-semibold hover:underline shrink-0">Edit</button>
     </motion.div>
   );
 }
@@ -105,18 +105,18 @@ function BookingEngineContent() {
     : "";
 
   return (
-    <div className="min-h-screen bg-[#F5F4F1]">
+    <div className="min-h-screen bg-background">
       {/* Hero Header */}
-      <div className="relative bg-[#1B1E4F] overflow-hidden">
+      <div className="relative bg-primary overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#D9A63A]/5 rounded-full blur-3xl" />
-          <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#D9A63A]/5 rounded-full blur-2xl" />
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-secondary/5 rounded-full blur-2xl" />
         </div>
 
         <div className="relative container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-[#D9A63A] px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-secondary px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
               <ShieldCheck className="w-4 h-4" />
               Premium Booking Experience
             </div>
@@ -135,10 +135,10 @@ function BookingEngineContent() {
             transition={{ delay: 0.3 }}
             className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-8 text-white/40 text-xs sm:text-sm"
           >
-            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#D9A63A]" /> 24/7 Service</span>
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-[#D9A63A]" /> Licensed Drivers</span>
-            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-[#D9A63A]" /> 4.9★ Google Rating</span>
-            <span className="flex items-center gap-1.5"><Headset className="w-4 h-4 text-[#D9A63A]" /> Instant Confirmation</span>
+            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-secondary" /> 24/7 Service</span>
+            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-secondary" /> Licensed Drivers</span>
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-secondary" /> 4.9★ Google Rating</span>
+            <span className="flex items-center gap-1.5"><Headset className="w-4 h-4 text-secondary" /> Instant Confirmation</span>
           </motion.div>
         </div>
       </div>
@@ -159,7 +159,7 @@ function BookingEngineContent() {
                 layout
                 className={`bg-white rounded-2xl overflow-hidden transition-all duration-500 border ${
                   state.currentStep === 1
-                    ? 'border-[#D9A63A]/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]'
+                    ? 'border-secondary/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]'
                     : state.completedSteps.includes(1) || state.currentStep > 1
                       ? 'border-gray-100 shadow-sm'
                       : 'border-gray-100 shadow-sm opacity-60'
@@ -183,7 +183,7 @@ function BookingEngineContent() {
                   layout
                   className={`bg-white rounded-2xl overflow-hidden transition-all duration-500 border ${
                     state.currentStep === 2
-                      ? 'border-[#D9A63A]/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]'
+                      ? 'border-secondary/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]'
                       : state.completedSteps.includes(2) || state.currentStep > 2
                         ? 'border-gray-100 shadow-sm'
                         : 'border-gray-100 shadow-sm opacity-60'
@@ -208,7 +208,7 @@ function BookingEngineContent() {
                   layout
                   className={`bg-white rounded-2xl overflow-hidden transition-all duration-500 border ${
                     state.currentStep === 3
-                      ? 'border-[#D9A63A]/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]'
+                      ? 'border-secondary/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]'
                       : state.completedSteps.includes(3) || state.currentStep > 3
                         ? 'border-gray-100 shadow-sm'
                         : 'border-gray-100 shadow-sm opacity-60'
@@ -230,7 +230,7 @@ function BookingEngineContent() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="bg-white rounded-2xl overflow-hidden border border-[#D9A63A]/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]"
+                  className="bg-white rounded-2xl overflow-hidden border border-secondary/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]"
                 >
                   <Step4ReviewAndConfirm />
                 </motion.div>
@@ -257,7 +257,7 @@ import { Suspense } from "react";
 
 export function BookingEngine() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#F5F4F1] flex items-center justify-center">Loading booking engine...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">Loading booking engine...</div>}>
       <BookingProvider>
         <BookingEngineContent />
       </BookingProvider>

@@ -61,7 +61,7 @@ export default function ImageCropperModal({ imageSrc, isAr, onCropComplete, onCa
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-8">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden flex flex-col max-h-[90vh]">
         <div className="p-4 border-b border-gray-100 flex items-center justify-between flex-shrink-0">
-          <h3 className="font-bold text-[#1B1E4F] flex items-center gap-2">
+          <h3 className="font-bold text-primary flex items-center gap-2">
             <CropIcon className="w-5 h-5" />
             {isAr ? "قص الصورة" : "Crop Image"}
           </h3>
@@ -99,7 +99,7 @@ export default function ImageCropperModal({ imageSrc, isAr, onCropComplete, onCa
           <button 
             onClick={handleComplete}
             disabled={!completedCrop?.width || !completedCrop?.height}
-            className="px-6 py-2 bg-[#D9A63A] text-[#1B1E4F] font-bold rounded-xl hover:bg-[#c59532] transition-colors flex items-center gap-2 disabled:opacity-50"
+            className="px-6 py-2 bg-secondary text-primary font-bold rounded-xl hover:bg-secondary/80 transition-colors flex items-center gap-2 disabled:opacity-50"
           >
             <Check className="w-4 h-4" />
             {isAr ? "حفظ الصورة المخصوصة" : "Save Cropped Image"}

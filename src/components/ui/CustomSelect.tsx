@@ -38,10 +38,10 @@ export function CustomSelect({ value, onChange, options, placeholder = "Select..
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full bg-white/5 backdrop-blur-sm border ${isOpen ? 'border-[#D9A63A]/50 ring-1 ring-[#D9A63A]/50' : 'border-white/10'} rounded-xl p-4 flex items-center justify-between text-left transition-all hover:bg-white/10`}
+        className={`w-full bg-white/5 backdrop-blur-sm border ${isOpen ? 'border-secondary/50 ring-1 ring-secondary/50' : 'border-white/10'} rounded-xl p-4 flex items-center justify-between text-left transition-all hover:bg-white/10`}
       >
         <div className="flex items-center gap-3">
-          {icon && <div className="text-[#D9A63A]">{icon}</div>}
+          {icon && <div className="text-secondary">{icon}</div>}
           <span className={selectedOption ? "text-white" : "text-white/50"}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
@@ -56,7 +56,7 @@ export function CustomSelect({ value, onChange, options, placeholder = "Select..
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-50 w-full mt-2 bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden"
+            className="absolute z-50 w-full mt-2 bg-foreground/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden"
           >
             <div className="max-h-60 overflow-y-auto custom-scrollbar p-2">
               {options.length === 0 ? (
@@ -72,7 +72,7 @@ export function CustomSelect({ value, onChange, options, placeholder = "Select..
                     }}
                     className={`w-full text-left px-4 py-3 rounded-lg text-sm flex items-center justify-between transition-colors ${
                       value === option.value 
-                        ? 'bg-[#D9A63A]/10 text-[#D9A63A] font-medium' 
+                        ? 'bg-secondary/10 text-secondary font-medium' 
                         : 'text-gray-300 hover:bg-white/10 hover:text-white'
                     }`}
                   >

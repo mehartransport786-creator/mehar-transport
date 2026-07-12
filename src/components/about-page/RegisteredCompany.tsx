@@ -17,7 +17,7 @@ export function RegisteredCompany({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-24 bg-[#F5F4F1] overflow-hidden">
+    <section className="py-24 bg-muted/50 overflow-hidden">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           
@@ -32,30 +32,30 @@ export function RegisteredCompany({ locale }: { locale: string }) {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 pt-12">
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] relative">
-                    <div className="absolute inset-0 bg-[#1B1E4F]/20 z-10" />
+                    <div className="absolute inset-0 bg-primary/20 z-10" />
                     <img src="/fleet/yukon.webp" alt="Operations" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-square relative">
-                    <div className="absolute inset-0 bg-[#D9A63A]/20 z-10" />
+                    <div className="absolute inset-0 bg-secondary/20 z-10" />
                     <img src="/fleet/staria.webp" alt="Fleet" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-square relative">
-                    <div className="absolute inset-0 bg-[#1B1E4F]/20 z-10" />
+                    <div className="absolute inset-0 bg-primary/20 z-10" />
                     <img src="/fleet/hiace.webp" alt="Team" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] relative">
-                    <div className="absolute inset-0 bg-[#D9A63A]/20 z-10" />
+                    <div className="absolute inset-0 bg-secondary/20 z-10" />
                     <img src="/fleet/camry.webp" alt="Office" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
               
               {/* Badge */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-6 shadow-2xl z-20 flex flex-col items-center justify-center border-4 border-[#F5F4F1]">
-                <ShieldCheck className="w-12 h-12 text-[#D9A63A] mb-1" />
-                <span className="font-bold text-[#1B1E4F] text-sm uppercase tracking-wider">Verified</span>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background rounded-full p-6 shadow-2xl z-20 flex flex-col items-center justify-center border-4 border-muted/50">
+                <ShieldCheck className="w-12 h-12 text-secondary mb-1" />
+                <span className="font-bold text-primary text-sm uppercase tracking-wider">Verified</span>
               </div>
             </div>
           </motion.div>
@@ -68,14 +68,14 @@ export function RegisteredCompany({ locale }: { locale: string }) {
             transition={{ duration: 0.8 }}
           >
             <div>
-              <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm flex items-center gap-4">
-                <span className="w-12 h-px bg-[#D9A63A]"></span>
+              <h2 className="text-secondary font-bold tracking-widest uppercase mb-3 text-sm flex items-center gap-4">
+                <span className="w-12 h-px bg-secondary"></span>
                 {isAr ? 'الاعتماد والموثوقية' : 'Trust & Compliance'}
               </h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-[#1B1E4F] leading-tight mb-6">
+              <h3 className="text-3xl md:text-5xl font-bold text-primary leading-tight mb-6">
                 {isAr ? 'شركة نقل مرخصة ومسجلة' : 'Registered & Licensed Transportation Company'}
               </h3>
-              <p className={`text-gray-600 text-lg leading-relaxed ${isAr ? 'font-arabic' : ''}`}>
+              <p className={`text-muted-foreground text-lg leading-relaxed ${isAr ? 'font-arabic' : ''}`}>
                 {isAr 
                   ? 'ميهار للنقل هي كيان تجاري معتمد يعمل بأعلى درجات الامتثال للقوانين السعودية، لنضمن لكم رحلات آمنة وموثوقة.' 
                   : 'Mehar Transport is a fully verified commercial entity operating with the highest level of regulatory compliance in Saudi Arabia, ensuring safe and reliable journeys for our clients.'}
@@ -85,8 +85,8 @@ export function RegisteredCompany({ locale }: { locale: string }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {features.map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#D9A63A] shrink-0" />
-                  <span className={`font-semibold text-[#1B1E4F] ${isAr ? 'font-arabic' : ''}`}>
+                  <CheckCircle2 className="w-5 h-5 text-secondary shrink-0" />
+                  <span className={`font-semibold text-primary ${isAr ? 'font-arabic' : ''}`}>
                     {isAr ? feature.textAr : feature.text}
                   </span>
                 </div>

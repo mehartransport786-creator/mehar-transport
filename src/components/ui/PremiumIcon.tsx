@@ -21,9 +21,9 @@ export function PremiumIcon({ icon: Icon, size = "md", className = "" }: Premium
   };
 
   return (
-    <div className={`flex items-center justify-center bg-[#F8F9FA] border border-[#E5E7EB]/60 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] ${boxSizes[size]} ${className}`}>
+    <div className={`flex items-center justify-center bg-muted border border-border/60 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] ${boxSizes[size]} ${className}`}>
       <Icon 
-        className={`${iconSizes[size]} text-[#1B1E4F]`} 
+        className={`${iconSizes[size]} text-primary`} 
         strokeWidth={1.5} 
       />
     </div>

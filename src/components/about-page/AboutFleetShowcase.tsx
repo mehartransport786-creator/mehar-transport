@@ -39,20 +39,20 @@ export function AboutFleetShowcase({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-24 bg-[#F5F4F1]">
+    <section className="py-24 bg-muted/50">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm">
+            <h2 className="text-secondary font-bold tracking-widest uppercase mb-3 text-sm">
               {isAr ? 'أسطولنا الفاخر' : 'Our Luxury Fleet'}
             </h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-[#1B1E4F]">
+            <h3 className="text-3xl md:text-5xl font-bold text-primary">
               {isAr ? '100+ مركبة جاهزة لخدمتكم' : '100+ Vehicles Ready To Serve'}
             </h3>
           </div>
           <Link 
             href={`/${locale}/fleet`}
-            className="hidden md:inline-flex items-center gap-2 text-[#1B1E4F] font-bold hover:text-[#D9A63A] transition-colors"
+            className="hidden md:inline-flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors"
           >
             {isAr ? 'استكشف الأسطول' : 'Explore Fleet'}
             <ArrowRight className={`w-5 h-5 ${isAr ? 'rotate-180' : ''}`} />
@@ -67,27 +67,27 @@ export function AboutFleetShowcase({ locale }: { locale: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group"
+              className="bg-background rounded-[var(--radius-card)] overflow-hidden shadow-[var(--shadow-luxury)] transition-all group"
             >
-              <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
+              <div className="aspect-[4/3] bg-muted relative overflow-hidden">
                 <img 
                   src={vehicle.image} 
                   alt={vehicle.name} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4 bg-[#1B1E4F]/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <div className="absolute top-4 left-4 bg-primary/80 backdrop-blur-md text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                   {vehicle.category}
                 </div>
               </div>
               <div className="p-6">
-                <h4 className="text-xl font-bold text-[#1B1E4F] mb-4">{vehicle.name}</h4>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
+                <h4 className="text-xl font-bold text-primary mb-4">{vehicle.name}</h4>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1.5">
-                    <Users className="w-4 h-4 text-[#D9A63A]" />
+                    <Users className="w-4 h-4 text-secondary" />
                     <span>{vehicle.pax} {isAr ? 'ركاب' : 'Pax'}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Briefcase className="w-4 h-4 text-[#D9A63A]" />
+                    <Briefcase className="w-4 h-4 text-secondary" />
                     <span>{vehicle.bags} {isAr ? 'حقائب' : 'Bags'}</span>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export function AboutFleetShowcase({ locale }: { locale: string }) {
         <div className="mt-8 text-center md:hidden">
           <Link 
             href={`/${locale}/fleet`}
-            className="inline-flex items-center gap-2 text-[#1B1E4F] font-bold hover:text-[#D9A63A] transition-colors"
+            className="inline-flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors"
           >
             {isAr ? 'استكشف الأسطول' : 'Explore Fleet'}
             <ArrowRight className={`w-5 h-5 ${isAr ? 'rotate-180' : ''}`} />

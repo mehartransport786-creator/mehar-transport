@@ -32,10 +32,10 @@ export function InteriorExperience() {
   ];
 
   return (
-    <section className="py-32 bg-[#1B1E4F] text-white overflow-hidden relative">
+    <section className="py-32 bg-primary text-primary-foreground overflow-hidden relative">
       {/* Decorative Gold Elements */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D9A63A]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 z-0" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 z-0" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 z-0" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-foreground/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px] relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
@@ -48,8 +48,8 @@ export function InteriorExperience() {
                 viewport={{ once: true }}
                 className="flex items-center gap-4 mb-6"
               >
-                <div className="w-12 h-0.5 bg-[#D9A63A]"></div>
-                <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm">
+                <div className="w-12 h-0.5 bg-secondary"></div>
+                <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm">
                   {t("theInteriorExperience")}
                 </span>
               </motion.div>
@@ -67,7 +67,7 @@ export function InteriorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-lg text-gray-300 font-light leading-relaxed max-w-xl"
+                className="text-lg text-primary-foreground/70 font-light leading-relaxed max-w-xl"
               >
                 {t("weUnderstandThatTheJourneyIsJustAsImport")}
               </motion.p>
@@ -85,11 +85,11 @@ export function InteriorExperience() {
                     transition={{ delay: 0.3 + (idx * 0.1) }}
                     className="space-y-3"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-[#D9A63A]">
+                    <div className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-secondary">
                       <Icon className="w-5 h-5" />
                     </div>
                     <h4 className="font-bold text-lg">{feature.title}</h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
+                    <p className="text-primary-foreground/60 text-sm leading-relaxed">{feature.desc}</p>
                   </motion.div>
                 );
               })}
@@ -111,11 +111,11 @@ export function InteriorExperience() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1B1E4F]/80 via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-80" />
               
               {/* Floating Interaction Hint */}
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full text-sm font-medium">
-                <Maximize2 className="w-4 h-4 text-[#D9A63A]" />
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/20 px-6 py-3 rounded-full text-sm font-medium">
+                <Maximize2 className="w-4 h-4 text-secondary" />
                 <span>{t("clickToViewGallery")}</span>
               </div>
             </div>

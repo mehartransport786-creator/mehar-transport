@@ -96,11 +96,11 @@ export function AdminLayoutClient({ children, session }: { children: React.React
                         title={sidebarCollapsed ? item.label : undefined}
                         className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group ${
                           active
-                            ? "bg-[#D9A63A] text-[#1B1E4F] shadow-lg shadow-[#D9A63A]/20"
+                            ? "bg-secondary text-primary shadow-lg shadow-secondary/20"
                             : "text-white/60 hover:bg-white/8 hover:text-white"
                         } ${sidebarCollapsed ? "justify-center" : ""}`}
                       >
-                        <Icon className={`w-5 h-5 shrink-0 ${active ? "text-[#1B1E4F]" : "text-white/40 group-hover:text-[#D9A63A]"}`} />
+                        <Icon className={`w-5 h-5 shrink-0 ${active ? "text-primary" : "text-white/40 group-hover:text-secondary"}`} />
                         {!sidebarCollapsed && (
                           <span>{isAr ? item.labelAr : item.label}</span>
                         )}
@@ -170,11 +170,11 @@ export function AdminLayoutClient({ children, session }: { children: React.React
                             onClick={() => setMobileMenuOpen(false)}
                             className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                               active
-                                ? "bg-[#D9A63A] text-[#1B1E4F]"
+                                ? "bg-secondary text-primary"
                                 : "text-white/60 hover:bg-white/8 hover:text-white"
                             }`}
                           >
-                            <Icon className={`w-5 h-5 ${active ? "text-[#1B1E4F]" : "text-white/40"}`} />
+                            <Icon className={`w-5 h-5 ${active ? "text-primary" : "text-white/40"}`} />
                             <span>{isAr ? item.labelAr : item.label}</span>
                           </Link>
                         );
@@ -218,7 +218,7 @@ export function AdminLayoutClient({ children, session }: { children: React.React
                 <Menu className="w-5 h-5" />
               </button>
 
-              <div className="hidden md:flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 w-80 border border-transparent focus-within:border-[#D9A63A]/40 focus-within:bg-white transition-all"
+              <div className="hidden md:flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 w-80 border border-transparent focus-within:border-secondary/40 focus-within:bg-white transition-all"
                 style={darkMode ? { background: "rgba(255,255,255,0.05)", color: "#fff" } : {}}
               >
                 <Search className="w-4 h-4 text-gray-400" />
@@ -251,7 +251,7 @@ export function AdminLayoutClient({ children, session }: { children: React.React
 
               {/* Profile */}
               <div className="flex items-center gap-3 cursor-pointer group">
-                <div className="w-9 h-9 rounded-xl bg-[#1B1E4F] flex items-center justify-center text-white text-sm font-bold uppercase">
+                <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-white text-sm font-bold uppercase">
                   {session?.user?.name ? session.user.name.charAt(0) : "A"}
                 </div>
                 <div className="hidden md:block">

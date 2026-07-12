@@ -36,14 +36,14 @@ export default async function NotificationSettingsPage({ params: { locale } }: {
     <div className="p-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {isAr ? "إعدادات الإشعارات" : "Notification Settings"}
           </h2>
           <p className="text-gray-500 mt-1">
             {isAr ? "تحكم في متى وكيف تتلقى تنبيهات النظام." : "Control when and how you receive system alerts."}
           </p>
         </div>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-[#1B1E4F] text-white font-bold rounded-xl text-sm hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20">
+        <button className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/80 transition-all shadow-lg shadow-primary/20">
           <Save className="w-4 h-4" />
           {isAr ? "حفظ التفضيلات" : "Save Preferences"}
         </button>
@@ -53,7 +53,7 @@ export default async function NotificationSettingsPage({ params: { locale } }: {
         {notifCategories.map((category, idx) => (
           <section key={idx} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
             <div className="bg-gray-50 p-6 border-b border-gray-100">
-              <h3 className="text-lg font-bold text-[#1B1E4F]">{category.title}</h3>
+              <h3 className="text-lg font-bold text-primary">{category.title}</h3>
               <p className="text-sm text-gray-500 mt-1">{category.description}</p>
             </div>
             
@@ -69,13 +69,13 @@ export default async function NotificationSettingsPage({ params: { locale } }: {
                   <span className="font-semibold text-gray-700">{event.label}</span>
                   <div className="flex items-center gap-6">
                     <label className="w-16 flex justify-center cursor-pointer">
-                      <input type="checkbox" defaultChecked={event.email} className="w-5 h-5 rounded border-gray-300 text-[#D9A63A] focus:ring-[#D9A63A] cursor-pointer" />
+                      <input type="checkbox" defaultChecked={event.email} className="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary cursor-pointer" />
                     </label>
                     <label className="w-16 flex justify-center cursor-pointer">
-                      <input type="checkbox" defaultChecked={event.push} className="w-5 h-5 rounded border-gray-300 text-[#D9A63A] focus:ring-[#D9A63A] cursor-pointer" />
+                      <input type="checkbox" defaultChecked={event.push} className="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary cursor-pointer" />
                     </label>
                     <label className="w-16 flex justify-center cursor-pointer">
-                      <input type="checkbox" defaultChecked={event.sms} className="w-5 h-5 rounded border-gray-300 text-[#D9A63A] focus:ring-[#D9A63A] cursor-pointer" />
+                      <input type="checkbox" defaultChecked={event.sms} className="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary cursor-pointer" />
                     </label>
                   </div>
                 </div>

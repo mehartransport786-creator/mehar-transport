@@ -51,7 +51,7 @@ export function SafetySection() {
   ];
 
   return (
-    <section className="py-24 bg-primary text-white relative overflow-hidden">
+    <section className="section-padding bg-primary text-white relative overflow-hidden">
       {/* Abstract Background Patterns */}
       <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -64,26 +64,26 @@ export function SafetySection() {
         </svg>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px] relative z-10">
-        <div className="flex flex-col md:flex-row gap-16 items-center">
+      <div className="container-fluid relative z-10">
+        <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-center">
           
-          <div className="w-full md:w-1/3 space-y-6">
+          <div className="w-full md:w-1/3 space-y-4 lg:space-y-6 animate-fade-up-luxury">
             <div className="flex items-center gap-4">
               <div className="w-12 h-0.5 bg-secondary"></div>
-              <span className="text-secondary font-bold uppercase tracking-widest text-sm">
+              <span className="text-secondary font-bold uppercase tracking-widest text-xs md:text-sm">
                 {t("safetyCompliance")}
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            <h2 className="h2 leading-tight">
               {t("yourSafetyIsOurHighestPriority")}
             </h2>
-            <p className="text-white/70 text-lg leading-relaxed font-light">
+            <p className="text-white/70 text-base md:text-lg leading-relaxed font-light">
               {t("atMeharTransportWeImplementStrictCorpora")}
             </p>
           </div>
 
           <div className="w-full md:w-2/3">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
               {features.map((feature, idx) => (
                 <motion.div 
                   key={idx}
@@ -91,14 +91,14 @@ export function SafetySection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05, duration: 0.5 }}
-                  className="flex gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                  className="flex gap-4 p-5 md:p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
                 >
-                  <div className="shrink-0 w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center border border-secondary/30">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center border border-secondary/30 group-hover:scale-110 transition-transform duration-300">
                     <feature.icon className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">{feature.title}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed">{feature.desc}</p>
+                    <h3 className="font-bold text-base md:text-lg mb-1">{feature.title}</h3>
+                    <p className="text-white/60 text-xs md:text-sm leading-relaxed">{feature.desc}</p>
                   </div>
                 </motion.div>
               ))}

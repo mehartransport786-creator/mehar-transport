@@ -24,11 +24,11 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
 
   return (
     <div className="bg-background min-h-screen">
-      <div className="bg-[#1B1E4F] text-white py-20 relative overflow-hidden">
+      <div className="bg-primary text-white py-20 relative overflow-hidden">
         {/* Abstract background elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
           <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[150%] bg-white/5 rotate-12 blur-3xl rounded-full"></div>
-          <div className="absolute top-[60%] -left-[10%] w-[40%] h-[100%] bg-[#D9A63A]/10 -rotate-12 blur-3xl rounded-full"></div>
+          <div className="absolute top-[60%] -left-[10%] w-[40%] h-[100%] bg-secondary/10 -rotate-12 blur-3xl rounded-full"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -54,16 +54,16 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
                 />
               </div>
               <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar shrink-0">
-                <button onClick={() => setFilterType('all')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'all' ? 'bg-[#D9A63A] text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                <button onClick={() => setFilterType('all')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'all' ? 'bg-secondary text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
                   {isAr ? "الكل" : "All"}
                 </button>
-                <button onClick={() => setFilterType('airport_transfer')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'airport_transfer' ? 'bg-[#D9A63A] text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                <button onClick={() => setFilterType('airport_transfer')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'airport_transfer' ? 'bg-secondary text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
                   {isAr ? "نقل المطار" : "Airport"}
                 </button>
-                <button onClick={() => setFilterType('intercity')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'intercity' ? 'bg-[#D9A63A] text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                <button onClick={() => setFilterType('intercity')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'intercity' ? 'bg-secondary text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
                   {isAr ? "بين المدن" : "Intercity"}
                 </button>
-                <button onClick={() => setFilterType('ziyarat')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'ziyarat' ? 'bg-[#D9A63A] text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                <button onClick={() => setFilterType('ziyarat')} className={`px-4 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${filterType === 'ziyarat' ? 'bg-secondary text-white shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'}`}>
                   {isAr ? "المزارات" : "Ziyarat"}
                 </button>
               </div>
@@ -74,7 +74,7 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {filteredRoutes.length} {isAr ? "مسار متاح" : "Routes Available"}
           </h2>
         </div>
@@ -97,7 +97,7 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   
                   <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                    <span className="bg-white/90 backdrop-blur-md text-[#1B1E4F] text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                    <span className="bg-white/90 backdrop-blur-md text-primary text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
                       {isAr ? (route.routeType === 'airport_transfer' ? 'مطار' : route.routeType === 'ziyarat' ? 'مزارات' : 'بين المدن') : (route.routeType || 'intercity').replace('_', ' ')}
                     </span>
                   </div>
@@ -106,7 +106,7 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
                     {minPrice > 0 && (
                       <>
                         <span className="text-xs font-bold text-white/80 uppercase tracking-wider">{isAr ? "يبدأ من" : "Starting from"}</span>
-                        <div className="text-3xl font-black text-[#D9A63A] leading-none mt-1">
+                        <div className="text-3xl font-black text-secondary leading-none mt-1">
                           {minPrice} <span className="text-sm font-bold text-white">SAR</span>
                         </div>
                       </>
@@ -115,7 +115,7 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
                 </div>
                 
                 <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-center justify-between text-lg font-black text-[#1B1E4F] mb-6">
+                  <div className="flex items-center justify-between text-lg font-black text-primary mb-6">
                     <span className="truncate">{isAr ? route.originAr || route.origin : route.origin}</span>
                     <ArrowIcon className="text-gray-300 w-5 h-5 mx-2 flex-shrink-0" />
                     <span className="text-right truncate">{isAr ? route.destinationAr || route.destination : route.destination}</span>
@@ -145,13 +145,13 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
                   <div className="mt-auto flex gap-3">
                     <Link 
                       href={`/routes/${route.slug || route._id}`} 
-                      className="flex-1 inline-flex items-center justify-center border-2 border-gray-100 hover:border-[#1B1E4F] text-gray-600 hover:text-[#1B1E4F] px-4 py-3 rounded-xl font-bold transition-colors text-sm"
+                      className="flex-1 inline-flex items-center justify-center border-2 border-gray-100 hover:border-primary text-gray-600 hover:text-primary px-4 py-3 rounded-xl font-bold transition-colors text-sm"
                     >
                       {isAr ? "التفاصيل" : "Details"}
                     </Link>
                     <Link 
                       href={`/booking?routeId=${route._id}`} 
-                      className="flex-1 inline-flex items-center justify-center gap-2 bg-[#1B1E4F] hover:bg-[#2a2f6b] text-white px-4 py-3 rounded-xl font-bold transition-all shadow-lg shadow-[#1B1E4F]/20 text-sm group/btn"
+                      className="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/80 text-white px-4 py-3 rounded-xl font-bold transition-all shadow-lg shadow-primary/20 text-sm group/btn"
                     >
                       {isAr ? "احجز" : "Book"} <ChevronRight className="w-4 h-4 rtl:rotate-180 group-hover/btn:translate-x-1 transition-transform" />
                     </Link>

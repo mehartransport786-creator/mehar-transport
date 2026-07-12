@@ -67,8 +67,8 @@ export default function HourlyRateFormModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
       <div className="bg-white rounded-3xl shadow-xl w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-[#1B1E4F] flex items-center gap-2">
-            <Clock className="w-5 h-5 text-[#D9A63A]" />
+          <h2 className="text-xl font-bold text-primary flex items-center gap-2">
+            <Clock className="w-5 h-5 text-secondary" />
             {initialData ? (isAr ? 'تعديل السعر بالساعة' : 'Edit Hourly Rate') : (isAr ? 'إضافة تسعيرة بالساعة' : 'Add Hourly Rate')}
           </h2>
           <button onClick={onClose} className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
@@ -88,7 +88,7 @@ export default function HourlyRateFormModal({
                 disabled={!!initialData} // Usually can't change vehicle on edit due to unique constraint
                 value={formData.vehicleId}
                 onChange={(e) => setFormData({...formData, vehicleId: e.target.value})}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A] disabled:opacity-50"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary disabled:opacity-50"
               >
                 <option value="">{isAr ? 'اختر المركبة' : 'Select Vehicle'}</option>
                 {vehicles.map(v => (
@@ -108,7 +108,7 @@ export default function HourlyRateFormModal({
                   required
                   value={formData.hourlyRate}
                   onChange={(e) => setFormData({...formData, hourlyRate: Number(e.target.value)})}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A]"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary"
                 />
               </div>
               <div>
@@ -121,7 +121,7 @@ export default function HourlyRateFormModal({
                   required
                   value={formData.minimumHours}
                   onChange={(e) => setFormData({...formData, minimumHours: Number(e.target.value)})}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A]"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary"
                 />
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function HourlyRateFormModal({
                 required
                 value={formData.extraHourRate}
                 onChange={(e) => setFormData({...formData, extraHourRate: Number(e.target.value)})}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A]"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary"
               />
             </div>
 
@@ -146,7 +146,7 @@ export default function HourlyRateFormModal({
                 id="isActive"
                 checked={formData.isActive}
                 onChange={(e) => setFormData({...formData, isActive: e.target.checked})}
-                className="w-5 h-5 rounded text-[#D9A63A] focus:ring-[#D9A63A]"
+                className="w-5 h-5 rounded text-secondary focus:ring-secondary"
               />
               <label htmlFor="isActive" className="font-bold text-gray-700 select-none cursor-pointer">
                 {isAr ? 'تفعيل هذه التسعيرة' : 'Activate this pricing rule'}
@@ -165,7 +165,7 @@ export default function HourlyRateFormModal({
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-4 py-3 bg-[#1B1E4F] text-white rounded-xl font-bold hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="flex-1 px-4 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary/80 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
               {isAr ? 'حفظ' : 'Save'}

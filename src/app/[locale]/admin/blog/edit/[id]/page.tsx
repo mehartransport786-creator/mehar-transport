@@ -119,7 +119,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/admin/blog" className="p-2 bg-white dark:bg-[#1B1E4F] rounded-full border border-gray-200 dark:border-white/10 hover:bg-gray-50 transition-colors">
+          <Link href="/admin/blog" className="p-2 bg-white dark:bg-primary rounded-full border border-gray-200 dark:border-white/10 hover:bg-gray-50 transition-colors">
             <ChevronLeft className="w-5 h-5" />
           </Link>
           <div>
@@ -131,7 +131,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
           <button 
             onClick={() => handleSubmit('Draft')}
             disabled={saving}
-            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
           >
             <Save className="w-4 h-4" />
             <span>Save Draft</span>
@@ -139,7 +139,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
           <button 
             onClick={() => handleSubmit('Published')}
             disabled={saving}
-            className="flex items-center gap-2 px-4 py-2 bg-[#D9A63A] text-white rounded-lg hover:bg-[#b88c32] transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
           >
             <Send className="w-4 h-4" />
             <span>Publish Updates</span>
@@ -150,14 +150,14 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Editor Column */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-xl p-6 space-y-4 shadow-sm">
+          <div className="bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-xl p-6 space-y-4 shadow-sm">
             <div>
               <label className="block text-sm font-medium mb-1">Article Title *</label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => handleChange('title', e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
                 placeholder="Enter article title"
                 required
               />
@@ -171,7 +171,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
                   type="text"
                   value={formData.slug}
                   onChange={(e) => handleChange('slug', e.target.value)}
-                  className="flex-1 px-4 py-2 rounded-r-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+                  className="flex-1 px-4 py-2 rounded-r-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
                   placeholder="article-url-slug"
                   required
                 />
@@ -184,7 +184,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
                 value={formData.excerpt}
                 onChange={(e) => handleChange('excerpt', e.target.value)}
                 rows={3}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
                 placeholder="Brief summary of the article..."
               />
             </div>
@@ -199,7 +199,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
           </div>
 
           {/* SEO Metadata Block */}
-          <div className="bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-xl p-6 space-y-4 shadow-sm">
+          <div className="bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-xl p-6 space-y-4 shadow-sm">
             <h3 className="text-lg font-semibold border-b border-gray-100 dark:border-white/10 pb-2 mb-4">SEO Metadata</h3>
             
             <div>
@@ -208,7 +208,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
                 type="text"
                 value={formData.seo.focusKeyword}
                 onChange={(e) => handleSeoChange('focusKeyword', e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
                 placeholder="e.g. Luxury Umrah Transport"
               />
             </div>
@@ -219,7 +219,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
                 type="text"
                 value={formData.seo.metaTitle}
                 onChange={(e) => handleSeoChange('metaTitle', e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
                 placeholder="Defaults to article title if empty"
               />
               <p className="text-xs text-gray-500 mt-1">{formData.seo.metaTitle.length} characters (Optimal: 30-60)</p>
@@ -231,7 +231,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
                 value={formData.seo.metaDescription}
                 onChange={(e) => handleSeoChange('metaDescription', e.target.value)}
                 rows={3}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
                 placeholder="SEO description..."
               />
               <p className="text-xs text-gray-500 mt-1">{formData.seo.metaDescription.length} characters (Optimal: 120-160)</p>
@@ -243,7 +243,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
                 type="text"
                 value={formData.seo.canonicalUrl}
                 onChange={(e) => handleSeoChange('canonicalUrl', e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-[#D9A63A] outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 focus:ring-2 focus:ring-secondary outline-none"
                 placeholder="https://..."
               />
             </div>
@@ -261,7 +261,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
             onScoreChange={(score) => handleSeoChange('score', score.toString())}
           />
 
-          <div className="bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-xl p-5 space-y-4 shadow-sm">
+          <div className="bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-xl p-5 space-y-4 shadow-sm">
             <h3 className="font-semibold mb-2">Publishing Details</h3>
             
             <div>
@@ -305,7 +305,7 @@ export default function EditBlogPost({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-[#1B1E4F] border border-gray-200 dark:border-white/10 rounded-xl p-5 shadow-sm">
+          <div className="bg-white dark:bg-primary border border-gray-200 dark:border-white/10 rounded-xl p-5 shadow-sm">
             <h3 className="font-semibold mb-3">Featured Image</h3>
             {formData.featuredImage ? (
               <div className="relative rounded-lg overflow-hidden border border-gray-200 dark:border-white/10">

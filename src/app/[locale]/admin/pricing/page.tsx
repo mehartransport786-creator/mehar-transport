@@ -29,7 +29,7 @@ export default async function PricingDashboardPage({ params: { locale } }: { par
   return (
     <div className="p-8">
       <div className="mb-8 border-b border-gray-100 pb-6">
-        <h2 className="text-2xl font-bold text-[#1B1E4F]">
+        <h2 className="text-2xl font-bold text-primary">
           {isAr ? "لوحة معلومات التسعير" : "Pricing Dashboard"}
         </h2>
         <p className="text-gray-500 mt-1">
@@ -62,8 +62,8 @@ export default async function PricingDashboardPage({ params: { locale } }: { par
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Active Seasonal Rules */}
         <div className="lg:col-span-2 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-[#1B1E4F] mb-6 flex items-center gap-2">
-            <CalendarDays className="w-5 h-5 text-[#D9A63A]" />
+          <h3 className="text-lg font-bold text-primary mb-6 flex items-center gap-2">
+            <CalendarDays className="w-5 h-5 text-secondary" />
             {isAr ? "قواعد التسعير الموسمي النشطة" : "Active Seasonal Pricing Rules"}
           </h3>
           
@@ -100,9 +100,9 @@ export default async function PricingDashboardPage({ params: { locale } }: { par
         </div>
 
         {/* Revenue Impact (Mock Chart area) */}
-        <div className="bg-[#1B1E4F] text-white border border-[#2a2f6b] rounded-2xl p-6 shadow-sm flex flex-col">
+        <div className="bg-primary text-white border border-primary/80 rounded-2xl p-6 shadow-sm flex flex-col">
           <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-[#D9A63A]" />
+            <TrendingUp className="w-5 h-5 text-secondary" />
             {isAr ? "تأثير التسعير (شهري)" : "Pricing Impact (MTD)"}
           </h3>
           <p className="text-sm text-blue-200 mb-6">
@@ -110,14 +110,14 @@ export default async function PricingDashboardPage({ params: { locale } }: { par
           </p>
           
           <div className="flex-1 flex flex-col justify-center items-center text-center">
-            <div className="text-4xl font-black text-[#D9A63A] mb-2">+12,450 <span className="text-xl">SAR</span></div>
+            <div className="text-4xl font-black text-secondary mb-2">+12,450 <span className="text-xl">SAR</span></div>
             <p className="text-sm text-blue-200 flex items-center justify-center gap-1">
               <ArrowUpRight className="w-4 h-4 text-emerald-400" />
               <span className="text-emerald-400 font-bold">14%</span> {isAr ? "مقارنة بالشهر الماضي" : "vs last month"}
             </p>
           </div>
           
-          <div className="mt-8 pt-6 border-t border-[#2a2f6b] space-y-3">
+          <div className="mt-8 pt-6 border-t border-primary/80 space-y-3">
             <div className="flex justify-between text-sm">
               <span className="text-blue-200">{isAr ? "من التسعير الموسمي" : "From Seasonal Surges"}</span>
               <span className="font-bold text-white">8,200 SAR</span>

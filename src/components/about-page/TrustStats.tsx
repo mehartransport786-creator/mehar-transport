@@ -18,14 +18,14 @@ export function TrustStats({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-20 bg-white border-y border-gray-100">
+    <section className="py-20 bg-background border-y border-border">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm">
-            {isAr ? 'الأرقام تتحدث' : 'Trust & Credibility'}
+          <h2 className="text-secondary font-bold tracking-widest uppercase mb-3 text-sm">
+            {isAr ? 'تاريخ موثوق' : 'Proven Track Record'}
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-[#1B1E4F]">
-            {isAr ? 'تميز مبني على الحقائق' : 'Excellence Built on Facts'}
+          <h3 className="text-3xl md:text-4xl font-bold text-primary">
+            {isAr ? 'شركة نقل سعودية معتمدة' : 'A Trusted Saudi Transportation Partner'}
           </h3>
         </div>
 
@@ -39,18 +39,18 @@ export function TrustStats({ locale }: { locale: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-[#F8F9FC] p-6 rounded-2xl flex flex-col items-center text-center group hover:shadow-xl hover:bg-white border border-transparent hover:border-[#D9A63A]/20 transition-all"
+                className="bg-muted/50 p-6 rounded-2xl flex flex-col items-center text-center group hover:shadow-[var(--shadow-luxury)] hover:bg-background border border-transparent hover:border-secondary/20 transition-all"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#1B1E4F]/5 flex items-center justify-center text-[#D9A63A] mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-secondary mb-4 group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6" />
                 </div>
-                <div className="text-3xl font-black text-[#1B1E4F] mb-1 font-mono">
+                <div className="text-3xl font-black text-primary mb-1 font-mono">
                   {stat.value}
                 </div>
-                <div className="text-[#D9A63A] font-bold text-sm uppercase tracking-wider mb-2">
+                <div className="text-secondary font-bold text-sm uppercase tracking-wider mb-2">
                   {isAr ? stat.labelAr : stat.label}
                 </div>
-                <div className={`text-gray-500 text-sm ${isAr ? 'font-arabic' : ''}`}>
+                <div className={`text-muted-foreground text-sm ${isAr ? 'font-arabic' : ''}`}>
                   {isAr ? stat.titleAr : stat.title}
                 </div>
               </motion.div>

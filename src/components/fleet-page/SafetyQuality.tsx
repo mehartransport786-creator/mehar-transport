@@ -22,7 +22,7 @@ export function SafetyQuality() {
   ];
 
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
+    <section className="py-24 bg-background border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           
@@ -39,15 +39,15 @@ export function SafetyQuality() {
                 alt="Mehar Transport Safety" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-[#1B1E4F]/20 mix-blend-multiply" />
+              <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
               
               {/* Trust Badge */}
-              <div className="absolute bottom-8 right-8 rtl:left-8 rtl:right-auto bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-2xl max-w-xs border border-gray-100">
-                <ShieldCheck className="w-10 h-10 text-[#D9A63A] mb-4" />
-                <h4 className="font-bold text-[#1B1E4F] text-lg mb-2">
+              <div className="absolute bottom-8 right-8 rtl:left-8 rtl:right-auto bg-background/95 backdrop-blur-md p-6 rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] max-w-xs border border-border">
+                <ShieldCheck className="w-10 h-10 text-secondary mb-4" />
+                <h4 className="font-bold text-primary text-lg mb-2">
                   {isAr ? "ضمان ميهار" : "The Mehar Guarantee"}
                 </h4>
-                <p className="text-sm text-gray-500 font-medium leading-relaxed">
+                <p className="text-sm text-muted-foreground font-medium leading-relaxed">
                   {isAr 
                     ? "سلامتك هي أولويتنا القصوى. نحن نطبق أعلى معايير الجودة في الصناعة."
                     : "Your safety is our absolute priority. We implement the highest quality standards in the industry."}
@@ -59,15 +59,15 @@ export function SafetyQuality() {
           <div className="w-full lg:w-1/2 space-y-8">
             <div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-0.5 bg-[#D9A63A]"></div>
-                <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm">
+                <div className="w-12 h-0.5 bg-secondary"></div>
+                <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm">
                   {isAr ? "السلامة والجودة" : "Safety & Quality"}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#1B1E4F] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary leading-tight mb-6">
                 {isAr ? "معايير لا تقبل المساومة" : "Uncompromising Standards"}
               </h2>
-              <p className="text-lg text-gray-500 font-light leading-relaxed">
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 {isAr 
                   ? "نحن نؤمن بأن الفخامة الحقيقية تبدأ براحة البال المطلقة. تم وضع كل إجراء من إجراءات السلامة لدينا لضمان أن تكون رحلتك ليس فقط مريحة، بل آمنة تمامًا."
                   : "We believe true luxury begins with absolute peace of mind. Every safety protocol we have in place is designed to ensure your journey is not just comfortable, but completely secure."}
@@ -84,10 +84,10 @@ export function SafetyQuality() {
                   transition={{ delay: idx * 0.05 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-[#1B1E4F]/5">
-                    <CheckCircle2 className="w-4 h-4 text-[#D9A63A]" />
+                  <div className="shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-primary/5">
+                    <CheckCircle2 className="w-4 h-4 text-secondary" />
                   </div>
-                  <span className="text-[#1B1E4F] font-semibold text-sm">{item}</span>
+                  <span className="text-primary font-semibold text-sm">{item}</span>
                 </motion.div>
               ))}
             </div>

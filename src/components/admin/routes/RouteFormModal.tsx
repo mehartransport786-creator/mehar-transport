@@ -124,7 +124,7 @@ export default function RouteFormModal({ isOpen, onClose, route, isAr, onSaved }
         {/* Header */}
         <div className="sticky top-0 z-10 bg-white border-b border-gray-100 px-8 py-5 flex items-center justify-between rounded-t-2xl">
           <div>
-            <h2 className="text-xl font-bold text-[#1B1E4F]">{isEdit ? (isAr ? 'تعديل المسار' : 'Edit Route') : (isAr ? 'مسار جديد' : 'New Route')}</h2>
+            <h2 className="text-xl font-bold text-primary">{isEdit ? (isAr ? 'تعديل المسار' : 'Edit Route') : (isAr ? 'مسار جديد' : 'New Route')}</h2>
             <p className="text-xs text-gray-400 mt-0.5">{isAr ? 'أدخل بيانات المسار' : 'Enter route details'}</p>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-xl transition-colors"><X className="w-5 h-5 text-gray-400" /></button>
@@ -137,82 +137,82 @@ export default function RouteFormModal({ isOpen, onClose, route, isAr, onSaved }
 
           {/* Basic Info */}
           <section>
-            <h3 className="text-sm font-bold text-[#1B1E4F] uppercase tracking-wider mb-4 flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#D9A63A]" /> {isAr ? 'المعلومات الأساسية' : 'Basic Information'}
+            <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-secondary" /> {isAr ? 'المعلومات الأساسية' : 'Basic Information'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'اسم المسار (EN)' : 'Route Name (EN)'} *</label>
                 <input value={form.name} onChange={(e) => updateField('name', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A]/20 outline-none transition-all" placeholder="Jeddah Airport → Makkah Hotel" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20 outline-none transition-all" placeholder="Jeddah Airport → Makkah Hotel" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'اسم المسار (AR)' : 'Route Name (AR)'} *</label>
                 <input value={form.nameAr} onChange={(e) => updateField('nameAr', e.target.value)} dir="rtl"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A]/20 outline-none transition-all" placeholder="مطار جدة ← فندق مكة" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20 outline-none transition-all" placeholder="مطار جدة ← فندق مكة" />
               </div>
               <div className="md:col-span-2">
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'الرابط المختصر' : 'Slug'}</label>
                 <input value={form.slug} onChange={(e) => updateField('slug', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 font-mono focus:border-[#D9A63A] outline-none transition-all" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 font-mono focus:border-secondary outline-none transition-all" />
               </div>
             </div>
           </section>
 
           {/* Locations */}
           <section>
-            <h3 className="text-sm font-bold text-[#1B1E4F] uppercase tracking-wider mb-4">{isAr ? 'نقاط الانطلاق والوصول' : 'Pickup & Dropoff'}</h3>
+            <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4">{isAr ? 'نقاط الانطلاق والوصول' : 'Pickup & Dropoff'}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'نقطة الانطلاق (EN)' : 'Origin (EN)'} *</label>
                 <input value={form.origin} onChange={(e) => updateField('origin', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" placeholder="Jeddah Airport" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" placeholder="Jeddah Airport" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'نقطة الانطلاق (AR)' : 'Origin (AR)'}</label>
                 <input value={form.originAr} onChange={(e) => updateField('originAr', e.target.value)} dir="rtl"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" placeholder="مطار جدة" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" placeholder="مطار جدة" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'نقطة الوصول (EN)' : 'Destination (EN)'} *</label>
                 <input value={form.destination} onChange={(e) => updateField('destination', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" placeholder="Makkah Hotel" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" placeholder="Makkah Hotel" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'نقطة الوصول (AR)' : 'Destination (AR)'}</label>
                 <input value={form.destinationAr} onChange={(e) => updateField('destinationAr', e.target.value)} dir="rtl"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" placeholder="فندق مكة" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" placeholder="فندق مكة" />
               </div>
             </div>
           </section>
 
           {/* Route Details */}
           <section>
-            <h3 className="text-sm font-bold text-[#1B1E4F] uppercase tracking-wider mb-4 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#D9A63A]" /> {isAr ? 'تفاصيل المسار' : 'Route Details'}
+            <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 flex items-center gap-2">
+              <Clock className="w-4 h-4 text-secondary" /> {isAr ? 'تفاصيل المسار' : 'Route Details'}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'المسافة (كم)' : 'Distance (KM)'}</label>
                 <input type="number" value={form.distanceKm} onChange={(e) => updateField('distanceKm', Number(e.target.value))}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'المدة (دقيقة)' : 'Duration (mins)'}</label>
                 <input type="number" value={form.averageDurationMins} onChange={(e) => updateField('averageDurationMins', Number(e.target.value))}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'نوع المسار' : 'Route Type'}</label>
                 <select value={form.routeType} onChange={(e) => updateField('routeType', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all bg-white">
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all bg-white">
                   {routeTypes.map(t => <option key={t.value} value={t.value}>{isAr ? t.labelAr : t.labelEn}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'المدينة' : 'City'}</label>
                 <select value={form.city} onChange={(e) => updateField('city', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all bg-white">
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all bg-white">
                   <option value="">{isAr ? 'اختر المدينة' : 'Select city'}</option>
                   {cities.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
@@ -222,55 +222,55 @@ export default function RouteFormModal({ isOpen, onClose, route, isAr, onSaved }
 
           {/* Description */}
           <section>
-            <h3 className="text-sm font-bold text-[#1B1E4F] uppercase tracking-wider mb-4 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[#D9A63A]" /> {isAr ? 'الوصف' : 'Description'}
+            <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 flex items-center gap-2">
+              <FileText className="w-4 h-4 text-secondary" /> {isAr ? 'الوصف' : 'Description'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'الوصف (EN)' : 'Description (EN)'}</label>
                 <textarea rows={3} value={form.description} onChange={(e) => updateField('description', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all resize-none" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all resize-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'الوصف (AR)' : 'Description (AR)'}</label>
                 <textarea rows={3} value={form.descriptionAr} onChange={(e) => updateField('descriptionAr', e.target.value)} dir="rtl"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all resize-none" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all resize-none" />
               </div>
             </div>
           </section>
 
           {/* SEO Meta */}
           <section>
-            <h3 className="text-sm font-bold text-[#1B1E4F] uppercase tracking-wider mb-4 flex items-center gap-2">
-              <Globe className="w-4 h-4 text-[#D9A63A]" /> {isAr ? 'SEO' : 'SEO Meta'}
+            <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 flex items-center gap-2">
+              <Globe className="w-4 h-4 text-secondary" /> {isAr ? 'SEO' : 'SEO Meta'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">Meta Title (EN)</label>
                 <input value={form.seoMeta.title} onChange={(e) => updateSeo('title', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">Meta Title (AR)</label>
                 <input value={form.seoMeta.titleAr} onChange={(e) => updateSeo('titleAr', e.target.value)} dir="rtl"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">Meta Description (EN)</label>
                 <textarea rows={2} value={form.seoMeta.description} onChange={(e) => updateSeo('description', e.target.value)}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all resize-none" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all resize-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5">Meta Description (AR)</label>
                 <textarea rows={2} value={form.seoMeta.descriptionAr} onChange={(e) => updateSeo('descriptionAr', e.target.value)} dir="rtl"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none transition-all resize-none" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none transition-all resize-none" />
               </div>
             </div>
           </section>
 
           {/* Status */}
           <section>
-            <h3 className="text-sm font-bold text-[#1B1E4F] uppercase tracking-wider mb-4">{isAr ? 'الحالة والنشر' : 'Status & Publishing'}</h3>
+            <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4">{isAr ? 'الحالة والنشر' : 'Status & Publishing'}</h3>
             <div className="flex gap-3">
               {(['active', 'draft', 'archived'] as const).map(s => (
                 <button key={s} onClick={() => updateField('status', s)}
@@ -293,7 +293,7 @@ export default function RouteFormModal({ isOpen, onClose, route, isAr, onSaved }
             {isAr ? 'إلغاء' : 'Cancel'}
           </button>
           <button onClick={handleSave} disabled={saving}
-            className="px-8 py-2.5 bg-[#1B1E4F] text-white rounded-xl text-sm font-bold hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20 disabled:opacity-50">
+            className="px-8 py-2.5 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary/80 transition-all shadow-lg shadow-primary/20 disabled:opacity-50">
             {saving ? (isAr ? 'جاري الحفظ...' : 'Saving...') : isEdit ? (isAr ? 'حفظ التعديلات' : 'Save Changes') : (isAr ? 'إنشاء المسار' : 'Create Route')}
           </button>
         </div>

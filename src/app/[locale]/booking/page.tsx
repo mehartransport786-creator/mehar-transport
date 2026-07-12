@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 export default async function BookingPage() {
   return (
-    <main className="min-h-screen bg-[#F5F4F1]">
+    <main className="min-h-screen bg-background">
       <BookingApp />
     </main>
   );

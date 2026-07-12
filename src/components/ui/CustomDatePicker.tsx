@@ -71,10 +71,10 @@ export function CustomDatePicker({ value, onChange, minDate }: CustomDatePickerP
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full bg-white/5 backdrop-blur-sm border ${isOpen ? 'border-[#D9A63A]/50 ring-1 ring-[#D9A63A]/50' : 'border-white/10'} rounded-xl p-4 flex items-center justify-between text-left transition-all hover:bg-white/10`}
+        className={`w-full bg-white/5 backdrop-blur-sm border ${isOpen ? 'border-secondary/50 ring-1 ring-secondary/50' : 'border-white/10'} rounded-xl p-4 flex items-center justify-between text-left transition-all hover:bg-white/10`}
       >
         <div className="flex items-center gap-3">
-          <CalendarIcon className="w-5 h-5 text-[#D9A63A]" />
+          <CalendarIcon className="w-5 h-5 text-secondary" />
           <span className={value ? "text-white" : "text-white/50"}>
             {value ? value : "Select Date"}
           </span>
@@ -88,7 +88,7 @@ export function CustomDatePicker({ value, onChange, minDate }: CustomDatePickerP
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-50 w-[300px] mt-2 bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden p-4"
+            className="absolute z-50 w-[300px] mt-2 bg-foreground/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden p-4"
           >
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
@@ -135,7 +135,7 @@ export function CustomDatePicker({ value, onChange, minDate }: CustomDatePickerP
                       disabled 
                         ? 'text-white/20 cursor-not-allowed' 
                         : isSelected
-                          ? 'bg-[#D9A63A] text-black font-bold shadow-[0_0_10px_rgba(217,166,58,0.5)]'
+                          ? 'bg-secondary text-black font-bold shadow-[0_0_10px_rgba(217,166,58,0.5)]'
                           : 'text-gray-300 hover:bg-white/10 hover:text-white'
                     }`}
                   >

@@ -7,10 +7,10 @@ export function FleetSEOContent() {
   const isAr = locale === "ar";
 
   return (
-    <section className="py-24 bg-slate-50 border-t border-gray-200">
+    <section className="py-24 bg-muted border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1000px]">
         
-        <div className="prose prose-lg md:prose-xl mx-auto prose-headings:text-[#1B1E4F] prose-a:text-[#D9A63A] prose-p:text-gray-600 prose-p:leading-relaxed">
+        <div className="prose prose-lg md:prose-xl mx-auto prose-headings:text-primary prose-a:text-secondary prose-p:text-muted-foreground prose-p:leading-relaxed">
           {isAr ? (
             <>
               <h2>خدمات النقل الفاخر في المملكة العربية السعودية</h2>
@@ -41,7 +41,7 @@ export function FleetSEOContent() {
                 تويوتا هايس وهيونداي ستاريكس تعتبر الخيار الاقتصادي الفاخر لضمان بقاء المجموعة معاً طوال الرحلة.
               </p>
               
-              <p className="text-sm text-gray-400 mt-8">
+              <p className="text-sm text-muted-foreground/70 mt-8">
                 * محتوى تحسين محركات البحث (SEO) الكامل (1500+ كلمة) متاح عبر نظام إدارة المحتوى (CMS).
               </p>
             </>
@@ -77,7 +77,7 @@ export function FleetSEOContent() {
                 of luxury and practicality, ensuring your entire party travels together comfortably.
               </p>
 
-              <p className="text-sm text-gray-400 mt-8 italic">
+              <p className="text-sm text-muted-foreground/70 mt-8 italic">
                 * Full 1500+ word long-form SEO content is managed via CMS.
               </p>
             </>

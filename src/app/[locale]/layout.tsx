@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Cairo } from "next/font/google";
+import { Plus_Jakarta_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
 import "../globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["latin", "arabic"],
+const plexArabic = IBM_Plex_Sans_Arabic({
+  variable: "--font-arabic",
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -79,7 +81,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${cairo.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${plexArabic.variable} h-full antialiased`}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       <body className="min-h-full flex flex-col font-sans">

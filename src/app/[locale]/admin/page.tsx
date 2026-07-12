@@ -124,7 +124,7 @@ export default function AdminDashboard() {
         {liveKpis.map((kpi) => (
           <div
             key={kpi.id}
-            className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg hover:border-[#D9A63A]/20 transition-all duration-300 group"
+            className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg hover:border-secondary/20 transition-all duration-300 group"
           >
             <div className="flex items-start justify-between mb-4">
               <div>
@@ -174,7 +174,7 @@ export default function AdminDashboard() {
                   onClick={() => setChartPeriod(p)}
                   className={`px-4 py-2 rounded-lg text-xs font-semibold capitalize transition-all ${
                     chartPeriod === p
-                      ? "bg-white text-[#1B1E4F] shadow-sm"
+                      ? "bg-white text-primary shadow-sm"
                       : "text-gray-400 hover:text-gray-600"
                   }`}
                 >
@@ -210,11 +210,11 @@ export default function AdminDashboard() {
           </div>
           <div className="flex items-center gap-6 mt-4">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-0.5 rounded bg-[#1B1E4F]"></div>
+              <div className="w-3 h-0.5 rounded bg-primary"></div>
               <span className="text-xs text-gray-500">{isAr ? "العام الحالي" : "Current Year"}</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-0.5 rounded bg-[#D9A63A]" style={{ borderTop: "2px dashed #D9A63A", height: 0 }}></div>
+              <div className="w-3 h-0.5 rounded bg-secondary" style={{ borderTop: "2px dashed #D9A63A", height: 0 }}></div>
               <span className="text-xs text-gray-500">{isAr ? "العام السابق" : "Previous Year"}</span>
             </div>
           </div>
@@ -329,7 +329,7 @@ export default function AdminDashboard() {
             {isAr ? "أحدث الحجوزات" : "Recent Bookings"}
             <span className="ml-2 text-sm font-normal text-gray-400">({isAr ? 'مباشر' : 'Live'})</span>
           </h2>
-          <Link href="/admin/bookings" className="flex items-center gap-1.5 text-sm font-semibold hover:text-[#D9A63A] transition-colors" style={{ color: "#1B1E4F" }}>
+          <Link href="/admin/bookings" className="flex items-center gap-1.5 text-sm font-semibold hover:text-secondary transition-colors" style={{ color: "#1B1E4F" }}>
             {isAr ? "عرض الكل" : "View All"} <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -358,7 +358,7 @@ export default function AdminDashboard() {
                       style={booking.isNew ? { animation: 'slideIn 0.5s ease-out' } : {}}
                     >
                       <td className="py-4">
-                        <Link href={`/admin/bookings/${booking.bookingId}`} className="font-bold hover:text-[#D9A63A] transition-colors" style={{ color: "#1B1E4F" }}>
+                        <Link href={`/admin/bookings/${booking.bookingId}`} className="font-bold hover:text-secondary transition-colors" style={{ color: "#1B1E4F" }}>
                           {booking.bookingId}
                         </Link>
                       </td>

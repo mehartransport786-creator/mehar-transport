@@ -340,16 +340,16 @@
     "clickToViewGallery": "انقر لتكبير المعرض"
   },
   "PilgrimExperience": {
-    "vipAirportMeetGreet": "استقبال كبار الشخصيات بالمطار",
-    "ourChauffeursWaitInTheArrivalsHallWithAN": "سائقونا بانتظارك في صالة الوصول مع لوحة ترحيبية والمساعدة في حمل الأمتعة.",
-    "seamlessHolyCityTransfers": "نقل سلس إلى مكة والمدينة",
-    "sereneAndComfortableTransfersBetweenJedd": "تنقلات هادئة ومريحة بين جدة ومكة المكرمة والمدينة المنورة في مركبات فاخرة.",
+    "vipAirportMeetGreet": "استقبال في المطار",
+    "ourChauffeursWaitInTheArrivalsHallWithAN": "سائقونا بانتظارك في صالات الوصول في جدة أو المدينة المنورة مع لوحة ترحيبية، والمساعدة في حمل الأمتعة للانطلاق الفوري.",
+    "seamlessHolyCityTransfers": "تنقلات المدن ومكة والمدينة",
+    "sereneAndComfortableTransfersBetweenJedd": "رحلات خاصة ومحجوزة مسبقاً بين جدة ومكة والمدينة. أسعار ثابتة تعني عدم وجود مفاوضات عند الوصول.",
     "directHotelDropOffs": "توصيل مباشر للفنادق",
-    "expertKnowledgeOfHotelLocationsEnsuringY": "معرفة تامة بمواقع الفنادق لضمان وصولك مباشرة إلى باب فندقك دون عناء.",
-    "dedicatedPilgrimCare": "رعاية فائقة للحجاج والمعتمرين",
-    "professionalChauffeursSpeciallyTrainedTo": "سائقون محترفون ومدربون خصيصاً لتلبية احتياجات ضيوف الرحمن باحترام وتقدير.",
-    "theLuxuryUmrahExperience": "تجربة العمرة الفاخرة",
-    "itIsOurHonorToServeTheGuestsOfAllahOurUm": "نحن نتشرف بخدمة ضيوف الرحمن. تم تصميم خدمات نقل العمرة لدينا لتوفير أقصى درجات السكينة والراحة، لتتفرغ تماماً لعبادتك."
+    "expertKnowledgeOfHotelLocationsEnsuringY": "سائقون ذوو خبرة بالمنطقة المركزية للحرمين، مما يضمن التوصيل لأقرب نقطة مسموح بها لفندقك.",
+    "dedicatedPilgrimCare": "سعة تناسب العائلات والمجموعات",
+    "professionalChauffeursSpeciallyTrainedTo": "سيارات تتراوح من السيدان إلى حافلات بـ 22 مقعداً لإبقاء عائلتك أو مجموعتك معاً.",
+    "theLuxuryUmrahExperience": "نقل موثوق للعمرة",
+    "itIsOurHonorToServeTheGuestsOfAllahOurUm": "ركز على رحلتك الروحانية. نحن نقدم وسيلة نقل عملية وموثوقة ومسجلة للحجاج والمعتمرين في المملكة."
   },
   "PremiumVehicleCollection": {
     "thePremiumCollection": "مجموعة النخبة",
@@ -493,16 +493,16 @@
   },
   "ReviewsSection": {
     "ahmedAlSalem": "أحمد السالم",
-    "ceo": "رئيس تنفيذي",
-    "exceptionalServiceByEveryMeasureTheRolls": "خدمة استثنائية بكل المقاييس. سيارة سيارة فاخرة كانت في قمة النظافة والفخامة، والسائق كان محترفاً جداً. ميهار هي خياري الأول دائماً لاجتماعات العمل.",
+    "ceo": "عميل شركات",
+    "exceptionalServiceByEveryMeasureTheRolls": "خدمة موثوقة وفي الوقت المحدد. كانت السيارة نظيفة تماماً والسائق قاد رحلة جدة إلى مكة بسلاسة. ممتازة لاحتياجات شركتنا.",
     "sarahFahad": "سارة فهد",
-    "vipGuest": "ضيفة VIP",
-    "theAirportMeetAndGreetAtJeddahWasSeamles": "تجربة الاستقبال من مطار جدة كانت سلسة وفاخرة. شعرت بالراحة والأمان التام طوال الرحلة إلى مكة. تفاصيل الخدمة تعكس فخامة حقيقية.",
+    "vipGuest": "مسافرة مع العائلة",
+    "theAirportMeetAndGreetAtJeddahWasSeamles": "الاستقبال في مطار جدة جعل وصول عائلتنا سهلاً جداً. السفر مع الأطفال للعمرة قد يكون متعباً، لكن سائق ميهار كان بانتظارنا عند بوابة الوصول.",
     "drMohammedAlOmar": "د. محمد العمر",
-    "frequentTraveler": "مسافر منتظم",
-    "unmatchedProfessionalismFromTheEaseOfBoo": "احترافية لا تضاهى. من سهولة الحجز عبر الموقع إلى التزام السائق بالوقت المحدد. شكراً لفريق ميهار على هذه التجربة الراقية.",
-    "voicesOfOurGuests": "آراء عملائنا المميزين",
-    "trustBuiltOnAbsoluteExcellence": "ثقة تُبنى على التميز المطلق"
+    "frequentTraveler": "معتمر",
+    "unmatchedProfessionalismFromTheEaseOfBoo": "أسعار شفافة وبدون رسوم خفية. سيارة هيونداي ستاريا التي حجزناها لمجموعتنا المكونة من 6 أشخاص كانت واسعة والتكييف ممتازاً للرحلة الطويلة.",
+    "voicesOfOurGuests": "ماذا يقول عملاؤنا",
+    "trustBuiltOnAbsoluteExcellence": "تجارب حقيقية من مسافرين حقيقيين"
   },
   "SafetySection": {
     "licensedDrivers": "سائقون مرخصون",
@@ -523,7 +523,7 @@
     "proactiveFlightTrackingToAvoidAnyDelays": "تتبع الرحلات الجوية لتجنب التأخيرات",
     "safetyCompliance": "الامتثال والسلامة",
     "yourSafetyIsOurHighestPriority": "سلامتك هي أولويتنا القصوى",
-    "atMeharTransportWeImplementStrictCorpora": "في مِهار للنقل، نطبق معايير سلامة مؤسسية صارمة لضمان راحة بالك. رحلتك معنا محمية ومراقبة بأحدث التقنيات."
+    "atMeharTransportWeImplementStrictCorpora": "بصفتنا مزود نقل مسجل، السلامة هي أساس عملنا. نحن نلتزم التزاماً صارماً بلوائح النقل السعودية، وكل مركبة تخضع للفحص والتأمين والتتبع."
   },
   "ServicesSection": {
     "premiumAirportTransfers": "نقل المطار المتميز",
@@ -540,14 +540,14 @@
     "bookService": "احجز الخدمة"
   },
   "TrustBar": {
-    "eliteChauffeurs": "نخبة السائقين",
-    "professionallyTrained": "مدربون باحترافية عالية",
+    "eliteChauffeurs": "سائقون محترفون",
+    "professionallyTrained": "مرخصون ومدربون",
     "reliableJourneys": "رحلات موثوقة",
-    "precisionTracking": "تتبع دقيق وضمان الوصول",
-    "247Concierge": "متاحون 24/7",
-    "roundTheClockSupport": "خدمة عملاء على مدار الساعة",
-    "worldClassStandards": "معايير عالمية",
-    "ultraLuxuryFleet": "مركبات فائقة الفخامة"
+    "precisionTracking": "تتبع المركبات والرحلات",
+    "247Concierge": "دعم عملاء 24/7",
+    "roundTheClockSupport": "مساعدة متعددة اللغات",
+    "worldClassStandards": "شركة مسجلة",
+    "ultraLuxuryFleet": "مرخصة في السعودية"
   },
   "ComfortExperience": {
     "theComfortExperience": "تجربة الراحة",

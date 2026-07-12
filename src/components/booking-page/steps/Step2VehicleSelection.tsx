@@ -131,14 +131,14 @@ export function Step2VehicleSelection() {
     <div className="p-6 sm:p-8 md:p-10 lg:p-12">
       {/* Header */}
       <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 bg-[#D9A63A]/10 text-[#D9A63A] px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
           <Sparkles className="w-4 h-4" />
           Step 2 of 4
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1B1E4F] mb-2 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-2 tracking-tight">
           Choose Your Vehicle
         </h2>
-        <p className="text-lg text-[#1B1E4F]/40 font-medium" dir="rtl">اختر مركبتك</p>
+        <p className="text-lg text-primary/40 font-medium" dir="rtl">اختر مركبتك</p>
         <p className="text-sm text-gray-500 mt-2 max-w-lg mx-auto">
           Select one or multiple vehicles for your journey. Prices shown include all applicable seasonal adjustments.
         </p>
@@ -160,17 +160,17 @@ export function Step2VehicleSelection() {
               transition={{ delay: idx * 0.05, duration: 0.4 }}
               className={`bg-white rounded-2xl border-2 overflow-hidden transition-all duration-300 ${
                 isSelected
-                  ? 'border-[#D9A63A] shadow-xl shadow-[#D9A63A]/10 ring-1 ring-[#D9A63A]/20'
+                  ? 'border-secondary shadow-xl shadow-secondary/10 ring-1 ring-secondary/20'
                   : 'border-gray-100 hover:border-gray-200 hover:shadow-lg'
               }`}
             >
               {/* Vehicle Image */}
-              <div className="relative h-44 sm:h-52 w-full bg-gradient-to-br from-[#F8F9FC] to-[#EEF0F4] flex items-center justify-center overflow-hidden">
+              <div className="relative h-44 sm:h-52 w-full bg-gradient-to-br from-muted to-muted flex items-center justify-center overflow-hidden">
                 {isSelected && (
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute top-3 left-3 bg-[#D9A63A] text-white p-1.5 rounded-full z-10 shadow-lg"
+                    className="absolute top-3 left-3 bg-secondary text-white p-1.5 rounded-full z-10 shadow-lg"
                   >
                     <Check className="w-4 h-4" />
                   </motion.div>
@@ -179,7 +179,7 @@ export function Step2VehicleSelection() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="absolute top-3 right-3 bg-[#1B1E4F] text-white px-3 py-1 rounded-full text-xs font-bold z-10"
+                    className="absolute top-3 right-3 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold z-10"
                   >
                     ×{qty}
                   </motion.div>
@@ -197,9 +197,9 @@ export function Step2VehicleSelection() {
                 {/* Name & Price Row */}
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-lg font-bold text-[#1B1E4F] leading-tight">{vehicle.vehicleName}</h3>
+                    <h3 className="text-lg font-bold text-primary leading-tight">{vehicle.vehicleName}</h3>
                     <p className="text-xs text-gray-400 mt-0.5" dir="rtl">{vehicle.vehicleNameAr}</p>
-                    <span className="inline-block mt-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#1B1E4F]/5 text-[#1B1E4F]/60">
+                    <span className="inline-block mt-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/5 text-primary/60">
                       {vehicle.vehicleType}
                     </span>
                   </div>
@@ -211,7 +211,7 @@ export function Step2VehicleSelection() {
                       </div>
                     ) : (
                       <>
-                        <div className="text-2xl font-black text-[#1B1E4F] tabular-nums">
+                        <div className="text-2xl font-black text-primary tabular-nums">
                           {pricing.totalIncludingTax.toFixed(0)}
                         </div>
                         <div className="text-xs text-gray-400 font-medium">SAR / trip</div>
@@ -261,8 +261,8 @@ export function Step2VehicleSelection() {
 
                 {/* Quantity Controls */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-sm font-semibold text-[#1B1E4F]">Vehicles needed</span>
-                  <div className="flex items-center gap-1 bg-[#F8F9FC] rounded-xl p-1 border border-gray-200">
+                  <span className="text-sm font-semibold text-primary">Vehicles needed</span>
+                  <div className="flex items-center gap-1 bg-muted rounded-xl p-1 border border-gray-200">
                     <button
                       onClick={() => handleQuantityChange(vehicle, -1)}
                       disabled={qty === 0}
@@ -270,10 +270,10 @@ export function Step2VehicleSelection() {
                     >
                       <Minus className="w-4 h-4" />
                     </button>
-                    <span className="w-8 text-center font-bold text-[#1B1E4F] text-lg tabular-nums">{qty}</span>
+                    <span className="w-8 text-center font-bold text-primary text-lg tabular-nums">{qty}</span>
                     <button
                       onClick={() => handleQuantityChange(vehicle, 1)}
-                      className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-white hover:shadow-sm text-[#D9A63A] transition-all"
+                      className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-white hover:shadow-sm text-secondary transition-all"
                     >
                       <Plus className="w-4 h-4" />
                     </button>
@@ -292,10 +292,10 @@ export function Step2VehicleSelection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="mt-6 bg-[#1B1E4F] rounded-2xl p-5 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+            className="mt-6 bg-primary rounded-2xl p-5 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
           >
             <div className="flex items-center gap-4">
-              <ShieldCheck className="w-5 h-5 text-[#D9A63A] shrink-0" />
+              <ShieldCheck className="w-5 h-5 text-secondary shrink-0" />
               <div>
                 <div className="font-bold text-sm">{totalVehicles} vehicle{totalVehicles > 1 ? 's' : ''} selected</div>
                 <div className="text-xs text-gray-400">Total capacity: {totalCapacity} passengers</div>
@@ -316,7 +316,7 @@ export function Step2VehicleSelection() {
       <div className="mt-10 flex justify-between items-center">
         <button
           onClick={prevStep}
-          className="flex items-center gap-2 text-gray-400 hover:text-[#1B1E4F] font-semibold transition-colors text-sm"
+          className="flex items-center gap-2 text-gray-400 hover:text-primary font-semibold transition-colors text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           Back
@@ -326,7 +326,7 @@ export function Step2VehicleSelection() {
           disabled={!hasSelection}
           whileHover={hasSelection ? { scale: 1.02 } : {}}
           whileTap={hasSelection ? { scale: 0.98 } : {}}
-          className="bg-[#1B1E4F] text-white px-8 sm:px-12 py-4 rounded-xl text-base font-bold hover:bg-[#2A2D5F] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-3 shadow-lg shadow-[#1B1E4F]/20"
+          className="bg-primary text-white px-8 sm:px-12 py-4 rounded-xl text-base font-bold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-3 shadow-lg shadow-primary/20"
         >
           Travel Details
           <ArrowRight className="w-5 h-5" />

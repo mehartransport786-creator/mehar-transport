@@ -18,7 +18,7 @@ export function VehicleSEO({ seo }: VehicleSEOProps) {
   if (!seo) return null;
 
   return (
-    <section className="bg-slate-50 rounded-3xl p-8 md:p-12 mt-12 border border-gray-100 prose prose-lg max-w-none prose-headings:text-[#1B1E4F] prose-p:text-gray-600">
+    <section className="bg-slate-50 rounded-3xl p-8 md:p-12 mt-12 border border-gray-100 prose prose-lg max-w-none prose-headings:text-primary prose-p:text-gray-600">
       <h2 className="text-2xl font-bold mb-6">
         {isAr ? seo.titleAr : seo.title}
       </h2>

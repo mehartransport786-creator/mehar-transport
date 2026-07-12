@@ -114,24 +114,24 @@ export function StickySummary() {
 
   // Normal Sticky Summary
   return (
-    <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 p-6 sticky top-28">
-      <h3 className="text-lg font-bold text-[#1B1E4F] mb-6 flex items-center gap-2">
-        <ShieldCheck className="w-5 h-5 text-[#D9A63A]" />
+    <div className="bg-background rounded-2xl shadow-[var(--shadow-luxury)] border border-border p-6 sticky top-28">
+      <h3 className="text-lg font-bold text-primary mb-6 flex items-center gap-2">
+        <ShieldCheck className="w-5 h-5 text-secondary" />
         {isAr ? "ملخص الحجز" : "Booking Summary"}
       </h3>
 
       <div className="space-y-4 mb-6">
         {/* Journey Summary */}
-        <div className="flex justify-between items-start pb-4 border-b border-gray-100">
+        <div className="flex justify-between items-start pb-4 border-b border-border">
           <div>
-            <div className="text-xs text-gray-400 font-medium mb-1">{isAr ? "تفاصيل الرحلة" : "Journey"}</div>
-            <div className="font-semibold text-sm text-[#1B1E4F]">
+            <div className="text-xs text-muted-foreground font-medium mb-1">{isAr ? "تفاصيل الرحلة" : "Journey"}</div>
+            <div className="font-semibold text-sm text-primary">
               {state.serviceType === "transfer" 
                 ? (state.routeName || (isAr ? "لم يتم تحديد المسار" : "Route not selected"))
                 : (state.pickupLocation || (isAr ? "لم يتم تحديد الوجهة" : "Location not set"))
               }
             </div>
-            <div className="text-xs text-gray-500 mt-1">
+            <div className="text-xs text-muted-foreground/60 mt-1">
               {state.travelDate} • {state.travelTime}
               {state.serviceType === "hourly" && ` • ${state.durationHours} ${isAr ? "ساعات" : "hours"}`}
             </div>
@@ -140,28 +140,28 @@ export function StickySummary() {
 
         {/* Vehicle Summary */}
         {state.selectedVehicle && (
-          <div className="flex justify-between items-start pb-4 border-b border-gray-100">
+          <div className="flex justify-between items-start pb-4 border-b border-border">
             <div>
-              <div className="text-xs text-gray-400 font-medium mb-1">{isAr ? "المركبة" : "Vehicle"}</div>
-              <div className="font-semibold text-sm text-[#1B1E4F]">
+              <div className="text-xs text-muted-foreground font-medium mb-1">{isAr ? "المركبة" : "Vehicle"}</div>
+              <div className="font-semibold text-sm text-primary">
                 {isAr ? state.selectedVehicle.vehicleNameAr : state.selectedVehicle.vehicleName}
               </div>
             </div>
-            <div className="font-bold text-sm text-[#1B1E4F] tabular-nums">
-              {state.pricing.basePrice.toFixed(0)} <span className="text-xs text-gray-400">SAR</span>
+            <div className="font-bold text-sm text-primary tabular-nums">
+              {state.pricing.basePrice.toFixed(0)} <span className="text-xs text-muted-foreground">SAR</span>
             </div>
           </div>
         )}
 
         {/* Extras Summary */}
         {state.pricing.adjustments.map((adj, idx) => (
-          <div key={idx} className="flex justify-between items-start pb-4 border-b border-gray-100">
+          <div key={idx} className="flex justify-between items-start pb-4 border-b border-border">
             <div>
-              <div className="text-xs text-gray-400 font-medium mb-1">{isAr ? "إضافة" : "Add-on"}</div>
-              <div className="font-medium text-sm text-[#1B1E4F]">{adj.name}</div>
+              <div className="text-xs text-muted-foreground font-medium mb-1">{isAr ? "إضافة" : "Add-on"}</div>
+              <div className="font-medium text-sm text-primary">{adj.name}</div>
             </div>
-            <div className="font-bold text-sm text-[#D9A63A] tabular-nums">
-              +{adj.amount.toFixed(0)} <span className="text-xs text-gray-400">SAR</span>
+            <div className="font-bold text-sm text-secondary tabular-nums">
+              +{adj.amount.toFixed(0)} <span className="text-xs text-muted-foreground">SAR</span>
             </div>
           </div>
         ))}
@@ -169,27 +169,27 @@ export function StickySummary() {
         {/* Taxes */}
         {state.pricing.totalIncludingTax > 0 && (
           <div className="flex justify-between items-center pb-2">
-            <div className="text-xs text-gray-500 font-medium">{isAr ? "ضريبة القيمة المضافة (15%)" : "VAT (15%)"}</div>
-            <div className="text-xs text-gray-500 tabular-nums">{state.pricing.taxAmount.toFixed(0)} SAR</div>
+            <div className="text-xs text-muted-foreground/60 font-medium">{isAr ? "ضريبة القيمة المضافة (15%)" : "VAT (15%)"}</div>
+            <div className="text-xs text-muted-foreground/60 tabular-nums">{state.pricing.taxAmount.toFixed(0)} SAR</div>
           </div>
         )}
       </div>
 
       {/* Total */}
-      <div className="bg-[#F8F9FC] rounded-xl p-4 mb-6 flex justify-between items-center border border-gray-100">
-        <div className="text-sm font-bold text-[#1B1E4F]">{isAr ? "الإجمالي" : "Total Amount"}</div>
-        <div className="text-2xl font-black text-[#1B1E4F] tabular-nums">
-          {state.pricing.totalIncludingTax.toFixed(0)} <span className="text-sm text-gray-500 font-bold ml-1">SAR</span>
+      <div className="bg-muted rounded-xl p-4 mb-6 flex justify-between items-center border border-border">
+        <div className="text-sm font-bold text-primary">{isAr ? "الإجمالي" : "Total Amount"}</div>
+        <div className="text-2xl font-black text-primary tabular-nums">
+          {state.pricing.totalIncludingTax.toFixed(0)} <span className="text-sm text-muted-foreground/60 font-bold ml-1">SAR</span>
         </div>
       </div>
 
       <button
         disabled={!isComplete || state.isSubmitting}
         onClick={handleSubmit}
-        className={`w-full py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 ${
+        className={`w-full py-4 rounded-[var(--radius-btn)] font-bold text-base transition-all flex items-center justify-center gap-2 ${
           isComplete 
-            ? 'bg-[#1B1E4F] text-white hover:bg-[#2A2D5F] shadow-lg hover:shadow-xl'
-            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+            ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl'
+            : 'bg-muted text-muted-foreground cursor-not-allowed'
         }`}
       >
         {state.isSubmitting ? (

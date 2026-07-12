@@ -25,7 +25,7 @@ export function OurFootprint({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-24 bg-[#1B1E4F] relative overflow-hidden">
+    <section className="py-24 bg-primary relative overflow-hidden">
       {/* Abstract Background Map Pattern */}
       <div className="absolute inset-0 opacity-10">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -48,21 +48,21 @@ export function OurFootprint({ locale }: { locale: string }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm flex items-center gap-4">
-              <span className="w-12 h-px bg-[#D9A63A]"></span>
+            <h2 className="text-secondary font-bold tracking-widest uppercase mb-3 text-sm flex items-center gap-4">
+              <span className="w-12 h-px bg-secondary"></span>
               {isAr ? 'نطاق خدماتنا' : 'Our Footprint'}
             </h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-8">
+            <h3 className="text-3xl md:text-5xl font-bold text-primary-foreground leading-tight mb-8">
               {isAr ? 'تغطية واسعة في جميع أنحاء المملكة' : 'Extensive Coverage Across Saudi Arabia'}
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {highlights.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-default">
-                  <div className="w-10 h-10 rounded-lg bg-[#D9A63A]/20 flex items-center justify-center text-[#D9A63A]">
+                <div key={idx} className="flex items-center gap-4 p-4 bg-primary-foreground/5 backdrop-blur-sm rounded-[var(--radius-card)] border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors cursor-default">
+                  <div className="w-10 h-10 rounded-[var(--radius-btn)] bg-secondary/20 flex items-center justify-center text-secondary">
                     <item.icon className="w-5 h-5" />
                   </div>
-                  <span className={`font-semibold text-white ${isAr ? 'font-arabic' : ''}`}>
+                  <span className={`font-semibold text-primary-foreground ${isAr ? 'font-arabic' : ''}`}>
                     {isAr ? item.titleAr : item.title}
                   </span>
                 </div>
@@ -78,9 +78,9 @@ export function OurFootprint({ locale }: { locale: string }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute inset-0 bg-[#0A0D2A] rounded-full border border-white/10 shadow-[0_0_50px_rgba(217,166,58,0.1)] overflow-hidden">
+            <div className="absolute inset-0 bg-primary-foreground/5 rounded-full border border-primary-foreground/10 shadow-[var(--shadow-luxury)] overflow-hidden">
               {/* Map SVG Representation - Abstract */}
-              <svg viewBox="0 0 100 100" className="w-full h-full opacity-30 text-[#D9A63A]" fill="currentColor">
+              <svg viewBox="0 0 100 100" className="w-full h-full opacity-30 text-secondary" fill="currentColor">
                 <path d="M30,20 C40,10 60,10 70,30 C80,40 70,60 60,80 C50,90 40,90 30,70 C20,50 10,40 30,20 Z" />
               </svg>
 
@@ -94,10 +94,10 @@ export function OurFootprint({ locale }: { locale: string }) {
                   className="absolute flex flex-col items-center group cursor-pointer"
                   style={{ top: loc.top, left: loc.left }}
                 >
-                  <div className="w-4 h-4 rounded-full bg-[#D9A63A] relative z-10 shadow-[0_0_15px_rgba(217,166,58,1)]">
-                    <div className="absolute inset-0 rounded-full bg-[#D9A63A] animate-ping opacity-50" />
+                  <div className="w-4 h-4 rounded-full bg-secondary relative z-10 shadow-[0_0_15px_var(--secondary)]">
+                    <div className="absolute inset-0 rounded-full bg-secondary animate-ping opacity-50" />
                   </div>
-                  <div className="absolute top-6 whitespace-nowrap bg-white text-[#1B1E4F] px-3 py-1 rounded-md text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
+                  <div className="absolute top-6 whitespace-nowrap bg-background text-primary px-3 py-1 rounded-[var(--radius-btn)] text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
                     {isAr ? loc.nameAr : loc.name}
                   </div>
                 </motion.div>
@@ -105,13 +105,13 @@ export function OurFootprint({ locale }: { locale: string }) {
 
               {/* Connecting lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 5 }}>
-                <path d="M 30% 55% L 25% 50% L 28% 35% L 60% 45% L 35% 58% Z" fill="none" stroke="#D9A63A" strokeWidth="2" strokeDasharray="4 4" className="animate-[dash_20s_linear_infinite]" />
+                <path d="M 30% 55% L 25% 50% L 28% 35% L 60% 45% L 35% 58% Z" fill="none" stroke="var(--secondary)" strokeWidth="2" strokeDasharray="4 4" className="animate-[dash_20s_linear_infinite]" />
               </svg>
             </div>
             
-            <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-2xl z-20 max-w-[200px]">
-              <MapPin className="w-8 h-8 text-[#D9A63A] mb-2" />
-              <div className={`font-bold text-[#1B1E4F] ${isAr ? 'font-arabic' : ''}`}>
+            <div className="absolute -bottom-6 -right-6 bg-background rounded-[var(--radius-card)] p-6 shadow-[var(--shadow-luxury)] z-20 max-w-[200px]">
+              <MapPin className="w-8 h-8 text-secondary mb-2" />
+              <div className={`font-bold text-primary ${isAr ? 'font-arabic' : ''}`}>
                 {isAr ? 'حضور رئيسي في المطارات والفنادق وطرق الحجاج' : 'Major presence across airports, hotels, and pilgrim routes.'}
               </div>
             </div>

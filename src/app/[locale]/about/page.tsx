@@ -81,7 +81,7 @@ export default async function AboutUsPage({ params }: { params: { locale: string
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="bg-[#F5F4F1] min-h-screen">
+      <main className="bg-background min-h-screen">
         <AboutHero locale={locale} />
         <CompanyIntro locale={locale} />
         <TrustStats locale={locale} />

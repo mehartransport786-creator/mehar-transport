@@ -43,7 +43,7 @@ export default function DeleteConfirmModal({
           <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <AlertTriangle className="w-8 h-8" />
           </div>
-          <h3 className="text-xl font-bold text-[#1B1E4F] mb-2">
+          <h3 className="text-xl font-bold text-primary mb-2">
             {isAr ? "هل أنت متأكد من الحذف؟" : "Confirm Deletion"}
           </h3>
           <p className="text-gray-500 mb-6">

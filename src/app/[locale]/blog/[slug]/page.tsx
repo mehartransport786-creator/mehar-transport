@@ -74,13 +74,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
       
       <div className="bg-gray-50 dark:bg-[#0F172A] min-h-screen pb-24">
         {/* Article Header */}
-        <div className="bg-white dark:bg-[#1B1E4F] border-b border-gray-200 dark:border-white/10 pt-24 lg:pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="bg-white dark:bg-primary border-b border-gray-200 dark:border-white/10 pt-24 lg:pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-gray-500 mb-8 font-medium">
-              <Link href="/blog" className="hover:text-[#D9A63A] transition-colors">{isAr ? 'المدونة' : 'Blog'}</Link>
+              <Link href="/blog" className="hover:text-secondary transition-colors">{isAr ? 'المدونة' : 'Blog'}</Link>
               <ChevronRight className="w-4 h-4 rtl:rotate-180" />
-              <Link href={`/blog/category/${post.categoryId?.slug}`} className="hover:text-[#D9A63A] transition-colors">
+              <Link href={`/blog/category/${post.categoryId?.slug}`} className="hover:text-secondary transition-colors">
                 {post.categoryId?.name}
               </Link>
               <ChevronRight className="w-4 h-4 rtl:rotate-180" />
@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                 {post.authorId?.avatar ? (
                   <img src={post.authorId.avatar} alt="Author" className="w-12 h-12 rounded-full object-cover" />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-[#1B1E4F] text-white flex items-center justify-center font-bold text-lg">
+                  <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
                     {post.authorId?.name?.charAt(0) || 'M'}
                   </div>
                 )}
@@ -156,7 +156,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             {/* Main Content */}
             <div className="lg:col-span-8">
               <article 
-                className="prose prose-lg dark:prose-invert prose-headings:font-bold prose-headings:text-[#1B1E4F] dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-800 prose-img:rounded-xl prose-img:shadow-md max-w-none mb-16"
+                className="prose prose-lg dark:prose-invert prose-headings:font-bold prose-headings:text-primary dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-800 prose-img:rounded-xl prose-img:shadow-md max-w-none mb-16"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
 
@@ -178,11 +178,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
               {/* Author Bio Box */}
               {post.authorId && (
-                <div className="bg-white dark:bg-[#1B1E4F] rounded-2xl p-8 border border-gray-100 dark:border-white/10 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-6">
+                <div className="bg-white dark:bg-primary rounded-2xl p-8 border border-gray-100 dark:border-white/10 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-6">
                   {post.authorId.avatar ? (
                     <img src={post.authorId.avatar} alt="Author" className="w-24 h-24 rounded-full object-cover shadow-sm" />
                   ) : (
-                    <div className="w-24 h-24 rounded-full bg-[#1B1E4F] text-white flex items-center justify-center font-bold text-3xl shadow-sm shrink-0">
+                    <div className="w-24 h-24 rounded-full bg-primary text-white flex items-center justify-center font-bold text-3xl shadow-sm shrink-0">
                       {post.authorId.name?.charAt(0) || 'M'}
                     </div>
                   )}
@@ -195,7 +195,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                     </p>
                     <Link 
                       href={`/blog/author/${post.authorId.slug}`}
-                      className="text-[#D9A63A] font-bold hover:underline"
+                      className="text-secondary font-bold hover:underline"
                     >
                       {isAr ? 'عرض جميع مقالات المؤلف' : 'View all posts by author'} &rarr;
                     </Link>
@@ -208,8 +208,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             <div className="lg:col-span-4 space-y-8">
               
               {/* Booking CTA Widget */}
-              <div className="bg-[#1B1E4F] rounded-2xl p-8 text-white relative overflow-hidden shadow-xl">
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#D9A63A] rounded-full opacity-20 blur-2xl"></div>
+              <div className="bg-primary rounded-2xl p-8 text-white relative overflow-hidden shadow-xl">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary rounded-full opacity-20 blur-2xl"></div>
                 <div className="relative z-10">
                   <h3 className="text-2xl font-bold mb-4 font-heading">
                     {isAr ? 'احجز رحلتك القادمة مع ميهار' : 'Book Your Next Journey with Mehar'}
@@ -219,7 +219,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                   </p>
                   <Link 
                     href="/booking" 
-                    className="block w-full text-center bg-[#D9A63A] text-[#1B1E4F] font-bold py-3 rounded-xl hover:bg-white transition-colors"
+                    className="block w-full text-center bg-secondary text-primary font-bold py-3 rounded-xl hover:bg-white transition-colors"
                   >
                     {isAr ? 'احجز الآن' : 'Book Now'}
                   </Link>
@@ -235,7 +235,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
               {/* Related Posts */}
               {relatedPosts.length > 0 && (
-                <div className="bg-white dark:bg-[#1B1E4F] rounded-2xl p-6 border border-gray-100 dark:border-white/10 shadow-sm">
+                <div className="bg-white dark:bg-primary rounded-2xl p-6 border border-gray-100 dark:border-white/10 shadow-sm">
                   <h3 className="text-lg font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/10 pb-4">
                     {isAr ? 'مقالات ذات صلة' : 'Related Articles'}
                   </h3>
@@ -246,7 +246,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                           <img src={rp.featuredImage || '/hero-luxury.webp'} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 dark:text-white text-sm line-clamp-2 group-hover:text-[#D9A63A] transition-colors mb-2">
+                          <h4 className="font-bold text-gray-900 dark:text-white text-sm line-clamp-2 group-hover:text-secondary transition-colors mb-2">
                             {rp.title}
                           </h4>
                           <div className="text-xs text-gray-500 flex items-center gap-1">

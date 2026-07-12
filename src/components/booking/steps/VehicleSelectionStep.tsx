@@ -76,7 +76,7 @@ export default function VehicleSelectionStep({ data, updateData, routes }: Props
                 </div>
               )}
               
-              <div className="h-48 relative p-6 flex items-center justify-center bg-gradient-to-b from-white/5 to-transparent">
+              <div className="h-40 sm:h-48 relative p-4 sm:p-6 flex items-center justify-center bg-gradient-to-b from-white/5 to-transparent">
                 <Image
                   src={p.image || '/fleet/camry.png'}
                   alt={p.vehicleName}
@@ -86,37 +86,37 @@ export default function VehicleSelectionStep({ data, updateData, routes }: Props
                 />
               </div>
 
-              <div className="p-6 border-t border-secondary/20 space-y-5 bg-black/20">
+              <div className="p-4 sm:p-6 border-t border-secondary/20 space-y-4 sm:space-y-5 bg-black/20">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="text-xl font-bold text-white mb-1">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-1 leading-tight">
                       {isAr ? p.vehicleNameAr || p.vehicleName : p.vehicleName}
                     </h4>
-                    <p className="text-sm text-secondary font-medium tracking-wide">
+                    <p className="text-xs sm:text-sm text-secondary font-medium tracking-wide">
                       {isAr ? p.vehicleTypeAr || p.vehicleType : p.vehicleType}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-white leading-none">{displayPrice}</p>
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mt-1">SAR</p>
+                  <div className="text-right shrink-0 ml-2">
+                    <p className="text-xl sm:text-2xl font-bold text-white leading-none">{displayPrice}</p>
+                    <p className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest mt-1">SAR</p>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-sm text-gray-300 pt-2 border-t border-white/5">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2 bg-black/40 px-2 py-1 rounded-lg border border-white/5" title={isAr ? "الركاب" : "Passengers"}>
-                      <Users className="w-4 h-4 text-secondary" />
+                <div className="flex flex-wrap items-center justify-between text-xs sm:text-sm text-gray-300 pt-2 border-t border-white/5 gap-y-2">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex items-center gap-1.5 sm:gap-2 bg-black/40 px-2 py-1 rounded-lg border border-white/5" title={isAr ? "الركاب" : "Passengers"}>
+                      <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary" />
                       <span className="font-medium">{p.passengers}</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-black/40 px-2 py-1 rounded-lg border border-white/5" title={isAr ? "الحقائب" : "Luggage"}>
-                      <Briefcase className="w-4 h-4 text-secondary" />
+                    <div className="flex items-center gap-1.5 sm:gap-2 bg-black/40 px-2 py-1 rounded-lg border border-white/5" title={isAr ? "الحقائب" : "Luggage"}>
+                      <Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary" />
                       <span className="font-medium">{p.luggage}</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-secondary/70">
-                    <Snowflake className="w-4 h-4" title={isAr ? "تكييف" : "AC"} />
-                    <Wifi className="w-4 h-4" title={isAr ? "واي فاي" : "Wi-Fi"} />
-                    <Droplets className="w-4 h-4" title={isAr ? "ماء" : "Water"} />
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-secondary/70">
+                    <Snowflake className="w-3.5 h-3.5 sm:w-4 sm:h-4" title={isAr ? "تكييف" : "AC"} />
+                    <Wifi className="w-3.5 h-3.5 sm:w-4 sm:h-4" title={isAr ? "واي فاي" : "Wi-Fi"} />
+                    <Droplets className="w-3.5 h-3.5 sm:w-4 sm:h-4" title={isAr ? "ماء" : "Water"} />
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const InputField = ({ icon: Icon, label, required, ...props }: any) => (
   <div>
-    <label className="flex items-center gap-1 text-sm font-semibold text-[#1B1E4F] mb-2">
+    <label className="flex items-center gap-1 text-sm font-semibold text-primary mb-2">
       {label}
       {required && <span className="text-red-400 text-xs">*</span>}
     </label>
@@ -15,7 +15,7 @@ const InputField = ({ icon: Icon, label, required, ...props }: any) => (
       <Icon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-300 w-4.5 h-4.5" />
       <input
         {...props}
-        className="w-full bg-[#F8F9FC] border-2 border-transparent rounded-xl py-3 pl-11 pr-4 text-sm text-[#1B1E4F] placeholder:text-gray-400 focus:ring-0 focus:border-[#D9A63A] focus:bg-white transition-all"
+        className="w-full bg-muted border-2 border-transparent rounded-xl py-3 pl-11 pr-4 text-sm text-primary placeholder:text-gray-400 focus:ring-0 focus:border-secondary focus:bg-white transition-all"
       />
     </div>
   </div>
@@ -84,14 +84,14 @@ export function Step3TravelDetails() {
     <div className="p-6 sm:p-8 md:p-10 lg:p-12">
       {/* Header */}
       <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 bg-[#D9A63A]/10 text-[#D9A63A] px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
           <FileText className="w-4 h-4" />
           Step 3 of 4
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1B1E4F] mb-2 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-2 tracking-tight">
           Travel & Passenger Details
         </h2>
-        <p className="text-lg text-[#1B1E4F]/40 font-medium" dir="rtl">تفاصيل السفر والركاب</p>
+        <p className="text-lg text-primary/40 font-medium" dir="rtl">تفاصيل السفر والركاب</p>
       </div>
 
       <div className="space-y-8">
@@ -102,9 +102,9 @@ export function Step3TravelDetails() {
           transition={{ delay: 0.1 }}
           className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
         >
-          <div className="px-6 py-4 bg-[#F8F9FC] border-b border-gray-100 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-[#1B1E4F] text-white flex items-center justify-center text-sm font-bold">1</div>
-            <h3 className="font-bold text-[#1B1E4F]">When are you traveling?</h3>
+          <div className="px-6 py-4 bg-muted border-b border-gray-100 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center text-sm font-bold">1</div>
+            <h3 className="font-bold text-primary">When are you traveling?</h3>
           </div>
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
             <InputField icon={Calendar} label="Travel Date" required type="date" value={state.dates.pickupDate} onChange={(e: any) => handleDateChange(e.target.value)} min={new Date().toISOString().split('T')[0]} />
@@ -126,9 +126,9 @@ export function Step3TravelDetails() {
           transition={{ delay: 0.2 }}
           className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
         >
-          <div className="px-6 py-4 bg-[#F8F9FC] border-b border-gray-100 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-[#1B1E4F] text-white flex items-center justify-center text-sm font-bold">2</div>
-            <h3 className="font-bold text-[#1B1E4F]">Exact locations</h3>
+          <div className="px-6 py-4 bg-muted border-b border-gray-100 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center text-sm font-bold">2</div>
+            <h3 className="font-bold text-primary">Exact locations</h3>
           </div>
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
             <InputField icon={MapPin} label="Pickup Location" required type="text" placeholder="Hotel name, terminal, lobby..." value={state.passengerInfo.pickupLocation} onChange={(e: any) => update('pickupLocation', e.target.value)} />
@@ -145,9 +145,9 @@ export function Step3TravelDetails() {
           transition={{ delay: 0.3 }}
           className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
         >
-          <div className="px-6 py-4 bg-[#F8F9FC] border-b border-gray-100 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-[#1B1E4F] text-white flex items-center justify-center text-sm font-bold">3</div>
-            <h3 className="font-bold text-[#1B1E4F]">Lead passenger</h3>
+          <div className="px-6 py-4 bg-muted border-b border-gray-100 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center text-sm font-bold">3</div>
+            <h3 className="font-bold text-primary">Lead passenger</h3>
           </div>
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
             <InputField icon={Users} label="Full Name" required type="text" placeholder="John Doe" value={state.passengerInfo.name} onChange={(e: any) => update('name', e.target.value)} />
@@ -158,13 +158,13 @@ export function Step3TravelDetails() {
             <InputField icon={Globe} label="Country" type="text" placeholder="e.g. Saudi Arabia, UK" value={state.passengerInfo.country} onChange={(e: any) => update('country', e.target.value)} />
             <InputField icon={Users} label="Total Passengers" type="number" min="1" max="100" value={state.passengerCount} onChange={(e: any) => update('passengerCount', e.target.value)} />
             <div className="sm:col-span-2">
-              <label className="flex items-center gap-1 text-sm font-semibold text-[#1B1E4F] mb-2">Special Requests</label>
+              <label className="flex items-center gap-1 text-sm font-semibold text-primary mb-2">Special Requests</label>
               <textarea
                 rows={3}
                 placeholder="Wheelchair access, child seat, extra luggage, etc."
                 value={state.passengerInfo.specialRequests}
                 onChange={(e) => update('specialRequests', e.target.value)}
-                className="w-full bg-[#F8F9FC] border-2 border-transparent rounded-xl py-3 px-4 text-sm text-[#1B1E4F] placeholder:text-gray-400 focus:ring-0 focus:border-[#D9A63A] focus:bg-white transition-all resize-none"
+                className="w-full bg-muted border-2 border-transparent rounded-xl py-3 px-4 text-sm text-primary placeholder:text-gray-400 focus:ring-0 focus:border-secondary focus:bg-white transition-all resize-none"
               />
             </div>
           </div>
@@ -175,7 +175,7 @@ export function Step3TravelDetails() {
       <div className="mt-10 flex justify-between items-center">
         <button
           onClick={prevStep}
-          className="flex items-center gap-2 text-gray-400 hover:text-[#1B1E4F] font-semibold transition-colors text-sm"
+          className="flex items-center gap-2 text-gray-400 hover:text-primary font-semibold transition-colors text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           Back
@@ -185,7 +185,7 @@ export function Step3TravelDetails() {
           disabled={!isComplete}
           whileHover={isComplete ? { scale: 1.02 } : {}}
           whileTap={isComplete ? { scale: 0.98 } : {}}
-          className="bg-[#1B1E4F] text-white px-8 sm:px-12 py-4 rounded-xl text-base font-bold hover:bg-[#2A2D5F] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-3 shadow-lg shadow-[#1B1E4F]/20"
+          className="bg-primary text-white px-8 sm:px-12 py-4 rounded-xl text-base font-bold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-3 shadow-lg shadow-primary/20"
         >
           Review Booking
           <ArrowRight className="w-5 h-5" />

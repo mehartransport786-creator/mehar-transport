@@ -18,12 +18,12 @@ export function MobileActionBar() {
   );
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 pb-safe z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+    <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border p-4 pb-safe z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <div className="text-xs text-gray-500 font-medium mb-0.5">{isAr ? "الإجمالي" : "Total"}</div>
-          <div className="text-xl font-black text-[#1B1E4F] tabular-nums leading-none">
-            {state.pricing.totalIncludingTax.toFixed(0)} <span className="text-sm text-gray-400 font-bold ml-0.5">SAR</span>
+          <div className="text-xs text-muted-foreground font-medium mb-0.5">{isAr ? "الإجمالي" : "Total"}</div>
+          <div className="text-xl font-black text-primary tabular-nums leading-none">
+            {state.pricing.totalIncludingTax.toFixed(0)} <span className="text-sm text-muted-foreground/60 font-bold ml-0.5">SAR</span>
           </div>
         </div>
         
@@ -36,10 +36,10 @@ export function MobileActionBar() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }
           }}
-          className={`flex-1 py-3.5 rounded-xl font-bold text-sm transition-all text-center ${
+          className={`flex-1 py-3.5 rounded-[var(--radius-btn)] font-bold text-sm transition-all text-center ${
             isComplete 
-              ? 'bg-[#1B1E4F] text-white hover:bg-[#2A2D5F]'
-              : 'bg-gray-100 text-gray-400'
+              ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+              : 'bg-muted text-muted-foreground'
           }`}
         >
           {state.isSubmitting ? "..." : (isComplete ? (isAr ? "راجع للأسفل للتأكيد" : "Scroll Down to Confirm") : (isAr ? "أكمل التفاصيل" : "Complete Details"))}

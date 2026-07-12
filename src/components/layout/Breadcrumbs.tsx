@@ -23,7 +23,7 @@ export function Breadcrumbs({ items, variant = 'dark' }: BreadcrumbsProps) {
 
   const textColor = variant === 'light' ? 'text-white/60' : 'text-gray-500';
   const activeColor = variant === 'light' ? 'text-white' : 'text-gray-900 dark:text-white';
-  const hoverColor = variant === 'light' ? 'hover:text-[#D9A63A]' : 'hover:text-[#1B1E4F] dark:hover:text-[#D9A63A]';
+  const hoverColor = variant === 'light' ? 'hover:text-secondary' : 'hover:text-primary dark:hover:text-secondary';
   const iconColor = variant === 'light' ? 'text-white/30' : 'text-gray-300 dark:text-gray-600';
 
   return (

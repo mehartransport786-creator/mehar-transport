@@ -14,7 +14,7 @@ export default async function SettingsOverviewPage({ params: { locale } }: { par
   // These would typically be fetched from the database
   const stats = [
     { label: isAr ? "حالة الحساب" : "Account Status", value: admin?.status === "active" ? (isAr ? "نشط" : "Active") : "Inactive", color: "text-emerald-500", icon: User },
-    { label: isAr ? "الدور" : "Role", value: admin?.role?.name || "Admin", color: "text-[#1B1E4F]", icon: ShieldCheck },
+    { label: isAr ? "الدور" : "Role", value: admin?.role?.name || "Admin", color: "text-primary", icon: ShieldCheck },
     { label: isAr ? "المصادقة الثنائية" : "2FA Status", value: admin?.twoFactorEnabled ? (isAr ? "مفعل" : "Enabled") : (isAr ? "غير مفعل" : "Disabled"), color: admin?.twoFactorEnabled ? "text-emerald-500" : "text-amber-500", icon: ShieldCheck },
     { label: isAr ? "الجلسات النشطة" : "Active Sessions", value: "1", color: "text-blue-500", icon: Activity },
   ];
@@ -22,7 +22,7 @@ export default async function SettingsOverviewPage({ params: { locale } }: { par
   return (
     <div className="p-8">
       <div className="mb-8 border-b border-gray-100 pb-6">
-        <h2 className="text-2xl font-bold text-[#1B1E4F]">
+        <h2 className="text-2xl font-bold text-primary">
           {isAr ? "نظرة عامة على الإعدادات" : "Settings Overview"}
         </h2>
         <p className="text-gray-500 mt-1">
@@ -45,7 +45,7 @@ export default async function SettingsOverviewPage({ params: { locale } }: { par
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Security Checklist */}
         <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-[#1B1E4F] mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-500" />
             {isAr ? "فحص الأمان" : "Security Checklist"}
           </h3>
@@ -74,7 +74,7 @@ export default async function SettingsOverviewPage({ params: { locale } }: { par
 
         {/* Recent Security Activity */}
         <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-[#1B1E4F] mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
             <Activity className="w-5 h-5 text-blue-500" />
             {isAr ? "أحدث أنشطة الأمان" : "Recent Security Activity"}
           </h3>

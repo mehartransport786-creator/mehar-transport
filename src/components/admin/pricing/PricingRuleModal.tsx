@@ -81,7 +81,7 @@ export default function PricingRuleModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
       <div className="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <h3 className="text-xl font-bold text-[#1B1E4F]">
+          <h3 className="text-xl font-bold text-primary">
             {isEditing 
               ? (isAr ? "تعديل التسعيرة" : "Edit Pricing Rule") 
               : (isAr ? "إضافة تسعيرة جديدة" : "Add New Pricing Rule")}
@@ -108,7 +108,7 @@ export default function PricingRuleModal({
                 disabled={isEditing}
                 value={formData.routeId}
                 onChange={(e) => setFormData(prev => ({ ...prev, routeId: e.target.value }))}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors disabled:opacity-60"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors disabled:opacity-60"
               >
                 <option value="" disabled>{isAr ? "اختر المسار" : "Select a route"}</option>
                 {routes.map(r => (
@@ -128,7 +128,7 @@ export default function PricingRuleModal({
                 disabled={isEditing}
                 value={formData.vehicleId}
                 onChange={(e) => setFormData(prev => ({ ...prev, vehicleId: e.target.value }))}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors disabled:opacity-60"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors disabled:opacity-60"
               >
                 <option value="" disabled>{isAr ? "اختر المركبة" : "Select a vehicle"}</option>
                 {vehicles.map(v => (
@@ -155,7 +155,7 @@ export default function PricingRuleModal({
                   min="0"
                   value={formData.basePrice}
                   onChange={(e) => setFormData(prev => ({ ...prev, basePrice: Number(e.target.value) }))}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
                 />
               </div>
               <div>
@@ -168,7 +168,7 @@ export default function PricingRuleModal({
                   min="0"
                   value={formData.currentPrice}
                   onChange={(e) => setFormData(prev => ({ ...prev, currentPrice: Number(e.target.value) }))}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
                 />
               </div>
             </div>
@@ -201,7 +201,7 @@ export default function PricingRuleModal({
             <button 
               type="submit" 
               disabled={isLoading}
-              className="flex items-center gap-2 px-8 py-3 bg-[#1B1E4F] text-white font-bold rounded-xl hover:bg-[#2a2f6b] transition-all disabled:opacity-70"
+              className="flex items-center gap-2 px-8 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/80 transition-all disabled:opacity-70"
             >
               {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
               {isEditing ? (isAr ? "تحديث السعر" : "Update Rule") : (isAr ? "حفظ التسعيرة" : "Save Rule")}

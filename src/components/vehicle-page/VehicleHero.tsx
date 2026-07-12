@@ -46,8 +46,8 @@ export function VehicleHero({ vehicle, details }: VehicleHeroProps) {
             transition={{ duration: 0.8 }}
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-0.5 bg-[#D9A63A]" />
-              <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm">
+              <div className="w-12 h-0.5 bg-secondary" />
+              <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm">
                 {isAr ? details.theme.personalityAr : details.theme.personality}
               </span>
             </div>
@@ -96,7 +96,7 @@ export function VehicleHero({ vehicle, details }: VehicleHeroProps) {
           >
             <Link 
               href={`/booking?vehicle=${vehicle.id}`}
-              className="bg-[#D9A63A] text-[#1B1E4F] hover:bg-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3 text-sm uppercase tracking-widest shadow-xl"
+              className="bg-secondary text-primary hover:bg-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3 text-sm uppercase tracking-widest shadow-xl"
             >
               <Calendar className="w-5 h-5" />
               <span>{isAr ? "احجز الآن" : "Book Now"}</span>

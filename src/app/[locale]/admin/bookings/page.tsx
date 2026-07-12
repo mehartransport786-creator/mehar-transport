@@ -54,7 +54,7 @@ export default function BookingsPage() {
             </span>
           </p>
         </div>
-        <button className="flex items-center gap-2 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#1B1E4F]/20 hover:-translate-y-0.5">
+        <button className="flex items-center gap-2 bg-primary text-white hover:bg-primary/80 px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-primary/20 hover:-translate-y-0.5">
           <Plus className="w-4 h-4" />
           {isAr ? "حجز جديد" : "New Booking"}
         </button>
@@ -66,7 +66,7 @@ export default function BookingsPage() {
           onClick={() => setStatusFilter("all")}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all ${
             statusFilter === "all"
-              ? "bg-[#1B1E4F] text-white shadow-lg"
+              ? "bg-primary text-white shadow-lg"
               : "bg-white text-gray-500 border border-gray-200 hover:border-gray-300"
           }`}
         >
@@ -96,7 +96,7 @@ export default function BookingsPage() {
 
       {/* Search & Actions Bar */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4">
-        <div className="flex-1 flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-gray-200 focus-within:border-[#D9A63A]/50 focus-within:ring-2 focus-within:ring-[#D9A63A]/10 transition-all">
+        <div className="flex-1 flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-gray-200 focus-within:border-secondary/50 focus-within:ring-2 focus-within:ring-secondary/10 transition-all">
           <Search className="w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -144,13 +144,13 @@ export default function BookingsPage() {
                   return (
                     <tr
                       key={booking.bookingId}
-                      className={`hover:bg-[#F8F9FC] transition-all group ${
-                        booking.isNew ? 'bg-amber-50/60 border-l-4 border-l-[#D9A63A]' : ''
+                      className={`hover:bg-muted transition-all group ${
+                        booking.isNew ? 'bg-amber-50/60 border-l-4 border-l-secondary' : ''
                       }`}
                       style={booking.isNew ? { animation: 'fadeSlideIn 0.5s ease-out' } : {}}
                     >
                       <td className="px-6 py-4">
-                        <Link href={`/admin/bookings/${booking.bookingId}`} className="font-bold text-[#1B1E4F] hover:text-[#D9A63A] transition-colors">
+                        <Link href={`/admin/bookings/${booking.bookingId}`} className="font-bold text-primary hover:text-secondary transition-colors">
                           {booking.bookingId}
                         </Link>
                         {pb && (
@@ -173,7 +173,7 @@ export default function BookingsPage() {
                       <td className="px-6 py-4 text-gray-500 hidden xl:table-cell text-xs font-medium">{booking.travelDate}</td>
                       <td className="px-6 py-4 text-gray-600 hidden xl:table-cell font-bold text-center">{booking.passengers}</td>
                       <td className="px-6 py-4">
-                        <span className="font-bold text-[#1B1E4F]">{(booking.totalPrice || 0).toLocaleString()}</span>
+                        <span className="font-bold text-primary">{(booking.totalPrice || 0).toLocaleString()}</span>
                         <span className="text-xs text-gray-400 ml-1">SAR</span>
                       </td>
                       <td className="px-6 py-4 relative">

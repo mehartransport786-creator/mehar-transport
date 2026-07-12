@@ -31,15 +31,14 @@ export function PilgrimExperience() {
   ];
 
   return (
-    <section className="py-24 bg-[#0a0a0a] text-white">
+    <section className="py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
         
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="w-12 h-0.5 bg-[#D9A63A] mx-auto"
+            className="w-12 h-0.5 bg-secondary mx-auto"
           />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -55,7 +54,7 @@ export function PilgrimExperience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-400 font-light"
+            className="text-lg text-primary-foreground/70 font-light"
           >
             {t("itIsOurHonorToServeTheGuestsOfAllahOurUm")}
           </motion.p>
@@ -71,13 +70,13 @@ export function PilgrimExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
-                className="group bg-white/5 border border-white/10 rounded-[2rem] p-8 hover:bg-white/10 transition-colors"
+                className="group bg-primary-foreground/5 border border-primary-foreground/10 rounded-[var(--radius-card)] p-8 hover:bg-primary-foreground/10 transition-colors"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#D9A63A]/10 flex items-center justify-center text-[#D9A63A] mb-8 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-[var(--radius-sm)] bg-secondary/10 flex items-center justify-center text-secondary mb-8 group-hover:scale-110 transition-transform">
                   <Icon className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">{step.title}</h3>
-                <p className="text-gray-400 leading-relaxed font-light">{step.desc}</p>
+                <p className="text-primary-foreground/70 leading-relaxed font-light">{step.desc}</p>
               </motion.div>
             );
           })}

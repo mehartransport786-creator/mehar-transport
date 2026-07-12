@@ -89,7 +89,7 @@ export default function HourlyPricingClient({
     <div className="p-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {isAr ? "تسعير السائق بالساعة" : "Hourly Chauffeur Pricing"}
           </h2>
           <p className="text-gray-500 mt-1">
@@ -98,7 +98,7 @@ export default function HourlyPricingClient({
         </div>
         <button 
           onClick={() => handleOpenModal()}
-          className="flex items-center gap-2 px-5 py-2.5 bg-[#1B1E4F] text-white font-bold rounded-xl text-sm hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20"
+          className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/80 transition-all shadow-lg shadow-primary/20"
         >
           <Plus className="w-4 h-4" />
           {isAr ? "إضافة تسعيرة بالساعة" : "Add Hourly Rate"}
@@ -153,7 +153,7 @@ export default function HourlyPricingClient({
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-4 border-b border-gray-50">
                   <span className="text-sm text-gray-500">{isAr ? "سعر الساعة" : "Hourly Rate"}</span>
-                  <span className="font-black text-xl text-[#1B1E4F]">{rule.hourlyRate} <span className="text-sm font-semibold text-gray-400">SAR</span></span>
+                  <span className="font-black text-xl text-primary">{rule.hourlyRate} <span className="text-sm font-semibold text-gray-400">SAR</span></span>
                 </div>
                 
                 <div className="flex justify-between items-center text-sm">
@@ -163,7 +163,7 @@ export default function HourlyPricingClient({
 
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-gray-500">{isAr ? "ساعة إضافية" : "Extra Hour"}</span>
-                  <span className="font-bold text-[#D9A63A]">{rule.extraHourRate} SAR</span>
+                  <span className="font-bold text-secondary">{rule.extraHourRate} SAR</span>
                 </div>
               </div>
             </div>

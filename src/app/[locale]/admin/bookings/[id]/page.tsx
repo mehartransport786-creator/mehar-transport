@@ -115,7 +115,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="w-10 h-10 border-4 border-[#1B1E4F] border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -124,7 +124,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
     return (
       <div className="text-center py-20">
         <p className="text-2xl font-bold text-gray-400">Booking not found</p>
-        <Link href="/admin/bookings" className="text-[#D9A63A] font-semibold mt-4 inline-block">← Back to Bookings</Link>
+        <Link href="/admin/bookings" className="text-secondary font-semibold mt-4 inline-block">← Back to Bookings</Link>
       </div>
     );
   }
@@ -255,7 +255,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
           </h3>
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-[#1B1E4F] flex items-center justify-center text-white text-lg font-bold">
+              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white text-lg font-bold">
                 {(booking.customerName || 'G')[0]}
               </div>
               <div>
@@ -348,7 +348,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
           <div className="space-y-3 max-h-[250px] overflow-y-auto pr-2">
             {(booking.statusHistory || []).map((entry: any, i: number) => (
               <div key={i} className="flex items-start gap-3 text-sm">
-                <div className="mt-1 w-2 h-2 rounded-full bg-[#D9A63A] shrink-0" />
+                <div className="mt-1 w-2 h-2 rounded-full bg-secondary shrink-0" />
                 <div className="flex-1">
                   <span className="font-semibold capitalize text-gray-700">{entry.status?.replace(/_/g, ' ')}</span>
                   {entry.note && <span className="text-gray-400 ml-2">— {entry.note}</span>}
@@ -373,7 +373,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
                 <UserPlus className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-[#1B1E4F] text-lg">{booking.driverAssigned}</div>
+                <div className="font-bold text-primary text-lg">{booking.driverAssigned}</div>
                 <div className="text-xs font-semibold text-emerald-600 mt-0.5 flex items-center gap-1">
                   <CheckCircle className="w-3 h-3" />
                   {isAr ? 'تم التعيين بنجاح' : 'Assigned successfully'}
@@ -397,7 +397,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
                   if(e.target.value) handleAssignDriver(e.target.value);
                 }}
                 disabled={updating}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-700 outline-none focus:ring-2 focus:ring-[#1B1E4F]/20 focus:border-[#1B1E4F]"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-700 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               >
                 <option value="">{isAr ? 'اختيار سائق...' : 'Select driver...'}</option>
                 {drivers.filter(d => d.availability === 'available').map(driver => (

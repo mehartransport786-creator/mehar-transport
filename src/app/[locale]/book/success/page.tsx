@@ -61,7 +61,7 @@ export default async function BookingSuccessPage({ params, searchParams }: Props
           <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/20">
             <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-[#1B1E4F] dark:text-white mb-4 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-black text-primary dark:text-white mb-4 tracking-tight">
             Booking Confirmed!
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-2">
@@ -69,7 +69,7 @@ export default async function BookingSuccessPage({ params, searchParams }: Props
           </p>
           <div className="inline-block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-6 py-3 shadow-sm mt-4">
             <span className="text-sm text-slate-500 block mb-1">Booking Reference ID</span>
-            <span className="text-2xl font-bold text-[#D9A63A] tracking-wider">{displayData.bookingId}</span>
+            <span className="text-2xl font-bold text-secondary tracking-wider">{displayData.bookingId}</span>
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export default async function BookingSuccessPage({ params, searchParams }: Props
           {/* Trip Summary Card */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
             <div className="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-[#D9A63A]" />
+              <MapPin className="w-5 h-5 text-secondary" />
               <h3 className="font-bold text-lg">Trip Summary</h3>
             </div>
             <div className="p-6">
@@ -123,10 +123,10 @@ export default async function BookingSuccessPage({ params, searchParams }: Props
 
           {/* Price Card */}
           {!isMock && (
-            <div className="bg-[#1B1E4F] text-white rounded-2xl p-6 shadow-xl flex items-center justify-between">
+            <div className="bg-primary text-white rounded-2xl p-6 shadow-xl flex items-center justify-between">
               <div>
-                <div className="text-[#1B1E4F]/60 text-indigo-200 text-sm mb-1">Total Amount</div>
-                <div className="text-3xl font-black text-[#D9A63A] tabular-nums">
+                <div className="text-primary/60 text-indigo-200 text-sm mb-1">Total Amount</div>
+                <div className="text-3xl font-black text-secondary tabular-nums">
                   {displayData.totalPrice} <span className="text-base font-semibold text-white/60">SAR</span>
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default async function BookingSuccessPage({ params, searchParams }: Props
           </Link>
           <Link 
             href={`/${locale}/booking`}
-            className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold bg-[#D9A63A] text-white hover:bg-[#C4962F] transition-colors shadow-lg shadow-[#D9A63A]/20"
+            className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold bg-secondary text-white hover:bg-secondary/80 transition-colors shadow-lg shadow-secondary/20"
           >
             Book Another Trip
             <ArrowRight className="w-4 h-4" />

@@ -12,7 +12,8 @@ export function FloatingWhatsApp() {
       href="https://wa.me/966565638120"
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-6 rtl:left-6 ltr:right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#20bd5a] hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(37,211,102,0.4)] transition-all duration-300 flex items-center justify-center group"
+      className="fixed rtl:left-6 ltr:right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#20bd5a] hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(37,211,102,0.4)] transition-all duration-300 flex items-center justify-center group animate-fade-up-luxury"
+      style={{ bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))" }}
       aria-label={isAr ? "تواصل معنا عبر واتساب" : "Contact us on WhatsApp"}
     >
       <MessageCircle className="w-8 h-8" />

@@ -11,11 +11,11 @@ export function CTASection() {
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative py-32 bg-[#0a0a0a] overflow-hidden flex items-center justify-center min-h-[60vh]">
+    <section className="relative py-32 bg-primary overflow-hidden flex items-center justify-center min-h-[60vh]">
       {/* Background Decor */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/routes/jeddah-makkah.webp')] bg-cover bg-center opacity-20 mix-blend-luminosity"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]"></div>
+        <div className="absolute inset-0 bg-[url('/routes/jeddah-makkah.webp')] bg-cover bg-center opacity-10 mix-blend-luminosity"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary"></div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
@@ -26,26 +26,26 @@ export function CTASection() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="space-y-10"
         >
-          <div className="inline-block px-4 py-1 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm text-white/80 text-sm font-bold uppercase tracking-[0.2em] mb-4">
-            {isAr ? "ميهار للنقل الفاخر" : "Mehar Luxury Transport"}
+          <div className="inline-block px-4 py-1 border border-secondary/20 rounded-full bg-secondary/5 backdrop-blur-sm text-secondary/90 text-sm font-bold uppercase tracking-[0.2em] mb-4">
+            {isAr ? "ميهار للنقل — المملكة العربية السعودية" : "Mehar Transport — Saudi Arabia"}
           </div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
-            {isAr ? "رحلتك الاستثنائية تبدأ هنا" : "Your Exceptional Journey Begins Here."}
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight tracking-tight">
+            {isAr ? "احجز تنقلك الخاص اليوم" : "Book Your Private Transfer Today."}
           </h2>
           
-          <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-primary-foreground/70 font-light max-w-2xl mx-auto leading-relaxed">
             {isAr 
-              ? "احجز سيارتك الخاصة الآن واستمتع بمعايير غير مسبوقة من الفخامة، الأمان، والموثوقية." 
-              : "Reserve your private chauffeur today and experience unprecedented standards of luxury, safety, and reliability."}
+              ? "احجز توصيل المطار أو رحلة العمرة أو سفرك بين المدن مع شركة نقل مسجلة. تسعيرة ثابتة، سائقون محترفون، وخدمة مضمونة." 
+              : "Pre-book your airport transfer, Umrah journey, or intercity trip with a registered Saudi transportation company. Fixed pricing, professional drivers, and reliable service — guaranteed."}
           </p>
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link 
               href="/booking" 
-              className="w-full sm:w-auto bg-[#D9A63A] text-[#0a0a0a] hover:bg-white px-10 py-5 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto bg-secondary text-primary hover:bg-white px-10 py-5 rounded-[var(--radius-btn)] font-bold text-lg transition-all flex items-center justify-center gap-3 group"
             >
-              <span>{isAr ? "احجز رحلتك الآن" : "Book Your Journey"}</span>
+              <span>{isAr ? "احجز تنقلك الآن" : "Book Your Transfer"}</span>
               <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
             </Link>
             
@@ -53,9 +53,9 @@ export function CTASection() {
               href="https://wa.me/966565638120" 
               target="_blank" 
               rel="noreferrer"
-              className="w-full sm:w-auto bg-transparent border-2 border-white/20 text-white hover:bg-white/10 px-10 py-5 rounded-full font-bold text-lg transition-all"
+              className="w-full sm:w-auto bg-transparent border-2 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 px-10 py-5 rounded-[var(--radius-btn)] font-bold text-lg transition-all"
             >
-              {isAr ? "تحدث مع مستشار الرحلات" : "Speak to a Concierge"}
+              {isAr ? "تواصل عبر واتسآب الآن" : "WhatsApp Us Now"}
             </a>
           </div>
         </motion.div>

@@ -31,31 +31,31 @@ export function AboutReviews({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-24 bg-white border-y border-gray-100">
+    <section className="py-24 bg-background border-y border-border">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="flex-1">
-            <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm">
+            <h2 className="text-secondary font-bold tracking-widest uppercase mb-3 text-sm">
               {isAr ? 'تقييمات العملاء' : 'Reviews & Reputation'}
             </h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-[#1B1E4F] leading-tight">
+            <h3 className="text-3xl md:text-5xl font-bold text-primary leading-tight">
               {isAr ? 'ماذا يقول عملاؤنا وشركاؤنا' : 'What Our Clients & Partners Say'}
             </h3>
           </div>
           
-          <div className="flex gap-8 items-center bg-[#F8F9FC] p-6 rounded-2xl border border-gray-100">
+          <div className="flex gap-8 items-center bg-muted/50 p-6 rounded-[var(--radius-card)] border border-border">
             <div className="text-center">
-              <div className="text-4xl font-black text-[#1B1E4F] mb-1">4.9</div>
-              <div className="flex text-[#D9A63A] mb-1 justify-center">
+              <div className="text-4xl font-black text-primary mb-1">4.9</div>
+              <div className="flex text-secondary mb-1 justify-center">
                 {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
               </div>
-              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">Average Rating</div>
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Average Rating</div>
             </div>
-            <div className="w-px h-16 bg-gray-200" />
+            <div className="w-px h-16 bg-border" />
             <div className="text-center">
-              <div className="text-4xl font-black text-[#1B1E4F] mb-1">500+</div>
-              <div className="text-sm font-semibold text-[#1B1E4F] mb-1">Verified Reviews</div>
-              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">Across Platforms</div>
+              <div className="text-4xl font-black text-primary mb-1">500+</div>
+              <div className="text-sm font-semibold text-primary mb-1">Verified Reviews</div>
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Across Platforms</div>
             </div>
           </div>
         </div>
@@ -68,24 +68,24 @@ export function AboutReviews({ locale }: { locale: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[#F8F9FC] p-8 rounded-2xl relative border border-gray-100 hover:border-[#D9A63A]/30 transition-colors"
+              className="bg-muted/50 p-8 rounded-[var(--radius-card)] relative border border-border hover:border-secondary/30 transition-colors"
             >
-              <Quote className="absolute top-6 right-6 w-10 h-10 text-[#D9A63A]/20" />
-              <div className="flex text-[#D9A63A] mb-6">
+              <Quote className="absolute top-6 right-6 w-10 h-10 text-secondary/20" />
+              <div className="flex text-secondary mb-6">
                 {[...Array(review.rating)].map((_, idx) => (
                   <Star key={idx} className="w-5 h-5 fill-current" />
                 ))}
               </div>
-              <p className="text-gray-600 mb-8 leading-relaxed italic">
+              <p className="text-muted-foreground mb-8 leading-relaxed italic">
                 "{review.text}"
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#1B1E4F] text-white flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                   {review.author[0]}
                 </div>
                 <div>
-                  <div className="font-bold text-[#1B1E4F]">{review.author}</div>
-                  <div className="text-xs text-gray-500 font-semibold">{review.country} • {review.platform}</div>
+                  <div className="font-bold text-primary">{review.author}</div>
+                  <div className="text-xs text-muted-foreground font-semibold">{review.country} • {review.platform}</div>
                 </div>
               </div>
             </motion.div>

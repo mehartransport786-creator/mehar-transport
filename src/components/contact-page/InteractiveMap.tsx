@@ -23,7 +23,7 @@ export function InteractiveMap() {
         <ul className="space-y-3 pointer-events-auto">
           {["Jeddah Airport", "Makkah", "Madinah"].map((landmark, idx) => (
             <li key={idx} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium cursor-default transition-colors">
-              <div className="w-2 h-2 rounded-full bg-[#D9A63A]" />
+              <div className="w-2 h-2 rounded-full bg-secondary" />
               {landmark}
             </li>
           ))}

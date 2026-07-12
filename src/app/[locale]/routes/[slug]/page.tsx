@@ -79,23 +79,23 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
 
       <div className="min-h-screen bg-gray-50 dark:bg-[#0F172A]">
         {/* Hero */}
-        <div className="relative bg-[#1B1E4F] pt-24 lg:pt-32 pb-20 overflow-hidden">
+        <div className="relative bg-primary pt-24 lg:pt-32 pb-20 overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <img src={route.image} alt={route.name} className="w-full h-full object-cover" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1B1E4F]/90 via-[#1B1E4F]/80 to-[#1B1E4F]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/80 to-primary" />
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             
             {/* Breadcrumbs */}
             <div className="flex items-center justify-center gap-2 text-sm text-white/60 mb-8 font-medium">
-              <Link href="/" className="hover:text-[#D9A63A] transition-colors">{isAr ? 'الرئيسية' : 'Home'}</Link>
+              <Link href="/" className="hover:text-secondary transition-colors">{isAr ? 'الرئيسية' : 'Home'}</Link>
               <ChevronRight className="w-4 h-4 rtl:rotate-180" />
-              <Link href="/routes" className="hover:text-[#D9A63A] transition-colors">{isAr ? 'المسارات' : 'Routes'}</Link>
+              <Link href="/routes" className="hover:text-secondary transition-colors">{isAr ? 'المسارات' : 'Routes'}</Link>
               <ChevronRight className="w-4 h-4 rtl:rotate-180" />
               <span className="text-white">{isAr ? route.nameAr : route.name}</span>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-[#D9A63A] text-sm font-bold mb-6 backdrop-blur-sm border border-white/10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-secondary text-sm font-bold mb-6 backdrop-blur-sm border border-white/10">
               <Star className="w-4 h-4 fill-current" />
               {isAr ? 'مسار مميز' : 'Featured Route'}
             </div>
@@ -110,18 +110,18 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-                <MapPin className="w-6 h-6 text-[#D9A63A] mx-auto mb-2" />
+                <MapPin className="w-6 h-6 text-secondary mx-auto mb-2" />
                 <div className="text-white font-bold text-xl">{isAr ? route.distanceAr : route.distance}</div>
                 <div className="text-white/60 text-xs uppercase">{isAr ? 'المسافة' : 'Distance'}</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-                <Clock className="w-6 h-6 text-[#D9A63A] mx-auto mb-2" />
+                <Clock className="w-6 h-6 text-secondary mx-auto mb-2" />
                 <div className="text-white font-bold text-xl">{isAr ? route.durationAr : route.duration}</div>
                 <div className="text-white/60 text-xs uppercase">{isAr ? 'المدة المتوقعة' : 'Est. Duration'}</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10 col-span-2 md:col-span-2">
                 <div className="text-white/60 text-xs uppercase mb-1">{isAr ? 'السعر يبدأ من' : 'Starting Price'}</div>
-                <div className="text-[#D9A63A] font-bold text-3xl">{route.startingPrice} <span className="text-sm font-normal text-white">SAR</span></div>
+                <div className="text-secondary font-bold text-3xl">{route.startingPrice} <span className="text-sm font-normal text-white">SAR</span></div>
               </div>
             </div>
           </div>
@@ -132,13 +132,13 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             {/* Why Choose Us */}
             <div>
-              <h2 className="text-2xl font-bold text-[#1B1E4F] dark:text-white mb-6 flex items-center gap-2">
-                <Shield className="w-6 h-6 text-[#D9A63A]" />
+              <h2 className="text-2xl font-bold text-primary dark:text-white mb-6 flex items-center gap-2">
+                <Shield className="w-6 h-6 text-secondary" />
                 {isAr ? 'لماذا تختارنا لهذا المسار؟' : 'Why Choose Us for this Route?'}
               </h2>
               <div className="space-y-4">
                 {route.highlights.map((highlight, idx) => (
-                  <div key={idx} className="flex items-start gap-3 bg-white dark:bg-[#1B1E4F] p-4 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm">
+                  <div key={idx} className="flex items-start gap-3 bg-white dark:bg-primary p-4 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm">
                     <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                     <span className="text-gray-800 dark:text-gray-200 font-medium">
                       {isAr ? highlight.ar : highlight.en}
@@ -149,7 +149,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
             </div>
 
             {/* CTA Box */}
-            <div className="bg-white dark:bg-[#1B1E4F] p-8 rounded-3xl border border-gray-100 dark:border-white/10 shadow-xl flex flex-col justify-center text-center">
+            <div className="bg-white dark:bg-primary p-8 rounded-3xl border border-gray-100 dark:border-white/10 shadow-xl flex flex-col justify-center text-center">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 {isAr ? 'جاهز للحجز؟' : 'Ready to Book?'}
               </h3>
@@ -160,7 +160,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
               </p>
               <Link 
                 href="/booking" 
-                className="w-full bg-[#1B1E4F] dark:bg-[#D9A63A] text-white dark:text-[#1B1E4F] py-4 rounded-xl font-bold text-lg hover:bg-opacity-90 transition-all mb-4"
+                className="w-full bg-primary dark:bg-secondary text-white dark:text-primary py-4 rounded-xl font-bold text-lg hover:bg-opacity-90 transition-all mb-4"
               >
                 {isAr ? 'احجز هذه الرحلة الآن' : 'Book This Route Now'}
               </Link>
@@ -178,11 +178,11 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
           {/* Live Pricing Table */}
           {livePricings.length > 0 && (
             <div className="mt-16 mb-16">
-              <h2 className="text-2xl font-bold text-[#1B1E4F] dark:text-white mb-6 flex items-center gap-2">
-                <Car className="w-6 h-6 text-[#D9A63A]" />
+              <h2 className="text-2xl font-bold text-primary dark:text-white mb-6 flex items-center gap-2">
+                <Car className="w-6 h-6 text-secondary" />
                 {isAr ? 'أسعار المركبات المتاحة' : 'Available Vehicle Prices'}
               </h2>
-              <div className="bg-white dark:bg-[#1B1E4F] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+              <div className="bg-white dark:bg-primary rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
                 <div className="overflow-x-auto custom-scrollbar">
                   <table className="w-full text-sm text-left rtl:text-right">
                     <thead className="bg-gray-50/80 dark:bg-black/20 text-gray-500 dark:text-gray-400 font-medium border-b border-gray-100 dark:border-white/10">
@@ -223,7 +223,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
                               </div>
                             </td>
                             <td className="px-6 py-4">
-                              <div className="text-xl font-bold text-[#D9A63A]">
+                              <div className="text-xl font-bold text-secondary">
                                 {pricing.currentPrice}
                               </div>
                               {pricing.currentPrice > pricing.basePrice && (
@@ -235,7 +235,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
                             <td className="px-6 py-4 text-center">
                               <Link
                                 href={`/booking?routeId=${route._id || route.slug}&vehicleId=${vehicle._id}`}
-                                className="inline-flex items-center justify-center bg-[#1B1E4F] dark:bg-white text-white dark:text-[#1B1E4F] px-4 py-2 rounded-lg text-xs font-bold hover:bg-opacity-90 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                                className="inline-flex items-center justify-center bg-primary dark:bg-white text-white dark:text-primary px-4 py-2 rounded-lg text-xs font-bold hover:bg-opacity-90 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
                               >
                                 {isAr ? 'اختيار' : 'Select'}
                               </Link>
@@ -252,7 +252,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
 
           {/* FAQs */}
           <div className="mt-16">
-            <h2 className="text-3xl font-bold text-center text-[#1B1E4F] dark:text-white mb-10">
+            <h2 className="text-3xl font-bold text-center text-primary dark:text-white mb-10">
               {isAr ? 'الأسئلة الشائعة حول المسار' : 'Frequently Asked Questions'}
             </h2>
             <RouteFAQ faqs={route.faqs} />

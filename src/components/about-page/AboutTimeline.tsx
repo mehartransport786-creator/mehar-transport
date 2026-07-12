@@ -26,25 +26,25 @@ export function AboutTimeline({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-32 bg-[#050505] relative overflow-hidden" ref={containerRef}>
+    <section className="py-32 bg-primary relative overflow-hidden" ref={containerRef}>
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
       
       <div className="container px-4 md:px-6 mx-auto relative z-10">
         <div className="text-center mb-20">
-          <h2 className="caption-text text-[#C99632] mb-4">
+          <h2 className="caption-text text-secondary mb-4">
             {isAr ? 'تاريخ الشركة' : 'Company Timeline'}
           </h2>
-          <h3 className="h2 text-white">
+          <h3 className="h2 text-primary-foreground">
             {isAr ? 'رحلة النمو' : 'Our Journey of Growth'}
           </h3>
         </div>
 
         <div className="max-w-4xl mx-auto relative">
           {/* Vertical Line */}
-          <div className="absolute left-12 md:left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
+          <div className="absolute left-12 md:left-1/2 top-0 bottom-0 w-px bg-primary-foreground/10 -translate-x-1/2" />
           
           <motion.div 
-            className="absolute left-12 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#C99632] -translate-x-1/2 origin-top shadow-[0_0_15px_rgba(201,150,50,0.5)]"
+            className="absolute left-12 md:left-1/2 top-0 bottom-0 w-[2px] bg-secondary -translate-x-1/2 origin-top shadow-[0_0_15px_var(--secondary)]"
             style={{ scaleY: scrollYProgress }}
           />
 
@@ -63,15 +63,15 @@ export function AboutTimeline({ locale }: { locale: string }) {
                   }`}
                 >
                   {/* Timeline Node */}
-                  <div className="absolute left-12 md:left-1/2 w-5 h-5 rounded-full bg-[#C99632] shadow-[0_0_20px_rgba(201,150,50,0.8)] -translate-x-1/2 mt-1 md:mt-0 z-10 border-4 border-[#050505]" />
+                  <div className="absolute left-12 md:left-1/2 w-5 h-5 rounded-full bg-secondary shadow-[0_0_20px_var(--secondary)] -translate-x-1/2 mt-1 md:mt-0 z-10 border-4 border-primary" />
                   
                   {/* Content Box */}
                   <div className={`ml-24 md:ml-0 w-full md:w-1/2 ${isEven ? 'md:pl-20' : 'md:pr-20 text-left md:text-right'}`}>
-                    <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-luxury group">
-                      <span className="text-[#C99632] text-3xl font-black mb-3 block font-mono group-hover:drop-shadow-[0_0_10px_rgba(201,150,50,0.5)] transition-all">
+                    <div className="p-8 bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 rounded-[2rem] hover:bg-primary-foreground/10 hover:border-primary-foreground/20 transition-all duration-300 shadow-[var(--shadow-luxury)] group">
+                      <span className="text-secondary text-3xl font-black mb-3 block font-mono group-hover:drop-shadow-[0_0_10px_var(--secondary)] transition-all">
                         {event.year}
                       </span>
-                      <h4 className={`text-white text-xl font-medium tracking-wide ${isAr ? 'font-arabic' : ''}`}>
+                      <h4 className={`text-primary-foreground text-xl font-medium tracking-wide ${isAr ? 'font-arabic' : ''}`}>
                         {isAr ? event.titleAr : event.title}
                       </h4>
                     </div>

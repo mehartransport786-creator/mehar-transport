@@ -129,7 +129,7 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto mx-4" onClick={(e) => e.stopPropagation()}>
         <div className="sticky top-0 z-10 bg-white border-b border-gray-100 px-8 py-5 flex items-center justify-between rounded-t-2xl">
           <div>
-            <h2 className="text-xl font-bold text-[#1B1E4F]">{isEdit ? (isAr ? 'تعديل المركبة' : 'Edit Vehicle') : (isAr ? 'إضافة مركبة' : 'Add Vehicle')}</h2>
+            <h2 className="text-xl font-bold text-primary">{isEdit ? (isAr ? 'تعديل المركبة' : 'Edit Vehicle') : (isAr ? 'إضافة مركبة' : 'Add Vehicle')}</h2>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-xl transition-colors"><X className="w-5 h-5 text-gray-400" /></button>
         </div>
@@ -142,17 +142,17 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
             <div>
               <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'الاسم (EN)' : 'Name (EN)'} *</label>
               <input value={form.name} onChange={(e) => updateField('name', e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none" />
+                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none" />
             </div>
             <div>
               <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'الاسم (AR)' : 'Name (AR)'} *</label>
               <input value={form.nameAr} onChange={(e) => updateField('nameAr', e.target.value)} dir="rtl"
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none" />
+                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none" />
             </div>
             <div className="md:col-span-2">
               <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'الرابط المختصر' : 'Slug'}</label>
               <input value={form.slug} onChange={(e) => updateField('slug', e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 font-mono focus:border-[#D9A63A] outline-none" />
+                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 font-mono focus:border-secondary outline-none" />
             </div>
           </div>
 
@@ -182,7 +182,7 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
             <div>
               <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'رابط الصورة' : 'Image URL'}</label>
               <input value={form.image} onChange={(e) => updateField('image', e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-[#D9A63A] outline-none" placeholder="/fleet/camry.png" />
+                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:border-secondary outline-none" placeholder="/fleet/camry.png" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -200,7 +200,7 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
 
           {/* Features */}
           <div>
-            <label className="block text-xs font-bold text-[#1B1E4F] mb-3">{isAr ? 'المميزات' : 'Features'}</label>
+            <label className="block text-xs font-bold text-primary mb-3">{isAr ? 'المميزات' : 'Features'}</label>
             <div className="space-y-2 mb-3">
               {form.features.map((feat, idx) => (
                 <div key={idx} className="flex items-center justify-between bg-gray-50 px-4 py-2 rounded-lg border border-gray-100">
@@ -226,7 +226,7 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
             {isAr ? 'إلغاء' : 'Cancel'}
           </button>
           <button onClick={handleSave} disabled={saving}
-            className="px-8 py-2.5 bg-[#1B1E4F] text-white rounded-xl text-sm font-bold hover:bg-[#2a2f6b] shadow-lg disabled:opacity-50">
+            className="px-8 py-2.5 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary/80 shadow-lg disabled:opacity-50">
             {saving ? (isAr ? 'جاري الحفظ...' : 'Saving...') : isEdit ? (isAr ? 'حفظ التعديلات' : 'Save Changes') : (isAr ? 'إضافة المركبة' : 'Add Vehicle')}
           </button>
         </div>

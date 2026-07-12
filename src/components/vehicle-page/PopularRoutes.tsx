@@ -13,13 +13,13 @@ export function PopularRoutes() {
   return (
     <section>
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-0.5 bg-[#D9A63A]"></div>
-        <span className="font-bold uppercase tracking-[0.2em] text-sm text-[#D9A63A]">
+        <div className="w-12 h-0.5 bg-secondary"></div>
+        <span className="font-bold uppercase tracking-[0.2em] text-sm text-secondary">
           {isAr ? "مسارات شائعة" : "Popular Routes"}
         </span>
       </div>
 
-      <h3 className="text-3xl font-bold mb-8 text-[#1B1E4F]">
+      <h3 className="text-3xl font-bold mb-8 text-primary">
         {isAr ? "احجز رحلتك القادمة" : "Book Your Next Journey"}
       </h3>
 
@@ -38,7 +38,7 @@ export function PopularRoutes() {
                 alt={route.origin}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1B1E4F] via-[#1B1E4F]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
               
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <div className="flex items-center justify-between">
@@ -52,8 +52,8 @@ export function PopularRoutes() {
                       {route.distance} • {route.duration}
                     </p>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-[#D9A63A] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <ArrowRight className={`w-5 h-5 text-[#1B1E4F] ${isAr ? 'rotate-180' : ''}`} />
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <ArrowRight className={`w-5 h-5 text-primary ${isAr ? 'rotate-180' : ''}`} />
                   </div>
                 </div>
               </div>

@@ -340,16 +340,16 @@
     "clickToViewGallery": "Click to view gallery"
   },
   "PilgrimExperience": {
-    "vipAirportMeetGreet": "VIP Airport Meet & Greet",
-    "ourChauffeursWaitInTheArrivalsHallWithAN": "Our chauffeurs wait in the arrivals hall with a name board, ready to assist with your luggage.",
-    "seamlessHolyCityTransfers": "Seamless Holy City Transfers",
-    "sereneAndComfortableTransfersBetweenJedd": "Serene and comfortable transfers between Jeddah, Makkah, and Madinah in premium vehicles.",
+    "vipAirportMeetGreet": "Airport Meet & Greet",
+    "ourChauffeursWaitInTheArrivalsHallWithAN": "Our drivers wait at Jeddah or Madinah arrivals with a name board, ready to assist with luggage and provide immediate departure.",
+    "seamlessHolyCityTransfers": "Intercity & Holy City Transfers",
+    "sereneAndComfortableTransfersBetweenJedd": "Pre-booked, private transfers between Jeddah, Makkah, and Madinah. Fixed pricing means no haggling upon arrival.",
     "directHotelDropOffs": "Direct Hotel Drop-offs",
-    "expertKnowledgeOfHotelLocationsEnsuringY": "Expert knowledge of hotel locations ensuring you are dropped directly at your hotel entrance.",
-    "dedicatedPilgrimCare": "Dedicated Pilgrim Care",
-    "professionalChauffeursSpeciallyTrainedTo": "Professional chauffeurs specially trained to serve the needs of pilgrims with utmost respect.",
-    "theLuxuryUmrahExperience": "The Luxury Umrah Experience",
-    "itIsOurHonorToServeTheGuestsOfAllahOurUm": "It is our honor to serve the guests of Allah. Our Umrah transportation services are designed to provide maximum serenity and comfort, allowing you to focus entirely on your worship."
+    "expertKnowledgeOfHotelLocationsEnsuringY": "Drivers experienced with the central Haram areas, ensuring drop-off as close to your hotel as local regulations permit.",
+    "dedicatedPilgrimCare": "Family & Group Capacity",
+    "professionalChauffeursSpeciallyTrainedTo": "Vehicles ranging from sedans to 22-seat buses to keep your entire family or Umrah group together.",
+    "theLuxuryUmrahExperience": "Reliable Umrah Transportation",
+    "itIsOurHonorToServeTheGuestsOfAllahOurUm": "Focus on your spiritual journey. We provide practical, dependable, and registered transportation for pilgrims arriving in Saudi Arabia."
   },
   "PremiumVehicleCollection": {
     "thePremiumCollection": "The Premium Collection",
@@ -493,16 +493,16 @@
   },
   "ReviewsSection": {
     "ahmedAlSalem": "Ahmed Al-Salem",
-    "ceo": "CEO",
-    "exceptionalServiceByEveryMeasureTheRolls": "Exceptional service by every measure. The Luxury vehicle was immaculate, and the chauffeur was highly professional. Mehar is always my first choice for business meetings.",
+    "ceo": "Corporate Client",
+    "exceptionalServiceByEveryMeasureTheRolls": "Reliable and punctual service. The vehicle was perfectly clean and the driver navigated the Jeddah to Makkah route smoothly. Excellent for our corporate needs.",
     "sarahFahad": "Sarah Fahad",
-    "vipGuest": "VIP Guest",
-    "theAirportMeetAndGreetAtJeddahWasSeamles": "The airport meet-and-greet at Jeddah was seamless and luxurious. I felt completely relaxed and safe during the trip to Makkah. True luxury is in the details.",
+    "vipGuest": "Family Traveler",
+    "theAirportMeetAndGreetAtJeddahWasSeamles": "The airport meet-and-greet at Jeddah made our family's arrival so easy. Traveling with kids for Umrah can be stressful, but Mehar's driver was waiting right at arrivals.",
     "drMohammedAlOmar": "Dr. Mohammed Al-Omar",
-    "frequentTraveler": "Frequent Traveler",
-    "unmatchedProfessionalismFromTheEaseOfBoo": "Unmatched professionalism. From the ease of booking on the website to the chauffeur's punctuality. Thank you to the Mehar team for a refined experience.",
-    "voicesOfOurGuests": "Voices of Our Guests",
-    "trustBuiltOnAbsoluteExcellence": "Trust Built on Absolute Excellence"
+    "frequentTraveler": "Umrah Pilgrim",
+    "unmatchedProfessionalismFromTheEaseOfBoo": "Transparent pricing and no hidden fees. The Hyundai Staria we booked for our group of 6 was spacious and the air conditioning was excellent for the long drive.",
+    "voicesOfOurGuests": "What Our Clients Say",
+    "trustBuiltOnAbsoluteExcellence": "Real Experiences from Real Travelers"
   },
   "SafetySection": {
     "licensedDrivers": "Licensed Drivers",
@@ -523,7 +523,7 @@
     "proactiveFlightTrackingToAvoidAnyDelays": "Proactive flight tracking to avoid any delays",
     "safetyCompliance": "Safety & Compliance",
     "yourSafetyIsOurHighestPriority": "Your Safety is Our Highest Priority",
-    "atMeharTransportWeImplementStrictCorpora": "At Mehar Transport, we implement strict corporate safety standards to ensure your peace of mind. Your journey is protected and monitored."
+    "atMeharTransportWeImplementStrictCorpora": "As a registered transport provider, safety is our operational baseline. We maintain strict compliance with Saudi transport regulations, and every vehicle is inspected, insured, and tracked."
   },
   "ServicesSection": {
     "premiumAirportTransfers": "Premium Airport Transfers",
@@ -540,14 +540,14 @@
     "bookService": "Book Service"
   },
   "TrustBar": {
-    "eliteChauffeurs": "Elite Chauffeurs",
-    "professionallyTrained": "Professionally trained",
+    "eliteChauffeurs": "Professional Chauffeurs",
+    "professionallyTrained": "Licensed and trained",
     "reliableJourneys": "Reliable Journeys",
-    "precisionTracking": "Precision tracking",
-    "247Concierge": "24/7 Concierge",
-    "roundTheClockSupport": "Round-the-clock support",
-    "worldClassStandards": "World-Class Standards",
-    "ultraLuxuryFleet": "Ultra-luxury fleet"
+    "precisionTracking": "GPS flight & vehicle tracking",
+    "247Concierge": "24/7 Customer Support",
+    "roundTheClockSupport": "Multilingual assistance",
+    "worldClassStandards": "Registered Company",
+    "ultraLuxuryFleet": "Licensed in Saudi Arabia"
   },
   "ComfortExperience": {
     "theComfortExperience": "The Comfort Experience",

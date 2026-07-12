@@ -30,17 +30,17 @@ export function VehicleFAQ({ faqs, theme }: VehicleFAQProps) {
         {faqs.map((faq, idx) => (
           <div 
             key={idx}
-            className={`border rounded-2xl overflow-hidden transition-colors ${openIndex === idx ? 'border-[#D9A63A] bg-slate-50' : 'border-gray-100 bg-white hover:border-gray-300'}`}
+            className={`border rounded-2xl overflow-hidden transition-colors ${openIndex === idx ? 'border-secondary bg-slate-50' : 'border-gray-100 bg-white hover:border-gray-300'}`}
           >
             <button
               onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               className="w-full flex items-center justify-between p-6 text-left"
             >
-              <h4 className="font-bold text-[#1B1E4F] pr-4">
+              <h4 className="font-bold text-primary pr-4">
                 {isAr ? faq.qAr : faq.q}
               </h4>
               <ChevronDown 
-                className={`w-5 h-5 text-gray-400 transition-transform ${openIndex === idx ? 'rotate-180 text-[#D9A63A]' : ''}`} 
+                className={`w-5 h-5 text-gray-400 transition-transform ${openIndex === idx ? 'rotate-180 text-secondary' : ''}`} 
               />
             </button>
             

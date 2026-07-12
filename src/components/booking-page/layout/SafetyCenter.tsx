@@ -52,7 +52,7 @@ export function SafetyCenter() {
   ];
 
   return (
-    <div className="bg-[#1B1E4F] rounded-2xl shadow-xl border border-white/10 p-8 text-white relative overflow-hidden mt-8">
+    <div className="bg-primary rounded-2xl shadow-xl border border-white/10 p-8 text-white relative overflow-hidden mt-8">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -67,8 +67,8 @@ export function SafetyCenter() {
 
       <div className="relative z-10">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D9A63A]/20 mb-4 border border-[#D9A63A]/30">
-            <ShieldCheck className="w-8 h-8 text-[#D9A63A]" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/20 mb-4 border border-secondary/30">
+            <ShieldCheck className="w-8 h-8 text-secondary" />
           </div>
           <h2 className="text-2xl font-bold text-white mb-2">
             {isAr ? "مركز الأمان والثقة" : "Safety & Trust Center"}
@@ -84,9 +84,9 @@ export function SafetyCenter() {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div key={index} className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/5 text-center hover:border-[#D9A63A]/50 transition-colors group">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#D9A63A]/20 transition-colors">
-                  <Icon className="w-6 h-6 text-[#D9A63A]" />
+              <div key={index} className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/5 text-center hover:border-secondary/50 transition-colors group">
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/20 transition-colors">
+                  <Icon className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
                 <p className="text-sm text-gray-400">{feature.desc}</p>

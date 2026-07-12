@@ -60,7 +60,7 @@ export default function FleetManagementClient({ vehicles: initialVehicles, isAr 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1B1E4F]">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-primary">
             {isAr ? 'إدارة الأسطول' : 'Fleet Management'}
           </h1>
           <p className="text-gray-500 mt-1 text-sm font-medium">
@@ -69,7 +69,7 @@ export default function FleetManagementClient({ vehicles: initialVehicles, isAr 
         </div>
         <button
           onClick={openCreate}
-          className="flex items-center gap-2 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-lg shadow-[#1B1E4F]/20"
+          className="flex items-center gap-2 bg-primary text-white hover:bg-primary/80 px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary/20"
         >
           <Plus className="w-4 h-4" />
           {isAr ? 'مركبة جديدة' : 'Add Vehicle'}
@@ -85,7 +85,7 @@ export default function FleetManagementClient({ vehicles: initialVehicles, isAr 
               <Car className="w-4 h-4 text-blue-600" />
             </div>
           </div>
-          <div className="text-2xl font-black text-[#1B1E4F]">{vehicles.length}</div>
+          <div className="text-2xl font-black text-primary">{vehicles.length}</div>
         </div>
         <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
           <div className="flex items-center justify-between mb-3">
@@ -94,13 +94,13 @@ export default function FleetManagementClient({ vehicles: initialVehicles, isAr 
               <Users className="w-4 h-4 text-emerald-600" />
             </div>
           </div>
-          <div className="text-2xl font-black text-[#1B1E4F]">{vehicles.reduce((acc, v) => acc + (v.passengers || 0), 0)}</div>
+          <div className="text-2xl font-black text-primary">{vehicles.reduce((acc, v) => acc + (v.passengers || 0), 0)}</div>
         </div>
       </div>
 
       {/* Search & Filters */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
-        <div className="flex-1 flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-gray-200 focus-within:border-[#D9A63A] transition-all shadow-sm">
+        <div className="flex-1 flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-gray-200 focus-within:border-secondary transition-all shadow-sm">
           <Search className="w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -211,7 +211,7 @@ export default function FleetManagementClient({ vehicles: initialVehicles, isAr 
                   <td colSpan={5} className="py-16 text-center">
                     <Car className="w-12 h-12 text-gray-200 mx-auto mb-4" />
                     <p className="text-gray-400 font-medium">{isAr ? 'لا توجد مركبات' : 'No vehicles found'}</p>
-                    <button onClick={openCreate} className="mt-4 text-sm text-[#D9A63A] font-bold hover:underline">
+                    <button onClick={openCreate} className="mt-4 text-sm text-secondary font-bold hover:underline">
                       {isAr ? 'أضف مركبتك الأولى' : 'Add your first vehicle'}
                     </button>
                   </td>

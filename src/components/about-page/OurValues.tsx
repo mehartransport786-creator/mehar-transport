@@ -52,13 +52,13 @@ export function OurValues({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="py-32 bg-[#050505] relative overflow-hidden">
+    <section className="py-32 bg-primary relative overflow-hidden">
       <div className="container px-4 md:px-6 mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="caption-text text-[#C99632] mb-4">
+          <h2 className="caption-text text-secondary mb-4">
             {isAr ? 'قيمنا' : 'Our Values'}
           </h2>
-          <h3 className="h2 text-white leading-tight">
+          <h3 className="h2 text-primary-foreground leading-tight">
             {isAr ? 'المبادئ التي تقود تميزنا' : 'The Principles That Drive Our Excellence'}
           </h3>
         </div>
@@ -71,15 +71,15 @@ export function OurValues({ locale }: { locale: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="p-10 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-luxury group"
+              className="p-10 rounded-[2rem] bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-primary-foreground/10 hover:border-primary-foreground/20 transition-all duration-300 shadow-[var(--shadow-luxury)] group"
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#C99632]/20 flex items-center justify-center text-[#C99632] mb-8 group-hover:scale-110 group-hover:bg-[#C99632]/30 transition-all duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center text-secondary mb-8 group-hover:scale-110 group-hover:bg-secondary/30 transition-all duration-300">
                 <value.icon className="w-8 h-8" />
               </div>
-              <h4 className={`text-2xl font-bold text-white mb-4 tracking-tight ${isAr ? 'font-arabic' : ''}`}>
+              <h4 className={`text-2xl font-bold text-primary-foreground mb-4 tracking-tight ${isAr ? 'font-arabic' : ''}`}>
                 {isAr ? value.titleAr : value.title}
               </h4>
-              <p className={`text-lg text-gray-400 leading-relaxed font-light ${isAr ? 'font-arabic' : ''}`}>
+              <p className={`text-lg text-primary-foreground/70 leading-relaxed font-light ${isAr ? 'font-arabic' : ''}`}>
                 {isAr ? value.descAr : value.desc}
               </p>
             </motion.div>

@@ -170,17 +170,17 @@ export default async function CityDetailPage({ params }: { params: { locale: str
 
       <div className="min-h-screen bg-gray-50 dark:bg-[#0F172A]">
         {/* Hero */}
-        <div className="relative bg-[#1B1E4F] pt-24 lg:pt-32 pb-20 overflow-hidden">
+        <div className="relative bg-primary pt-24 lg:pt-32 pb-20 overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <img src={city.image} alt="" className="w-full h-full object-cover" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1B1E4F]/80 to-[#1B1E4F]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-white/60 mb-8 font-medium">
-              <Link href="/" className="hover:text-[#D9A63A] transition-colors">{isAr ? 'الرئيسية' : 'Home'}</Link>
+              <Link href="/" className="hover:text-secondary transition-colors">{isAr ? 'الرئيسية' : 'Home'}</Link>
               <ChevronRight className="w-4 h-4 rtl:rotate-180" />
-              <Link href="/cities" className="hover:text-[#D9A63A] transition-colors">{isAr ? 'المدن' : 'Cities'}</Link>
+              <Link href="/cities" className="hover:text-secondary transition-colors">{isAr ? 'المدن' : 'Cities'}</Link>
               <ChevronRight className="w-4 h-4 rtl:rotate-180" />
               <span className="text-white">{isAr ? city.nameAr : city.name}</span>
             </div>
@@ -205,7 +205,7 @@ export default async function CityDetailPage({ params }: { params: { locale: str
                 { icon: Users, label: isAr ? 'رحلة' : 'Trips', value: city.stats.trips },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-5 py-3 rounded-xl border border-white/10">
-                  <stat.icon className="w-5 h-5 text-[#D9A63A]" />
+                  <stat.icon className="w-5 h-5 text-secondary" />
                   <div>
                     <div className="text-white font-bold text-lg">{stat.value}</div>
                     <div className="text-white/50 text-xs uppercase tracking-wider">{stat.label}</div>
@@ -220,12 +220,12 @@ export default async function CityDetailPage({ params }: { params: { locale: str
 
           {/* Available Routes */}
           <section>
-            <h2 className="text-3xl font-bold text-[#1B1E4F] dark:text-white mb-8">
+            <h2 className="text-3xl font-bold text-primary dark:text-white mb-8">
               {isAr ? `المسارات المتاحة من ${city.nameAr}` : `Available Routes from ${city.name}`}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {city.routes.map((route, i) => (
-                <div key={i} className="bg-white dark:bg-[#1B1E4F] rounded-2xl p-6 border border-gray-100 dark:border-white/10 hover:shadow-lg transition-shadow">
+                <div key={i} className="bg-white dark:bg-primary rounded-2xl p-6 border border-gray-100 dark:border-white/10 hover:shadow-lg transition-shadow">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                     {isAr ? route.nameAr : route.name}
                   </h3>
@@ -240,12 +240,12 @@ export default async function CityDetailPage({ params }: { params: { locale: str
                     </div>
                     <div>
                       <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">{isAr ? 'السعر' : 'Price'}</div>
-                      <div className="font-bold text-[#D9A63A]">{route.price}</div>
+                      <div className="font-bold text-secondary">{route.price}</div>
                     </div>
                   </div>
                   <Link
                     href="/booking"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-[#1B1E4F] dark:text-[#D9A63A] hover:underline"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-primary dark:text-secondary hover:underline"
                   >
                     {isAr ? 'احجز هذا المسار' : 'Book This Route'} <ChevronRight className="w-4 h-4 rtl:rotate-180" />
                   </Link>
@@ -256,13 +256,13 @@ export default async function CityDetailPage({ params }: { params: { locale: str
 
           {/* Why Choose Us */}
           <section>
-            <h2 className="text-3xl font-bold text-[#1B1E4F] dark:text-white mb-8">
+            <h2 className="text-3xl font-bold text-primary dark:text-white mb-8">
               {isAr ? `لماذا تختار ميهار في ${city.nameAr}` : `Why Choose Mehar in ${city.name}`}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {city.highlights.map((h, i) => (
-                <div key={i} className="flex items-start gap-4 bg-white dark:bg-[#1B1E4F] p-5 rounded-xl border border-gray-100 dark:border-white/10">
-                  <Shield className="w-6 h-6 text-[#D9A63A] shrink-0 mt-0.5" />
+                <div key={i} className="flex items-start gap-4 bg-white dark:bg-primary p-5 rounded-xl border border-gray-100 dark:border-white/10">
+                  <Shield className="w-6 h-6 text-secondary shrink-0 mt-0.5" />
                   <span className="text-gray-800 dark:text-gray-200 font-medium">{isAr ? h.ar : h.en}</span>
                 </div>
               ))}
@@ -270,8 +270,8 @@ export default async function CityDetailPage({ params }: { params: { locale: str
           </section>
 
           {/* CTA */}
-          <div className="bg-[#1B1E4F] rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#D9A63A] rounded-full opacity-10 blur-3xl" />
+          <div className="bg-primary rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-secondary rounded-full opacity-10 blur-3xl" />
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 {isAr ? `احجز رحلتك في ${city.nameAr} الآن` : `Book Your ${city.name} Transfer Now`}
@@ -280,7 +280,7 @@ export default async function CityDetailPage({ params }: { params: { locale: str
                 {isAr ? 'أسطول حديث وسائقون محترفون ومتوفرون على مدار الساعة' : 'Modern fleet, professional drivers, available 24/7'}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/booking" className="px-8 py-4 bg-[#D9A63A] text-[#1B1E4F] font-bold rounded-xl hover:bg-white transition-colors text-lg">
+                <Link href="/booking" className="px-8 py-4 bg-secondary text-primary font-bold rounded-xl hover:bg-white transition-colors text-lg">
                   {isAr ? 'احجز الآن' : 'Book Now'}
                 </Link>
                 <a href="https://wa.me/966565638120" target="_blank" className="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-colors text-lg flex items-center gap-2">

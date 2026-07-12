@@ -63,12 +63,12 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen w-full flex bg-[#F8F9FC] dark:bg-[#0F172A]">
+    <div className="min-h-screen w-full flex bg-muted dark:bg-[#0F172A]">
       {/* Left Side - Branding */}
-      <div className="hidden lg:flex flex-1 relative flex-col justify-between bg-[#1B1E4F] p-12 overflow-hidden">
+      <div className="hidden lg:flex flex-1 relative flex-col justify-between bg-primary p-12 overflow-hidden">
         {/* Abstract luxury background pattern */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#D9A63A] to-transparent rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-secondary to-transparent rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-emerald-500 to-transparent rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3" />
         </div>
 
@@ -91,7 +91,7 @@ export default function AdminLogin() {
           >
             <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
               Command Center for <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D9A63A] to-amber-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-200">
                 Premium Transport
               </span>
             </h2>
@@ -103,7 +103,7 @@ export default function AdminLogin() {
 
         <div className="relative z-10 flex items-center gap-4 text-white/40 text-sm font-medium">
           <span>&copy; {new Date().getFullYear()} Mehar Transport</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#D9A63A]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
           <span>Riyadh, Saudi Arabia</span>
         </div>
       </div>
@@ -111,7 +111,7 @@ export default function AdminLogin() {
       {/* Right Side - Authentication */}
       <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 lg:px-24 relative">
         <div className="absolute top-8 right-8 z-50">
-          <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#1B1E4F] dark:text-slate-400 dark:hover:text-white transition-colors bg-white/50 dark:bg-black/20 px-4 py-2 rounded-full border border-slate-200 dark:border-slate-800 hover:shadow-sm">
+          <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors bg-white/50 dark:bg-black/20 px-4 py-2 rounded-full border border-slate-200 dark:border-slate-800 hover:shadow-sm">
             <ArrowLeft className="w-4 h-4" /> Back to Homepage
           </Link>
         </div>
@@ -119,7 +119,7 @@ export default function AdminLogin() {
         <div className="w-full max-w-md mx-auto relative z-10">
           {/* Mobile Logo */}
           <div className="lg:hidden flex items-center justify-center mb-12">
-             <div className="bg-[#1B1E4F] rounded-xl p-2 shadow-xl">
+             <div className="bg-primary rounded-xl p-2 shadow-xl">
               <img src="/logo.png" alt="Mehar" className="h-10 w-auto brightness-0 invert" />
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function AdminLogin() {
                 <input
                   {...register("email")}
                   type="email"
-                  className={`block w-full pl-11 pr-4 py-3 bg-white dark:bg-slate-900 border rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1B1E4F] dark:focus:ring-[#D9A63A] transition-all sm:text-sm ${
+                  className={`block w-full pl-11 pr-4 py-3 bg-white dark:bg-slate-900 border rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-secondary transition-all sm:text-sm ${
                     errors.email ? "border-red-300 focus:ring-red-500" : "border-slate-200 dark:border-slate-800"
                   }`}
                   placeholder="admin@mehar.sa"
@@ -173,7 +173,7 @@ export default function AdminLogin() {
                 <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                   Password
                 </label>
-                <button type="button" className="text-sm font-semibold text-[#1B1E4F] hover:text-[#D9A63A] dark:text-[#D9A63A] dark:hover:text-white transition-colors">
+                <button type="button" className="text-sm font-semibold text-primary hover:text-secondary dark:text-secondary dark:hover:text-white transition-colors">
                   Forgot password?
                 </button>
               </div>
@@ -184,7 +184,7 @@ export default function AdminLogin() {
                 <input
                   {...register("password")}
                   type={showPassword ? "text" : "password"}
-                  className={`block w-full pl-11 pr-11 py-3 bg-white dark:bg-slate-900 border rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1B1E4F] dark:focus:ring-[#D9A63A] transition-all sm:text-sm ${
+                  className={`block w-full pl-11 pr-11 py-3 bg-white dark:bg-slate-900 border rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-secondary transition-all sm:text-sm ${
                     errors.password ? "border-red-300 focus:ring-red-500" : "border-slate-200 dark:border-slate-800"
                   }`}
                   placeholder="••••••••"
@@ -208,7 +208,7 @@ export default function AdminLogin() {
                 {...register("rememberMe")}
                 id="rememberMe"
                 type="checkbox"
-                className="h-4 w-4 text-[#1B1E4F] focus:ring-[#1B1E4F] border-slate-300 rounded cursor-pointer"
+                className="h-4 w-4 text-primary focus:ring-primary border-slate-300 rounded cursor-pointer"
                 disabled={isSubmitting}
               />
               <label htmlFor="rememberMe" className="ml-2 block text-sm text-slate-700 dark:text-slate-300 cursor-pointer select-none">
@@ -219,7 +219,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex justify-center items-center gap-2 py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-bold text-white bg-[#1B1E4F] hover:bg-[#1B1E4F]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1B1E4F] disabled:opacity-70 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 active:translate-y-0 dark:bg-[#D9A63A] dark:text-[#1B1E4F] dark:hover:bg-[#D9A63A]/90"
+              className="w-full flex justify-center items-center gap-2 py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-bold text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-70 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 active:translate-y-0 dark:bg-secondary dark:text-primary dark:hover:bg-secondary/90"
             >
               {isSubmitting ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

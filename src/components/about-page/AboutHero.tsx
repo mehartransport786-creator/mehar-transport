@@ -21,35 +21,36 @@ export function AboutHero({ locale }: { locale: string }) {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[#0F172A]/80 z-10" /> {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F5F4F1] via-transparent to-transparent z-20" />
+        <div className="absolute inset-0 bg-primary/85 z-10" /> {/* Dark Overlay */}
         <img 
           src="/makkah-skyline-luxury.png" 
           alt="Makkah Skyline" 
           className="w-full h-full object-cover object-center"
         />
+        {/* Soft bottom gradient to blend with the white page (bottom 40% only) */}
+        <div className="absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-background to-transparent z-20" />
       </div>
 
-      <div className="container relative z-30 px-4 md:px-6 mt-20">
+      <div className="container relative z-30 px-4 md:px-6 mt-24">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#C99632] text-sm font-semibold tracking-widest uppercase mb-6 shadow-luxury">
-              <span className="w-2 h-2 rounded-full bg-[#C99632] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-secondary text-sm font-semibold tracking-widest uppercase mb-6 shadow-luxury">
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
               Premium Transport
             </div>
             
-            <h1 className={`h1 text-white leading-tight ${isAr ? 'font-arabic' : ''}`}>
+            <h1 className={`h1 !text-white leading-tight ${isAr ? 'font-arabic' : ''}`}>
               {isAr ? (
                 <>
-                  شريككم الموثوق لخدمات النقل في <span className="text-[#C99632]">المملكة</span> منذ 2016
+                  شريككم الموثوق لخدمات النقل في <span className="text-secondary">المملكة</span> منذ 2016
                 </>
               ) : (
                 <>
-                  Your Trusted Transportation Partner in <span className="text-[#C99632]">Saudi Arabia</span> Since 2016
+                  Your Trusted Transportation Partner in <span className="text-secondary">Saudi Arabia</span> Since 2016
                 </>
               )}
             </h1>
@@ -59,7 +60,7 @@ export function AboutHero({ locale }: { locale: string }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className={`body-large text-gray-300 max-w-3xl mx-auto ${isAr ? 'font-arabic' : ''}`}
+            className={`body-large !text-white/90 max-w-3xl mx-auto ${isAr ? 'font-arabic' : ''}`}
           >
             {subheadline}
           </motion.p>
@@ -72,20 +73,20 @@ export function AboutHero({ locale }: { locale: string }) {
           >
             <Link 
               href={`/${locale}/booking`}
-              className="btn-luxury w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground shadow-luxury hover:shadow-luxury-hover hover:bg-[#B58529]"
+              className="btn-luxury w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground shadow-[var(--shadow-luxury)] hover:opacity-90 rounded-[var(--radius-btn)]"
             >
               {isAr ? 'احجز الآن' : 'Book Transfer'}
               <ArrowRight className={`w-5 h-5 ${isAr ? 'rotate-180' : ''}`} />
             </Link>
             <Link 
               href={`/${locale}/fleet`}
-              className="btn-luxury w-full sm:w-auto px-8 py-4 bg-black/40 backdrop-blur-md text-white border border-white/20 hover:bg-black/60 shadow-luxury"
+              className="btn-luxury w-full sm:w-auto px-8 py-4 bg-black/40 backdrop-blur-md text-white border border-white/20 hover:bg-black/60 shadow-[var(--shadow-luxury)] rounded-[var(--radius-btn)]"
             >
               {isAr ? 'عرض الأسطول' : 'View Fleet'}
             </Link>
             <Link 
               href={`/${locale}/contact`}
-              className="w-full sm:w-auto px-8 py-4 text-white hover:text-secondary transition-colors font-semibold text-lg flex items-center justify-center tracking-wide"
+              className="btn-luxury w-full sm:w-auto px-8 py-4 bg-white text-primary hover:bg-white/90 transition-colors font-semibold text-lg flex items-center justify-center tracking-wide shadow-[var(--shadow-luxury)] rounded-[var(--radius-btn)]"
             >
               {isAr ? 'اتصل بنا' : 'Contact Us'}
             </Link>

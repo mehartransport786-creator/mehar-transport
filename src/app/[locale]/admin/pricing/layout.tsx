@@ -31,7 +31,7 @@ export default function PricingLayout({ children }: { children: React.ReactNode 
     <div className="max-w-7xl mx-auto space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-[#1B1E4F]">
+        <h1 className="text-3xl font-bold tracking-tight text-primary">
           {isAr ? "إدارة التسعير والإيرادات" : "Pricing & Revenue Management"}
         </h1>
         <p className="text-gray-500 mt-1">
@@ -55,7 +55,7 @@ export default function PricingLayout({ children }: { children: React.ReactNode 
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                   isActive 
-                    ? "bg-[#D9A63A] text-white shadow-lg shadow-[#D9A63A]/20"
+                    ? "bg-secondary text-white shadow-lg shadow-secondary/20"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
               >

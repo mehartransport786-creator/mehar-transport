@@ -23,7 +23,7 @@ export default async function BlogDashboardPage() {
         </div>
         <Link 
           href="/admin/blog/create" 
-          className="flex items-center gap-2 px-4 py-2 bg-[#D9A63A] text-white rounded-lg hover:bg-[#b88c32] transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>New Article</span>
@@ -32,7 +32,7 @@ export default async function BlogDashboardPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-[#1B1E4F] p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
+        <div className="bg-white dark:bg-primary p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400">
             <FileText className="w-6 h-6" />
           </div>
@@ -42,7 +42,7 @@ export default async function BlogDashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-[#1B1E4F] p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
+        <div className="bg-white dark:bg-primary p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-green-50 dark:bg-green-500/10 flex items-center justify-center text-green-600 dark:text-green-400">
             <Eye className="w-6 h-6" />
           </div>
@@ -52,7 +52,7 @@ export default async function BlogDashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-[#1B1E4F] p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
+        <div className="bg-white dark:bg-primary p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400">
             <Clock className="w-6 h-6" />
           </div>
@@ -62,7 +62,7 @@ export default async function BlogDashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-[#1B1E4F] p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
+        <div className="bg-white dark:bg-primary p-5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400">
             <BarChart2 className="w-6 h-6" />
           </div>
@@ -74,7 +74,7 @@ export default async function BlogDashboardPage() {
       </div>
 
       {/* Recent Posts Table */}
-      <div className="bg-white dark:bg-[#1B1E4F] rounded-xl shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
+      <div className="bg-white dark:bg-primary rounded-xl shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
         <div className="p-5 border-b border-gray-100 dark:border-white/10 flex justify-between items-center">
           <h2 className="text-lg font-semibold">Recent Articles</h2>
           <Link href="/admin/blog/articles" className="text-sm text-blue-600 hover:underline">View All</Link>

@@ -28,14 +28,14 @@ export default async function RolesPermissionsPage({ params: { locale } }: { par
     <div className="p-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {isAr ? "الأدوار والصلاحيات (RBAC)" : "Roles & Permissions (RBAC)"}
           </h2>
           <p className="text-gray-500 mt-1">
             {isAr ? "إدارة الأدوار وصلاحيات الوصول لكل قسم في النظام." : "Manage roles and access permissions for each module in the system."}
           </p>
         </div>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-[#1B1E4F] text-white font-bold rounded-xl text-sm hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20">
+        <button className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/80 transition-all shadow-lg shadow-primary/20">
           <Plus className="w-4 h-4" />
           {isAr ? "دور جديد" : "New Role"}
         </button>
@@ -62,10 +62,10 @@ export default async function RolesPermissionsPage({ params: { locale } }: { par
       <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm mb-6">
         <div className="bg-gray-50 p-6 border-b border-gray-100 flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-bold text-[#1B1E4F]">{isAr ? "مصفوفة الصلاحيات: مدير العمليات" : "Permissions Matrix: Operations Manager"}</h3>
+            <h3 className="text-lg font-bold text-primary">{isAr ? "مصفوفة الصلاحيات: مدير العمليات" : "Permissions Matrix: Operations Manager"}</h3>
             <p className="text-sm text-gray-500 mt-1">{isAr ? "يتم تطبيق هذه الصلاحيات على جميع المستخدمين المعينين لهذا الدور." : "These permissions apply to all users assigned this role."}</p>
           </div>
-          <button className="px-4 py-2 bg-white border border-gray-200 text-[#1B1E4F] text-sm font-bold rounded-xl hover:bg-gray-50 transition-colors">
+          <button className="px-4 py-2 bg-white border border-gray-200 text-primary text-sm font-bold rounded-xl hover:bg-gray-50 transition-colors">
             {isAr ? "حفظ التغييرات" : "Save Changes"}
           </button>
         </div>
@@ -95,7 +95,7 @@ export default async function RolesPermissionsPage({ params: { locale } }: { par
                         <label className="inline-flex items-center cursor-pointer">
                           <input 
                             type="checkbox" 
-                            className="w-5 h-5 rounded border-gray-300 text-[#D9A63A] focus:ring-[#D9A63A] bg-gray-50 cursor-pointer" 
+                            className="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary bg-gray-50 cursor-pointer" 
                             defaultChecked={isChecked}
                           />
                         </label>

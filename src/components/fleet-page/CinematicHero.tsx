@@ -44,8 +44,8 @@ export function CinematicHero() {
             transition={{ duration: 1, delay: 0.2 }}
             className="flex items-center gap-4"
           >
-            <div className="w-12 h-0.5 bg-[#D9A63A]"></div>
-            <span className="text-[#D9A63A] font-bold uppercase tracking-[0.3em] text-sm">
+            <div className="w-12 h-0.5 bg-secondary"></div>
+            <span className="text-secondary font-bold uppercase tracking-[0.3em] text-sm">
               {isAr ? "ميهار للنقل الفاخر" : "Mehar Premium Transport"}
             </span>
           </motion.div>
@@ -78,21 +78,21 @@ export function CinematicHero() {
           >
             <button 
               onClick={() => document.getElementById('premium-collection')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-full sm:w-auto bg-[#D9A63A] text-[#1B1E4F] hover:bg-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground px-8 py-4 rounded-[var(--radius-btn)] font-bold transition-all flex items-center justify-center gap-3 group"
             >
               <span>{isAr ? "استكشف الأسطول" : "Explore Fleet"}</span>
               <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
             </button>
             <Link 
               href="/booking"
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-[var(--radius-btn)] font-bold transition-all flex items-center justify-center gap-3"
             >
               <Calendar className="w-5 h-5" />
               <span>{isAr ? "احجز مركبة" : "Book Vehicle"}</span>
             </Link>
             <a 
               href="https://wa.me/966565638120"
-              className="w-full sm:w-auto hover:bg-[#25D366]/10 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-3"
+              className="w-full sm:w-auto hover:bg-[#25D366]/10 text-white px-8 py-4 rounded-[var(--radius-btn)] font-bold transition-all flex items-center justify-center gap-3"
             >
               <Phone className="w-5 h-5 text-[#25D366]" />
               <span>WhatsApp</span>
@@ -113,7 +113,7 @@ export function CinematicHero() {
           <motion.div 
             animate={{ y: [0, 48] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            className="w-full h-1/2 bg-[#D9A63A]"
+            className="w-full h-1/2 bg-secondary"
           />
         </div>
       </motion.div>

@@ -76,7 +76,7 @@ export default function AnalyticsPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold whitespace-nowrap transition-all ${
                 activeTab === tab.id
-                  ? "bg-[#1B1E4F] text-white shadow-lg"
+                  ? "bg-primary text-white shadow-lg"
                   : "text-gray-500 hover:bg-gray-50"
               }`}
             >
@@ -100,7 +100,7 @@ export default function AnalyticsPage() {
             ].map((card, i) => (
               <div key={i} className="bg-white rounded-2xl border border-gray-100 p-6">
                 <div className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">{card.label}</div>
-                <div className="text-2xl font-black text-[#1B1E4F]">{card.value}</div>
+                <div className="text-2xl font-black text-primary">{card.value}</div>
                 <div className="flex items-center gap-1 mt-2">
                   <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
                   <span className="text-xs font-bold text-emerald-600">{card.change}</span>
@@ -111,7 +111,7 @@ export default function AnalyticsPage() {
 
           {/* Revenue Over Time */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-            <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "الإيرادات الشهرية" : "Monthly Revenue Trend"}</h3>
+            <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "الإيرادات الشهرية" : "Monthly Revenue Trend"}</h3>
             <div className="h-[400px]">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={revenueChartData}>
@@ -134,7 +134,7 @@ export default function AnalyticsPage() {
 
           {/* Weekly Breakdown */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-            <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "نمط الأسبوع" : "Weekly Revenue Pattern"}</h3>
+            <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "نمط الأسبوع" : "Weekly Revenue Pattern"}</h3>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={weeklyData}>
@@ -155,7 +155,7 @@ export default function AnalyticsPage() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
             <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-              <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "اتجاه الحجوزات" : "Booking Growth Trend"}</h3>
+              <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "اتجاه الحجوزات" : "Booking Growth Trend"}</h3>
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={monthlyGrowth}>
@@ -170,7 +170,7 @@ export default function AnalyticsPage() {
             </div>
 
             <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-              <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "حجوزات أسبوعية" : "Weekly Bookings"}</h3>
+              <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "حجوزات أسبوعية" : "Weekly Bookings"}</h3>
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={weeklyData}>
@@ -190,7 +190,7 @@ export default function AnalyticsPage() {
       {/* Vehicles Tab */}
       {activeTab === "vehicles" && (
         <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-          <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "الحجوزات حسب المركبة" : "Bookings by Vehicle"}</h3>
+          <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "الحجوزات حسب المركبة" : "Bookings by Vehicle"}</h3>
           <div className="h-[400px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={bookingsByVehicle} layout="vertical" margin={{ left: 20, right: 20 }}>
@@ -213,7 +213,7 @@ export default function AnalyticsPage() {
       {activeTab === "routes" && (
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-            <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "الحجوزات حسب المسار" : "Bookings by Route"}</h3>
+            <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "الحجوزات حسب المسار" : "Bookings by Route"}</h3>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -228,13 +228,13 @@ export default function AnalyticsPage() {
               {bookingsByRoute.map((r) => (
                 <div key={r.name} className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full" style={{ background: r.fill }} /><span className="text-gray-600 font-medium">{r.name}</span></div>
-                  <span className="font-bold text-[#1B1E4F]">{r.value}</span>
+                  <span className="font-bold text-primary">{r.value}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-            <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "الحجوزات حسب المدينة" : "Bookings by City"}</h3>
+            <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "الحجوزات حسب المدينة" : "Bookings by City"}</h3>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -249,7 +249,7 @@ export default function AnalyticsPage() {
               {cityData.map((c) => (
                 <div key={c.name} className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full" style={{ background: c.fill }} /><span className="text-gray-600 font-medium">{c.name}</span></div>
-                  <span className="font-bold text-[#1B1E4F]">{c.value}</span>
+                  <span className="font-bold text-primary">{c.value}</span>
                 </div>
               ))}
             </div>
@@ -260,7 +260,7 @@ export default function AnalyticsPage() {
       {/* Customers Tab */}
       {activeTab === "customers" && (
         <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
-          <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "نمو العملاء" : "Customer Growth"}</h3>
+          <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "نمو العملاء" : "Customer Growth"}</h3>
           <div className="h-[400px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={monthlyGrowth}>

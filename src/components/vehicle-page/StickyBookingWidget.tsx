@@ -45,13 +45,13 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
 
   return (
     <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 overflow-hidden sticky top-24">
-      <div className="bg-[#1B1E4F] p-6 text-white">
+      <div className="bg-primary p-6 text-white">
         <h3 className="text-xl font-bold mb-1">
           {isAr ? "احجز " + vehicleNameAr : "Reserve " + vehicleName}
         </h3>
         <p className="text-sm text-gray-300">
           {isAr ? "تبدأ من " : "Starting from "}
-          <span className="text-[#D9A63A] font-bold text-lg">{basePrice} SAR</span>
+          <span className="text-secondary font-bold text-lg">{basePrice} SAR</span>
         </p>
       </div>
 
@@ -68,7 +68,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
                 type="text" 
                 required
                 placeholder={isAr ? "المطار أو الفندق" : "Airport or Hotel"}
-                className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] transition-colors"
+                className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors"
                 value={formData.pickup}
                 onChange={(e) => setFormData({...formData, pickup: e.target.value})}
               />
@@ -85,7 +85,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
                 type="text" 
                 required
                 placeholder={isAr ? "أين تود الذهاب؟" : "Where to?"}
-                className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] transition-colors"
+                className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors"
                 value={formData.destination}
                 onChange={(e) => setFormData({...formData, destination: e.target.value})}
               />
@@ -102,7 +102,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
                 <input 
                   type="date" 
                   required
-                  className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-[#D9A63A] transition-colors"
+                  className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-secondary transition-colors"
                   value={formData.date}
                   onChange={(e) => setFormData({...formData, date: e.target.value})}
                 />
@@ -119,7 +119,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
                   type="number" 
                   min="1"
                   required
-                  className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-[#D9A63A] transition-colors"
+                  className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-secondary transition-colors"
                   value={formData.passengers}
                   onChange={(e) => setFormData({...formData, passengers: e.target.value})}
                 />
@@ -137,7 +137,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
                 type="tel" 
                 required
                 placeholder="+966 56 563 8120"
-                className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-[#D9A63A] transition-colors text-left"
+                className="w-full bg-slate-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 rtl:pl-4 rtl:pr-10 focus:outline-none focus:border-secondary transition-colors text-left"
                 dir="ltr"
                 value={formData.phone}
                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -149,7 +149,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full bg-[#D9A63A] text-[#1B1E4F] font-bold py-4 rounded-xl mt-4 hover:bg-[#1B1E4F] hover:text-white transition-colors uppercase tracking-wider text-sm"
+            className="w-full bg-secondary text-primary font-bold py-4 rounded-xl mt-4 hover:bg-primary hover:text-white transition-colors uppercase tracking-wider text-sm"
           >
             {isAr ? "تأكيد الحجز الفوري" : "Confirm Instant Booking"}
           </motion.button>

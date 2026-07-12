@@ -15,21 +15,21 @@ export default async function UserManagementPage({ params: { locale } }: { param
     <div className="p-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {isAr ? "إدارة المستخدمين" : "User Management"}
           </h2>
           <p className="text-gray-500 mt-1">
             {isAr ? "إضافة وتعديل وحذف مديري النظام وموظفي الشركة." : "Add, edit, and remove system administrators and company staff."}
           </p>
         </div>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-[#1B1E4F] text-white font-bold rounded-xl text-sm hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20">
+        <button className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/80 transition-all shadow-lg shadow-primary/20">
           <Plus className="w-4 h-4" />
           {isAr ? "مستخدم جديد" : "New User"}
         </button>
       </div>
 
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 mb-6">
-        <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-200 focus-within:border-[#D9A63A] focus-within:bg-white transition-all">
+        <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-200 focus-within:border-secondary focus-within:bg-white transition-all">
           <Search className="w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -61,7 +61,7 @@ export default async function UserManagementPage({ params: { locale } }: { param
                 <tr key={user._id.toString()} className="hover:bg-gray-50 transition-colors group">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#1B1E4F] flex items-center justify-center text-white font-bold shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shrink-0">
                         {user.avatar ? (
                           <img src={user.avatar} alt={user.name} className="w-full h-full rounded-full object-cover" />
                         ) : (

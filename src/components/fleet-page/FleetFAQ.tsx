@@ -68,14 +68,14 @@ export function FleetFAQ() {
   // Flatten the FAQs to give them a single continuous index for the accordion state
   
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
+    <section className="py-24 bg-background border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[800px]">
         
         <div className="text-center mb-16 space-y-4">
-          <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm block">
+          <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm block">
             {t("faq")}
           </span>
-          <h2 className="text-4xl font-bold text-[#1B1E4F]">
+          <h2 className="text-4xl font-bold text-primary">
             {t("everythingYouNeedToKnow")}
           </h2>
         </div>
@@ -83,7 +83,7 @@ export function FleetFAQ() {
         <div className="space-y-12">
           {faqs.map((category, catIdx) => (
             <div key={catIdx}>
-              <h3 className="text-2xl font-bold text-[#1B1E4F] mb-6 pb-2 border-b border-gray-100">
+              <h3 className="text-2xl font-bold text-primary mb-6 pb-2 border-b border-border">
                 {category.category}
               </h3>
               <div className="space-y-4">
@@ -94,14 +94,14 @@ export function FleetFAQ() {
                   return (
                     <div 
                       key={globalIdx}
-                      className={`border rounded-2xl transition-all duration-300 ${isOpen ? 'border-[#D9A63A] bg-slate-50' : 'border-gray-200 hover:border-[#1B1E4F]/30 bg-white'}`}
+                      className={`border rounded-2xl transition-all duration-300 ${isOpen ? 'border-secondary bg-muted' : 'border-border hover:border-primary/30 bg-background'}`}
                     >
                       <button
                         onClick={() => setOpenIndex(isOpen ? null : globalIdx)}
                         className="w-full px-6 py-5 flex items-center justify-between text-left"
                       >
-                        <span className="font-bold text-[#1B1E4F] pr-8 rtl:pr-0 rtl:pl-8">{faq.q}</span>
-                        <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#D9A63A] text-white' : 'bg-gray-100 text-gray-500'}`}>
+                        <span className="font-bold text-primary pr-8 rtl:pr-0 rtl:pl-8">{faq.q}</span>
+                        <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-secondary text-secondary-foreground' : 'bg-muted text-muted-foreground'}`}>
                           {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                         </span>
                       </button>
@@ -115,7 +115,7 @@ export function FleetFAQ() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <div className="px-6 pb-5 pt-1 text-gray-600 leading-relaxed font-medium">
+                            <div className="px-6 pb-5 pt-1 text-muted-foreground leading-relaxed font-medium">
                               {faq.a}
                             </div>
                           </motion.div>

@@ -46,15 +46,15 @@ export default function DriversPage() {
             {isAr ? `${drivers.length} سائقين مسجلين` : `${drivers.length} registered drivers`}
           </p>
         </div>
-        <button className="flex items-center gap-2 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#1B1E4F]/20">
+        <button className="flex items-center gap-2 bg-primary text-white hover:bg-primary/80 px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-primary/20">
           + {isAr ? "إضافة سائق" : "Add Driver"}
         </button>
       </div>
 
       {isLoading ? (
-        <div className="flex flex-col items-center justify-center py-24 text-[#D9A63A]">
+        <div className="flex flex-col items-center justify-center py-24 text-secondary">
           <Loader2 className="w-10 h-10 animate-spin" />
-          <p className="mt-4 text-[#1B1E4F] font-semibold">{isAr ? "جاري التحميل..." : "Loading drivers..."}</p>
+          <p className="mt-4 text-primary font-semibold">{isAr ? "جاري التحميل..." : "Loading drivers..."}</p>
         </div>
       ) : (
         <>
@@ -66,7 +66,7 @@ export default function DriversPage() {
               </div>
               <div>
                 <div className="text-sm text-gray-400 font-medium">{isAr ? "متاح" : "Available"}</div>
-                <div className="text-2xl font-black text-[#1B1E4F]">{drivers.filter(d => d.availability === "available").length}</div>
+                <div className="text-2xl font-black text-primary">{drivers.filter(d => d.availability === "available").length}</div>
               </div>
             </div>
             <div className="bg-white rounded-2xl border border-gray-100 p-6 flex items-center gap-4">
@@ -75,7 +75,7 @@ export default function DriversPage() {
               </div>
               <div>
                 <div className="text-sm text-gray-400 font-medium">{isAr ? "في رحلة" : "On Trip"}</div>
-                <div className="text-2xl font-black text-[#1B1E4F]">{drivers.filter(d => d.availability === "on_trip").length}</div>
+                <div className="text-2xl font-black text-primary">{drivers.filter(d => d.availability === "on_trip").length}</div>
               </div>
             </div>
             <div className="bg-white rounded-2xl border border-gray-100 p-6 flex items-center gap-4">
@@ -84,7 +84,7 @@ export default function DriversPage() {
               </div>
               <div>
                 <div className="text-sm text-gray-400 font-medium">{isAr ? "متوسط التقييم" : "Avg. Rating"}</div>
-                <div className="text-2xl font-black text-[#1B1E4F]">
+                <div className="text-2xl font-black text-primary">
                   {drivers.length > 0 ? (drivers.reduce((a, d) => a + d.rating, 0) / drivers.length).toFixed(1) : "0.0"}
                 </div>
               </div>
@@ -98,13 +98,13 @@ export default function DriversPage() {
               return (
                 <div
                   key={driver._id || driver.id}
-                  className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-xl hover:border-[#D9A63A]/20 transition-all duration-300 group"
+                  className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-xl hover:border-secondary/20 transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4 mb-5">
                     <img src={driver.photo} alt={driver.name} className="w-14 h-14 rounded-xl object-cover shadow-sm" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <h3 className="font-bold text-[#1B1E4F] text-lg truncate">{isAr ? driver.nameAr : driver.name}</h3>
+                        <h3 className="font-bold text-primary text-lg truncate">{isAr ? driver.nameAr : driver.name}</h3>
                         <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shrink-0 ml-2"
                           style={{ color: avail.color, background: avail.bg }}
                         >
@@ -114,7 +114,7 @@ export default function DriversPage() {
                       <p className="text-xs text-gray-400 mt-1">{driver.license}</p>
                       <div className="flex items-center gap-1 mt-2">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className={`w-3.5 h-3.5 ${i < Math.floor(driver.rating) ? "fill-[#D9A63A] text-[#D9A63A]" : "fill-gray-200 text-gray-200"}`} />
+                          <Star key={i} className={`w-3.5 h-3.5 ${i < Math.floor(driver.rating) ? "fill-secondary text-secondary" : "fill-gray-200 text-gray-200"}`} />
                         ))}
                         <span className="text-xs font-bold text-gray-500 ml-1">{driver.rating}</span>
                       </div>
@@ -131,15 +131,15 @@ export default function DriversPage() {
                   <div className="grid grid-cols-3 gap-4 mb-5">
                     <div className="text-center">
                       <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{isAr ? "رحلات" : "Trips"}</div>
-                      <div className="text-xl font-black text-[#1B1E4F] mt-1">{driver.trips}</div>
+                      <div className="text-xl font-black text-primary mt-1">{driver.trips}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{isAr ? "الإيرادات" : "Revenue"}</div>
-                      <div className="text-xl font-black text-[#1B1E4F] mt-1">{(driver.revenue / 1000).toFixed(0)}K</div>
+                      <div className="text-xl font-black text-primary mt-1">{(driver.revenue / 1000).toFixed(0)}K</div>
                     </div>
                     <div className="text-center">
                       <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{isAr ? "التقييم" : "Rating"}</div>
-                      <div className="text-xl font-black text-[#D9A63A] mt-1">{driver.rating}</div>
+                      <div className="text-xl font-black text-secondary mt-1">{driver.rating}</div>
                     </div>
                   </div>
 
@@ -147,7 +147,7 @@ export default function DriversPage() {
                     <button className="flex-1 flex items-center justify-center gap-1.5 bg-gray-50 text-gray-600 hover:bg-gray-100 py-2.5 rounded-xl text-xs font-semibold transition-colors">
                       <Eye className="w-3.5 h-3.5" /> {isAr ? "عرض" : "Profile"}
                     </button>
-                    <button className="flex-1 flex items-center justify-center gap-1.5 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] py-2.5 rounded-xl text-xs font-semibold transition-colors">
+                    <button className="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white hover:bg-primary/80 py-2.5 rounded-xl text-xs font-semibold transition-colors">
                       <Edit3 className="w-3.5 h-3.5" /> {isAr ? "تعديل" : "Edit"}
                     </button>
                   </div>

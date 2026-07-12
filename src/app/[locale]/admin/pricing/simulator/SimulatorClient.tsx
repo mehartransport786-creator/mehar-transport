@@ -61,8 +61,8 @@ export default function SimulatorClient({
   return (
     <div className="p-8">
       <div className="mb-8 border-b border-gray-100 pb-6">
-        <h2 className="text-2xl font-bold text-[#1B1E4F] flex items-center gap-2">
-          <Calculator className="w-6 h-6 text-[#D9A63A]" />
+        <h2 className="text-2xl font-bold text-primary flex items-center gap-2">
+          <Calculator className="w-6 h-6 text-secondary" />
           {isAr ? "محاكي التسعير" : "Pricing Simulator"}
         </h2>
         <p className="text-gray-500 mt-1">
@@ -86,14 +86,14 @@ export default function SimulatorClient({
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, type: 'transfer' })}
-                  className={`flex-1 py-2 text-sm font-bold rounded-lg transition-colors ${formData.type === 'transfer' ? 'bg-white text-[#1B1E4F] shadow' : 'text-gray-500 hover:text-gray-800'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-lg transition-colors ${formData.type === 'transfer' ? 'bg-white text-primary shadow' : 'text-gray-500 hover:text-gray-800'}`}
                 >
                   {isAr ? 'مسار (نقل)' : 'Transfer Route'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, type: 'hourly' })}
-                  className={`flex-1 py-2 text-sm font-bold rounded-lg transition-colors ${formData.type === 'hourly' ? 'bg-white text-[#1B1E4F] shadow' : 'text-gray-500 hover:text-gray-800'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-lg transition-colors ${formData.type === 'hourly' ? 'bg-white text-primary shadow' : 'text-gray-500 hover:text-gray-800'}`}
                 >
                   {isAr ? 'بالساعة' : 'Hourly Chauffeur'}
                 </button>
@@ -107,7 +107,7 @@ export default function SimulatorClient({
                   <select 
                     value={formData.routeId}
                     onChange={(e) => setFormData({ ...formData, routeId: e.target.value })}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary"
                   >
                     <option value="">{isAr ? "اختر المسار..." : "Select Route..."}</option>
                     {routes.map(r => (
@@ -127,7 +127,7 @@ export default function SimulatorClient({
                     min="1"
                     value={formData.hours}
                     onChange={(e) => setFormData({ ...formData, hours: Number(e.target.value) })}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A]" 
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary" 
                   />
                   <p className="text-xs text-gray-500 mt-1">
                     {isAr ? 'ملاحظة: سيتم تطبيق الحد الأدنى للساعات تلقائياً إن وجد' : 'Note: Minimum vehicle hours will be automatically applied if applicable'}
@@ -142,7 +142,7 @@ export default function SimulatorClient({
                 <select 
                   value={formData.vehicleId}
                   onChange={(e) => setFormData({ ...formData, vehicleId: e.target.value })}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A]"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary"
                 >
                   <option value="">{isAr ? "اختر المركبة..." : "Select Vehicle..."}</option>
                   {vehicles.map(v => (
@@ -159,7 +159,7 @@ export default function SimulatorClient({
                   type="date" 
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#D9A63A]" 
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-secondary" 
                 />
               </div>
             </div>
@@ -167,7 +167,7 @@ export default function SimulatorClient({
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-[#1B1E4F] hover:bg-[#2a2f6b] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-[#1B1E4F]/20 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full bg-primary hover:bg-primary/80 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Calculator className="w-5 h-5" />}
               {isAr ? "تشغيل المحاكي" : "Run Simulation"}
@@ -177,8 +177,8 @@ export default function SimulatorClient({
 
         <div className="w-full lg:w-1/2">
           {result ? (
-            <div className="bg-[#1B1E4F] text-white rounded-2xl p-8 shadow-xl relative overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="absolute top-0 right-0 p-32 bg-[#D9A63A] blur-[120px] opacity-20 rounded-full"></div>
+            <div className="bg-primary text-white rounded-2xl p-8 shadow-xl relative overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="absolute top-0 right-0 p-32 bg-secondary blur-[120px] opacity-20 rounded-full"></div>
               
               <h3 className="font-bold text-xl text-white mb-6 border-b border-white/10 pb-4 relative z-10">
                 {isAr ? "تفصيل السعر النهائي" : "Live Fare Breakdown"}
@@ -211,9 +211,9 @@ export default function SimulatorClient({
                   <span className="font-semibold">{result.taxAmount.toFixed(2)} SAR</span>
                 </div>
                 
-                <div className="border-t border-[#D9A63A]/50 pt-4 mt-2 flex justify-between items-end">
-                  <span className="text-lg font-bold text-[#D9A63A]">{isAr ? "الإجمالي المستحق" : "Total Payable"}</span>
-                  <span className="text-3xl font-black text-[#D9A63A]">{result.totalIncludingTax.toFixed(2)} <span className="text-lg">SAR</span></span>
+                <div className="border-t border-secondary/50 pt-4 mt-2 flex justify-between items-end">
+                  <span className="text-lg font-bold text-secondary">{isAr ? "الإجمالي المستحق" : "Total Payable"}</span>
+                  <span className="text-3xl font-black text-secondary">{result.totalIncludingTax.toFixed(2)} <span className="text-lg">SAR</span></span>
                 </div>
               </div>
             </div>

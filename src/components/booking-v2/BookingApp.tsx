@@ -18,23 +18,23 @@ function BookingAppContent() {
   const isAr = useLocale() === "ar";
 
   return (
-    <div className="min-h-screen bg-[#F5F4F1] pb-32 lg:pb-12">
+    <div className="min-h-screen bg-background pb-32 lg:pb-12">
       {/* Hero Header */}
-      <div className="bg-[#1B1E4F] relative pt-24 pb-16">
+      <div className="bg-primary relative pt-24 pb-16">
         <div className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-[#D9A63A] px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm text-secondary px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
             <ShieldCheck className="w-4 h-4" />
             {isAr ? "تجربة حجز فاخرة" : "Premium Booking Experience"}
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4 tracking-tight">
             {isAr ? "احجز رحلتك" : "Book Your Journey"}
           </h1>
           
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-8 text-white/60 text-xs sm:text-sm font-medium">
-            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#D9A63A]" /> {isAr ? "خدمة على مدار الساعة" : "24/7 Service"}</span>
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-[#D9A63A]" /> {isAr ? "سائقون محترفون" : "Licensed Drivers"}</span>
-            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-[#D9A63A]" /> {isAr ? "تقييم 4.9★" : "4.9★ Rating"}</span>
-            <span className="flex items-center gap-1.5"><Headset className="w-4 h-4 text-[#D9A63A]" /> {isAr ? "تأكيد فوري" : "Instant Confirmation"}</span>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-8 text-primary-foreground/60 text-xs sm:text-sm font-medium">
+            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-secondary" /> {isAr ? "خدمة على مدار الساعة" : "24/7 Service"}</span>
+            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-secondary" /> {isAr ? "سائقون محترفون" : "Licensed Drivers"}</span>
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-secondary" /> {isAr ? "تقييم 4.9★" : "4.9★ Rating"}</span>
+            <span className="flex items-center gap-1.5"><Headset className="w-4 h-4 text-secondary" /> {isAr ? "تأكيد فوري" : "Instant Confirmation"}</span>
           </div>
         </div>
       </div>
@@ -73,14 +73,14 @@ function BookingAppContent() {
                       // Actually, it's better to just trigger a custom event that StickySummary listens to, or we can move submit logic to Context.
                       document.dispatchEvent(new CustomEvent('submit-booking'));
                     }}
-                    className={`w-full py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 ${
+                    className={`w-full py-4 rounded-[var(--radius-btn)] font-bold text-base transition-all flex items-center justify-center gap-2 ${
                       ((state.serviceType === "transfer" ? state.routeId : state.pickupLocation) &&
                       state.selectedVehicle &&
                       state.passengerInfo.name &&
                       state.passengerInfo.phone &&
                       state.passengerInfo.email)
-                        ? 'bg-[#1B1E4F] text-white hover:bg-[#2A2D5F] shadow-lg hover:shadow-xl'
-                        : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                        ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-[var(--shadow-luxury)] hover:shadow-xl'
+                        : 'bg-muted text-muted-foreground cursor-not-allowed'
                     }`}
                   >
                     {state.isSubmitting ? (

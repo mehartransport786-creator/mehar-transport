@@ -38,10 +38,10 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
   return (
     <section>
       <div className="flex items-center justify-between mb-8">
-        <h3 className="text-2xl font-bold text-[#1B1E4F]">
+        <h3 className="text-2xl font-bold text-primary">
           {t("experienceTheVehicle")}
         </h3>
-        <span className="text-sm font-bold text-[#D9A63A] uppercase tracking-wider">
+        <span className="text-sm font-bold text-secondary uppercase tracking-wider">
           {displayGallery.length} {t("photos")}
         </span>
       </div>

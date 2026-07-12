@@ -96,7 +96,7 @@ export default function MessagesPage() {
             onClick={() => setStatusFilter(tab.key)}
             className={`px-4 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all ${
               statusFilter === tab.key
-                ? 'bg-[#1B1E4F] text-white shadow-lg'
+                ? 'bg-primary text-white shadow-lg'
                 : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300'
             }`}
           >
@@ -126,13 +126,13 @@ export default function MessagesPage() {
                     if (msg.status === 'unread') updateStatus(msg._id, 'read');
                   }}
                   className={`w-full text-left p-4 hover:bg-gray-50 transition-colors ${
-                    selectedMessage?._id === msg._id ? 'bg-blue-50/50 border-l-4 border-l-[#1B1E4F]' : ''
+                    selectedMessage?._id === msg._id ? 'bg-blue-50/50 border-l-4 border-l-primary' : ''
                   } ${msg.status === 'unread' ? 'bg-blue-50/30' : ''}`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-1">
                     <div className="flex items-center gap-2">
                       {statusIcon(msg.status)}
-                      <span className={`text-sm font-semibold ${msg.status === 'unread' ? 'text-[#1B1E4F]' : 'text-gray-700'}`}>
+                      <span className={`text-sm font-semibold ${msg.status === 'unread' ? 'text-primary' : 'text-gray-700'}`}>
                         {msg.name}
                       </span>
                     </div>
@@ -156,7 +156,7 @@ export default function MessagesPage() {
             <div className="bg-white rounded-2xl border border-gray-100 p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-[#1B1E4F] mb-1">
+                  <h2 className="text-xl font-bold text-primary mb-1">
                     {selectedMessage.subject || isAr ? 'بدون عنوان' : 'No Subject'}
                   </h2>
                   <p className="text-sm text-gray-500">
@@ -198,7 +198,7 @@ export default function MessagesPage() {
               <div className="mt-6 flex gap-3">
                 <a
                   href={`mailto:${selectedMessage.email}?subject=Re: ${selectedMessage.subject || 'Your inquiry'}`}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-[#1B1E4F] text-white rounded-xl text-sm font-semibold hover:bg-[#2a2f6b] transition-colors"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/80 transition-colors"
                 >
                   <Reply className="w-4 h-4" /> {isAr ? 'رد بالبريد' : 'Reply via Email'}
                 </a>

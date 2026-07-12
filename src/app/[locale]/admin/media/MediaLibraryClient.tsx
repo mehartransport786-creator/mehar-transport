@@ -108,7 +108,7 @@ export default function MediaLibraryClient({ locale, isAr }: { locale: string, i
     <div className="flex-1 flex flex-col md:flex-row gap-6 h-full overflow-hidden">
       {/* Sidebar Folders */}
       <div className="w-full md:w-64 bg-white border border-gray-100 rounded-2xl p-4 flex-shrink-0 flex flex-col shadow-sm">
-        <h3 className="font-bold text-[#1B1E4F] mb-4 px-2 uppercase tracking-wider text-xs">
+        <h3 className="font-bold text-primary mb-4 px-2 uppercase tracking-wider text-xs">
           {isAr ? "المجلدات" : "Folders"}
         </h3>
         <div className="space-y-1 overflow-y-auto flex-1 pr-2">
@@ -118,11 +118,11 @@ export default function MediaLibraryClient({ locale, isAr }: { locale: string, i
               onClick={() => setFolder(f)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors font-medium text-sm ${
                 folder === f 
-                  ? "bg-[#D9A63A]/10 text-[#D9A63A]" 
+                  ? "bg-secondary/10 text-secondary" 
                   : "text-gray-600 hover:bg-gray-50"
               }`}
             >
-              <Folder className={`w-4 h-4 ${folder === f ? "fill-[#D9A63A]/20" : ""}`} />
+              <Folder className={`w-4 h-4 ${folder === f ? "fill-secondary/20" : ""}`} />
               <span className="capitalize">{f}</span>
             </button>
           ))}
@@ -134,7 +134,7 @@ export default function MediaLibraryClient({ locale, isAr }: { locale: string, i
         
         {/* Toolbar */}
         <div className="p-4 border-b border-gray-100 flex items-center justify-between gap-4 bg-gray-50/50">
-          <div className="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-lg flex-1 max-w-sm focus-within:ring-2 focus-within:ring-[#D9A63A] transition-all">
+          <div className="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-lg flex-1 max-w-sm focus-within:ring-2 focus-within:ring-secondary transition-all">
             <Search className="w-4 h-4 text-gray-400" />
             <input 
               type="text" 
@@ -143,7 +143,7 @@ export default function MediaLibraryClient({ locale, isAr }: { locale: string, i
             />
           </div>
 
-          <label className={`cursor-pointer px-5 py-2.5 bg-[#1B1E4F] text-white font-bold rounded-xl text-sm hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20 flex items-center gap-2 ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
+          <label className={`cursor-pointer px-5 py-2.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/80 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
             {uploading ? (
               <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
             ) : (
@@ -158,7 +158,7 @@ export default function MediaLibraryClient({ locale, isAr }: { locale: string, i
         <div className="flex-1 overflow-y-auto p-6">
           {loading ? (
             <div className="flex items-center justify-center h-full">
-              <div className="w-8 h-8 border-4 border-[#D9A63A]/30 border-t-[#D9A63A] rounded-full animate-spin" />
+              <div className="w-8 h-8 border-4 border-secondary/30 border-t-secondary rounded-full animate-spin" />
             </div>
           ) : images.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-gray-400 space-y-4">
@@ -184,7 +184,7 @@ export default function MediaLibraryClient({ locale, isAr }: { locale: string, i
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
                       <button 
                         onClick={() => copyToClipboard(img.url)}
-                        className="p-2 bg-white text-[#1B1E4F] rounded-full hover:bg-[#D9A63A] hover:text-white transition-colors"
+                        className="p-2 bg-white text-primary rounded-full hover:bg-secondary hover:text-white transition-colors"
                         title="Copy URL"
                       >
                         {copiedUrl === img.url ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}

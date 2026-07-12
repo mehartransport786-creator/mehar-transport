@@ -72,11 +72,11 @@ export function VehicleSection() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-6 sm:p-8">
-      <h2 className="text-xl font-bold text-[#1B1E4F] mb-2">
+    <div className="bg-background rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] border border-border p-6 sm:p-8">
+      <h2 className="text-xl font-bold text-primary mb-2">
         {isAr ? "اختر مركبتك" : "Select Vehicle"}
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-muted-foreground mb-6">
         {isAr ? "جميع المركبات موديلات حديثة ومعقمة" : "All vehicles are latest models and sanitized."}
       </p>
 
@@ -93,19 +93,19 @@ export function VehicleSection() {
             <div
               key={vehicle.id}
               onClick={() => !isLoading && handleSelectVehicle(vehicle)}
-              className={`relative bg-white rounded-2xl border-2 overflow-hidden transition-all duration-300 cursor-pointer ${
+              className={`relative bg-background rounded-2xl border-2 overflow-hidden transition-all duration-300 cursor-pointer ${
                 isSelected
-                  ? 'border-[#D9A63A] shadow-xl shadow-[#D9A63A]/10 ring-1 ring-[#D9A63A]/20'
-                  : 'border-gray-100 hover:border-gray-200 hover:shadow-lg'
+                  ? 'border-secondary shadow-xl ring-1 ring-secondary/20'
+                  : 'border-border hover:border-primary/20 hover:shadow-lg'
               } ${isLoading ? 'opacity-70 pointer-events-none' : ''}`}
             >
               {isSelected && (
-                <div className="absolute top-3 left-3 bg-[#D9A63A] text-white p-1.5 rounded-full z-10 shadow-lg animate-in fade-in zoom-in duration-300">
+                <div className="absolute top-3 left-3 bg-secondary text-primary-foreground p-1.5 rounded-full z-10 shadow-lg animate-in fade-in zoom-in duration-300">
                   <Check className="w-4 h-4" />
                 </div>
               )}
 
-              <div className="relative h-44 w-full bg-gradient-to-br from-[#F8F9FC] to-[#EEF0F4] flex items-center justify-center overflow-hidden">
+              <div className="relative h-44 w-full bg-gradient-to-br from-muted to-muted/80 flex items-center justify-center overflow-hidden">
                 <Image
                   src={vehicle.image}
                   alt={vehicle.name}
@@ -118,22 +118,22 @@ export function VehicleSection() {
               <div className="p-5">
                 <div className="flex justify-between items-start mb-3">
                   <div>
-                    <h3 className="text-lg font-bold text-[#1B1E4F] leading-tight">
+                    <h3 className="text-lg font-bold text-primary leading-tight">
                       {isAr ? vehicle.nameAr : vehicle.name}
                     </h3>
-                    <span className="inline-block mt-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-[#1B1E4F]/5 text-[#1B1E4F]/60 uppercase tracking-wider">
+                    <span className="inline-block mt-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-primary/5 text-primary/60 uppercase tracking-wider">
                       {vehicle.type}
                     </span>
                   </div>
                   <div className="text-right">
                     {isLoading ? (
-                      <Loader2 className="w-5 h-5 animate-spin text-gray-300" />
+                      <Loader2 className="w-5 h-5 animate-spin text-muted-foreground/30" />
                     ) : (
                       <>
-                        <div className="text-xl font-black text-[#1B1E4F] tabular-nums">
-                          {price?.toFixed(0)} <span className="text-xs text-gray-500 font-medium ml-0.5">SAR</span>
+                        <div className="text-xl font-black text-primary tabular-nums">
+                          {price?.toFixed(0)} <span className="text-xs text-muted-foreground font-medium ml-0.5">SAR</span>
                         </div>
-                        <div className="text-[10px] text-gray-400 font-medium">
+                        <div className="text-[10px] text-muted-foreground/60 font-medium">
                           {state.serviceType === "hourly" ? (isAr ? `لـ ${state.durationHours} ساعات` : `for ${state.durationHours}h`) : (isAr ? "للرحلة" : "per trip")}
                         </div>
                       </>
@@ -141,13 +141,13 @@ export function VehicleSection() {
                   </div>
                 </div>
 
-                <div className="flex gap-4 pt-4 border-t border-gray-50">
-                  <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                    <Users className="w-4 h-4 text-blue-500/70" />
+                <div className="flex gap-4 pt-4 border-t border-border/50">
+                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <Users className="w-4 h-4 text-primary/70" />
                     <span className="font-medium">{vehicle.passengers} {isAr ? "ركاب" : "pax"}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                    <Briefcase className="w-4 h-4 text-amber-500/70" />
+                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <Briefcase className="w-4 h-4 text-secondary/70" />
                     <span className="font-medium">{vehicle.luggage} {isAr ? "حقائب" : "bags"}</span>
                   </div>
                 </div>

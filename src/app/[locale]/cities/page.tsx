@@ -93,13 +93,13 @@ export default async function CitiesPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0F172A]">
       {/* Hero */}
-      <div className="relative bg-[#1B1E4F] py-24 lg:py-32 overflow-hidden">
+      <div className="relative bg-primary py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#D9A63A] to-transparent rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-secondary to-transparent rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/80 text-sm font-medium mb-6 backdrop-blur-sm border border-white/10">
-            <MapPin className="w-4 h-4 text-[#D9A63A]" />
+            <MapPin className="w-4 h-4 text-secondary" />
             {isAr ? '5 مدن رئيسية' : '5 Major Cities'}
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
@@ -120,7 +120,7 @@ export default async function CitiesPage() {
             <Link
               key={city.slug}
               href={`/cities/${city.slug}`}
-              className={`group bg-white dark:bg-[#1B1E4F] rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ${
+              className={`group bg-white dark:bg-primary rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ${
                 index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
               }`}
             >
@@ -165,8 +165,8 @@ export default async function CitiesPage() {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 bg-[#1B1E4F] rounded-3xl p-12 text-center relative overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#D9A63A] rounded-full opacity-10 blur-3xl" />
+        <div className="mt-16 bg-primary rounded-3xl p-12 text-center relative overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-secondary rounded-full opacity-10 blur-3xl" />
           <div className="relative z-10">
             <h2 className="text-3xl font-bold text-white mb-4">
               {isAr ? 'احجز رحلتك في أي مدينة' : 'Book Your Ride in Any City'}
@@ -179,7 +179,7 @@ export default async function CitiesPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/booking"
-                className="px-8 py-4 bg-[#D9A63A] text-[#1B1E4F] font-bold rounded-xl hover:bg-white transition-colors text-lg"
+                className="px-8 py-4 bg-secondary text-primary font-bold rounded-xl hover:bg-white transition-colors text-lg"
               >
                 {isAr ? 'احجز الآن' : 'Book Now'}
               </Link>

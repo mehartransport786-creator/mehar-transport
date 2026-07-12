@@ -1,34 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Handshake, Building2, Globe2, Briefcase, FileText, CheckCircle2 } from "lucide-react";
+import { Handshake, Building2, Globe2, Briefcase, FileText, CheckCircle2, PlaneTakeoff, Users, MapPin } from "lucide-react";
 
 export function B2BPartnerships({ locale }: { locale: string }) {
   const isAr = locale === "ar";
   
   const partnerships = [
-    { icon: Handshake, text: "B2B Transportation Services", textAr: "خدمات النقل بين الشركات (B2B)" },
-    { icon: Globe2, text: "Travel Agency Partnerships", textAr: "شراكات وكالات السفر" },
-    { icon: Briefcase, text: "Tour Operator Support", textAr: "دعم منظمي الرحلات" },
-    { icon: Building2, text: "Corporate Accounts", textAr: "حسابات الشركات" },
-    { icon: Building2, text: "Hospitality Collaborations", textAr: "تعاون مع قطاع الضيافة" },
+    { icon: PlaneTakeoff, text: "Airport Meet & Greet", textAr: "استقبال وتوديع في المطار" },
+    { icon: Users, text: "Group Umrah Transportation", textAr: "نقل مجموعات العمرة" },
+    { icon: Building2, text: "Hotel Transfers", textAr: "توصيل الفنادق" },
+    { icon: MapPin, text: "Ziyarah Tours", textAr: "جولات الزيارة" },
+    { icon: Briefcase, text: "Corporate Transportation", textAr: "نقل الشركات" },
     { icon: FileText, text: "Long-Term Contracts", textAr: "عقود طويلة الأجل" },
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-background">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-[#D9A63A] font-bold tracking-widest uppercase mb-3 text-sm">
-            {isAr ? 'الثقة والأعمال' : 'International Partnerships'}
+          <h2 className="text-secondary font-bold tracking-widest uppercase mb-3 text-sm">
+            {isAr ? 'خدمات النقل للشركات' : 'B2B Transportation Services'}
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-[#1B1E4F] leading-tight mb-6">
-            {isAr ? 'موثوقون من قبل شركاء السفر الدوليين' : 'Trusted by International Travel Partners'}
+          <h3 className="text-3xl md:text-5xl font-bold text-primary leading-tight mb-6">
+            {isAr ? 'نقل بري احترافي لشركاء السفر' : 'Professional Ground Transportation for Travel Partners'}
           </h3>
-          <p className={`text-gray-600 text-lg leading-relaxed ${isAr ? 'font-arabic' : ''}`}>
+          <p className={`text-muted-foreground text-lg leading-relaxed ${isAr ? 'font-arabic' : ''}`}>
             {isAr 
-              ? 'تتعاون ميهار للنقل مع وكالات السفر ومنظمي الرحلات ومقدمي خدمات العمرة وشركات السفر الأوروبية التي تتطلب خدمات نقل موثوقة لعملائها الذين يزورون المملكة العربية السعودية.' 
-              : 'Mehar Transport collaborates with travel agencies, tour operators, Umrah service providers, and European travel companies requiring reliable transportation services for their clients visiting Saudi Arabia.'}
+              ? 'تعمل ميهار للنقل مع وكالات السفر وشركات إدارة الوجهات والفنادق ومشغلي خدمات العمرة والمنظمات المؤسسية لتوفير خدمات نقل بري موثوقة عبر المملكة العربية السعودية.' 
+              : 'Mehar Transport works with international travel agencies, destination management companies, hotels, Umrah operators, and corporate organizations to provide dependable ground transportation across Saudi Arabia.'}
           </p>
         </div>
 
@@ -40,12 +40,12 @@ export function B2BPartnerships({ locale }: { locale: string }) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[#F8F9FC] border border-gray-100 rounded-2xl p-6 flex flex-col items-center text-center group hover:border-[#D9A63A]/30 hover:bg-white hover:shadow-xl transition-all"
+              className="bg-muted/50 border border-border rounded-[var(--radius-card)] p-6 flex flex-col items-center text-center group hover:border-secondary/30 hover:bg-background hover:shadow-[var(--shadow-luxury)] transition-all"
             >
-              <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#D9A63A] shadow-sm mb-4 group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center text-secondary shadow-sm mb-4 group-hover:scale-110 transition-transform">
                 <partner.icon className="w-6 h-6" />
               </div>
-              <div className={`font-semibold text-[#1B1E4F] ${isAr ? 'font-arabic' : ''}`}>
+              <div className={`font-semibold text-primary ${isAr ? 'font-arabic' : ''}`}>
                 {isAr ? partner.textAr : partner.text}
               </div>
             </motion.div>

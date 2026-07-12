@@ -53,7 +53,7 @@ export default function AddRouteModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
       <div className="bg-white rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <h3 className="text-xl font-bold text-[#1B1E4F]">
+          <h3 className="text-xl font-bold text-primary">
             {isAr ? "إضافة مسار جديد" : "Add New Route"}
           </h3>
           <button onClick={onClose} className="p-2 text-gray-400 hover:bg-gray-100 rounded-full transition-colors">
@@ -76,7 +76,7 @@ export default function AddRouteModal({
                 name="name" 
                 value={formData.name} 
                 onChange={handleChange} 
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
                 placeholder="e.g. Jeddah to Makkah" 
               />
             </div>
@@ -88,7 +88,7 @@ export default function AddRouteModal({
                 value={formData.nameAr} 
                 onChange={handleChange} 
                 dir="rtl"
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
                 placeholder="مثال: جدة إلى مكة" 
               />
             </div>
@@ -100,7 +100,7 @@ export default function AddRouteModal({
                 name="origin" 
                 value={formData.origin} 
                 onChange={handleChange} 
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
               />
             </div>
             <div>
@@ -111,7 +111,7 @@ export default function AddRouteModal({
                 value={formData.originAr} 
                 onChange={handleChange} 
                 dir="rtl"
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
               />
             </div>
 
@@ -122,7 +122,7 @@ export default function AddRouteModal({
                 name="destination" 
                 value={formData.destination} 
                 onChange={handleChange} 
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
               />
             </div>
             <div>
@@ -133,7 +133,7 @@ export default function AddRouteModal({
                 value={formData.destinationAr} 
                 onChange={handleChange} 
                 dir="rtl"
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D9A63A] focus:bg-white transition-colors" 
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-secondary focus:bg-white transition-colors" 
               />
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function AddRouteModal({
             <button 
               type="submit" 
               disabled={isLoading}
-              className="flex items-center gap-2 px-8 py-3 bg-[#1B1E4F] text-white font-bold rounded-xl hover:bg-[#2a2f6b] transition-all disabled:opacity-70"
+              className="flex items-center gap-2 px-8 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/80 transition-all disabled:opacity-70"
             >
               {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
               {isAr ? "حفظ المسار" : "Save Route"}

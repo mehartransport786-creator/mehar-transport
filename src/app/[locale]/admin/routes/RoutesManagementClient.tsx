@@ -22,7 +22,7 @@ const statusLabels: Record<string, { en: string; ar: string; color: string; bg: 
 const kpiData = [
   { label: 'Total Routes', labelAr: 'إجمالي المسارات', icon: RouteIcon, color: 'text-blue-600', bg: 'bg-blue-50' },
   { label: 'Total Bookings', labelAr: 'إجمالي الحجوزات', value: '2,847', icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  { label: 'Revenue Generated', labelAr: 'الإيرادات', value: '847,500 SAR', icon: DollarSign, color: 'text-[#D9A63A]', bg: 'bg-amber-50' },
+  { label: 'Revenue Generated', labelAr: 'الإيرادات', value: '847,500 SAR', icon: DollarSign, color: 'text-secondary', bg: 'bg-amber-50' },
   { label: 'Avg. Fare', labelAr: 'متوسط السعر', value: '450 SAR', icon: BarChart3, color: 'text-indigo-600', bg: 'bg-indigo-50' },
 ];
 
@@ -96,7 +96,7 @@ export default function RoutesManagementClient({ routes: initialRoutes, isAr }: 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1B1E4F]">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-primary">
             {isAr ? 'إدارة المسارات' : 'Routes Management'}
           </h1>
           <p className="text-gray-500 mt-1 text-sm font-medium">
@@ -105,7 +105,7 @@ export default function RoutesManagementClient({ routes: initialRoutes, isAr }: 
         </div>
         <button
           onClick={openCreate}
-          className="flex items-center gap-2 bg-[#1B1E4F] text-white hover:bg-[#2a2f6b] px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-lg shadow-[#1B1E4F]/20"
+          className="flex items-center gap-2 bg-primary text-white hover:bg-primary/80 px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary/20"
         >
           <Plus className="w-4 h-4" />
           {isAr ? 'مسار جديد' : 'New Route'}
@@ -122,7 +122,7 @@ export default function RoutesManagementClient({ routes: initialRoutes, isAr }: 
                 <kpi.icon className={`w-4 h-4 ${kpi.color}`} />
               </div>
             </div>
-            <div className="text-2xl font-black text-[#1B1E4F]">
+            <div className="text-2xl font-black text-primary">
               {idx === 0 ? filtered.length : kpi.value}
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function RoutesManagementClient({ routes: initialRoutes, isAr }: 
 
       {/* Search & Filters */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
-        <div className="flex-1 flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-gray-200 focus-within:border-[#D9A63A] transition-all shadow-sm">
+        <div className="flex-1 flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-gray-200 focus-within:border-secondary transition-all shadow-sm">
           <Search className="w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -186,8 +186,8 @@ export default function RoutesManagementClient({ routes: initialRoutes, isAr }: 
                   <tr key={route._id} className="hover:bg-gray-50/50 transition-colors group">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#1B1E4F]/5 flex items-center justify-center shrink-0">
-                          <MapPin className="w-4 h-4 text-[#1B1E4F]" />
+                        <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center shrink-0">
+                          <MapPin className="w-4 h-4 text-primary" />
                         </div>
                         <div>
                           <div className="font-bold text-gray-800">{isAr ? route.nameAr : route.name}</div>
@@ -252,7 +252,7 @@ export default function RoutesManagementClient({ routes: initialRoutes, isAr }: 
                   <td colSpan={8} className="py-16 text-center">
                     <RouteIcon className="w-12 h-12 text-gray-200 mx-auto mb-4" />
                     <p className="text-gray-400 font-medium">{isAr ? 'لا توجد مسارات' : 'No routes found'}</p>
-                    <button onClick={openCreate} className="mt-4 text-sm text-[#D9A63A] font-bold hover:underline">
+                    <button onClick={openCreate} className="mt-4 text-sm text-secondary font-bold hover:underline">
                       {isAr ? 'أضف مسار جديد' : 'Create your first route'}
                     </button>
                   </td>

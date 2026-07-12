@@ -17,10 +17,10 @@ export function StickyBookingSummary() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-[#1B1E4F] rounded-2xl overflow-hidden text-white shadow-2xl shadow-[#1B1E4F]/30"
+        className="bg-primary rounded-2xl overflow-hidden text-white shadow-2xl shadow-primary/30"
       >
         {/* Gold Header Bar */}
-        <div className="bg-gradient-to-r from-[#D9A63A] to-[#C4962F] px-6 py-3 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-secondary to-secondary/80 px-6 py-3 flex items-center justify-between">
           <span className="text-sm font-bold text-white">Booking Summary</span>
           <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full font-medium">Step {state.currentStep}/4</span>
         </div>
@@ -28,13 +28,13 @@ export function StickyBookingSummary() {
         <div className="p-6 space-y-5">
           {/* Route Section */}
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-[#D9A63A] mb-3">Route</div>
+            <div className="text-xs font-bold uppercase tracking-wider text-secondary mb-3">Route</div>
             {hasRoutes ? (
               <div className="space-y-2">
                 {state.selectedRoutes.filter(Boolean).map((route: any, index: number) => (
                   <div key={`summary-route-${index}`} className="flex gap-3">
                     <div className="flex flex-col items-center gap-0.5 mt-1">
-                      <div className="w-2 h-2 rounded-full bg-[#D9A63A]" />
+                      <div className="w-2 h-2 rounded-full bg-secondary" />
                       <div className="w-px h-4 bg-gray-600" />
                       <div className="w-2 h-2 rounded-full border border-gray-500" />
                     </div>
@@ -54,7 +54,7 @@ export function StickyBookingSummary() {
           {state.dates.pickupDate && (
             <div className="pt-4 border-t border-gray-700/50">
               <div className="flex gap-3">
-                <Calendar className="w-4 h-4 text-[#D9A63A] shrink-0 mt-0.5" />
+                <Calendar className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
                 <div className="text-sm">
                   <div className="text-white/60 text-xs">Date & Time</div>
                   <div className="text-white font-medium">{state.dates.pickupDate}</div>
@@ -74,7 +74,7 @@ export function StickyBookingSummary() {
                 className="pt-4 border-t border-gray-700/50"
               >
                 <div className="flex gap-3">
-                  <Car className="w-4 h-4 text-[#D9A63A] shrink-0 mt-0.5" />
+                  <Car className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
                   <div className="flex-1 text-sm space-y-1.5">
                     <div className="text-white/60 text-xs">Vehicles</div>
                     {state.vehicles.map((v, idx) => (
@@ -91,7 +91,7 @@ export function StickyBookingSummary() {
           {/* Passengers */}
           <div className="pt-4 border-t border-gray-700/50">
             <div className="flex gap-3">
-              <Users className="w-4 h-4 text-[#D9A63A] shrink-0 mt-0.5" />
+              <Users className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
               <div className="text-sm">
                 <div className="text-white/60 text-xs">Passengers</div>
                 <div className="text-white font-medium">{state.passengerCount}</div>
@@ -108,11 +108,11 @@ export function StickyBookingSummary() {
 
             {pricing.adjustments.map((adj, idx) => (
               <div key={idx} className="flex justify-between text-sm">
-                <span className="text-[#D9A63A] flex items-center gap-1">
+                <span className="text-secondary flex items-center gap-1">
                   <Sparkles className="w-3 h-3" />
                   {adj.name}
                 </span>
-                <span className="text-[#D9A63A] tabular-nums font-medium">
+                <span className="text-secondary tabular-nums font-medium">
                   {adj.amount > 0 ? '+' : ''}{adj.amount.toFixed(0)} SAR
                 </span>
               </div>
@@ -145,22 +145,22 @@ export function StickyBookingSummary() {
 
       {/* Contact Card */}
       <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-        <div className="text-sm font-bold text-[#1B1E4F] mb-3">Need help booking?</div>
+        <div className="text-sm font-bold text-primary mb-3">Need help booking?</div>
         <div className="space-y-2">
           <div className="flex gap-2">
             <a
               href="tel:+966565638120"
-              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-[#D9A63A]/10 transition-colors group"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-muted hover:bg-secondary/10 transition-colors group"
             >
-              <Phone className="w-4 h-4 text-[#D9A63A]" />
-              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-[#D9A63A]">Call 1</span>
+              <Phone className="w-4 h-4 text-secondary" />
+              <span className="text-xs font-bold text-primary group-hover:text-secondary">Call 1</span>
             </a>
             <a
               href="tel:+966548707332"
-              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-[#D9A63A]/10 transition-colors group"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-muted hover:bg-secondary/10 transition-colors group"
             >
-              <Phone className="w-4 h-4 text-[#D9A63A]" />
-              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-[#D9A63A]">Call 2</span>
+              <Phone className="w-4 h-4 text-secondary" />
+              <span className="text-xs font-bold text-primary group-hover:text-secondary">Call 2</span>
             </a>
           </div>
           <div className="flex gap-2">
@@ -168,19 +168,19 @@ export function StickyBookingSummary() {
               href="https://wa.me/966565638120"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-green-50 transition-colors group"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-muted hover:bg-green-50 transition-colors group"
             >
               <MessageCircle className="w-4 h-4 text-green-600" />
-              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-green-600">WhatsApp 1</span>
+              <span className="text-xs font-bold text-primary group-hover:text-green-600">WhatsApp 1</span>
             </a>
             <a
               href="https://wa.me/966548707332"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#F8F9FC] hover:bg-green-50 transition-colors group"
+              className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-muted hover:bg-green-50 transition-colors group"
             >
               <MessageCircle className="w-4 h-4 text-green-600" />
-              <span className="text-xs font-bold text-[#1B1E4F] group-hover:text-green-600">WhatsApp 2</span>
+              <span className="text-xs font-bold text-primary group-hover:text-green-600">WhatsApp 2</span>
             </a>
           </div>
         </div>

@@ -12,9 +12,9 @@ export function AboutSection() {
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="py-24 lg:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+    <section className="section-padding bg-background overflow-hidden">
+      <div className="container-fluid">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           
           {/* Left Content Area */}
           <motion.div 
@@ -22,33 +22,33 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full lg:w-1/2 space-y-8"
+            className="w-full lg:w-1/2 space-y-6 lg:space-y-8 animate-fade-up-luxury"
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-px bg-[#D9A63A]"></div>
-              <span className="text-[#D9A63A] font-bold uppercase tracking-[0.2em] text-sm">
+              <div className="w-12 h-px bg-secondary"></div>
+              <span className="text-secondary font-bold uppercase tracking-[0.2em] text-xs md:text-sm">
                 {isAr ? "ميهار للنقل" : "Mehar Transport"}
               </span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1B1E4F] leading-[1.1] tracking-tight">
+            <h2 className="h2 text-primary leading-[1.1] tracking-tight">
               {isAr 
-                ? "تراث من الفخامة والموثوقية" 
-                : "A Legacy of Luxury and Reliability"}
+                ? "شركة نقل سعودية مسجلة" 
+                : "A Registered Saudi Transportation Company"}
             </h2>
             
-            <p className="text-lg text-gray-600 leading-relaxed font-light">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed font-light">
               {isAr 
-                ? "على مدى سنوات، أرسينا معايير جديدة في خدمات النقل الراقي عبر المملكة العربية السعودية. نحن لا نقدم مجرد وسيلة نقل، بل نصنع تجربة متكاملة تبدأ من لحظة الحجز وحتى وصولك المريح." 
-                : "For years, we have set the standard for premium transportation across Saudi Arabia. We do not just provide a ride; we craft an end-to-end experience from the moment of booking to your luxurious arrival."}
+                ? "ميهار للنقل شركة نقل مسجلة في المملكة العربية السعودية، تخدم الحجاج والعائلات والسياح وعملاء الشركات منذ عام 2016. نتخصص في توصيل المطار، ونقل الفنادق، ونقل العمرة، والسفر بين المدن، وجولات الزيارة — بخدمة احترافية وسائقين محترفين." 
+                : "Mehar Transport is a registered transportation company based in Saudi Arabia, serving pilgrims, families, tourists, and corporate clients since 2016. We specialize in airport transfers, hotel transfers, Umrah transportation, intercity travel, and Ziyarah tours — delivering reliable service with professional drivers and a modern, well-maintained fleet."}
             </p>
 
-            <div className="pt-6">
+            <div className="pt-4 lg:pt-6">
               <Link 
                 href="/about" 
-                className="inline-flex items-center justify-center gap-3 border border-[#1B1E4F]/20 text-[#1B1E4F] hover:bg-[#1B1E4F] hover:text-white px-8 py-4 rounded-xl font-bold transition-all group"
+                className="btn-luxury border border-primary/20 bg-transparent text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3.5 rounded-[var(--radius-btn)] font-semibold transition-all group min-h-[56px] text-[15px] w-full sm:w-auto inline-flex items-center justify-center gap-3"
               >
-                <span>{isAr ? "اكتشف قصتنا" : "Discover Our Story"}</span>
+                <span>{isAr ? "تعرف علينا" : "Learn About Us"}</span>
                 <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -60,14 +60,15 @@ export function AboutSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 animate-fade-up-luxury"
+            style={{ animationDelay: "0.2s" }}
           >
-            <div className="grid grid-cols-2 gap-4 md:gap-6 relative">
+            <div className="grid grid-cols-2 gap-3 md:gap-6 relative">
               {/* Decorative Accent */}
-              <div className="absolute -top-6 -right-6 rtl:-left-6 rtl:-right-auto w-32 h-32 bg-[#D9A63A]/10 rounded-full blur-2xl"></div>
+              <div className="absolute -top-6 -right-6 rtl:-left-6 rtl:-right-auto w-24 h-24 md:w-32 md:h-32 bg-secondary/10 rounded-full blur-2xl"></div>
               
-              <div className="space-y-4 md:space-y-6 pt-12">
-                <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl relative group">
+              <div className="space-y-3 md:space-y-6 pt-8 md:pt-12">
+                <div className="rounded-[var(--radius-image)] overflow-hidden aspect-[4/5] shadow-[var(--shadow-luxury)] relative group">
                   <Image 
                     src="/about/interior.webp" 
                     alt="Luxury Interior" 
@@ -79,8 +80,8 @@ export function AboutSection() {
                 </div>
               </div>
               
-              <div className="space-y-4 md:space-y-6">
-                <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl relative group">
+              <div className="space-y-3 md:space-y-6">
+                <div className="rounded-[var(--radius-image)] overflow-hidden aspect-[4/5] shadow-[var(--shadow-luxury)] relative group">
                   <Image 
                     src="/about/chauffeur.webp" 
                     alt="Chauffeur Service" 
@@ -91,9 +92,9 @@ export function AboutSection() {
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                 </div>
                 
-                <div className="bg-[#1B1E4F] p-8 rounded-2xl shadow-xl flex flex-col justify-center items-center text-center">
-                  <div className="text-4xl md:text-5xl font-black text-[#D9A63A] mb-2">10+</div>
-                  <div className="text-white/80 font-medium">{isAr ? "سنوات من التميز" : "Years of Excellence"}</div>
+                <div className="bg-primary p-4 md:p-8 rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] flex flex-col justify-center items-center text-center h-[calc(100%-auto)] aspect-[4/3] sm:aspect-auto">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-secondary mb-1 md:mb-2">10+</div>
+                  <div className="text-primary-foreground/80 font-medium text-xs sm:text-sm md:text-base">{isAr ? "سنوات من التميز" : "Years of Excellence"}</div>
                 </div>
               </div>
             </div>

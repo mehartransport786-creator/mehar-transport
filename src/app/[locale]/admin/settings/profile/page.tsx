@@ -14,7 +14,7 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
   return (
     <div className="p-8">
       <div className="mb-8 border-b border-gray-100 pb-6">
-        <h2 className="text-2xl font-bold text-[#1B1E4F]">
+        <h2 className="text-2xl font-bold text-primary">
           {isAr ? "الملف الشخصي" : "Profile Settings"}
         </h2>
         <p className="text-gray-500 mt-1">
@@ -26,7 +26,7 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
         {/* Avatar Upload */}
         <div className="flex items-center gap-6">
           <div className="relative group cursor-pointer">
-            <div className="w-24 h-24 rounded-full bg-[#1B1E4F] flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
+            <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
               {admin?.avatar ? (
                 <img src={admin.avatar} alt="Avatar" className="w-full h-full object-cover" />
               ) : (
@@ -58,7 +58,7 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
             <input 
               type="text" 
               defaultValue={admin?.name}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -79,7 +79,7 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
               type="tel" 
               defaultValue={admin?.phone}
               placeholder="+966 56 563 8120"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -88,20 +88,20 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
               type="text" 
               defaultValue={admin?.department}
               placeholder="e.g. Operations, Customer Support"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] focus:ring-1 focus:ring-[#D9A63A] outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
             />
           </div>
         </div>
 
         {/* Preferences */}
         <div className="border-t border-gray-100 pt-8 mt-8">
-          <h3 className="text-lg font-bold text-[#1B1E4F] mb-6">{isAr ? "التفضيلات" : "Preferences"}</h3>
+          <h3 className="text-lg font-bold text-primary mb-6">{isAr ? "التفضيلات" : "Preferences"}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700">{isAr ? "اللغة المفضلة" : "Preferred Language"}</label>
               <select 
                 defaultValue={admin?.language || "en"}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] outline-none bg-white"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary outline-none bg-white"
               >
                 <option value="en">English (US)</option>
                 <option value="ar">العربية (Arabic)</option>
@@ -111,7 +111,7 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
               <label className="text-sm font-bold text-gray-700">{isAr ? "المنطقة الزمنية" : "Time Zone"}</label>
               <select 
                 defaultValue={admin?.timeZone || "Asia/Riyadh"}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#D9A63A] outline-none bg-white"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary outline-none bg-white"
               >
                 <option value="Asia/Riyadh">(UTC+03:00) Riyadh</option>
                 <option value="Asia/Dubai">(UTC+04:00) Dubai</option>
@@ -127,7 +127,7 @@ export default async function ProfileSettingsPage({ params: { locale } }: { para
           <button type="button" className="px-6 py-3 rounded-xl font-bold text-gray-600 bg-gray-50 hover:bg-gray-100 transition-colors">
             {isAr ? "إلغاء" : "Cancel"}
           </button>
-          <button type="button" className="px-6 py-3 flex items-center gap-2 rounded-xl font-bold text-white bg-[#1B1E4F] hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20">
+          <button type="button" className="px-6 py-3 flex items-center gap-2 rounded-xl font-bold text-white bg-primary hover:bg-primary/80 transition-all shadow-lg shadow-primary/20">
             <Save className="w-4 h-4" />
             {isAr ? "حفظ التغييرات" : "Save Changes"}
           </button>

@@ -91,7 +91,7 @@ export function NotificationCenter() {
               {unreadCount > 0 && (
                 <button
                   onClick={clearAllNotifications}
-                  className="text-xs text-gray-400 hover:text-[#1B1E4F] font-medium transition-colors"
+                  className="text-xs text-gray-400 hover:text-primary font-medium transition-colors"
                 >
                   <CheckCheck className="w-4 h-4" />
                 </button>

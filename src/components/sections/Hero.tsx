@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useRouter } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { MapPin, Calendar, Clock, ArrowRight, ArrowLeft } from "lucide-react";
+import { MapPin, Calendar, Clock, ArrowRight, ArrowLeft, Star, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import BookingWorkspace from '../booking/BookingWorkspace';
@@ -16,9 +16,9 @@ export function Hero() {
   const [isBookingMode, setIsBookingMode] = useState(false);
 
   return (
-    <section className="relative h-screen w-full flex items-center overflow-hidden">
+    <section className="relative min-h-[100svh] lg:min-h-screen w-full flex items-center overflow-hidden">
       {/* Cinematic Video Background */}
-      <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
+      <div className="absolute inset-0 z-0 bg-foreground">
         {/* Desktop Image */}
         <Image
           src="/hero-luxury.avif"
@@ -40,71 +40,94 @@ export function Hero() {
           className="block md:hidden object-cover object-[70%_center]"
         />
         {/* Deep navy/black gradient overlay for readability and premium feel */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/50 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-foreground/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent"></div>
       </div>
 
-      <div className="container relative z-10 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto flex flex-col justify-center lg:justify-end h-full pb-8 lg:pb-32 pt-24 lg:pt-32">
+      <div className="container-fluid relative z-10 mx-auto flex flex-col justify-center w-full min-h-full pb-16 pt-[100px] lg:pb-24 lg:pt-[120px] xl:pt-[140px]">
         
         <AnimatePresence mode="popLayout">
           {!isBookingMode ? (
-            <motion.div 
+              <motion.div 
               key="default-hero"
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col lg:flex-row justify-between items-end gap-12 w-full"
+              className="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-12 w-full mt-4 lg:mt-0"
             >
               {/* Main Headline */}
-              <div className="w-full lg:w-3/5 space-y-8">
+              <div className="w-full lg:w-[55%] space-y-5 animate-fade-up-luxury">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-px bg-[#C99632]"></div>
-                  <span className="caption-text text-[#C99632]">
-                    {isAr ? "نعرّف الفخامة من جديد" : "Redefining Luxury Transport"}
+                  <div className="w-12 h-px bg-secondary"></div>
+                  <span className="caption-text text-secondary tracking-[0.3em]">
+                    {isAr ? "نقل العمرة والمطار الخاص — المملكة العربية السعودية" : "Private Umrah & Airport Transfers — Saudi Arabia"}
                   </span>
                 </div>
                 
-                <h1 className="h1 text-white">
+                <h1 className="h1 text-white leading-tight">
                   {isAr 
-                    ? "ارتقِ بتجربة سفرك" 
-                    : "Elevate Your Journey"}
+                    ? "نقل خاص موثوق عبر المملكة العربية السعودية" 
+                    : "Private Chauffeur Transportation Across Saudi Arabia"}
                 </h1>
                 
-                <p className="body-large text-gray-300 max-w-xl font-light">
+                <p className="body-large text-white/80 max-w-xl font-light text-[18px]">
                   {isAr 
-                    ? "تنقل حصري لكبار الشخصيات عبر المملكة العربية السعودية. أسطول من الطراز العالمي، وسائقون محترفون، وخدمة لا تشوبها شائبة." 
-                    : "Exclusive VIP transportation across Saudi Arabia. World-class fleet, professional chauffeurs, and impeccable service."}
+                    ? "سافر بثقة مع نقل خاص محجوز مسبقاً من شركة مسجلة في المملكة. تنقلات المطار، رحلات العمرة، السفر بين المدن، وجولات الزيارة — كل رحلة خاصة، دقيقة، ومع سائق محترف." 
+                    : "Travel with confidence using pre-booked private transportation operated by a registered Saudi Arabian company. Airport transfers, Umrah journeys, intercity travel, and Ziyarah tours — every ride is private, punctual, and professionally driven."}
                 </p>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap items-center gap-4 lg:gap-8 pt-6">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5 text-secondary" />
+                    <span className="text-white text-[16px] font-medium">
+                      {isAr ? "مرخص ومسجل في السعودية" : "Licensed & Registered in KSA"}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-secondary" />
+                    <span className="text-white text-[16px] font-medium">
+                      {isAr ? "تنقلات خاصة فقط" : "Private Transfers Only"}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 text-secondary fill-secondary" />
+                    <span className="text-white text-[16px] font-medium">
+                      {isAr ? "دعم عملاء ٢٤/٧" : "24/7 Customer Support"}
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              {/* Professional Quick-Book Form (Click to open workspace) */}
+              {/* Professional Quick-Book Form */}
               <motion.div 
                 layoutId="booking-widget"
-                className="w-full lg:w-[420px] bg-black/40 backdrop-blur-3xl border border-white/10 p-10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.4)] relative overflow-hidden group hover:border-white/20 hover:bg-black/50 transition-all duration-500 cursor-pointer"
+                className="w-full lg:w-[45%] max-w-[440px] xl:max-w-[480px] shrink-0 bg-black/40 backdrop-blur-3xl border border-white/10 p-6 lg:p-8 xl:p-10 rounded-[var(--radius-form)] shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group hover:border-white/20 hover:bg-black/50 transition-all duration-500 cursor-pointer animate-fade-up-luxury"
+                style={{ animationDelay: '0.1s' }}
                 onClick={() => setIsBookingMode(true)}
               >
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99632]/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-                  <h3 className="text-white font-bold text-3xl mb-2 relative z-10 tracking-tight">
-                    {isAr ? "ابدأ رحلتك" : "Book Your Ride"}
+                  <h3 className="text-white font-bold text-2xl lg:text-3xl mb-2 relative z-10 tracking-tight">
+                    {isAr ? "احجز تنقلك الخاص" : "Book Your Transfer"}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-8 relative z-10 font-medium">
-                    {isAr ? "احجز سيارتك الفاخرة الآن" : "Reserve your luxury vehicle now"}
+                  <p className="text-white/60 text-sm mb-6 lg:mb-8 relative z-10 font-medium">
+                    {isAr ? "احجز نقلك الخاص في دقائق" : "Reserve your private transfer in minutes"}
                   </p>
                   
-                  <div className="space-y-5 mb-10 relative z-10">
+                  <div className="space-y-5 mb-8 lg:mb-10 relative z-10">
                     {/* Route Input */}
                     <div className="space-y-2">
                       <label className="caption-text text-[10px] text-gray-400 ml-1">
                         {isAr ? "المسار" : "Pickup & Destination"}
                       </label>
                       <div className="relative">
-                        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#C99632]">
+                        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-secondary">
                           <MapPin className="w-5 h-5" />
                         </div>
-                        <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-base font-medium group-hover:bg-white/10 transition-colors">
+                        <div className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-input)] px-4 pl-12 text-white/50 text-[15px] font-medium group-hover:bg-white/10 group-hover:border-ring transition-colors h-[56px] flex items-center">
                           {isAr ? "اختر نقطة الانطلاق والوصول..." : "Select your route..."}
                         </div>
                       </div>
@@ -117,10 +140,10 @@ export function Hero() {
                           {isAr ? "التاريخ" : "Date"}
                         </label>
                         <div className="relative">
-                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#C99632]">
+                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-secondary">
                             <Calendar className="w-5 h-5" />
                           </div>
-                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-base font-medium group-hover:bg-white/10 transition-colors">
+                          <div className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-input)] px-4 pl-12 text-white/50 text-[15px] font-medium group-hover:bg-white/10 group-hover:border-ring transition-colors h-[56px] flex items-center">
                             {isAr ? "التاريخ" : "Select Date"}
                           </div>
                         </div>
@@ -130,10 +153,10 @@ export function Hero() {
                           {isAr ? "الوقت" : "Time"}
                         </label>
                         <div className="relative">
-                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#C99632]">
+                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-secondary">
                             <Clock className="w-5 h-5" />
                           </div>
-                          <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white/50 text-base font-medium group-hover:bg-white/10 transition-colors">
+                          <div className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-input)] px-4 pl-12 text-white/50 text-[15px] font-medium group-hover:bg-white/10 group-hover:border-ring transition-colors h-[56px] flex items-center">
                             {isAr ? "الوقت" : "Select Time"}
                           </div>
                         </div>
@@ -141,8 +164,8 @@ export function Hero() {
                     </div>
                   </div>
 
-                  <div className="w-full bg-[#C99632] hover:bg-[#B58529] text-black px-6 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 relative z-10 shadow-[0_0_20px_rgba(201,150,50,0.3)] hover:shadow-[0_0_30px_rgba(201,150,50,0.5)]">
-                    <span>{isAr ? "المتابعة" : "Continue"}</span>
+                  <div className="w-full bg-secondary hover:bg-secondary/80 text-secondary-foreground px-6 rounded-[var(--radius-btn)] font-semibold transition-all duration-300 flex items-center justify-center gap-2 relative z-10 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] h-[56px]">
+                    <span className="text-[17px]">{isAr ? "المتابعة" : "Continue"}</span>
                     <ArrowIcon className="w-5 h-5" />
                   </div>
               </motion.div>
@@ -154,7 +177,7 @@ export function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full h-full lg:h-[75vh]"
+              className="w-full h-full lg:h-[80vh] bg-background rounded-3xl overflow-hidden shadow-2xl"
             >
               <BookingWorkspace onCancel={() => setIsBookingMode(false)} />
             </motion.div>

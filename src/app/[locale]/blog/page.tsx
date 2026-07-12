@@ -28,10 +28,10 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0F172A] pb-24">
       {/* Editorial Hero */}
-      <div className="relative bg-[#1B1E4F] py-24 lg:py-32 overflow-hidden">
+      <div className="relative bg-primary py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/hero-luxury.webp" alt="Background" fill priority className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1B1E4F] via-[#1B1E4F]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -51,7 +51,7 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
               placeholder={isAr ? 'ابحث في المقالات...' : 'Search articles...'}
               className="w-full bg-transparent border-none text-white placeholder:text-white/50 outline-none px-2"
             />
-            <button className="bg-[#D9A63A] text-[#1B1E4F] font-bold px-6 py-3 rounded-xl hover:bg-[#b88c32] transition-colors">
+            <button className="bg-secondary text-primary font-bold px-6 py-3 rounded-xl hover:bg-secondary/80 transition-colors">
               {isAr ? 'بحث' : 'Search'}
             </button>
           </div>
@@ -61,8 +61,8 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
         
         {/* Categories Bar */}
-        <div className="bg-white dark:bg-[#1B1E4F] shadow-lg rounded-2xl p-4 md:p-6 mb-16 border border-gray-100 dark:border-white/10 flex flex-wrap gap-3 justify-center">
-          <Link href="/blog" className="px-5 py-2.5 rounded-full bg-[#1B1E4F] dark:bg-white/10 text-white font-medium text-sm transition-colors">
+        <div className="bg-white dark:bg-primary shadow-lg rounded-2xl p-4 md:p-6 mb-16 border border-gray-100 dark:border-white/10 flex flex-wrap gap-3 justify-center">
+          <Link href="/blog" className="px-5 py-2.5 rounded-full bg-primary dark:bg-white/10 text-white font-medium text-sm transition-colors">
             {isAr ? 'الكل' : 'All'}
           </Link>
           {categories.slice(0, 6).map((cat: any) => (
@@ -80,26 +80,26 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
         {featuredPost && (
           <div className="mb-16 group cursor-pointer">
             <Link href={`/blog/${featuredPost.slug}`}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white dark:bg-[#1B1E4F] rounded-3xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white dark:bg-primary rounded-3xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="relative h-72 lg:h-[450px] w-full overflow-hidden">
                   <img 
                     src={featuredPost.featuredImage || '/images/hero/economy-fleet.jpg'} 
                     alt={featuredPost.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4 bg-[#D9A63A] text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
+                  <div className="absolute top-4 left-4 bg-secondary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
                     {isAr ? 'مقالة مميزة' : 'Featured'}
                   </div>
                 </div>
                 <div className="p-8 lg:p-12">
-                  <div className="flex items-center gap-3 text-sm text-[#D9A63A] font-medium mb-4">
+                  <div className="flex items-center gap-3 text-sm text-secondary font-medium mb-4">
                     <span>{featuredPost.categoryId?.name}</span>
                     <span className="w-1 h-1 rounded-full bg-gray-300"></span>
                     <span className="text-gray-500 flex items-center gap-1">
                       <Clock className="w-4 h-4" /> 5 min read
                     </span>
                   </div>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-white leading-tight group-hover:text-[#D9A63A] transition-colors">
+                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-white leading-tight group-hover:text-secondary transition-colors">
                     {featuredPost.title}
                   </h2>
                   <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg line-clamp-3">
@@ -137,7 +137,7 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recentPosts.map((post: any) => (
-            <Link key={post._id} href={`/blog/${post.slug}`} className="group flex flex-col bg-white dark:bg-[#1B1E4F] rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+            <Link key={post._id} href={`/blog/${post.slug}`} className="group flex flex-col bg-white dark:bg-primary rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
               <div className="relative h-56 w-full overflow-hidden">
                 <img 
                   src={post.featuredImage || '/hero-luxury.webp'} 
@@ -146,10 +146,10 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-center gap-3 text-xs text-[#D9A63A] font-medium mb-3 uppercase tracking-wider">
+                <div className="flex items-center gap-3 text-xs text-secondary font-medium mb-3 uppercase tracking-wider">
                   <span>{post.categoryId?.name}</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2 group-hover:text-[#D9A63A] transition-colors">
+                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2 group-hover:text-secondary transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 line-clamp-3 flex-1">
@@ -169,8 +169,8 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
         </div>
         {/* Empty State */}
         {!featuredPost && recentPosts.length === 0 && (
-          <div className="bg-white dark:bg-[#1B1E4F] rounded-[2rem] p-12 text-center shadow-sm border border-gray-100 dark:border-white/10 mt-16 mb-24 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-[#1B1E4F] dark:text-white mb-4">
+          <div className="bg-white dark:bg-primary rounded-[2rem] p-12 text-center shadow-sm border border-gray-100 dark:border-white/10 mt-16 mb-24 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold text-primary dark:text-white mb-4">
               {isAr ? 'قريباً' : 'Coming Soon'}
             </h3>
             <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto">

@@ -63,7 +63,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
                   isActive 
                     ? item.danger 
                       ? "bg-red-50 text-red-600" 
-                      : "bg-[#1B1E4F] text-white shadow-lg shadow-[#1B1E4F]/20"
+                      : "bg-primary text-white shadow-lg shadow-primary/20"
                     : item.danger
                       ? "text-red-500 hover:bg-red-50"
                       : "text-gray-600 hover:bg-gray-100"

@@ -52,7 +52,7 @@ export default function RoutePricingClient({
     <div className="p-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F]">
+          <h2 className="text-2xl font-bold text-primary">
             {isAr ? "تسعير المسارات" : "Route Pricing"}
           </h2>
           <p className="text-gray-500 mt-1">
@@ -62,14 +62,14 @@ export default function RoutePricingClient({
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setIsAddRouteOpen(true)}
-            className="flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-[#1B1E4F] text-[#1B1E4F] font-bold rounded-xl text-sm hover:bg-gray-50 transition-all shadow-sm"
+            className="flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-primary text-primary font-bold rounded-xl text-sm hover:bg-gray-50 transition-all shadow-sm"
           >
             <Plus className="w-4 h-4" />
             {isAr ? "مسار جديد" : "New Route"}
           </button>
           <button 
             onClick={openAddRule}
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#1B1E4F] text-white font-bold rounded-xl text-sm hover:bg-[#2a2f6b] transition-all shadow-lg shadow-[#1B1E4F]/20"
+            className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/80 transition-all shadow-lg shadow-primary/20"
           >
             <Plus className="w-4 h-4" />
             {isAr ? "إضافة تسعيرة" : "Add Pricing Rule"}
@@ -78,7 +78,7 @@ export default function RoutePricingClient({
       </div>
 
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 mb-6">
-        <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-200 focus-within:border-[#D9A63A] focus-within:bg-white transition-all">
+        <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-200 focus-within:border-secondary focus-within:bg-white transition-all">
           <Search className="w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -132,7 +132,7 @@ export default function RoutePricingClient({
                     <td className="px-6 py-4 font-semibold text-gray-600">
                       {rule.basePrice} SAR
                     </td>
-                    <td className="px-6 py-4 font-bold text-[#D9A63A]">
+                    <td className="px-6 py-4 font-bold text-secondary">
                       {rule.currentPrice} SAR
                     </td>
                     <td className="px-6 py-4">

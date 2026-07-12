@@ -49,10 +49,10 @@ export function BookingFAQ() {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
       <div className="flex items-center gap-3 mb-8">
-        <div className="w-10 h-10 bg-[#D9A63A]/10 rounded-full flex items-center justify-center">
-          <HelpCircle className="w-5 h-5 text-[#D9A63A]" />
+        <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center">
+          <HelpCircle className="w-5 h-5 text-secondary" />
         </div>
-        <h2 className="text-2xl font-bold text-[#1B1E4F]">
+        <h2 className="text-2xl font-bold text-primary">
           {isAr ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
         </h2>
       </div>
@@ -63,14 +63,14 @@ export function BookingFAQ() {
           return (
             <div 
               key={index} 
-              className={`border rounded-xl overflow-hidden transition-colors ${isOpen ? 'border-[#D9A63A]/30 bg-[#D9A63A]/5' : 'border-gray-100 bg-gray-50'}`}
+              className={`border rounded-xl overflow-hidden transition-colors ${isOpen ? 'border-secondary/30 bg-secondary/5' : 'border-gray-100 bg-gray-50'}`}
             >
               <button 
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between font-bold text-[#1B1E4F] text-start"
+                className="w-full px-6 py-4 flex items-center justify-between font-bold text-primary text-start"
               >
                 <span>{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-[#D9A63A]' : 'text-gray-400'}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-secondary' : 'text-gray-400'}`} />
               </button>
               
               {isOpen && (

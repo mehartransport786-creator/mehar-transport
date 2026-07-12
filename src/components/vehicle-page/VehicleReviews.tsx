@@ -55,7 +55,7 @@ export function VehicleReviews({ reviews, theme }: VehicleReviewsProps) {
                 </div>
               )}
               <div>
-                <h4 className="font-bold text-[#1B1E4F]">{review.name}</h4>
+                <h4 className="font-bold text-primary">{review.name}</h4>
                 <p className="text-xs text-gray-500">{review.country} • {routeText(review.route)}</p>
               </div>
             </div>

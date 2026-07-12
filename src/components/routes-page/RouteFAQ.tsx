@@ -29,19 +29,19 @@ export function RouteFAQ({ faqs }: { faqs: FAQ[] }) {
             key={index} 
             className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
               isOpen 
-                ? 'border-[#D9A63A] bg-[#D9A63A]/5 shadow-sm' 
-                : 'border-gray-200 dark:border-white/10 bg-white dark:bg-[#1B1E4F]'
+                ? 'border-secondary bg-secondary/5 shadow-sm' 
+                : 'border-gray-200 dark:border-white/10 bg-white dark:bg-primary'
             }`}
           >
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
             >
-              <h3 className={`font-bold text-lg ${isOpen ? 'text-[#1B1E4F] dark:text-[#D9A63A]' : 'text-gray-900 dark:text-white'}`}>
+              <h3 className={`font-bold text-lg ${isOpen ? 'text-primary dark:text-secondary' : 'text-gray-900 dark:text-white'}`}>
                 {isAr ? faq.question.ar : faq.question.en}
               </h3>
               <div className={`shrink-0 ml-4 rtl:ml-0 rtl:mr-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                isOpen ? 'bg-[#D9A63A] text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'
+                isOpen ? 'bg-secondary text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'
               }`}>
                 {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
               </div>

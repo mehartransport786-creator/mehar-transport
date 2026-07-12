@@ -189,13 +189,13 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full max-w-7xl mx-auto h-[85vh] lg:h-[80vh] min-h-[600px] flex flex-col lg:flex-row bg-black/30 backdrop-blur-3xl border border-white/20 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative"
+      className="w-full max-w-7xl mx-auto h-full min-h-[500px] flex flex-col lg:flex-row bg-black/30 backdrop-blur-3xl border border-white/20 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative"
     >
       {/* Top Gold Edge */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent z-20" />
       
       {/* Subtle background glows */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#D9A63A]/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       {/* LEFT SIDE: Booking Journey Workspace (65%) */}
@@ -212,7 +212,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
           </button>
           
           <div className="flex items-center gap-4">
-            <span className="text-[10px] uppercase tracking-widest text-[#D9A63A] font-bold">
+            <span className="text-[10px] uppercase tracking-widest text-secondary font-bold">
               {isAr ? `الخطوة ${step} من ${totalSteps}: ${stepLabels[step - 1]}` : `Step ${step} of ${totalSteps}: ${stepLabels[step - 1]}`}
             </span>
             <div className="flex gap-1.5">
@@ -220,7 +220,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
                 <div 
                   key={i} 
                   className={`h-1 rounded-full transition-all duration-500 ${
-                    i === step ? 'w-6 bg-[#D9A63A] shadow-[0_0_8px_rgba(217,166,58,0.5)]' : 
+                    i === step ? 'w-6 bg-secondary shadow-[0_0_8px_rgba(217,166,58,0.5)]' : 
                     i < step ? 'w-2 bg-white/40' : 'w-2 bg-white/10'
                   }`}
                 />
@@ -267,7 +267,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
             <button
               disabled={!isStepValid() || isSubmitting}
               onClick={step === 4 ? handleSubmit : handleNext}
-              className="flex items-center gap-2 bg-gradient-to-r from-[#D9A63A] to-[#B8860B] text-black px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(217,166,58,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none group"
+              className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary/80 text-black px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(217,166,58,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none group"
             >
               {isSubmitting ? (
                 <span className="text-sm tracking-wide">{isAr ? "جاري التأكيد..." : "Confirming..."}</span>
@@ -296,7 +296,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
           <div className="space-y-3">
             <p className="text-[10px] text-gray-500 uppercase tracking-widest">{isAr ? "المسار" : "Route"}</p>
             <p className="text-white text-sm font-medium flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-              <MapPin className="w-4 h-4 text-[#D9A63A]" />
+              <MapPin className="w-4 h-4 text-secondary" />
               {bookingData.routeName || <span className="text-gray-500">{isAr ? "لم يتم التحديد" : "Not selected"}</span>}
             </p>
           </div>
@@ -305,7 +305,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
           <div className="space-y-3">
             <p className="text-[10px] text-gray-500 uppercase tracking-widest">{isAr ? "الموعد" : "Schedule"}</p>
             <p className="text-white text-sm font-medium flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-              <Clock className="w-4 h-4 text-[#D9A63A]" />
+              <Clock className="w-4 h-4 text-secondary" />
               {bookingData.travelDate ? `${bookingData.travelDate} ${bookingData.travelTime}` : <span className="text-gray-500">{isAr ? "لم يتم التحديد" : "Not selected"}</span>}
             </p>
           </div>
@@ -323,10 +323,10 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
             <div className="space-y-3 pt-4 border-t border-white/5">
               <p className="text-[10px] text-gray-500 uppercase tracking-widest">{isAr ? "إضافات" : "Extras"}</p>
               <ul className="text-gray-300 text-sm space-y-2 bg-white/5 p-4 rounded-xl border border-white/5">
-                {bookingData.passengers > 1 && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{bookingData.passengers} {isAr ? "ركاب" : "Passengers"}</li>}
-                {bookingData.meetAndGreet && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{isAr ? "استقبال وتوديع" : "Meet & Greet"}</li>}
-                {bookingData.vipService && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{isAr ? "خدمة كبار الشخصيات" : "VIP Service"}</li>}
-                {bookingData.childSeat && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-[#D9A63A] before:rounded-full">{isAr ? "مقعد طفل" : "Child Seat"}</li>}
+                {bookingData.passengers > 1 && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-secondary before:rounded-full">{bookingData.passengers} {isAr ? "ركاب" : "Passengers"}</li>}
+                {bookingData.meetAndGreet && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-secondary before:rounded-full">{isAr ? "استقبال وتوديع" : "Meet & Greet"}</li>}
+                {bookingData.vipService && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-secondary before:rounded-full">{isAr ? "خدمة كبار الشخصيات" : "VIP Service"}</li>}
+                {bookingData.childSeat && <li className="flex items-center gap-2 before:content-[''] before:w-1 before:h-1 before:bg-secondary before:rounded-full">{isAr ? "مقعد طفل" : "Child Seat"}</li>}
               </ul>
             </div>
           )}
@@ -334,26 +334,26 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
 
         {/* Total & Trust Indicators */}
         <div className="mt-8 pt-8 border-t border-white/5">
-          <div className="flex items-center justify-between mb-8 bg-gradient-to-r from-white/5 to-transparent p-4 rounded-xl border-l-2 border-[#D9A63A]">
+          <div className="flex items-center justify-between mb-8 bg-gradient-to-r from-white/5 to-transparent p-4 rounded-xl border-l-2 border-secondary">
             <span className="text-xs uppercase tracking-widest text-gray-400">{isAr ? "الإجمالي التقديري" : "Estimated Fare"}</span>
-            <span className="text-3xl font-light tracking-tight text-white">{bookingData.totalPrice} <span className="text-sm text-[#D9A63A] font-bold">SAR</span></span>
+            <span className="text-3xl font-light tracking-tight text-white">{bookingData.totalPrice} <span className="text-sm text-secondary font-bold">SAR</span></span>
           </div>
 
           <div className="grid grid-cols-2 gap-y-4 gap-x-2">
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#D9A63A]/70" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-secondary/70" />
               <span>{isAr ? "أسعار ثابتة" : "Fixed Pricing"}</span>
             </div>
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#D9A63A]/70" />
+              <ShieldCheck className="w-3.5 h-3.5 text-secondary/70" />
               <span>{isAr ? "حجز آمن" : "Secure Booking"}</span>
             </div>
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
-              <Clock className="w-3.5 h-3.5 text-[#D9A63A]/70" />
+              <Clock className="w-3.5 h-3.5 text-secondary/70" />
               <span>{isAr ? "خدمة 24/7" : "24/7 Service"}</span>
             </div>
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gray-500">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#D9A63A]/70" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-secondary/70" />
               <span>{isAr ? "سائقون محترفون" : "Pro Chauffeurs"}</span>
             </div>
           </div>

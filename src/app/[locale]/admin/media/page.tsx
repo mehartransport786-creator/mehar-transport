@@ -8,7 +8,7 @@ export default function AdminMediaPage({ params: { locale } }: { params: { local
     <div className="p-8 h-[calc(100vh-4rem)] flex flex-col">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6 flex-shrink-0">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B1E4F] flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-primary flex items-center gap-2">
             <ImageIcon className="w-6 h-6" />
             {isAr ? "مكتبة الوسائط" : "Media Library"}
           </h2>
