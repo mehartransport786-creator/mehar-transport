@@ -73,6 +73,14 @@ export default async function VehicleDetailPage({ params }: { params: { locale: 
 
   if (!vehicle) {
     vehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
+  } else {
+    // If MongoDB vehicle exists but has incomplete gallery, fall back to mock gallery
+    if (!vehicle.gallery || vehicle.gallery.length <= 1) {
+      const mockVehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
+      if (mockVehicle && mockVehicle.gallery) {
+        vehicle.gallery = mockVehicle.gallery;
+      }
+    }
   }
 
   const slugMapping: Record<string, string> = {
