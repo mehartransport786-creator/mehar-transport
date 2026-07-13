@@ -27,11 +27,9 @@ export function AboutHero({ locale }: { locale: string }) {
           alt="Makkah Skyline" 
           className="w-full h-full object-cover object-center"
         />
-        {/* Soft bottom gradient to blend with the white page (bottom 40% only) */}
-        <div className="absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-background to-transparent z-20" />
       </div>
 
-      <div className="container relative z-30 px-4 md:px-6 mt-24">
+      <div className="container relative z-30 px-4 md:px-6 pt-[120px] lg:pt-[140px] pb-16">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
