@@ -28,7 +28,7 @@ export default function GlobalError({
             <div style={{ fontSize: '64px', fontWeight: 900, color: '#1B1E4F', marginBottom: '16px' }}>
               Oops!
             </div>
-            <div style={{ width: '96px', height: '6px', background: '#D9A63A', margin: '0 auto 24px', borderRadius: '999px' }} />
+            <div style={{ width: '96px', height: '6px', background: '#F8A731', margin: '0 auto 24px', borderRadius: '999px' }} />
             <h2 style={{ fontSize: '24px', fontWeight: 700, color: '#1B1E4F', marginBottom: '16px' }}>
               Something went wrong
             </h2>
@@ -55,7 +55,7 @@ export default function GlobalError({
               href="/"
               style={{
                 padding: '12px 32px',
-                background: '#D9A63A',
+                background: '#F8A731',
                 color: 'white',
                 border: 'none',
                 borderRadius: '12px',

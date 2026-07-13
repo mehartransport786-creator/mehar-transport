@@ -51,7 +51,7 @@ const citiesData: Record<string, {
       { name: 'Makkah Hotels', nameAr: 'فنادق مكة', distance: 'City', duration: '15-30min', price: 'From 80 SAR' },
     ],
     stats: { vehicles: 38, routes: 6, rating: 4.9, trips: '12,000+' },
-    color: '#D9A63A',
+    color: '#F8A731',
     highlights: [
       { en: 'Drivers experienced in Haram area navigation', ar: 'سائقون ذوو خبرة في منطقة الحرم' },
       { en: 'Hajj and Umrah seasonal availability', ar: 'توفر موسمي للحج والعمرة' },

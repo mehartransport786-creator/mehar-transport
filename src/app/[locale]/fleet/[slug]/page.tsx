@@ -88,7 +88,7 @@ export default async function VehicleDetailPage({ params }: { params: { locale: 
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       {/* SECTION 1 — CINEMATIC HERO */}
       <VehicleHero vehicle={vehicle} details={details} />
 

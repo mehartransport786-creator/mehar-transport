@@ -33,7 +33,7 @@ export function InteriorExperience() {
 
   return (
     <section className="py-32 bg-primary text-primary-foreground overflow-hidden relative">
-      {/* Decorative Gold Elements */}
+      {/* Decorative Brand Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 z-0" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-foreground/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 z-0" />
 

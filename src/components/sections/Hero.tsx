@@ -44,7 +44,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent"></div>
       </div>
 
-      <div className="container-fluid relative z-10 mx-auto flex flex-col justify-center w-full min-h-full pb-16 pt-[100px] lg:pb-24 lg:pt-[120px] xl:pt-[140px]">
+      <div className="container-fluid relative z-10 mx-auto flex flex-col justify-center w-full min-h-full pb-28 pt-[100px] lg:pb-24 lg:pt-[120px] xl:pt-[140px]">
         
         <AnimatePresence mode="popLayout">
           {!isBookingMode ? (
@@ -164,7 +164,7 @@ export function Hero() {
                     </div>
                   </div>
 
-                  <div className="w-full bg-secondary hover:bg-secondary/80 text-secondary-foreground px-6 rounded-[var(--radius-btn)] font-semibold transition-all duration-300 flex items-center justify-center gap-2 relative z-10 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] h-[56px]">
+                  <div className="w-full bg-secondary hover:bg-secondary/80 text-secondary-foreground px-6 rounded-[var(--radius-btn)] font-semibold transition-all duration-300 flex items-center justify-center gap-2 relative z-10 shadow-[0_0_20px_rgba(248,167,49,0.3)] hover:shadow-[0_0_30px_rgba(248,167,49,0.5)] h-[56px]">
                     <span className="text-[17px]">{isAr ? "المتابعة" : "Continue"}</span>
                     <ArrowIcon className="w-5 h-5" />
                   </div>

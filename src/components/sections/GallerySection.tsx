@@ -43,7 +43,7 @@ export function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className={`relative rounded-[2rem] overflow-hidden group cursor-pointer break-inside-avoid shadow-luxury hover:shadow-[0_0_40px_rgba(217,166,58,0.2)] transition-all duration-500`}
+              className={`relative rounded-[2rem] overflow-hidden group cursor-pointer break-inside-avoid shadow-luxury hover:shadow-[0_0_40px_rgba(248,167,49,0.2)] transition-all duration-500`}
             >
               <div className={`${img.aspect} relative w-full h-full`}>
                 <Image 

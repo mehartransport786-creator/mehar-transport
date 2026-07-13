@@ -9,7 +9,7 @@ export async function Footer() {
 
   return (
     <footer className="bg-primary text-primary-foreground section-padding-t pb-12 border-t-[4px] border-secondary relative overflow-hidden">
-      {/* Decorative Gold Elements */}
+      {/* Decorative Brand Elements */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-50"></div>
       
       <div className="container-fluid relative z-10">

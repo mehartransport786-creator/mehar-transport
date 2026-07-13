@@ -19,7 +19,7 @@ export function StickyBookingSummary() {
         animate={{ opacity: 1, y: 0 }}
         className="bg-primary rounded-2xl overflow-hidden text-white shadow-2xl shadow-primary/30"
       >
-        {/* Gold Header Bar */}
+        {/* Orange Header Bar */}
         <div className="bg-gradient-to-r from-secondary to-secondary/80 px-6 py-3 flex items-center justify-between">
           <span className="text-sm font-bold text-white">Booking Summary</span>
           <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full font-medium">Step {state.currentStep}/4</span>
@@ -131,8 +131,8 @@ export function StickyBookingSummary() {
               ) : (
                 <motion.span
                   key={pricing.totalIncludingTax}
-                  initial={{ scale: 1.1, color: "#D9A63A" }}
-                  animate={{ scale: 1, color: "#D9A63A" }}
+                  initial={{ scale: 1.1, color: "#F8A731" }}
+                  animate={{ scale: 1, color: "#F8A731" }}
                   className="text-3xl font-black tabular-nums"
                 >
                   {pricing.totalIncludingTax.toFixed(0)} <span className="text-xs font-semibold text-gray-400">SAR</span>

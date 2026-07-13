@@ -191,7 +191,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
       exit="exit"
       className="w-full max-w-7xl mx-auto h-full min-h-[500px] flex flex-col lg:flex-row bg-black/30 backdrop-blur-3xl border border-white/20 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative"
     >
-      {/* Top Gold Edge */}
+      {/* Top Orange Edge */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent z-20" />
       
       {/* Subtle background glows */}
@@ -220,7 +220,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
                 <div 
                   key={i} 
                   className={`h-1 rounded-full transition-all duration-500 ${
-                    i === step ? 'w-6 bg-secondary shadow-[0_0_8px_rgba(217,166,58,0.5)]' : 
+                    i === step ? 'w-6 bg-secondary shadow-[0_0_8px_rgba(248,167,49,0.5)]' : 
                     i < step ? 'w-2 bg-white/40' : 'w-2 bg-white/10'
                   }`}
                 />
@@ -267,7 +267,7 @@ export default function BookingWorkspace({ onCancel }: BookingWorkspaceProps) {
             <button
               disabled={!isStepValid() || isSubmitting}
               onClick={step === 4 ? handleSubmit : handleNext}
-              className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary/80 text-black px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(217,166,58,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none group"
+              className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary/80 text-black px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(248,167,49,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none group"
             >
               {isSubmitting ? (
                 <span className="text-sm tracking-wide">{isAr ? "جاري التأكيد..." : "Confirming..."}</span>

@@ -4,7 +4,7 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
   "toyota-camry": {
     theme: {
       primary: "#1B1E4F",
-      secondary: "#D9A63A",
+      secondary: "#F8A731",
       personality: "Executive Elegance",
       personalityAr: "أناقة تنفيذية",
     },
@@ -47,7 +47,7 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
   "kia-k5": {
     theme: {
       primary: "#1B1E4F",
-      secondary: "#D9A63A",
+      secondary: "#F8A731",
       personality: "Modern Elegance",
       personalityAr: "أناقة عصرية",
     },
@@ -85,7 +85,7 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
   "mitsubishi-xpander": {
     theme: {
       primary: "#1B1E4F",
-      secondary: "#D9A63A",
+      secondary: "#F8A731",
       personality: "Family Practicality",
       personalityAr: "عملية عائلية",
     },
@@ -122,7 +122,7 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
   "hyundai-starex": {
     theme: {
       primary: "#1B1E4F",
-      secondary: "#D9A63A",
+      secondary: "#F8A731",
       personality: "Reliable Group Transport",
       personalityAr: "نقل جماعي موثوق",
     },
@@ -159,7 +159,7 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
   "toyota-hiace": {
     theme: {
       primary: "#1B1E4F",
-      secondary: "#D9A63A",
+      secondary: "#F8A731",
       personality: "Maximum Capacity Comfort",
       personalityAr: "راحة السعة القصوى",
     },
@@ -197,7 +197,7 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
   "hyundai-staria": {
     theme: {
       primary: "#1B1E4F",
-      secondary: "#D9A63A",
+      secondary: "#F8A731",
       personality: "Premium Family Luxury",
       personalityAr: "فخامة عائلية راقية",
     },
@@ -237,7 +237,7 @@ export const vehicleDetails: Record<string, VehicleDetails> = {
   "gmc-yukon": {
     theme: {
       primary: "#1B1E4F",
-      secondary: "#D9A63A",
+      secondary: "#F8A731",
       personality: "VIP Comfort",
       personalityAr: "راحة كبار الشخصيات",
     },

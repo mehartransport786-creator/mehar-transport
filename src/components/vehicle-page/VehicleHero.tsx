@@ -25,7 +25,7 @@ export function VehicleHero({ vehicle, details }: VehicleHeroProps) {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <section ref={heroRef} className="relative h-[90vh] min-h-[600px] overflow-hidden bg-black flex items-center pt-24">
+    <section ref={heroRef} className="relative h-[90vh] min-h-[600px] w-full overflow-hidden bg-black flex items-center pt-24">
       {/* Background Image with Parallax */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <img 

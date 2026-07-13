@@ -192,8 +192,8 @@ export default function AdminDashboard() {
                     <stop offset="100%" stopColor="#1B1E4F" stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="previousGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#D9A63A" stopOpacity={0.1} />
-                    <stop offset="100%" stopColor="#D9A63A" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#F8A731" stopOpacity={0.1} />
+                    <stop offset="100%" stopColor="#F8A731" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -203,7 +203,7 @@ export default function AdminDashboard() {
                   contentStyle={{ borderRadius: 12, border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", fontSize: 13, fontWeight: 600 }}
                   formatter={(value: any) => [`${value.toLocaleString()} SAR`]}
                 />
-                <Area type="monotone" dataKey="previous" stroke="#D9A63A" strokeWidth={2} fill="url(#previousGrad)" strokeDasharray="6 4" name={isAr ? "العام السابق" : "Previous Year"} />
+                <Area type="monotone" dataKey="previous" stroke="#F8A731" strokeWidth={2} fill="url(#previousGrad)" strokeDasharray="6 4" name={isAr ? "العام السابق" : "Previous Year"} />
                 <Area type="monotone" dataKey="current" stroke="#1B1E4F" strokeWidth={2.5} fill="url(#currentGrad)" name={isAr ? "العام الحالي" : "Current Year"} />
               </AreaChart>
             </ResponsiveContainer>
@@ -214,7 +214,7 @@ export default function AdminDashboard() {
               <span className="text-xs text-gray-500">{isAr ? "العام الحالي" : "Current Year"}</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-0.5 rounded bg-secondary" style={{ borderTop: "2px dashed #D9A63A", height: 0 }}></div>
+              <div className="w-3 h-0.5 rounded bg-secondary" style={{ borderTop: "2px dashed #F8A731", height: 0 }}></div>
               <span className="text-xs text-gray-500">{isAr ? "العام السابق" : "Previous Year"}</span>
             </div>
           </div>
@@ -269,7 +269,7 @@ export default function AdminDashboard() {
                 <Tooltip contentStyle={{ borderRadius: 12, border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", fontSize: 13, fontWeight: 600 }} />
                 <Bar dataKey="bookings" fill="#1B1E4F" radius={[0, 8, 8, 0]} barSize={20}>
                   {stats.bookingsByVehicle.map((_: any, i: number) => (
-                    <Cell key={i} fill={i === 0 ? "#D9A63A" : "#1B1E4F"} opacity={1 - i * 0.08} />
+                    <Cell key={i} fill={i === 0 ? "#F8A731" : "#1B1E4F"} opacity={1 - i * 0.08} />
                   ))}
                 </Bar>
               </BarChart>

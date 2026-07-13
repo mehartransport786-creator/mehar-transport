@@ -135,7 +135,7 @@ export function CustomDatePicker({ value, onChange, minDate }: CustomDatePickerP
                       disabled 
                         ? 'text-white/20 cursor-not-allowed' 
                         : isSelected
-                          ? 'bg-secondary text-black font-bold shadow-[0_0_10px_rgba(217,166,58,0.5)]'
+                          ? 'bg-secondary text-black font-bold shadow-[0_0_10px_rgba(248,167,49,0.5)]'
                           : 'text-gray-300 hover:bg-white/10 hover:text-white'
                     }`}
                   >
