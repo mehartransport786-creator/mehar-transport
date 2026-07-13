@@ -43,12 +43,9 @@ export async function Footer() {
           </div>
 
           {/* Quick Links */}
-          <details className="group md:block" name="footer-accordion">
-            <summary className="flex items-center justify-between cursor-pointer md:cursor-auto list-none border-b border-white/10 md:border-none pb-4 md:pb-0">
-              <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{t("quickLinks")}</h4>
-              <ChevronDown className="w-5 h-5 text-secondary md:hidden transition-transform group-open:rotate-180" />
-            </summary>
-            <div className="pt-4 md:pt-6 hidden group-open:block md:block">
+          <div className="flex flex-col">
+            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider pb-4 md:pb-6 border-b border-white/10 md:border-none">{t("quickLinks")}</h4>
+            <div>
               <ul className="space-y-2">
                 <li>
                   <Link href="/fleet" className="text-white/70 hover:text-secondary transition-colors flex items-center gap-2 py-2 md:py-1">
@@ -71,15 +68,12 @@ export async function Footer() {
                 </li>
               </ul>
             </div>
-          </details>
+          </div>
 
           {/* Contact Info */}
-          <details className="group md:block" name="footer-accordion">
-            <summary className="flex items-center justify-between cursor-pointer md:cursor-auto list-none border-b border-white/10 md:border-none pb-4 md:pb-0">
-              <h4 className="text-lg font-bold text-secondary uppercase tracking-wider">{t("contactUs")}</h4>
-              <ChevronDown className="w-5 h-5 text-secondary md:hidden transition-transform group-open:rotate-180" />
-            </summary>
-            <div className="pt-4 md:pt-6 hidden group-open:block md:block">
+          <div className="flex flex-col">
+            <h4 className="text-lg font-bold text-secondary uppercase tracking-wider pb-4 md:pb-6 border-b border-white/10 md:border-none">{t("contactUs")}</h4>
+            <div>
               <ul className="space-y-4">
                 <li className="flex items-start gap-4">
                   <div className="w-10 h-10 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-secondary">
@@ -106,7 +100,7 @@ export async function Footer() {
                 </li>
               </ul>
             </div>
-          </details>
+          </div>
 
           {/* Map/Booking Widget */}
           <div className="space-y-6 pt-4 md:pt-0">
@@ -139,14 +133,10 @@ export async function Footer() {
 
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-white/50 text-[15px] text-center md:text-left">
+        <div className="border-t border-white/10 pt-8 flex items-center justify-center">
+          <p className="text-white/50 text-[15px] text-center">
             © {new Date().getFullYear()} Mehar Transport. {t("allRightsReserved")}
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-[15px] text-white/50">
-            <Link href="/privacy" className="hover:text-secondary transition-colors py-2 md:py-0">{t("privacyPolicy")}</Link>
-            <Link href="/terms" className="hover:text-secondary transition-colors py-2 md:py-0">{t("termsConditions")}</Link>
-          </div>
         </div>
       </div>
     </footer>

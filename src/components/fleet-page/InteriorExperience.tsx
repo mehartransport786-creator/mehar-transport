@@ -38,9 +38,9 @@ export function InteriorExperience() {
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-foreground/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px] relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          <div className="w-full lg:w-1/2 space-y-10">
+          <div className="w-full space-y-10">
             <div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -101,7 +101,7 @@ export function InteriorExperience() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="w-full lg:w-1/2"
+            className="w-full"
           >
             <div className="relative aspect-square md:aspect-[4/5] rounded-[2rem] overflow-hidden group">
               <Image 

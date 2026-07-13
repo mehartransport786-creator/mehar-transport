@@ -24,14 +24,14 @@ export function SafetyQuality() {
   return (
     <section className="py-24 bg-background border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <motion.div 
             initial={{ opacity: 0, x: isAr ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2"
+            className="w-full"
           >
             <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl">
               <img 
@@ -56,7 +56,7 @@ export function SafetyQuality() {
             </div>
           </motion.div>
 
-          <div className="w-full lg:w-1/2 space-y-8">
+          <div className="w-full space-y-8">
             <div>
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-0.5 bg-secondary"></div>

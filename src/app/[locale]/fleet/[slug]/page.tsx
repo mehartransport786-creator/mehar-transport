@@ -38,7 +38,13 @@ export async function generateMetadata({ params }: { params: { locale: string; s
     vehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
   }
 
-  const details = vehicleDetails[resolvedParams.slug];
+  const slugMapping: Record<string, string> = {
+    'hyundai-h1': 'hyundai-starex',
+    'coaster-bus': 'toyota-hiace', // Coaster details fallback
+    'gmc-denali': 'gmc-yukon'
+  };
+  const dataSlug = slugMapping[resolvedParams.slug] || resolvedParams.slug;
+  const details = vehicleDetails[dataSlug];
 
   if (!vehicle || !details) {
     return { title: "Not Found | Mehar Transport" };
@@ -69,7 +75,13 @@ export default async function VehicleDetailPage({ params }: { params: { locale: 
     vehicle = mockFleet.find(v => v.slug === resolvedParams.slug);
   }
 
-  const details = vehicleDetails[resolvedParams.slug];
+  const slugMapping: Record<string, string> = {
+    'hyundai-h1': 'hyundai-starex',
+    'coaster-bus': 'toyota-hiace', // Coaster details fallback
+    'gmc-denali': 'gmc-yukon'
+  };
+  const dataSlug = slugMapping[resolvedParams.slug] || resolvedParams.slug;
+  const details = vehicleDetails[dataSlug];
 
   if (!vehicle || !details) {
     notFound();

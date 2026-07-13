@@ -14,7 +14,7 @@ export function AboutSection() {
   return (
     <section className="section-padding bg-background overflow-hidden">
       <div className="container-fluid">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24">
           
           {/* Left Content Area */}
           <motion.div 
@@ -22,7 +22,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full lg:w-1/2 space-y-6 lg:space-y-8 animate-fade-up-luxury"
+            className="w-full space-y-6 lg:space-y-8 animate-fade-up-luxury"
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-px bg-secondary"></div>
@@ -60,7 +60,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full lg:w-1/2 animate-fade-up-luxury"
+            className="w-full animate-fade-up-luxury"
             style={{ animationDelay: "0.2s" }}
           >
             <div className="grid grid-cols-2 gap-3 md:gap-6 relative">
