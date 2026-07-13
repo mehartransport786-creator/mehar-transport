@@ -169,8 +169,8 @@ export function BookingConfirmation() {
               </h3>
               <div className="flex items-center gap-4 bg-muted/50 p-4 rounded-[var(--radius-card)] border border-border">
                 <div className="w-16 h-12 relative bg-background rounded-[var(--radius-card)] border border-border overflow-hidden shrink-0 flex items-center justify-center p-1">
-                  {state.selectedVehicle?.vehicleImage ? (
-                    <img src={state.selectedVehicle.vehicleImage} alt="Vehicle" className="object-contain max-h-full max-w-full" />
+                  {state.selectedVehicle?.image ? (
+                    <img src={state.selectedVehicle.image} alt="Vehicle" className="object-contain max-h-full max-w-full" />
                   ) : (
                     <Car className="w-6 h-6 text-muted-foreground/30" />
                   )}

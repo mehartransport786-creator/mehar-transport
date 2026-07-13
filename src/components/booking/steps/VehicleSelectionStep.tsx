@@ -114,9 +114,9 @@ export default function VehicleSelectionStep({ data, updateData, routes }: Props
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-secondary/70">
-                    <Snowflake className="w-3.5 h-3.5 sm:w-4 sm:h-4" title={isAr ? "تكييف" : "AC"} />
-                    <Wifi className="w-3.5 h-3.5 sm:w-4 sm:h-4" title={isAr ? "واي فاي" : "Wi-Fi"} />
-                    <Droplets className="w-3.5 h-3.5 sm:w-4 sm:h-4" title={isAr ? "ماء" : "Water"} />
+                    <span aria-label={isAr ? "تكييف" : "AC"}><Snowflake className="w-3.5 h-3.5 sm:w-4 sm:h-4" /></span>
+                    <span aria-label={isAr ? "واي فاي" : "Wi-Fi"}><Wifi className="w-3.5 h-3.5 sm:w-4 sm:h-4" /></span>
+                    <span aria-label={isAr ? "ماء" : "Water"}><Droplets className="w-3.5 h-3.5 sm:w-4 sm:h-4" /></span>
                   </div>
                 </div>
               </div>

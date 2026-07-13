@@ -234,7 +234,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ lo
                             </td>
                             <td className="px-6 py-4 text-center">
                               <Link
-                                href={`/booking?routeId=${route._id || route.slug}&vehicleId=${vehicle._id}`}
+                                href={`/booking?routeId=${(route as any)._id || route.slug}&vehicleId=${vehicle._id}`}
                                 className="inline-flex items-center justify-center bg-primary dark:bg-white text-white dark:text-primary px-4 py-2 rounded-lg text-xs font-bold hover:bg-opacity-90 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
                               >
                                 {isAr ? 'اختيار' : 'Select'}

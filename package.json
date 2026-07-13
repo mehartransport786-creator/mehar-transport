@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed:admin": "tsx --env-file=.env.local src/lib/seed-admin.ts"
+    "seed:admin": "tsx --env-file=.env.local src/lib/seed-admin.ts",
+    "seed:vehicles": "tsx --env-file=.env.local src/lib/seed-rich-vehicles.ts",
+    "seed:pricing": "tsx --env-file=.env.local src/lib/seed-pricing.ts",
+    "seed:blog": "tsx --env-file=.env.local src/lib/seed-blog.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
