@@ -15,8 +15,8 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
   
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  // If there are less than 4 images, duplicate them safely just to fill the grid nicely for the demo
-  const displayGallery = gallery.length >= 4 ? gallery : [...gallery, ...gallery, ...gallery].slice(0, 4);
+  // Support 3-image grid nicely, otherwise pad to fill demo layout
+  const displayGallery = gallery.length >= 3 ? gallery : [...gallery, ...gallery, ...gallery].slice(0, 4);
 
   const openLightbox = (index: number) => setSelectedImage(index);
   const closeLightbox = () => setSelectedImage(null);

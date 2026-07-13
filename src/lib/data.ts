@@ -17,7 +17,11 @@ export const mockFleet: Vehicle[] = [
     vipService: false,
     basePrice: 150,
     image: "/fleet/camry.png",
-    gallery: ["/fleet/camry.png"],
+    gallery: [
+      "/fleet/camry.png",
+      "/fleet/camry-interior.png",
+      "/fleet/camry-trunk.png"
+    ],
     features: ["Private Transfer", "Air Conditioning", "Professional Driver", "Airport Pickup", "Fixed Pricing"],
     featuresAr: ["تنقل خاص", "تكييف هواء", "سائق محترف", "استقبال من المطار", "تسعيرة ثابتة"],
     description: "Private sedan for solo travelers, couples, and business guests. Ideal for airport transfers, hotel pickups, and intercity travel between Makkah, Madinah, and Jeddah.",
