@@ -35,6 +35,8 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
     }
   };
 
+  const isPhoto = (src: string) => src.includes('.jpg') || src.includes('.jpeg') || src.includes('-interior') || src.includes('-seats') || src.includes('-rear') || src.includes('-dashboard');
+
   return (
     <section>
       <div className="flex items-center justify-between mb-8">
@@ -60,7 +62,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
             alt="Gallery Featured" 
             fill
             sizes="(max-width: 768px) 100vw, 66vw"
-            className="object-contain p-4 group-hover:scale-105 transition-transform duration-700"
+            className={`${isPhoto(displayGallery[0]) ? 'object-cover' : 'object-contain p-4'} group-hover:scale-105 transition-transform duration-700`}
           />
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <Maximize2 className="w-8 h-8 text-white" />
@@ -83,7 +85,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
               alt={`Gallery ${idx + 1}`} 
               fill
               sizes="(max-width: 768px) 50vw, 33vw"
-              className="object-contain p-2 group-hover:scale-105 transition-transform duration-700"
+              className={`${isPhoto(img) ? 'object-cover' : 'object-contain p-2'} group-hover:scale-105 transition-transform duration-700`}
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Maximize2 className="w-6 h-6 text-white" />

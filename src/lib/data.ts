@@ -18,9 +18,9 @@ export const mockFleet: Vehicle[] = [
     basePrice: 150,
     image: "/fleet/camry.png",
     gallery: [
-      "/fleet/camry.png",
-      "/fleet/camry-interior.png",
-      "/fleet/camry-trunk.png"
+      "/fleet/camry-exterior-rear.png",
+      "/fleet/camry-dashboard.jpg",
+      "/fleet/camry-seats.jpg"
     ],
     features: ["Private Transfer", "Air Conditioning", "Professional Driver", "Airport Pickup", "Fixed Pricing"],
     featuresAr: ["تنقل خاص", "تكييف هواء", "سائق محترف", "استقبال من المطار", "تسعيرة ثابتة"],
