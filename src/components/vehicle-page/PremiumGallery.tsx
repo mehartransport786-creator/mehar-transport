@@ -52,7 +52,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="col-span-2 row-span-2 relative group cursor-pointer rounded-2xl overflow-hidden aspect-video md:aspect-auto h-[300px] md:h-full"
+          className="col-span-2 row-span-2 relative group cursor-pointer rounded-2xl overflow-hidden aspect-video md:aspect-auto h-[250px] md:h-full bg-slate-50 border border-gray-100"
           onClick={() => openLightbox(0)}
         >
           <Image 
@@ -60,7 +60,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
             alt="Gallery Featured" 
             fill
             sizes="(max-width: 768px) 100vw, 66vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
+            className="object-contain p-4 group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <Maximize2 className="w-8 h-8 text-white" />
@@ -75,7 +75,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="relative group cursor-pointer rounded-2xl overflow-hidden aspect-square md:aspect-[4/3]"
+            className="relative group cursor-pointer rounded-2xl overflow-hidden aspect-square md:aspect-[4/3] bg-slate-50 border border-gray-100"
             onClick={() => openLightbox(idx + 1)}
           >
             <Image 
@@ -83,7 +83,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
               alt={`Gallery ${idx + 1}`} 
               fill
               sizes="(max-width: 768px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              className="object-contain p-2 group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Maximize2 className="w-6 h-6 text-white" />

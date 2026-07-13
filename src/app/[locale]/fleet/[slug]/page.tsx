@@ -96,7 +96,7 @@ export default async function VehicleDetailPage({ params }: { params: { locale: 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
           
           {/* Main Content Area (Left side on LTR, Right on RTL) */}
-          <div className="w-full lg:w-2/3 space-y-24">
+          <div className="w-full lg:w-2/3 space-y-12 lg:space-y-24">
             
             {/* Phase 2: SECTION 2 — VEHICLE STORY */}
             <VehicleStory details={details} />

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
+import Image from "next/image";
 import { Menu, X, Globe, MessageCircle, ChevronDown, User } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/routing";
 import { mockFleet } from "@/lib/data";
@@ -41,7 +42,7 @@ export function Navbar() {
           <div className="flex items-center lg:w-[200px]">
             <Link href="/" className="flex items-center gap-2">
               <div className={`transition-all duration-500 rounded-md p-1.5 ${!isTransparent ? 'bg-transparent' : 'bg-white/95 backdrop-blur-md shadow-xl'}`}>
-                <img src="/logo.png" alt="Mehar Transport" className={`w-auto transition-all duration-500 ${!isTransparent ? 'h-7 sm:h-8 lg:h-10' : 'h-8 sm:h-10 lg:h-12'}`} />
+                <Image src="/logo.png" alt="Mehar Transport" width={200} height={48} className={`w-auto object-contain transition-all duration-500 ${!isTransparent ? 'h-7 sm:h-8 lg:h-10' : 'h-8 sm:h-10 lg:h-12'}`} priority />
               </div>
             </Link>
           </div>

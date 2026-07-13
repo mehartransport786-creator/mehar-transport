@@ -24,7 +24,8 @@ import {LayoutShell} from '@/components/layout/LayoutShell';
 import {Navbar} from '@/components/layout/Navbar';
 import {Footer} from '@/components/layout/Footer';
 import Analytics from '@/components/layout/Analytics';
-import {FloatingWhatsApp} from '@/components/layout/FloatingWhatsApp';
+import dynamic from 'next/dynamic';
+const FloatingWhatsApp = dynamic(() => import('@/components/layout/FloatingWhatsApp').then(mod => mod.FloatingWhatsApp));
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mehartransport.com';
 
@@ -60,6 +61,10 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export default async function RootLayout({
   children,

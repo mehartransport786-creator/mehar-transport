@@ -44,7 +44,10 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 overflow-hidden sticky top-24">
+    <div 
+      className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 overflow-hidden sticky top-24"
+      onMouseEnter={() => router.prefetch(`/${locale}/booking`)}
+    >
       <div className="bg-primary p-6 text-white">
         <h3 className="text-xl font-bold mb-1">
           {isAr ? "احجز " + vehicleNameAr : "Reserve " + vehicleName}

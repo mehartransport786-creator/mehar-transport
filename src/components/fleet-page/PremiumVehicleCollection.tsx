@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { mockFleet } from "@/lib/data";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 import { Users, Briefcase, Star, ArrowRight, ArrowLeft } from "lucide-react";
 
 export function PremiumVehicleCollection({ vehicles }: { vehicles: any[] }) {
@@ -59,10 +60,12 @@ export function PremiumVehicleCollection({ vehicles }: { vehicles: any[] }) {
                       {/* Studio Lighting Effect */}
                       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background/80 via-transparent to-transparent"></div>
                       
-                      <img 
+                      <Image 
                         src={vehicle.image} 
                         alt={vehicle.name} 
-                        className="absolute inset-0 w-full h-full object-contain p-8 md:p-12 group-hover:scale-105 transition-transform duration-[1.5s] ease-out drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-contain p-8 md:p-12 group-hover:scale-105 transition-transform duration-[1.5s] ease-out drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
                       />
                       {/* Interactive Gallery Hint */}
                       <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">

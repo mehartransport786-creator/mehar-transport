@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { Plane, Building, Crown, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 
 export function ServicesSection() {
   const locale = useLocale();
@@ -107,10 +108,12 @@ export function ServicesSection() {
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
-                <img 
+                <Image 
                   src={service.image} 
                   alt={service.title} 
-                  className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-[1.5s] group-hover:scale-110"
                 />
               </div>
               

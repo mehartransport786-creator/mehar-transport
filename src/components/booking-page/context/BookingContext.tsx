@@ -242,12 +242,14 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     setState(prev => ({ ...prev, currentStep: step }));
     // Smooth scroll on mobile, instant on desktop
     setTimeout(() => {
-      const el = document.getElementById(`booking-step-${step}`);
-      if (el) {
-        const offset = 100;
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
+      requestAnimationFrame(() => {
+        const el = document.getElementById(`booking-step-${step}`);
+        if (el) {
+          const offset = 100;
+          const y = el.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
     }, 100);
   }, []);
 
@@ -264,12 +266,14 @@ export function BookingProvider({ children }: { children: ReactNode }) {
       };
     });
     setTimeout(() => {
-      const el = document.getElementById(`booking-step-${Math.min(4, state.currentStep + 1)}`);
-      if (el) {
-        const offset = 100;
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
+      requestAnimationFrame(() => {
+        const el = document.getElementById(`booking-step-${Math.min(4, state.currentStep + 1)}`);
+        if (el) {
+          const offset = 100;
+          const y = el.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
     }, 150);
   }, [state.currentStep]);
 
@@ -279,12 +283,14 @@ export function BookingProvider({ children }: { children: ReactNode }) {
       currentStep: Math.max(1, prev.currentStep - 1)
     }));
     setTimeout(() => {
-      const el = document.getElementById(`booking-step-${Math.max(1, state.currentStep - 1)}`);
-      if (el) {
-        const offset = 100;
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
+      requestAnimationFrame(() => {
+        const el = document.getElementById(`booking-step-${Math.max(1, state.currentStep - 1)}`);
+        if (el) {
+          const offset = 100;
+          const y = el.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
     }, 150);
   }, [state.currentStep]);
 

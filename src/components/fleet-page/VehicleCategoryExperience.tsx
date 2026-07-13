@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { mockFleet } from "@/lib/data";
+import Image from "next/image";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
 export function VehicleCategoryExperience() {
@@ -92,9 +93,12 @@ export function VehicleCategoryExperience() {
               <div className="absolute inset-0 bg-background border border-border rounded-[var(--radius-card)]"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-muted via-transparent to-transparent rounded-[var(--radius-card)]"></div>
               
-              <img 
+              <Image 
                 src={cat.image} 
-                className="absolute inset-0 w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-1000 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
+                alt={cat.vehicle}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                className="object-contain p-6 group-hover:scale-110 transition-transform duration-1000 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90 transition-opacity duration-500 rounded-[var(--radius-card)]" />
               

@@ -6,7 +6,12 @@ import { useLocale } from "next-intl";
 import { MapPin, Calendar, Clock, ArrowRight, ArrowLeft, Star, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import BookingWorkspace from '../booking/BookingWorkspace';
+import dynamic from 'next/dynamic';
+
+const BookingWorkspace = dynamic(() => import('../booking/BookingWorkspace'), {
+  ssr: false,
+  loading: () => <div className="w-full h-full min-h-[400px] flex items-center justify-center text-white/50">Loading booking system...</div>
+});
 
 export function Hero() {
   const locale = useLocale();
@@ -19,25 +24,15 @@ export function Hero() {
     <section className="relative min-h-[100svh] lg:min-h-screen w-full flex items-center overflow-hidden">
       {/* Cinematic Video Background */}
       <div className="absolute inset-0 z-0 bg-foreground">
-        {/* Desktop Image */}
+        {/* Unified Responsive Image */}
         <Image
           src="/hero-luxury.avif"
-          alt="Mehar Transport Luxury Chauffeur at Airport"
+          alt="Mehar Transport Luxury Chauffeur"
           quality={100}
           fill
           priority
           sizes="100vw"
-          className="hidden md:block object-cover object-center"
-        />
-        {/* Mobile Cropped Image */}
-        <Image
-          src="/hero-luxury.avif"
-          alt="Mehar Transport Luxury Chauffeur"
-          quality={90}
-          fill
-          priority
-          sizes="100vw"
-          className="block md:hidden object-cover object-[70%_center]"
+          className="object-cover object-[70%_center] md:object-center"
         />
         {/* Deep navy/black gradient overlay for readability and premium feel */}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-foreground/20"></div>
