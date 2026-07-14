@@ -1,7 +1,6 @@
 
 import { AboutHero } from "@/components/about-page/AboutHero";
 import { CompanyIntro } from "@/components/about-page/CompanyIntro";
-import { AboutTimeline } from "@/components/about-page/AboutTimeline";
 import { TrustStats } from "@/components/about-page/TrustStats";
 import { RegisteredCompany } from "@/components/about-page/RegisteredCompany";
 import { OurFootprint } from "@/components/about-page/OurFootprint";
@@ -85,7 +84,6 @@ export default async function AboutUsPage({ params }: { params: { locale: string
         <AboutHero locale={locale} />
         <CompanyIntro locale={locale} />
         <TrustStats locale={locale} />
-        <AboutTimeline locale={locale} />
         <RegisteredCompany locale={locale} />
         <OurFootprint locale={locale} />
         <B2BPartnerships locale={locale} />
