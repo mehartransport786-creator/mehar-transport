@@ -19,7 +19,7 @@ export function ServicesSection() {
       description: isAr 
         ? "نستقبلك بجلسة استقبال رسمية في مطارات جدة ومكة والمدينة المنورة، مع متابعة لحظية لرحلتك لضمان توقيت الاستقبال بدقة." 
         : "Professional meet-and-greet at Jeddah, Makkah, and Madinah airports. We monitor your flight in real time to ensure your driver is always ready on arrival.",
-      image: "/services/airport.png"
+      image: "/services/airport-camry.png"
     },
     {
       id: "umrah",
@@ -28,7 +28,7 @@ export function ServicesSection() {
       description: isAr 
         ? "تنقلات خاصة ومحجوزة مسبقاً بين مطار جدة، مكة المكرمة، والمدينة المنورة — التسعيرة ثابتة ولا مفاجآت." 
         : "Pre-booked private transfers between Jeddah Airport, Makkah, and Madinah. Fixed pricing, no shared rides, and professional drivers experienced on all Umrah routes.",
-      image: "/services/umrah.png"
+      image: "/services/umrah-yukon.png"
     },
     {
       id: "intercity",
@@ -37,7 +37,7 @@ export function ServicesSection() {
       description: isAr 
         ? "تنقلات مريحة بين مكة والمدينة وجدة والرياض والطائف وينبع — بسيارات مريحة وسائقين محترفين." 
         : "Comfortable private travel between Makkah, Madinah, Jeddah, Riyadh, Taif, and Yanbu. Ideal for families, pilgrims, and corporate travelers covering longer distances.",
-      image: "/services/corporate.png"
+      image: "/services/intercity-staria.png"
     },
     {
       id: "ziyarah",
@@ -46,7 +46,7 @@ export function ServicesSection() {
       description: isAr 
         ? "نرتب رحلات زيارة خاصة إلى المواقع الإسلامية في مكة والمدينة ومحيطهما — سائق مخصص لك مدة الجولة كاملة." 
         : "Arranged visits to Islamic historical sites in and around Makkah and Madinah. A dedicated driver accompanies your group throughout the full tour.",
-      image: "/services/hourly.png"
+      image: "/services/ziyarah-starex.png"
     }
   ];
 
