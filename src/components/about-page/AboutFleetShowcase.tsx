@@ -69,13 +69,13 @@ export function AboutFleetShowcase({ locale }: { locale: string }) {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="bg-background rounded-[var(--radius-card)] overflow-hidden shadow-[var(--shadow-luxury)] transition-all group"
             >
-              <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+              <div className="aspect-[4/3] bg-white relative overflow-hidden flex items-center justify-center p-6 border-b border-gray-100">
                 <img 
                   src={vehicle.image} 
                   alt={vehicle.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4 bg-primary/80 backdrop-blur-md text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm z-10">
                   {vehicle.category}
                 </div>
               </div>
