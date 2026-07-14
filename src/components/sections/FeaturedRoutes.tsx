@@ -82,8 +82,8 @@ export function FeaturedRoutes() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-16 gap-6 animate-fade-up-luxury">
           <div className="max-w-2xl space-y-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-0.5 bg-[#D4AF37]"></div>
-              <span className="text-[#D4AF37] font-semibold uppercase tracking-[0.2em] text-[13px]">
+              <div className="w-12 h-0.5 bg-[#F8A731]"></div>
+              <span className="text-[#F8A731] font-semibold uppercase tracking-[0.2em] text-[13px]">
                 {isAr ? "الوجهات الحصرية" : "Exclusive Destinations"}
               </span>
             </div>
@@ -93,7 +93,7 @@ export function FeaturedRoutes() {
           </div>
           <Link 
             href="/routes" 
-            className="inline-flex items-center justify-center gap-2 text-[#0F172A] font-medium hover:text-[#D4AF37] transition-colors group min-h-[48px] px-4 md:px-0 py-2 md:py-0 w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-2 text-[#0F172A] font-medium hover:text-[#F8A731] transition-colors group min-h-[48px] px-4 md:px-0 py-2 md:py-0 w-full md:w-auto"
           >
             <span className="text-[18px]">{isAr ? "عرض كل المسارات" : "View All Destinations"}</span>
             <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -109,10 +109,10 @@ export function FeaturedRoutes() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group bg-white rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-[#E2E8F0] hover:border-[#D4AF37] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col min-w-[85vw] max-w-[400px] md:max-w-none md:min-w-0 snap-center shrink-0 w-full"
+              className="group bg-white rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-[#E2E8F0] hover:border-[#F8A731] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col min-w-[85vw] max-w-[400px] md:max-w-none md:min-w-0 snap-center shrink-0 w-full"
             >
               {/* Cinematic Image Container */}
-              <div className="aspect-[4/3] overflow-hidden relative shrink-0">
+              <div className="aspect-video overflow-hidden relative shrink-0">
                 <Image 
                   src={route.image} 
                   alt={`${route.from} to ${route.to}`}
@@ -130,56 +130,56 @@ export function FeaturedRoutes() {
                     {route.badge}
                   </div>
                   <div className="flex items-center gap-1 bg-[#0F172A]/40 backdrop-blur-md px-3 py-1.5 rounded-full text-white border border-white/10">
-                    <Star className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]" />
+                    <Star className="w-4 h-4 fill-[#F8A731] text-[#F8A731]" />
                     <span className="text-[13px] font-semibold">{route.rating}</span>
                   </div>
                 </div>
 
                 {/* Route Title overlaying image */}
-                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
-                  <h3 className="text-[34px] font-semibold leading-tight tracking-tight mb-2 drop-shadow-lg">
+                <div className="absolute bottom-5 left-5 right-5 text-white pointer-events-none">
+                  <h3 className="text-[28px] font-semibold leading-tight tracking-tight mb-1 drop-shadow-lg">
                     {route.from}
                   </h3>
-                  <div className="flex items-center gap-2 text-white/90">
-                    <ArrowIcon className="w-5 h-5 text-[#D4AF37] shrink-0" />
-                    <span className="text-[18px] font-medium">{route.to}</span>
+                  <div className="flex items-center gap-1.5 text-white/90">
+                    <ArrowIcon className="w-4 h-4 text-[#F8A731] shrink-0" />
+                    <span className="text-[16px] font-medium">{route.to}</span>
                   </div>
                 </div>
               </div>
               
               {/* Card Body */}
-              <div className="p-6 md:p-8 flex flex-col flex-1 bg-white relative z-10">
+              <div className="p-4 md:p-5 flex flex-col flex-1 bg-white relative z-10">
                 
                 {/* Value Propositions */}
-                <div className="space-y-4 mb-8">
+                <div className="grid grid-cols-2 gap-y-2 gap-x-2 mb-4 mt-1">
                   {route.trustFeatures.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
-                      <div className="bg-[#F8FAFC] p-1.5 rounded-full shrink-0">
-                        <Check className="w-4 h-4 text-[#D4AF37]" />
+                    <div key={idx} className="flex items-start gap-2">
+                      <div className="bg-[#F8FAFC] p-1 rounded-full shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-[#F8A731]" />
                       </div>
-                      <span className="text-[16px] text-[#1E293B] font-medium">{feature}</span>
+                      <span className="text-[14px] text-[#1E293B] font-medium leading-snug">{feature}</span>
                     </div>
                   ))}
                 </div>
                 
                 {/* Price & CTA */}
-                <div className="mt-auto pt-6 border-t border-[#E2E8F0]">
-                  <div className="flex flex-col mb-5">
-                    <span className="text-[#64748B] text-[13px] font-semibold uppercase tracking-wider mb-1">
+                <div className="mt-auto pt-4 border-t border-[#E2E8F0]">
+                  <div className="flex flex-col mb-3">
+                    <span className="text-[#64748B] text-[11px] font-semibold uppercase tracking-wider mb-0.5">
                       {isAr ? "تبدأ الأسعار من" : "Starting From"}
                     </span>
                     <div className="flex items-baseline gap-1 text-[#0F172A]">
-                      <span className="text-[48px] font-bold leading-none tracking-tight">{route.price}</span>
-                      <span className="text-[18px] font-semibold">SAR</span>
+                      <span className="text-[28px] font-bold leading-none tracking-tight">{route.price}</span>
+                      <span className="text-[14px] font-semibold">SAR</span>
                     </div>
                   </div>
                   
                   <Link 
                     href={`/booking?pickup=${route.from}&dropoff=${route.to}`}
-                    className="w-full bg-[#0F172A] text-white group-hover:bg-[#D4AF37] group-hover:text-[#0F172A] px-6 py-4 rounded-[12px] font-medium text-[18px] transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_4px_14px_rgba(15,23,42,0.1)] group-hover:shadow-[0_8px_25px_rgba(212,175,55,0.3)]"
+                    className="w-full bg-[#0F172A] text-white group-hover:bg-[#F8A731] group-hover:text-[#0F172A] px-5 py-3 rounded-[10px] font-medium text-[15px] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(15,23,42,0.1)] group-hover:shadow-[0_8px_25px_rgba(248,167,49,0.3)]"
                   >
                     <span>{isAr ? "احجز تنقلك الفاخر" : "Book Premium Transfer"}</span>
-                    <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                    <ArrowIcon className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export function FeaturedRoutes() {
             { icon: CheckCircle2, text: isAr ? "بدون رسوم خفية" : "No Hidden Fees" }
           ].map((trust, idx) => (
             <div key={idx} className="flex items-center gap-2">
-              <trust.icon className="w-5 h-5 text-[#D4AF37]" />
+              <trust.icon className="w-5 h-5 text-[#F8A731]" />
               <span className="text-[15px] font-medium text-[#64748B]">{trust.text}</span>
             </div>
           ))}
