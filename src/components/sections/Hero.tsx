@@ -24,7 +24,6 @@ export function Hero() {
     <section className="relative min-h-[100svh] lg:min-h-screen w-full flex items-center overflow-hidden">
       {/* Cinematic Video Background */}
       <div className="absolute inset-0 z-0 bg-foreground">
-        {/* Unified Responsive Image */}
         <Image
           src="/hero-luxury.avif"
           alt="Mehar Transport Luxury Chauffeur"
@@ -32,7 +31,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[70%_center] md:object-center"
+          className="object-cover object-center"
         />
         {/* Deep navy/black gradient overlay for readability and premium feel */}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-foreground/20"></div>
@@ -66,7 +65,7 @@ export function Hero() {
                     : "Private Chauffeur Transportation Across Saudi Arabia"}
                 </h1>
                 
-                <p className="body-large text-white/80 max-w-xl font-light text-[18px]">
+                <p className="hidden md:block body-large text-white/80 max-w-xl font-light text-[18px]">
                   {isAr 
                     ? "سافر بثقة مع نقل خاص محجوز مسبقاً من شركة مسجلة في المملكة. تنقلات المطار، رحلات العمرة، السفر بين المدن، وجولات الزيارة — كل رحلة خاصة، دقيقة، ومع سائق محترف." 
                     : "Travel with confidence using pre-booked private transportation operated by a registered Saudi Arabian company. Airport transfers, Umrah journeys, intercity travel, and Ziyarah tours — every ride is private, punctual, and professionally driven."}
@@ -93,12 +92,21 @@ export function Hero() {
                     </span>
                   </div>
                 </div>
+
+                {/* Mobile Quick Book CTA */}
+                <button 
+                  onClick={() => setIsBookingMode(true)}
+                  className="lg:hidden w-full mt-8 bg-secondary hover:bg-secondary/80 text-secondary-foreground px-6 rounded-[var(--radius-btn)] font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(248,167,49,0.3)] h-[56px]"
+                >
+                  <span className="text-[17px]">{isAr ? "احجز تنقلك الخاص" : "Book Your Transfer"}</span>
+                  <ArrowIcon className="w-5 h-5" />
+                </button>
               </div>
 
-              {/* Professional Quick-Book Form */}
+              {/* Professional Quick-Book Form (Desktop) */}
               <motion.div 
                 layoutId="booking-widget"
-                className="w-full lg:w-[45%] max-w-[440px] xl:max-w-[480px] shrink-0 bg-black/40 backdrop-blur-3xl border border-white/10 p-6 lg:p-8 xl:p-10 rounded-[var(--radius-form)] shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group hover:border-white/20 hover:bg-black/50 transition-all duration-500 cursor-pointer animate-fade-up-luxury"
+                className="hidden lg:block w-full lg:w-[45%] max-w-[440px] xl:max-w-[480px] shrink-0 bg-black/40 backdrop-blur-3xl border border-white/10 p-6 lg:p-8 xl:p-10 rounded-[var(--radius-form)] shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group hover:border-white/20 hover:bg-black/50 transition-all duration-500 cursor-pointer animate-fade-up-luxury"
                 style={{ animationDelay: '0.1s' }}
                 onClick={() => setIsBookingMode(true)}
               >
