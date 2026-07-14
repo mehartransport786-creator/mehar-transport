@@ -30,7 +30,7 @@ export function FeaturedRoutes() {
       rating: "4.8",
       from: isAr ? "مكة المكرمة" : "Makkah",
       to: isAr ? "المدينة المنورة" : "Madinah",
-      price: "1200",
+      price: "350",
       image: "/routes/makkah-madinah-premium.jpg",
       trustFeatures: isAr 
         ? ["تنقل خاص", "سيارات فارهة", "خدمة من الباب للباب", "دعم ٢٤/٧"]
@@ -42,7 +42,7 @@ export function FeaturedRoutes() {
       rating: "4.9",
       from: isAr ? "المدينة المنورة" : "Madinah",
       to: isAr ? "مطار جدة" : "Jeddah Airport",
-      price: "1100",
+      price: "350",
       image: "/routes/jeddah-airport-premium.png",
       trustFeatures: isAr 
         ? ["تتبع رحلات الطيران", "تأكيد فوري", "بدون رسوم خفية", "سائق محترف"]
@@ -54,7 +54,7 @@ export function FeaturedRoutes() {
       rating: "4.7",
       from: isAr ? "جدة" : "Jeddah",
       to: isAr ? "الطائف" : "Taif",
-      price: "800",
+      price: "400",
       image: "/routes/taif-mountain-premium.png",
       trustFeatures: isAr 
         ? ["تنقل خاص", "سيارات فارهة", "رحلة آمنة", "دعم ٢٤/٧"]
