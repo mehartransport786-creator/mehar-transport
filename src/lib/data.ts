@@ -44,7 +44,11 @@ export const mockFleet: Vehicle[] = [
     vipService: true,
     basePrice: 400,
     image: "/fleet/staria.png",
-    gallery: ["/fleet/staria.png"],
+    gallery: [
+      "/fleet/staria-exterior-rear.png",
+      "/fleet/staria-dashboard.jpg",
+      "/fleet/staria-seats.jpg"
+    ],
     features: ["7 Passengers", "Generous Luggage Space", "Private Transfer", "Air Conditioning", "Wi-Fi Available"],
     featuresAr: ["7 ركاب", "مساحة أمتعة واسعة", "تنقل خاص", "تكييف هواء", "واي فاي متاح"],
     description: "Family executive van for families and small groups. Generous space and luggage capacity — ideal for Umrah pilgrims, hotel transfers, and Ziyarah tours.",
