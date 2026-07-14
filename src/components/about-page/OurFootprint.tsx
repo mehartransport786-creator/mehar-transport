@@ -38,13 +38,13 @@ export function OurFootprint({ locale }: { locale: string }) {
         </svg>
       </div>
 
-      <div className="container px-4 md:px-6 mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+      <div className="container-fluid relative z-10">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
           
           <motion.div 
-            className="flex-1 w-full"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="w-full lg:w-1/2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
@@ -52,14 +52,14 @@ export function OurFootprint({ locale }: { locale: string }) {
               <span className="w-12 h-px bg-secondary"></span>
               {isAr ? 'نطاق خدماتنا' : 'Our Footprint'}
             </h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-primary-foreground leading-tight mb-8">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight mb-8">
               {isAr ? 'تغطية واسعة في جميع أنحاء المملكة' : 'Extensive Coverage Across Saudi Arabia'}
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {highlights.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4 p-4 bg-primary-foreground/5 backdrop-blur-sm rounded-[var(--radius-card)] border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors cursor-default">
-                  <div className="w-10 h-10 rounded-[var(--radius-btn)] bg-secondary/20 flex items-center justify-center text-secondary">
+                  <div className="shrink-0 w-10 h-10 rounded-[var(--radius-btn)] bg-secondary/20 flex items-center justify-center text-secondary">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <span className={`font-semibold text-primary-foreground ${isAr ? 'font-arabic' : ''}`}>
@@ -72,9 +72,9 @@ export function OurFootprint({ locale }: { locale: string }) {
 
           {/* Stylized Map Area */}
           <motion.div 
-            className="flex-1 w-full relative aspect-square max-w-lg mx-auto"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            className="w-full lg:w-1/2 relative aspect-square max-w-lg mx-auto"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
