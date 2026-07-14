@@ -86,10 +86,10 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${jakarta.variable} ${plexArabic.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${plexArabic.variable} antialiased`}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-screen flex flex-col font-sans">
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutShell navbar={<Navbar />} footer={<Footer />}>
             {children}

@@ -37,7 +37,7 @@ export function ServicesSection() {
       description: isAr 
         ? "تنقلات مريحة بين مكة والمدينة وجدة والرياض والطائف وينبع — بسيارات مريحة وسائقين محترفين." 
         : "Comfortable private travel between Makkah, Madinah, Jeddah, Riyadh, Taif, and Yanbu. Ideal for families, pilgrims, and corporate travelers covering longer distances.",
-      image: "/services/intercity-staria.png"
+      image: "/fleet/staria-seats.jpg"
     },
     {
       id: "ziyarah",
