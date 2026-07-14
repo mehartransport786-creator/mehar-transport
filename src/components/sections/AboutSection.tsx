@@ -18,11 +18,11 @@ export function AboutSection() {
           
           {/* Left Content Area */}
           <motion.div 
-            initial={{ opacity: 0, x: isAr ? 50 : -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full space-y-6 lg:space-y-8 animate-fade-up-luxury"
+            className="w-full space-y-6 lg:space-y-8"
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-px bg-secondary"></div>
@@ -56,11 +56,11 @@ export function AboutSection() {
 
           {/* Right Imagery Grid */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full animate-fade-up-luxury"
+            className="w-full"
             style={{ animationDelay: "0.2s" }}
           >
             <div className="grid grid-cols-2 gap-3 md:gap-6 relative">
