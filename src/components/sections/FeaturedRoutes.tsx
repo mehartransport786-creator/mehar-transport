@@ -3,8 +3,7 @@
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft, Clock, Map, Car } from "lucide-react";
-import { PremiumIcon } from "@/components/ui/PremiumIcon";
+import { ArrowRight, ArrowLeft, Star, CheckCircle2, ShieldCheck, Clock, Check } from "lucide-react";
 import Image from "next/image";
 
 export function FeaturedRoutes() {
@@ -15,62 +14,94 @@ export function FeaturedRoutes() {
   const routes = [
     {
       id: "jed-mak",
+      badge: isAr ? "الأكثر طلباً" : "Most Popular",
+      rating: "4.9",
       from: isAr ? "مطار جدة" : "Jeddah Airport",
-      to: isAr ? "مكة المكرمة" : "Makkah",
-      distance: "100 km",
-      time: "1h 15m",
-      vehicles: "Camry, Staria, Yukon",
+      to: isAr ? "فنادق مكة" : "Makkah Hotels",
       price: "250",
-      image: "/routes/jeddah-makkah.webp"
+      image: "/routes/makkah-clock-premium.jpg",
+      trustFeatures: isAr 
+        ? ["تتبع رحلات الطيران", "استقبال وترحيب", "وقت انتظار مجاني", "سائق محترف"]
+        : ["Flight Monitoring", "Meet & Greet", "Free Waiting Time", "Professional Driver"]
     },
     {
       id: "mak-mad",
+      badge: isAr ? "خدمة فاخرة" : "Premium Transfer",
+      rating: "4.8",
       from: isAr ? "مكة المكرمة" : "Makkah",
       to: isAr ? "المدينة المنورة" : "Madinah",
-      distance: "450 km",
-      time: "4h 30m",
-      vehicles: "Starex, Hiace, Yukon",
       price: "1200",
-      image: "/routes/makkah-madinah.webp"
+      image: "/routes/makkah-madinah-premium.jpg",
+      trustFeatures: isAr 
+        ? ["تنقل خاص", "سيارات فارهة", "خدمة من الباب للباب", "دعم ٢٤/٧"]
+        : ["Private Transfer", "Executive Vehicles", "Door-to-Door", "24/7 Support"]
     },
     {
       id: "mad-jed",
+      badge: isAr ? "نقل المطار" : "Airport Transfer",
+      rating: "4.9",
       from: isAr ? "المدينة المنورة" : "Madinah",
       to: isAr ? "مطار جدة" : "Jeddah Airport",
-      distance: "420 km",
-      time: "4h 00m",
-      vehicles: "K5, Xpander, Staria",
       price: "1100",
-      image: "/routes/madinah-jeddah.webp"
+      image: "/routes/jeddah-airport-premium.png",
+      trustFeatures: isAr 
+        ? ["تتبع رحلات الطيران", "تأكيد فوري", "بدون رسوم خفية", "سائق محترف"]
+        : ["Flight Tracking", "Instant Confirmation", "No Hidden Fees", "Professional Driver"]
+    },
+    {
+      id: "jed-taif",
+      badge: isAr ? "الدرجة الأولى" : "First Class",
+      rating: "4.7",
+      from: isAr ? "جدة" : "Jeddah",
+      to: isAr ? "الطائف" : "Taif",
+      price: "800",
+      image: "/routes/taif-mountain-premium.png",
+      trustFeatures: isAr 
+        ? ["تنقل خاص", "سيارات فارهة", "رحلة آمنة", "دعم ٢٤/٧"]
+        : ["Private Transfer", "Executive Vehicles", "Safe Journey", "24/7 Support"]
+    },
+    {
+      id: "ruh",
+      badge: isAr ? "خدمة رجال الأعمال" : "Executive",
+      rating: "5.0",
+      from: isAr ? "مطار الرياض" : "Riyadh Airport",
+      to: isAr ? "فنادق الرياض" : "Riyadh Hotels",
+      price: "300",
+      image: "/routes/riyadh-airport-premium.png",
+      trustFeatures: isAr 
+        ? ["تتبع رحلات الطيران", "استقبال وترحيب", "وقت انتظار مجاني", "تأكيد فوري"]
+        : ["Flight Monitoring", "Meet & Greet", "Free Waiting Time", "Instant Confirmation"]
     }
   ];
 
   return (
-    <section className="section-padding bg-slate-50 relative">
+    <section className="section-padding bg-[#F8FAFC] relative">
       <div className="container-fluid">
         
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-16 gap-6 animate-fade-up-luxury">
           <div className="max-w-2xl space-y-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-0.5 bg-secondary"></div>
-              <span className="text-secondary font-bold uppercase tracking-widest text-xs md:text-sm">
-                {isAr ? "الوجهات الأكثر طلباً" : "Popular Routes"}
+              <div className="w-12 h-0.5 bg-[#D4AF37]"></div>
+              <span className="text-[#D4AF37] font-semibold uppercase tracking-[0.2em] text-[13px]">
+                {isAr ? "الوجهات الحصرية" : "Exclusive Destinations"}
               </span>
             </div>
-            <h2 className="h2 text-primary leading-tight">
-              {isAr ? "مسارات صُممت لراحتك" : "Journeys Designed for Comfort"}
+            <h2 className="text-[#0F172A] text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+              {isAr ? "تنقل فاخر عبر المملكة" : "Premium Chauffeur Routes"}
             </h2>
           </div>
           <Link 
             href="/routes" 
-            className="inline-flex items-center justify-center gap-2 text-secondary font-bold hover:text-primary transition-colors group min-h-[48px] px-4 md:px-0 py-2 md:py-0 border md:border-transparent border-secondary/20 rounded-xl md:rounded-none w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-2 text-[#0F172A] font-medium hover:text-[#D4AF37] transition-colors group min-h-[48px] px-4 md:px-0 py-2 md:py-0 w-full md:w-auto"
           >
-            <span>{isAr ? "عرض كل المسارات" : "View All Routes"}</span>
+            <span className="text-[18px]">{isAr ? "عرض كل المسارات" : "View All Destinations"}</span>
             <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Mobile Swipeable / Desktop Grid Container */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-8 -mx-4 px-4 md:mx-0 md:px-0 md:overflow-visible md:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {routes.map((route, index) => (
             <motion.div 
               key={route.id}
@@ -78,67 +109,98 @@ export function FeaturedRoutes() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-[#E2E8F0] hover:border-[#D4AF37] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col min-w-[85vw] max-w-[400px] md:max-w-none md:min-w-0 snap-center shrink-0 w-full"
             >
-              <div className="aspect-[16/10] overflow-hidden relative shrink-0">
+              {/* Cinematic Image Container */}
+              <div className="aspect-[4/3] overflow-hidden relative shrink-0">
                 <Image 
                   src={route.image} 
                   alt={`${route.from} to ${route.to}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="font-semibold text-lg">{route.from}</span>
-                    <ArrowIcon className="w-5 h-5 text-secondary shrink-0" />
-                    <span className="font-semibold text-lg">{route.to}</span>
+                
+                {/* Premium Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/20 to-transparent opacity-90 transition-opacity duration-300 pointer-events-none"></div>
+                
+                {/* Badges Floating */}
+                <div className="absolute top-5 left-5 right-5 flex justify-between items-start pointer-events-none">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-full text-[13px] font-semibold tracking-wide shadow-sm">
+                    {route.badge}
+                  </div>
+                  <div className="flex items-center gap-1 bg-[#0F172A]/40 backdrop-blur-md px-3 py-1.5 rounded-full text-white border border-white/10">
+                    <Star className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]" />
+                    <span className="text-[13px] font-semibold">{route.rating}</span>
+                  </div>
+                </div>
+
+                {/* Route Title overlaying image */}
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <h3 className="text-[34px] font-semibold leading-tight tracking-tight mb-2 drop-shadow-lg">
+                    {route.from}
+                  </h3>
+                  <div className="flex items-center gap-2 text-white/90">
+                    <ArrowIcon className="w-5 h-5 text-[#D4AF37] shrink-0" />
+                    <span className="text-[18px] font-medium">{route.to}</span>
                   </div>
                 </div>
               </div>
               
-              <div className="p-6 flex flex-col flex-1">
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="flex items-center gap-3 text-sm">
-                    <PremiumIcon icon={Map} size="sm" />
-                    <div>
-                      <span className="block text-muted-foreground text-[11px] uppercase tracking-wider">{isAr ? "المسافة" : "Distance"}</span>
-                      <span className="font-bold text-primary">{route.distance}</span>
+              {/* Card Body */}
+              <div className="p-6 md:p-8 flex flex-col flex-1 bg-white relative z-10">
+                
+                {/* Value Propositions */}
+                <div className="space-y-4 mb-8">
+                  {route.trustFeatures.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3">
+                      <div className="bg-[#F8FAFC] p-1.5 rounded-full shrink-0">
+                        <Check className="w-4 h-4 text-[#D4AF37]" />
+                      </div>
+                      <span className="text-[16px] text-[#1E293B] font-medium">{feature}</span>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm">
-                    <PremiumIcon icon={Clock} size="sm" />
-                    <div>
-                      <span className="block text-muted-foreground text-[11px] uppercase tracking-wider">{isAr ? "الزمن التقديري" : "Est. Time"}</span>
-                      <span className="font-bold text-primary">{route.time}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm col-span-2">
-                    <PremiumIcon icon={Car} size="sm" />
-                    <div>
-                      <span className="block text-muted-foreground text-[11px] uppercase tracking-wider">{isAr ? "السيارات المتاحة" : "Available Vehicles"}</span>
-                      <span className="font-bold text-primary">{route.vehicles}</span>
-                    </div>
-                  </div>
+                  ))}
                 </div>
                 
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-6 border-t border-slate-100 gap-4 mt-auto">
-                  <div>
-                    <span className="text-muted-foreground text-[11px] uppercase tracking-wider block mb-1">{isAr ? "يبدأ من" : "Starting from"}</span>
-                    <span className="text-2xl font-bold text-primary">{route.price} <span className="text-sm">SAR</span></span>
+                {/* Price & CTA */}
+                <div className="mt-auto pt-6 border-t border-[#E2E8F0]">
+                  <div className="flex flex-col mb-5">
+                    <span className="text-[#64748B] text-[13px] font-semibold uppercase tracking-wider mb-1">
+                      {isAr ? "تبدأ الأسعار من" : "Starting From"}
+                    </span>
+                    <div className="flex items-baseline gap-1 text-[#0F172A]">
+                      <span className="text-[48px] font-bold leading-none tracking-tight">{route.price}</span>
+                      <span className="text-[18px] font-semibold">SAR</span>
+                    </div>
                   </div>
+                  
                   <Link 
                     href={`/booking?pickup=${route.from}&dropoff=${route.to}`}
-                    className="bg-primary text-white hover:bg-secondary px-6 py-3 rounded-xl font-semibold text-[15px] transition-colors min-h-[56px] flex items-center justify-center shrink-0"
+                    className="w-full bg-[#0F172A] text-white group-hover:bg-[#D4AF37] group-hover:text-[#0F172A] px-6 py-4 rounded-[12px] font-medium text-[18px] transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_4px_14px_rgba(15,23,42,0.1)] group-hover:shadow-[0_8px_25px_rgba(212,175,55,0.3)]"
                   >
-                    {isAr ? "احجز المسار" : "Book Route"}
+                    <span>{isAr ? "احجز تنقلك الفاخر" : "Book Premium Transfer"}</span>
+                    <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Global Trust Indicators (Optional Footer for the section) */}
+        <div className="mt-12 lg:mt-16 pt-8 border-t border-[#E2E8F0] flex flex-wrap justify-center gap-x-8 gap-y-4">
+          {[
+            { icon: ShieldCheck, text: isAr ? "شركة سعودية مرخصة" : "Licensed Saudi Company" },
+            { icon: Clock, text: isAr ? "تأكيد فوري" : "Instant Confirmation" },
+            { icon: CheckCircle2, text: isAr ? "بدون رسوم خفية" : "No Hidden Fees" }
+          ].map((trust, idx) => (
+            <div key={idx} className="flex items-center gap-2">
+              <trust.icon className="w-5 h-5 text-[#D4AF37]" />
+              <span className="text-[15px] font-medium text-[#64748B]">{trust.text}</span>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
