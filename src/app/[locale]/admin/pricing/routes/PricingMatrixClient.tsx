@@ -155,7 +155,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-12rem)]">
+    <div className="flex flex-col min-h-[500px] h-full flex-1">
       {/* Header & Tools */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 shrink-0">
         <div>
@@ -175,8 +175,8 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
         </div>
       </div>
 
-      <div className="flex items-center gap-3 mb-6 shrink-0">
-        <div className="flex-1 flex items-center gap-2 bg-white px-3 py-2 border border-gray-200 rounded-lg shadow-sm">
+      <div className="flex flex-col sm:flex-row items-center gap-3 mb-6 shrink-0 w-full">
+        <div className="w-full sm:flex-1 flex items-center gap-2 bg-white px-3 py-2 border border-gray-200 rounded-lg shadow-sm">
           <Search className="w-4 h-4 text-gray-400" />
           <input 
             type="text" placeholder={isAr ? 'ابحث عن مسار...' : 'Search routes...'} 
@@ -184,7 +184,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
             className="border-none outline-none text-sm w-full"
           />
         </div>
-        <select value={filterType} onChange={e => setFilterType(e.target.value)} className="bg-white px-3 py-2 border border-gray-200 rounded-lg shadow-sm text-sm outline-none">
+        <select value={filterType} onChange={e => setFilterType(e.target.value)} className="w-full sm:w-auto bg-white px-3 py-2 border border-gray-200 rounded-lg shadow-sm text-sm outline-none">
           <option value="">{isAr ? 'كل الأنواع' : 'All Route Types'}</option>
           <option value="airport_transfer">Airport Transfer</option>
           <option value="intercity">Intercity</option>

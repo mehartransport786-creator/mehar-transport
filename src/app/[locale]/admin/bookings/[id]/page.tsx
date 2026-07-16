@@ -333,7 +333,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
             </div>
             <div className="border-t border-gray-100 pt-3 flex justify-between">
               <span className="text-base font-bold" style={{ color: '#1B1E4F' }}>{isAr ? 'الإجمالي' : 'Total'}</span>
-              <span className="text-xl font-black" style={{ color: '#F8A731' }}>
+              <span className="text-xl font-black" style={{ color: '#df9a26' }}>
                 {(booking.totalPrice || 0).toLocaleString()} SAR
               </span>
             </div>

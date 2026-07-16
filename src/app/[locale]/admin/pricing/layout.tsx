@@ -41,9 +41,9 @@ export default function PricingLayout({ children }: { children: React.ReactNode 
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 items-start">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
         {/* Navigation Sidebar */}
-        <div className="w-full md:w-64 shrink-0 flex flex-col gap-1">
+        <div className="w-full md:w-64 shrink-0 flex flex-row md:flex-col gap-2 overflow-x-auto hide-scrollbar pb-2 md:pb-0">
           {navItems.map((item) => {
             const isActive = item.exact 
               ? pathname === `/${locale}${item.href}` || pathname === `/${locale}${item.href}/`
@@ -53,7 +53,7 @@ export default function PricingLayout({ children }: { children: React.ReactNode 
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all whitespace-nowrap shrink-0 md:shrink border md:border-none ${
                   isActive 
                     ? "bg-secondary text-white shadow-lg shadow-secondary/20"
                     : "text-gray-600 hover:bg-gray-100"

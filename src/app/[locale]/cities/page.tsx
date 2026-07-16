@@ -43,7 +43,7 @@ const cities = [
     image: '/cities/makkah.webp',
     routes: ['Makkah → Madinah', 'Makkah → Jeddah', 'Makkah Hotels'],
     stats: { vehicles: 38, routes: 6, rating: 4.9 },
-    color: '#F8A731',
+    color: '#df9a26',
   },
   {
     slug: 'madinah',

@@ -11,7 +11,7 @@ export function CTASection() {
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative py-32 bg-primary overflow-hidden flex items-center justify-center min-h-[60vh]">
+    <section className="relative py-12 md:py-16 bg-primary overflow-hidden flex items-center justify-center">
       {/* Background Decor */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/routes/jeddah-makkah.webp')] bg-cover bg-center opacity-10 mix-blend-luminosity"></div>
@@ -24,13 +24,13 @@ export function CTASection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="space-y-10"
+          className="space-y-6"
         >
           <div className="inline-block px-4 py-1 border border-secondary/20 rounded-full bg-secondary/5 backdrop-blur-sm text-secondary/90 text-sm font-bold uppercase tracking-[0.2em] mb-4">
             {isAr ? "ميهار للنقل — المملكة العربية السعودية" : "Mehar Transport — Saudi Arabia"}
           </div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight tracking-tight">
             {isAr ? "احجز تنقلك الخاص اليوم" : "Book Your Private Transfer Today."}
           </h2>
           

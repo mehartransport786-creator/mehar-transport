@@ -46,9 +46,9 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 items-start">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
         {/* Settings Navigation Sidebar */}
-        <div className="w-full md:w-64 shrink-0 flex flex-col gap-1">
+        <div className="w-full md:w-64 shrink-0 flex flex-row md:flex-col gap-2 overflow-x-auto hide-scrollbar pb-2 md:pb-0">
           {navItems.map((item) => {
             // Because pathname includes locale like /en/admin/settings, we check endsWith or includes
             const isActive = item.exact 
@@ -59,7 +59,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all whitespace-nowrap shrink-0 md:shrink border md:border-none ${
                   isActive 
                     ? item.danger 
                       ? "bg-red-50 text-red-600" 

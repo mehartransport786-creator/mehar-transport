@@ -23,7 +23,7 @@ The interface must follow the logo.
 
 ## Official Brand Color Policy
 
-The official Mehar Transport accent color is **Orange** (`#F8A731`), as defined by the company's logo.
+The official Mehar Transport accent color is **Orange** (`#df9a26`), as defined by the company's logo.
 
 This is the only primary brand accent permitted throughout the product ecosystem.
 

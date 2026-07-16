@@ -240,7 +240,7 @@ export function AdminLayoutClient({ children, session }: { children: React.React
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="p-2.5 rounded-xl transition-colors hover:bg-gray-100"
-                style={darkMode ? { color: "#F8A731" } : { color: "#6B7280" }}
+                style={darkMode ? { color: "#df9a26" } : { color: "#6B7280" }}
               >
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
@@ -258,7 +258,7 @@ export function AdminLayoutClient({ children, session }: { children: React.React
                   <div className="text-sm font-semibold" style={{ color: darkMode ? "#fff" : "#1B1E4F" }}>
                     {session?.user?.name || "Admin"}
                   </div>
-                  <div className="text-[11px] font-bold" style={{ color: darkMode ? "#F8A731" : "#F8A731" }}>
+                  <div className="text-[11px] font-bold" style={{ color: darkMode ? "#df9a26" : "#df9a26" }}>
                     {session?.user?.role || "Super Admin"}
                   </div>
                 </div>

@@ -131,8 +131,8 @@ export function StickyBookingSummary() {
               ) : (
                 <motion.span
                   key={pricing.totalIncludingTax}
-                  initial={{ scale: 1.1, color: "#F8A731" }}
-                  animate={{ scale: 1, color: "#F8A731" }}
+                  initial={{ scale: 1.1, color: "#df9a26" }}
+                  animate={{ scale: 1, color: "#df9a26" }}
                   className="text-3xl font-black tabular-nums"
                 >
                   {pricing.totalIncludingTax.toFixed(0)} <span className="text-xs font-semibold text-gray-400">SAR</span>

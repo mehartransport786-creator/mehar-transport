@@ -20,7 +20,7 @@ export default async function SettingsOverviewPage({ params: { locale } }: { par
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8 flex-1 flex flex-col h-full">
       <div className="mb-8 border-b border-gray-100 pb-6">
         <h2 className="text-2xl font-bold text-primary">
           {isAr ? "نظرة عامة على الإعدادات" : "Settings Overview"}

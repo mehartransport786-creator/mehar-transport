@@ -31,7 +31,7 @@ function SingleToast({ booking, onDismiss }: { booking: LiveBooking; onDismiss: 
   }, []);
 
   const priorityColors: Record<string, { bg: string; border: string; accent: string }> = {
-    standard:  { bg: '#FFFFFF', border: '#E5E7EB', accent: '#F8A731' },
+    standard:  { bg: '#FFFFFF', border: '#E5E7EB', accent: '#df9a26' },
     vip:       { bg: '#FFFBEB', border: '#F59E0B', accent: '#D97706' },
     urgent:    { bg: '#FEF2F2', border: '#EF4444', accent: '#DC2626' },
     airport:   { bg: '#EFF6FF', border: '#3B82F6', accent: '#2563EB' },

@@ -21,7 +21,7 @@ const weeklyData = [
 
 const cityData = [
   { name: "Makkah",  value: 1240, fill: "#1B1E4F" },
-  { name: "Madinah", value: 890,  fill: "#F8A731" },
+  { name: "Madinah", value: 890,  fill: "#df9a26" },
   { name: "Jeddah",  value: 720,  fill: "#2563EB" },
   { name: "Taif",    value: 180,  fill: "#16A34A" },
 ];
@@ -126,7 +126,7 @@ export default function AnalyticsPage() {
                   <YAxis axisLine={false} tickLine={false} tick={{ fill: "#9CA3AF", fontSize: 12 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}K`} />
                   <Tooltip contentStyle={{ borderRadius: 12, border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", fontWeight: 600 }} formatter={(v: any) => [`${v.toLocaleString()} SAR`]} />
                   <Area type="monotone" dataKey="current" stroke="#1B1E4F" strokeWidth={2.5} fill="url(#revGrad)" name={isAr ? "الحالي" : "Current"} />
-                  <Area type="monotone" dataKey="previous" stroke="#F8A731" strokeWidth={2} fill="transparent" strokeDasharray="6 4" name={isAr ? "السابق" : "Previous"} />
+                  <Area type="monotone" dataKey="previous" stroke="#df9a26" strokeWidth={2} fill="transparent" strokeDasharray="6 4" name={isAr ? "السابق" : "Previous"} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -178,7 +178,7 @@ export default function AnalyticsPage() {
                     <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: "#9CA3AF", fontSize: 12 }} />
                     <YAxis axisLine={false} tickLine={false} tick={{ fill: "#9CA3AF", fontSize: 12 }} />
                     <Tooltip contentStyle={{ borderRadius: 12, border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", fontWeight: 600 }} />
-                    <Bar dataKey="bookings" fill="#F8A731" radius={[8, 8, 0, 0]} barSize={40} name={isAr ? "الحجوزات" : "Bookings"} />
+                    <Bar dataKey="bookings" fill="#df9a26" radius={[8, 8, 0, 0]} barSize={40} name={isAr ? "الحجوزات" : "Bookings"} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -200,7 +200,7 @@ export default function AnalyticsPage() {
                 <Tooltip contentStyle={{ borderRadius: 12, border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", fontWeight: 600 }} />
                 <Bar dataKey="bookings" fill="#1B1E4F" radius={[0, 8, 8, 0]} barSize={24}>
                   {bookingsByVehicle.map((_, i) => (
-                    <Cell key={i} fill={i === 0 ? "#F8A731" : "#1B1E4F"} opacity={1 - i * 0.08} />
+                    <Cell key={i} fill={i === 0 ? "#df9a26" : "#1B1E4F"} opacity={1 - i * 0.08} />
                   ))}
                 </Bar>
               </BarChart>
@@ -266,15 +266,15 @@ export default function AnalyticsPage() {
               <AreaChart data={monthlyGrowth}>
                 <defs>
                   <linearGradient id="custGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#F8A731" stopOpacity={0.15} />
-                    <stop offset="100%" stopColor="#F8A731" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#df9a26" stopOpacity={0.15} />
+                    <stop offset="100%" stopColor="#df9a26" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#9CA3AF", fontSize: 12 }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#9CA3AF", fontSize: 12 }} />
                 <Tooltip contentStyle={{ borderRadius: 12, border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", fontWeight: 600 }} />
-                <Area type="monotone" dataKey="customers" stroke="#F8A731" strokeWidth={2.5} fill="url(#custGrad)" name={isAr ? "عملاء جدد" : "New Customers"} />
+                <Area type="monotone" dataKey="customers" stroke="#df9a26" strokeWidth={2.5} fill="url(#custGrad)" name={isAr ? "عملاء جدد" : "New Customers"} />
               </AreaChart>
             </ResponsiveContainer>
           </div>

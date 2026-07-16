@@ -75,7 +75,7 @@
   --primary: #0F172A;
   --primary-foreground: #FFFFFF;
   
-  --secondary: #F8A731;
+  --secondary: #df9a26;
   --secondary-foreground: #0F172A; /* Dark navy for contrast on orange buttons */
   
   --muted: #F8FAFC;
@@ -95,7 +95,7 @@
   
   --border: #E5E7EB;
   --input: #E5E7EB;
-  --ring: #F8A731;
+  --ring: #df9a26;
   
   --radius: 1rem; /* 16px */
   --radius-btn: 999px;
@@ -118,7 +118,7 @@
   --popover: #0F172A;
   --popover-foreground: #F8FAFC;
   
-  --primary: #F8A731;
+  --primary: #df9a26;
   --primary-foreground: #0F172A;
   
   --secondary: #0F172A;
@@ -141,7 +141,7 @@
   
   --border: #1E293B;
   --input: #1E293B;
-  --ring: #F8A731;
+  --ring: #df9a26;
 }
 
 @layer base {

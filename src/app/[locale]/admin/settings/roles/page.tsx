@@ -25,7 +25,7 @@ export default async function RolesPermissionsPage({ params: { locale } }: { par
   const actions = ["view", "create", "edit", "delete", "export"];
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8 flex-1 flex flex-col h-full">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-6">
         <div>
           <h2 className="text-2xl font-bold text-primary">

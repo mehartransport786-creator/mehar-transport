@@ -32,7 +32,7 @@ export default async function RoutePricingPage({ params }: { params: Promise<{ l
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8 flex-1 flex flex-col h-full">
       <PricingMatrixClient 
         pricings={pricings} 
         routes={routes} 

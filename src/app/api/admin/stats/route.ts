@@ -13,7 +13,7 @@ export async function GET() {
       { $limit: 5 }
     ]);
     
-    const colors = ["#1B1E4F", "#F8A731", "#2563EB", "#16A34A", "#F59E0B"];
+    const colors = ["#1B1E4F", "#df9a26", "#2563EB", "#16A34A", "#F59E0B"];
     const bookingsByRoute = routesAggregation.map((r, i) => ({
       name: r._id || "Other",
       value: r.count,
