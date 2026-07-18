@@ -46,7 +46,7 @@ export function AboutSection() {
             <div className="pt-4 lg:pt-6">
               <Link 
                 href="/about" 
-                className="btn-luxury border border-primary/20 bg-transparent text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3.5 rounded-[var(--radius-btn)] font-semibold transition-all group min-h-[56px] text-[15px] w-full sm:w-auto inline-flex items-center justify-center gap-3"
+                className="btn-outline px-8 py-3.5 min-h-[56px] text-[15px] w-full sm:w-auto gap-3 group"
               >
                 <span>{isAr ? "تعرف علينا" : "Learn About Us"}</span>
                 <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />

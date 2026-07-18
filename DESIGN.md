@@ -25,9 +25,38 @@ The interface must follow the logo.
 
 The official Mehar Transport accent color is **Orange** (`#df9a26`), as defined by the company's logo.
 
-This is the only primary brand accent permitted throughout the product ecosystem.
+This primary brand accent is used throughout the product ecosystem.
 
-> **Note on Deprecation:** The previous gold implementation is deprecated and must not be used for interactive interface elements. Gold must not appear as a primary accent in buttons, navigation, forms, icons, links, hover states, active states, badges, pricing highlights, or component styling. If gold appears in legacy code, it should be considered technical design debt and replaced during the next UI update.
+The brand also incorporates a **Gold** color which is specifically reserved for key interactive elements, such as primary buttons.
+
+---
+
+## Component Styles
+
+### Typography
+All text must adhere to the following professional typography system to maintain the premium look:
+- **H1 (Main Headings):** Montserrat
+- **H2 (Section Headings):** Lora
+- **Paragraphs & Body Text:** Hind Madurai
+
+### 4. Button Design System
+We use two professional button variants to establish a clear visual hierarchy.
+
+- **Primary Button (`.btn-primary` or `.btn-luxury`):** 
+  - **Background:** Solid Gold (`bg-secondary`).
+  - **Text:** White, to maintain a clean, high-contrast aesthetic.
+  - **Use Case:** Main call-to-actions (e.g., "Book Now").
+
+- **Secondary / Outline Button (`.btn-outline`):**
+  - **Background:** White (`bg-white`) or Transparent.
+  - **Border:** Thin light-gray border (`border-slate-300`).
+  - **Text:** Navy Blue (`text-primary`).
+  - **Use Case:** Secondary actions (e.g., "Learn About Us", "View Details"). Often paired with a right arrow (`→`).
+
+- **Shared Properties (All Buttons):**
+  - **Hover State (Slide-Up Animation):** All buttons feature a premium slide-up fill effect on hover. An `absolute` Navy Blue (`var(--color-primary)`) background span slides up from the bottom, and the text seamlessly transitions to White.
+  - **Border Radius:** Use a distinctly rounded, softer border radius (`12px` or `xl`) to match the brand's welcoming and modern aesthetic. Avoid sharp corners or overly rigid boxes.
+  - **Implementation:** Both variants are centralized in `globals.css` as `@utility` classes. Simply apply `className="btn-primary"` or `className="btn-outline"`.
 
 ---
 

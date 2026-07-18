@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Montserrat, Lora, Hind_Madurai, IBM_Plex_Sans_Arabic } from "next/font/google";
 import "../globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-sans",
+const montserrat = Montserrat({
+  variable: "--font-h1",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const lora = Lora({
+  variable: "--font-h2",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const hindMadurai = Hind_Madurai({
+  variable: "--font-paragraph",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
@@ -86,10 +98,10 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${jakarta.variable} ${plexArabic.variable} antialiased`}
+      className={`${montserrat.variable} ${lora.variable} ${hindMadurai.variable} ${plexArabic.variable} antialiased`}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
-      <body className="min-h-screen flex flex-col font-sans">
+      <body className="min-h-screen flex flex-col font-sans antialiased">
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutShell navbar={<Navbar />} footer={<Footer />}>
             {children}

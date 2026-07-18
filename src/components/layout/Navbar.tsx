@@ -17,22 +17,42 @@ export function Navbar() {
   const pathname = usePathname();
   const isAr = locale === "ar";
   const isHome = pathname === "/";
-  const isTransparent = !isScrolled;
+  // Transparent only if on the home page AND at the top
+  const isTransparent = isHome && !isScrolled;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const handleScroll = (e?: Event) => {
+      let scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      
+      // If window scroll is 0, check if the event target itself is the scrolling container
+      if (scrollPosition === 0 && e && e.target) {
+        const target = e.target as HTMLElement | Document;
+        if ('scrollTop' in target) {
+          scrollPosition = target.scrollTop;
+        } else if (target === document) {
+          scrollPosition = document.documentElement.scrollTop || document.body.scrollTop || 0;
+        }
+      }
+      
+      setIsScrolled(scrollPosition > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    handleScroll(); // Check initial position
+    
+    // Use capture phase (true) to catch scroll events from ANY scrollable container
+    window.addEventListener("scroll", handleScroll, true);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll, true);
+    };
   }, []);
 
   const [isFleetOpen, setIsFleetOpen] = useState(false);
   return (
     <nav 
       className={`fixed top-0 z-50 w-full transition-all duration-500 ease-in-out ${
-        isScrolled 
-          ? "bg-background/85 backdrop-blur-2xl shadow-luxury border-b border-border/20 py-2.5 lg:py-3.5" 
+        !isTransparent 
+          ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl shadow-md border-b border-gray-200 dark:border-white/10 py-3 lg:py-4" 
           : "bg-transparent py-4 lg:py-6"
       }`}
     >
@@ -145,7 +165,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center justify-end lg:w-[200px]">
             <Link 
               href="/booking" 
-              className="btn-luxury bg-secondary text-secondary-foreground hover:bg-secondary/80 px-6 xl:px-8 py-3.5 shadow-luxury hover:shadow-luxury-hover text-[15px]"
+              className="btn-luxury bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground px-6 xl:px-8 py-3.5 shadow-luxury hover:shadow-luxury-hover text-[15px]"
             >
               {isAr ? 'احجز الآن' : 'Book Now'}
             </Link>
@@ -239,7 +259,7 @@ export function Navbar() {
           <div className="mt-8 pt-8">
             <Link 
               href="/booking" 
-              className="w-full flex items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-4 rounded-xl text-[17px] font-bold transition-all shadow-luxury hover:shadow-luxury-hover min-h-[56px]"
+              className="btn-luxury w-full flex items-center justify-center bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground px-6 py-4 rounded-md text-[17px] font-semibold transition-all shadow-luxury hover:shadow-luxury-hover min-h-[56px]"
               onClick={() => setIsOpen(false)}
             >
               {isAr ? 'احجز الآن' : 'Book Now'}

@@ -21,24 +21,29 @@ export function Hero() {
   const [isBookingMode, setIsBookingMode] = useState(false);
 
   return (
-    <section className="relative min-h-[100svh] lg:min-h-screen w-full flex items-center overflow-hidden">
+    <section className="relative min-h-[calc(100svh+4rem)] lg:min-h-[calc(100vh+6rem)] w-full flex flex-col overflow-hidden">
       {/* Cinematic Video Background */}
       <div className="absolute inset-0 z-0 bg-foreground">
         <Image
-          src="/hero-luxury.avif"
+          src="/hero/homepage-hero-new.jpg"
           alt="Mehar Transport Luxury Chauffeur"
           quality={100}
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[center_20%]"
         />
-        {/* Deep navy/black gradient overlay for readability and premium feel */}
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-foreground/20"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent"></div>
+        {/* Cinematic vignette that keeps the model's face (left side) perfectly lit */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_40%,transparent_0%,rgba(0,0,0,0.5)_100%)] pointer-events-none"></div>
+        
+        {/* Dark overlay specifically localized to the right side where the text is */}
+        <div className="absolute inset-y-0 right-0 w-full md:w-[65%] bg-gradient-to-l from-black/90 via-black/50 to-transparent pointer-events-none"></div>
+        
+        {/* Subtle bottom shadow to blend with the next section smoothly */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
       </div>
 
-      <div className="container-fluid relative z-10 mx-auto flex flex-col justify-center w-full min-h-full pb-28 pt-[100px] lg:pb-24 lg:pt-[120px] xl:pt-[140px]">
+      <div className="container-fluid relative z-10 mx-auto flex-1 flex flex-col justify-end lg:justify-center w-full pb-36 pt-[120px] lg:pb-24 lg:pt-[120px] xl:pt-[140px]">
         
         <AnimatePresence mode="popLayout">
           {!isBookingMode ? (
@@ -48,44 +53,31 @@ export function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-12 w-full mt-4 lg:mt-0"
+              className="flex w-full mt-4 lg:mt-0"
             >
               {/* Main Headline */}
-              <div className="w-full lg:w-[55%] space-y-5 animate-fade-up-luxury">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-px bg-secondary"></div>
-                  <span className="caption-text text-secondary tracking-[0.3em]">
-                    {isAr ? "نقل العمرة والمطار الخاص — المملكة العربية السعودية" : "Private Umrah & Airport Transfers — Saudi Arabia"}
-                  </span>
-                </div>
-                
-                <h1 className="h1 text-white leading-tight">
+              <div className="w-full max-w-2xl space-y-6 animate-fade-up-luxury ml-auto text-left rtl:text-right">
+                <h1 className="h1 text-white leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
                   {isAr 
                     ? "نقل خاص موثوق عبر المملكة العربية السعودية" 
                     : "Private Chauffeur Transportation Across Saudi Arabia"}
                 </h1>
-                
-                <p className="hidden md:block body-large text-white/80 max-w-xl font-light text-[18px]">
-                  {isAr 
-                    ? "سافر بثقة مع نقل خاص محجوز مسبقاً من شركة مسجلة في المملكة. تنقلات المطار، رحلات العمرة، السفر بين المدن، وجولات الزيارة — كل رحلة خاصة، دقيقة، ومع سائق محترف." 
-                    : "Travel with confidence using pre-booked private transportation operated by a registered Saudi Arabian company. Airport transfers, Umrah journeys, intercity travel, and Ziyarah tours — every ride is private, punctual, and professionally driven."}
-                </p>
 
                 {/* Trust Badges */}
-                <div className="flex flex-wrap items-center gap-4 lg:gap-8 pt-6">
-                  <div className="flex items-center gap-2">
+                <div className="hidden lg:flex flex-wrap items-center justify-start gap-4 lg:gap-8 pt-4">
+                  <div className="flex items-center gap-2 drop-shadow-md">
                     <ShieldCheck className="w-5 h-5 text-secondary" />
                     <span className="text-white text-[16px] font-medium">
                       {isAr ? "مرخص ومسجل في السعودية" : "Licensed & Registered in KSA"}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 drop-shadow-md">
                     <CheckCircle2 className="w-5 h-5 text-secondary" />
                     <span className="text-white text-[16px] font-medium">
                       {isAr ? "تنقلات خاصة فقط" : "Private Transfers Only"}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 drop-shadow-md">
                     <Star className="w-5 h-5 text-secondary fill-secondary" />
                     <span className="text-white text-[16px] font-medium">
                       {isAr ? "دعم عملاء ٢٤/٧" : "24/7 Customer Support"}
@@ -93,85 +85,20 @@ export function Hero() {
                   </div>
                 </div>
 
-                {/* Mobile Quick Book CTA */}
-                <button 
-                  onClick={() => setIsBookingMode(true)}
-                  className="lg:hidden w-full mt-8 bg-secondary hover:bg-secondary/80 text-secondary-foreground px-6 rounded-[var(--radius-btn)] font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(248,167,49,0.3)] h-[56px]"
-                >
-                  <span className="text-[17px]">{isAr ? "احجز تنقلك الخاص" : "Book Your Transfer"}</span>
-                  <ArrowIcon className="w-5 h-5" />
-                </button>
+                {/* Primary CTA */}
+                <div className="flex justify-start pt-4">
+                  <Link 
+                    href="/booking"
+                    className="btn-luxury w-full md:w-auto px-8 py-4 text-lg gap-2 shadow-luxury hover:shadow-luxury-hover min-h-[56px]"
+                  >
+                    {isAr ? "احجز رحلتك الآن" : "Book Your Transfer"}
+                    <svg className="w-5 h-5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
 
-              {/* Professional Quick-Book Form (Desktop) */}
-              <motion.div 
-                layoutId="booking-widget"
-                className="hidden lg:block w-full lg:w-[45%] max-w-[440px] xl:max-w-[480px] shrink-0 bg-black/40 backdrop-blur-3xl border border-white/10 p-6 lg:p-8 xl:p-10 rounded-[var(--radius-form)] shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group hover:border-white/20 hover:bg-black/50 transition-all duration-500 cursor-pointer animate-fade-up-luxury"
-                style={{ animationDelay: '0.1s' }}
-                onClick={() => setIsBookingMode(true)}
-              >
-                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
-                  <h3 className="text-white font-bold text-2xl lg:text-3xl mb-2 relative z-10 tracking-tight">
-                    {isAr ? "احجز تنقلك الخاص" : "Book Your Transfer"}
-                  </h3>
-                  <p className="text-white/60 text-sm mb-6 lg:mb-8 relative z-10 font-medium">
-                    {isAr ? "احجز نقلك الخاص في دقائق" : "Reserve your private transfer in minutes"}
-                  </p>
-                  
-                  <div className="space-y-5 mb-8 lg:mb-10 relative z-10">
-                    {/* Route Input */}
-                    <div className="space-y-2">
-                      <label className="caption-text text-[10px] text-gray-400 ml-1">
-                        {isAr ? "المسار" : "Pickup & Destination"}
-                      </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-secondary">
-                          <MapPin className="w-5 h-5" />
-                        </div>
-                        <div className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-input)] px-4 pl-12 text-white/50 text-[15px] font-medium group-hover:bg-white/10 group-hover:border-ring transition-colors h-[56px] flex items-center">
-                          {isAr ? "اختر نقطة الانطلاق والوصول..." : "Select your route..."}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Date & Time Inputs */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label className="caption-text text-[10px] text-gray-400 ml-1">
-                          {isAr ? "التاريخ" : "Date"}
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-secondary">
-                            <Calendar className="w-5 h-5" />
-                          </div>
-                          <div className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-input)] px-4 pl-12 text-white/50 text-[15px] font-medium group-hover:bg-white/10 group-hover:border-ring transition-colors h-[56px] flex items-center">
-                            {isAr ? "التاريخ" : "Select Date"}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="caption-text text-[10px] text-gray-400 ml-1">
-                          {isAr ? "الوقت" : "Time"}
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-secondary">
-                            <Clock className="w-5 h-5" />
-                          </div>
-                          <div className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-input)] px-4 pl-12 text-white/50 text-[15px] font-medium group-hover:bg-white/10 group-hover:border-ring transition-colors h-[56px] flex items-center">
-                            {isAr ? "الوقت" : "Select Time"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="w-full bg-secondary hover:bg-secondary/80 text-secondary-foreground px-6 rounded-[var(--radius-btn)] font-semibold transition-all duration-300 flex items-center justify-center gap-2 relative z-10 shadow-[0_0_20px_rgba(248,167,49,0.3)] hover:shadow-[0_0_30px_rgba(248,167,49,0.5)] h-[56px]">
-                    <span className="text-[17px]">{isAr ? "المتابعة" : "Continue"}</span>
-                    <ArrowIcon className="w-5 h-5" />
-                  </div>
-              </motion.div>
             </motion.div>
           ) : (
             <motion.div
