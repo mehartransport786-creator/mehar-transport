@@ -16,9 +16,9 @@ export function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const isAr = locale === "ar";
-  const isHome = pathname === "/";
-  // Transparent only if on the home page AND at the top
-  const isTransparent = isHome && !isScrolled;
+  // Transparent only if on specific pages (like home or about) AND at the top
+  const isTransparentPage = pathname === "/" || pathname === "/about";
+  const isTransparent = isTransparentPage && !isScrolled;
 
   useEffect(() => {
     const handleScroll = (e?: Event) => {

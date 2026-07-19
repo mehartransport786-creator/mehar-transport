@@ -6,10 +6,10 @@ import { Camera } from "lucide-react";
 import Image from "next/image";
 
 export function GallerySection() {
-    const t = useTranslations('GallerySection');
+  const t = useTranslations('GallerySection');
 
   const images = [
-    { src: "/gallery/umrah_gallery_makkah_arrival_1783359784329.png", aspect: "aspect-[4/3]" },
+    { src: "/gallery/pilgrims-tour.jpg", aspect: "aspect-[4/3]" },
     { src: "/gallery/umrah_gallery_family_1783360095288.png", aspect: "aspect-[3/4]" },
     { src: "/gallery/umrah_gallery_madinah_1783360058836.png", aspect: "aspect-square" },
     { src: "/gallery/umrah_gallery_chauffeur_1783359821415.png", aspect: "aspect-[3/4]" },
@@ -37,7 +37,7 @@ export function GallerySection() {
 
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {images.map((img, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -46,9 +46,9 @@ export function GallerySection() {
               className={`relative rounded-[2rem] overflow-hidden group cursor-pointer break-inside-avoid shadow-luxury hover:shadow-[0_0_40px_rgba(248,167,49,0.2)] transition-all duration-500`}
             >
               <div className={`${img.aspect} relative w-full h-full`}>
-                <Image 
-                  src={img.src} 
-                  alt="Premium Umrah Transport Experience" 
+                <Image
+                  src={img.src}
+                  alt="Premium Umrah Transport Experience"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"

@@ -58,6 +58,18 @@ We use two professional button variants to establish a clear visual hierarchy.
   - **Border Radius:** Use a distinctly rounded, softer border radius (`12px` or `xl`) to match the brand's welcoming and modern aesthetic. Avoid sharp corners or overly rigid boxes.
   - **Implementation:** Both variants are centralized in `globals.css` as `@utility` classes. Simply apply `className="btn-primary"` or `className="btn-outline"`.
 
+### Hero Section Design
+
+The hero section across the application (especially the Homepage and About pages) must follow a cinematic, highly polished presentation that emphasizes the premium nature of the brand.
+
+- **Sizing & Dimensions:** The hero container must fill the screen optimally using dynamic viewport units (`min-h-[calc(100svh+4rem)] lg:min-h-[calc(100vh+6rem)]`), ensuring it looks majestic on both mobile and large desktop displays.
+- **Imagery:** High-quality, professional photography must be used. Images are to be served using optimized components (e.g., Next.js `<Image />`) with `quality={100}` and `priority` to guarantee immediate, crisp loading above the fold.
+- **Cinematic Overlays:** To guarantee text legibility while maintaining the image's beauty, the hero requires a layered overlay approach:
+  1. A subtle **radial vignette** (`bg-[radial-gradient(ellipse_at_35%_40%,transparent_0%,rgba(0,0,0,0.5)_100%)]`) to frame the focus.
+  2. A **directional side gradient** (`bg-gradient-to-l from-black/90 via-black/50 to-transparent`) placed strategically behind the text content to ensure high contrast without completely blacking out the background.
+  3. A **bottom shadow** (`bg-gradient-to-t from-black/60 to-transparent`) to blend smoothly into the subsequent section.
+- **Text Alignment:** The primary headline, subheadline, and call-to-action buttons should be grouped and aligned to one side (typically right-aligned with `ml-auto text-left rtl:text-right` for optimal reading flow) to balance the visual weight of the background image.
+
 ---
 
 ## Brand Consistency Principle
