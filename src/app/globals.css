@@ -289,6 +289,34 @@
   }
 }
 
+@utility btn-navy {
+  @apply btn-base bg-primary text-white border border-transparent shadow-[0_4px_14px_rgba(15,23,42,0.3)];
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secondary);
+    transform: translateY(100%);
+    transition: transform 300ms ease-out;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    transform: translateY(0);
+  }
+
+  &:hover {
+    color: var(--color-primary) !important;
+    border-color: var(--color-secondary);
+    box-shadow: 0 8px 25px rgba(223,154,38,0.3);
+  }
+}
+
 @utility btn-outline {
   @apply btn-base bg-white text-primary border border-slate-300 shadow-sm;
   
@@ -314,6 +342,34 @@
     color: var(--color-primary-foreground) !important;
     border-color: var(--color-primary);
     box-shadow: 0 8px 25px rgba(15,23,42,0.2);
+  }
+}
+
+@utility btn-outline-white {
+  @apply btn-base bg-transparent text-white border border-white/30 shadow-sm;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: translateY(100%);
+    transition: transform 300ms ease-out;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    transform: translateY(0);
+  }
+
+  &:hover {
+    color: var(--color-primary) !important;
+    border-color: white;
+    box-shadow: 0 8px 25px rgba(255,255,255,0.2);
   }
 }
 

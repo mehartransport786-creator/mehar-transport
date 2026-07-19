@@ -94,14 +94,14 @@ export function FleetShowcase() {
               >
                 <Link 
                   href={`/booking?vehicle=${activeVehicle.id}`}
-                  className="w-full sm:w-auto h-[56px] flex items-center justify-center gap-2 bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-secondary/20"
+                  className="btn-primary w-full sm:w-auto h-[56px] px-8 gap-2 group"
                 >
                   <span>{isAr ? "احجز هذه السيارة" : "Book This Vehicle"}</span>
                   <ArrowRight className="w-5 h-5 rtl:rotate-180" />
                 </Link>
                 <Link 
                   href={`/fleet/${activeVehicle.slug}`}
-                  className="w-full sm:w-auto h-[56px] flex items-center justify-center gap-2 bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 px-8 rounded-xl font-bold transition-colors"
+                  className="btn-outline w-full sm:w-auto h-[56px] px-8 gap-2 group"
                 >
                   <span>{isAr ? "عرض الصور" : "View Gallery"}</span>
                   <ImageIcon className="w-5 h-5" />

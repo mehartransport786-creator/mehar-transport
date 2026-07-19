@@ -43,19 +43,23 @@ export function CTASection() {
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link 
               href="/booking" 
-              className="w-full sm:w-auto bg-secondary text-primary hover:bg-white px-10 py-5 rounded-[var(--radius-btn)] font-bold text-lg transition-all flex items-center justify-center gap-3 group"
+              className="relative overflow-hidden inline-flex items-center justify-center font-bold rounded-[var(--radius-btn)] transition-all duration-300 bg-secondary text-white hover:text-primary w-full sm:w-auto px-10 py-5 text-lg gap-3 group shadow-luxury hover:shadow-luxury-hover active:scale-[0.98]"
             >
-              <span>{isAr ? "احجز تنقلك الآن" : "Book Your Transfer"}</span>
-              <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+              <span className="absolute inset-0 w-full h-full bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 rounded-[inherit]"></span>
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <span>{isAr ? "احجز تنقلك الآن" : "Book Your Transfer"}</span>
+                <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+              </span>
             </Link>
             
             <a 
               href="https://wa.me/966565638120" 
               target="_blank" 
               rel="noreferrer"
-              className="w-full sm:w-auto bg-transparent border-2 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 px-10 py-5 rounded-[var(--radius-btn)] font-bold text-lg transition-all"
+              className="relative overflow-hidden inline-flex items-center justify-center font-bold rounded-[var(--radius-btn)] transition-all duration-300 bg-transparent text-white border-2 border-white/30 hover:border-white w-full sm:w-auto px-10 py-5 text-lg gap-3 group shadow-sm hover:text-primary active:scale-[0.98]"
             >
-              {isAr ? "تواصل عبر واتسآب الآن" : "WhatsApp Us Now"}
+              <span className="absolute inset-0 w-full h-full bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 rounded-[inherit]"></span>
+              <span className="relative z-10">{isAr ? "تواصل عبر واتسآب الآن" : "WhatsApp Us Now"}</span>
             </a>
           </div>
         </motion.div>

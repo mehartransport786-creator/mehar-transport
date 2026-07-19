@@ -176,10 +176,13 @@ export function FeaturedRoutes() {
                   
                   <Link 
                     href={`/booking?pickup=${route.from}&dropoff=${route.to}`}
-                    className="w-full bg-[#0F172A] text-white group-hover:bg-[#df9a26] group-hover:text-[#0F172A] px-5 py-3 rounded-[10px] font-medium text-[15px] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(15,23,42,0.1)] group-hover:shadow-[0_8px_25px_rgba(248,167,49,0.3)]"
+                    className="relative overflow-hidden inline-flex items-center justify-center font-bold rounded-[var(--radius-btn)] transition-all duration-300 bg-primary text-white hover:text-primary w-full px-5 py-3 text-[15px] gap-2 group shadow-[0_4px_14px_rgba(15,23,42,0.1)] hover:shadow-[0_8px_25px_rgba(223,154,38,0.3)] active:scale-[0.98]"
                   >
-                    <span>{isAr ? "احجز تنقلك الفاخر" : "Book Premium Transfer"}</span>
-                    <ArrowIcon className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                    <span className="absolute inset-0 w-full h-full bg-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 rounded-[inherit]"></span>
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <span>{isAr ? "احجز تنقلك الفاخر" : "Book Premium Transfer"}</span>
+                      <ArrowIcon className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                    </span>
                   </Link>
                 </div>
               </div>
