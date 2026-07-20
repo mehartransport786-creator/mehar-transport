@@ -10,11 +10,11 @@ export function GallerySection() {
 
   const images = [
     { src: "/gallery/pilgrims-tour.jpg", aspect: "aspect-[4/3]" },
-    { src: "/gallery/umrah_gallery_family_1783360095288.png", aspect: "aspect-[3/4]" },
-    { src: "/gallery/umrah_gallery_madinah_1783360058836.png", aspect: "aspect-square" },
-    { src: "/gallery/umrah_gallery_chauffeur_1783359821415.png", aspect: "aspect-[3/4]" },
-    { src: "/gallery/umrah_gallery_interior_1783359977680.png", aspect: "aspect-square" },
-    { src: "/gallery/umrah_gallery_hotel_1783360022399.png", aspect: "aspect-[4/3]" },
+    { src: "/gallery/pilgrim.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/pilgrims.jpg", aspect: "aspect-square" },
+    { src: "/gallery/group-pilgrim.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/masjid-nabwi.jpg", aspect: "aspect-square" },
+    { src: "/gallery/gallery_6.png", aspect: "aspect-[4/3]" },
   ];
 
   return (

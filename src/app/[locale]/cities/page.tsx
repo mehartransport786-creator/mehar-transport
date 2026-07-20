@@ -27,7 +27,7 @@ const cities = [
     taglineAr: 'بوابة المدن المقدسة',
     description: 'As the main arrival point for Hajj and Umrah pilgrims, Jeddah is a bustling metropolis with world-class infrastructure. Our fleet operates 24/7 from King Abdulaziz International Airport.',
     descriptionAr: 'كونها نقطة الوصول الرئيسية لحجاج العمرة والحج، جدة مدينة حيوية بنية تحتية عالمية المستوى.',
-    image: '/cities/jeddah.webp',
+    image: '/cities/jeddah-new.jpeg',
     routes: ['Jeddah → Makkah', 'Jeddah → Madinah', 'Jeddah Airport Transfers'],
     stats: { vehicles: 42, routes: 8, rating: 4.9 },
     color: '#1B1E4F',
@@ -40,7 +40,7 @@ const cities = [
     taglineAr: 'أقدس مدينة',
     description: 'Premium transport to and around Makkah for Umrah and Hajj pilgrims. Experienced drivers navigating the sacred city with respect and efficiency.',
     descriptionAr: 'خدمات النقل الفاخرة من وإلى مكة المكرمة للحجاج والمعتمرين.',
-    image: '/cities/makkah.webp',
+    image: '/cities/makkah-n.jpg',
     routes: ['Makkah → Madinah', 'Makkah → Jeddah', 'Makkah Hotels'],
     stats: { vehicles: 38, routes: 6, rating: 4.9 },
     color: '#df9a26',
@@ -53,7 +53,7 @@ const cities = [
     taglineAr: 'المدينة المنورة',
     description: 'Reliable luxury transport in the Prophet\'s city. Airport pickups, hotel transfers, and intercity routes connecting Madinah to Makkah and Jeddah.',
     descriptionAr: 'خدمات نقل موثوقة وفاخرة في مدينة الرسول.',
-    image: '/cities/madinah.webp',
+    image: '/cities/madinah-n.jpg',
     routes: ['Madinah → Makkah', 'Madinah → Jeddah', 'Madinah Airport'],
     stats: { vehicles: 30, routes: 5, rating: 4.8 },
     color: '#16A34A',
@@ -66,7 +66,7 @@ const cities = [
     taglineAr: 'العاصمة',
     description: 'Corporate and executive transportation in Saudi Arabia\'s capital. Airport transfers, business events, and VIP chauffeur services.',
     descriptionAr: 'خدمات النقل التنفيذية والشركات في عاصمة المملكة.',
-    image: '/cities/riyadh.webp',
+    image: '/cities/riyadh-n.jpg',
     routes: ['Riyadh Airport Transfers', 'Corporate Events', 'VIP Services'],
     stats: { vehicles: 25, routes: 4, rating: 4.9 },
     color: '#7C3AED',
@@ -120,9 +120,8 @@ export default async function CitiesPage() {
             <Link
               key={city.slug}
               href={`/cities/${city.slug}`}
-              className={`group bg-white dark:bg-primary rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ${
-                index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
-              }`}
+              className={`group bg-white dark:bg-primary rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
+                }`}
             >
               <div className={`relative ${index === 0 ? 'h-72' : 'h-56'} w-full overflow-hidden`}>
                 <img
