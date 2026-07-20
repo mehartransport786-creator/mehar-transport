@@ -164,7 +164,7 @@ export function RealTimeProvider({ children }: { children: ReactNode }) {
     const { booking, previousStatus } = data;
 
     setBookings((prev) =>
-      prev.map((b) => b.bookingId === booking.bookingId ? { ...booking, isNew: true } : b)
+      prev.map((b) => b.bookingId === booking.bookingId ? { ...b, ...booking, isNew: true } : b)
     );
 
     // Update metrics based on status change

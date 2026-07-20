@@ -40,9 +40,9 @@ export default function BookingsPage() {
   const filtered = bookings.filter((b) => {
     const matchesStatus = statusFilter === "all" || b.status === statusFilter;
     const matchesSearch = searchQuery === "" ||
-      b.customerName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      b.bookingId?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      b.route?.toLowerCase().includes(searchQuery.toLowerCase());
+      (b.customerName || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (b.bookingId || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (b.route || "").toLowerCase().includes(searchQuery.toLowerCase());
     return matchesStatus && matchesSearch;
   });
 
