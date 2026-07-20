@@ -58,6 +58,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
   useEffect(() => {
     const liveBooking = bookings.find((b) => b.bookingId === id);
     if (liveBooking) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setBooking((prev: any) => prev ? { ...prev, ...liveBooking } : liveBooking);
     }
   }, [bookings, id]);
