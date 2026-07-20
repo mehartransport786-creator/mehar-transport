@@ -1,24 +1,19 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link, useRouter } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import { MapPin, Calendar, Clock, ArrowRight, ArrowLeft, Star, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
-import dynamic from 'next/dynamic';
 
-const BookingWorkspace = dynamic(() => import('../booking/BookingWorkspace'), {
-  ssr: false,
-  loading: () => <div className="w-full h-full min-h-[400px] flex items-center justify-center text-white/50">Loading booking system...</div>
-});
+// PR-6: Removed dead BookingWorkspace inline modal (src/components/booking/ deleted).
+// The hero "Book Now" CTA navigates to /booking (booking-v2, the canonical page).
 
 export function Hero() {
   const locale = useLocale();
   const router = useRouter();
   const isAr = locale === "ar";
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
-  const [isBookingMode, setIsBookingMode] = useState(false);
 
   return (
     <section className="relative min-h-[calc(100svh+4rem)] lg:min-h-[calc(100vh+6rem)] w-full flex flex-col overflow-hidden">
@@ -30,90 +25,82 @@ export function Hero() {
           quality={100}
           fill
           priority
-          sizes="100vw"
-          className="object-cover object-[center_20%]"
+          className="object-cover object-center opacity-60"
         />
-        {/* Cinematic vignette that keeps the model's face (left side) perfectly lit */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_40%,transparent_0%,rgba(0,0,0,0.5)_100%)] pointer-events-none"></div>
-        
-        {/* Dark overlay specifically localized to the right side where the text is */}
-        <div className="absolute inset-y-0 right-0 w-full md:w-[65%] bg-gradient-to-l from-black/90 via-black/50 to-transparent pointer-events-none"></div>
-        
-        {/* Subtle bottom shadow to blend with the next section smoothly */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/20 to-primary/80" />
       </div>
 
-      <div className="container-fluid relative z-10 mx-auto flex-1 flex flex-col justify-end lg:justify-center w-full pb-36 pt-[120px] lg:pb-24 lg:pt-[120px] xl:pt-[140px]">
-        
-        <AnimatePresence mode="popLayout">
-          {!isBookingMode ? (
-              <motion.div 
-              key="default-hero"
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex w-full mt-4 lg:mt-0"
-            >
-              {/* Main Headline */}
-              <div className="w-full max-w-2xl space-y-6 animate-fade-up-luxury ml-auto text-left rtl:text-right">
-                <h1 className="h1 text-white leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
-                  {isAr 
-                    ? "نقل خاص موثوق عبر المملكة العربية السعودية" 
-                    : "Private Chauffeur Transportation Across Saudi Arabia"}
-                </h1>
+      {/* Content */}
+      <div className="relative z-10 flex-1 flex flex-col container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-auto pb-16 lg:pb-24 max-w-3xl"
+        >
+          {/* Trust Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+            <ShieldCheck className="w-4 h-4 text-secondary" />
+            <span className="text-white/90 text-xs font-semibold tracking-wide">
+              {isAr ? "خدمة موثوقة في المملكة العربية السعودية" : "Trusted Service Across Saudi Arabia"}
+            </span>
+          </div>
 
-                {/* Trust Badges */}
-                <div className="hidden lg:flex flex-wrap items-center justify-start gap-4 lg:gap-8 pt-4">
-                  <div className="flex items-center gap-2 drop-shadow-md">
-                    <ShieldCheck className="w-5 h-5 text-secondary" />
-                    <span className="text-white text-[16px] font-medium">
-                      {isAr ? "مرخص ومسجل في السعودية" : "Licensed & Registered in KSA"}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 drop-shadow-md">
-                    <CheckCircle2 className="w-5 h-5 text-secondary" />
-                    <span className="text-white text-[16px] font-medium">
-                      {isAr ? "تنقلات خاصة فقط" : "Private Transfers Only"}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 drop-shadow-md">
-                    <Star className="w-5 h-5 text-secondary fill-secondary" />
-                    <span className="text-white text-[16px] font-medium">
-                      {isAr ? "دعم عملاء ٢٤/٧" : "24/7 Customer Support"}
-                    </span>
-                  </div>
-                </div>
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 tracking-tight">
+            {isAr ? (
+              <>
+                تنقّل بفخامة<br />
+                <span className="text-secondary">في قلب المملكة</span>
+              </>
+            ) : (
+              <>
+                Travel in Luxury<br />
+                <span className="text-secondary">Across Saudi Arabia</span>
+              </>
+            )}
+          </h1>
 
-                {/* Primary CTA */}
-                <div className="flex justify-start pt-4">
-                  <Link 
-                    href="/booking"
-                    className="btn-luxury w-full md:w-auto px-8 py-4 text-lg gap-2 shadow-luxury hover:shadow-luxury-hover min-h-[56px]"
-                  >
-                    {isAr ? "احجز رحلتك الآن" : "Book Your Transfer"}
-                    <svg className="w-5 h-5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </Link>
+          <p className="text-white/75 text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
+            {isAr
+              ? "خدمات نقل مميزة للعمرة والمطارات وبين المدن مع أسطول فاخر وسائقين محترفين."
+              : "Premium Umrah, airport, and intercity transfers with a luxury fleet and professional chauffeurs."}
+          </p>
+
+          {/* Stats */}
+          <div className="flex flex-wrap gap-x-8 gap-y-3 mb-8">
+            {[
+              { icon: Star, label: isAr ? "تقييم العملاء" : "Customer Rating", value: "4.9★" },
+              { icon: CheckCircle2, label: isAr ? "رحلة منجزة" : "Trips completed", value: "10,000+" },
+              { icon: MapPin, label: isAr ? "مدن" : "Cities", value: "6" },
+            ].map(({ icon: Icon, label, value }) => (
+              <div key={label} className="flex items-center gap-2">
+                <Icon className="w-4 h-4 text-secondary" />
+                <div>
+                  <div className="text-white font-bold text-sm">{value}</div>
+                  <div className="text-white/50 text-[11px]">{label}</div>
                 </div>
               </div>
+            ))}
+          </div>
 
-            </motion.div>
-          ) : (
-            <motion.div
-              key="workspace"
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full h-full lg:h-[80vh] bg-background rounded-3xl overflow-hidden shadow-2xl"
+          {/* CTAs */}
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/booking"
+              className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 hover:-translate-y-0.5"
             >
-              <BookingWorkspace onCancel={() => setIsBookingMode(false)} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
+              {isAr ? "احجز الآن" : "Book Now"}
+              <ArrowIcon className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/fleet"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-7 py-3.5 rounded-xl border border-white/20 transition-all"
+            >
+              {isAr ? "استعرض الأسطول" : "View Fleet"}
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

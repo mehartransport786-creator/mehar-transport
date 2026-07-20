@@ -35,22 +35,15 @@ export default async function BookingSuccessPage({ params, searchParams }: Props
 
   const booking = await getBookingDetails(id);
   
-  // If the booking is not found in the DB, we can either 404 or show a graceful "Processing" state.
-  // For now, if we can't find it, we'll still show a success UI but with less data, just in case 
-  // it was a fallback mock booking ID.
-  const isMock = !booking;
+  // F04: A booking that doesn't exist in the DB must not show a success page.
+  // This was previously masked by the fake-success fallback in the POST handler.
+  // Now that the API returns a real error on failure, an unknown ID means the
+  // booking was never persisted — show 404 rather than a ghost confirmation.
+  if (!booking) {
+    return notFound();
+  }
 
-  const displayData = booking || {
-    bookingId: id,
-    customerName: "Valued Customer",
-    route: "Your selected route",
-    travelDate: "Confirmed",
-    travelTime: "Confirmed",
-    vehicleType: "Selected Vehicle",
-    passengers: 1,
-    totalPrice: 0,
-    paymentMethod: "Selected Method",
-  };
+  const displayData = booking;
 
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 py-12 lg:py-24">
@@ -121,21 +114,19 @@ export default async function BookingSuccessPage({ params, searchParams }: Props
             </div>
           </div>
 
-          {/* Price Card */}
-          {!isMock && (
-            <div className="bg-primary text-white rounded-2xl p-6 shadow-xl flex items-center justify-between">
-              <div>
-                <div className="text-primary/60 text-indigo-200 text-sm mb-1">Total Amount</div>
-                <div className="text-3xl font-black text-secondary tabular-nums">
-                  {displayData.totalPrice} <span className="text-base font-semibold text-white/60">SAR</span>
-                </div>
+          {/* Price Card — always shown now that booking is always real */}
+          <div className="bg-primary text-white rounded-2xl p-6 shadow-xl flex items-center justify-between">
+            <div>
+              <div className="text-indigo-200 text-sm mb-1">Total Amount</div>
+              <div className="text-3xl font-black text-secondary tabular-nums">
+                {displayData.totalPrice} <span className="text-base font-semibold text-white/60">SAR</span>
               </div>
-              <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10">
-                <Download className="w-4 h-4" />
-                Receipt
-              </button>
             </div>
-          )}
+            <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10">
+              <Download className="w-4 h-4" />
+              Receipt
+            </button>
+          </div>
 
           {/* Next Steps / Info */}
           <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/50 rounded-2xl p-6">

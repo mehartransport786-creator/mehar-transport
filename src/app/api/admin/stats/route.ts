@@ -1,13 +1,29 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db';
 import Booking from '@/lib/models/Booking';
+import { requirePermission } from '@/lib/rbac';
+
+// F17: Previously ran 3 full-collection aggregations on every request with no match stage,
+// and filled gaps with Math.random() data — useless for real reporting.
+// F18: Removed Math.random() revenue placeholders.
+
+// 5-minute cache: stats don't need sub-second freshness
+export const revalidate = 300;
 
 export async function GET() {
+  const denied = await requirePermission('dashboard', 'view');
+  if (denied) return denied;
+
   try {
     await connectToDatabase();
 
-    // 1. Bookings by Route (top 5)
+    // Scope aggregations to the last 12 months — prevents full-collection scans (F17)
+    const twelveMonthsAgo = new Date();
+    twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
+
+    // 1. Bookings by Route (top 5, last 12 months)
     const routesAggregation = await Booking.aggregate([
+      { $match: { createdAt: { $gte: twelveMonthsAgo } } },
       { $group: { _id: '$route', count: { $sum: 1 } } },
       { $sort: { count: -1 } },
       { $limit: 5 }
@@ -20,8 +36,9 @@ export async function GET() {
       fill: colors[i % colors.length]
     }));
 
-    // 2. Bookings by Vehicle
+    // 2. Bookings by Vehicle (last 12 months)
     const vehiclesAggregation = await Booking.aggregate([
+      { $match: { createdAt: { $gte: twelveMonthsAgo } } },
       { $group: { _id: '$vehicleType', bookings: { $sum: 1 } } },
       { $sort: { bookings: -1 } }
     ]);
@@ -31,9 +48,9 @@ export async function GET() {
       bookings: v.bookings
     }));
 
-    // 3. Revenue over last 6 months (mock current year vs previous year shape using actual data for current month if possible)
-    // For a real production app, we would group by month. Since our seeded data is mostly today/yesterday, we will construct a realistic array.
+    // 3. Revenue over last 12 months — actual data only, no fabrication (F18)
     const revenueAggregation = await Booking.aggregate([
+      { $match: { createdAt: { $gte: twelveMonthsAgo }, status: { $nin: ['cancelled', 'refunded'] } } },
       {
         $group: {
           _id: { $month: "$createdAt" },
@@ -43,23 +60,13 @@ export async function GET() {
       { $sort: { _id: 1 } }
     ]);
 
-    // Format revenue chart data for all 12 months
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const revenueChartData = monthNames.map((month, index) => {
-      // Find if we have actual data for this month (index + 1)
       const actualData = revenueAggregation.find(r => r._id === index + 1);
-      
-      // Since seed data only has current month, we generate some realistic dummy data for the rest
-      // but use actual data for the current month.
-      const isCurrentMonth = new Date().getMonth() === index;
-      
-      const current = actualData ? actualData.revenue : (Math.floor(Math.random() * 300000) + 400000);
-      const previous = Math.floor(current * (0.8 + Math.random() * 0.4)); // ±20% of current
-
+      // F18: Use 0 for months with no data — never fabricate revenue figures
       return {
         month,
-        current,
-        previous
+        revenue: actualData ? actualData.revenue : 0,
       };
     });
 

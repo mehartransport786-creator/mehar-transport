@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 import { useRealTime } from "@/components/admin/RealTimeProvider";
 import { statusConfig, BookingStatus } from "@/lib/admin-data";
 import { Link } from "@/i18n/routing";
-import { Search, Filter, Download, Plus, Eye, Edit3, Phone, MessageCircle, Wifi } from "lucide-react";
+import { Search, Filter, Download, Plus, Eye, Edit3, Phone, MessageCircle, Wifi, Trash2 } from "lucide-react";
 
 export default function BookingsPage() {
   const locale = useLocale();
@@ -13,6 +13,29 @@ export default function BookingsPage() {
   const { bookings, isConnected } = useRealTime();
   const [statusFilter, setStatusFilter] = useState<BookingStatus | "all">("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const handleDelete = async (bookingId: string) => {
+    const confirmed = window.confirm(
+      isAr
+        ? `هل أنت متأكد من حذف الحجز ${bookingId} نهائياً؟ لا يمكن التراجع عن هذا الإجراء.`
+        : `Permanently delete booking ${bookingId}? This cannot be undone.`
+    );
+    if (!confirmed) return;
+    setDeletingId(bookingId);
+    try {
+      const res = await fetch(`/api/bookings/${bookingId}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (!data.success) {
+        alert(data.error || 'Failed to delete booking');
+      }
+      // RealTimeProvider will refresh the list via polling
+    } catch {
+      alert('Failed to delete booking. Please try again.');
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   const filtered = bookings.filter((b) => {
     const matchesStatus = statusFilter === "all" || b.status === statusFilter;
@@ -217,6 +240,18 @@ export default function BookingsPage() {
                           <button className="p-2 rounded-lg hover:bg-green-50 text-green-500 transition-colors" title="WhatsApp">
                             <MessageCircle className="w-4 h-4" />
                           </button>
+                          {['completed', 'cancelled', 'refunded'].includes(booking.status) && (
+                            <button
+                              onClick={() => handleDelete(booking.bookingId)}
+                              disabled={deletingId === booking.bookingId}
+                              className="p-2 rounded-lg hover:bg-red-50 text-red-400 hover:text-red-600 transition-colors disabled:opacity-40"
+                              title={isAr ? 'حذف نهائي' : 'Delete permanently'}
+                            >
+                              {deletingId === booking.bookingId
+                                ? <div className="w-4 h-4 border-2 border-red-400 border-t-transparent rounded-full animate-spin" />
+                                : <Trash2 className="w-4 h-4" />}
+                            </button>
+                          )}
                         </div>
                       </td>
                     </tr>

@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db';
 import HourlyPricing from '@/lib/models/HourlyPricing';
+import { requirePermission } from '@/lib/rbac';
+
+// F05: Previously neither GET nor POST had any authentication.
 
 export async function GET() {
+  const denied = await requirePermission('pricing', 'view');
+  if (denied) return denied;
+
   try {
     await connectToDatabase();
     const pricings = await HourlyPricing.find()
@@ -15,6 +21,9 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const denied = await requirePermission('pricing', 'edit');
+  if (denied) return denied;
+
   try {
     const data = await req.json();
     await connectToDatabase();

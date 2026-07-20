@@ -4,13 +4,14 @@ import ActivityLog from '@/lib/models/ActivityLog';
 
 /**
  * GET /api/admin/activities — Fetch recent activity logs
+ * F16: Previously returned { success: true, data: [] } on error, hiding DB failures from operators.
  */
 export async function GET(request: Request) {
   try {
     await connectToDatabase();
 
     const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get('limit') || '20');
+    const limit = Math.min(parseInt(searchParams.get('limit') || '20'), 100); // F25: cap result set
 
     const activities = await ActivityLog.find()
       .sort({ createdAt: -1 })
@@ -20,9 +21,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ success: true, data: activities });
   } catch (error) {
     console.error('Activities GET Error:', error);
+    // F16: Return a real error — masking DB failures as empty arrays hides outages from operators
     return NextResponse.json(
-      { success: true, data: [] }, // Return empty array on error
-      { status: 200 }
+      { success: false, error: 'Failed to fetch activity log' },
+      { status: 500 }
     );
   }
 }

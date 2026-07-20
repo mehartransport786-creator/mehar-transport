@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import Vehicle from "@/lib/models/Vehicle";
+import { requirePermission } from "@/lib/rbac";
+
+// F07: Previously used bare auth() session check on both PUT and DELETE.
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('fleet', 'edit');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const { id } = await params;
     const body = await req.json();
@@ -22,10 +24,10 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 }
 
 export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('fleet', 'edit');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const { id } = await params;
 

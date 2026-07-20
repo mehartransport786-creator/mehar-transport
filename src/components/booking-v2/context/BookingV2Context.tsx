@@ -2,8 +2,38 @@
 
 import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { SelectedVehicle, PricingState, PricingAdjustment } from "@/components/booking-page/context/BookingContext";
-import { fallbackVehicles, fallbackRoutesData } from "@/lib/fallbackData";
+
+// PR-6: SelectedVehicle, PricingState, PricingAdjustment types moved here from
+// @/components/booking-page/context/BookingContext so that legacy directory can
+// be safely deleted.
+
+export interface SelectedVehicle {
+  vehicleId: string;   // MongoDB ObjectId — used for server-side pricing
+  vehicleName: string;
+  vehicleNameAr: string;
+  vehicleType: string;
+  passengers: number;
+  luggage: number;
+  image: string;
+  quantity: number;
+  unitPrice: number;
+}
+
+export interface PricingAdjustment {
+  name: string;
+  amount: number;
+  isPercentage: boolean;
+}
+
+export interface PricingState {
+  basePrice: number;
+  adjustments: PricingAdjustment[];
+  taxAmount: number;
+  subtotalBeforeTax: number;
+  totalIncludingTax: number;
+  isCalculating: boolean;
+  error?: string | null; // PR-3: expose pricing errors to the UI
+}
 
 export type ServiceType = "transfer" | "hourly";
 
@@ -20,9 +50,9 @@ export interface BookingV2State {
   // Journey
   routeId: string | null;
   routeName: string;
-  pickupLocation: string; // Used for hourly or custom if we don't have predefined
-  dropoffLocation: string; // Used for hourly or custom
-  durationHours: number; // For hourly
+  pickupLocation: string;
+  dropoffLocation: string;
+  durationHours: number;
   
   // Dates
   travelDate: string;
@@ -67,6 +97,16 @@ function getTodayString() {
   return d.toISOString().split('T')[0];
 }
 
+const initialPricing: PricingState = {
+  basePrice: 0,
+  adjustments: [],
+  taxAmount: 0,
+  subtotalBeforeTax: 0,
+  totalIncludingTax: 0,
+  isCalculating: false,
+  error: null,
+};
+
 const initialState: BookingV2State = {
   serviceType: "transfer",
   
@@ -97,17 +137,17 @@ const initialState: BookingV2State = {
     wheelchair: false,
   },
 
-  pricing: {
-    basePrice: 0,
-    adjustments: [],
-    taxAmount: 0,
-    subtotalBeforeTax: 0,
-    totalIncludingTax: 0,
-    isCalculating: false
-  },
+  pricing: initialPricing,
 
   isSubmitting: false,
   bookingId: null,
+};
+
+const EXTRAS_PRICES: Record<keyof ExtrasState, number> = {
+  meetAndGreet: 100,
+  vipService: 250,
+  childSeat: 50,
+  wheelchair: 0,
 };
 
 const BookingV2Context = createContext<BookingV2ContextType | undefined>(undefined);
@@ -118,10 +158,11 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
   const [routesLoading, setRoutesLoading] = useState(true);
   const pricingAbortRef = useRef<AbortController | null>(null);
 
+  // Load route list from DB (metadata only — not prices)
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
 
     async function fetchRoutes() {
       if (isMounted) setRoutesLoading(true);
@@ -137,19 +178,13 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
         
         const data = await res.json();
         if (isMounted && data.routes && Array.isArray(data.routes)) {
-          // Exclude hourly routes from general route selection since hourly is handled differently
           const transferRoutes = data.routes.filter((r: any) => r.category !== 'hourly');
           setRoutes(transferRoutes);
         }
       } catch (err) {
         console.error("Failed to load routes", err);
-        // Fallback to minimal mock routes if all else fails so the UI is not stuck
-        if (isMounted) {
-          setRoutes([
-            { _id: 'r1', name: 'Jeddah Airport to Makkah Hotel', nameAr: 'مطار جدة إلى مكة', origin: 'Jeddah Airport', destination: 'Makkah' },
-            { _id: 'r2', name: 'Makkah to Madinah', nameAr: 'مكة إلى المدينة', origin: 'Makkah', destination: 'Madinah' }
-          ]);
-        }
+        // Routes metadata fallback — intentionally empty so staff know to populate DB
+        if (isMounted) setRoutes([]);
       } finally {
         if (isMounted) setRoutesLoading(false);
       }
@@ -180,105 +215,111 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
     }));
   }, []);
 
+  /**
+   * PR-3 F01/F19: calculatePricing now calls POST /api/pricing/calculate.
+   * The summary panel (StickySummary) and confirmation page both read from
+   * state.pricing, which is now server-authoritative.
+   *
+   * Extras (meet & greet, VIP, child seat) are client-computed on top of the
+   * server base price — these are flat add-ons not subject to seasonal pricing.
+   */
   const calculatePricing = useCallback(async () => {
     if (pricingAbortRef.current) {
       pricingAbortRef.current.abort();
     }
 
     if (!state.selectedVehicle || (!state.routeId && state.serviceType === "transfer")) {
-      updateState({
-        pricing: { basePrice: 0, adjustments: [], taxAmount: 0, subtotalBeforeTax: 0, totalIncludingTax: 0, isCalculating: false }
-      });
+      updateState({ pricing: { ...initialPricing } });
       return;
     }
 
     const controller = new AbortController();
     pricingAbortRef.current = controller;
 
-    updateState({ pricing: { ...state.pricing, isCalculating: true } });
+    updateState({ pricing: { ...state.pricing, isCalculating: true, error: null } });
 
     try {
-      let adjustments: PricingAdjustment[] = [];
-      let totalBasePrice = 0;
-      let subtotalBeforeTax = 0;
-      let taxAmount = 0;
-      let totalIncludingTax = 0;
+      const payload =
+        state.serviceType === "hourly"
+          ? {
+              type: "hourly",
+              vehicleId: state.selectedVehicle.vehicleId,
+              hours: state.durationHours || 4,
+              date: state.travelDate,
+            }
+          : {
+              type: "transfer",
+              routeId: state.routeId,
+              vehicleId: state.selectedVehicle.vehicleId,
+              date: state.travelDate,
+            };
 
-      // Local mock calculation to prevent API hang
-      if (state.serviceType === "hourly") {
-        const vehicleIdx = fallbackVehicles.findIndex(v => v._id === state.selectedVehicle?.vehicleId || v.slug === state.selectedVehicle?.vehicleId);
-        const rate = 100 + (Math.max(0, vehicleIdx) * 25);
-        totalBasePrice = (state.durationHours || 4) * rate;
+      const res = await fetch("/api/pricing/calculate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
 
-        let extraTotal = 0;
-        if (state.extras.meetAndGreet) {
-          extraTotal += 100;
-          adjustments.push({ name: "Meet & Greet", amount: 100, isPercentage: false });
-        }
-        if (state.extras.vipService) {
-          extraTotal += 250;
-          adjustments.push({ name: "VIP Service", amount: 250, isPercentage: false });
-        }
-        if (state.extras.childSeat) {
-          extraTotal += 50;
-          adjustments.push({ name: "Child Seat", amount: 50, isPercentage: false });
-        }
-        
-        subtotalBeforeTax = totalBasePrice + extraTotal;
-        taxAmount = subtotalBeforeTax * 0.15;
-        totalIncludingTax = subtotalBeforeTax + taxAmount;
-      } else {
-        const mockRoute = fallbackRoutesData.find((r: any) => r._id === state.routeId || r.slug === state.routeId);
-        const vehicleIdx = fallbackVehicles.findIndex(v => v._id === state.selectedVehicle?.vehicleId || v.slug === state.selectedVehicle?.vehicleId);
-        
-        let basePrice = 200 + (Math.max(0, vehicleIdx) * 50); // fallback
-        if (mockRoute && mockRoute.prices && vehicleIdx >= 0 && vehicleIdx < mockRoute.prices.length) {
-          basePrice = mockRoute.prices[vehicleIdx];
-        }
-        
-        totalBasePrice = basePrice;
-        subtotalBeforeTax = basePrice;
-        
-        let extraTotal = 0;
-        if (state.extras.meetAndGreet) {
-          extraTotal += 100;
-          adjustments.push({ name: "Meet & Greet", amount: 100, isPercentage: false });
-        }
-        if (state.extras.vipService) {
-          extraTotal += 250;
-          adjustments.push({ name: "VIP Service", amount: 250, isPercentage: false });
-        }
-        if (state.extras.childSeat) {
-          extraTotal += 50;
-          adjustments.push({ name: "Child Seat", amount: 50, isPercentage: false });
-        }
+      const data = await res.json();
 
-        subtotalBeforeTax += extraTotal;
-        taxAmount = subtotalBeforeTax * 0.15;
-        totalIncludingTax = subtotalBeforeTax + taxAmount;
-      }
+      if (controller.signal.aborted) return;
 
-      if (!pricingAbortRef.current.signal.aborted) {
+      if (!res.ok || !data.success) {
+        const errMsg =
+          res.status === 422
+            ? (data.error || "Pricing not configured for this route/vehicle.")
+            : (data.error || "Could not fetch price. Please try again.");
         updateState({
-          pricing: {
-            basePrice: totalBasePrice,
-            adjustments,
-            taxAmount,
-            subtotalBeforeTax,
-            totalIncludingTax,
-            isCalculating: false
-          }
+          pricing: { ...initialPricing, isCalculating: false, error: errMsg },
         });
+        return;
       }
-    } catch (err) {
+
+      const serverBase = data.data.subtotal; // before tax, after seasonal
+      const adjustments: PricingAdjustment[] = [];
+      let extraTotal = 0;
+
+      (Object.keys(state.extras) as (keyof ExtrasState)[]).forEach((key) => {
+        if (state.extras[key] && EXTRAS_PRICES[key] > 0) {
+          const label = key === 'meetAndGreet' ? 'Meet & Greet'
+            : key === 'vipService' ? 'VIP Service'
+            : key === 'childSeat' ? 'Child Seat'
+            : key;
+          adjustments.push({ name: label, amount: EXTRAS_PRICES[key], isPercentage: false });
+          extraTotal += EXTRAS_PRICES[key];
+        }
+      });
+
+      const subtotalBeforeTax = serverBase + extraTotal;
+      const taxAmount = Math.round(subtotalBeforeTax * 0.15 * 100) / 100;
+      const totalIncludingTax = Math.round((subtotalBeforeTax + taxAmount) * 100) / 100;
+
+      updateState({
+        pricing: {
+          basePrice: data.data.basePrice,
+          adjustments,
+          taxAmount,
+          subtotalBeforeTax,
+          totalIncludingTax,
+          isCalculating: false,
+          error: null,
+        },
+      });
+    } catch (err: any) {
+      if (err?.name === "AbortError") return;
       console.error("Pricing calculation error:", err);
-      if (!pricingAbortRef.current.signal.aborted) {
-        updateState({ pricing: { ...state.pricing, isCalculating: false } });
-      }
+      updateState({
+        pricing: {
+          ...initialPricing,
+          isCalculating: false,
+          error: "Could not calculate price. Please check your connection and try again.",
+        },
+      });
     }
   }, [state.routeId, state.serviceType, state.selectedVehicle, state.durationHours, state.extras, state.travelDate, updateState]);
 
-  // Auto-recalculate on dependencies change
+  // Auto-recalculate on relevant state changes
   useEffect(() => {
     const timeout = setTimeout(() => {
       calculatePricing();

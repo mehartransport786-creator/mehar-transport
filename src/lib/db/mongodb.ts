@@ -1,52 +1,12 @@
-import mongoose from 'mongoose';
-
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
-}
-
 /**
- * Global is used here to maintain a cached connection across hot reloads
- * in development. This prevents connections growing exponentially
- * during API Route usage.
+ * PR-5 new finding: This file previously maintained its own Mongoose connection
+ * cache on `global.mongooseDb`, separate from the primary cache on `global.mongoose`
+ * in `lib/db.ts`. Two independent caches = two connection pools = up to 20 open
+ * sockets per serverless instance instead of 10.
+ *
+ * Now a thin re-export of the canonical connection module so all 21 call sites
+ * share a single pool. `lib/db/mongodb.ts` can be deleted once all importers
+ * have been updated to use `@/lib/db` directly, but this shim prevents a
+ * breaking change during the migration window.
  */
-declare global {
-  var mongooseDb: any;
-}
-
-let cached = global.mongooseDb;
-
-if (!cached) {
-  cached = global.mongooseDb = { conn: null, promise: null };
-}
-
-async function connectToDatabase() {
-  if (cached.conn) {
-    return cached.conn;
-  }
-
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-    };
-
-    cached.promise = mongoose.connect(MONGODB_URI as string, opts).then((mongoose) => {
-      console.log("MongoDB connected successfully");
-      return mongoose;
-    });
-  }
-
-  try {
-    cached.conn = await cached.promise;
-  } catch (e) {
-    cached.promise = null;
-    throw e;
-  }
-
-  return cached.conn;
-}
-
-export default connectToDatabase;
+export { default } from '@/lib/db';

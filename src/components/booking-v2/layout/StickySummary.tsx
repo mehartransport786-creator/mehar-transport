@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { CheckCircle2, ShieldCheck, Check, Loader2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Check, Loader2, ArrowRight, AlertCircle, MessageCircle } from "lucide-react";
 import { useBookingV2 } from "../context/BookingV2Context";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,8 @@ export function StickySummary() {
   const { state, updateState } = useBookingV2();
   const isAr = useLocale() === "ar";
   const router = useRouter();
+  // F04: Track real submission errors — never generate a fake booking ID
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const isComplete = Boolean(
     (state.serviceType === "transfer" ? state.routeId : state.pickupLocation) &&
@@ -22,6 +24,8 @@ export function StickySummary() {
   const handleSubmit = async () => {
     if (!isComplete) return;
 
+    // F04: Clear any previous error before retrying
+    setSubmitError(null);
     updateState({ isSubmitting: true });
 
     try {
@@ -59,16 +63,18 @@ export function StickySummary() {
         travelTime: state.travelTime,
         route: state.routeName,
         vehicleType: state.selectedVehicle?.vehicleName || "Standard",
+        vehicleId: state.selectedVehicle?.vehicleId,
+        routeId: state.routeId,
+        serviceType: state.serviceType,
+        durationHours: state.serviceType === "hourly" ? state.durationHours : undefined,
         passengers: state.passengerCount,
-        totalPrice: state.pricing.totalIncludingTax,
+        // F01: totalPrice intentionally omitted — server recomputes from vehicleId+routeId (PR-3)
         status: "pending",
-        priority: state.extras.vipService ? "urgent" : "standard",
         paymentMethod: "cash",
         specialRequests: state.passengerInfo.specialRequests,
         extras: extrasArray,
         metadata: {
           flightNumber: state.passengerInfo.flightNumber,
-          durationHours: state.serviceType === "hourly" ? state.durationHours : undefined
         }
       };
 
@@ -80,19 +86,22 @@ export function StickySummary() {
 
       const data = await res.json();
       
-      if (res.ok) {
-        const generatedId = data?.data?.bookingId || data?.bookingId || `MHT-BKG-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
-        updateState({ isSubmitting: false, bookingId: generatedId });
+      if (res.ok && data?.data?.bookingId) {
+        updateState({ isSubmitting: false, bookingId: data.data.bookingId });
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        throw new Error(data.error || "Failed to submit booking");
+        // F04: Surface the real server error — do not generate a fake booking ID
+        throw new Error(data.error || "Booking failed. Please try again.");
       }
-    } catch (err) {
-      console.error(err);
-      // FALLBACK: Simulate success locally since the user requested offline mock functionality
-      const mockBookingId = `MHT-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
-      updateState({ isSubmitting: false, bookingId: mockBookingId });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err: any) {
+      // F04: Preserve form state, show real error with retry + WhatsApp fallback
+      console.error('Booking submission error:', err);
+      updateState({ isSubmitting: false });
+      setSubmitError(
+        err.message || (isAr
+          ? 'حدث خطأ أثناء الحجز. يرجى المحاولة مرة أخرى أو التواصل معنا عبر واتساب.'
+          : 'Booking failed. Please try again or contact us on WhatsApp.')
+      );
     }
   };
 
@@ -182,6 +191,25 @@ export function StickySummary() {
           {state.pricing.totalIncludingTax.toFixed(0)} <span className="text-sm text-muted-foreground/60 font-bold ml-1">SAR</span>
         </div>
       </div>
+
+      {/* F04: Real error display — preserves form state, provides retry + WhatsApp fallback */}
+      {submitError && (
+        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <div className="flex items-start gap-2 text-red-700">
+            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+            <p className="text-xs font-medium leading-relaxed">{submitError}</p>
+          </div>
+          <a
+            href="https://wa.me/966548707332"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 hover:underline"
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            {isAr ? "تواصل معنا عبر واتساب" : "Contact us on WhatsApp"}
+          </a>
+        </div>
+      )}
 
       <button
         disabled={!isComplete || state.isSubmitting}

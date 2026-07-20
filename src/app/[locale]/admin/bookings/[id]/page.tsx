@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, use } from "react";
+import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useRealTime } from "@/components/admin/RealTimeProvider";
 import { Link } from "@/i18n/routing";
 import {
   ArrowLeft, MapPin, Phone, Mail, Car, Users, Calendar, Clock,
   Globe, Luggage, CreditCard, FileText, CheckCircle, XCircle,
-  Truck, Navigation, Flag, ChevronRight, UserPlus
+  Truck, Navigation, Flag, ChevronRight, UserPlus, Trash2
 } from "lucide-react";
 
 const statusSteps = [
@@ -26,11 +27,14 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
   const { id } = use(params);
   const locale = useLocale();
   const isAr = locale === "ar";
+  const router = useRouter();
   const { bookings } = useRealTime();
   const [booking, setBooking] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [drivers, setDrivers] = useState<any[]>([]);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   // Fetch booking data
   useEffect(() => {
@@ -109,6 +113,26 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
       console.error('Failed to assign driver:', error);
     } finally {
       setUpdating(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    setDeleting(true);
+    try {
+      const res = await fetch(`/api/bookings/${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        router.push('/admin/bookings');
+      } else {
+        alert(data.error || 'Failed to delete booking');
+        setDeleteConfirm(false);
+      }
+    } catch (error) {
+      console.error('Failed to delete booking:', error);
+      alert('Failed to delete booking. Please try again.');
+      setDeleteConfirm(false);
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -197,6 +221,41 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
               <XCircle className="w-4 h-4" />
               {isAr ? 'إلغاء' : 'Cancel'}
             </button>
+          )}
+
+          {/* Delete — only visible on closed bookings */}
+          {['completed', 'cancelled', 'refunded'].includes(booking.status) && (
+            <div className="relative">
+              {!deleteConfirm ? (
+                <button
+                  onClick={() => setDeleteConfirm(true)}
+                  className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-bold text-red-500 bg-red-50 hover:bg-red-100 border border-red-100 transition-all"
+                  title={isAr ? 'حذف نهائي' : 'Delete permanently'}
+                >
+                  <Trash2 className="w-4 h-4" />
+                  {isAr ? 'حذف' : 'Delete'}
+                </button>
+              ) : (
+                <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-xl px-4 py-2.5">
+                  <span className="text-xs font-bold text-red-700 whitespace-nowrap">
+                    {isAr ? 'تأكيد الحذف النهائي؟' : 'Delete permanently?'}
+                  </span>
+                  <button
+                    onClick={handleDelete}
+                    disabled={deleting}
+                    className="px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-bold hover:bg-red-700 disabled:opacity-50 transition-colors"
+                  >
+                    {deleting ? '...' : (isAr ? 'نعم، احذف' : 'Yes, delete')}
+                  </button>
+                  <button
+                    onClick={() => setDeleteConfirm(false)}
+                    className="px-3 py-1.5 rounded-lg bg-white text-gray-600 text-xs font-bold hover:bg-gray-100 border border-gray-200 transition-colors"
+                  >
+                    {isAr ? 'لا' : 'No'}
+                  </button>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>

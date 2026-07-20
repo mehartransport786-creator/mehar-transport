@@ -28,4 +28,10 @@ const AuditLogSchema: Schema = new Schema(
   { timestamps: { createdAt: true, updatedAt: false } }
 );
 
+// F24: compound indexes for the two most common audit log queries
+AuditLogSchema.index({ createdAt: -1 }); // global chronological scan (audit log panel)
+AuditLogSchema.index({ adminId: 1, createdAt: -1 }); // per-admin history
+AuditLogSchema.index({ module: 1, createdAt: -1 }); // per-module filtering
+
 export const AuditLog = mongoose.models.AuditLog || mongoose.model<IAuditLog>("AuditLog", AuditLogSchema);
+

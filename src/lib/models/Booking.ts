@@ -29,7 +29,7 @@ export interface IBooking extends Document {
   route: string;               // "Jeddah → Makkah"
   vehicleType: string;
   vehicleId?: mongoose.Types.ObjectId;
-  travelDate: string;
+  travelDate: Date;            // PR-4 F12: Date type (was String)
   travelTime: string;
   returnDate?: string;
   returnTime?: string;
@@ -40,6 +40,16 @@ export interface IBooking extends Document {
   priority: BookingPriority;
   driverAssigned?: string;
   totalPrice: number;
+  priceBreakdown?: {           // PR-3 F01: server-computed breakdown
+    basePrice: number;
+    seasonalAdjustment?: number;
+    seasonalRuleName?: string;
+    subtotal: number;
+    taxRate: number;
+    taxAmount: number;
+    totalIncludingTax: number;
+  };
+  idempotencyKey?: string;     // PR-4 F11: client-generated dedup key
   extras: string[];
   specialRequests?: string;
   nationality?: string;
@@ -69,7 +79,7 @@ const BookingSchema = new Schema<IBooking>({
   route: { type: String, required: true },
   vehicleType: { type: String, required: true, index: true },
   vehicleId: { type: Schema.Types.ObjectId, ref: 'Vehicle' },
-  travelDate: { type: String, required: true, index: true },
+  travelDate: { type: Date, required: true, index: true }, // F12: Date not String
   travelTime: { type: String, required: true },
   returnDate: { type: String },
   returnTime: { type: String },
@@ -89,6 +99,16 @@ const BookingSchema = new Schema<IBooking>({
   },
   driverAssigned: { type: String },
   totalPrice: { type: Number, required: true },
+  priceBreakdown: {
+    basePrice: { type: Number },
+    seasonalAdjustment: { type: Number },
+    seasonalRuleName: { type: String },
+    subtotal: { type: Number },
+    taxRate: { type: Number },
+    taxAmount: { type: Number },
+    totalIncludingTax: { type: Number },
+  },
+  idempotencyKey: { type: String, sparse: true, unique: true }, // F11: dedup
   extras: [{ type: String }],
   specialRequests: { type: String },
   nationality: { type: String },
@@ -107,6 +127,10 @@ const BookingSchema = new Schema<IBooking>({
 BookingSchema.index({ createdAt: -1 });
 BookingSchema.index({ status: 1, createdAt: -1 });
 BookingSchema.index({ travelDate: 1, status: 1 });
+// F13: availability check — find overlapping bookings for a vehicle on a given date
+BookingSchema.index({ vehicleId: 1, travelDate: 1, status: 1 });
+// F24: customer phone search
+BookingSchema.index({ customerPhone: 1, createdAt: -1 });
 
 const Booking = models.Booking || mongoose.model<IBooking>('Booking', BookingSchema);
 

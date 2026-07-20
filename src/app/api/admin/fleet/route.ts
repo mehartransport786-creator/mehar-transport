@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import Vehicle from "@/lib/models/Vehicle";
+import { requirePermission } from "@/lib/rbac";
+
+// F07: Previously used bare auth() session check — any admin role could create/list fleet.
 
 export async function GET() {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('fleet', 'view');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const vehicles = await Vehicle.find().sort({ name: 1 }).lean();
 
@@ -21,10 +23,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('fleet', 'edit');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const body = await request.json();
 

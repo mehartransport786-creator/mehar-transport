@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import Route from "@/lib/models/Route";
+import { requirePermission } from "@/lib/rbac";
+
+// F06: Previously used bare auth() session check on all methods.
 
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('routes', 'view');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const { id } = await params;
     const route = await Route.findById(id).lean();
@@ -23,10 +25,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
 }
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('routes', 'edit');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const { id } = await params;
     const body = await req.json();
@@ -52,10 +54,10 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 }
 
 export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('routes', 'edit');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const { id } = await params;
 

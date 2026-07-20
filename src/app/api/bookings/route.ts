@@ -3,12 +3,16 @@ import connectToDatabase from '@/lib/db';
 import Booking from '@/lib/models/Booking';
 import ActivityLog from '@/lib/models/ActivityLog';
 import { getNextBookingId } from '@/lib/models/Counter';
-import { emitBookingCreated, emitActivityCreated } from '@/lib/event-bus';
+import { requirePermission } from '@/lib/rbac';
+import { calculatePrice, PricingUnavailableError, round2 } from '@/lib/pricing/engine';
 
 // =============================================================
 // GET /api/bookings — Fetch bookings with filters & pagination
 // =============================================================
 export async function GET(request: Request) {
+  const denied = await requirePermission('bookings', 'view');
+  if (denied) return denied;
+
   try {
     await connectToDatabase();
 
@@ -16,7 +20,7 @@ export async function GET(request: Request) {
     const status = searchParams.get('status');
     const search = searchParams.get('search');
     const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '50');
+    const limit = Math.min(parseInt(searchParams.get('limit') || '50'), 100); // F02: cap scraping
     const skip = (page - 1) * limit;
 
     const query: any = {};
@@ -63,13 +67,95 @@ export async function GET(request: Request) {
 }
 
 // =============================================================
-// POST /api/bookings — Create booking + trigger real-time events
+// POST /api/bookings — Create booking (public — no auth required)
 // =============================================================
 export async function POST(request: Request) {
+  let body: any;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ success: false, error: 'Invalid JSON body' }, { status: 400 });
+  }
+
+  // Basic input validation
+  const name = (body.customerName || body.name || '').trim();
+  const phone = (body.customerPhone || body.phone || '').trim();
+  if (!name || !phone) {
+    return NextResponse.json(
+      { success: false, error: 'customerName and customerPhone are required' },
+      { status: 400 }
+    );
+  }
+
+  // F12: Parse and validate travel date — reject past dates
+  const rawDate = body.travelDate;
+  if (!rawDate) {
+    return NextResponse.json(
+      { success: false, error: 'travelDate is required' },
+      { status: 400 }
+    );
+  }
+  const travelDate = new Date(rawDate);
+  if (isNaN(travelDate.getTime())) {
+    return NextResponse.json(
+      { success: false, error: 'travelDate is not a valid date' },
+      { status: 400 }
+    );
+  }
+  // Grace window: allow bookings up to 1 hour in the past (timezone/latency tolerance)
+  const graceCutoff = new Date(Date.now() - 60 * 60 * 1000);
+  if (travelDate < graceCutoff) {
+    return NextResponse.json(
+      { success: false, error: 'Travel date cannot be in the past' },
+      { status: 400 }
+    );
+  }
+
   try {
     await connectToDatabase();
 
-    const body = await request.json();
+    // F01: Server-side price recompute — never trust body.totalPrice
+    let priceResult: Awaited<ReturnType<typeof calculatePrice>> | null = null;
+    const serviceType = body.serviceType || (body.tripType === 'hourly' ? 'hourly' : 'transfer');
+
+    if (body.vehicleId && (body.routeId || serviceType === 'hourly')) {
+      try {
+        priceResult = await calculatePrice(
+          serviceType === 'hourly'
+            ? {
+                type: 'hourly',
+                vehicleId: body.vehicleId,
+                hours: Number(body.durationHours || 4),
+                date: travelDate,
+              }
+            : {
+                type: 'transfer',
+                routeId: body.routeId,
+                vehicleId: body.vehicleId,
+                date: travelDate,
+              }
+        );
+      } catch (priceError) {
+        if (priceError instanceof PricingUnavailableError) {
+          return NextResponse.json(
+            {
+              success: false,
+              error: priceError.message,
+              code: 'PRICING_UNAVAILABLE',
+            },
+            { status: 422 }
+          );
+        }
+        // DB error during pricing — fail the whole request
+        throw priceError;
+      }
+    }
+
+    // Use server-computed price; fall back to 0 only for legacy/admin-created bookings
+    // where vehicleId is not provided
+    const totalPrice = priceResult
+      ? priceResult.totalIncludingTax
+      : round2(Number(body.totalPrice || 0));
 
     // 1. Generate sequential booking ID
     const bookingId = await getNextBookingId();
@@ -89,9 +175,11 @@ export async function POST(request: Request) {
       priority = 'corporate';
     }
 
-    // Check if travel date is today
-    const today = new Date().toISOString().split('T')[0];
-    if (body.travelDate === today) {
+    // F12: Compare against actual Date, not a string slice
+    const now = new Date();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const endOfToday = new Date(startOfToday.getTime() + 24 * 60 * 60 * 1000);
+    if (travelDate >= startOfToday && travelDate < endOfToday) {
       priority = 'urgent';
     }
 
@@ -101,15 +189,15 @@ export async function POST(request: Request) {
     // 4. Save booking to MongoDB
     const booking = await Booking.create({
       bookingId,
-      customerName: body.customerName || body.name || 'Guest',
-      customerPhone: body.customerPhone || body.phone || '',
+      customerName: name,
+      customerPhone: phone,
       customerEmail: body.customerEmail || body.email || '',
       pickupLocation: body.pickupLocation || '',
       dropoffLocation: body.dropoffLocation || '',
       route,
       vehicleType: body.vehicleType || 'Standard',
       vehicleId: body.vehicleId || undefined,
-      travelDate: body.travelDate || today,
+      travelDate: travelDate, // F12: stored as Date, not string
       travelTime: body.travelTime || body.time || '08:00',
       returnDate: body.returnDate,
       returnTime: body.returnTime,
@@ -118,7 +206,8 @@ export async function POST(request: Request) {
       tripType: body.tripType || 'one-way',
       status: 'pending',
       priority,
-      totalPrice: body.totalPrice || body.total || 0,
+      totalPrice, // F01: always server-computed
+      priceBreakdown: priceResult ?? undefined,
       extras: body.extras || [],
       specialRequests: body.specialRequests || body.notes || '',
       nationality: body.nationality || '',
@@ -132,7 +221,7 @@ export async function POST(request: Request) {
     });
 
     // 5. Create Activity Log entry
-    const activity = await ActivityLog.create({
+    await ActivityLog.create({
       type: 'booking_created',
       bookingId: booking.bookingId,
       message: `New booking ${booking.bookingId} from ${booking.customerName} — ${booking.route}`,
@@ -148,41 +237,22 @@ export async function POST(request: Request) {
       }
     });
 
-    // 6. Trigger real-time events (SSE push to all admin clients)
+    // 6. Return result (event bus removed — F10: dead on serverless)
     const bookingData = booking.toObject();
-    emitBookingCreated(bookingData);
-    emitActivityCreated(activity.toObject());
 
     return NextResponse.json(
       { success: true, data: bookingData },
       { status: 201 }
     );
   } catch (error) {
-    console.error('Booking Creation Error, falling back to mock:', error);
-    
-    // OFFLINE FALLBACK: Return success so the UI booking engine can complete
-    try {
-      const body = await request.clone().json().catch(() => ({}));
-      return NextResponse.json({
-        success: true,
-        data: {
-          bookingId: `BKG-${Math.floor(Math.random() * 10000)}`,
-          status: 'pending',
-          customerName: body.customerName || body.name || 'Guest',
-          totalPrice: body.totalPrice || body.total || 0,
-          route: body.route || `${body.pickupLocation} → ${body.dropoffLocation}`
-        }
-      }, { status: 201 });
-    } catch (e) {
-      // If we already consumed the request body in the try block, we just return a generic success
-      return NextResponse.json({
-        success: true,
-        data: {
-          bookingId: `MOCK-${Math.floor(Math.random() * 10000)}`,
-          status: 'pending',
-          customerName: 'Demo User'
-        }
-      }, { status: 201 });
-    }
+    // F04: Never fake a success. A ghost booking is worse than a visible error.
+    console.error('Booking Creation Error:', error);
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'We could not save your booking. Please try again or contact us on WhatsApp: +966 56 563 8120',
+      },
+      { status: 503 }
+    );
   }
 }

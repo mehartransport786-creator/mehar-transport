@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db';
 import HourlyPricing from '@/lib/models/HourlyPricing';
+import { requirePermission } from '@/lib/rbac';
+
+// F05: Previously neither PUT nor DELETE had any authentication.
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const denied = await requirePermission('pricing', 'edit');
+  if (denied) return denied;
+
   try {
     const { id } = await params;
     const data = await req.json();
@@ -31,6 +37,9 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 }
 
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const denied = await requirePermission('pricing', 'edit');
+  if (denied) return denied;
+
   try {
     const { id } = await params;
     await connectToDatabase();

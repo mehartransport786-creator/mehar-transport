@@ -1,63 +1,132 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { Users, Briefcase, Check, Loader2 } from "lucide-react";
+import { Users, Briefcase, Check, Loader2, AlertCircle } from "lucide-react";
 import Image from "next/image";
 import { useBookingV2 } from "../context/BookingV2Context";
-import { mockFleet } from "@/lib/data";
 import { useState, useEffect } from "react";
-import { SelectedVehicle } from "@/components/booking-page/context/BookingContext";
+import { SelectedVehicle } from "../context/BookingV2Context";
 
+/**
+ * VehicleSection — PR-3 F01/F19
+ *
+ * Source of truth changed from mockFleet (lib/data.ts) to GET /api/vehicles,
+ * which returns real DB documents with MongoDB _id values. The _id is now
+ * carried through to the booking payload as vehicleId so the server can
+ * recompute the authoritative price via the pricing engine.
+ *
+ * Vehicle slug is still used for image paths and display names, since the
+ * Vehicle schema has slug: { type: String, required: true, unique: true }
+ * and all image files are named after slugs.
+ */
 export function VehicleSection() {
-  const { state, updateState, routes } = useBookingV2();
+  const { state, updateState } = useBookingV2();
   const isAr = useLocale() === "ar";
-  
-  const [vehiclePrices, setVehiclePrices] = useState<Record<string, number | null>>({});
-  const [loadingPrices, setLoadingPrices] = useState(false);
 
-  // Fetch base prices for all vehicles based on the selected route/service type
+  type DbVehicle = {
+    _id: string;
+    slug: string;
+    name: string;
+    nameAr: string;
+    type: string;
+    typeAr: string;
+    passengers: number;
+    luggage: number;
+    image: string;
+    basePrice?: number;
+    active: boolean;
+  };
+
+  const [dbVehicles, setDbVehicles] = useState<DbVehicle[]>([]);
+  const [vehiclePrices, setVehiclePrices] = useState<Record<string, number | null>>({});
+  const [loadingVehicles, setLoadingVehicles] = useState(true);
+  const [loadingPrices, setLoadingPrices] = useState(false);
+  const [vehicleError, setVehicleError] = useState<string | null>(null);
+
+  // Fetch vehicle list from DB on mount
   useEffect(() => {
+    async function fetchVehicles() {
+      try {
+        const res = await fetch('/api/vehicles');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setDbVehicles(data.data);
+          setVehicleError(null);
+        } else {
+          throw new Error(data.error || 'Failed to load vehicles');
+        }
+      } catch (err: any) {
+        console.error('Failed to fetch vehicles:', err);
+        setVehicleError(isAr ? 'تعذّر تحميل المركبات. يُرجى إعادة تحميل الصفحة.' : 'Could not load vehicles. Please refresh the page.');
+      } finally {
+        setLoadingVehicles(false);
+      }
+    }
+    fetchVehicles();
+  }, []);
+
+  // Fetch prices from the server when route/serviceType/hours change
+  useEffect(() => {
+    if (dbVehicles.length === 0) return;
+    if (state.serviceType === "transfer" && !state.routeId) return;
+
     async function fetchPrices() {
-      if (state.serviceType === "transfer" && !state.routeId) return;
-      
       setLoadingPrices(true);
       const newPrices: Record<string, number | null> = {};
-      
-      // Use local mock calculation to prevent UI hanging when API fails
-      if (state.serviceType === "hourly") {
-        mockFleet.forEach((vehicle, idx) => {
-          const rate = 100 + (idx * 25); 
-          const basePrice = (state.durationHours || 4) * rate;
-          newPrices[vehicle.id] = basePrice + (basePrice * 0.15); // Add 15% VAT
-        });
-      } else {
-        const fallbackRoutesData = require("@/lib/fallbackData").fallbackRoutesData;
-        const mockRoute = fallbackRoutesData.find((r: any) => r._id === state.routeId || r.slug === state.routeId);
-        
-        mockFleet.forEach((vehicle, idx) => {
-          let basePrice = 200 + (idx * 50); // generic fallback
-          if (mockRoute && mockRoute.prices && idx < mockRoute.prices.length) {
-            basePrice = mockRoute.prices[idx];
+
+      await Promise.all(
+        dbVehicles.map(async (vehicle) => {
+          try {
+            const payload =
+              state.serviceType === "hourly"
+                ? {
+                    type: "hourly",
+                    vehicleId: vehicle._id,
+                    hours: state.durationHours || 4,
+                    date: state.travelDate || new Date().toISOString().split('T')[0],
+                  }
+                : {
+                    type: "transfer",
+                    routeId: state.routeId,
+                    vehicleId: vehicle._id,
+                    date: state.travelDate || new Date().toISOString().split('T')[0],
+                  };
+
+            const res = await fetch('/api/pricing/calculate', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+
+            const data = await res.json();
+
+            if (res.ok && data.success) {
+              newPrices[vehicle._id] = data.data.totalIncludingTax;
+            } else if (res.status === 422) {
+              // No pricing configured for this vehicle×route — hide the vehicle
+              newPrices[vehicle._id] = null;
+            } else {
+              newPrices[vehicle._id] = null;
+            }
+          } catch {
+            newPrices[vehicle._id] = null;
           }
-          newPrices[vehicle.id] = basePrice + (basePrice * 0.15); // Add 15% VAT
-        });
-      }
-      
-      // Slight delay to simulate loading for UX
-      setTimeout(() => {
-        setVehiclePrices(newPrices);
-        setLoadingPrices(false);
-      }, 300);
+        })
+      );
+
+      setVehiclePrices(newPrices);
+      setLoadingPrices(false);
     }
 
     fetchPrices();
-  }, [state.routeId, state.serviceType, state.durationHours, state.travelDate]);
+  }, [dbVehicles, state.routeId, state.serviceType, state.durationHours, state.travelDate]);
 
-  const handleSelectVehicle = (vehicle: any) => {
-    const pricing = vehiclePrices[vehicle.id];
-    
+  const handleSelectVehicle = (vehicle: DbVehicle) => {
+    const price = vehiclePrices[vehicle._id];
+
     const sv: SelectedVehicle = {
-      vehicleId: vehicle.id,
+      // PR-3: _id is the MongoDB ObjectId — sent to server as vehicleId for pricing
+      vehicleId: vehicle._id,
       vehicleName: vehicle.name,
       vehicleNameAr: vehicle.nameAr,
       vehicleType: vehicle.type,
@@ -65,11 +134,31 @@ export function VehicleSection() {
       luggage: vehicle.luggage,
       image: vehicle.image,
       quantity: 1,
-      unitPrice: pricing || 0
+      unitPrice: price ?? 0,
     };
-    
+
     updateState({ selectedVehicle: sv });
   };
+
+  if (loadingVehicles) {
+    return (
+      <div className="bg-background rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] border border-border p-8 flex items-center justify-center gap-3 text-muted-foreground">
+        <Loader2 className="w-5 h-5 animate-spin" />
+        <span>{isAr ? "جارٍ تحميل المركبات..." : "Loading vehicles..."}</span>
+      </div>
+    );
+  }
+
+  if (vehicleError) {
+    return (
+      <div className="bg-background rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] border border-border p-8">
+        <div className="flex items-start gap-3 text-red-600">
+          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+          <p className="text-sm font-medium">{vehicleError}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-background rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] border border-border p-6 sm:p-8">
@@ -81,17 +170,17 @@ export function VehicleSection() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {mockFleet.map((vehicle) => {
-          const isSelected = state.selectedVehicle?.vehicleId === vehicle.id;
-          const price = vehiclePrices[vehicle.id];
+        {dbVehicles.map((vehicle) => {
+          const isSelected = state.selectedVehicle?.vehicleId === vehicle._id;
+          const price = vehiclePrices[vehicle._id];
           const isLoading = loadingPrices && price === undefined;
 
-          // Don't show vehicles that aren't available for this route/duration
+          // Don't show vehicles with no pricing configured for this route (null = 422 from engine)
           if (!isLoading && price === null) return null;
 
           return (
             <div
-              key={vehicle.id}
+              key={vehicle._id}
               onClick={() => !isLoading && handleSelectVehicle(vehicle)}
               className={`relative bg-background rounded-2xl border-2 overflow-hidden transition-all duration-300 cursor-pointer ${
                 isSelected
@@ -134,7 +223,9 @@ export function VehicleSection() {
                           {price?.toFixed(0)} <span className="text-xs text-muted-foreground font-medium ml-0.5">SAR</span>
                         </div>
                         <div className="text-[10px] text-muted-foreground/60 font-medium">
-                          {state.serviceType === "hourly" ? (isAr ? `لـ ${state.durationHours} ساعات` : `for ${state.durationHours}h`) : (isAr ? "للرحلة" : "per trip")}
+                          {state.serviceType === "hourly"
+                            ? (isAr ? `لـ ${state.durationHours} ساعات` : `for ${state.durationHours}h`)
+                            : (isAr ? "للرحلة (شامل VAT)" : "per trip (incl. VAT)")}
                         </div>
                       </>
                     )}

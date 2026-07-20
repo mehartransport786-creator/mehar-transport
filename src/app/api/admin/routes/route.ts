@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import Route from "@/lib/models/Route";
+import { requirePermission } from "@/lib/rbac";
+
+// F06: Previously used bare auth() session check — any admin role could create/mutate routes.
 
 function generateSlug(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
 export async function GET(request: Request) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('routes', 'view');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
 
     const { searchParams } = new URL(request.url);
@@ -60,10 +62,10 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  try {
-    const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const denied = await requirePermission('routes', 'edit');
+  if (denied) return denied;
 
+  try {
     await connectToDatabase();
     const body = await request.json();
 

@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import RoutePricing from "@/lib/models/RoutePricing";
 import PricingAuditLog from "@/lib/models/PricingAuditLog";
+import { requirePermission } from "@/lib/rbac";
+import { auth } from "@/auth";
 
+// F08: Previously only checked session existence, any admin role could bulk-reprice.
 export async function POST(request: Request) {
+  const denied = await requirePermission('pricing', 'edit');
+  if (denied) return denied;
+
   try {
     const session = await auth();
-    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     await connectToDatabase();
     const body = await request.json();
