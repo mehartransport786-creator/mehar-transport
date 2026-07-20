@@ -60,6 +60,13 @@ const VehicleSchema = new Schema<IVehicle>({
   timestamps: true
 });
 
+// ─── Indexes ──────────────────────────────────────────────────────────────────
+// Fleet listing: active vehicles grouped by type
+VehicleSchema.index({ active: 1, type: 1 });
+// Individual vehicle page: slug lookup on active vehicles
+VehicleSchema.index({ active: 1, slug: 1 });
+// ─────────────────────────────────────────────────────────────────────────────
+
 const Vehicle = models.Vehicle || mongoose.model<IVehicle>('Vehicle', VehicleSchema);
 
 export default Vehicle;

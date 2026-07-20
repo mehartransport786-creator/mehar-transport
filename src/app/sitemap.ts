@@ -2,7 +2,14 @@ import { MetadataRoute } from 'next';
 import connectToDatabase from '@/lib/db';
 import BlogPost from '@/lib/models/BlogPost';
 import BlogCategory from '@/lib/models/BlogCategory';
-import BlogAuthor from '@/lib/models/BlogAuthor';
+
+/**
+ * ISR: regenerate the sitemap once per day.
+ * Previously re-queried MongoDB on every crawler request (Googlebot,
+ * GPTBot, etc.). With revalidate=86400 each crawler hit is served from
+ * the CDN cache; the DB is only hit once per day.
+ */
+export const revalidate = 86400;
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mehartransport.com';
 

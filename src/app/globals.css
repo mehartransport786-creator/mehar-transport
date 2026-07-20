@@ -1,6 +1,7 @@
 @import "tailwindcss";
-@import "shadcn/tailwind.css";
 @plugin "@tailwindcss/typography";
+/* shadcn/tailwind.css removed — it re-imports preflight + theme layer,
+   duplicating the output bundle. shadcn tokens are already in :root below. */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -41,25 +42,15 @@
   --shadow-luxury: 0 8px 32px -8px rgba(15,23,42,0.10), 0 2px 8px -2px rgba(15,23,42,0.05);
   --shadow-luxury-hover: 0 20px 48px -12px rgba(15,23,42,0.18), 0 4px 16px -4px rgba(15,23,42,0.08);
 
-  /* Responsive Breakpoints */
+  /* Responsive Breakpoints — only breakpoints with actual usage are kept.
+     xs2–xs6, md2, md3, xl2, 3xl–6xl were declared but never referenced
+     in the codebase; removing them shrank the generated CSS output. */
   --breakpoint-xs: 320px;
-  --breakpoint-xs2: 360px;
-  --breakpoint-xs3: 375px;
-  --breakpoint-xs4: 390px;
-  --breakpoint-xs5: 414px;
-  --breakpoint-xs6: 480px;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
-  --breakpoint-md2: 820px;
-  --breakpoint-md3: 912px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
-  --breakpoint-xl2: 1366px;
   --breakpoint-2xl: 1440px;
-  --breakpoint-3xl: 1536px;
-  --breakpoint-4xl: 1728px;
-  --breakpoint-5xl: 1920px;
-  --breakpoint-6xl: 2560px;
 }
 
 :root {
@@ -253,7 +244,13 @@
 }
 
 @utility card-luxury {
-  @apply bg-card text-card-foreground rounded-2xl border border-border/50 shadow-luxury transition-all duration-500 hover:shadow-luxury-hover hover:-translate-y-1;
+  /* transition-all replaced with explicit properties so the browser only
+     watches transform and box-shadow instead of every animatable property.
+     will-change-transform hints the browser to promote this element to its
+     own GPU layer, making the translateY animation compositor-only. */
+  @apply bg-card text-card-foreground rounded-2xl border border-border/50 shadow-luxury
+         transition-[transform,box-shadow] duration-500 will-change-transform
+         hover:shadow-luxury-hover hover:-translate-y-1;
 }
 
 @utility btn-base {
@@ -411,21 +408,15 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* 
-  CRITICAL FIX: Framer Motion sets initial opacity: 0 via inline style.
-  If JavaScript is blocked (e.g. cross-origin dev restriction from network IP),
-  all animated elements remain invisible. This CSS override forces content visible
-  after a 600ms delay using a CSS animation fallback.
-  
-  When JS DOES load, framer-motion takes over with its own inline style,
-  so the animation still works properly - this is purely a no-JS safety net.
-*/
-@keyframes reveal-fallback {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+/*
+  The [style*="opacity: 0"] attribute selector was removed from here.
 
-[style*="opacity: 0"],
-[style*="opacity:0"] {
-  animation: reveal-fallback 0.3s ease 0.8s forwards;
-}
+  WHY: It matched hundreds of DOM nodes on every style recalculation
+  (Framer Motion writes opacity:0 on every animated element), causing
+  expensive substring scans against the live style attribute and fighting
+  Framer Motion for control of the same property.
+
+  REPLACEMENT: A <noscript> block in layout.tsx injects an identical rule
+  ONLY when JavaScript is disabled. When JS IS enabled the rule never
+  exists in the cascade, so Framer Motion is unopposed.
+*/

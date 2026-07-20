@@ -70,10 +70,12 @@ const RouteSchema = new Schema<IRoute>({
   timestamps: true
 });
 
-RouteSchema.index({ slug: 1 });
-RouteSchema.index({ routeType: 1 });
-RouteSchema.index({ city: 1 });
-RouteSchema.index({ status: 1 });
+// ─── Indexes ──────────────────────────────────────────────────────────────────
+RouteSchema.index({ slug: 1 });                          // individual route page
+RouteSchema.index({ status: 1, isActive: 1 });           // active route listing
+RouteSchema.index({ city: 1, status: 1, routeType: 1 }); // city-filtered route listing
+RouteSchema.index({ routeType: 1, status: 1 });          // type-filtered listing
+// ─────────────────────────────────────────────────────────────────────────────
 
 const Route = models.Route || mongoose.model<IRoute>('Route', RouteSchema);
 

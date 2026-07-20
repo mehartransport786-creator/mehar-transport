@@ -11,9 +11,12 @@ import { Link } from '@/i18n/routing';
 export default function CreateBlogPost() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [authors, setAuthors] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [categories, setCategories] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [tags, setTags] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [authors, setAuthors] = useState<any[]>([]);
 
   const [formData, setFormData] = useState({
     title: '',

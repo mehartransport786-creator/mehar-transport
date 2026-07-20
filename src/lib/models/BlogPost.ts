@@ -54,6 +54,21 @@ const BlogPostSchema = new Schema<IBlogPost>({
   timestamps: true
 });
 
+// ─── Compound indexes (ESR rule: Equality → Sort → Range) ────────────────────
+// Listing pages: status='Published', language, sorted by createdAt desc
+BlogPostSchema.index({ status: 1, language: 1, createdAt: -1 });
+// Single post lookup (slug + language combo is the real unique key publicly)
+BlogPostSchema.index({ slug: 1, language: 1 });
+// Category listing pages
+BlogPostSchema.index({ categoryId: 1, status: 1, createdAt: -1 });
+// Author listing pages
+BlogPostSchema.index({ authorId: 1, status: 1, createdAt: -1 });
+// Tag listing pages (multikey index — MongoDB handles array fields automatically)
+BlogPostSchema.index({ tags: 1, status: 1, createdAt: -1 });
+// Published-at sort (used for sitemap & RSS)
+BlogPostSchema.index({ publishedAt: -1 });
+// ─────────────────────────────────────────────────────────────────────────────
+
 const BlogPost = models.BlogPost || mongoose.model<IBlogPost>('BlogPost', BlogPostSchema);
 
 export default BlogPost;

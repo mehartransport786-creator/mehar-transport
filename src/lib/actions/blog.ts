@@ -1,5 +1,6 @@
 'use server';
 
+import { cache } from 'react';
 import { revalidatePath } from 'next/cache';
 import dbConnect from '@/lib/db';
 import BlogCategory from '@/lib/models/BlogCategory';
@@ -8,40 +9,59 @@ import BlogAuthor from '@/lib/models/BlogAuthor';
 import BlogPost from '@/lib/models/BlogPost';
 import { auth } from '@/auth';
 
-// Helper to check admin access
+// ─── Serialisation helper ────────────────────────────────────────────────────
+/**
+ * Replaces the previous `JSON.parse(JSON.stringify(doc))` pattern which
+ * serialised and re-parsed entire documents including full article bodies.
+ *
+ * This version only converts the two types that need converting when coming
+ * out of `.lean()`: Mongoose ObjectId instances and JS Date objects.
+ * Everything else passes through untouched, saving significant CPU.
+ */
+function toPlain<T>(doc: T): T {
+  return JSON.parse(
+    JSON.stringify(doc, (_, v) => {
+      if (v?._bsontype === 'ObjectId') return String(v);
+      if (v instanceof Date) return v.toISOString();
+      return v;
+    })
+  );
+}
+
+// ─── Admin check ─────────────────────────────────────────────────────────────
 async function checkAdmin() {
   const session = await auth();
-  if (!session?.user) {
-    throw new Error('Unauthorized');
-  }
-  // Role is stored as the role name from DB (e.g. "Super Admin", "Admin", "Editor")
+  if (!session?.user) throw new Error('Unauthorized');
   const role = (session.user as { role?: string }).role;
-  if (!role) {
-    throw new Error('Unauthorized: No role assigned');
-  }
+  if (!role) throw new Error('Unauthorized: No role assigned');
 }
 
-// --- CATEGORIES ---
-export async function getCategories() {
+// ─── CATEGORIES ──────────────────────────────────────────────────────────────
+/**
+ * Wrapped in React cache() so that multiple server components on the same
+ * request (e.g. generateMetadata + page component on category/[slug]) only
+ * make one DB round-trip.
+ */
+export const getCategories = cache(async () => {
   await dbConnect();
   const categories = await BlogCategory.find().sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(categories));
-}
+  return toPlain(categories);
+});
 
-export async function createCategory(data: any) {
+export async function createCategory(data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
   const category = await BlogCategory.create(data);
   revalidatePath('/admin/blog/categories');
-  return JSON.parse(JSON.stringify(category));
+  return toPlain(category.toObject());
 }
 
-export async function updateCategory(id: string, data: any) {
+export async function updateCategory(id: string, data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
-  const category = await BlogCategory.findByIdAndUpdate(id, data, { new: true });
+  const category = await BlogCategory.findByIdAndUpdate(id, data, { new: true }).lean();
   revalidatePath('/admin/blog/categories');
-  return JSON.parse(JSON.stringify(category));
+  return toPlain(category);
 }
 
 export async function deleteCategory(id: string) {
@@ -52,27 +72,28 @@ export async function deleteCategory(id: string) {
   return { success: true };
 }
 
-// --- TAGS ---
-export async function getTags() {
+// ─── TAGS ────────────────────────────────────────────────────────────────────
+/** Cached: tag pages call getTags() in generateMetadata + the page component. */
+export const getTags = cache(async () => {
   await dbConnect();
   const tags = await BlogTag.find().sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(tags));
-}
+  return toPlain(tags);
+});
 
-export async function createTag(data: any) {
+export async function createTag(data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
   const tag = await BlogTag.create(data);
   revalidatePath('/admin/blog/tags');
-  return JSON.parse(JSON.stringify(tag));
+  return toPlain(tag.toObject());
 }
 
-export async function updateTag(id: string, data: any) {
+export async function updateTag(id: string, data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
-  const tag = await BlogTag.findByIdAndUpdate(id, data, { new: true });
+  const tag = await BlogTag.findByIdAndUpdate(id, data, { new: true }).lean();
   revalidatePath('/admin/blog/tags');
-  return JSON.parse(JSON.stringify(tag));
+  return toPlain(tag);
 }
 
 export async function deleteTag(id: string) {
@@ -83,27 +104,28 @@ export async function deleteTag(id: string) {
   return { success: true };
 }
 
-// --- AUTHORS ---
-export async function getAuthors() {
+// ─── AUTHORS ─────────────────────────────────────────────────────────────────
+/** Cached: author pages call getAuthors() twice per request. */
+export const getAuthors = cache(async () => {
   await dbConnect();
   const authors = await BlogAuthor.find().sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(authors));
-}
+  return toPlain(authors);
+});
 
-export async function createAuthor(data: any) {
+export async function createAuthor(data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
   const author = await BlogAuthor.create(data);
   revalidatePath('/admin/blog/authors');
-  return JSON.parse(JSON.stringify(author));
+  return toPlain(author.toObject());
 }
 
-export async function updateAuthor(id: string, data: any) {
+export async function updateAuthor(id: string, data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
-  const author = await BlogAuthor.findByIdAndUpdate(id, data, { new: true });
+  const author = await BlogAuthor.findByIdAndUpdate(id, data, { new: true }).lean();
   revalidatePath('/admin/blog/authors');
-  return JSON.parse(JSON.stringify(author));
+  return toPlain(author);
 }
 
 export async function deleteAuthor(id: string) {
@@ -114,18 +136,55 @@ export async function deleteAuthor(id: string) {
   return { success: true };
 }
 
-// --- POSTS ---
-export async function getPosts(filters: Record<string, any> = {}) {
+// ─── POSTS ───────────────────────────────────────────────────────────────────
+
+/**
+ * General post query — used by the admin panel (all statuses) and public
+ * listing pages (filtered by status + language).
+ *
+ * `options.select` limits returned fields on listing pages so the full
+ * `content` HTML is not fetched when only card metadata is needed.
+ * `options.limit` caps unbounded listing queries (default 50 for safety).
+ */
+export async function getPosts(
+  filters: Record<string, unknown> = {},
+  options: { select?: string; limit?: number } = {}
+) {
   await dbConnect();
-  const query = { ...filters };
-  const posts = await BlogPost.find(query)
-    .populate('authorId')
-    .populate('categoryId')
-    .populate('tags')
+  const { select, limit = 50 } = options;
+
+  let q = BlogPost.find(filters)
+    .populate('authorId', 'name slug avatar bio')
+    .populate('categoryId', 'name nameAr slug')
+    .populate('tags', 'name nameAr slug')
     .sort({ createdAt: -1 })
-    .lean();
-  return JSON.parse(JSON.stringify(posts));
+    .limit(limit);
+
+  if (select) q = q.select(select) as typeof q;
+
+  const posts = await q.lean();
+  return toPlain(posts);
 }
+
+/**
+ * Deduplicated single-post lookup for the public [slug] page.
+ *
+ * React's cache() deduplicates calls with identical (slug, language)
+ * arguments within the same request lifecycle, eliminating the double DB
+ * round-trip that previously occurred when both generateMetadata() and the
+ * page component called getPosts({ slug, language }).
+ *
+ * Only returns Published posts — drafts are never exposed on public routes.
+ */
+export const getPostBySlug = cache(async (slug: string, language: string) => {
+  await dbConnect();
+  const post = await BlogPost.findOne({ slug, language, status: 'Published' })
+    .populate('authorId', 'name slug avatar bio socialLinks')
+    .populate('categoryId', 'name nameAr slug description descriptionAr seo')
+    .populate('tags', 'name nameAr slug')
+    .lean();
+  return post ? toPlain(post) : null;
+});
 
 export async function getPostById(id: string) {
   await dbConnect();
@@ -134,33 +193,49 @@ export async function getPostById(id: string) {
     .populate('categoryId')
     .populate('tags')
     .lean();
-  return JSON.parse(JSON.stringify(post));
+  return toPlain(post);
 }
 
-export async function createPost(data: any) {
+// ─── Mutation helpers ─────────────────────────────────────────────────────────
+
+/** Revalidates all public-facing paths affected by a blog post change. */
+function revalidateBlogPaths(slug?: string) {
+  // Admin list
+  revalidatePath('/admin/blog');
+  // Public listing — both locales
+  revalidatePath('/[locale]/blog', 'page');
+  revalidatePath('/en/blog');
+  revalidatePath('/ar/blog');
+  // Individual post — both locales
+  if (slug) {
+    revalidatePath(`/en/blog/${slug}`);
+    revalidatePath(`/ar/blog/${slug}`);
+  }
+  // Sitemap (daily ISR, but force immediate refresh on publish)
+  revalidatePath('/sitemap.xml');
+}
+
+export async function createPost(data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
   const post = await BlogPost.create(data);
-  revalidatePath('/admin/blog');
-  revalidatePath('/blog');
-  return JSON.parse(JSON.stringify(post));
+  revalidateBlogPaths(post.slug);
+  return toPlain(post.toObject());
 }
 
-export async function updatePost(id: string, data: any) {
+export async function updatePost(id: string, data: Record<string, unknown>) {
   await checkAdmin();
   await dbConnect();
   const post = await BlogPost.findByIdAndUpdate(id, data, { new: true });
-  revalidatePath('/admin/blog');
-  revalidatePath('/blog');
-  revalidatePath(`/blog/${post?.slug}`);
-  return JSON.parse(JSON.stringify(post));
+  revalidateBlogPaths(post?.slug);
+  return toPlain(post?.toObject() ?? null);
 }
 
 export async function deletePost(id: string) {
   await checkAdmin();
   await dbConnect();
+  const post = await BlogPost.findById(id).select('slug').lean();
   await BlogPost.findByIdAndDelete(id);
-  revalidatePath('/admin/blog');
-  revalidatePath('/blog');
+  revalidateBlogPaths((post as { slug?: string })?.slug);
   return { success: true };
 }

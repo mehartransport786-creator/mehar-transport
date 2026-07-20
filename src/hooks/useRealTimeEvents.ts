@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type EventHandler = (data: any) => void;
 
 interface UseRealTimeEventsOptions {
@@ -10,79 +11,112 @@ interface UseRealTimeEventsOptions {
   onActivityCreated?: EventHandler;
   onConnected?: EventHandler;
   enabled?: boolean;
+  /** How often to poll in milliseconds. Defaults to 30 000 (30 s). */
+  pollInterval?: number;
 }
 
+/**
+ * Replaces the previous SSE-based hook.
+ *
+ * Instead of holding a persistent EventSource open (which kept a Vercel Fluid
+ * function instance provisioned for the entire browser-tab lifetime), this hook
+ * polls /api/admin/feed every `pollInterval` ms.
+ *
+ * Key behaviours:
+ *  - Polling is paused automatically when the browser tab is hidden
+ *    (visibilitychange) and resumes + immediately fetches on tab focus.
+ *  - Returns `{ isConnected, lastEvent }` — same public API as before,
+ *    so call-sites (AdminLayoutClient, dashboard pages) need no changes.
+ */
 export function useRealTimeEvents(options: UseRealTimeEventsOptions = {}) {
+  const { enabled = true, pollInterval = 30_000 } = options;
+
   const [isConnected, setIsConnected] = useState(false);
   const [lastEvent, setLastEvent] = useState<{ type: string; data: unknown } | null>(null);
-  const eventSourceRef = useRef<EventSource | null>(null);
+
+  // Track the last successful fetch time so we only receive new items
+  const lastFetchedAt = useRef<string>(new Date().toISOString());
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const optionsRef = useRef(options);
-  
+
+  // Keep options ref fresh without re-creating the effect
   useEffect(() => {
     optionsRef.current = options;
   }, [options]);
 
-  const connect = useCallback(() => {
-    if (typeof window === 'undefined') return;
+  const fetchFeed = useCallback(async () => {
+    // Do nothing while the tab is in the background
+    if (typeof document !== 'undefined' && document.hidden) return;
     if (optionsRef.current.enabled === false) return;
 
-    // Close existing connection
-    if (eventSourceRef.current) {
-      eventSourceRef.current.close();
-    }
+    try {
+      const res = await fetch(
+        `/api/admin/feed?since=${encodeURIComponent(lastFetchedAt.current)}`,
+        { cache: 'no-store' }
+      );
 
-    const es = new EventSource('/api/admin/events');
-    eventSourceRef.current = es;
+      if (!res.ok) {
+        setIsConnected(false);
+        return;
+      }
 
-    es.addEventListener('connected', (e) => {
+      const data = await res.json();
+
+      // Advance the cursor so the next poll only returns newer items
+      lastFetchedAt.current = data.serverTime ?? new Date().toISOString();
       setIsConnected(true);
-      const data = JSON.parse(e.data);
+
+      // Fire onConnected only once (first successful response)
       optionsRef.current.onConnected?.(data);
-    });
 
-    es.addEventListener('booking:created', (e) => {
-      const data = JSON.parse(e.data);
-      setLastEvent({ type: 'booking:created', data });
-      optionsRef.current.onBookingCreated?.(data);
-    });
+      // Dispatch new activity events
+      for (const activity of (data.activities ?? []) as unknown[]) {
+        setLastEvent({ type: 'activity:new', data: activity });
+        optionsRef.current.onActivityCreated?.(activity);
+      }
 
-    es.addEventListener('booking:updated', (e) => {
-      const data = JSON.parse(e.data);
-      setLastEvent({ type: 'booking:updated', data });
-      optionsRef.current.onBookingUpdated?.(data);
-    });
-
-    es.addEventListener('activity:new', (e) => {
-      const data = JSON.parse(e.data);
-      setLastEvent({ type: 'activity:new', data });
-      optionsRef.current.onActivityCreated?.(data);
-    });
-
-    es.addEventListener('ping', () => {
-      // Heartbeat received — connection is alive
-      setIsConnected(true);
-    });
-
-    es.onerror = () => {
+      // Dispatch new/updated booking events
+      for (const booking of (data.bookings ?? []) as Record<string, string>[]) {
+        const createdAt = new Date(booking.createdAt).getTime();
+        const updatedAt = new Date(booking.updatedAt).getTime();
+        // Allow 5 s tolerance for "just created" vs "updated"
+        const isNew = Math.abs(updatedAt - createdAt) < 5_000;
+        if (isNew) {
+          setLastEvent({ type: 'booking:created', data: booking });
+          optionsRef.current.onBookingCreated?.(booking);
+        } else {
+          setLastEvent({ type: 'booking:updated', data: booking });
+          optionsRef.current.onBookingUpdated?.(booking);
+        }
+      }
+    } catch {
       setIsConnected(false);
-      // Browser will automatically reconnect (native EventSource behavior)
-    };
-
-    es.onopen = () => {
-      setIsConnected(true);
-    };
-  }, []);
+    }
+  }, []); // stable; reads options via optionsRef
 
   useEffect(() => {
-    connect();
+    if (!enabled) {
+      setIsConnected(false);
+      return;
+    }
+
+    // Fetch immediately on mount
+    fetchFeed();
+
+    // Regular polling
+    intervalRef.current = setInterval(fetchFeed, pollInterval);
+
+    // Resume + fetch immediately when the tab regains focus
+    const handleVisibility = () => {
+      if (!document.hidden) fetchFeed();
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
 
     return () => {
-      if (eventSourceRef.current) {
-        eventSourceRef.current.close();
-        eventSourceRef.current = null;
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
-  }, [connect]);
+  }, [enabled, pollInterval, fetchFeed]);
 
   return { isConnected, lastEvent };
 }
