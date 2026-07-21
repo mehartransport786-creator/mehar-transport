@@ -1,12 +1,12 @@
 import type { NextAuthConfig } from 'next-auth';
 
-// F23: Never fall back to a hardcoded secret. If AUTH_SECRET is unset the app
-// should fail loudly at startup rather than silently issue forgeable tokens.
-if (!process.env.AUTH_SECRET) {
-  throw new Error(
-    'AUTH_SECRET environment variable is not set. The application cannot start securely.'
-  );
-}
+// NOTE: DO NOT add a module-level throw guard for AUTH_SECRET here.
+// This file is imported by middleware.ts and auth.ts, both of which are
+// evaluated at Next.js BUILD TIME during the "Collecting page data" phase.
+// Environment variables like AUTH_SECRET are NOT available at build time.
+// A top-level throw here crashes the build for EVERY route that imports auth.
+// NextAuth itself enforces the secret at runtime and throws a clear error
+// if AUTH_SECRET is genuinely missing when a real request is processed.
 
 export const authConfig = {
   pages: {
@@ -17,5 +17,5 @@ export const authConfig = {
     strategy: "jwt",
     maxAge: 24 * 60 * 60, // 24 hours
   },
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.AUTH_SECRET, // safe — undefined at build time, populated at runtime
 } satisfies NextAuthConfig;
