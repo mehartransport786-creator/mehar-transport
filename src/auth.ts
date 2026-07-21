@@ -19,67 +19,68 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        if (!credentials?.email || !credentials?.password) {
-          throw new Error("Invalid credentials");
-        }
-
-        await connectToDatabase();
-
-        // Populate role to get the role name and permissions
-        const admin = await Admin.findOne({ email: credentials.email.toString().toLowerCase() }).populate("role");
-
-        if (!admin) {
-          throw new Error("Invalid credentials");
-        }
-
-        if (admin.status !== "active") {
-          throw new Error("Account is inactive or locked");
-        }
-
-        // Check if account is temporarily locked
-        if (admin.lockedUntil && admin.lockedUntil > new Date()) {
-          throw new Error("Account is temporarily locked due to multiple failed login attempts. Try again later.");
-        }
-
-        const isPasswordValid = await bcryptjs.compare(credentials.password as string, admin.passwordHash);
-        const ip = req.headers?.get("x-forwarded-for") || "Unknown IP";
-        const userAgent = req.headers?.get("user-agent") || "Unknown Browser";
-
-        if (!isPasswordValid) {
-          // Increment failed attempts atomically
-          const updatedAdmin = await Admin.findByIdAndUpdate(
-            admin._id,
-            { $inc: { failedLoginAttempts: 1 } },
-            { new: true }
-          );
-          
-          const currentAttempts = updatedAdmin?.failedLoginAttempts || 1;
-          
-          if (currentAttempts >= 5) {
-            // Lock for 15 minutes
-            await Admin.findByIdAndUpdate(admin._id, {
-              lockedUntil: new Date(Date.now() + 15 * 60 * 1000),
-              status: "locked"
-            });
+        try {
+          if (!credentials?.email || !credentials?.password) {
+            return null;
           }
 
-          // Log failed attempt
-          try {
-            await AuditLog.create({
-              adminId: admin._id,
-              adminEmail: admin.email,
-              ip: ip,
-              browser: userAgent,
-              action: "LOGIN_FAILED",
-              module: "auth",
-              details: { reason: "Invalid password", attempt: admin.failedLoginAttempts }
-            });
-          } catch (e) {
-            console.error(e);
+          await connectToDatabase();
+
+          // Populate role to get the role name and permissions
+          const admin = await Admin.findOne({ email: credentials.email.toString().toLowerCase() }).populate("role");
+
+          if (!admin) {
+            return null;
           }
 
-          throw new Error("Invalid credentials");
-        }
+          if (admin.status !== "active") {
+            throw new Error("Account is inactive or locked");
+          }
+
+          // Check if account is temporarily locked
+          if (admin.lockedUntil && admin.lockedUntil > new Date()) {
+            throw new Error("Account is temporarily locked due to multiple failed login attempts. Try again later.");
+          }
+
+          const isPasswordValid = await bcryptjs.compare(credentials.password as string, admin.passwordHash);
+          const ip = req.headers?.get("x-forwarded-for") || "Unknown IP";
+          const userAgent = req.headers?.get("user-agent") || "Unknown Browser";
+
+          if (!isPasswordValid) {
+            // Increment failed attempts atomically
+            const updatedAdmin = await Admin.findByIdAndUpdate(
+              admin._id,
+              { $inc: { failedLoginAttempts: 1 } },
+              { new: true }
+            );
+            
+            const currentAttempts = updatedAdmin?.failedLoginAttempts || 1;
+            
+            if (currentAttempts >= 5) {
+              // Lock for 15 minutes
+              await Admin.findByIdAndUpdate(admin._id, {
+                lockedUntil: new Date(Date.now() + 15 * 60 * 1000),
+                status: "locked"
+              });
+            }
+
+            // Log failed attempt
+            try {
+              await AuditLog.create({
+                adminId: admin._id,
+                adminEmail: admin.email,
+                ip: ip,
+                browser: userAgent,
+                action: "LOGIN_FAILED",
+                module: "auth",
+                details: { reason: "Invalid password", attempt: admin.failedLoginAttempts }
+              });
+            } catch (e) {
+              console.error(e);
+            }
+
+            return null;
+          }
 
         // Reset failed attempts on success
         admin.failedLoginAttempts = 0;
@@ -113,13 +114,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           console.error("Failed to create session or audit log", error);
         }
 
-        return {
-          id: admin._id.toString(),
-          name: admin.name,
-          email: admin.email,
-          role: admin.role?.name || "Admin",
-          sessionId: sessionToken
-        };
+          return {
+            id: admin._id.toString(),
+            name: admin.name,
+            email: admin.email,
+            role: admin.role?.name || "Admin",
+            sessionId: sessionToken
+          };
+        } catch (error) {
+          console.error("Auth error in authorize:", error);
+          return null; // Return null on any unexpected error to trigger a normal login failure
+        }
       }
     })
   ],
