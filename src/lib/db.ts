@@ -1,12 +1,10 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI!;
-
-if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local'
-  );
-}
+// NOTE: Do NOT read or validate MONGODB_URI at module level.
+// This file is imported by every API route. Next.js evaluates all modules
+// during the build ("Collecting page data" phase) where env vars are absent.
+// Any top-level throw here crashes the build for every route that uses it.
+// The guard is moved inside connectToDatabase() so it only runs at request time.
 
 declare global {
   // eslint-disable-next-line no-var
@@ -22,22 +20,20 @@ if (!cached) {
 /**
  * Singleton Mongoose connection with serverless-optimised pool settings.
  *
- * Key changes from the original (Step 6 of the remediation plan):
- *
- *  maxPoolSize: 5   (was 10) — A serverless instance handles one concurrent
- *    request, so 10 sockets meant 9 sat idle consuming Atlas connection-cap
- *    slots. 5 is the documented sweet spot for Mongoose on serverless.
- *
- *  minPoolSize: 0   — Let idle connections close rather than holding Atlas
- *    slots open between invocations.
- *
- *  maxIdleTimeMS: 60 000  — Release connections that have been idle for 60 s,
- *    matching the typical Vercel function lifecycle.
- *
- *  socketTimeoutMS: 45 000  — Ensures long-running Atlas queries surface as
- *    errors rather than silently keeping the function alive.
+ *  maxPoolSize: 5   — sweet spot for Mongoose on serverless.
+ *  minPoolSize: 0   — let idle connections close between invocations.
+ *  maxIdleTimeMS: 60_000  — release connections idle > 60 s.
+ *  socketTimeoutMS: 45_000 — surface long queries as errors.
  */
 async function connectToDatabase(): Promise<mongoose.Mongoose> {
+  // Validate env var at REQUEST time, not module evaluation time.
+  const MONGODB_URI = process.env.MONGODB_URI;
+  if (!MONGODB_URI) {
+    throw new Error(
+      'MONGODB_URI environment variable is not set. Configure it in Vercel project settings.'
+    );
+  }
+
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
