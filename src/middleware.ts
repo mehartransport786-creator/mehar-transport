@@ -71,7 +71,13 @@ export default async function middleware(req: NextRequest) {
       // but in middleware mode it only reads the request. Pass an empty context
       // to satisfy TypeScript without changing runtime behaviour.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return await adminAuthHandler(req, {} as any);
+      const authRes = await adminAuthHandler(req, {} as any);
+      if (authRes) {
+        // If it's a redirect or JSON response (from adminAuthHandler), return it
+        // but we also need to pass the pathname to the layout
+        authRes.headers.set('x-middleware-request-x-pathname', pathname);
+        return authRes;
+      }
     } catch (error) {
       console.error('Middleware Auth Error:', error);
       // Fail closed
@@ -86,7 +92,9 @@ export default async function middleware(req: NextRequest) {
   }
 
   // All public pages → only run next-intl (locale detection + redirect)
-  return intlMiddleware(req);
+  const res = intlMiddleware(req);
+  res.headers.set('x-middleware-request-x-pathname', pathname);
+  return res;
 }
 
 export const config = {
