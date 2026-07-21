@@ -4,6 +4,8 @@ import Booking from '@/lib/models/Booking';
 import ActivityLog from '@/lib/models/ActivityLog';
 import { requirePermission } from '@/lib/rbac';
 
+export const dynamic = 'force-dynamic';
+
 // =============================================================
 // GET /api/bookings/[id] — Single booking detail
 // =============================================================

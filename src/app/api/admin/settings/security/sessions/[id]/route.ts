@@ -4,6 +4,8 @@ import connectToDatabase from "@/lib/db";
 import { AdminSession } from "@/lib/models/AdminSession";
 import { AuditLog } from "@/lib/models/AuditLog";
 
+export const dynamic = 'force-dynamic';
+
 export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }

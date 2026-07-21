@@ -3,6 +3,8 @@ import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import SeasonalPricing from "@/lib/models/SeasonalPricing";
 
+export const dynamic = 'force-dynamic';
+
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await auth();

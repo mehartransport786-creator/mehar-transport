@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/db';
 import Vehicle from '@/lib/models/Vehicle';
 import { requirePermission } from '@/lib/rbac';

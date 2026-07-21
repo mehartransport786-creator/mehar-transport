@@ -3,6 +3,8 @@ import connectToDatabase from "@/lib/db";
 import Route from "@/lib/models/Route";
 import { requirePermission } from "@/lib/rbac";
 
+export const dynamic = 'force-dynamic';
+
 // F06: Previously used bare auth() session check on all methods.
 
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {

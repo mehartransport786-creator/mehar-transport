@@ -6,6 +6,8 @@ import { AdminSession } from "@/lib/models/AdminSession";
 import { AuditLog } from "@/lib/models/AuditLog";
 import bcryptjs from "bcryptjs";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const session = await auth();

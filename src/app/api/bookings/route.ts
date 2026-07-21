@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/db';
 import Booking from '@/lib/models/Booking';
 import ActivityLog from '@/lib/models/ActivityLog';

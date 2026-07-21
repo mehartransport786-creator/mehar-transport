@@ -3,6 +3,8 @@ import connectToDatabase from '@/lib/db';
 import ContactMessage from '@/lib/models/ContactMessage';
 import { requirePermission } from '@/lib/rbac';
 
+export const dynamic = 'force-dynamic';
+
 // PATCH /api/admin/messages/[id] — Update message status
 export async function PATCH(
   request: Request,

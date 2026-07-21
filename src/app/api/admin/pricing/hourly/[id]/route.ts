@@ -3,6 +3,8 @@ import connectToDatabase from '@/lib/db';
 import HourlyPricing from '@/lib/models/HourlyPricing';
 import { requirePermission } from '@/lib/rbac';
 
+export const dynamic = 'force-dynamic';
+
 // F05: Previously neither PUT nor DELETE had any authentication.
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {

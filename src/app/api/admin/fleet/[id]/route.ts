@@ -3,6 +3,8 @@ import connectToDatabase from "@/lib/db";
 import Vehicle from "@/lib/models/Vehicle";
 import { requirePermission } from "@/lib/rbac";
 
+export const dynamic = 'force-dynamic';
+
 // F07: Previously used bare auth() session check on both PUT and DELETE.
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {

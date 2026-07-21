@@ -8,8 +8,9 @@ const withAnalyzer = withBundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
-  eslint: { ignoreDuringBuilds: true },     // Restored to allow Vercel builds despite 200+ pre-existing errors
-  typescript: { ignoreBuildErrors: true },   // Restored for same reason
+  // eslint ignoreDuringBuilds removed — not a valid NextConfig key in Next.js 16
+  // ESLint errors are silenced via eslint.config.mjs
+  typescript: { ignoreBuildErrors: true },   // Suppress TS build errors on Vercel
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
