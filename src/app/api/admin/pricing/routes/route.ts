@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 
 export const dynamic = 'force-dynamic';
 import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import RoutePricing from "@/lib/models/RoutePricing";
 import Route from "@/lib/models/Route";
+import "@/lib/models/Vehicle";
 import PricingAuditLog from "@/lib/models/PricingAuditLog";
 import { requirePermission } from "@/lib/rbac";
 
@@ -84,6 +86,9 @@ export async function POST(request: Request) {
         reason: "Created route pricing"
       });
     }
+
+    // Bust the public booking page route cache immediately
+    revalidateTag('routes-pricing');
 
     return NextResponse.json({ success: true, data: result }, { status: 200 });
   } catch (error: any) {

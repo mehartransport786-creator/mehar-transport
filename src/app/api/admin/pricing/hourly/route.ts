@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/db';
 import HourlyPricing from '@/lib/models/HourlyPricing';
+import '@/lib/models/Vehicle';
 import { requirePermission } from '@/lib/rbac';
 
 // F05: Previously neither GET nor POST had any authentication.

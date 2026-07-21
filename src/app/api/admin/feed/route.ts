@@ -3,6 +3,8 @@ import { auth } from '@/auth';
 import connectToDatabase from '@/lib/db';
 import ActivityLog from '@/lib/models/ActivityLog';
 import Booking from '@/lib/models/Booking';
+import '@/lib/models/Vehicle';
+import '@/lib/models/Admin';
 
 /**
  * Polling Feed Endpoint: GET /api/admin/feed?since=<ISO-timestamp>

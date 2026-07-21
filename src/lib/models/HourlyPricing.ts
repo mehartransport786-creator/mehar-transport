@@ -20,6 +20,9 @@ const HourlyPricingSchema = new Schema<IHourlyPricing>({
   timestamps: true
 });
 
+// Performance: hourly booking page fetches all active hourly pricings
+HourlyPricingSchema.index({ isActive: 1 });
+
 const HourlyPricing = models.HourlyPricing || mongoose.model<IHourlyPricing>('HourlyPricing', HourlyPricingSchema);
 
 export default HourlyPricing;

@@ -20,8 +20,14 @@ const RoutePricingSchema = new Schema<IRoutePricing>({
   timestamps: true
 });
 
-// Ensure a vehicle only has one pricing record per route
+// Unique constraint: one price per route+vehicle combination
 RoutePricingSchema.index({ routeId: 1, vehicleId: 1 }, { unique: true });
+
+// Performance: booking page fetches all active pricings — this index prevents a full collection scan
+RoutePricingSchema.index({ isActive: 1 });
+
+// Performance: per-route pricing lookup on the route detail page
+RoutePricingSchema.index({ routeId: 1, isActive: 1 });
 
 const RoutePricing = models.RoutePricing || mongoose.model<IRoutePricing>('RoutePricing', RoutePricingSchema);
 

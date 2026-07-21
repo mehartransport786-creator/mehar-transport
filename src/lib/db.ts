@@ -40,7 +40,7 @@ async function connectToDatabase(): Promise<mongoose.Mongoose> {
     const opts: mongoose.ConnectOptions = {
       bufferCommands: false,
       maxPoolSize: 5,
-      minPoolSize: 0,
+      minPoolSize: 1,       // keep 1 connection alive — eliminates cold-start re-handshake (~200-400ms)
       serverSelectionTimeoutMS: 5_000,
       socketTimeoutMS: 45_000,
       maxIdleTimeMS: 60_000,
