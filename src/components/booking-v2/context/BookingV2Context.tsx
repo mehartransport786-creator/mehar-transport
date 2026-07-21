@@ -28,9 +28,7 @@ export interface PricingAdjustment {
 export interface PricingState {
   basePrice: number;
   adjustments: PricingAdjustment[];
-  taxAmount: number;
-  subtotalBeforeTax: number;
-  totalIncludingTax: number;
+  totalPrice: number;
   isCalculating: boolean;
   error?: string | null; // PR-3: expose pricing errors to the UI
 }
@@ -100,9 +98,7 @@ function getTodayString() {
 const initialPricing: PricingState = {
   basePrice: 0,
   adjustments: [],
-  taxAmount: 0,
-  subtotalBeforeTax: 0,
-  totalIncludingTax: 0,
+  totalPrice: 0,
   isCalculating: false,
   error: null,
 };
@@ -178,8 +174,8 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
         
         const data = await res.json();
         if (isMounted && data.routes && Array.isArray(data.routes)) {
-          const transferRoutes = data.routes.filter((r: any) => r.category !== 'hourly');
-          setRoutes(transferRoutes);
+          // We now keep all routes, including hourly ones, because Hourly is now just a route category!
+          setRoutes(data.routes);
         }
       } catch (err) {
         console.error("Failed to load routes", err);
@@ -228,7 +224,7 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
       pricingAbortRef.current.abort();
     }
 
-    if (!state.selectedVehicle || (!state.routeId && state.serviceType === "transfer")) {
+    if (!state.selectedVehicle || (state.serviceType !== 'hourly' && !state.routeId)) {
       updateState({ pricing: { ...initialPricing } });
       return;
     }
@@ -239,20 +235,12 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
     updateState({ pricing: { ...state.pricing, isCalculating: true, error: null } });
 
     try {
-      const payload =
-        state.serviceType === "hourly"
-          ? {
-              type: "hourly",
-              vehicleId: state.selectedVehicle.vehicleId,
-              hours: state.durationHours || 4,
-              date: state.travelDate,
-            }
-          : {
-              type: "transfer",
-              routeId: state.routeId,
-              vehicleId: state.selectedVehicle.vehicleId,
-              date: state.travelDate,
-            };
+      const payload = {
+        serviceType: state.serviceType,
+        routeId: state.routeId,
+        vehicleId: state.selectedVehicle.vehicleId,
+        durationHours: state.durationHours,
+      };
 
       const res = await fetch("/api/pricing/calculate", {
         method: "POST",
@@ -276,7 +264,7 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
         return;
       }
 
-      const serverBase = data.data.subtotal; // before tax, after seasonal
+      const serverBase = data.data.totalPrice; 
       const adjustments: PricingAdjustment[] = [];
       let extraTotal = 0;
 
@@ -291,17 +279,13 @@ export function BookingV2Provider({ children }: { children: ReactNode }) {
         }
       });
 
-      const subtotalBeforeTax = serverBase + extraTotal;
-      const taxAmount = Math.round(subtotalBeforeTax * 0.15 * 100) / 100;
-      const totalIncludingTax = Math.round((subtotalBeforeTax + taxAmount) * 100) / 100;
+      const totalPrice = serverBase + extraTotal;
 
       updateState({
         pricing: {
-          basePrice: data.data.basePrice,
+          basePrice: serverBase,
           adjustments,
-          taxAmount,
-          subtotalBeforeTax,
-          totalIncludingTax,
+          totalPrice,
           isCalculating: false,
           error: null,
         },

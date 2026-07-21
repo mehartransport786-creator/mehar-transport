@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Map, Car, Clock } from "lucide-react";
 
 export function ServiceAreaCoverage() {
@@ -39,7 +39,7 @@ export function ServiceAreaCoverage() {
               className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
             >
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-[var(--duration-base)] group-hover:scale-110"
                 style={{ backgroundImage: `url(${city.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />

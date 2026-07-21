@@ -2,9 +2,6 @@
  * POST /api/pricing/calculate — Server-side price quote
  *
  * Delegates to the shared pricing engine (lib/pricing/engine.ts).
- * F19/F20: The fallback to fallbackRoutesData mock tables has been removed.
- *          If the DB has no pricing row, we return 422 — a data gap in the
- *          admin panel, not a crash. Operators must configure pricing first.
  */
 import { NextResponse } from "next/server";
 import { calculatePrice, PricingUnavailableError } from "@/lib/pricing/engine";
@@ -19,59 +16,28 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, error: "Invalid JSON body" }, { status: 400 });
   }
 
-  const { type, routeId, vehicleId, date, hours } = body;
+  const { serviceType, routeId, vehicleId, durationHours } = body;
 
   // Input validation
-  if (!type || !vehicleId || !date) {
+  if (!vehicleId || (serviceType !== 'hourly' && !routeId)) {
     return NextResponse.json(
-      { success: false, error: "Missing required fields: type, vehicleId, date" },
-      { status: 400 }
-    );
-  }
-  if (type === "transfer" && !routeId) {
-    return NextResponse.json(
-      { success: false, error: "routeId is required for transfer pricing" },
-      { status: 400 }
-    );
-  }
-  if (type === "hourly" && (!hours || hours <= 0)) {
-    return NextResponse.json(
-      { success: false, error: "hours must be a positive number for hourly pricing" },
-      { status: 400 }
-    );
-  }
-  if (type !== "transfer" && type !== "hourly") {
-    return NextResponse.json(
-      { success: false, error: "type must be 'transfer' or 'hourly'" },
-      { status: 400 }
-    );
-  }
-
-  const targetDate = new Date(date);
-  if (isNaN(targetDate.getTime())) {
-    return NextResponse.json(
-      { success: false, error: "date is not a valid ISO date string" },
+      { success: false, error: "Missing required fields: routeId (if transfer), vehicleId" },
       { status: 400 }
     );
   }
 
   try {
-    const result = await calculatePrice(
-      type === "transfer"
-        ? { type: "transfer", routeId, vehicleId, date: targetDate }
-        : { type: "hourly", vehicleId, hours: Number(hours), date: targetDate }
-    );
+    const result = await calculatePrice({
+      serviceType,
+      routeId,
+      vehicleId,
+      durationHours,
+    });
 
     return NextResponse.json({
       success: true,
       data: {
-        basePrice: result.basePrice,
-        seasonalAdjustment: result.seasonalAdjustment,
-        seasonalRuleName: result.seasonalRuleName,
-        subtotal: result.subtotal,
-        taxRate: result.taxRate,
-        taxAmount: result.taxAmount,
-        totalIncludingTax: result.totalIncludingTax,
+        totalPrice: result.totalPrice,
       },
     });
   } catch (error) {

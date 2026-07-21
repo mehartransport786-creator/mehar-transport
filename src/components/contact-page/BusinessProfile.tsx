@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Building2, Award, Shield, CheckCircle2, TrendingUp, Users } from "lucide-react";
 
 export function BusinessProfile() {

@@ -42,6 +42,10 @@
   --shadow-luxury: 0 8px 32px -8px rgba(15,23,42,0.10), 0 2px 8px -2px rgba(15,23,42,0.05);
   --shadow-luxury-hover: 0 20px 48px -12px rgba(15,23,42,0.18), 0 4px 16px -4px rgba(15,23,42,0.08);
 
+  /* Default Transition Overrides */
+  --default-transition-duration: var(--duration-instant);
+  --default-transition-timing-function: var(--ease-out);
+
   /* Responsive Breakpoints — only breakpoints with actual usage are kept.
      xs2–xs6, md2, md3, xl2, 3xl–6xl were declared but never referenced
      in the codebase; removing them shrank the generated CSS output. */
@@ -97,6 +101,20 @@
   --radius-image: 16px;
   --radius-modal: 20px;
   --radius-dropdown: 12px;
+
+  /* Motion & Animation Tokens */
+  --duration-instant: 120ms;
+  --duration-quick: 200ms;
+  --duration-base: 300ms;
+  --duration-slow: 400ms;
+  
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  
+  --motion-sm: 4px;
+  --motion-md: 8px;
+  --motion-lg: 16px;
 }
 
 .dark {
@@ -142,6 +160,18 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important; /* Cap to instant duration */
+    scroll-behavior: auto !important;
+    transform: none !important; /* Disable all transform motions completely */
   }
 }
 
@@ -244,13 +274,16 @@
 }
 
 @utility card-luxury {
-  /* transition-all replaced with explicit properties so the browser only
-     watches transform and box-shadow instead of every animatable property.
-     will-change-transform hints the browser to promote this element to its
-     own GPU layer, making the translateY animation compositor-only. */
+  /* Motion tokens implemented instead of hardcoded 500ms. Removed permanent will-change. */
   @apply bg-card text-card-foreground rounded-2xl border border-border/50 shadow-luxury
-         transition-[transform,box-shadow] duration-500 will-change-transform
-         hover:shadow-luxury-hover hover:-translate-y-1;
+         transition-[transform,box-shadow];
+  transition-duration: var(--duration-base);
+  transition-timing-function: var(--ease-out);
+
+  &:hover {
+    box-shadow: var(--shadow-luxury-hover);
+    transform: translateY(calc(var(--motion-sm) * -1));
+  }
 }
 
 @utility btn-base {
@@ -398,15 +431,7 @@
   }
 }
 
-/* Premium Animations */
-@utility animate-fade-up-luxury {
-  animation: fadeUpLuxury 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeUpLuxury {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+/* Removed animate-fade-up-luxury as per Motion spec */
 
 /*
   The [style*="opacity: 0"] attribute selector was removed from here.

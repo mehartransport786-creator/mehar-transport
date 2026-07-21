@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Plane, Building, Crown, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
@@ -113,26 +113,26 @@ export function ServicesSection() {
                   alt={service.title} 
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                  className="object-cover transition-transform duration-[var(--duration-slow)] group-hover:scale-110"
                 />
               </div>
               
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-500 group-hover:from-black"></div>
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-[var(--duration-base)] group-hover:from-black"></div>
 
               {/* Content */}
               <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 lg:p-8 text-primary-foreground">
-                <div className="bg-white/10 backdrop-blur-md w-14 h-14 rounded-[var(--radius-sm)] flex items-center justify-center mb-6 border border-white/20 transform transition-transform duration-500 group-hover:-translate-y-2 shadow-[var(--shadow-luxury)]">
+                <div className="bg-white/10 backdrop-blur-md w-14 h-14 rounded-[var(--radius-sm)] flex items-center justify-center mb-6 border border-white/20 transform transition-transform duration-[var(--duration-base)] group-hover:-translate-y-2 shadow-[var(--shadow-luxury)]">
                   <service.icon className="w-7 h-7 text-secondary" />
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-3 transform transition-transform duration-500 group-hover:-translate-y-2 tracking-tight">
+                <h3 className="text-2xl font-bold mb-3 transform transition-transform duration-[var(--duration-base)] group-hover:-translate-y-2 tracking-tight">
                   {service.title}
                 </h3>
                 
                 {/* Always show description on mobile since hover doesn't exist, use group-hover on desktop */}
-                <div className="overflow-hidden h-auto md:h-0 group-hover:h-auto transition-all duration-500 opacity-100 md:opacity-0 group-hover:opacity-100">
-                  <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 font-light">
+                <div className="overflow-hidden h-auto md:h-0 group-hover:h-auto transition-all duration-[var(--duration-base)] opacity-100 md:opacity-0 group-hover:opacity-100">
+                  <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-[var(--duration-base)] delay-100 font-light">
                     {service.description}
                   </p>
                   <Link 

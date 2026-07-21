@@ -200,7 +200,7 @@ export function VehicleSection() {
                   alt={vehicle.name}
                   width={280}
                   height={160}
-                  className={`object-contain drop-shadow-xl transition-transform duration-500 ${isSelected ? 'scale-105' : 'hover:scale-105'}`}
+                  className={`object-contain drop-shadow-xl transition-transform duration-[var(--duration-base)] ${isSelected ? 'scale-105' : 'hover:scale-105'}`}
                 />
               </div>
 

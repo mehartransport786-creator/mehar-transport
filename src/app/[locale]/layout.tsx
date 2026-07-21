@@ -165,6 +165,26 @@ export default async function RootLayout({
           <style>{`[style*="opacity: 0"],[style*="opacity:0"]{opacity:1!important;animation:none!important}`}</style>
         </noscript>
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "TaxiService",
+              "name": "Mehar Transport",
+              "url": "https://mehartransport.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Al Nawariyah District",
+                "addressLocality": "Makkah",
+                "addressRegion": "Makkah Province",
+                "addressCountry": "SA"
+              },
+              "areaServed": ["Makkah", "Madinah", "Jeddah", "Taif", "Riyadh", "Yanbu"]
+            }),
+          }}
+        />
+
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutShell navbar={<Navbar />} footer={<Footer />}>
             {children}

@@ -43,7 +43,7 @@ export default async function AboutUsPage({ params }: { params: { locale: string
         "foundingDate": "2016",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Jeddah",
+          "addressLocality": "Makkah",
           "addressCountry": "SA"
         },
         "contactPoint": {
@@ -61,7 +61,7 @@ export default async function AboutUsPage({ params }: { params: { locale: string
         "telephone": "+966-56-563-8120",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Jeddah",
+          "addressLocality": "Makkah",
           "addressCountry": "SA"
         }
       },

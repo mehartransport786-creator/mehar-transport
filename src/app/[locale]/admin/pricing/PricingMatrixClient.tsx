@@ -41,13 +41,36 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
   pricings.forEach(p => {
     pricingMap.set(`${p.routeId}-${p.vehicleId}`, p);
   });
+  vehicles.forEach(v => {
+    if (!pricingMap.has(`HOURLY_RATE-${v._id}`)) {
+      pricingMap.set(`HOURLY_RATE-${v._id}`, { currentPrice: v.hourlyRate || 0, basePrice: v.hourlyRate || 0 });
+    }
+  });
 
-  const filteredRoutes = routes.filter(r => {
+  let filteredRoutes = routes.filter(r => {
     const matchSearch = !searchTerm || [r.name, r.nameAr, r.origin, r.destination, r.city]
       .join(' ').toLowerCase().includes(searchTerm.toLowerCase());
     const matchType = !filterType || r.routeType === filterType;
     return matchSearch && matchType;
   });
+
+  const hourlyRoute = {
+    _id: 'HOURLY_RATE',
+    name: 'Hourly Rates (Per Hour)',
+    nameAr: 'أسعار الساعة (للساعة)',
+    origin: 'Any City',
+    originAr: 'أي مدينة',
+    destination: 'Hourly Booking',
+    destinationAr: 'حجز بالساعة',
+    routeType: 'hourly'
+  };
+
+  const matchSearchHourly = !searchTerm || [hourlyRoute.name, hourlyRoute.nameAr].join(' ').toLowerCase().includes(searchTerm.toLowerCase());
+  const matchTypeHourly = !filterType || filterType === 'hourly';
+
+  if (matchSearchHourly && matchTypeHourly) {
+    filteredRoutes.push(hourlyRoute);
+  }
 
   const handleCellClick = (rId: string, vId: string, currentVal: number | string) => {
     setEditingCell({ rId, vId });
@@ -71,27 +94,47 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
     setSavingCell({ rId, vId });
 
     try {
-      const res = await fetch('/api/admin/pricing/routes/route', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          routeId: rId,
-          vehicleId: vId,
-          basePrice: existing?.basePrice || val,
-          currentPrice: val
-        })
-      });
-      const data = await res.json();
-      if (data.success) {
-        setPricings(prev => {
-          const idx = prev.findIndex(p => p.routeId === rId && p.vehicleId === vId);
-          if (idx >= 0) {
-            const up = [...prev];
-            up[idx] = data.data;
-            return up;
-          }
-          return [...prev, data.data];
+      if (rId === 'HOURLY_RATE') {
+        const res = await fetch(`/api/admin/fleet/${vId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ hourlyRate: val })
         });
+        const data = await res.json();
+        if (data.success) {
+          setPricings(prev => {
+            const idx = prev.findIndex(p => p.routeId === rId && p.vehicleId === vId);
+            if (idx >= 0) {
+              const up = [...prev];
+              up[idx] = { ...up[idx], currentPrice: val };
+              return up;
+            }
+            return [...prev, { routeId: rId, vehicleId: vId, currentPrice: val, basePrice: existing?.basePrice || val }];
+          });
+        }
+      } else {
+        const res = await fetch('/api/admin/pricing/routes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            routeId: rId,
+            vehicleId: vId,
+            basePrice: existing?.basePrice || val,
+            currentPrice: val
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setPricings(prev => {
+            const idx = prev.findIndex(p => p.routeId === rId && p.vehicleId === vId);
+            if (idx >= 0) {
+              const up = [...prev];
+              up[idx] = data.data;
+              return up;
+            }
+            return [...prev, data.data];
+          });
+        }
       }
     } catch (e) {
       console.error(e);
@@ -108,7 +151,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
   const handleBulkSubmit = async () => {
     setBulkSaving(true);
     try {
-      const res = await fetch('/api/admin/pricing/bulk/route', {
+      const res = await fetch('/api/admin/pricing/bulk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -124,9 +167,12 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
       if (data.success) {
         // Just reload the page to refresh matrix cleanly for now
         window.location.reload();
+      } else {
+        alert(isAr ? 'حدث خطأ: ' + data.error : 'Error: ' + data.error);
+        setBulkSaving(false);
       }
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      alert(e.message);
       setBulkSaving(false);
     }
   };
@@ -189,6 +235,7 @@ export default function PricingMatrixClient({ routes, vehicles, pricings: initia
           <option value="airport_transfer">Airport Transfer</option>
           <option value="intercity">Intercity</option>
           <option value="ziyarat">Ziyarat</option>
+          <option value="hourly">Hourly</option>
         </select>
       </div>
 

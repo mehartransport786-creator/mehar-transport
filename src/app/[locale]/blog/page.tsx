@@ -106,7 +106,7 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
                   <img
                     src={(featuredPost as Record<string, string>).featuredImage || '/images/hero/economy-fleet.jpg'}
                     alt={(featuredPost as Record<string, string>).title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[var(--duration-base)] group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 bg-secondary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
                     {isAr ? 'مقالة مميزة' : 'Featured'}
@@ -163,7 +163,7 @@ export default async function BlogHomepage({ params }: { params: Promise<{ local
                 <img
                   src={(post.featuredImage as string) || '/hero-luxury.webp'}
                   alt={post.title as string}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[var(--duration-base)] group-hover:scale-105"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Handshake, Building2, Globe2, Briefcase, FileText, CheckCircle2, PlaneTakeoff, Users, MapPin } from "lucide-react";
 
 export function B2BPartnerships({ locale }: { locale: string }) {

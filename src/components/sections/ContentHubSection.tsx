@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { ArrowRight, ArrowLeft, BookOpen, Clock } from "lucide-react";
 
 export function ContentHubSection() {
@@ -81,7 +81,7 @@ export function ContentHubSection() {
                     <img 
                       src={post.image} 
                       alt={post.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[var(--duration-base)] ease-out"
                     />
                     <div className="absolute top-4 left-4 rtl:right-4 rtl:left-auto bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
                       {post.category}

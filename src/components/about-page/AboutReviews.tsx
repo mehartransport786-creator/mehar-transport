@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Star, Quote } from "lucide-react";
 
 export function AboutReviews({ locale }: { locale: string }) {

@@ -50,7 +50,7 @@ export function Navbar() {
   const [isFleetOpen, setIsFleetOpen] = useState(false);
   return (
     <nav 
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 z-50 w-full transition-all duration-[var(--duration-base)] ease-in-out ${
         !isTransparent 
           ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl shadow-md border-b border-gray-200 dark:border-white/10 py-3 lg:py-4" 
           : "bg-transparent py-4 lg:py-6"
@@ -61,8 +61,8 @@ export function Navbar() {
           
           <div className="flex items-center lg:w-[200px]">
             <Link href="/" className="flex items-center gap-2">
-              <div className={`transition-all duration-500 rounded-md p-1.5 ${!isTransparent ? 'bg-transparent' : 'bg-white/95 backdrop-blur-md shadow-xl'}`}>
-                <Image src="/logo.png" alt="Mehar Transport" width={200} height={48} className={`w-auto object-contain transition-all duration-500 ${!isTransparent ? 'h-7 sm:h-8 lg:h-10' : 'h-8 sm:h-10 lg:h-12'}`} priority />
+              <div className={`transition-all duration-[var(--duration-base)] rounded-md p-1.5 ${!isTransparent ? 'bg-transparent' : 'bg-white/95 backdrop-blur-md shadow-xl'}`}>
+                <Image src="/logo.png" alt="Mehar Transport" width={200} height={48} className={`w-auto object-contain transition-all duration-[var(--duration-base)] ${!isTransparent ? 'h-7 sm:h-8 lg:h-10' : 'h-8 sm:h-10 lg:h-12'}`} priority />
               </div>
             </Link>
           </div>
@@ -188,7 +188,7 @@ export function Navbar() {
 
       {/* Mobile Menu Slide-in */}
       <div 
-        className={`lg:hidden fixed top-[72px] sm:top-[88px] left-0 w-full h-[calc(100vh-72px)] bg-background/95 backdrop-blur-3xl border-t border-border/50 shadow-2xl overflow-y-auto transition-all duration-500 ease-in-out transform ${
+        className={`lg:hidden fixed top-[72px] sm:top-[88px] left-0 w-full h-[calc(100vh-72px)] bg-background/95 backdrop-blur-3xl border-t border-border/50 shadow-2xl overflow-y-auto transition-all duration-[var(--duration-base)] ease-in-out transform ${
           isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >

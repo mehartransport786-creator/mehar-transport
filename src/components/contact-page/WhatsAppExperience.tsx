@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { MessageCircle, Zap, Globe2, ArrowRight } from "lucide-react";
 
 export function WhatsAppExperience() {

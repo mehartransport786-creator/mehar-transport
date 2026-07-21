@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Camera, PlaySquare } from "lucide-react";
 import Image from "next/image";
 
@@ -51,7 +51,7 @@ export function SocialMediaCommunity() {
               className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer"
             >
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-[var(--duration-base)] group-hover:scale-110"
                 style={{ backgroundImage: `url(${img})` }}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Clock, Car, MapPin, Users, Globe2, Star, ShieldCheck, Map } from "lucide-react";
 
 export function TrustStats({ locale }: { locale: string }) {

@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { mockRoutes } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
@@ -36,7 +36,7 @@ export function PopularRoutes() {
               <img 
                 src={route.image} 
                 alt={route.origin}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[var(--duration-base)]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
               

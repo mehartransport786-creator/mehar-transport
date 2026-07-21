@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Star, Quote } from "lucide-react";
 
 interface VehicleReviewsProps {

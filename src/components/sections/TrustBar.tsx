@@ -39,7 +39,7 @@ export function TrustBar() {
               <PremiumIcon 
                 icon={item.icon} 
                 size="md" 
-                className="transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(201,150,50,0.4)]" 
+                className="transition-transform duration-[var(--duration-base)] group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(201,150,50,0.4)]" 
               />
               <div>
                 <h3 className="font-bold text-base md:text-lg text-foreground mb-1 md:mb-2 tracking-tight group-hover:text-secondary transition-colors">{item.title}</h3>

@@ -92,7 +92,7 @@ export default function RoutesClient({ routes, isAr }: { routes: any[]; isAr: bo
                   <img 
                     src={getRouteImage(route)} 
                     alt={isAr ? route.nameAr : route.name} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-[var(--duration-base)] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   

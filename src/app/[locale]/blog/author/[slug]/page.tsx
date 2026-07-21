@@ -150,7 +150,7 @@ export default async function AuthorPage({
                   <img
                     src={(post.featuredImage as string) || '/images/hero/economy-fleet.jpg'}
                     alt={post.title as string}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[var(--duration-base)] group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 flex-1 flex flex-col">

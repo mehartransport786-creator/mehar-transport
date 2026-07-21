@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { ChevronDown } from "lucide-react";
 
 interface VehicleFAQProps {

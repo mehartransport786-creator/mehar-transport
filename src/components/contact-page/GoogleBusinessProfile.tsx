@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Star, MapPin, Clock, Phone, Globe, ExternalLink, CheckCircle } from "lucide-react";
 import Image from "next/image";
 
@@ -40,7 +40,7 @@ export function GoogleBusinessProfile() {
         <div className="space-y-4 mb-6">
           <div className="flex items-start gap-4">
             <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-            <span className="text-slate-700 dark:text-slate-300">Jeddah, Makkah Province, Saudi Arabia</span>
+            <span className="text-slate-700 dark:text-slate-300">Al Nawariyah District, Makkah, Saudi Arabia</span>
           </div>
           <div className="flex items-start gap-4">
             <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />

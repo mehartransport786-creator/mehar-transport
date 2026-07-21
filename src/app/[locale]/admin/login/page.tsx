@@ -7,7 +7,7 @@ import * as z from "zod";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Lock, Mail, Eye, EyeOff, Loader2, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
@@ -217,7 +217,8 @@ export default function AdminLogin() {
             </div>
 
             <button
-              type="submit"
+              type="button"
+              onClick={handleSubmit(onSubmit)}
               disabled={isSubmitting}
               className="w-full flex justify-center items-center gap-2 py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-bold text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-70 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 active:translate-y-0 dark:bg-secondary dark:text-primary dark:hover:bg-secondary/90"
             >

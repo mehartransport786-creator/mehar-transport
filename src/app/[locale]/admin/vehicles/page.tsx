@@ -95,7 +95,7 @@ export default function VehiclesPage() {
               >
                 {/* Image */}
                 <div className="aspect-[16/10] relative overflow-hidden bg-gray-100 shrink-0">
-                  <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[var(--duration-base)]" />
                   {vehicle.specialLabel && (
                     <div className="absolute top-3 left-3 bg-primary/90 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                       {isAr ? vehicle.specialLabelAr : vehicle.specialLabel}

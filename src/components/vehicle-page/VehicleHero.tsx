@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "@/lib/motion";
 import { useRef } from "react";
 import { Users, Briefcase, Calendar, ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/routing";

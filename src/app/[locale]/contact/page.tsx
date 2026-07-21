@@ -54,7 +54,7 @@ export default function ContactPage() {
     address: {
       "@type": "PostalAddress",
       streetAddress: "Main Office",
-      addressLocality: "Jeddah",
+      addressLocality: "Makkah",
       addressRegion: "Makkah Province",
       addressCountry: "SA",
     },

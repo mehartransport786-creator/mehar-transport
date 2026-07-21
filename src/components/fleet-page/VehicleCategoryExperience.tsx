@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { mockFleet } from "@/lib/data";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft } from "lucide-react";
@@ -100,13 +100,13 @@ export function VehicleCategoryExperience() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 className="object-contain p-6 group-hover:scale-110 transition-transform duration-1000 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90 transition-opacity duration-500 rounded-[var(--radius-card)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90 transition-opacity duration-[var(--duration-base)] rounded-[var(--radius-card)]" />
               
-              <div className="relative z-10 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="relative z-10 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-[var(--duration-base)]">
                 <div className="text-secondary text-xs font-bold uppercase tracking-[0.2em] mb-2">{cat.title}</div>
                 <h3 className="text-2xl font-bold text-primary mb-4">{cat.vehicle}</h3>
                 
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-[var(--duration-base)] delay-100">
                   <div className="text-sm text-muted-foreground font-medium mb-1">{isAr ? "مثالية لـ:" : "Perfect for:"}</div>
                   <div className="text-primary font-medium mb-6 leading-tight">{cat.perfectFor}</div>
                   

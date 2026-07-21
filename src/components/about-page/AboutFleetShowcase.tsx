@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { ArrowRight, Users, Briefcase } from "lucide-react";
 import Link from "next/link";
 
@@ -73,7 +73,7 @@ export function AboutFleetShowcase({ locale }: { locale: string }) {
                 <img 
                   src={vehicle.image} 
                   alt={vehicle.name} 
-                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-[var(--duration-base)]"
                 />
                 <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm z-10">
                   {vehicle.category}

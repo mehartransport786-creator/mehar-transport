@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Shield, UserCheck, Clock, HeartHandshake, Eye, TrendingUp } from "lucide-react";
 
 export function OurValues({ locale }: { locale: string }) {

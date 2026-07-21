@@ -49,11 +49,11 @@ function BookingAppContent() {
             <div className="flex-1 lg:w-[65%] space-y-6">
               <JourneySection />
               
-              <div className={`transition-all duration-700 ${state.routeId || state.serviceType === 'hourly' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+              <div className={`transition-all duration-[var(--duration-base)] ${state.routeId || state.serviceType === 'hourly' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
                 <VehicleSection />
               </div>
 
-              <div className={`transition-all duration-700 ${state.selectedVehicle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none hidden'}`}>
+              <div className={`transition-all duration-[var(--duration-base)] ${state.selectedVehicle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none hidden'}`}>
                 <ExtrasSection />
                 <PassengerSection />
                 <PaymentSection />

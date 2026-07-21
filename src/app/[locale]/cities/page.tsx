@@ -120,14 +120,14 @@ export default async function CitiesPage() {
             <Link
               key={city.slug}
               href={`/cities/${city.slug}`}
-              className={`group bg-white dark:bg-primary rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
+              className={`group bg-white dark:bg-primary rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-[var(--duration-base)] ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
                 }`}
             >
               <div className={`relative ${index === 0 ? 'h-72' : 'h-56'} w-full overflow-hidden`}>
                 <img
                   src={city.image}
                   alt={city.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-[var(--duration-base)] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">

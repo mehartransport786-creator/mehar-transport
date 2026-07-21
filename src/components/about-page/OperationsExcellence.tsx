@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Plane, Navigation2, Map, CalendarCheck, Headset, CheckCircle, Activity } from "lucide-react";
 
 export function OperationsExcellence({ locale }: { locale: string }) {

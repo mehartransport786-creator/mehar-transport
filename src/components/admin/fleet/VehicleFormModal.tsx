@@ -27,6 +27,7 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
     features: [] as string[],
     featuresAr: [] as string[],
     active: true,
+    hourlyRate: 0,
   });
 
   const [newFeatureEn, setNewFeatureEn] = useState('');
@@ -43,6 +44,7 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
         features: vehicle.features || [],
         featuresAr: vehicle.featuresAr || [],
         active: vehicle.active !== false,
+        hourlyRate: vehicle.hourlyRate || 0,
       });
     } else {
       setForm({
@@ -53,6 +55,7 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
         image: '',
         features: [], featuresAr: [],
         active: true,
+        hourlyRate: 0,
       });
     }
     setError('');
@@ -173,6 +176,11 @@ export default function VehicleFormModal({ isOpen, onClose, vehicle, isAr, onSav
             <div>
               <label className="block text-xs font-bold text-gray-500 mb-1.5 flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5"/> {isAr ? 'الحقائب' : 'Luggage'}</label>
               <input type="number" min="0" value={form.luggage} onChange={(e) => updateField('luggage', Number(e.target.value))}
+                className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-white outline-none" />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-gray-500 mb-1.5">{isAr ? 'سعر الساعة (SAR)' : 'Hourly Rate (SAR/hr)'}</label>
+              <input type="number" min="0" value={form.hourlyRate} onChange={(e) => updateField('hourlyRate', Number(e.target.value))}
                 className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-white outline-none" />
             </div>
           </div>

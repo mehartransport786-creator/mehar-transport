@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export function SafetyQuality() {

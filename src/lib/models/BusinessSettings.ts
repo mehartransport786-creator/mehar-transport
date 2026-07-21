@@ -23,7 +23,7 @@ const BusinessSettingsSchema: Schema = new Schema(
     supportEmail: { type: String, default: "support@mehar.sa" },
     phoneNumbers: [{ type: String, default: ["+966 56 563 8120"] }],
     whatsapp: { type: String, default: "+966 56 563 8120" },
-    officeAddress: { type: String, default: "Jeddah, Saudi Arabia" },
+    officeAddress: { type: String, default: "Al Nawariyah, Makkah, Saudi Arabia" },
     googleMapsLink: { type: String, default: "" },
     businessHours: { type: String, default: "24/7" },
     timeZone: { type: String, default: "Asia/Riyadh" },

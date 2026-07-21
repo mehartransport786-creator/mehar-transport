@@ -27,6 +27,7 @@ export interface IVehicle extends Document {
   badge?: string;
   badgeAr?: string;
   active: boolean;
+  hourlyRate: number;
 }
 
 const VehicleSchema = new Schema<IVehicle>({
@@ -55,7 +56,8 @@ const VehicleSchema = new Schema<IVehicle>({
   specialLabelAr: { type: String },
   badge: { type: String },
   badgeAr: { type: String },
-  active: { type: Boolean, default: true }
+  active: { type: Boolean, default: true },
+  hourlyRate: { type: Number, required: true, default: 0 }
 }, {
   timestamps: true
 });

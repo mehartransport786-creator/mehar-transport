@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { mockFleet } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Users, Briefcase, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
@@ -45,7 +45,7 @@ export function RelatedVehicles({ currentSlug }: RelatedVehiclesProps) {
                 <img 
                   src={vehicle.image} 
                   alt={vehicle.name} 
-                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-[var(--duration-base)]" 
                 />
               </div>
               <div className="p-6">

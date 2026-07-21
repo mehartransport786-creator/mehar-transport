@@ -40,15 +40,6 @@ export interface IBooking extends Document {
   priority: BookingPriority;
   driverAssigned?: string;
   totalPrice: number;
-  priceBreakdown?: {           // PR-3 F01: server-computed breakdown
-    basePrice: number;
-    seasonalAdjustment?: number;
-    seasonalRuleName?: string;
-    subtotal: number;
-    taxRate: number;
-    taxAmount: number;
-    totalIncludingTax: number;
-  };
   idempotencyKey?: string;     // PR-4 F11: client-generated dedup key
   extras: string[];
   specialRequests?: string;
@@ -99,15 +90,6 @@ const BookingSchema = new Schema<IBooking>({
   },
   driverAssigned: { type: String },
   totalPrice: { type: Number, required: true },
-  priceBreakdown: {
-    basePrice: { type: Number },
-    seasonalAdjustment: { type: Number },
-    seasonalRuleName: { type: String },
-    subtotal: { type: Number },
-    taxRate: { type: Number },
-    taxAmount: { type: Number },
-    totalIncludingTax: { type: Number },
-  },
   idempotencyKey: { type: String, sparse: true, unique: true }, // F11: dedup
   extras: [{ type: String }],
   specialRequests: { type: String },

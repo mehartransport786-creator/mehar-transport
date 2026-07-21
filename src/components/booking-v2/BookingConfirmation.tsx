@@ -203,17 +203,10 @@ export function BookingConfirmation() {
                     <span className="font-medium text-secondary">+{adj.amount.toFixed(0)} SAR</span>
                   </div>
                 ))}
-
-                {state.pricing.taxAmount > 0 && (
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">{isAr ? "ضريبة القيمة المضافة" : "VAT (15%)"}</span>
-                    <span className="font-medium">{state.pricing.taxAmount.toFixed(0)} SAR</span>
-                  </div>
-                )}
                 
                 <div className="pt-3 mt-3 border-t border-border flex justify-between items-center">
                   <span className="font-bold text-primary">{isAr ? "الإجمالي" : "Total Amount"}</span>
-                  <span className="text-xl font-black text-primary">{state.pricing.totalIncludingTax.toFixed(0)} SAR</span>
+                  <span className="text-xl font-black text-primary">{state.pricing.totalPrice.toFixed(0)} SAR</span>
                 </div>
                 
                 <div className="pt-3 mt-1 flex items-center gap-2 text-xs font-medium text-emerald-600 bg-emerald-50 px-3 py-2 rounded-lg border border-emerald-100">

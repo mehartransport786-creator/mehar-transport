@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { CarFront, Clock, UserCheck, ShieldCheck, Route, Star } from "lucide-react";
 
 export function FleetOverview() {
@@ -73,7 +73,7 @@ export function FleetOverview() {
                 variants={itemVariants}
                 className="flex flex-col items-center text-center space-y-4 group"
               >
-                <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-secondary transition-all duration-500 shadow-sm border border-border/50">
+                <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-secondary transition-all duration-[var(--duration-base)] shadow-sm border border-border/50">
                   <Icon className="w-7 h-7 stroke-[1.5]" />
                 </div>
                 <div>

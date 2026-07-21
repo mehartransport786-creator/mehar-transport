@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { ArrowRight, ArrowLeft, Star, CheckCircle2, ShieldCheck, Clock, Check } from "lucide-react";
 import Image from "next/image";
 
@@ -118,7 +118,7 @@ export function FeaturedRoutes() {
                   alt={`${route.from} to ${route.to}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-700 ease-out"
+                  className="object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-[var(--duration-base)] ease-out"
                 />
                 
                 {/* Premium Gradient Overlay */}

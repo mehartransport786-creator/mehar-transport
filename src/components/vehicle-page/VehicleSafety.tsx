@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { ShieldCheck, MapPin, Wrench, ShieldAlert } from "lucide-react";
 
 export function VehicleSafety() {

@@ -175,20 +175,14 @@ export function StickySummary() {
           </div>
         ))}
 
-        {/* Taxes */}
-        {state.pricing.totalIncludingTax > 0 && (
-          <div className="flex justify-between items-center pb-2">
-            <div className="text-xs text-muted-foreground/60 font-medium">{isAr ? "ضريبة القيمة المضافة (15%)" : "VAT (15%)"}</div>
-            <div className="text-xs text-muted-foreground/60 tabular-nums">{state.pricing.taxAmount.toFixed(0)} SAR</div>
-          </div>
-        )}
+
       </div>
 
       {/* Total */}
       <div className="bg-muted rounded-xl p-4 mb-6 flex justify-between items-center border border-border">
         <div className="text-sm font-bold text-primary">{isAr ? "الإجمالي" : "Total Amount"}</div>
         <div className="text-2xl font-black text-primary tabular-nums">
-          {state.pricing.totalIncludingTax.toFixed(0)} <span className="text-sm text-muted-foreground/60 font-bold ml-1">SAR</span>
+          {state.pricing.totalPrice.toFixed(0)} <span className="text-sm text-muted-foreground/60 font-bold ml-1">SAR</span>
         </div>
       </div>
 

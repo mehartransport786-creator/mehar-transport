@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Quote, Star, User } from "lucide-react";
 
 export function ReviewsSection() {
@@ -58,7 +58,7 @@ export function ReviewsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="bg-background p-8 md:p-10 lg:p-12 rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] border border-border flex flex-col items-center text-center relative group hover:-translate-y-2 transition-transform duration-500"
+              className="bg-background p-8 md:p-10 lg:p-12 rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] border border-border flex flex-col items-center text-center relative group hover:-translate-y-2 transition-transform duration-[var(--duration-base)]"
             >
               <div className="absolute -top-6 bg-primary text-secondary w-12 h-12 rounded-full flex items-center justify-center shadow-[var(--shadow-luxury)] group-hover:scale-110 transition-transform duration-300">
                 <Quote className="w-5 h-5 fill-current" />

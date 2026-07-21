@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { MapPin, PlaneTakeoff, Building2, Users2 } from "lucide-react";
 
 export function PilgrimExperience() {

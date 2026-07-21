@@ -14,7 +14,7 @@ export function InteractiveMap() {
         loading="lazy" 
         allowFullScreen 
         referrerPolicy="no-referrer-when-downgrade" 
-        src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Mehar%20Umrah%20Transport,%20Jeddah,%20Saudi%20Arabia&t=&z=14&ie=UTF8&iwloc=B&output=embed">
+        src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Al%20Nawariyah,%20Makkah,%20Saudi%20Arabia&t=&z=14&ie=UTF8&iwloc=B&output=embed">
       </iframe>
 
       {/* Floating Panel for Directions */}

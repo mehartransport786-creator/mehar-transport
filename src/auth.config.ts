@@ -18,4 +18,5 @@ export const authConfig = {
     maxAge: 24 * 60 * 60, // 24 hours
   },
   secret: process.env.AUTH_SECRET, // safe — undefined at build time, populated at runtime
+  trustHost: true, // Fixes "Server configuration error" on live domains/proxies
 } satisfies NextAuthConfig;

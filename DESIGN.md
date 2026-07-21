@@ -147,3 +147,75 @@ The Mehar Transport Design System is intended to evolve into a scalable enterpri
 - Mobile platforms
 
 Every future product must inherit this design system to maintain a unified and recognizable Mehar Transport brand across all customer touchpoints.
+
+## Motion & Animation
+
+Motion here is **confirmation, not decoration**. It exists to show that something changed, where it came from, and that the interface is responding. A pilgrim booking a 3 AM airport pickup should never wait on an animation, notice one, or be distracted by one.
+
+Three rules that override everything else:
+
+1. **Nothing moves without a reason.** Every animation answers "what changed?" If it can't, remove it.
+2. **Short and quiet.** Nothing exceeds 400ms. Nothing travels more than 16px. Nothing bounces, spins, parallaxes, or plays twice.
+3. **Content never waits on motion.** Text is readable and buttons are tappable at frame one. Animation is a layer over already-usable UI, never a gate in front of it.
+
+### Token Set
+
+**Duration scale** — four values only, no ad-hoc timings anywhere in the codebase:
+
+| Token | Value | Use |
+|---|---|---|
+| --duration-instant | 120ms | Hover, focus, active, colour and border changes |
+| --duration-quick | 200ms | Dropdowns, tooltips, small state changes, tab switches |
+| --duration-base | 300ms | Scroll reveals, accordion expand/collapse, card entrances |
+| --duration-slow | 400ms | Modals, drawers, page-level transitions. Nothing exceeds this. |
+
+**Easing** — three curves only:
+
+| Token | Value | Use |
+|---|---|---|
+| --ease-out | cubic-bezier(0.22, 1, 0.36, 1) | Default. Anything entering or responding to a tap. Fast start, soft settle. |
+| --ease-in-out | cubic-bezier(0.65, 0, 0.35, 1) | Elements moving between two on-screen positions |
+| --ease-in | cubic-bezier(0.4, 0, 1, 1) | Exits only — things leaving the screen |
+
+No spring physics, no bounce, no elastic, no linear except indeterminate loaders.
+
+**Distance scale** — motion is felt, not watched:
+
+| Token | Value | Use |
+|---|---|---|
+| --motion-sm | 4px | Hover lift, button press |
+| --motion-md | 8px | Dropdowns, tooltips |
+| --motion-lg | 16px | Scroll reveals, modal entrance. Hard ceiling. |
+
+**Stagger** — 60ms between siblings, capped at 5 items. Item 6 onward shares item 5's delay. Never stagger more than one group per viewport.
+
+### Allowed Inventory
+
+**Permitted**
+- Hover / focus / active on interactive elements: opacity, background, border colour, up to 4px translate — --duration-instant, --ease-out.
+- Scroll reveal: opacity 0 ? 1 plus 	ranslateY(16px) ? 0, --duration-base, --ease-out, fires **once** per element, never replays on scroll back.
+- Accordion / FAQ expand and collapse: height and opacity, --duration-base. (Use grid-rows 1fr to  fr technique).
+- Modal, drawer, mobile nav: backdrop fade plus panel translate — --duration-slow in, --duration-quick out.
+- Form and booking state: focus rings, inline validation appearing, button loading spinner, success confirmation.
+- Skeleton or shimmer placeholders while fare and availability data loads.
+- Step transitions in the booking flow: a plain crossfade, --duration-quick.
+
+**Forbidden — remove on sight**
+- Parallax, scroll-hijacking, scroll-linked scrubbing, smooth-scroll libraries.
+- Autoplaying hero animations, animated gradients, floating background shapes, particles.
+- Text animating in per-character or per-word.
+- Counters that tick up; animated progress rings on trust badges.
+- Auto-advancing carousels.
+- Anything looping infinitely except loading indicators.
+- Entrance animation on the hero headline, primary CTA, phone number, WhatsApp button, or price — these are visible and interactive at first paint, always.
+
+### Performance and Accessibility Constraints
+
+- **Animate 	ransform and opacity only.** Never width, height, 	op, left, margin, or ox-shadow. For accordions use a grid-rows (1fr/ fr) technique.
+- **No permanent will-change.** Apply for the duration of an animation, or not at all.
+- **Scroll reveals use one shared IntersectionObserver**, not one per element — ootMargin: "0px 0px -10% 0px", 	hreshold: 0.1, unobserve after firing. Use the <Reveal> component.
+- **No new animation dependency.** CSS transitions, keyframes, and IntersectionObserver cover this entire spec.
+- **No layout shift.** Revealed elements occupy their final space from first paint and only fade/translate within it.
+- **prefers-reduced-motion: reduce** disables all transform motion and all scroll reveals globally, leaving opacity changes at 120ms and instant state changes. Reduced-motion users must still see every element in its final state; never leave content stuck at opacity: 0.
+- **No-JS safety.** If JavaScript fails or is slow, scroll-reveal elements default to visible. The hidden state is set from JS (or via a .js root class), never as the CSS default.
+- **Motion budget:** at most 2 distinct animated moments per viewport-height of scroll.

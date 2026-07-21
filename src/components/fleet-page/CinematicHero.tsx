@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "@/lib/motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, ArrowLeft, Phone, Calendar } from "lucide-react";
 import { useRef } from "react";

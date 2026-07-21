@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 
 export function CompanyIntro({ locale }: { locale: string }) {
   const isAr = locale === "ar";
@@ -69,7 +69,7 @@ export function CompanyIntro({ locale }: { locale: string }) {
               <img 
                 src="/fleet/camry.webp" 
                 alt="Mehar Transport Fleet" 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-[var(--duration-base)] hover:scale-105"
               />
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-36 h-36 bg-secondary rounded-bl-[80px] z-20 flex items-center justify-center shadow-[var(--shadow-luxury)]">

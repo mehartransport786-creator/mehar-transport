@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
@@ -74,7 +74,7 @@ export function AboutSection() {
                     alt="Luxury Interior"
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-[2s] group-hover:scale-105"
+                    className="object-cover transition-transform duration-[var(--duration-slow)] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                 </div>
@@ -87,7 +87,7 @@ export function AboutSection() {
                     alt="Chauffeur Service"
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-[2s] group-hover:scale-105"
+                    className="object-cover transition-transform duration-[var(--duration-slow)] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                 </div>

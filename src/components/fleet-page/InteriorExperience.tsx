@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Maximize2, Wind, Shield, Coffee } from "lucide-react";
 import Image from "next/image";
 
@@ -109,7 +109,7 @@ export function InteriorExperience() {
                 alt="Luxury Interior" 
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
+                className="object-cover group-hover:scale-105 transition-transform duration-[var(--duration-slow)]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-80" />
               

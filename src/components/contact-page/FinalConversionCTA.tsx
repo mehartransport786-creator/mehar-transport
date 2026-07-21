@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { ArrowRight, PhoneCall, MessageCircle } from "lucide-react";
 
 export function FinalConversionCTA() {

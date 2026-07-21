@@ -21,7 +21,7 @@ export async function GET(request: Request) {
         supportEmail: "support@mehar.sa",
         phoneNumbers: ["+966 56 563 8120"],
         whatsapp: "+966 56 563 8120",
-        officeAddress: "Jeddah, Saudi Arabia",
+        officeAddress: "Al Nawariyah, Makkah, Saudi Arabia",
         googleMapsLink: "",
         businessHours: "24/7",
         timeZone: "Asia/Riyadh",

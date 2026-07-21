@@ -122,21 +122,12 @@ export async function POST(request: Request) {
 
     if (body.vehicleId && (body.routeId || serviceType === 'hourly')) {
       try {
-        priceResult = await calculatePrice(
-          serviceType === 'hourly'
-            ? {
-                type: 'hourly',
-                vehicleId: body.vehicleId,
-                hours: Number(body.durationHours || 4),
-                date: travelDate,
-              }
-            : {
-                type: 'transfer',
-                routeId: body.routeId,
-                vehicleId: body.vehicleId,
-                date: travelDate,
-              }
-        );
+        priceResult = await calculatePrice({
+          serviceType,
+          routeId: body.routeId,
+          vehicleId: body.vehicleId,
+          durationHours: Number(body.durationHours || 4),
+        });
       } catch (priceError) {
         if (priceError instanceof PricingUnavailableError) {
           return NextResponse.json(
@@ -156,7 +147,7 @@ export async function POST(request: Request) {
     // Use server-computed price; fall back to 0 only for legacy/admin-created bookings
     // where vehicleId is not provided
     const totalPrice = priceResult
-      ? priceResult.totalIncludingTax
+      ? priceResult.totalPrice
       : round2(Number(body.totalPrice || 0));
 
     // 1. Generate sequential booking ID

@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { mockFleet } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { CheckCircle2, Star, X } from "lucide-react";
 import { Link } from "@/i18n/routing";
 

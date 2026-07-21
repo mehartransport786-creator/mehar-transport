@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Camera } from "lucide-react";
 import Image from "next/image";
 
@@ -43,7 +43,7 @@ export function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className={`relative rounded-[2rem] overflow-hidden group cursor-pointer break-inside-avoid shadow-luxury hover:shadow-[0_0_40px_rgba(248,167,49,0.2)] transition-all duration-500`}
+              className={`relative rounded-[2rem] overflow-hidden group cursor-pointer break-inside-avoid shadow-luxury hover:shadow-[0_0_40px_rgba(248,167,49,0.2)] transition-all duration-[var(--duration-base)]`}
             >
               <div className={`${img.aspect} relative w-full h-full`}>
                 <Image
@@ -51,7 +51,7 @@ export function GallerySection() {
                   alt="Premium Umrah Transport Experience"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-cover group-hover:scale-105 transition-transform duration-[var(--duration-base)] ease-out"
                 />
               </div>
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

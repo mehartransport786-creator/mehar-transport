@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { CheckCircle2 } from "lucide-react";
 
 export function WhyChooseUs({ locale }: { locale: string }) {

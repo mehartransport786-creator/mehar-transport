@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { Admin } from "@/lib/models/Admin";
+import "@/lib/models/Role";
 import connectToDatabase from "@/lib/db";
 import { NextResponse } from "next/server";
 
@@ -26,7 +27,8 @@ export async function requirePermission(module: string, requiredAction: string) 
   }
 
   // Super Admin bypasses all permission checks
-  if (admin.role?.name === "Super Admin") {
+  // Support both ObjectId populated roles and legacy string roles
+  if (admin.role?.name === "Super Admin" || admin.role === "Super Admin") {
     return null;
   }
 
@@ -60,7 +62,7 @@ export async function checkServerPermission(module: string, requiredAction: stri
   const admin = await Admin.findById(session.user.id).populate("role");
   
   if (!admin || admin.status !== "active") return false;
-  if (admin.role?.name === "Super Admin") return true;
+  if (admin.role?.name === "Super Admin" || admin.role === "Super Admin") return true;
 
   const rolePermissions = admin.role?.permissions;
   if (!rolePermissions) return false;

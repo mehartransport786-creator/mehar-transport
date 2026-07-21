@@ -28,39 +28,86 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: "Missing required fields: action, type, value" }, { status: 400 });
     }
 
-    const query: any = { isActive: true };
-    if (filters?.routeIds?.length) query.routeId = { $in: filters.routeIds };
-    if (filters?.vehicleIds?.length) query.vehicleId = { $in: filters.vehicleIds };
-
-    const pricings = await RoutePricing.find(query);
     let updatedCount = 0;
+    let routeIdsToUpdate = filters?.routeIds;
+    let includesHourly = false;
+    
+    if (routeIdsToUpdate) {
+       includesHourly = routeIdsToUpdate.includes('HOURLY_RATE');
+       routeIdsToUpdate = routeIdsToUpdate.filter((id: string) => id !== 'HOURLY_RATE');
+    } else {
+       includesHourly = true;
+    }
 
-    for (const pricing of pricings) {
-      const oldPrice = pricing.currentPrice;
-      let newPrice = oldPrice;
+    if (!filters?.routeIds || routeIdsToUpdate.length > 0) {
+      const query: any = { isActive: true };
+      if (routeIdsToUpdate && routeIdsToUpdate.length > 0) query.routeId = { $in: routeIdsToUpdate };
+      if (filters?.vehicleIds?.length) query.vehicleId = { $in: filters.vehicleIds };
 
-      if (type === 'percentage') {
-        const adjustment = oldPrice * (value / 100);
-        newPrice = action === 'increase' ? oldPrice + adjustment : Math.max(0, oldPrice - adjustment);
-      } else {
-        newPrice = action === 'increase' ? oldPrice + value : Math.max(0, oldPrice - value);
+      const pricings = await RoutePricing.find(query);
+
+      for (const pricing of pricings) {
+        const oldPrice = pricing.currentPrice;
+        let newPrice = oldPrice;
+
+        if (type === 'percentage') {
+          const adjustment = oldPrice * (value / 100);
+          newPrice = action === 'increase' ? oldPrice + adjustment : Math.max(0, oldPrice - adjustment);
+        } else {
+          newPrice = action === 'increase' ? oldPrice + value : Math.max(0, oldPrice - value);
+        }
+
+        newPrice = Math.round(newPrice);
+        pricing.currentPrice = newPrice;
+        await pricing.save();
+
+        await PricingAuditLog.create({
+          adminId: session?.user?.id,
+          adminEmail: session?.user?.email || 'admin',
+          entityType: 'route',
+          entityId: pricing._id,
+          oldPrice,
+          newPrice,
+          reason: `Bulk ${action} ${value}${type === 'percentage' ? '%' : ' SAR'}`
+        });
+
+        updatedCount++;
       }
+    }
 
-      newPrice = Math.round(newPrice);
-      pricing.currentPrice = newPrice;
-      await pricing.save();
+    if (includesHourly) {
+      const vQuery: any = {};
+      if (filters?.vehicleIds?.length) vQuery._id = { $in: filters.vehicleIds };
+      
+      const vehicles = await Vehicle.find(vQuery);
+      
+      for (const vehicle of vehicles) {
+        const oldPrice = vehicle.hourlyRate || 0;
+        let newPrice = oldPrice;
 
-      await PricingAuditLog.create({
-        adminId: session?.user?.id,
-        adminEmail: session?.user?.email || 'admin',
-        entityType: 'route',
-        entityId: pricing._id,
-        oldPrice,
-        newPrice,
-        reason: `Bulk ${action} ${value}${type === 'percentage' ? '%' : ' SAR'}`
-      });
+        if (type === 'percentage') {
+          const adjustment = oldPrice * (value / 100);
+          newPrice = action === 'increase' ? oldPrice + adjustment : Math.max(0, oldPrice - adjustment);
+        } else {
+          newPrice = action === 'increase' ? oldPrice + value : Math.max(0, oldPrice - value);
+        }
 
-      updatedCount++;
+        newPrice = Math.round(newPrice);
+        vehicle.hourlyRate = newPrice;
+        await vehicle.save();
+
+        await PricingAuditLog.create({
+          adminId: session?.user?.id,
+          adminEmail: session?.user?.email || 'admin',
+          entityType: 'hourly',
+          entityId: vehicle._id,
+          oldPrice,
+          newPrice,
+          reason: `Bulk ${action} ${value}${type === 'percentage' ? '%' : ' SAR'}`
+        });
+
+        updatedCount++;
+      }
     }
 
     return NextResponse.json({

@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Send, Calendar, Users, MapPin, Car } from "lucide-react";
 import { useState } from "react";
 

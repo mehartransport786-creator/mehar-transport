@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import { Calendar, MapPin, Users, Phone, ShieldCheck } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { useRouter } from "next/navigation";
 
 interface StickyBookingWidgetProps {

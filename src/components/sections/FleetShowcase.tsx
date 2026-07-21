@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { mockFleet } from "@/lib/data";
 import { Link } from "@/i18n/routing";
 import { 
@@ -182,7 +182,7 @@ export function FleetShowcase() {
                           alt={vehicle.name} 
                           fill
                           sizes="112px"
-                          className={`object-contain p-2 transition-transform duration-500 ${isActive ? 'scale-110 drop-shadow-md' : 'group-hover:scale-110 drop-shadow-sm'}`}
+                          className={`object-contain p-2 transition-transform duration-[var(--duration-base)] ${isActive ? 'scale-110 drop-shadow-md' : 'group-hover:scale-110 drop-shadow-sm'}`}
                         />
                       </div>
 
