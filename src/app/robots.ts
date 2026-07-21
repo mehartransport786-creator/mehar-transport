@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/', '/dashboard/', '/booking?*'],
+        disallow: ['/admin', '/api/admin', '/api/auth', '/dashboard', '/booking?'],
       },
       // Block aggressive AI training crawlers that generate high server load
       // without contributing to SEO or legitimate traffic.
