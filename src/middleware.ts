@@ -56,7 +56,7 @@ const adminAuthHandler = auth((req) => {
  *   authentication (/admin/* pages and /api/admin/* routes). Public pages and
  *   non-admin API routes skip auth entirely and only run next-intl routing.
  */
-export default function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Non-admin API routes → pass through immediately (no auth, no intl)
@@ -66,11 +66,23 @@ export default function middleware(req: NextRequest) {
 
   // Admin paths (pages or API) → run JWT decode + guard
   if (pathname.includes('/admin') || pathname.startsWith('/api/admin')) {
-    // NextAuth v5 auth() HOC expects AppRouteHandlerFnContext as second arg,
-    // but in middleware mode it only reads the request. Pass an empty context
-    // to satisfy TypeScript without changing runtime behaviour.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return adminAuthHandler(req, {} as any);
+    try {
+      // NextAuth v5 auth() HOC expects AppRouteHandlerFnContext as second arg,
+      // but in middleware mode it only reads the request. Pass an empty context
+      // to satisfy TypeScript without changing runtime behaviour.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return await adminAuthHandler(req, {} as any);
+    } catch (error) {
+      console.error('Middleware Auth Error:', error);
+      // Fail closed
+      if (pathname.startsWith('/api/admin')) {
+        return Response.json(
+          { success: false, error: 'Unauthorized (System Error)' },
+          { status: 401 }
+        );
+      }
+      return Response.redirect(new URL('/', req.url));
+    }
   }
 
   // All public pages → only run next-intl (locale detection + redirect)
