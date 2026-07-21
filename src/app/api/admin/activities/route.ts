@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db';
 import ActivityLog from '@/lib/models/ActivityLog';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/admin/activities — Fetch recent activity logs
  * F16: Previously returned { success: true, data: [] } on error, hiding DB failures from operators.

@@ -3,6 +3,8 @@ import connectToDatabase from '@/lib/db';
 import RoutePricing from '@/lib/models/RoutePricing';
 import Route from '@/lib/models/Route';
 
+export const dynamic = 'force-dynamic';
+
 const mockVehicles = [
   { _id: 'v1', name: 'Toyota Camry', nameAr: 'تويوتا كامري', type: 'Executive Sedan', typeAr: 'سيدان تنفيذية', passengers: 4, luggage: 3, image: '/fleet/camry.png' },
   { _id: 'v2', name: 'Kia K5', nameAr: 'كيا K5', type: 'Executive Sedan', typeAr: 'سيدان تنفيذية', passengers: 4, luggage: 3, image: '/fleet/kia-k5.png' },

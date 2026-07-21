@@ -9,6 +9,8 @@
 import { NextResponse } from "next/server";
 import { calculatePrice, PricingUnavailableError } from "@/lib/pricing/engine";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   let body: any;
   try {
