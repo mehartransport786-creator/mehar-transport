@@ -261,27 +261,7 @@ export function BookingConfirmation() {
             {isAr ? "حجز جديد" : "Make Another Booking"}
           </button>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto mt-4 sm:mt-0 sm:ml-auto rtl:sm:mr-auto">
-            <button 
-              onClick={() => alert(isAr ? "جاري تنزيل ملف PDF..." : "Downloading PDF...")} 
-              className="p-3 text-muted-foreground hover:text-primary hover:bg-muted rounded-[var(--radius-btn)] transition-all" 
-              title={isAr ? "تحميل PDF" : "Download PDF"}
-            >
-              <Download className="w-5 h-5" />
-            </button>
-            <button onClick={handlePrint} className="p-3 text-muted-foreground hover:text-primary hover:bg-muted rounded-[var(--radius-btn)] transition-all" title={isAr ? "طباعة" : "Print"}>
-              <Printer className="w-5 h-5" />
-            </button>
-            <a 
-              href={`https://wa.me/966548707332?text=Hello, my booking reference is ${bookingId}`}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all" 
-              title={isAr ? "تواصل عبر واتساب" : "Contact via WhatsApp"}
-            >
-              <MessageCircle className="w-5 h-5" />
-            </a>
-          </div>
+
         </div>
 
       </div>
