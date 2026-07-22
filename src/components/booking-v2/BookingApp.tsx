@@ -20,24 +20,26 @@ function BookingAppContent() {
   return (
     <div className="min-h-screen bg-background pb-32 lg:pb-12">
       {/* Hero Header */}
-      <div className="bg-primary relative pt-24 pb-16">
-        <div className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm text-secondary px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
-            <ShieldCheck className="w-4 h-4" />
-            {isAr ? "تجربة حجز فاخرة" : "Premium Booking Experience"}
-          </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4 tracking-tight">
-            {isAr ? "احجز رحلتك" : "Book Your Journey"}
-          </h1>
-          
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-8 text-primary-foreground/60 text-xs sm:text-sm font-medium">
-            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-secondary" /> {isAr ? "خدمة على مدار الساعة" : "24/7 Service"}</span>
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-secondary" /> {isAr ? "سائقون محترفون" : "Licensed Drivers"}</span>
-            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-secondary" /> {isAr ? "تقييم 4.9★" : "4.9★ Rating"}</span>
-            <span className="flex items-center gap-1.5"><Headset className="w-4 h-4 text-secondary" /> {isAr ? "تأكيد فوري" : "Instant Confirmation"}</span>
+      {!state.bookingId && (
+        <div className="bg-primary relative pt-24 pb-16">
+          <div className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm text-secondary px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+              <ShieldCheck className="w-4 h-4" />
+              {isAr ? "تجربة حجز فاخرة" : "Premium Booking Experience"}
+            </div>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4 tracking-tight">
+              {isAr ? "احجز رحلتك" : "Book Your Journey"}
+            </h1>
+            
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-8 text-primary-foreground/60 text-xs sm:text-sm font-medium">
+              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-secondary" /> {isAr ? "خدمة على مدار الساعة" : "24/7 Service"}</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-secondary" /> {isAr ? "سائقون محترفون" : "Licensed Drivers"}</span>
+              <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-secondary" /> {isAr ? "تقييم 4.9★" : "4.9★ Rating"}</span>
+              <span className="flex items-center gap-1.5"><Headset className="w-4 h-4 text-secondary" /> {isAr ? "تأكيد فوري" : "Instant Confirmation"}</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Main Layout */}
       <div className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
