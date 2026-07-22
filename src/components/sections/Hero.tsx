@@ -18,25 +18,27 @@ export function Hero() {
   return (
     <section className="relative min-h-[calc(100svh+4rem)] lg:min-h-[calc(100vh+6rem)] w-full flex flex-col overflow-hidden">
       {/* Cinematic Video Background */}
-      <div className="absolute inset-0 z-0 bg-foreground">
+      <div className="absolute inset-0 z-0 bg-black">
         <Image
           src="/hero/homepage-hero-new.jpg"
           alt="Mehar Transport Luxury Chauffeur"
           quality={100}
           fill
           priority
-          className="object-cover object-center opacity-60"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/20 to-primary/80" />
+        {/* Professional light black overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 flex-1 flex flex-col justify-center container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-auto ms-auto pb-16 lg:pb-24 max-w-3xl"
+          className="my-auto ms-auto max-w-3xl"
         >
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
