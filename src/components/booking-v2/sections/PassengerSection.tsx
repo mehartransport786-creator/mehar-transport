@@ -30,7 +30,7 @@ export function PassengerSection() {
               value={state.passengerInfo.name}
               onChange={(e) => updatePassengerInfo({ name: e.target.value })}
               className="w-full pl-10 pr-4 py-3 bg-muted border border-border rounded-[var(--radius-input)] text-foreground text-sm focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all"
-              placeholder={isAr ? "الاسم بالكامل" : "John Doe"}
+              placeholder={isAr ? "الاسم بالكامل" : "Mohammad"}
             />
           </div>
         </div>

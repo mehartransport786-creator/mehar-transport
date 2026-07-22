@@ -99,7 +99,7 @@ export function AdvancedContactForm() {
           {/* Personal Details */}
           <div className="relative">
             <label className={labelClass}>{t("name")} *</label>
-            <input {...register("name")} className={inputClass} placeholder="John Doe" />
+            <input {...register("name")} className={inputClass} placeholder="Mohammad" />
             {errors.name && <span className={errorClass}>{errors.name.message}</span>}
           </div>
 
