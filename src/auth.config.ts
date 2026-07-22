@@ -1,10 +1,9 @@
 import type { NextAuthConfig } from "next-auth";
 
 export const authConfig = {
-  // Locale is injected by middleware; this is the fallback only.
   pages: {
-    signIn: "/en/admin/login",
-    error: "/en/admin/login",
+    signIn: "/admin/login",
+    error: "/admin/login",
   },
 
   session: { strategy: "jwt" },
