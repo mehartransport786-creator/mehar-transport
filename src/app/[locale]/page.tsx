@@ -8,7 +8,7 @@ import { SafetySection } from "@/components/sections/SafetySection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
-import { ContentHubSection } from "@/components/sections/ContentHubSection";
+
 import { CTASection } from "@/components/sections/CTASection";
 
 export default function HomePage() {
@@ -23,7 +23,7 @@ export default function HomePage() {
       <SafetySection />
       <GallerySection />
       <ReviewsSection />
-      <ContentHubSection />
+
       <FAQSection />
       <CTASection />
     </main>
