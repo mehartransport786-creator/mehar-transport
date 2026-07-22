@@ -5,7 +5,10 @@ import connectToDatabase from "@/lib/db";
 import { Admin } from "@/lib/models/Admin";
 import { AuditLog } from "@/lib/models/AuditLog";
 import { AdminSession } from "@/lib/models/AdminSession";
-import { Role } from "@/lib/models/Role"; // Make sure to import Role
+import { Role } from "@/lib/models/Role";
+
+// Force TypeScript/Webpack to NOT tree-shake the Role import, which is required for Mongoose populate()
+if (!Role) console.warn("Role model missing");
 import bcryptjs from "bcryptjs";
 import crypto from "crypto";
 
