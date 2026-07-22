@@ -23,7 +23,7 @@ export function MobileActionBar() {
         <div>
           <div className="text-xs text-muted-foreground font-medium mb-0.5">{isAr ? "الإجمالي" : "Total"}</div>
           <div className="text-xl font-black text-primary tabular-nums leading-none">
-            {state.pricing.totalIncludingTax.toFixed(0)} <span className="text-sm text-muted-foreground/60 font-bold ml-0.5">SAR</span>
+            {state.pricing.totalPrice.toFixed(0)} <span className="text-sm text-muted-foreground/60 font-bold ml-0.5">SAR</span>
           </div>
         </div>
         
