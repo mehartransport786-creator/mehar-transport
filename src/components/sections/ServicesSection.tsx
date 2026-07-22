@@ -46,7 +46,7 @@ export function ServicesSection() {
       description: isAr
         ? "نرتب رحلات زيارة خاصة إلى المواقع الإسلامية في مكة والمدينة ومحيطهما — سائق مخصص لك مدة الجولة كاملة."
         : "Arranged visits to Islamic historical sites in and around Makkah and Madinah. A dedicated driver accompanies your group throughout the full tour.",
-      image: "/services/ziyarah-tour.jpg"
+      image: "/services/ziyarah-tour.jpeg"
     }
   ];
 
