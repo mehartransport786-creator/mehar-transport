@@ -139,7 +139,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.2 }}
               className="relative w-full h-full max-w-[90vw] max-h-[85vh]"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <Image
                 src={displayGallery[selectedImage]}

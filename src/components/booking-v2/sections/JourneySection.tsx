@@ -64,8 +64,15 @@ export function JourneySection() {
                 <select
                   value={state.routeId || ""}
                   onChange={(e) => {
-                    const r = routes.find(x => x._id === e.target.value);
-                    if (r) updateState({ routeId: r._id, routeName: isAr ? r.nameAr || r.name : r.name });
+                    const targetId = String(e.target.value);
+                    const r = routes.find(x => String(x._id) === targetId || String(x.id) === targetId);
+                    if (r) {
+                      updateState({ routeId: targetId, routeName: isAr ? r.nameAr || r.name : r.name });
+                    } else {
+                      // Fallback if not found (shouldn't happen, but just in case)
+                      const text = e.target.options[e.target.selectedIndex].text;
+                      updateState({ routeId: targetId, routeName: text });
+                    }
                   }}
                   className="w-full pl-11 pr-4 py-3.5 bg-muted border border-border rounded-[var(--radius-input)] text-foreground font-medium focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all appearance-none"
                 >

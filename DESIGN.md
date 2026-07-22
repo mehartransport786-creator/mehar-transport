@@ -219,3 +219,6 @@ No spring physics, no bounce, no elastic, no linear except indeterminate loaders
 - **prefers-reduced-motion: reduce** disables all transform motion and all scroll reveals globally, leaving opacity changes at 120ms and instant state changes. Reduced-motion users must still see every element in its final state; never leave content stuck at opacity: 0.
 - **No-JS safety.** If JavaScript fails or is slow, scroll-reveal elements default to visible. The hidden state is set from JS (or via a .js root class), never as the CSS default.
 - **Motion budget:** at most 2 distinct animated moments per viewport-height of scroll.
+
+### Navbar Behavior
+- **Transparency:** The navbar must be transparent when the user is at the top of the page (scroll position 0) and must transition to a solid white background when scrolling down. This behavior applies globally across all pages.

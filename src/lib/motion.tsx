@@ -109,11 +109,12 @@ export const motion = {
   a: createMotionComponent('a'),
   img: createMotionComponent('img'),
   form: createMotionComponent('form'),
+  tr: createMotionComponent('tr'),
 };
 
 // Mock AnimatePresence to just render children instantly if missed
 export const AnimatePresence = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 
 // Mock scroll hooks to prevent crashes
-export const useScroll = () => ({ scrollY: 0, scrollYProgress: { on: () => {}, get: () => 0 } });
-export const useTransform = () => 0;
+export const useScroll = (options?: any) => ({ scrollY: 0, scrollYProgress: { on: () => {}, get: () => 0 } });
+export const useTransform = (value: any, input: any, output: any) => 0;

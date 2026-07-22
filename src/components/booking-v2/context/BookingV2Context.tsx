@@ -148,50 +148,13 @@ const EXTRAS_PRICES: Record<keyof ExtrasState, number> = {
 
 const BookingV2Context = createContext<BookingV2ContextType | undefined>(undefined);
 
-export function BookingV2Provider({ children }: { children: ReactNode }) {
+export function BookingV2Provider({ children, initialRoutes = [] }: { children: ReactNode, initialRoutes?: any[] }) {
   const [state, setState] = useState<BookingV2State>(initialState);
-  const [routes, setRoutes] = useState<any[]>([]);
-  const [routesLoading, setRoutesLoading] = useState(true);
+  const [routes, setRoutes] = useState<any[]>(initialRoutes);
+  const [routesLoading, setRoutesLoading] = useState(false);
   const pricingAbortRef = useRef<AbortController | null>(null);
 
-  // Load route list from DB (metadata only — not prices)
-  useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000);
-
-    async function fetchRoutes() {
-      if (isMounted) setRoutesLoading(true);
-      try {
-        const res = await fetch('/api/pricing/routes', { 
-          cache: 'no-store',
-          headers: { 'Accept': 'application/json' },
-          signal: controller.signal
-        });
-        
-        clearTimeout(timeoutId);
-        if (!res.ok) throw new Error(`Failed to fetch routes: ${res.status}`);
-        
-        const data = await res.json();
-        if (isMounted && data.routes && Array.isArray(data.routes)) {
-          // We now keep all routes, including hourly ones, because Hourly is now just a route category!
-          setRoutes(data.routes);
-        }
-      } catch (err) {
-        console.error("Failed to load routes", err);
-        // Routes metadata fallback — intentionally empty so staff know to populate DB
-        if (isMounted) setRoutes([]);
-      } finally {
-        if (isMounted) setRoutesLoading(false);
-      }
-    }
-    fetchRoutes();
-    return () => { 
-      isMounted = false; 
-      clearTimeout(timeoutId);
-      controller.abort();
-    };
-  }, []);
+  // Removed client-side fetching: routes are now fetched on the server and passed as initialRoutes.
 
   const updateState = useCallback((updates: Partial<BookingV2State>) => {
     setState((prev) => ({ ...prev, ...updates }));

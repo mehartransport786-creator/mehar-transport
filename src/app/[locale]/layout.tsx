@@ -118,7 +118,7 @@ export default async function RootLayout({
   const isAr = locale === 'ar';
 
   // Validate locale
-  if (!routing.locales.includes(locale as 'en' | 'ar')) {
+  if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
 

@@ -88,6 +88,7 @@ export async function POST(request: Request) {
     }
 
     // Bust the public booking page route cache immediately
+    // @ts-ignore
     revalidateTag('routes-pricing');
 
     return NextResponse.json({ success: true, data: result }, { status: 200 });

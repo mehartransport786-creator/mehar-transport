@@ -16,9 +16,9 @@ export function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const isAr = locale === "ar";
-  // Transparent only if on specific pages (like home or about) AND at the top
-  const isTransparentPage = pathname === "/" || pathname === "/about";
-  const isTransparent = isTransparentPage && !isScrolled;
+  // Navbar is transparent when at the top, and gets a white background when scrolled down.
+  // This applies to all pages.
+  const isTransparent = !isScrolled;
 
   useEffect(() => {
     const handleScroll = (e?: Event) => {

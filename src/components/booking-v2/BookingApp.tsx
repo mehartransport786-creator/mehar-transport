@@ -123,9 +123,9 @@ function BookingAppContent() {
   );
 }
 
-export function BookingApp() {
+export function BookingApp({ initialRoutes = [] }: { initialRoutes?: any[] }) {
   return (
-    <BookingV2Provider>
+    <BookingV2Provider initialRoutes={initialRoutes}>
       <BookingAppContent />
     </BookingV2Provider>
   );

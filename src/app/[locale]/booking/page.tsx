@@ -1,5 +1,6 @@
 import { BookingApp } from "@/components/booking-v2/BookingApp";
 import { Suspense } from "react";
+import { getFormattedRoutes } from "@/lib/services/routeService";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const resolvedParams = await params;
@@ -13,6 +14,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 export default async function BookingPage() {
+  const initialRoutes = await getFormattedRoutes();
+  
   return (
     <main className="min-h-screen bg-background">
       {/* Suspense is required: the BookingApp client tree contains hooks
@@ -24,7 +27,7 @@ export default async function BookingPage() {
           <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
         </div>
       }>
-        <BookingApp />
+        <BookingApp initialRoutes={initialRoutes} />
       </Suspense>
     </main>
   );

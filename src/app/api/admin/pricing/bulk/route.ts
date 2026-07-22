@@ -6,6 +6,7 @@ import RoutePricing from "@/lib/models/RoutePricing";
 import PricingAuditLog from "@/lib/models/PricingAuditLog";
 import { requirePermission } from "@/lib/rbac";
 import { auth } from "@/auth";
+import Vehicle from "@/lib/models/Vehicle";
 
 // F08: Previously only checked session existence, any admin role could bulk-reprice.
 export async function POST(request: Request) {
