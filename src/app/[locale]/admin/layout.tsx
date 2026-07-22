@@ -28,7 +28,7 @@ export default async function AdminLayout({
     isAuthenticated = false;
   }
 
-  if (!isAuthenticated) redirect(`/${locale}/admin/login`);
+  if (!isAuthenticated) redirect(`/admin/login`);
 
   return (
     <AdminLayoutClient session={session}>

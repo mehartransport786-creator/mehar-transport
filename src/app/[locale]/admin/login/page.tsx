@@ -18,7 +18,7 @@ export default async function LoginPage({
   const safeCallback =
     callbackUrl?.startsWith("/") && !callbackUrl.startsWith("//")
       ? callbackUrl
-      : `/${locale}/admin`;
+      : `/admin`;
 
   return (
     <div className="min-h-screen w-full flex bg-muted dark:bg-[#0F172A]">

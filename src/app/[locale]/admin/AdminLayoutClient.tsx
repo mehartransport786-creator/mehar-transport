@@ -39,7 +39,7 @@ export function AdminLayoutClient({ children, session }: { children: React.React
   }
 
   const handleLogout = async () => {
-    await signOut({ callbackUrl: `/${locale}/admin/login` });
+    await signOut({ callbackUrl: `/admin/login` });
   };
 
   return (
