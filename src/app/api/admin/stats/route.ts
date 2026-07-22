@@ -12,7 +12,12 @@ import { requirePermission } from '@/lib/rbac';
 // 5-minute cache: stats don't need sub-second freshness
 export const revalidate = 300;
 
+import { auth } from '@/auth';
+
 export async function GET() {
+  const session = await auth();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const denied = await requirePermission('dashboard', 'view');
   if (denied) return denied;
 

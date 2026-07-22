@@ -5,8 +5,13 @@ import connectToDatabase from '@/lib/db';
 import ContactMessage from '@/lib/models/ContactMessage';
 import { requirePermission } from '@/lib/rbac';
 
+import { auth } from '@/auth';
+
 // GET /api/admin/messages — List messages (admin only)
 export async function GET(request: Request) {
+  const session = await auth();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const forbidden = await requirePermission('messages', 'view');
   if (forbidden) return forbidden;
 

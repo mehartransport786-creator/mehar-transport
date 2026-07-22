@@ -23,7 +23,10 @@ export default async function AdminLayout({
   try {
     session = await auth();
     isAuthenticated = Boolean(session?.user);
-  } catch (err) {
+  } catch (err: any) {
+    if (err?.digest === "DYNAMIC_SERVER_USAGE") {
+      throw err; // Must bubble up so Next.js switches to dynamic rendering
+    }
     console.error("[admin-layout] session read failed:", err);
     isAuthenticated = false;
   }

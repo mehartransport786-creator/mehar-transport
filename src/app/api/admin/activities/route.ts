@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db';
 import ActivityLog from '@/lib/models/ActivityLog';
+import { auth } from '@/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,6 +10,9 @@ export const dynamic = 'force-dynamic';
  * F16: Previously returned { success: true, data: [] } on error, hiding DB failures from operators.
  */
 export async function GET(request: Request) {
+  const session = await auth();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   try {
     await connectToDatabase();
 

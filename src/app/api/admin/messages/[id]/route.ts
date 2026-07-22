@@ -3,6 +3,8 @@ import connectToDatabase from '@/lib/db';
 import ContactMessage from '@/lib/models/ContactMessage';
 import { requirePermission } from '@/lib/rbac';
 
+import { auth } from '@/auth';
+
 export const dynamic = 'force-dynamic';
 
 // PATCH /api/admin/messages/[id] — Update message status
@@ -10,6 +12,9 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const session = await auth();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const forbidden = await requirePermission('messages', 'edit');
   if (forbidden) return forbidden;
 
@@ -47,6 +52,9 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const session = await auth();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const forbidden = await requirePermission('messages', 'delete');
   if (forbidden) return forbidden;
 
