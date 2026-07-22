@@ -80,16 +80,14 @@ export function VehicleSection() {
             const payload =
               state.serviceType === "hourly"
                 ? {
-                    type: "hourly",
+                    serviceType: "hourly",
                     vehicleId: vehicle._id,
-                    hours: state.durationHours || 4,
-                    date: state.travelDate || new Date().toISOString().split('T')[0],
+                    durationHours: state.durationHours || 4,
                   }
                 : {
-                    type: "transfer",
+                    serviceType: "transfer",
                     routeId: state.routeId,
                     vehicleId: vehicle._id,
-                    date: state.travelDate || new Date().toISOString().split('T')[0],
                   };
 
             const res = await fetch('/api/pricing/calculate', {
@@ -101,7 +99,7 @@ export function VehicleSection() {
             const data = await res.json();
 
             if (res.ok && data.success) {
-              newPrices[vehicle._id] = data.data.totalIncludingTax;
+              newPrices[vehicle._id] = data.data.totalPrice;
             } else if (res.status === 422) {
               // No pricing configured for this vehicle×route — hide the vehicle
               newPrices[vehicle._id] = null;

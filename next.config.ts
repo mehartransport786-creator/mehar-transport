@@ -11,7 +11,14 @@ const nextConfig: NextConfig = {
   // eslint ignoreDuringBuilds removed — not a valid NextConfig key in Next.js 16
   // ESLint errors are silenced via eslint.config.mjs
   typescript: { ignoreBuildErrors: true },
-  output: 'standalone', // Skips static page collection — fixes Vercel build crashes on dynamic API routes
+  output: 'standalone',
+  // Force-include locale message files in the standalone bundle.
+  // next-intl uses dynamic import(`../../messages/${locale}.json`) which Next.js
+  // cannot statically trace. Without this, getMessages() throws in production
+  // on Vercel and triggers global-error.tsx on every page.
+  outputFileTracingIncludes: {
+    '/**': ['./messages/**'],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
