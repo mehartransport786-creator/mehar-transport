@@ -16,37 +16,37 @@ export function ServicesSection() {
       id: "airport",
       icon: Plane,
       title: isAr ? "توصيل المطار" : "Airport Transfers",
-      description: isAr 
-        ? "نستقبلك بجلسة استقبال رسمية في مطارات جدة ومكة والمدينة المنورة، مع متابعة لحظية لرحلتك لضمان توقيت الاستقبال بدقة." 
+      description: isAr
+        ? "نستقبلك بجلسة استقبال رسمية في مطارات جدة ومكة والمدينة المنورة، مع متابعة لحظية لرحلتك لضمان توقيت الاستقبال بدقة."
         : "Professional meet-and-greet at Jeddah, Makkah, and Madinah airports. We monitor your flight in real time to ensure your driver is always ready on arrival.",
-      image: "/services/airport-camry.png"
+      image: "/services/Airport-Transfer.jpg"
     },
     {
       id: "umrah",
       icon: Crown,
       title: isAr ? "نقل العمرة الخاص" : "Private Umrah Transportation",
-      description: isAr 
-        ? "تنقلات خاصة ومحجوزة مسبقاً بين مطار جدة، مكة المكرمة، والمدينة المنورة — التسعيرة ثابتة ولا مفاجآت." 
+      description: isAr
+        ? "تنقلات خاصة ومحجوزة مسبقاً بين مطار جدة، مكة المكرمة، والمدينة المنورة — التسعيرة ثابتة ولا مفاجآت."
         : "Pre-booked private transfers between Jeddah Airport, Makkah, and Madinah. Fixed pricing, no shared rides, and professional drivers experienced on all Umrah routes.",
-      image: "/services/umrah-yukon.png"
+      image: "/services/Private-Umrah-Transportation.jpg"
     },
     {
       id: "intercity",
       icon: Building,
       title: isAr ? "السفر بين المدن" : "Intercity Travel",
-      description: isAr 
-        ? "تنقلات مريحة بين مكة والمدينة وجدة والرياض والطائف وينبع — بسيارات مريحة وسائقين محترفين." 
+      description: isAr
+        ? "تنقلات مريحة بين مكة والمدينة وجدة والرياض والطائف وينبع — بسيارات مريحة وسائقين محترفين."
         : "Comfortable private travel between Makkah, Madinah, Jeddah, Riyadh, Taif, and Yanbu. Ideal for families, pilgrims, and corporate travelers covering longer distances.",
-      image: "/fleet/staria-seats.jpg"
+      image: "/services/intercity-transfer.jpg"
     },
     {
       id: "ziyarah",
       icon: Clock,
       title: isAr ? "جولات الزيارة" : "Ziyarah Tours",
-      description: isAr 
-        ? "نرتب رحلات زيارة خاصة إلى المواقع الإسلامية في مكة والمدينة ومحيطهما — سائق مخصص لك مدة الجولة كاملة." 
+      description: isAr
+        ? "نرتب رحلات زيارة خاصة إلى المواقع الإسلامية في مكة والمدينة ومحيطهما — سائق مخصص لك مدة الجولة كاملة."
         : "Arranged visits to Islamic historical sites in and around Makkah and Madinah. A dedicated driver accompanies your group throughout the full tour.",
-      image: "/services/ziyarah-starex.png"
+      image: "/services/ziyarah-tour.jpg"
     }
   ];
 
@@ -84,8 +84,8 @@ export function ServicesSection() {
               {isAr ? "نقل خاص لكل رحلة" : "Private Transportation for Every Journey"}
             </h2>
           </div>
-          <Link 
-            href="/services" 
+          <Link
+            href="/services"
             className="hidden md:inline-flex items-center justify-center gap-2 text-primary font-bold hover:text-secondary transition-colors group min-h-[48px] px-6 py-2 border border-border hover:border-secondary/50 rounded-[var(--radius-btn)]"
           >
             <span>{isAr ? "عرض كل الخدمات" : "View All Services"}</span>
@@ -93,7 +93,7 @@ export function ServicesSection() {
           </Link>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -101,22 +101,22 @@ export function ServicesSection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {services.map((service) => (
-            <motion.div 
-              key={service.id} 
+            <motion.div
+              key={service.id}
               variants={itemVariants}
               className="group relative h-[400px] lg:h-[450px] rounded-[var(--radius-card)] overflow-hidden cursor-pointer shadow-[var(--shadow-luxury)] border border-border"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
-                <Image 
-                  src={service.image} 
-                  alt={service.title} 
+                <Image
+                  src={service.image}
+                  alt={service.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   className="object-cover transition-transform duration-[var(--duration-slow)] group-hover:scale-110"
                 />
               </div>
-              
+
               {/* Gradient Overlay */}
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-[var(--duration-base)] group-hover:from-black"></div>
 
@@ -125,17 +125,17 @@ export function ServicesSection() {
                 <div className="bg-white/10 backdrop-blur-md w-14 h-14 rounded-[var(--radius-sm)] flex items-center justify-center mb-6 border border-white/20 transform transition-transform duration-[var(--duration-base)] group-hover:-translate-y-2 shadow-[var(--shadow-luxury)]">
                   <service.icon className="w-7 h-7 text-secondary" />
                 </div>
-                
+
                 <h3 className="text-2xl font-bold mb-3 transform transition-transform duration-[var(--duration-base)] group-hover:-translate-y-2 tracking-tight">
                   {service.title}
                 </h3>
-                
+
                 {/* Always show description on mobile since hover doesn't exist, use group-hover on desktop */}
                 <div className="overflow-hidden h-auto md:h-0 group-hover:h-auto transition-all duration-[var(--duration-base)] opacity-100 md:opacity-0 group-hover:opacity-100">
                   <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-[var(--duration-base)] delay-100 font-light">
                     {service.description}
                   </p>
-                  <Link 
+                  <Link
                     href="/booking"
                     className="inline-flex items-center gap-2 text-secondary font-bold text-[15px] uppercase tracking-wider hover:text-white transition-colors py-2"
                   >
@@ -149,8 +149,8 @@ export function ServicesSection() {
         </motion.div>
 
         <div className="mt-8 md:hidden flex justify-center">
-          <Link 
-            href="/services" 
+          <Link
+            href="/services"
             className="w-full inline-flex items-center justify-center gap-2 text-primary font-bold hover:text-secondary transition-colors group min-h-[56px] px-6 py-3 border border-border rounded-[var(--radius-btn)]"
           >
             <span>{isAr ? "عرض كل الخدمات" : "View All Services"}</span>

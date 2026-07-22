@@ -11,7 +11,8 @@ export type ActivityType =
   | 'payment_received'
   | 'new_message'
   | 'new_review'
-  | 'system_alert';
+  | 'system_alert'
+  | 'booking_deleted';
 
 export interface IActivityLog extends Document {
   type: ActivityType;
@@ -30,7 +31,7 @@ const ActivityLogSchema = new Schema<IActivityLog>({
       'booking_created', 'booking_confirmed', 'booking_assigned',
       'booking_completed', 'booking_cancelled', 'status_changed',
       'driver_assigned', 'payment_received', 'new_message',
-      'new_review', 'system_alert'
+      'new_review', 'system_alert', 'booking_deleted'
     ],
     required: true,
     index: true
