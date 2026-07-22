@@ -25,11 +25,12 @@ export function Hero() {
           quality={100}
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center rtl:-scale-x-100"
         />
-        {/* Professional light black overlay */}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
+        {/* Professional light black overlay - clear on model side, dark behind text */}
+        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-transparent via-black/50 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
       </div>
 
       {/* Content */}
