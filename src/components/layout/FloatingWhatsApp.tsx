@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { usePathname } from "@/i18n/routing";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg
@@ -19,7 +20,12 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export function FloatingWhatsApp() {
   const locale = useLocale();
+  const pathname = usePathname();
   const isAr = locale === "ar";
+  
+  if (pathname.startsWith('/booking') || pathname.startsWith('/admin')) {
+    return null;
+  }
   
   return (
     <a

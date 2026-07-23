@@ -25,7 +25,7 @@ export function Hero() {
           quality={100}
           fill
           priority
-          className="object-cover object-center rtl:-scale-x-100"
+          className="object-cover object-[25%_center] md:object-center rtl:-scale-x-100"
         />
         {/* Professional light black overlay - clear on model side, dark behind text */}
         <div className="absolute inset-0 bg-black/10" />
@@ -64,7 +64,7 @@ export function Hero() {
             )}
           </h1>
 
-          <p className="text-white/75 text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
+          <p className="hidden sm:block text-white/75 text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
             {isAr
               ? "خدمات نقل مميزة للعمرة والمطارات وبين المدن مع أسطول فاخر وسائقين محترفين."
               : "Premium Umrah, airport, and intercity transfers with a luxury fleet and professional chauffeurs."}
