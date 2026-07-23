@@ -31,7 +31,7 @@ export function MobileActionBar() {
           disabled={!isComplete || state.isSubmitting}
           onClick={() => {
             if (isComplete) {
-              window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+              document.dispatchEvent(new CustomEvent('submit-booking'));
             } else {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -42,7 +42,7 @@ export function MobileActionBar() {
               : 'bg-muted text-muted-foreground'
           }`}
         >
-          {state.isSubmitting ? "..." : (isComplete ? (isAr ? "راجع للأسفل للتأكيد" : "Scroll Down to Confirm") : (isAr ? "أكمل التفاصيل" : "Complete Details"))}
+          {state.isSubmitting ? "..." : (isComplete ? (isAr ? "تأكيد الحجز" : "Confirm Booking") : (isAr ? "أكمل التفاصيل" : "Complete Details"))}
         </button>
       </div>
     </div>
