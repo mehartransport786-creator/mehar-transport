@@ -1,8 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "@/lib/motion";
-import { Map, Car, Clock } from "lucide-react";
+import { Car, Clock } from "lucide-react";
 
 export function ServiceAreaCoverage() {
   const t = useTranslations("ContactPage.coverage");
@@ -17,29 +16,25 @@ export function ServiceAreaCoverage() {
   ];
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-950">
-      <div className="container mx-auto px-4">
+    <section className="section-padding bg-slate-50 dark:bg-slate-950">
+      <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
             {t("title")}
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-muted-foreground">
             {t("availability")} across all major cities and airports in Saudi Arabia.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cities.map((city, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
+              className="group relative overflow-hidden rounded-[var(--radius-card)] aspect-[4/3] cursor-pointer shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-luxury)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)]"
             >
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-[var(--duration-base)] group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-[var(--duration-base)] ease-[var(--ease-out)] group-hover:scale-110"
                 style={{ backgroundImage: `url(${city.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
@@ -50,20 +45,20 @@ export function ServiceAreaCoverage() {
                     <h3 className="text-2xl font-bold text-white mb-2">{city.name}</h3>
                     <div className="flex items-center gap-4 text-slate-300 text-sm">
                       <span className="flex items-center gap-1.5">
-                        <Clock className="w-4 h-4 text-amber-500" />
+                        <Clock className="w-4 h-4 text-secondary" />
                         {city.time}
                       </span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="flex items-center gap-1.5 text-slate-300 text-sm bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full">
-                      <Car className="w-4 h-4 text-emerald-400" />
+                    <span className="flex items-center gap-1.5 text-slate-300 text-sm bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+                      <Car className="w-4 h-4 text-secondary" />
                       {city.availability}
                     </span>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

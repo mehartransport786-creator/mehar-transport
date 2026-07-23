@@ -19,7 +19,7 @@ export function ServicesSection() {
       description: isAr
         ? "نستقبلك بجلسة استقبال رسمية في مطارات جدة ومكة والمدينة المنورة، مع متابعة لحظية لرحلتك لضمان توقيت الاستقبال بدقة."
         : "Professional meet-and-greet at Jeddah, Makkah, and Madinah airports. We monitor your flight in real time to ensure your driver is always ready on arrival.",
-      image: "/services/Airport-Transfer.jpg"
+      image: "/services/aiport-transfer.jpeg"
     },
     {
       id: "umrah",
@@ -37,7 +37,7 @@ export function ServicesSection() {
       description: isAr
         ? "تنقلات مريحة بين مكة والمدينة وجدة والرياض والطائف وينبع — بسيارات مريحة وسائقين محترفين."
         : "Comfortable private travel between Makkah, Madinah, Jeddah, Riyadh, Taif, and Yanbu. Ideal for families, pilgrims, and corporate travelers covering longer distances.",
-      image: "/services/intercity-transfer.jpg"
+      image: "/services/intercity.png"
     },
     {
       id: "ziyarah",

@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion } from "@/lib/motion";
 import { Send, Calendar, Users, MapPin, Car } from "lucide-react";
 import { useState } from "react";
 
@@ -76,23 +75,20 @@ export function AdvancedContactForm() {
     }
   };
 
-  const inputClass = "w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all outline-none";
-  const labelClass = "block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2";
-  const errorClass = "text-red-500 text-xs mt-1 absolute -bottom-5 left-0";
+  const inputClass = "w-full bg-background border border-input rounded-[var(--radius-sm)] px-4 py-3 text-foreground focus:ring-1 focus:ring-ring focus:border-ring transition-colors outline-none placeholder:text-muted-foreground";
+  const labelClass = "block text-sm font-medium text-primary mb-2";
+  const errorClass = "text-destructive text-xs mt-1 absolute -bottom-5 left-0";
 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">{t("title")}</h2>
-        <p className="text-slate-600 dark:text-slate-400">Fill out the form below and our specialists will respond within 15 minutes.</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{t("title")}</h2>
+        <p className="text-muted-foreground">Fill out the form below and our specialists will respond within 15 minutes.</p>
       </div>
 
-      <motion.form 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+      <form 
         onSubmit={handleSubmit(onSubmit)} 
-        className="bg-white dark:bg-slate-950 p-8 lg:p-12 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/20 dark:shadow-none"
+        className="bg-card text-card-foreground p-8 lg:p-12 rounded-[var(--radius-card)] border border-border shadow-[var(--shadow-card)]"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 mb-8">
           
@@ -131,7 +127,7 @@ export function AdvancedContactForm() {
             <label className={labelClass}>{t("travelDate")} *</label>
             <div className="relative">
               <input {...register("travelDate")} type="date" className={inputClass} />
-              <Calendar className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+              <Calendar className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
             </div>
             {errors.travelDate && <span className={errorClass}>{errors.travelDate.message}</span>}
           </div>
@@ -140,7 +136,7 @@ export function AdvancedContactForm() {
             <label className={labelClass}>{t("pickup")} *</label>
             <div className="relative">
               <input {...register("pickup")} className={inputClass} placeholder="Jeddah Airport (JED)" />
-              <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+              <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
             </div>
             {errors.pickup && <span className={errorClass}>{errors.pickup.message}</span>}
           </div>
@@ -149,7 +145,7 @@ export function AdvancedContactForm() {
             <label className={labelClass}>{t("destination")} *</label>
             <div className="relative">
               <input {...register("destination")} className={inputClass} placeholder="Makkah Hotel" />
-              <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+              <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
             </div>
             {errors.destination && <span className={errorClass}>{errors.destination.message}</span>}
           </div>
@@ -165,7 +161,7 @@ export function AdvancedContactForm() {
                 <option value="large-van">Large Van (Toyota Hiace)</option>
                 <option value="minibus">Minibus (Coaster Bus)</option>
               </select>
-              <Car className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+              <Car className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
             </div>
             {errors.vehicle && <span className={errorClass}>{errors.vehicle.message}</span>}
           </div>
@@ -179,7 +175,7 @@ export function AdvancedContactForm() {
                   <option key={num} value={num}>{num}</option>
                 ))}
               </select>
-              <Users className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+              <Users className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
             </div>
             {errors.passengers && <span className={errorClass}>{errors.passengers.message}</span>}
           </div>
@@ -200,10 +196,10 @@ export function AdvancedContactForm() {
         <button 
           type="submit" 
           disabled={isSubmitting}
-          className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-lg py-4 rounded-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full bg-secondary hover:bg-secondary/90 text-primary-foreground font-bold text-lg py-4 rounded-[var(--radius-btn)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[var(--shadow-btn)] hover:-translate-y-0.5"
         >
           {isSubmitting ? (
-            <span className="w-6 h-6 border-2 border-slate-950/20 border-t-slate-950 rounded-full animate-spin" />
+            <span className="w-6 h-6 border-2 border-primary-foreground/20 border-t-primary-foreground rounded-full animate-spin" />
           ) : isSuccess ? (
             "Request Sent Successfully!"
           ) : (
@@ -213,7 +209,7 @@ export function AdvancedContactForm() {
             </>
           )}
         </button>
-      </motion.form>
+      </form>
     </div>
   );
 }

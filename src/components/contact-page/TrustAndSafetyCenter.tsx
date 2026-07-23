@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "@/lib/motion";
 import { Shield, ShieldCheck, MapPin, BadgeCheck, Clock, Navigation, HeartHandshake, Plane, Info } from "lucide-react";
 
 export function TrustAndSafetyCenter() {
@@ -20,38 +19,34 @@ export function TrustAndSafetyCenter() {
   ];
 
   return (
-    <section className="py-24 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="section-padding bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
+      <div className="container-fluid relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Shield className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Shield className="w-8 h-8 text-primary" />
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             {t("title")}
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-muted-foreground">
             We adhere to the highest international safety standards to ensure your journey is secure and comfortable.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {icons.map((Icon, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-              className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4 hover:border-amber-500/50 hover:shadow-lg transition-all"
+              className="bg-card p-6 rounded-[var(--radius-card)] border border-border flex items-center gap-4 hover:border-secondary/50 hover:shadow-[var(--shadow-luxury)] shadow-[var(--shadow-card)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1"
             >
-              <div className="w-12 h-12 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center shrink-0">
-                <Icon className="w-6 h-6 text-slate-700 dark:text-slate-300" />
+              <div className="w-12 h-12 rounded-full bg-slate-50 dark:bg-slate-800 border border-border flex items-center justify-center shrink-0">
+                <Icon className="w-6 h-6 text-primary" />
               </div>
-              <span className="font-semibold text-slate-900 dark:text-white">
+              <span className="font-semibold text-card-foreground">
                 {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 {t(`items.${idx}` as any)} 
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

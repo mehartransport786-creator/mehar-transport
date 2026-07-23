@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "@/lib/motion";
 import { Phone, MessageCircle, Mail, AlertTriangle } from "lucide-react";
 
 export function ContactMethodsHub() {
@@ -15,9 +14,7 @@ export function ContactMethodsHub() {
       details: [t("phone.primary"), t("phone.secondary")],
       action: t("phone.callButton"),
       status: t("phone.availability"),
-      color: "bg-blue-500",
-      hover: "hover:border-blue-500/50",
-      link: "tel:+966565638120"
+      link: "tel:+966565638132"
     },
     {
       id: "whatsapp",
@@ -26,9 +23,7 @@ export function ContactMethodsHub() {
       details: [t("whatsapp.status"), t("whatsapp.responseTime")],
       action: t("whatsapp.button"),
       status: t("whatsapp.status"),
-      color: "bg-emerald-500",
-      hover: "hover:border-emerald-500/50",
-      link: "https://wa.me/966565638120"
+      link: "https://wa.me/966565638132"
     },
     {
       id: "email",
@@ -37,8 +32,6 @@ export function ContactMethodsHub() {
       details: [t("email.support"), t("email.bookings")],
       action: "Send Email",
       status: "24h Response",
-      color: "bg-purple-500",
-      hover: "hover:border-purple-500/50",
       link: "mailto:support@mehartransport.com"
     },
     {
@@ -48,62 +41,46 @@ export function ContactMethodsHub() {
       details: [t("emergency.desc"), t("emergency.number")],
       action: "Call Emergency",
       status: "Immediate",
-      color: "bg-red-500",
-      hover: "hover:border-red-500/50",
-      link: "tel:+966565638120"
+      link: "tel:+966565638132"
     }
   ];
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-950 relative -mt-10 z-30">
-      <div className="container mx-auto px-4">
+    <section className="section-padding bg-slate-50 dark:bg-slate-950 relative z-30 -mt-10 pt-16">
+      <div className="container-fluid">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {methods.map((method, index) => (
-            <motion.div
+          {methods.map((method) => (
+            <div
               key={method.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/20 dark:shadow-none transition-all duration-300 hover:-translate-y-2 ${method.hover}`}
+              className="group bg-white dark:bg-slate-900 rounded-[var(--radius-card)] p-8 border border-border shadow-sm hover:shadow-[var(--shadow-luxury)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1"
             >
-              <div className={`w-14 h-14 rounded-xl ${method.color} flex items-center justify-center mb-6 text-white shadow-lg`}>
+              <div className="w-14 h-14 rounded-[var(--radius-sm)] bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-6 text-primary group-hover:bg-secondary/10 group-hover:text-secondary transition-colors duration-[var(--duration-instant)]">
                 <method.icon className="w-7 h-7" />
               </div>
               
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+              <h3 className="text-xl font-bold text-primary mb-4">
                 {method.title}
               </h3>
               
               <div className="space-y-2 mb-8">
                 {method.details.filter(Boolean).map((detail, idx) => (
-                  <p key={idx} className="text-slate-600 dark:text-slate-400 font-medium">
+                  <p key={idx} className="text-muted-foreground font-medium text-sm">
                     {detail}
                   </p>
                 ))}
               </div>
               
-              <div className="flex flex-col gap-2 mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
-                <a href={method.link} className="flex items-center justify-between group/link">
-                  <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover/link:text-amber-500 transition-colors">
+              <div className="flex flex-col gap-2 mt-auto pt-6 border-t border-border">
+                <a href={method.link} className="flex items-center justify-between group/link" target={method.id === "whatsapp" ? "_blank" : undefined} rel={method.id === "whatsapp" ? "noopener noreferrer" : undefined}>
+                  <span className="text-sm font-semibold text-primary group-hover/link:text-secondary transition-colors duration-[var(--duration-instant)]">
                     {method.action}
                   </span>
-                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-muted-foreground">
                     {method.status}
                   </span>
                 </a>
-                {(method.id === "phone" || method.id === "whatsapp") && (
-                  <a href={method.id === "phone" ? "tel:+966548707332" : "https://wa.me/966548707332"} className="flex items-center justify-between group/link mt-2">
-                    <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover/link:text-amber-500 transition-colors">
-                      {method.action} (Secondary)
-                    </span>
-                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
-                      Alternative
-                    </span>
-                  </a>
-                )}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

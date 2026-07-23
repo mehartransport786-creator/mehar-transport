@@ -27,7 +27,7 @@
     "methods": {
       "phone": {
         "title": "Phone Support",
-        "primary": "+966 56 563 8120",
+        "primary": "+966 56 563 8132",
         "secondary": "",
         "callButton": "Call Us",
         "availability": "Available 24/7"
@@ -47,7 +47,7 @@
       "emergency": {
         "title": "Emergency Support",
         "desc": "Available 24/7 for urgent matters",
-        "number": "+966 50 000 9999"
+        "number": "+966 56 563 8132"
       }
     },
     "profile": {

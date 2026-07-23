@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "@/lib/motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -20,15 +19,15 @@ export function FAQCenter() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section className="section-padding bg-background border-t border-border">
+      <div className="container-fluid max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             {t("title")}
           </h2>
           <div className="flex flex-wrap justify-center gap-2 mt-8">
             {["Bookings", "Pricing", "Vehicles", "Airport Transfers", "Umrah", "Payments", "Safety", "Corporate"].map((category, idx) => (
-              <span key={idx} className="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium cursor-pointer hover:bg-amber-100 dark:hover:bg-amber-900/30 hover:text-amber-600 transition-colors">
+              <span key={idx} className="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-muted-foreground text-sm font-medium cursor-pointer hover:bg-secondary/10 hover:text-secondary transition-colors duration-[var(--duration-instant)] ease-[var(--ease-out)]">
                 {category}
               </span>
             ))}
@@ -36,42 +35,39 @@ export function FAQCenter() {
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50"
-            >
-              <button 
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div 
+                key={index}
+                className="bg-card rounded-[var(--radius-card)] overflow-hidden border border-border shadow-[var(--shadow-card)]"
               >
-                <span className="font-semibold text-lg text-slate-900 dark:text-white pr-8">
-                  {faq.question}
-                </span>
-                <ChevronDown 
-                  className={`w-5 h-5 text-slate-500 transition-transform duration-300 shrink-0 ${openIndex === index ? "rotate-180" : ""}`} 
-                />
-              </button>
-              
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className="px-6 pb-6 text-slate-600 dark:text-slate-300 leading-relaxed">
+                <button 
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none transition-colors duration-[var(--duration-instant)] hover:bg-slate-50 dark:hover:bg-slate-900/50"
+                  aria-expanded={isOpen}
+                >
+                  <span className="font-semibold text-lg text-primary pr-8">
+                    {faq.question}
+                  </span>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-muted-foreground transition-transform duration-[var(--duration-base)] ease-[var(--ease-out)] shrink-0 ${isOpen ? "rotate-180" : ""}`} 
+                  />
+                </button>
+                
+                <div 
+                  className="grid transition-all duration-[var(--duration-base)] ease-[var(--ease-out)]"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
                       {faq.answer}
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

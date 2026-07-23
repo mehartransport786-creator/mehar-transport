@@ -20,7 +20,7 @@ export function FeaturedRoutes() {
       to: isAr ? "فنادق مكة" : "Makkah Hotels",
       price: "250",
       image: "/routes/makkah-clock-premium.jpg",
-      trustFeatures: isAr 
+      trustFeatures: isAr
         ? ["تتبع رحلات الطيران", "استقبال وترحيب", "وقت انتظار مجاني", "سائق محترف"]
         : ["Flight Monitoring", "Meet & Greet", "Free Waiting Time", "Professional Driver"]
     },
@@ -32,7 +32,7 @@ export function FeaturedRoutes() {
       to: isAr ? "المدينة المنورة" : "Madinah",
       price: "350",
       image: "/routes/makkah-madinah-premium.jpg",
-      trustFeatures: isAr 
+      trustFeatures: isAr
         ? ["تنقل خاص", "سيارات فارهة", "خدمة من الباب للباب", "دعم ٢٤/٧"]
         : ["Private Transfer", "Executive Vehicles", "Door-to-Door", "24/7 Support"]
     },
@@ -44,7 +44,7 @@ export function FeaturedRoutes() {
       to: isAr ? "مطار جدة" : "Jeddah Airport",
       price: "350",
       image: "/routes/jeddah-airport-premium.png",
-      trustFeatures: isAr 
+      trustFeatures: isAr
         ? ["تتبع رحلات الطيران", "تأكيد فوري", "بدون رسوم خفية", "سائق محترف"]
         : ["Flight Tracking", "Instant Confirmation", "No Hidden Fees", "Professional Driver"]
     },
@@ -56,7 +56,7 @@ export function FeaturedRoutes() {
       to: isAr ? "الطائف" : "Taif",
       price: "400",
       image: "/routes/taif-mountain-premium.png",
-      trustFeatures: isAr 
+      trustFeatures: isAr
         ? ["تنقل خاص", "سيارات فارهة", "رحلة آمنة", "دعم ٢٤/٧"]
         : ["Private Transfer", "Executive Vehicles", "Safe Journey", "24/7 Support"]
     },
@@ -67,8 +67,8 @@ export function FeaturedRoutes() {
       from: isAr ? "مطار الرياض" : "Riyadh Airport",
       to: isAr ? "فنادق الرياض" : "Riyadh Hotels",
       price: "300",
-      image: "/routes/riyadh-airport-premium.png",
-      trustFeatures: isAr 
+      image: "/routes/riyadh.jpeg",
+      trustFeatures: isAr
         ? ["تتبع رحلات الطيران", "استقبال وترحيب", "وقت انتظار مجاني", "تأكيد فوري"]
         : ["Flight Monitoring", "Meet & Greet", "Free Waiting Time", "Instant Confirmation"]
     }
@@ -77,7 +77,7 @@ export function FeaturedRoutes() {
   return (
     <section className="section-padding bg-[#F8FAFC] relative">
       <div className="container-fluid">
-        
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-16 gap-6 animate-fade-up-luxury">
           <div className="max-w-2xl space-y-4">
@@ -91,8 +91,8 @@ export function FeaturedRoutes() {
               {isAr ? "تنقل فاخر عبر المملكة" : "Premium Chauffeur Routes"}
             </h2>
           </div>
-          <Link 
-            href="/routes" 
+          <Link
+            href="/routes"
             className="inline-flex items-center justify-center gap-2 text-[#0F172A] font-medium hover:text-[#df9a26] transition-colors group min-h-[48px] px-4 md:px-0 py-2 md:py-0 w-full md:w-auto"
           >
             <span className="text-[18px]">{isAr ? "عرض كل المسارات" : "View All Destinations"}</span>
@@ -103,7 +103,7 @@ export function FeaturedRoutes() {
         {/* Mobile Swipeable / Desktop Grid Container */}
         <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-8 -mx-4 px-4 md:mx-0 md:px-0 md:overflow-visible md:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {routes.map((route, index) => (
-            <motion.div 
+            <motion.div
               key={route.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -113,17 +113,17 @@ export function FeaturedRoutes() {
             >
               {/* Cinematic Image Container */}
               <div className="aspect-video overflow-hidden relative shrink-0">
-                <Image 
-                  src={route.image} 
+                <Image
+                  src={route.image}
                   alt={`${route.from} to ${route.to}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-[var(--duration-base)] ease-out"
                 />
-                
+
                 {/* Premium Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/20 to-transparent opacity-90 transition-opacity duration-300 pointer-events-none"></div>
-                
+
                 {/* Badges Floating */}
                 <div className="absolute top-5 left-5 right-5 flex justify-between items-start pointer-events-none">
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-full text-[13px] font-semibold tracking-wide shadow-sm">
@@ -146,10 +146,10 @@ export function FeaturedRoutes() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Card Body */}
               <div className="p-4 md:p-5 flex flex-col flex-1 bg-white relative z-10">
-                
+
                 {/* Value Propositions */}
                 <div className="grid grid-cols-2 gap-y-2 gap-x-2 mb-4 mt-1">
                   {route.trustFeatures.map((feature, idx) => (
@@ -161,7 +161,7 @@ export function FeaturedRoutes() {
                     </div>
                   ))}
                 </div>
-                
+
                 {/* Price & CTA */}
                 <div className="mt-auto pt-4 border-t border-[#E2E8F0]">
                   <div className="flex flex-col mb-3">
@@ -173,8 +173,8 @@ export function FeaturedRoutes() {
                       <span className="text-[14px] font-semibold">SAR</span>
                     </div>
                   </div>
-                  
-                  <Link 
+
+                  <Link
                     href={`/booking?pickup=${route.from}&dropoff=${route.to}`}
                     className="relative overflow-hidden inline-flex items-center justify-center font-bold rounded-[var(--radius-btn)] transition-all duration-300 bg-primary text-white hover:text-primary w-full px-5 py-3 text-[15px] gap-2 group shadow-[0_4px_14px_rgba(15,23,42,0.1)] hover:shadow-[0_8px_25px_rgba(223,154,38,0.3)] active:scale-[0.98]"
                   >

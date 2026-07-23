@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "@/lib/motion";
 import { Star, CheckCircle } from "lucide-react";
 
 export function GoogleReviewsShowcase() {
@@ -35,25 +34,20 @@ export function GoogleReviewsShowcase() {
   ];
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="bg-white dark:bg-slate-900 rounded-2xl p-6 lg:p-8 border border-slate-200 dark:border-slate-800 shadow-sm"
-    >
+    <div className="bg-card text-card-foreground rounded-[var(--radius-card)] p-6 lg:p-8 border border-border shadow-[var(--shadow-card)]">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">{t("title")}</h3>
+          <h3 className="text-2xl font-bold text-primary mb-2">{t("title")}</h3>
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-slate-900 dark:text-white">{t("average")}</span>
-            <div className="flex text-amber-500">
+            <span className="text-lg font-bold text-primary">{t("average")}</span>
+            <div className="flex text-secondary">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} className="w-4 h-4 fill-current" />
               ))}
             </div>
           </div>
         </div>
-        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md">
+        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-100">
           {/* Google G Logo mock */}
           <svg className="w-6 h-6" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -66,39 +60,39 @@ export function GoogleReviewsShowcase() {
 
       <div className="space-y-6">
         {reviews.map((review, idx) => (
-          <div key={idx} className="border-b border-slate-100 dark:border-slate-800 last:border-0 pb-6 last:pb-0">
+          <div key={idx} className="border-b border-border last:border-0 pb-6 last:pb-0">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-lg">
+                <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold text-lg border border-border">
                   {review.avatar}
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900 dark:text-white flex items-center gap-1">
+                  <div className="font-bold text-primary flex items-center gap-1">
                     {review.name}
-                    <CheckCircle className="w-3.5 h-3.5 text-blue-500" />
+                    <CheckCircle className="w-3.5 h-3.5 text-secondary" />
                   </div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">{review.date}</div>
+                  <div className="text-sm text-muted-foreground">{review.date}</div>
                 </div>
               </div>
-              <div className="flex text-amber-500">
+              <div className="flex text-secondary">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
             </div>
-            <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-3">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-3">
               &quot;{review.text}&quot;
             </p>
-            <span className="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold rounded-full">
+            <span className="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-muted-foreground text-xs font-semibold rounded-full border border-border">
               {review.category}
             </span>
           </div>
         ))}
       </div>
       
-      <button className="w-full mt-6 py-3 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-xl transition-colors">
+      <button className="w-full mt-6 py-3 border border-border hover:bg-accent text-accent-foreground font-semibold rounded-[var(--radius-btn)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)]">
         Read All Google Reviews
       </button>
-    </motion.div>
+    </div>
   );
 }

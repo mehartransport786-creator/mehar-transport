@@ -49,7 +49,7 @@ export default function ContactPage() {
     logo: "https://mehartransport.com/logo.png",
     image: "https://mehartransport.com/hero-image.jpg",
     description: t("seo.description"),
-    telephone: "+966 56 563 8120",
+    telephone: "+966 56 563 8132",
     priceRange: "$$$",
     address: {
       "@type": "PostalAddress",
