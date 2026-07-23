@@ -81,7 +81,7 @@ export function VehicleTemplate({ vehicle }: VehicleTemplateProps) {
               <StickyBookingWidget 
                 vehicleName={vehicle.name}
                 vehicleNameAr={vehicle.nameAr}
-                vehicleId={vehicle.slug}
+                vehicleSlug={vehicle.slug}
               />
             </div>
           </div>

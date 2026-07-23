@@ -793,5 +793,10 @@
     "selectTripType": "Select Trip Type",
     "chooseTheTypeOfServiceYouNeedSoWeCanTail": "Choose the type of service you need so we can tailor your experience.",
     "continue": "Continue"
+  },
+  "FleetError": {
+    "title": "Vehicle Not Found",
+    "message": "We couldn't load the vehicle data. Please try again or explore our fleet.",
+    "tryAgain": "Try Again"
   }
 }

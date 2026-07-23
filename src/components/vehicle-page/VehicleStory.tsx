@@ -4,13 +4,13 @@ import { useLocale } from "next-intl";
 import { motion } from "@/lib/motion";
 
 interface VehicleStoryProps {
-  details: any;
+  story: any;
+  theme?: any;
 }
 
-export function VehicleStory({ details }: VehicleStoryProps) {
+export function VehicleStory({ story, theme = { primary: '#1B1E4F', secondary: '#df9a26' } }: VehicleStoryProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
-  const { story, theme } = details;
 
   return (
     <section className="relative">
