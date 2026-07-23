@@ -253,9 +253,9 @@
   "FleetFAQ": {
     "vehiclesCapacity": "Vehicles & Capacity",
     "whatTypesOfVehiclesAreAvailable": "What types of vehicles are available?",
-    "weOfferAWideRangeIncludingExecutiveSedan": "We offer a wide range including Executive Sedans (Kia K5), Family Vans (Hyundai Staria, Mitsubishi Xpander), Group Vans (Toyota Hiace, Coaster), and Elite vehicles (Luxury Sedans Executive, Luxury vehicle).",
-    "howManyPassengersAreAllowedInALuxury SedansSC": "How many passengers are allowed in a Luxury Sedans Executive?",
-    "theLuxury SedansSClassComfortablyAccommodates": "The Luxury Sedans Executive comfortably accommodates up to 4 passengers.",
+    "weOfferAWideRangeIncludingExecutiveSedan": "We offer a premium selection including Executive Sedans (Toyota Camry), Premium SUVs (GMC Denali), Executive Vans (Hyundai Staria, Hyundai H1), and Minibuses (Toyota Hiace, Coaster Bus).",
+    "howManyPassengersAreAllowedInALuxury SedansSC": "How many passengers are allowed in an Executive Sedan?",
+    "theLuxury SedansSClassComfortablyAccommodates": "Our Executive Sedans comfortably accommodate up to 4 passengers.",
     "areChildSeatsAvailable": "Are child seats available?",
     "yesChildSeatsAreAvailableUponRequestDuri": "Yes, child seats are available upon request during booking at no extra cost.",
     "canIChooseTheColorOfTheVehicle": "Can I choose the color of the vehicle?",
@@ -279,8 +279,8 @@
     "vipServices": "VIP Services",
     "whatDoesVipTransportInclude": "What does VIP transport include?",
     "itIncludesUltraLuxuryVehiclesAUniformedC": "It includes ultra-luxury vehicles, a uniformed chauffeur, complimentary water, Wi-Fi, VIP meet & greet, and complete itinerary flexibility.",
-    "canIBookARollsRoyceForAWedding": "Can I book a Luxury vehicle for a wedding?",
-    "yesWeOfferSpecialPackagesForWeddingsAndS": "Yes, we offer special packages for weddings and special events, featuring white-glove service and optional decorations.",
+    "canIBookARollsRoyceForAWedding": "Can I book a premium vehicle for a special event?",
+    "yesWeOfferSpecialPackagesForWeddingsAndS": "Yes, our GMC Denali and Executive Sedans are available for weddings and special events, featuring a professional chauffeur and VIP meet & greet service.",
     "isPrivacyGuaranteed": "Is privacy guaranteed?",
     "privacyIsTheCoreOfOurEliteServiceAllVipV": "Privacy is the core of our Elite service. All VIP vehicles feature tinted windows and chauffeurs trained in absolute discretion.",
     "pricingBooking": "Pricing & Booking",
@@ -302,7 +302,9 @@
     "areVehiclesSanitized": "Are vehicles sanitized?",
     "yesEveryVehicleIsThoroughlySanitizedAfte": "Yes, every vehicle is thoroughly sanitized after every single journey to ensure the highest health standards.",
     "faq": "FAQ",
-    "everythingYouNeedToKnow": "Everything You Need to Know"
+    "everythingYouNeedToKnow": "Everything You Need to Know",
+    "howManyPassengersAreAllowedInALuxurySedansSC": "How many passengers are allowed in an Executive Sedan?",
+    "theLuxurySedansSClassComfortablyAccommodates": "Our Executive Sedans comfortably accommodate up to 4 passengers."
   },
   "FleetOverview": {
     "vehicleCategories": "Vehicle Categories",

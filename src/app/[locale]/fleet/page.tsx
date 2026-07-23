@@ -1,11 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { CinematicHero } from "@/components/fleet-page/CinematicHero";
-import { CategorySection } from "@/components/fleet-page/CategorySection";
+import { FleetGrid, CategoryContent } from "@/components/fleet-page/FleetGrid";
 import { FleetFAQ } from "@/components/fleet-page/FleetFAQ";
 import { FleetSEOContent } from "@/components/fleet-page/FleetSEOContent";
 import { FinalConversion } from "@/components/fleet-page/FinalConversion";
-import connectToDatabase from "@/lib/db";
-import Vehicle from "@/lib/models/Vehicle";
+import { fleetData } from "@/data/fleet";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const resolvedParams = await params;
@@ -23,15 +22,52 @@ export default async function FleetIndexPage({ params }: { params: { locale: str
   const locale = resolvedParams.locale;
   const isAr = locale === "ar";
 
-  await connectToDatabase();
-  const rawVehicles = await Vehicle.find({ active: true }).lean();
-  const vehicles = JSON.parse(JSON.stringify(rawVehicles));
-
-  // Categorize vehicles (using slug or name matching)
-  const sedans = vehicles.filter((v: any) => v.slug.includes("camry") || v.slug.includes("xpander"));
-  const suvs = vehicles.filter((v: any) => v.slug.includes("denali") || v.slug.includes("yukon") || v.slug.includes("land-cruiser"));
-  const vans = vehicles.filter((v: any) => v.slug.includes("staria") || v.slug.includes("h1"));
-  const minibuses = vehicles.filter((v: any) => v.slug.includes("hiace") || v.slug.includes("coaster"));
+  // Build the SEO category text content
+  const categories: CategoryContent[] = [
+    {
+      id: "all",
+      title: isAr ? "الكل" : "All",
+      description: isAr
+        ? "استكشف أسطولنا الفاخر المصمم لتوفير أقصى درجات الراحة والموثوقية."
+        : "Explore our premium fleet designed for ultimate comfort and reliability."
+    },
+    {
+      id: "sedan",
+      title: isAr ? "سيارات السيدان الخاصة" : "Executive Sedans",
+      description: isAr
+        ? "مثالية للأفراد أو الأزواج. استمتع برحلة هادئة وخاصة، مثالية للتنقلات من وإلى المطار أو كسيارة أجرة خاصة للعمرة."
+        : "Perfect for individuals or couples. Enjoy a smooth, private ride ideal for executive airport transfers or a quiet Umrah taxi experience.",
+      link: "/fleet/sedan",
+      linkLabel: isAr ? "عرض فئة السيدان" : "View Sedans"
+    },
+    {
+      id: "suv",
+      title: isAr ? "سيارات الدفع الرباعي الفاخرة" : "Premium SUVs",
+      description: isAr
+        ? "راحة فائقة وحضور متميز. الخيار الأمثل لكبار الشخصيات لتنقلات فاخرة، مع مساحات داخلية واسعة وأمان متفوق."
+        : "Premium comfort with elevated presence. The VIP choice for executive SUV transfers, offering spacious interiors and superior safety.",
+      link: "/fleet/suv",
+      linkLabel: isAr ? "عرض فئة الدفع الرباعي" : "View SUVs"
+    },
+    {
+      id: "van",
+      title: isAr ? "حافلات عائلية لكبار الشخصيات" : "Executive Vans",
+      description: isAr
+        ? "مركبات واسعة للعائلات الممتدة والمجموعات الصغيرة. توفر مساحة واسعة للأمتعة وتكييف هواء قوي لرحلات العمرة المريحة."
+        : "Spacious vehicles for extended families and small groups. Offers generous luggage capacity and robust climate control for comfortable Umrah journeys.",
+      link: "/fleet/van",
+      linkLabel: isAr ? "عرض فئة الفان" : "View Vans"
+    },
+    {
+      id: "minibus",
+      title: isAr ? "حافلات المجموعات الصغيرة" : "Minibuses",
+      description: isAr
+        ? "الخيار الأفضل للمجموعات الكبيرة وحملات العمرة. توفر مقاعد فسيحة، وموثوقية عالية، ومساحة كافية للحجاج وأمتعتهم."
+        : "The ultimate choice for large tour groups and Umrah campaigns. Delivers expansive seating, proven reliability, and ample room for pilgrims and their luggage.",
+      link: "/fleet/minibus",
+      linkLabel: isAr ? "عرض فئة الميني باص" : "View Minibuses"
+    }
+  ];
 
   // JSON-LD
   const breadcrumbList = {
@@ -46,7 +82,7 @@ export default async function FleetIndexPage({ params }: { params: { locale: str
   const itemList = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": vehicles.map((v: any, index: number) => ({
+    "itemListElement": fleetData.map((v: any, index: number) => ({
       "@type": "ListItem",
       "position": index + 1,
       "url": `https://mehartransport.com/fleet/${v.slug}`,
@@ -61,52 +97,10 @@ export default async function FleetIndexPage({ params }: { params: { locale: str
 
       <CinematicHero />
 
-      {sedans.length > 0 && (
-        <CategorySection
-          title="Executive Sedans"
-          titleAr="سيارات السيدان الخاصة"
-          description="Perfect for individuals or couples. Enjoy a smooth, private ride ideal for executive airport transfers or a quiet Umrah taxi experience."
-          descriptionAr="مثالية للأفراد أو الأزواج. استمتع برحلة هادئة وخاصة، مثالية للتنقلات من وإلى المطار أو كسيارة أجرة خاصة للعمرة."
-          vehicles={sedans}
-          slug="sedan"
-        />
-      )}
+      <FleetGrid vehicles={fleetData} categories={categories} />
 
-      {suvs.length > 0 && (
-        <CategorySection
-          title="Luxury SUVs"
-          titleAr="سيارات الدفع الرباعي الفاخرة"
-          description="Premium comfort with elevated presence. The VIP choice for executive SUV transfers, offering spacious interiors and superior safety."
-          descriptionAr="راحة فائقة وحضور متميز. الخيار الأمثل لكبار الشخصيات لتنقلات فاخرة، مع مساحات داخلية واسعة وأمان متفوق."
-          vehicles={suvs}
-          slug="suv"
-        />
-      )}
-
-      {vans.length > 0 && (
-        <CategorySection
-          title="Executive Vans"
-          titleAr="سيارات الفان العائلية"
-          description="Designed for family travel and 7-seat group transfers. An executive MPV experience with ample room for luggage and passengers."
-          descriptionAr="مصممة لسفر العائلات ونقل المجموعات حتى 7 أشخاص. تجربة مريحة مع مساحة واسعة للأمتعة والركاب."
-          vehicles={vans}
-          slug="van"
-        />
-      )}
-
-      {minibuses.length > 0 && (
-        <CategorySection
-          title="Minibus & Coaster"
-          titleAr="حافلات النقل الجماعي"
-          description="The optimal solution for large Umrah groups. Our coaster and minibus hire options keep your group united without compromising on luxury."
-          descriptionAr="الحل الأمثل لمجموعات العمرة الكبيرة. تضمن خياراتنا من الحافلات بقاء مجموعتك معاً دون التنازل عن الفخامة."
-          vehicles={minibuses}
-          slug="minibus"
-        />
-      )}
-
-      <FleetFAQ />
       <FleetSEOContent />
+      <FleetFAQ />
       <FinalConversion />
     </main>
   );

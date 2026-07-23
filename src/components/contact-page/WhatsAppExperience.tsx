@@ -40,7 +40,7 @@ export function WhatsAppExperience() {
             </div>
 
             <a 
-              href="https://wa.me/966565638132"
+              href="https://wa.me/966565638120"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-8 py-4 rounded-[var(--radius-btn)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1 shadow-[var(--shadow-btn)] flex items-center justify-center gap-3 w-full md:w-auto mx-auto md:mx-0"
@@ -57,7 +57,7 @@ export function WhatsAppExperience() {
                 {actions.map((action, idx) => (
                   <a 
                     key={idx}
-                    href={`https://wa.me/966565638132?text=${encodeURIComponent(`Hello, I'm interested in: ${action}`)}`}
+                    href={`https://wa.me/966565638120?text=${encodeURIComponent(`Hello, I'm interested in: ${action}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between px-4 py-3 bg-white/5 hover:bg-white/10 rounded-[var(--radius-sm)] border border-white/5 hover:border-secondary/30 transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] text-slate-200 group text-left"

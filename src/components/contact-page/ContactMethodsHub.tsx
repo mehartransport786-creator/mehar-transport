@@ -14,7 +14,7 @@ export function ContactMethodsHub() {
       details: [t("phone.primary"), t("phone.secondary")],
       action: t("phone.callButton"),
       status: t("phone.availability"),
-      link: "tel:+966565638132"
+      link: "tel:+966565638120"
     },
     {
       id: "whatsapp",
@@ -23,7 +23,7 @@ export function ContactMethodsHub() {
       details: [t("whatsapp.status"), t("whatsapp.responseTime")],
       action: t("whatsapp.button"),
       status: t("whatsapp.status"),
-      link: "https://wa.me/966565638132"
+      link: "https://wa.me/966565638120"
     },
     {
       id: "email",
@@ -41,7 +41,7 @@ export function ContactMethodsHub() {
       details: [t("emergency.desc"), t("emergency.number")],
       action: "Call Emergency",
       status: "Immediate",
-      link: "tel:+966565638132"
+      link: "tel:+966565638120"
     }
   ];
 

@@ -253,7 +253,7 @@
   "FleetFAQ": {
     "vehiclesCapacity": "المركبات والسعة",
     "whatTypesOfVehiclesAreAvailable": "ما هي أنواع المركبات المتاحة؟",
-    "weOfferAWideRangeIncludingExecutiveSedan": "نقدم مجموعة متنوعة تشمل سيارات السيدان التنفيذية (كيا K5)، والسيارات العائلية (هيونداي ستاريا، ميتسوبيشي إكسباندر)، وحافلات المجموعات (تويوتا هايس، كوستر)، وسيارات النخبة (سيارات فاخرة، سيارة فاخرة).",
+    "weOfferAWideRangeIncludingExecutiveSedan": "نقدم تشكيلة فاخرة تشمل سيارات السيدان التنفيذية (تويوتا كامري)، سيارات الدفع الرباعي الفاخرة (جي إم سي دينالي)، سيارات الفان التنفيذية (هيونداي ستاريا، هيونداي H1)، وحافلات الميني باص (تويوتا هايس، باص كوستر).",
     "howManyPassengersAreAllowedInAMercedesSC": "كم عدد الركاب المسموح بهم في سيارة سيارات فاخرة؟",
     "theMercedesSClassComfortablyAccommodates": "تتسع سيارة سيارات فاخرة لـ 4 ركاب بشكل مريح جداً.",
     "areChildSeatsAvailable": "هل السيارات مزودة بمقاعد للأطفال؟",
@@ -279,8 +279,8 @@
     "vipServices": "الخدمات لكبار الشخصيات",
     "whatDoesVipTransportInclude": "ما الذي يشمله نقل VIP؟",
     "itIncludesUltraLuxuryVehiclesAUniformedC": "يشمل سيارات فائقة الفخامة، سائق خاص بزي رسمي، مياه معبأة، خدمة إنترنت، استقبال خاص، ومرونة تامة في مسار الرحلة.",
-    "canIBookARollsRoyceForAWedding": "هل يمكنني حجز سيارة فاخرة لحفل زفاف؟",
-    "yesWeOfferSpecialPackagesForWeddingsAndS": "نعم، نقدم باقات خاصة لحفلات الزفاف والمناسبات الخاصة مع خدمة راقية جداً وتزيين عند الطلب.",
+    "canIBookARollsRoyceForAWedding": "هل يمكنني حجز سيارة فاخرة لحدث خاص؟",
+    "yesWeOfferSpecialPackagesForWeddingsAndS": "نعم، تتوفر سيارات جي إم سي دينالي وسيارات السيدان التنفيذية لدينا لحفلات الزفاف والمناسبات الخاصة، وتتميز بسائق محترف وخدمة استقبال وتوديع لكبار الشخصيات.",
     "isPrivacyGuaranteed": "هل الخصوصية مضمونة؟",
     "privacyIsTheCoreOfOurEliteServiceAllVipV": "الخصوصية هي جوهر خدماتنا. جميع مركبات VIP مزودة بنوافذ مظللة وسائقين مدربين على السرية التامة.",
     "pricingBooking": "الأسعار والحجز",
@@ -302,7 +302,9 @@
     "areVehiclesSanitized": "هل يتم تعقيم المركبات؟",
     "yesEveryVehicleIsThoroughlySanitizedAfte": "نعم، يتم تعقيم كل مركبة بالكامل بعد كل رحلة لضمان أعلى معايير النظافة والصحة.",
     "faq": "الأسئلة الشائعة",
-    "everythingYouNeedToKnow": "كل ما تحتاج معرفته"
+    "everythingYouNeedToKnow": "كل ما تحتاج معرفته",
+    "howManyPassengersAreAllowedInALuxury SedansSC": "كم عدد الركاب المسموح بهم في سيارة السيدان التنفيذية؟",
+    "theLuxury SedansSClassComfortablyAccommodates": "تتسع سيارات السيدان التنفيذية لدينا لما يصل إلى 4 ركاب بشكل مريح."
   },
   "FleetOverview": {
     "vehicleCategories": "فئات المركبات",

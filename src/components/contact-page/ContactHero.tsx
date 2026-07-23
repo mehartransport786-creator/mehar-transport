@@ -35,14 +35,14 @@ export function ContactHero() {
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-16">
             <a
-              href="tel:+966565638132"
+              href="tel:+966565638120"
               className="flex items-center justify-center gap-2 px-8 py-4 bg-secondary hover:bg-secondary/90 text-primary-foreground font-bold rounded-[var(--radius-btn)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1 shadow-[var(--shadow-luxury)]"
             >
               <PhoneCall className="w-5 h-5" />
               {t("callNow")}
             </a>
             <a
-              href="https://wa.me/966565638132"
+              href="https://wa.me/966565638120"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-[var(--radius-btn)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1 shadow-[var(--shadow-luxury)]"

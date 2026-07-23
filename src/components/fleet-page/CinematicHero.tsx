@@ -60,7 +60,7 @@ export function CinematicHero() {
               <span>{isAr ? "احجز مركبة" : "Book Vehicle"}</span>
             </Link>
             <a 
-              href="https://wa.me/966565638132"
+              href="https://wa.me/966565638120"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto hover:bg-[#25D366]/20 bg-[#25D366]/10 text-white px-8 py-4 rounded-[var(--radius-btn)] font-bold transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] flex items-center justify-center gap-3 hover:-translate-y-1 border border-[#25D366]/30"

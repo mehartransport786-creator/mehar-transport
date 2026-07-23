@@ -30,7 +30,7 @@ export function FinalConversionCTA() {
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a 
-              href="https://wa.me/966565638132"
+              href="https://wa.me/966565638120"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-[var(--radius-btn)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1 flex items-center justify-center gap-2 shadow-[var(--shadow-btn)]"
@@ -39,7 +39,7 @@ export function FinalConversionCTA() {
               WhatsApp
             </a>
             <a 
-              href="tel:+966565638132"
+              href="tel:+966565638120"
               className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-[var(--radius-btn)] border border-white/20 transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1 flex items-center justify-center gap-2 shadow-[var(--shadow-btn)]"
             >
               <PhoneCall className="w-5 h-5 text-secondary" />
