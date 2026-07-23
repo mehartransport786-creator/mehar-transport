@@ -1,8 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
+import { motion, AnimatePresence } from "@/lib/motion";
 
 const faqs = [
   { question: "How early should I book my airport transfer?", answer: "We recommend booking at least 24 hours in advance to guarantee availability, especially during peak seasons." },
@@ -40,31 +41,33 @@ export function FAQCenter() {
             return (
               <div 
                 key={index}
-                className="bg-card rounded-[var(--radius-card)] overflow-hidden border border-border shadow-[var(--shadow-card)]"
+                className={`border rounded-2xl transition-all duration-300 ${isOpen ? 'border-secondary bg-muted' : 'border-border hover:border-primary/30 bg-background'}`}
               >
-                <button 
+                <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none transition-colors duration-[var(--duration-instant)] hover:bg-slate-50 dark:hover:bg-slate-900/50"
-                  aria-expanded={isOpen}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left"
                 >
-                  <span className="font-semibold text-lg text-primary pr-8">
-                    {faq.question}
+                  <span className="font-bold text-primary pr-8 rtl:pr-0 rtl:pl-8">{faq.question}</span>
+                  <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-secondary text-secondary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </span>
-                  <ChevronDown 
-                    className={`w-5 h-5 text-muted-foreground transition-transform duration-[var(--duration-base)] ease-[var(--ease-out)] shrink-0 ${isOpen ? "rotate-180" : ""}`} 
-                  />
                 </button>
                 
-                <div 
-                  className="grid transition-all duration-[var(--duration-base)] ease-[var(--ease-out)]"
-                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                >
-                  <div className="overflow-hidden">
-                    <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </div>
-                </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 pt-1 text-muted-foreground leading-relaxed font-medium">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}

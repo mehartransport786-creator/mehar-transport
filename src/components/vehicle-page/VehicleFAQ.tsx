@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import { useState } from "react";
 import { motion, AnimatePresence } from "@/lib/motion";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import { FAQItem } from "@/data/fleet";
 
 interface VehicleFAQProps {
@@ -37,18 +37,18 @@ export function VehicleFAQ({ faqs, theme }: VehicleFAQProps) {
         {validFaqs.map((faq, idx) => (
           <div 
             key={idx}
-            className={`border rounded-2xl overflow-hidden transition-colors ${openIndex === idx ? 'border-secondary bg-slate-50' : 'border-gray-100 bg-white hover:border-gray-300'}`}
+            className={`border rounded-2xl transition-all duration-300 ${openIndex === idx ? 'border-secondary bg-muted' : 'border-border hover:border-primary/30 bg-background'}`}
           >
             <button
               onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-              className="w-full flex items-center justify-between p-6 text-left"
+              className="w-full px-6 py-5 flex items-center justify-between text-left"
             >
-              <h4 className="font-bold text-primary pr-4">
+              <h4 className="font-bold text-primary pr-8 rtl:pr-0 rtl:pl-8">
                 {isAr ? faq.qAr : faq.q}
               </h4>
-              <ChevronDown 
-                className={`w-5 h-5 text-gray-400 transition-transform ${openIndex === idx ? 'rotate-180 text-secondary' : ''}`} 
-              />
+              <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${openIndex === idx ? 'bg-secondary text-secondary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                {openIndex === idx ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+              </span>
             </button>
             
             <AnimatePresence>
@@ -58,8 +58,9 @@ export function VehicleFAQ({ faqs, theme }: VehicleFAQProps) {
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
                 >
-                  <div className="px-6 pb-6 text-gray-600 leading-relaxed">
+                  <div className="px-6 pb-5 pt-1 text-muted-foreground leading-relaxed font-medium">
                     {isAr ? faq.aAr : faq.a}
                   </div>
                 </motion.div>

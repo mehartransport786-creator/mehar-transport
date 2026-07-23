@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "@/lib/motion";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { Plus, Minus, HelpCircle } from "lucide-react";
 
 export function FAQSection() {
     const t = useTranslations('FAQSection');
@@ -59,23 +59,35 @@ export function FAQSection() {
             return (
               <div 
                 key={idx} 
-                className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-secondary/30 shadow-md' : 'border-slate-100 shadow-sm'}`}
+                className={`border rounded-2xl transition-all duration-300 ${isOpen ? 'border-secondary bg-muted' : 'border-border hover:border-primary/30 bg-background'}`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-start focus:outline-none"
+                  className="w-full px-6 py-5 flex items-center justify-between text-left"
                 >
-                  <span className={`font-bold pr-8 rtl:pr-0 rtl:pl-8 ${isOpen ? 'text-secondary' : 'text-primary'}`}>
+                  <span className="font-bold text-primary pr-8 rtl:pr-0 rtl:pl-8">
                     {faq.q}
                   </span>
-                  <ChevronDown className={`w-5 h-5 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-secondary' : 'text-muted-foreground'}`} />
+                  <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-secondary text-secondary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                  </span>
                 </button>
                 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-0 text-muted-foreground leading-relaxed">
-                    {faq.a}
-                  </div>
-                )}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 pt-1 text-muted-foreground leading-relaxed font-medium">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}

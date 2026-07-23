@@ -160,7 +160,7 @@ Three rules that override everything else:
 
 ### Token Set
 
-**Duration scale** — four values only, no ad-hoc timings anywhere in the codebase:
+**Duration scale** ï¿½ four values only, no ad-hoc timings anywhere in the codebase:
 
 | Token | Value | Use |
 |---|---|---|
@@ -169,17 +169,17 @@ Three rules that override everything else:
 | --duration-base | 300ms | Scroll reveals, accordion expand/collapse, card entrances |
 | --duration-slow | 400ms | Modals, drawers, page-level transitions. Nothing exceeds this. |
 
-**Easing** — three curves only:
+**Easing** ï¿½ three curves only:
 
 | Token | Value | Use |
 |---|---|---|
 | --ease-out | cubic-bezier(0.22, 1, 0.36, 1) | Default. Anything entering or responding to a tap. Fast start, soft settle. |
 | --ease-in-out | cubic-bezier(0.65, 0, 0.35, 1) | Elements moving between two on-screen positions |
-| --ease-in | cubic-bezier(0.4, 0, 1, 1) | Exits only — things leaving the screen |
+| --ease-in | cubic-bezier(0.4, 0, 1, 1) | Exits only ï¿½ things leaving the screen |
 
 No spring physics, no bounce, no elastic, no linear except indeterminate loaders.
 
-**Distance scale** — motion is felt, not watched:
+**Distance scale** ï¿½ motion is felt, not watched:
 
 | Token | Value | Use |
 |---|---|---|
@@ -187,33 +187,33 @@ No spring physics, no bounce, no elastic, no linear except indeterminate loaders
 | --motion-md | 8px | Dropdowns, tooltips |
 | --motion-lg | 16px | Scroll reveals, modal entrance. Hard ceiling. |
 
-**Stagger** — 60ms between siblings, capped at 5 items. Item 6 onward shares item 5's delay. Never stagger more than one group per viewport.
+**Stagger** ï¿½ 60ms between siblings, capped at 5 items. Item 6 onward shares item 5's delay. Never stagger more than one group per viewport.
 
 ### Allowed Inventory
 
 **Permitted**
-- Hover / focus / active on interactive elements: opacity, background, border colour, up to 4px translate — --duration-instant, --ease-out.
+- Hover / focus / active on interactive elements: opacity, background, border colour, up to 4px translate ï¿½ --duration-instant, --ease-out.
 - Scroll reveal: opacity 0 ? 1 plus 	ranslateY(16px) ? 0, --duration-base, --ease-out, fires **once** per element, never replays on scroll back.
 - Accordion / FAQ expand and collapse: height and opacity, --duration-base. (Use grid-rows 1fr to  fr technique).
-- Modal, drawer, mobile nav: backdrop fade plus panel translate — --duration-slow in, --duration-quick out.
+- Modal, drawer, mobile nav: backdrop fade plus panel translate ï¿½ --duration-slow in, --duration-quick out.
 - Form and booking state: focus rings, inline validation appearing, button loading spinner, success confirmation.
 - Skeleton or shimmer placeholders while fare and availability data loads.
 - Step transitions in the booking flow: a plain crossfade, --duration-quick.
 
-**Forbidden — remove on sight**
+**Forbidden ï¿½ remove on sight**
 - Parallax, scroll-hijacking, scroll-linked scrubbing, smooth-scroll libraries.
 - Autoplaying hero animations, animated gradients, floating background shapes, particles.
 - Text animating in per-character or per-word.
 - Counters that tick up; animated progress rings on trust badges.
 - Auto-advancing carousels.
 - Anything looping infinitely except loading indicators.
-- Entrance animation on the hero headline, primary CTA, phone number, WhatsApp button, or price — these are visible and interactive at first paint, always.
+- Entrance animation on the hero headline, primary CTA, phone number, WhatsApp button, or price ï¿½ these are visible and interactive at first paint, always.
 
 ### Performance and Accessibility Constraints
 
 - **Animate 	ransform and opacity only.** Never width, height, 	op, left, margin, or ox-shadow. For accordions use a grid-rows (1fr/ fr) technique.
 - **No permanent will-change.** Apply for the duration of an animation, or not at all.
-- **Scroll reveals use one shared IntersectionObserver**, not one per element — ootMargin: "0px 0px -10% 0px", 	hreshold: 0.1, unobserve after firing. Use the <Reveal> component.
+- **Scroll reveals use one shared IntersectionObserver**, not one per element ï¿½ ootMargin: "0px 0px -10% 0px", 	hreshold: 0.1, unobserve after firing. Use the <Reveal> component.
 - **No new animation dependency.** CSS transitions, keyframes, and IntersectionObserver cover this entire spec.
 - **No layout shift.** Revealed elements occupy their final space from first paint and only fade/translate within it.
 - **prefers-reduced-motion: reduce** disables all transform motion and all scroll reveals globally, leaving opacity changes at 120ms and instant state changes. Reduced-motion users must still see every element in its final state; never leave content stuck at opacity: 0.
@@ -222,3 +222,21 @@ No spring physics, no bounce, no elastic, no linear except indeterminate loaders
 
 ### Navbar Behavior
 - **Transparency:** The navbar must be transparent when the user is at the top of the page (scroll position 0) and must transition to a solid white background when scrolling down. This behavior applies globally across all pages.
+
+
+### Accordion & FAQ Style
+
+All accordions across the application must strictly adhere to the following unified style structure:
+
+- **Container:** `border rounded-2xl transition-all duration-300 bg-background`
+- **Container Active State:** `border-secondary bg-muted`
+- **Container Hover State (Inactive):** `hover:border-primary/30`
+- **Button Header:** `w-full px-6 py-5 flex items-center justify-between text-left`
+- **Question Text:** `font-bold text-primary pr-8 rtl:pr-0 rtl:pl-8`
+- **Toggle Icon Container:** A small circle (`w-8 h-8 rounded-full flex items-center justify-center transition-colors`).
+- **Toggle Icon Inactive:** `bg-muted text-muted-foreground` with a `<Plus className="w-4 h-4" />` icon.
+- **Toggle Icon Active:** `bg-secondary text-secondary-foreground` with a `<Minus className="w-4 h-4" />` icon.
+- **Animation:** Use `framer-motion` (`<AnimatePresence>` and `<motion.div>`) or CSS Grid (`grid-template-rows: 0fr / 1fr`) to smoothly animate the height. If using framer-motion: `duration: 0.3`.
+- **Answer Container:** `px-6 pb-5 pt-1 text-muted-foreground leading-relaxed font-medium`
+
+This specific style replaces all other custom accordion variations (e.g. ChevronDown, card shadows, alternative paddings).
