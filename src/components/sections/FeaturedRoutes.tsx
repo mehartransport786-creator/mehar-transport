@@ -55,7 +55,7 @@ export function FeaturedRoutes() {
       from: isAr ? "جدة" : "Jeddah",
       to: isAr ? "الطائف" : "Taif",
       price: "400",
-      image: "/routes/taif-mountain-premium.png",
+      image: "/routes/taif-road.jpeg",
       trustFeatures: isAr
         ? ["تنقل خاص", "سيارات فارهة", "رحلة آمنة", "دعم ٢٤/٧"]
         : ["Private Transfer", "Executive Vehicles", "Safe Journey", "24/7 Support"]

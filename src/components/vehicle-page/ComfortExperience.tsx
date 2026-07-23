@@ -1,20 +1,22 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "@/lib/motion";
 import Image from "next/image";
 
-import { VehicleTheme } from "@/types/vehicle";
-
 interface ComfortExperienceProps {
-  theme: VehicleTheme;
+  theme: {
+    primary: string;
+    secondary: string;
+  };
+  interiorImage: string;
 }
 
-export function ComfortExperience({ theme }: ComfortExperienceProps) {
-    const t = useTranslations('ComfortExperience');
+export function ComfortExperience({ theme, interiorImage }: ComfortExperienceProps) {
+  const t = useTranslations('ComfortExperience');
 
   return (
-    <section className="relative rounded-3xl overflow-hidden text-white my-12" style={{ backgroundColor: theme.primary }}>
+    <section className="relative rounded-[var(--radius-card)] overflow-hidden text-white my-12" style={{ backgroundColor: theme.primary }}>
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
       </div>
@@ -38,21 +40,22 @@ export function ComfortExperience({ theme }: ComfortExperienceProps) {
         </div>
 
         <motion.div 
-          className="w-full"
+          className="w-full h-[300px] md:h-[400px] relative rounded-[var(--radius-card)] overflow-hidden shadow-[var(--shadow-luxury)]"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
           <Image 
-            src="/about/interior.webp" 
+            src={interiorImage} 
             alt="Comfort Interior" 
-            width={800}
-            height={600}
-            className="w-full h-auto object-cover rounded-2xl shadow-2xl"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
           />
         </motion.div>
       </div>
     </section>
   );
 }
+

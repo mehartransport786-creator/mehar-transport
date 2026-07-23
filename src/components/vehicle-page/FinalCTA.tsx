@@ -2,9 +2,10 @@
 
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { VehicleData } from "@/data/fleet";
 
 interface FinalCTAProps {
-  vehicle: any;
+  vehicle: VehicleData;
 }
 
 export function FinalCTA({ vehicle }: FinalCTAProps) {
@@ -27,20 +28,20 @@ export function FinalCTA({ vehicle }: FinalCTAProps) {
         
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <Link 
-            href={`/booking?vehicle=${vehicle.id}`}
-            className="bg-secondary hover:bg-white text-primary px-10 py-5 rounded-xl font-bold transition-all text-sm uppercase tracking-widest"
+            href={`/booking?vehicle=${vehicle.slug}`}
+            className="bg-secondary hover:bg-white text-primary px-10 py-5 rounded-[var(--radius-card)] font-bold transition-all text-sm uppercase tracking-widest shadow-[var(--shadow-luxury)]"
           >
             {isAr ? "احجز الآن" : "Book Now"}
           </Link>
           <a 
             href="https://wa.me/966565638120"
-            className="bg-transparent hover:bg-white/10 text-white border border-white/30 px-10 py-5 rounded-xl font-bold transition-all text-sm uppercase tracking-widest"
+            className="bg-transparent hover:bg-white/10 text-white border border-white/30 px-10 py-5 rounded-[var(--radius-card)] font-bold transition-all text-sm uppercase tracking-widest"
           >
             {isAr ? "تواصل عبر الواتساب" : "WhatsApp Us"}
           </a>
           <a 
             href="tel:+966565638120"
-            className="bg-transparent hover:bg-white/10 text-white border border-white/30 px-10 py-5 rounded-xl font-bold transition-all text-sm uppercase tracking-widest"
+            className="bg-transparent hover:bg-white/10 text-white border border-white/30 px-10 py-5 rounded-[var(--radius-card)] font-bold transition-all text-sm uppercase tracking-widest"
           >
             {isAr ? "اتصل الآن" : "Call Now"}
           </a>

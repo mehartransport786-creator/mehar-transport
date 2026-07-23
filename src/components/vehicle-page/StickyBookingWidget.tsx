@@ -9,11 +9,10 @@ import { useRouter } from "next/navigation";
 interface StickyBookingWidgetProps {
   vehicleName: string;
   vehicleNameAr: string;
-  basePrice: number;
-  vehicleId?: string;
+  vehicleSlug: string;
 }
 
-export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, vehicleId }: StickyBookingWidgetProps) {
+export function StickyBookingWidget({ vehicleName, vehicleNameAr, vehicleSlug }: StickyBookingWidgetProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
   
@@ -29,11 +28,11 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!vehicleId) return;
+    if (!vehicleSlug) return;
     
     // Redirect to the booking engine with prefilled parameters
     const searchParams = new URLSearchParams({
-      vehicle: vehicleId,
+      vehicle: vehicleSlug,
       pickup: formData.pickup,
       destination: formData.destination,
       date: formData.date,
@@ -45,7 +44,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
 
   return (
     <div 
-      className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 overflow-hidden sticky top-24"
+      className="bg-white rounded-[var(--radius-card)] shadow-[var(--shadow-floating)] border border-gray-100 overflow-hidden sticky top-24"
       onMouseEnter={() => router.prefetch(`/${locale}/booking`)}
     >
       <div className="bg-primary p-6 text-white">
@@ -53,8 +52,7 @@ export function StickyBookingWidget({ vehicleName, vehicleNameAr, basePrice, veh
           {isAr ? "احجز " + vehicleNameAr : "Reserve " + vehicleName}
         </h3>
         <p className="text-sm text-gray-300">
-          {isAr ? "تبدأ من " : "Starting from "}
-          <span className="text-secondary font-bold text-lg">{basePrice} SAR</span>
+          {isAr ? "احصل على عرض سعر فوري" : "Get an instant quote"}
         </p>
       </div>
 

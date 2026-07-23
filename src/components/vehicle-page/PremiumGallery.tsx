@@ -1,22 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "@/lib/motion";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import Image from "next/image";
 
 interface PremiumGalleryProps {
-  gallery: string[];
+  gallery: [string, string, string];
 }
 
 export function PremiumGallery({ gallery }: PremiumGalleryProps) {
-    const t = useTranslations('PremiumGallery');
-  
+  const t = useTranslations('PremiumGallery');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-  // Support 3-image grid nicely, otherwise pad to fill demo layout
-  const displayGallery = gallery.length >= 3 ? gallery : [...gallery, ...gallery, ...gallery].slice(0, 4);
 
   const openLightbox = (index: number) => setSelectedImage(index);
   const closeLightbox = () => setSelectedImage(null);
@@ -24,18 +20,16 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % displayGallery.length);
+      setSelectedImage((selectedImage + 1) % 3);
     }
   };
 
   const prevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (selectedImage !== null) {
-      setSelectedImage((selectedImage - 1 + displayGallery.length) % displayGallery.length);
+      setSelectedImage((selectedImage - 1 + 3) % 3);
     }
   };
-
-  const isPhoto = (src: string) => src.includes('.jpg') || src.includes('.jpeg') || src.includes('-interior') || src.includes('-seats') || src.includes('-rear') || src.includes('-dashboard');
 
   return (
     <section>
@@ -44,61 +38,73 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
           {t("experienceTheVehicle")}
         </h3>
         <span className="text-sm font-bold text-secondary uppercase tracking-wider">
-          {displayGallery.length} {t("photos")}
+          3 {t("photos")}
         </span>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {/* Large featured image */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[500px]">
+        {/* Large featured image (Luggage/Open Tailgate) */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="col-span-2 row-span-2 relative group cursor-pointer rounded-2xl overflow-hidden aspect-video md:aspect-auto h-[250px] md:h-full bg-slate-50 border border-gray-100"
+          className="relative group cursor-pointer rounded-[var(--radius-card)] overflow-hidden h-[300px] md:h-full bg-slate-50 border border-gray-100"
           onClick={() => openLightbox(0)}
         >
           <Image 
-            src={displayGallery[0]} 
-            alt="Gallery Featured" 
+            src={gallery[0]} 
+            alt="Luggage Capacity" 
             fill
-            sizes="(max-width: 768px) 100vw, 66vw"
-            className={`${isPhoto(displayGallery[0]) ? 'object-cover' : 'object-contain p-4'} group-hover:scale-105 transition-transform duration-[var(--duration-base)]`}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-[var(--duration-base)]"
           />
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <Maximize2 className="w-8 h-8 text-white" />
           </div>
         </motion.div>
 
-        {/* Grid of smaller images */}
-        {displayGallery.slice(1, 5).map((img, idx) => (
+        {/* Stacked smaller images (Rear Cabin, Dashboard) */}
+        <div className="grid grid-cols-2 md:grid-cols-1 grid-rows-1 md:grid-rows-2 gap-4 h-[150px] md:h-full">
           <motion.div
-            key={idx}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: idx * 0.1 }}
-            className="relative group cursor-pointer rounded-2xl overflow-hidden aspect-square md:aspect-[4/3] bg-slate-50 border border-gray-100"
-            onClick={() => openLightbox(idx + 1)}
+            transition={{ delay: 0.1 }}
+            className="relative group cursor-pointer rounded-[var(--radius-card)] overflow-hidden h-full bg-slate-50 border border-gray-100"
+            onClick={() => openLightbox(1)}
           >
             <Image 
-              src={img} 
-              alt={`Gallery ${idx + 1}`} 
+              src={gallery[1]} 
+              alt="Rear Cabin" 
               fill
-              sizes="(max-width: 768px) 50vw, 33vw"
-              className={`${isPhoto(img) ? 'object-cover' : 'object-contain p-2'} group-hover:scale-105 transition-transform duration-[var(--duration-base)]`}
+              sizes="(max-width: 768px) 50vw, 50vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-[var(--duration-base)]"
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Maximize2 className="w-6 h-6 text-white" />
             </div>
-            
-            {/* Show "View All" overlay on the last small image if there are more */}
-            {idx === 3 && displayGallery.length > 5 && (
-              <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
-                <span className="text-white font-bold text-lg">+{displayGallery.length - 5}</span>
-              </div>
-            )}
           </motion.div>
-        ))}
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative group cursor-pointer rounded-[var(--radius-card)] overflow-hidden h-full bg-slate-50 border border-gray-100"
+            onClick={() => openLightbox(2)}
+          >
+            <Image 
+              src={gallery[2]} 
+              alt="Dashboard" 
+              fill
+              sizes="(max-width: 768px) 50vw, 50vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-[var(--duration-base)]"
+            />
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <Maximize2 className="w-6 h-6 text-white" />
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Lightbox Modal */}
@@ -142,7 +148,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <Image
-                src={displayGallery[selectedImage]}
+                src={gallery[selectedImage]}
                 alt={`Lightbox ${selectedImage}`}
                 fill
                 className="object-contain"
@@ -150,7 +156,7 @@ export function PremiumGallery({ gallery }: PremiumGalleryProps) {
             </motion.div>
             
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium tracking-widest bg-black/50 px-4 py-2 rounded-full">
-              {selectedImage + 1} / {displayGallery.length}
+              {selectedImage + 1} / 3
             </div>
           </motion.div>
         )}

@@ -1,11 +1,10 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
-import { motion } from "@/lib/motion";
+import { useTranslations } from "next-intl";
 import { CarFront, Clock, UserCheck, ShieldCheck, Route, Star } from "lucide-react";
 
 export function FleetOverview() {
-    const t = useTranslations('FleetOverview');
+  const t = useTranslations('FleetOverview');
 
   const stats = [
     {
@@ -40,50 +39,29 @@ export function FleetOverview() {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
-
   return (
-    <section className="py-24 bg-background border-b border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12"
-        >
+    <section className="section-padding bg-background border-b border-border">
+      <div className="container-fluid">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <motion.div 
+              <div 
                 key={index} 
-                variants={itemVariants}
-                className="flex flex-col items-center text-center space-y-4 group"
+                className="flex flex-col items-center text-center space-y-4 group animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-secondary transition-all duration-[var(--duration-base)] shadow-sm border border-border/50">
+                <div className="w-16 h-16 rounded-[var(--radius-card)] bg-slate-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-secondary transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] shadow-sm border border-border group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-luxury)]">
                   <Icon className="w-7 h-7 stroke-[1.5]" />
                 </div>
                 <div>
                   <div className="text-3xl font-black text-primary mb-1">{stat.value}</div>
                   <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

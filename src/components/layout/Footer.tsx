@@ -166,7 +166,6 @@ export async function Footer() {
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-secondary" />
                 <a href="https://maps.app.goo.gl/Qrz4rQjfFJt89i45A" target="_blank" rel="noreferrer" className="hover:text-secondary transition-colors">
                   Al Nawariyah District, Makkah, Saudi Arabia
-                  <br className="hidden lg:block"/> (Needs street/building + postal code)
                 </a>
               </p>
             </div>

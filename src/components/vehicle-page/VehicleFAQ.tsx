@@ -4,10 +4,14 @@ import { useLocale } from "next-intl";
 import { useState } from "react";
 import { motion, AnimatePresence } from "@/lib/motion";
 import { ChevronDown } from "lucide-react";
+import { FAQItem } from "@/data/fleet";
 
 interface VehicleFAQProps {
-  faqs: any[];
-  theme: any;
+  faqs: FAQItem[];
+  theme: {
+    primary: string;
+    secondary: string;
+  };
 }
 
 export function VehicleFAQ({ faqs, theme }: VehicleFAQProps) {
@@ -15,7 +19,10 @@ export function VehicleFAQ({ faqs, theme }: VehicleFAQProps) {
   const isAr = locale === "ar";
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  if (!faqs || faqs.length === 0) return null;
+  // Filter out items with empty answers to prevent empty FAQ toggles
+  const validFaqs = faqs?.filter(faq => isAr ? faq.aAr?.trim() : faq.a?.trim()) || [];
+
+  if (validFaqs.length === 0) return null;
 
   return (
     <section>
@@ -27,7 +34,7 @@ export function VehicleFAQ({ faqs, theme }: VehicleFAQProps) {
       </div>
 
       <div className="space-y-4">
-        {faqs.map((faq, idx) => (
+        {validFaqs.map((faq, idx) => (
           <div 
             key={idx}
             className={`border rounded-2xl overflow-hidden transition-colors ${openIndex === idx ? 'border-secondary bg-slate-50' : 'border-gray-100 bg-white hover:border-gray-300'}`}

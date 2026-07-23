@@ -3,10 +3,14 @@
 import { useLocale } from "next-intl";
 import { motion } from "@/lib/motion";
 import { Star, Quote } from "lucide-react";
+import { Review } from "@/data/fleet";
 
 interface VehicleReviewsProps {
-  reviews: any[];
-  theme: any;
+  reviews: Review[];
+  theme: {
+    primary: string;
+    secondary: string;
+  };
 }
 
 export function VehicleReviews({ reviews, theme }: VehicleReviewsProps) {
@@ -32,7 +36,7 @@ export function VehicleReviews({ reviews, theme }: VehicleReviewsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden"
+            className="bg-white rounded-[var(--radius-card)] p-8 border border-gray-100 shadow-sm relative overflow-hidden"
           >
             <Quote className="absolute top-6 right-6 w-16 h-16 text-slate-50 rtl:left-6 rtl:right-auto rotate-180" />
             
@@ -47,13 +51,9 @@ export function VehicleReviews({ reviews, theme }: VehicleReviewsProps) {
             </p>
 
             <div className="flex items-center gap-4 mt-auto">
-              {review.image ? (
-                <img src={review.image} alt={review.name} className="w-12 h-12 rounded-full object-cover" />
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-400">
-                  {review.name.charAt(0)}
-                </div>
-              )}
+              <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-400 uppercase">
+                {review.name.charAt(0)}
+              </div>
               <div>
                 <h4 className="font-bold text-primary">{review.name}</h4>
                 <p className="text-xs text-gray-500">{review.country} • {routeText(review.route)}</p>

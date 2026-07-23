@@ -1,12 +1,11 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
-import { motion } from "@/lib/motion";
+import { useTranslations } from "next-intl";
 import { Maximize2, Wind, Shield, Coffee } from "lucide-react";
 import Image from "next/image";
 
 export function InteriorExperience() {
-    const t = useTranslations('InteriorExperience');
+  const t = useTranslations('InteriorExperience');
 
   const features = [
     {
@@ -32,84 +31,58 @@ export function InteriorExperience() {
   ];
 
   return (
-    <section className="py-32 bg-primary text-primary-foreground overflow-hidden relative">
+    <section className="section-padding bg-primary text-primary-foreground overflow-hidden relative">
       {/* Decorative Brand Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 z-0" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-foreground/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 z-0" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px] relative z-10">
+      <div className="container-fluid relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <div className="w-full space-y-10">
-            <div>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-4 mb-6"
-              >
+            <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-0.5 bg-secondary"></div>
                 <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm">
                   {t("theInteriorExperience")}
                 </span>
-              </motion.div>
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-4xl md:text-5xl font-bold leading-tight mb-6"
-              >
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6 tracking-tight">
                 {t("comfortWithoutCompromise")}
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="text-lg text-primary-foreground/70 font-light leading-relaxed max-w-xl"
-              >
+              </h2>
+              <p className="text-lg text-primary-foreground/70 font-light leading-relaxed max-w-xl">
                 {t("weUnderstandThatTheJourneyIsJustAsImport")}
-              </motion.p>
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {features.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
-                  <motion.div 
+                  <div 
                     key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + (idx * 0.1) }}
-                    className="space-y-3"
+                    className="space-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
+                    style={{ animationDelay: `${idx * 100}ms` }}
                   >
                     <div className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-secondary">
                       <Icon className="w-5 h-5" />
                     </div>
                     <h4 className="font-bold text-lg">{feature.title}</h4>
                     <p className="text-primary-foreground/60 text-sm leading-relaxed">{feature.desc}</p>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="w-full"
-          >
-            <div className="relative aspect-square md:aspect-[4/5] rounded-[2rem] overflow-hidden group">
+          <div className="w-full animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
+            <div className="relative aspect-square md:aspect-[4/5] rounded-[var(--radius-card)] overflow-hidden group shadow-[var(--shadow-luxury)] border border-border/10">
               <Image 
                 src="/about/interior.webp" 
                 alt="Luxury Interior" 
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-[var(--duration-slow)]"
+                className="object-cover group-hover:scale-105 transition-transform duration-[var(--duration-slow)] ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-80" />
               
@@ -119,7 +92,7 @@ export function InteriorExperience() {
                 <span>{t("clickToViewGallery")}</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

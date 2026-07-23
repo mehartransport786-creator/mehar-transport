@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion } from "@/lib/motion";
 import { mockFleet } from "@/lib/data";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft } from "lucide-react";
@@ -52,71 +51,52 @@ export function VehicleCategoryExperience() {
   ];
 
   return (
-    <section className="py-32 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
+    <section className="section-padding bg-muted">
+      <div className="container-fluid">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="w-12 h-0.5 bg-secondary mx-auto"
-          />
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-primary"
-          >
+          <div className="w-12 h-0.5 bg-secondary mx-auto" />
+          <h2 className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
             {isAr ? "اكتشف فئتك المثالية" : "Discover Your Ideal Class"}
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-lg text-muted-foreground"
-          >
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
             {isAr 
               ? "مجموعة مختارة بعناية من المركبات لتلبية احتياجات سفرك بدقة متناهية وفخامة لا تضاهى." 
               : "A meticulously curated selection of vehicles to precisely meet your travel needs with unmatched luxury."}
-          </motion.p>
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 lg:gap-8">
           {categories.map((cat, idx) => (
-            <motion.div 
+            <div 
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className="group cursor-pointer relative h-[400px] rounded-[var(--radius-card)] overflow-hidden flex flex-col justify-end"
+              className="group cursor-pointer relative h-[400px] rounded-[var(--radius-card)] overflow-hidden flex flex-col justify-end border border-border bg-background shadow-sm hover:shadow-[var(--shadow-luxury)] transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] hover:-translate-y-1"
             >
-              <div className="absolute inset-0 bg-background border border-border rounded-[var(--radius-card)]"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-muted via-transparent to-transparent rounded-[var(--radius-card)]"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-muted via-transparent to-transparent opacity-50"></div>
               
               <Image 
                 src={cat.image} 
                 alt={cat.vehicle}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                className="object-contain p-6 group-hover:scale-110 transition-transform duration-1000 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
+                className="object-contain p-6 group-hover:scale-105 transition-transform duration-700 ease-out drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90 transition-opacity duration-[var(--duration-base)] rounded-[var(--radius-card)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent opacity-90 transition-opacity duration-[var(--duration-instant)]" />
               
-              <div className="relative z-10 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-[var(--duration-base)]">
+              <div className="relative z-10 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-[var(--duration-instant)] ease-[var(--ease-out)]">
                 <div className="text-secondary text-xs font-bold uppercase tracking-[0.2em] mb-2">{cat.title}</div>
-                <h3 className="text-2xl font-bold text-primary mb-4">{cat.vehicle}</h3>
+                <h3 className="text-xl font-bold text-primary mb-3">{cat.vehicle}</h3>
                 
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-[var(--duration-base)] delay-100">
-                  <div className="text-sm text-muted-foreground font-medium mb-1">{isAr ? "مثالية لـ:" : "Perfect for:"}</div>
-                  <div className="text-primary font-medium mb-6 leading-tight">{cat.perfectFor}</div>
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-[var(--duration-instant)] ease-[var(--ease-out)] delay-75">
+                  <div className="text-xs text-muted-foreground font-medium mb-1">{isAr ? "مثالية لـ:" : "Perfect for:"}</div>
+                  <div className="text-primary text-sm font-medium mb-4 leading-tight">{cat.perfectFor}</div>
                   
                   <div className="flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-wider group/link">
                     <span>{isAr ? "استكشف الفئة" : "Explore Class"}</span>
-                    <ArrowIcon className="w-4 h-4 group-hover/link:translate-x-1 rtl:group-hover/link:-translate-x-1 transition-transform" />
+                    <ArrowIcon className="w-4 h-4 group-hover/link:translate-x-1 rtl:group-hover/link:-translate-x-1 transition-transform duration-[var(--duration-instant)]" />
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,8 +1,6 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { mockFleet } from "@/lib/data";
-import { motion } from "@/lib/motion";
 import { CheckCircle2, Star, X } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
@@ -11,19 +9,19 @@ export function InteractiveComparison({ vehicles }: { vehicles: any[] }) {
   const isAr = locale === "ar";
 
   return (
-    <section className="py-24 bg-muted border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
+    <section className="section-padding bg-muted border-t border-border">
+      <div className="container-fluid">
         
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm block">
             {isAr ? "مقارنة" : "Compare"}
           </span>
-          <h2 className="text-4xl font-bold text-primary">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
             {isAr ? "ابحث عن مركبتك المثالية" : "Find Your Perfect Match"}
           </h2>
         </div>
 
-        <div className="bg-background rounded-[2rem] shadow-xl border border-border overflow-hidden">
+        <div className="bg-background rounded-[var(--radius-card)] shadow-[var(--shadow-luxury)] border border-border overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left min-w-[1000px]">
               <thead className="bg-primary text-primary-foreground">
@@ -43,15 +41,12 @@ export function InteractiveComparison({ vehicles }: { vehicles: any[] }) {
               </thead>
               <tbody className="divide-y divide-border">
                 {vehicles.map((vehicle, i) => (
-                  <motion.tr 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
+                  <tr 
                     key={vehicle._id || vehicle.slug} 
-                    className="hover:bg-muted/50 transition-colors group"
+                    className="hover:bg-muted/50 transition-colors duration-[var(--duration-instant)] ease-[var(--ease-out)] group animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-both"
+                    style={{ animationDelay: `${i * 50}ms` }}
                   >
-                    <td className="px-6 py-5 sticky left-0 bg-background group-hover:bg-muted/50 transition-colors z-10 shadow-[4px_0_10px_rgba(0,0,0,0.02)] border-r border-border/50">
+                    <td className="px-6 py-5 sticky left-0 bg-background group-hover:bg-muted/50 transition-colors duration-[var(--duration-instant)] ease-[var(--ease-out)] z-10 shadow-[4px_0_10px_rgba(0,0,0,0.02)] border-r border-border/50">
                       <div className="flex items-center gap-4">
                         <img src={vehicle.image} alt={vehicle.name} className="w-16 h-10 object-cover rounded shadow-sm" />
                         <div>
@@ -89,12 +84,12 @@ export function InteractiveComparison({ vehicles }: { vehicles: any[] }) {
                     <td className="px-6 py-5 text-center">
                       <Link 
                         href={`/booking?vehicle=${vehicle._id || vehicle.slug}`}
-                        className="opacity-0 group-hover:opacity-100 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground px-4 py-2 rounded-[var(--radius-btn)] font-bold transition-all text-xs uppercase tracking-wider"
+                        className="opacity-0 group-hover:opacity-100 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground px-4 py-2 rounded-[var(--radius-btn)] font-bold transition-all duration-[var(--duration-instant)] ease-[var(--ease-out)] text-xs uppercase tracking-wider"
                       >
                         {isAr ? "احجز" : "Book"}
                       </Link>
                     </td>
-                  </motion.tr>
+                  </tr>
                 ))}
               </tbody>
             </table>
