@@ -67,8 +67,8 @@ export function CompanyIntro({ locale }: { locale: string }) {
             <div className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-[var(--shadow-luxury)] border border-border/50">
               <div className="absolute inset-0 bg-primary/10 z-10" />
               <img 
-                src="/fleet/camry.webp" 
-                alt="Mehar Transport Fleet" 
+                src="/about/pickup-services.jpg" 
+                alt="Mehar Transport Premium Services" 
                 className="w-full h-full object-cover transition-transform duration-[var(--duration-base)] hover:scale-105"
               />
               {/* Decorative elements */}

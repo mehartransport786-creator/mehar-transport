@@ -72,48 +72,18 @@ export function OurFootprint({ locale }: { locale: string }) {
 
           {/* Stylized Map Area */}
           <motion.div 
-            className="w-full lg:w-1/2 relative aspect-square max-w-lg mx-auto"
+            className="w-full lg:w-1/2 flex justify-center items-center mt-8 lg:mt-0"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute inset-0 bg-primary-foreground/5 rounded-full border border-primary-foreground/10 shadow-[var(--shadow-luxury)] overflow-hidden">
-              {/* Map SVG Representation - Abstract */}
-              <svg viewBox="0 0 100 100" className="w-full h-full opacity-30 text-secondary" fill="currentColor">
-                <path d="M30,20 C40,10 60,10 70,30 C80,40 70,60 60,80 C50,90 40,90 30,70 C20,50 10,40 30,20 Z" />
-              </svg>
-
-              {locations.map((loc, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.15 + 0.5 }}
-                  className="absolute flex flex-col items-center group cursor-pointer"
-                  style={{ top: loc.top, left: loc.left }}
-                >
-                  <div className="w-4 h-4 rounded-full bg-secondary relative z-10 shadow-[0_0_15px_var(--secondary)]">
-                    <div className="absolute inset-0 rounded-full bg-secondary animate-ping opacity-50" />
-                  </div>
-                  <div className="absolute top-6 whitespace-nowrap bg-background text-primary px-3 py-1 rounded-[var(--radius-btn)] text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
-                    {isAr ? loc.nameAr : loc.name}
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Connecting lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 5 }}>
-                <path d="M 30% 55% L 25% 50% L 28% 35% L 60% 45% L 35% 58% Z" fill="none" stroke="var(--secondary)" strokeWidth="2" strokeDasharray="4 4" className="animate-[dash_20s_linear_infinite]" />
-              </svg>
-            </div>
-            
-            <div className="absolute -bottom-6 -right-6 bg-background rounded-[var(--radius-card)] p-6 shadow-[var(--shadow-luxury)] z-20 max-w-[200px]">
-              <MapPin className="w-8 h-8 text-secondary mb-2" />
-              <div className={`font-bold text-primary ${isAr ? 'font-arabic' : ''}`}>
-                {isAr ? 'حضور رئيسي في المطارات والفنادق وطرق الحجاج' : 'Major presence across airports, hotels, and pilgrim routes.'}
-              </div>
+            <div className="relative w-full max-w-[500px] mx-auto">
+              <img 
+                src="/about/Mehar_KSA_Coverage_Map.png" 
+                alt="Mehar Transport Coverage Map in Saudi Arabia" 
+                className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+              />
             </div>
           </motion.div>
           

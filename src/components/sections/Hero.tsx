@@ -39,15 +39,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-auto mb-12 sm:my-auto ms-auto max-w-3xl w-full"
+          className="mt-auto mb-12 sm:my-auto ms-auto max-w-xl md:max-w-2xl lg:max-w-[55%] xl:max-w-[50%] w-full text-start"
         >
-          {/* Trust Badge */}
-          <div className="hidden sm:inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-            <ShieldCheck className="w-4 h-4 text-secondary" />
-            <span className="text-white/90 text-xs font-semibold tracking-wide">
-              {isAr ? "خدمة موثوقة في المملكة العربية السعودية" : "Trusted Service Across Saudi Arabia"}
-            </span>
-          </div>
+
 
           {/* Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 tracking-tight">
@@ -91,14 +85,14 @@ export function Hero() {
           <div className="flex flex-row gap-2 sm:gap-3 w-full sm:w-auto">
             <Link
               href="/booking"
-              className="flex-1 sm:flex-none justify-center inline-flex items-center gap-1.5 sm:gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-3 sm:px-7 py-3 sm:py-3.5 rounded-xl transition-all shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 hover:-translate-y-0.5 text-sm sm:text-base whitespace-nowrap"
+              className="btn-primary flex-1 sm:flex-none gap-1.5 sm:gap-2 px-3 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base"
             >
               {isAr ? "احجز الآن" : "Book Now"}
               <ArrowIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </Link>
             <Link
               href="/fleet"
-              className="flex-1 sm:flex-none justify-center inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-3 sm:px-7 py-3 sm:py-3.5 rounded-xl border border-white/20 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="btn-outline-white flex-1 sm:flex-none gap-2 px-3 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base backdrop-blur-sm"
             >
               {isAr ? "استعرض الأسطول" : "View Fleet"}
             </Link>

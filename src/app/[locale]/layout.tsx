@@ -139,7 +139,7 @@ export default async function RootLayout({
       className={`${fontClass} antialiased`}
       dir={isAr ? 'rtl' : 'ltr'}
     >
-      <body className="min-h-screen flex flex-col font-sans antialiased">
+      <body className="min-h-screen flex flex-col font-sans antialiased" suppressHydrationWarning>
         {/*
           Step 9 — Arabic font variable remapping.
           When locale is Arabic, the three Latin font CSS vars are not set

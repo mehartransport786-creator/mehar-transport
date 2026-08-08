@@ -6,7 +6,7 @@ const intlMiddleware = createIntlMiddleware(routing);
 
 import { getToken } from "next-auth/jwt";
 
-export async function proxy(req: NextRequest, event: NextFetchEvent) {
+export async function middleware(req: NextRequest, event: NextFetchEvent) {
   // Run locale logic first to get the resolved response
   const res = intlMiddleware(req);
 

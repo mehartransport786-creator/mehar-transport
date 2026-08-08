@@ -33,21 +33,21 @@ export function RegisteredCompany({ locale }: { locale: string }) {
                 <div className="space-y-4 pt-12">
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] relative">
                     <div className="absolute inset-0 bg-primary/20 z-10" />
-                    <img src="/fleet/yukon.webp" alt="Operations" className="w-full h-full object-cover" />
+                    <img src="/about/driver.jpg" alt="Operations" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-square relative">
                     <div className="absolute inset-0 bg-secondary/20 z-10" />
-                    <img src="/fleet/staria.webp" alt="Fleet" className="w-full h-full object-cover" />
+                    <img src="/about/vehicle-inspection.jpg" alt="Vehicle Inspection" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-square relative">
                     <div className="absolute inset-0 bg-primary/20 z-10" />
-                    <img src="/fleet/hiace.webp" alt="Team" className="w-full h-full object-cover" />
+                    <img src="/about/24-hours-support.jpg" alt="24 Hours Support" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] relative">
                     <div className="absolute inset-0 bg-secondary/20 z-10" />
-                    <img src="/fleet/camry.webp" alt="Office" className="w-full h-full object-cover" />
+                    <img src="/about/clean-cars.jpg" alt="Clean Cars" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
